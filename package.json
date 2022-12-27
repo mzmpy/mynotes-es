@@ -1,0 +1,32 @@
+{
+  "name": "esbuild-vue-jsx",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node ./build/build.js",
+    "eserve": "node ./build/esbuildServe.js",
+    "dev": "node ./build/serve/serve.js"
+  },
+  "keywords": [
+    "esbuild",
+    "vue",
+    "jsx"
+  ],
+  "author": "@npmzm",
+  "license": "ISC",
+  "dependencies": {
+    "element-plus": "^2.2.19",
+    "vue": "^3.2.41",
+    "vue-router": "^4.1.6"
+  },
+  "devDependencies": {
+    "@parcel/css": "^1.14.0",
+    "@types/node": "^18.11.11",
+    "esbuild": "^0.15.18",
+    "koa": "^2.14.1",
+    "koa-router": "^12.0.0",
+    "koa-static": "^5.0.0"
+  }
+}

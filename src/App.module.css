@@ -1,0 +1,12 @@
+.nav {
+  width: fit-content;
+  padding: 7px;
+}
+
+.nav-item {
+  padding: 0 7px;
+}
+
+.view {
+  padding: 0 14px;
+}
