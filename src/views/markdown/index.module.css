@@ -1,0 +1,13 @@
+.markdown-container {
+  height: 100%;
+  position: relative;
+}
+
+.tool-bar {
+  position: absolute;
+  right: -100;
+  width: 90px;
+  padding: 0 5px;
+  height: 100%;
+  border-radius: 2px;
+}

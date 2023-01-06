@@ -17,7 +17,10 @@
   "author": "@npmzm",
   "license": "ISC",
   "dependencies": {
+    "@npmzm/marked": "^1.0.8",
     "element-plus": "^2.2.19",
+    "highlight.js": "^11.7.0",
+    "monaco-editor": "^0.33.0",
     "vue": "^3.2.41",
     "vue-router": "^4.1.6"
   },

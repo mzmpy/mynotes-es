@@ -1,47 +1,56 @@
 import {
-  defineComponent,
-  KeepAlive
+  defineComponent
 } from 'vue'
-import { RouterLink, RouterView } from 'vue-router'
+import {
+  ElMenu,
+  ElMenuItem
+} from 'element-plus/components'
+import BasicFrame from './components/basicFrame'
 import styles from './App.module.css'
-import routes from './router/routes'
+import {
+  RouterLink,
+  RouterView
+} from 'vue-router'
 
 export default defineComponent({
   name: 'App',
+  components: {
+    BasicFrame,
+    ElMenu,
+    ElMenuItem
+  },
   setup(props, ctx) {
     return () => {
 
       return <>
-        <div class={ styles('nav') }>
-          {
-            routes.map((item, index) => {
+        <BasicFrame class={ styles('frame') } aside={{ width: '450px' }}>
+          {{
+            header: () => {
               return <>
-                <span class={ styles('navItem') }>
-                  <RouterLink key={ index } to={ item.path }>{ item.name }</RouterLink>
-                </span>
+                <ElMenu mode="horizontal" ellipsis={ false } default-active="0">
+                  <ElMenuItem index="0" class={ styles('logo-container') }>
+                    <RouterLink to="/">MyNotes</RouterLink>
+                  </ElMenuItem>
+                  <div class={ styles('filler') }></div>
+                  <ElMenuItem index="1">
+                    <RouterLink to="/markdown">MarkdownEditor</RouterLink>
+                  </ElMenuItem>
+                  <ElMenuItem index="2">
+                    <RouterLink to="/test-view">Dictionary</RouterLink>
+                  </ElMenuItem>
+                </ElMenu>
               </>
-            })
-          }
-        </div>
-        <div class={ styles('view') }>
-          {/* RouterView's v-slot syntax for jsx */}
-          {/* scoped slots
-              {
-                default: ({ Component, route }) => { ... }
-              }
-           */}
-          <RouterView>
-            {{
-              default: ({ Component, route }) => {
-                return <>
-                  <KeepAlive include={ 'BasicView' }>
-                    <Component></Component>
-                  </KeepAlive>
-                </>
-              }
-            }}
-          </RouterView>
-        </div>
+            },
+            aside: () => {
+              return 'aside'
+            },
+            main: () => {
+              return <>
+                <RouterView></RouterView>
+              </>
+            }
+          }}
+        </BasicFrame>
       </>
     }
   },

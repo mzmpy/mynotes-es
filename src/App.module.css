@@ -1,12 +1,16 @@
-.nav {
-  width: fit-content;
-  padding: 7px;
+.frame {
+  padding: 10px;
 }
 
-.nav-item {
-  padding: 0 7px;
+.logo-container {
+  font-size: 24px !important;
+  color: #409eff !important;
 }
 
-.view {
-  padding: 0 14px;
+.filler {
+  flex-grow: 1;
+}
+
+a {
+  text-decoration: none;
 }

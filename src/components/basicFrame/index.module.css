@@ -1,0 +1,33 @@
+body {
+  display: block;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.basic-frame {
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.basic-frame .default-header {
+  height: 60px;
+  padding: 0 150px;
+}
+
+.basic-frame .default-body {
+  height: calc(100vh - 80px);
+}
+
+.basic-frame .default-aside {
+  padding: 30px 20px 10px 150px;
+}
+
+.basic-frame .default-main-no-aside {
+  padding: 30px 150px 10px 150px;
+}
+
+.basic-frame .default-main {
+  padding: 30px 150px 10px 20px;
+}

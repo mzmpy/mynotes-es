@@ -1,11 +1,11 @@
-import BasicView from '../../views/basicView'
+import Markdown from '../../views/markdown'
 import TextView from '../../views/test'
 
 const routes = [
   {
-    path: '/',
-    name: 'BasicView',
-    component: BasicView
+    path: '/markdown',
+    name: 'Markdown',
+    component: Markdown
   },
   {
     path: '/test-view',
