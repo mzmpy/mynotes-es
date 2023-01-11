@@ -1,16 +1,19 @@
-import Markdown from '../../views/markdown'
-import TextView from '../../views/test'
-
 const routes = [
   {
-    path: '/markdown',
-    name: 'Markdown',
-    component: Markdown
-  },
-  {
-    path: '/test-view',
-    name: 'TestView',
-    component: TextView
+    path: '/',
+    name: 'root',
+    children: [
+      {
+        path: '/markdown',
+        name: 'Markdown',
+        component: () => import('../../views/markdown')
+      },
+      {
+        path: '/test-view',
+        name: 'TestView',
+        component: () => import('../../views/test')
+      }
+    ]
   }
 ]
 

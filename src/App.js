@@ -1,5 +1,6 @@
 import {
-  defineComponent
+  defineComponent,
+  KeepAlive
 } from 'vue'
 import {
   ElMenu,
@@ -46,7 +47,17 @@ export default defineComponent({
             },
             main: () => {
               return <>
-                <RouterView></RouterView>
+                <RouterView>
+                  {{
+                    default({ Component, route }) {
+                      return <>
+                        <KeepAlive include={ 'Markdown' }>
+                          <Component></Component>
+                        </KeepAlive>
+                      </>
+                    }
+                  }}
+                </RouterView>
               </>
             }
           }}
