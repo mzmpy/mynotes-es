@@ -5,7 +5,6 @@ import {
 } from 'vue'
 import styles from './index.module.css'
 import MarkdownEditor from '../../components/markdownEditor'
-import markdownPreview from '../../components/markdownPreview'
 import MarkdownPreview from '../../components/markdownPreview'
 import ToolBar from '../../components/toolBar'
 import {
@@ -16,7 +15,7 @@ export default defineComponent({
   name: 'Markdown',
   components: {
     MarkdownEditor,
-    markdownPreview,
+    MarkdownPreview,
     ToolBar,
     ElDrawer
   },
