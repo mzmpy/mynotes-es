@@ -1,30 +1,25 @@
-name: mynote-es
- on:
-   push:
-     branches:
-       - main
+name: Build and Deploy
+on: # 监听 main 分支上的 push 事件
+  push:
+    branches:
+      - main
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest # 构建环境使用 ubuntu
+    steps:
+      - name: Checkout  # 将代码拉到虚拟机
+        uses: actions/checkout@v2.3.1  
+        with:
+          persist-credentials: false
 
- # 任务
- jobs:
-   build-and-deploy:
-     # 服务器环境：最新版 Ubuntu
-     runs-on: ubuntu-latest
-     steps:
-       # 拉取代码
-       - name: Checkout
-         uses: actions/checkout@v3
-         with:
-           persist-credentials: false
-       # 生成静态文件
-       - name: Build
-         run: |
-           npm install  # 安装依赖
-           npm run build  # 执行打包
+      - name: Install and Build # 下载依赖 打包项目
+        run: |
+          npm install
+          npm run build
 
-       # 部署到 GitHub Pages
-       - name: Deploy
-         uses: JamesIves/github-pages-deploy-action@v4.3.3
-         with:
-           ACCESS_TOKEN: ${{ secrets.MYNOTE_ES }} # 也就是我们刚才生成的 secret
-           branch: gh-pages # 部署到 gh-pages 分支，因为 main 分支存放的一般是源码，而 gh-pages 分支则用来存放生成的静态文件
-           folder: dist # 生成的静态文件存放的地方
+      - name: Deploy 🚀 # 部署
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          ACCESS_TOKEN: ${{ secrets.MYNOTE_ES }}
+          branch: static-pages # 部署后提交到的分支
+          folder: dist # 这里填打包好的目录名称
