@@ -30,14 +30,14 @@ export default defineComponent({
               return <>
                 <ElMenu mode="horizontal" ellipsis={ false } default-active="0">
                   <ElMenuItem index="0" class={ styles('logo-container') }>
-                    <RouterLink to="/">MyNotes</RouterLink>
+                    <RouterLink to="/mynotes-es">MyNotes</RouterLink>
                   </ElMenuItem>
                   <div class={ styles('filler') }></div>
                   <ElMenuItem index="1">
-                    <RouterLink to="/markdown">MarkdownEditor</RouterLink>
+                    <RouterLink to="/mynotes-es/markdown">MarkdownEditor</RouterLink>
                   </ElMenuItem>
                   <ElMenuItem index="2">
-                    <RouterLink to="/test-view">Dictionary</RouterLink>
+                    <RouterLink to="/mynotes-es/test-view">Dictionary</RouterLink>
                   </ElMenuItem>
                 </ElMenu>
               </>
