@@ -2506,16 +2506,16 @@ function extractChangingRecords(to, from) {
 init_vue_jsxImportSource();
 var routes = [
   {
-    path: "/",
+    path: "/mynotes-es",
     name: "root",
     children: [
       {
-        path: "/markdown",
+        path: "markdown",
         name: "Markdown",
         component: () => import("./chunks/js/markdown-VEXQNL67.js")
       },
       {
-        path: "/test-view",
+        path: "test-view",
         name: "TestView",
         component: () => import("./chunks/js/test-LJJFLLBW.js")
       }
@@ -2541,7 +2541,7 @@ init_vue_runtime_esm_bundler();
 
 // src/components/basicFrame/index.module.css
 init_vue_jsxImportSource();
-var styles = { "default-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-aside", "composes": [], "isReferenced": false }, "default-main-no-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-main-no-aside", "composes": [], "isReferenced": false }, "default-header": { "name": "src__components__basicFrame__index-1c_bGa-default-header", "composes": [], "isReferenced": false }, "default-body": { "name": "src__components__basicFrame__index-1c_bGa-default-body", "composes": [], "isReferenced": false }, "default-main": { "name": "src__components__basicFrame__index-1c_bGa-default-main", "composes": [], "isReferenced": false }, "basic-frame": { "name": "src__components__basicFrame__index-1c_bGa-basic-frame", "composes": [], "isReferenced": false } };
+var styles = { "default-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-aside", "composes": [], "isReferenced": false }, "default-body": { "name": "src__components__basicFrame__index-1c_bGa-default-body", "composes": [], "isReferenced": false }, "default-header": { "name": "src__components__basicFrame__index-1c_bGa-default-header", "composes": [], "isReferenced": false }, "basic-frame": { "name": "src__components__basicFrame__index-1c_bGa-basic-frame", "composes": [], "isReferenced": false }, "default-main": { "name": "src__components__basicFrame__index-1c_bGa-default-main", "composes": [], "isReferenced": false }, "default-main-no-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-main-no-aside", "composes": [], "isReferenced": false } };
 var index_module_default = ((styles3) => {
   return (className) => {
     if (typeof className !== "string")
@@ -2579,7 +2579,7 @@ var basicFrame_default = defineComponent({
 
 // src/App.module.css
 init_vue_jsxImportSource();
-var styles2 = { "logo-container": { "name": "src__App-Kl9wQq-logo-container", "composes": [], "isReferenced": false }, "frame": { "name": "src__App-Kl9wQq-frame", "composes": [], "isReferenced": false }, "filler": { "name": "src__App-Kl9wQq-filler", "composes": [], "isReferenced": false } };
+var styles2 = { "filler": { "name": "src__App-Kl9wQq-filler", "composes": [], "isReferenced": false }, "frame": { "name": "src__App-Kl9wQq-frame", "composes": [], "isReferenced": false }, "logo-container": { "name": "src__App-Kl9wQq-logo-container", "composes": [], "isReferenced": false } };
 var App_module_default = ((styles3) => {
   return (className) => {
     if (typeof className !== "string")
@@ -2600,7 +2600,7 @@ var App_default = defineComponent({
     return () => {
       return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(basicFrame_default, { class: App_module_default("frame"), aside: { width: "450px" } }, {
         header: () => {
-          return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElMenu, { mode: "horizontal", ellipsis: false, "default-active": "0" }, /* @__PURE__ */ h(ElMenuItem, { index: "0", class: App_module_default("logo-container") }, /* @__PURE__ */ h(RouterLink, { to: "/" }, "MyNotes")), /* @__PURE__ */ h("div", { class: App_module_default("filler") }), /* @__PURE__ */ h(ElMenuItem, { index: "1" }, /* @__PURE__ */ h(RouterLink, { to: "/markdown" }, "MarkdownEditor")), /* @__PURE__ */ h(ElMenuItem, { index: "2" }, /* @__PURE__ */ h(RouterLink, { to: "/test-view" }, "Dictionary"))));
+          return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElMenu, { mode: "horizontal", ellipsis: false, "default-active": "0" }, /* @__PURE__ */ h(ElMenuItem, { index: "0", class: App_module_default("logo-container") }, /* @__PURE__ */ h(RouterLink, { to: "/mynotes-es" }, "MyNotes")), /* @__PURE__ */ h("div", { class: App_module_default("filler") }), /* @__PURE__ */ h(ElMenuItem, { index: "1" }, /* @__PURE__ */ h(RouterLink, { to: "/mynotes-es/markdown" }, "MarkdownEditor")), /* @__PURE__ */ h(ElMenuItem, { index: "2" }, /* @__PURE__ */ h(RouterLink, { to: "/mynotes-es/test-view" }, "Dictionary"))));
         },
         aside: () => {
           return "aside";
