@@ -6,6 +6,8 @@ module.exports = () => {
   return {
     name: 'monaco-editor-plugin',
     setup(build) {
+      const outdir = build.initialOptions.outdir ?? ''
+
       const workerEntryPoints = [
         'vs/language/json/json.worker.js',
         'vs/language/css/css.worker.js',
@@ -31,23 +33,24 @@ module.exports = () => {
         if(!args.pluginData?.MONACO_EDITOR_IMPORT) return
 
         const MonacoEditorCode = await fs.promises.readFile(args.path, { encoding: 'utf-8' })
-        const contents = `self.MonacoEnvironment = {
-  getWorkerUrl: function (moduleId, label) {
-    if (label === 'json') {
-      return './vs/language/json/json.worker.js';
-    }
-    if (label === 'css' || label === 'scss' || label === 'less') {
-      return './vs/language/css/css.worker.js';
-    }
-    if (label === 'html' || label === 'handlebars' || label === 'razor') {
-      return './vs/language/html/html.worker.js';
-    }
-    if (label === 'typescript' || label === 'javascript') {
-      return './vs/language/typescript/ts.worker.js';
-    }
-    return './vs/editor/editor.worker.js';
-  }
-}\n${MonacoEditorCode}`
+        const contents = 
+        `self.MonacoEnvironment = {` + 
+        `  getWorkerUrl: function (moduleId, label) {` + 
+        `    if (label === 'json') {` + 
+        `      return './vs/language/json/json.worker.js';` + 
+        `    }` + 
+        `    if (label === 'css' || label === 'scss' || label === 'less') {` + 
+        `      return './vs/language/css/css.worker.js';` + 
+        `    }` + 
+        `    if (label === 'html' || label === 'handlebars' || label === 'razor') {` + 
+        `      return './vs/language/html/html.worker.js';` + 
+        `    }` + 
+        `    if (label === 'typescript' || label === 'javascript') {` + 
+        `      return './vs/language/typescript/ts.worker.js';` + 
+        `    }` + 
+        `    return './vs/editor/editor.worker.js';` + 
+        `  }` + 
+        `}\n${MonacoEditorCode}`
 
         return {
           contents: contents,
@@ -62,7 +65,7 @@ module.exports = () => {
           minify: true,
           format: 'iife',
           outbase: './node_modules/monaco-editor/esm/',
-          outdir: './dist'
+          outdir: outdir || './dist'
         })
       })
     }
