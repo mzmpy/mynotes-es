@@ -6822,6 +6822,12 @@ var TinyColor = function() {
     }
     return "#" + this.toHex8(allow4Char);
   };
+  TinyColor2.prototype.toHexShortString = function(allowShortChar) {
+    if (allowShortChar === void 0) {
+      allowShortChar = false;
+    }
+    return this.a === 1 ? this.toHexString(allowShortChar) : this.toHex8String(allowShortChar);
+  };
   TinyColor2.prototype.toRgb = function() {
     return {
       r: Math.round(this.r),
@@ -7047,10 +7053,12 @@ var TinyColor = function() {
   TinyColor2.prototype.onBackground = function(background) {
     var fg = this.toRgb();
     var bg = new TinyColor2(background).toRgb();
+    var alpha = fg.a + bg.a * (1 - fg.a);
     return new TinyColor2({
-      r: bg.r + (fg.r - bg.r) * fg.a,
-      g: bg.g + (fg.g - bg.g) * fg.a,
-      b: bg.b + (fg.b - bg.b) * fg.a
+      r: (fg.r * fg.a + bg.r * bg.a * (1 - fg.a)) / alpha,
+      g: (fg.g * fg.a + bg.g * bg.a * (1 - fg.a)) / alpha,
+      b: (fg.b * fg.a + bg.b * bg.a * (1 - fg.a)) / alpha,
+      a: alpha
     });
   };
   TinyColor2.prototype.triad = function() {

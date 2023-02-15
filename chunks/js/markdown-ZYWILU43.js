@@ -2,7 +2,7 @@ import {
   ElDrawer,
   ElMenu,
   ElMenuItem
-} from "./chunk-GQIHCBJX.js";
+} from "./chunk-LECAHK65.js";
 import {
   Fragment,
   __export,
@@ -20,7 +20,7 @@ init_vue_runtime_esm_bundler();
 
 // src/views/markdown/index.module.css
 init_vue_jsxImportSource();
-var styles = { "tool-bar": { "name": "src__views__markdown__index-quMYlW-tool-bar", "composes": [], "isReferenced": false }, "markdown-container": { "name": "src__views__markdown__index-quMYlW-markdown-container", "composes": [], "isReferenced": false } };
+var styles = { "markdown-container": { "name": "src__views__markdown__index-quMYlW-markdown-container", "composes": [], "isReferenced": false }, "tool-bar": { "name": "src__views__markdown__index-quMYlW-tool-bar", "composes": [], "isReferenced": false } };
 var index_module_default = ((styles5) => {
   return (className) => {
     if (typeof className !== "string")
@@ -86690,23 +86690,21 @@ CommandsRegistry.registerCommand("_executeFormatOnTypeProvider", function(access
 });
 
 // node_modules/monaco-editor/esm/vs/editor/editor.api.js
-self.MonacoEnvironment = {
-  getWorkerUrl: function(moduleId, label) {
-    if (label === "json") {
-      return "./vs/language/json/json.worker.js";
-    }
-    if (label === "css" || label === "scss" || label === "less") {
-      return "./vs/language/css/css.worker.js";
-    }
-    if (label === "html" || label === "handlebars" || label === "razor") {
-      return "./vs/language/html/html.worker.js";
-    }
-    if (label === "typescript" || label === "javascript") {
-      return "./vs/language/typescript/ts.worker.js";
-    }
-    return "./vs/editor/editor.worker.js";
+self.MonacoEnvironment = { getWorkerUrl: function(moduleId, label) {
+  if (label === "json") {
+    return "./vs/language/json/json.worker.js";
   }
-};
+  if (label === "css" || label === "scss" || label === "less") {
+    return "./vs/language/css/css.worker.js";
+  }
+  if (label === "html" || label === "handlebars" || label === "razor") {
+    return "./vs/language/html/html.worker.js";
+  }
+  if (label === "typescript" || label === "javascript") {
+    return "./vs/language/typescript/ts.worker.js";
+  }
+  return "./vs/editor/editor.worker.js";
+} };
 var _a10;
 EditorOptions.wrappingIndent.defaultValue = 0;
 EditorOptions.glyphMargin.defaultValue = false;
