@@ -1,6 +1,7 @@
 const koa = require('koa')
 const koaStatic = require('koa-static')
-const koaRouter = require('koa-router')
+const koaMount = require('koa-mount')
+const { historyApiFallback } = require('koa2-connect-history-api-fallback')
 
 const esbuild = require('esbuild')
 const esbuildPluginParcelCss = require('../../plugins/esbuild-plugin-parcel-css')
@@ -9,10 +10,15 @@ const esbuildPluginSmartImport = require('../../plugins/esbuild-plugin-elementpl
 const esbuildPluginJsxImportSource = require('../../plugins/esbuild-plugin-jsx-import-source')
 const esbuildPluginMonacoEditor = require('../../plugins/esbuild-plugin-monaco-editor')
 
+const fs = require('fs')
+const path = require('path')
+
 const clearLastLines = (count) => {
   process.stdout.moveCursor(0, -count)
   process.stdout.clearScreenDown()
 }
+
+const prefix = '/mynotes-es'
 
 let timeInMS = new Date()
 
@@ -56,8 +62,15 @@ esbuild.build({
     }),
     esbuildPluginMonacoEditor()
   ],
-  outdir: './dist'
-}).then(() => {
+  outdir: './dist',
+  metafile: true
+}).then((result) => {
+  fs.writeFile(path.resolve(process.cwd(), './dist/outputMetafile.json'), JSON.stringify(result, null, 2), 'utf-8', (err) => {
+    if(err) {
+      console.log(err)
+    }
+  })
+
   timeInMS = new Date() - timeInMS
   console.log(`\nBuilding is done in ${timeInMS} ms.`)
   setTimeout(() => {
@@ -65,15 +78,12 @@ esbuild.build({
   }, 3000)
 })
 
+const proxy = new koa()
 const app = new koa()
-const router = new koaRouter()
 
-router.get('/(.+)', async (ctx) => {
-  ctx.redirect('/')
-})
-
+app.use(historyApiFallback({ whiteList: [prefix] }))
 app.use(koaStatic(process.cwd() + '/dist/'))
-app.use(router.routes())
 
-app.listen(4375)
-console.log(`Server running at http://127.0.0.1:4375.`)
+proxy.use(koaMount(prefix, app))
+proxy.listen(4375)
+console.log(`Server running at http://127.0.0.1:4375${prefix}/.`)

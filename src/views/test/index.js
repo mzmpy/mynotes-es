@@ -1,6 +1,10 @@
 import {
   defineComponent,
-  ref
+  ref,
+  onBeforeMount,
+  onMounted,
+  onBeforeUpdate,
+  onUpdated
 } from 'vue'
 import { ElInput } from 'element-plus/components'
 
@@ -10,6 +14,26 @@ export default defineComponent({
   name: 'TestView',
   components: { ElInput },
   setup(props, ctx) {
+    const inputRef = ref()
+
+    onBeforeMount(() => {
+      console.log('[TestView]: BeforeMounted! But can not get [inputRef] yet: ')
+      console.log(inputRef.value)
+    })
+
+    onMounted(() => {
+      console.log('[TestView]: Mounted! And got [inputRef]: ')
+      console.log(inputRef.value)
+    })
+
+    onBeforeUpdate(() => {
+      console.log('[TestView]: BeforeUpdated!')
+    })
+
+    onUpdated(() => {
+      console.log('[TestView]: Updated!')
+    })
+
     const text = ref('')
 
     const onInput = (val) => {
@@ -19,7 +43,7 @@ export default defineComponent({
     return () => {
       return <>
         <div>TestView { text.value }</div>
-        <ElInput style={{ width: '300px!important' }} modelValue={ text.value } onInput={ onInput } placeholder="Hello"></ElInput>
+        <ElInput ref={ inputRef } style={{ width: '300px!important' }} modelValue={ text.value } onInput={ onInput } placeholder="Hello"></ElInput>
       </>
     }
   }

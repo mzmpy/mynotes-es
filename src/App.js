@@ -1,6 +1,10 @@
 import {
   defineComponent,
-  KeepAlive
+  KeepAlive,
+  onBeforeMount,
+  onMounted,
+  onBeforeUpdate,
+  onUpdated
 } from 'vue'
 import {
   ElMenu,
@@ -21,6 +25,22 @@ export default defineComponent({
     ElMenuItem
   },
   setup(props, ctx) {
+    onBeforeMount(() => {
+      console.log('[App]: BeforeMounted!')
+    })
+
+    onMounted(() => {
+      console.log('[App]: Mounted!')
+    })
+
+    onBeforeUpdate(() => {
+      console.log('[App]: BeforeUpdated!')
+    })
+
+    onUpdated(() => {
+      console.log('[App]: Updated!')
+    })
+
     return () => {
 
       return <>

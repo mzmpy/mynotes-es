@@ -25,11 +25,13 @@
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
+    "@mdx-js/esbuild": "^2.3.0",
     "@parcel/css": "^1.14.0",
     "@types/node": "^18.11.11",
     "esbuild": "^0.15.18",
     "koa": "^2.14.1",
-    "koa-router": "^12.0.0",
-    "koa-static": "^5.0.0"
+    "koa-mount": "^4.0.0",
+    "koa-static": "^5.0.0",
+    "koa2-connect-history-api-fallback": "^0.1.3"
   }
 }

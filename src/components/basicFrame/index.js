@@ -1,6 +1,9 @@
 import {
   defineComponent,
-  defineProps
+  onBeforeMount,
+  onMounted,
+  onBeforeUpdate,
+  onUpdated
 } from 'vue'
 import {
   ElAside,
@@ -30,6 +33,22 @@ export default defineComponent({
     }
   },
   setup(props, { slots, attrs }) {
+    onBeforeMount(() => {
+      console.log('[BasicFrame]: BeforeMounted!')
+    })
+
+    onMounted(() => {
+      console.log('[BasicFrame]: Mounted!')
+    })
+
+    onBeforeUpdate(() => {
+      console.log('[BasicFrame]: BeforeUpdated!')
+    })
+
+    onUpdated(() => {
+      console.log('[BasicFrame]: Updated!')
+    })
+    
     return () => {
       return <>
         <div class={ [styles('basic-frame'), attrs.class] }>
