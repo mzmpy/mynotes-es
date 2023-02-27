@@ -7201,6 +7201,8 @@ export {
   onDeactivated,
   onBeforeMount,
   onMounted,
+  onBeforeUpdate,
+  onUpdated,
   onBeforeUnmount,
   onUnmounted,
   withDirectives,

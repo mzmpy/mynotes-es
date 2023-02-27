@@ -63,7 +63,7 @@ import {
   withCtx,
   withDirectives,
   withModifiers
-} from "./chunk-2QG72R3B.js";
+} from "./chunk-MONNQG3B.js";
 
 // node_modules/element-plus/es/components/input/index.mjs
 init_vue_jsxImportSource();
@@ -213,16 +213,16 @@ function useEventListener(...args) {
     cleanups.forEach((fn2) => fn2());
     cleanups.length = 0;
   };
-  const register = (el, event, listener) => {
-    el.addEventListener(event, listener, options);
-    return () => el.removeEventListener(event, listener, options);
+  const register = (el, event, listener, options2) => {
+    el.addEventListener(event, listener, options2);
+    return () => el.removeEventListener(event, listener, options2);
   };
-  const stopWatch = watch(() => unrefElement(target), (el) => {
+  const stopWatch = watch(() => [unrefElement(target), resolveUnref(options)], ([el, options2]) => {
     cleanup();
     if (!el)
       return;
     cleanups.push(...events.flatMap((event) => {
-      return listeners.map((listener) => register(el, event, listener));
+      return listeners.map((listener) => register(el, event, listener, options2));
     }));
   }, { immediate: true, flush: "post" });
   const stop = () => {
@@ -232,12 +232,16 @@ function useEventListener(...args) {
   tryOnScopeDispose(stop);
   return stop;
 }
+var _iOSWorkaround = false;
 function onClickOutside(target, handler, options = {}) {
   const { window: window2 = defaultWindow, ignore = [], capture = true, detectIframe = false } = options;
   if (!window2)
     return;
+  if (isIOS && !_iOSWorkaround) {
+    _iOSWorkaround = true;
+    Array.from(window2.document.body.children).forEach((el) => el.addEventListener("click", noop));
+  }
   let shouldListen = true;
-  let fallback;
   const shouldIgnore = (event) => {
     return ignore.some((target2) => {
       if (typeof target2 === "string") {
@@ -249,7 +253,6 @@ function onClickOutside(target, handler, options = {}) {
     });
   };
   const listener = (event) => {
-    window2.clearTimeout(fallback);
     const el = unrefElement(target);
     if (!el || el === event.target || event.composedPath().includes(el))
       return;
@@ -267,13 +270,6 @@ function onClickOutside(target, handler, options = {}) {
       const el = unrefElement(target);
       if (el)
         shouldListen = !e.composedPath().includes(el) && !shouldIgnore(e);
-    }, { passive: true }),
-    useEventListener(window2, "pointerup", (e) => {
-      if (e.button === 0) {
-        const path = e.composedPath();
-        e.composedPath = () => path;
-        fallback = window2.setTimeout(() => listener(e), 50);
-      }
     }, { passive: true }),
     detectIframe && useEventListener(window2, "blur", (event) => {
       var _a2;
@@ -296,17 +292,17 @@ var _global = typeof globalThis !== "undefined" ? globalThis : typeof window !==
 var globalKey = "__vueuse_ssr_handlers__";
 _global[globalKey] = _global[globalKey] || {};
 var handlers = _global[globalKey];
-var __getOwnPropSymbols$f = Object.getOwnPropertySymbols;
-var __hasOwnProp$f = Object.prototype.hasOwnProperty;
-var __propIsEnum$f = Object.prototype.propertyIsEnumerable;
+var __getOwnPropSymbols$g = Object.getOwnPropertySymbols;
+var __hasOwnProp$g = Object.prototype.hasOwnProperty;
+var __propIsEnum$g = Object.prototype.propertyIsEnumerable;
 var __objRest$2 = (source, exclude) => {
   var target = {};
   for (var prop in source)
-    if (__hasOwnProp$f.call(source, prop) && exclude.indexOf(prop) < 0)
+    if (__hasOwnProp$g.call(source, prop) && exclude.indexOf(prop) < 0)
       target[prop] = source[prop];
-  if (source != null && __getOwnPropSymbols$f)
-    for (var prop of __getOwnPropSymbols$f(source)) {
-      if (exclude.indexOf(prop) < 0 && __propIsEnum$f.call(source, prop))
+  if (source != null && __getOwnPropSymbols$g)
+    for (var prop of __getOwnPropSymbols$g(source)) {
+      if (exclude.indexOf(prop) < 0 && __propIsEnum$g.call(source, prop))
         target[prop] = source[prop];
     }
   return target;
@@ -1793,6 +1789,10 @@ var flattedChildren = (children) => {
   return result;
 };
 
+// node_modules/element-plus/es/utils/browser.mjs
+init_vue_jsxImportSource();
+var isFirefox = () => isClient && /firefox/i.test(window.navigator.userAgent);
+
 // node_modules/element-plus/es/utils/i18n.mjs
 init_vue_jsxImportSource();
 var isKorean = (text) => /([(\uAC00-\uD7AF)|(\u3130-\u318F)])+/gi.test(text);
@@ -2268,8 +2268,8 @@ var useLockscreen = (trigger) => {
   let bodyWidth = "0";
   const cleanup = () => {
     setTimeout(() => {
-      removeClass(document.body, hiddenCls.value);
-      if (withoutHiddenClass) {
+      removeClass(document == null ? void 0 : document.body, hiddenCls.value);
+      if (withoutHiddenClass && document) {
         document.body.style.width = bodyWidth;
       }
     }, 200);
@@ -3384,7 +3384,7 @@ var hiddenTextarea = void 0;
 var HIDDEN_STYLE = `
   height:0 !important;
   visibility:hidden !important;
-  overflow:hidden !important;
+  ${isFirefox() ? "" : "overflow:hidden !important;"}
   position:absolute !important;
   z-index:-1000 !important;
   top:0 !important;
@@ -4423,7 +4423,7 @@ var _sfc_main3 = defineComponent({
         });
         trapContainer.addEventListener(FOCUS_AFTER_RELEASED, releaseOnFocus);
         trapContainer.dispatchEvent(releasedEvent);
-        if (!releasedEvent.defaultPrevented && (focusReason2.value == "keyboard" || !isFocusCausedByUserEvent())) {
+        if (!releasedEvent.defaultPrevented && (focusReason2.value == "keyboard" || !isFocusCausedByUserEvent() || trapContainer.contains(document.activeElement))) {
           tryFocus(lastFocusBeforeTrapped != null ? lastFocusBeforeTrapped : document.body);
         }
         trapContainer.removeEventListener(FOCUS_AFTER_RELEASED, trapOnFocus);
@@ -7624,6 +7624,10 @@ var subMenuProps = buildProps({
     type: Boolean,
     default: void 0
   },
+  teleported: {
+    type: Boolean,
+    default: void 0
+  },
   popperOffset: {
     type: Number,
     default: 6
@@ -7646,6 +7650,13 @@ var SubMenu2 = defineComponent({
   name: COMPONENT_NAME,
   props: subMenuProps,
   setup(props, { slots, expose }) {
+    useDeprecated({
+      from: "popper-append-to-body",
+      replacement: "teleported",
+      scope: COMPONENT_NAME,
+      version: "2.3.0",
+      ref: "https://element-plus.org/en-US/component/menu.html#submenu-attributes"
+    }, computed2(() => props.popperAppendToBody !== void 0));
     const instance = getCurrentInstance();
     const { indexPath, parentMenu } = useMenu(instance, computed2(() => props.index));
     const nsMenu = useNamespace("menu");
@@ -7670,7 +7681,9 @@ var SubMenu2 = defineComponent({
       return subMenu.level === 0;
     });
     const appendToBody = computed2(() => {
-      return props.popperAppendToBody === void 0 ? isFirstLevel.value : Boolean(props.popperAppendToBody);
+      var _a2;
+      const value = (_a2 = props.teleported) != null ? _a2 : props.popperAppendToBody;
+      return value === void 0 ? isFirstLevel.value : value;
     });
     const menuTransitionName = computed2(() => rootMenu.props.collapse ? `${nsMenu.namespace.value}-zoom-in-left` : `${nsMenu.namespace.value}-zoom-in-top`);
     const fallbackPlacements = computed2(() => mode.value === "horizontal" && isFirstLevel.value ? [

@@ -5,7 +5,7 @@ import {
   ElMain,
   ElMenu,
   ElMenuItem
-} from "./chunks/js/chunk-LECAHK65.js";
+} from "./chunks/js/chunk-CYKAMLIH.js";
 import {
   Fragment,
   KeepAlive,
@@ -18,6 +18,10 @@ import {
   init_vue_runtime_esm_bundler,
   inject,
   nextTick,
+  onBeforeMount,
+  onBeforeUpdate,
+  onMounted,
+  onUpdated,
   provide,
   reactive,
   ref,
@@ -25,7 +29,7 @@ import {
   unref,
   watch,
   watchEffect
-} from "./chunks/js/chunk-2QG72R3B.js";
+} from "./chunks/js/chunk-MONNQG3B.js";
 
 // src/index.js
 init_vue_jsxImportSource();
@@ -2512,12 +2516,12 @@ var routes = [
       {
         path: "markdown",
         name: "Markdown",
-        component: () => import("./chunks/js/markdown-ZYWILU43.js")
+        component: () => import("./chunks/js/markdown-ITQCJLEJ.js")
       },
       {
         path: "test-view",
         name: "TestView",
-        component: () => import("./chunks/js/test-MESJ5ZCI.js")
+        component: () => import("./chunks/js/test-6I7SQIFJ.js")
       }
     ]
   }
@@ -2541,7 +2545,7 @@ init_vue_runtime_esm_bundler();
 
 // src/components/basicFrame/index.module.css
 init_vue_jsxImportSource();
-var styles = { "default-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-aside", "composes": [], "isReferenced": false }, "basic-frame": { "name": "src__components__basicFrame__index-1c_bGa-basic-frame", "composes": [], "isReferenced": false }, "default-header": { "name": "src__components__basicFrame__index-1c_bGa-default-header", "composes": [], "isReferenced": false }, "default-main-no-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-main-no-aside", "composes": [], "isReferenced": false }, "default-main": { "name": "src__components__basicFrame__index-1c_bGa-default-main", "composes": [], "isReferenced": false }, "default-body": { "name": "src__components__basicFrame__index-1c_bGa-default-body", "composes": [], "isReferenced": false } };
+var styles = { "basic-frame": { "name": "src__components__basicFrame__index-1c_bGa-basic-frame", "composes": [], "isReferenced": false }, "default-body": { "name": "src__components__basicFrame__index-1c_bGa-default-body", "composes": [], "isReferenced": false }, "default-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-aside", "composes": [], "isReferenced": false }, "default-main-no-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-main-no-aside", "composes": [], "isReferenced": false }, "default-main": { "name": "src__components__basicFrame__index-1c_bGa-default-main", "composes": [], "isReferenced": false }, "default-header": { "name": "src__components__basicFrame__index-1c_bGa-default-header", "composes": [], "isReferenced": false } };
 var index_module_default = ((styles3) => {
   return (className) => {
     if (typeof className !== "string")
@@ -2571,6 +2575,18 @@ var basicFrame_default = defineComponent({
     }
   },
   setup(props, { slots, attrs }) {
+    onBeforeMount(() => {
+      console.log("[BasicFrame]: BeforeMounted!");
+    });
+    onMounted(() => {
+      console.log("[BasicFrame]: Mounted!");
+    });
+    onBeforeUpdate(() => {
+      console.log("[BasicFrame]: BeforeUpdated!");
+    });
+    onUpdated(() => {
+      console.log("[BasicFrame]: Updated!");
+    });
     return () => {
       return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h("div", { class: [index_module_default("basic-frame"), attrs.class] }, /* @__PURE__ */ h(ElContainer, null, /* @__PURE__ */ h(ElHeader, { class: index_module_default("default-header") }, slots.header?.()), /* @__PURE__ */ h(ElContainer, { class: index_module_default("default-body") }, ["0", "0px"].indexOf(props.aside.width) === -1 ? /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElAside, { width: props.aside.width, class: index_module_default(props.aside.className || "default-aside") }, slots.aside?.()), /* @__PURE__ */ h(ElMain, { class: index_module_default("default-main") }, slots.main?.() || slots.default?.())) : /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElMain, { class: index_module_default("default-main-no-aside") }, slots.main?.() || slots.default?.()))))));
     };
@@ -2597,6 +2613,18 @@ var App_default = defineComponent({
     ElMenuItem
   },
   setup(props, ctx) {
+    onBeforeMount(() => {
+      console.log("[App]: BeforeMounted!");
+    });
+    onMounted(() => {
+      console.log("[App]: Mounted!");
+    });
+    onBeforeUpdate(() => {
+      console.log("[App]: BeforeUpdated!");
+    });
+    onUpdated(() => {
+      console.log("[App]: Updated!");
+    });
     return () => {
       return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(basicFrame_default, { class: App_module_default("frame"), aside: { width: "450px" } }, {
         header: () => {
@@ -2618,7 +2646,7 @@ var App_default = defineComponent({
 });
 
 // src/index.js
-globalThis.__VUE_OPTIONS_API__ = true;
+globalThis.__VUE_OPTIONS_API__ = false;
 globalThis.__VUE_PROD_DEVTOOLS__ = false;
 var app = createApp(App_default);
 app.use(router_default);

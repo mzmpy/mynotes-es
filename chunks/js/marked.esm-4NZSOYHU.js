@@ -1,6 +1,6 @@
 import {
   init_vue_jsxImportSource
-} from "./chunk-2QG72R3B.js";
+} from "./chunk-MONNQG3B.js";
 
 // node_modules/@npmzm/marked/lib/marked.esm.js
 init_vue_jsxImportSource();
