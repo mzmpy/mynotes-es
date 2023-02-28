@@ -1,6 +1,11 @@
-const fs = require('fs')
+import fs from 'fs'
+import path from 'path'
 
-module.exports = (options={ jsxImportSource: 'react' }) => {
+const esbuildMdxJsxImportSource = (jsxImportSource='vue') => path.resolve(process.cwd(), `./${jsxImportSource}-jsxImportSource.js`)
+
+export { esbuildMdxJsxImportSource }
+
+export default (options={ jsxImportSource: 'react' }) => {
   return {
     name: 'jsx-import-source-plugin',
     setup(build) {
@@ -17,7 +22,9 @@ module.exports = (options={ jsxImportSource: 'react' }) => {
       if(jsxImportSource && jsxImportSource !== 'react') {
         const injectPath = `./${jsxImportSource}-jsxImportSource.js`
 
-        data = `export { ${jsxFactory}, ${jsxFragment} } from '${jsxImportSource}'`
+        const data = `import { ${jsxFactory}, ${jsxFragment} } from '${jsxImportSource}'\n`
+                   + `export { ${jsxFactory}, ${jsxFragment} }\n`
+                   + `export default { ${jsxFactory}, ${jsxFragment} }\n`
         if(!fs.existsSync(injectPath)) fs.promises.writeFile(injectPath, data)
 
         isArray(configs.inject)

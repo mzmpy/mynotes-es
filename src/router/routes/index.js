@@ -1,19 +1,18 @@
 const routes = [
   {
-    path: '/mynotes-es',
+    path: '/',
     name: 'root',
-    children: [
-      {
-        path: 'markdown',
-        name: 'Markdown',
-        component: () => import('../../views/markdown')
-      },
-      {
-        path: 'test-view',
-        name: 'TestView',
-        component: () => import('../../views/test')
-      }
-    ]
+    component: () => import('../../components/mdx/friday')
+  },
+  {
+    path: '/markdown',
+    name: 'Markdown',
+    component: () => import('../../views/markdown')
+  },
+  {
+    path: '/test-view',
+    name: 'TestView',
+    component: () => import('../../views/test')
   }
 ]
 

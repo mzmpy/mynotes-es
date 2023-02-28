@@ -8,4 +8,4 @@ interface Options {
 
 declare function esbuildPluginElementPlusSmartImport(options: Options): Plugin
 
-export = esbuildPluginElementPlusSmartImport
+export default esbuildPluginElementPlusSmartImport

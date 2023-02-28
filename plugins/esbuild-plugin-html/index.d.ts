@@ -9,4 +9,4 @@ type EntryPoints = Record<string, string>
 
 declare function esbuildPluginHtml(options: Options): Plugin
 
-export = esbuildPluginHtml
+export default esbuildPluginHtml

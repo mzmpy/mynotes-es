@@ -1,8 +1,8 @@
-const parcelCss = require('@parcel/css')
-const fs = require('fs')
-const path = require('path')
+import * as parcelCss from '@parcel/css'
+import fs from 'fs'
+import path from 'path'
 
-module.exports = (options) => {
+export default (options) => {
 	return {
 		name: 'parcel-css-plugin',
 		setup(build) {

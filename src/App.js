@@ -41,6 +41,16 @@ export default defineComponent({
       console.log('[App]: Updated!')
     })
 
+    const getDefaultActive = () => {
+      const indexsMap = {
+        '/': '0',
+        '/markdown': '1',
+        '/test-view': '2',
+      }
+      const fragment = location.pathname.match(/\/[^/]*$/)[0]
+      return indexsMap[fragment]
+    }
+
     return () => {
 
       return <>
@@ -48,16 +58,16 @@ export default defineComponent({
           {{
             header: () => {
               return <>
-                <ElMenu mode="horizontal" ellipsis={ false } default-active="0">
+                <ElMenu mode="horizontal" ellipsis={ false } default-active={getDefaultActive()}>
                   <ElMenuItem index="0" class={ styles('logo-container') }>
-                    <RouterLink to="/mynotes-es">MyNotes</RouterLink>
+                    <RouterLink to="/">MyNotes</RouterLink>
                   </ElMenuItem>
                   <div class={ styles('filler') }></div>
                   <ElMenuItem index="1">
-                    <RouterLink to="/mynotes-es/markdown">MarkdownEditor</RouterLink>
+                    <RouterLink to="/markdown">MarkdownEditor</RouterLink>
                   </ElMenuItem>
                   <ElMenuItem index="2">
-                    <RouterLink to="/mynotes-es/test-view">Dictionary</RouterLink>
+                    <RouterLink to="/test-view">Dictionary</RouterLink>
                   </ElMenuItem>
                 </ElMenu>
               </>

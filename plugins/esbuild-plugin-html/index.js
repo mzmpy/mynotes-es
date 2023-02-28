@@ -1,7 +1,9 @@
-const fs = require('fs')
-const path = require('path')
+import fs from 'fs'
+import path from 'path'
 
-module.exports = (options) => {
+import { __dirname } from '../../nodeCMP.js'
+
+export default (options) => {
   return {
     name: 'html-plugin',
     setup(build) {

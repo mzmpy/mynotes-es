@@ -9,4 +9,4 @@ type Options = Omit<TransformOptions, keyof Code>
 
 declare function esbuildPluginParcelCss(options: Options): Plugin
 
-export = esbuildPluginParcelCss
+export default esbuildPluginParcelCss

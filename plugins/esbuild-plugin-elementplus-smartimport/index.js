@@ -1,6 +1,6 @@
-const path = require('path')
+import path from 'path'
 
-module.exports = (options = { module: 'es' }) => {
+export default (options = { module: 'es' }) => {
   return {
     name: 'elementplus-autoimport',
     setup(build) {

@@ -6,4 +6,6 @@ interface Options {
 
 declare function esbuildPluginJsxImportSource(options: Options): Plugin
 
-export = esbuildPluginJsxImportSource
+export default esbuildPluginJsxImportSource
+
+export function esbuildMdxJsxImportSource(jsxImportSource: string): string

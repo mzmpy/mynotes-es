@@ -1,9 +1,10 @@
-const esbuild = require('esbuild')
-const esbuildPluginParcelCss = require('../plugins/esbuild-plugin-parcel-css')
-const esbuildPluginHtml = require('../plugins/esbuild-plugin-html')
-const esbuildPluginSmartImport = require('../plugins/esbuild-plugin-elementplus-smartimport')
-const esbuildPluginJsxImportSource = require('../plugins/esbuild-plugin-jsx-import-source')
-const esbuildPluginMonacoEditor = require('../plugins/esbuild-plugin-monaco-editor')
+import esbuild from 'esbuild'
+import esbuildPluginParcelCss from '../plugins/esbuild-plugin-parcel-css/index.js'
+import esbuildPluginHtml from '../plugins/esbuild-plugin-html/index.js'
+import esbuildPluginSmartImport from '../plugins/esbuild-plugin-elementplus-smartimport/index.js'
+import esbuildPluginJsxImportSource, { esbuildMdxJsxImportSource } from '../plugins/esbuild-plugin-jsx-import-source/index.js'
+import esbuildPluginMonacoEditor from '../plugins/esbuild-plugin-monaco-editor/index.js'
+import esbuildMDX from '@mdx-js/esbuild'
 
 esbuild.build({
   entryPoints: ['./src/index.js'],
@@ -16,7 +17,8 @@ esbuild.build({
     '.js': 'jsx',
     '.ttf': 'file',
     '.woff': 'file',
-    '.woff2': 'file'
+    '.woff2': 'file',
+    '.jpg': 'dataurl'
   },
   assetNames: 'assets/[ext]/[name]-[hash]',
   chunkNames: 'chunks/[ext]/[name]-[hash]',
@@ -37,7 +39,14 @@ esbuild.build({
     esbuildPluginJsxImportSource({
       jsxImportSource: 'vue'
     }),
-    esbuildPluginMonacoEditor()
+    esbuildPluginMonacoEditor(),
+    esbuildMDX({
+      providerImportSource: '@mdx-js/vue',
+      jsxRuntime: 'classic',
+      pragma: 'MDX_VUE_JSX_IMPORT_SOURCE.h',
+      pragmaFrag: 'MDX_VUE_JSX_IMPORT_SOURCE.Fragment',
+      pragmaImportSource: esbuildMdxJsxImportSource()
+    })
   ],
   outdir: './dist'
 }).catch(() => process.exit(1))
