@@ -63,7 +63,7 @@ import {
   withCtx,
   withDirectives,
   withModifiers
-} from "./chunk-MONNQG3B.js";
+} from "./chunk-R2IQH4YB.js";
 
 // node_modules/element-plus/es/components/input/index.mjs
 init_vue_jsxImportSource();
@@ -7083,17 +7083,78 @@ var TinyColor = function() {
   return TinyColor2;
 }();
 
+// node_modules/element-plus/es/components/card/index.mjs
+init_vue_jsxImportSource();
+
+// node_modules/element-plus/es/components/card/src/card2.mjs
+init_vue_jsxImportSource();
+init_vue_runtime_esm_bundler();
+
+// node_modules/element-plus/es/components/card/src/card.mjs
+init_vue_jsxImportSource();
+var cardProps = buildProps({
+  header: {
+    type: String,
+    default: ""
+  },
+  bodyStyle: {
+    type: definePropType([String, Object, Array]),
+    default: ""
+  },
+  shadow: {
+    type: String,
+    values: ["always", "hover", "never"],
+    default: "always"
+  }
+});
+
+// node_modules/element-plus/es/components/card/src/card2.mjs
+var __default__10 = defineComponent({
+  name: "ElCard"
+});
+var _sfc_main12 = /* @__PURE__ */ defineComponent({
+  ...__default__10,
+  props: cardProps,
+  setup(__props) {
+    const ns2 = useNamespace("card");
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        class: normalizeClass([unref(ns2).b(), unref(ns2).is(`${_ctx.shadow}-shadow`)])
+      }, [
+        _ctx.$slots.header || _ctx.header ? (openBlock(), createElementBlock("div", {
+          key: 0,
+          class: normalizeClass(unref(ns2).e("header"))
+        }, [
+          renderSlot(_ctx.$slots, "header", {}, () => [
+            createTextVNode(toDisplayString(_ctx.header), 1)
+          ])
+        ], 2)) : createCommentVNode("v-if", true),
+        createBaseVNode("div", {
+          class: normalizeClass(unref(ns2).e("body")),
+          style: normalizeStyle(_ctx.bodyStyle)
+        }, [
+          renderSlot(_ctx.$slots, "default")
+        ], 6)
+      ], 2);
+    };
+  }
+});
+var Card = /* @__PURE__ */ _export_sfc(_sfc_main12, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/card/src/card.vue"]]);
+
+// node_modules/element-plus/es/components/card/index.mjs
+var ElCard = withInstall(Card);
+
 // node_modules/element-plus/es/components/collapse-transition/index.mjs
 init_vue_jsxImportSource();
 
 // node_modules/element-plus/es/components/collapse-transition/src/collapse-transition.mjs
 init_vue_jsxImportSource();
 init_vue_runtime_esm_bundler();
-var __default__10 = defineComponent({
+var __default__11 = defineComponent({
   name: "ElCollapseTransition"
 });
-var _sfc_main12 = /* @__PURE__ */ defineComponent({
-  ...__default__10,
+var _sfc_main13 = /* @__PURE__ */ defineComponent({
+  ...__default__11,
   setup(__props) {
     const ns2 = useNamespace("collapse-transition");
     const on2 = {
@@ -7158,7 +7219,7 @@ var _sfc_main12 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var CollapseTransition = /* @__PURE__ */ _export_sfc(_sfc_main12, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/collapse-transition/src/collapse-transition.vue"]]);
+var CollapseTransition = /* @__PURE__ */ _export_sfc(_sfc_main13, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/collapse-transition/src/collapse-transition.vue"]]);
 
 // node_modules/element-plus/es/components/collapse-transition/index.mjs
 CollapseTransition.install = (app) => {
@@ -7172,11 +7233,11 @@ init_vue_jsxImportSource();
 // node_modules/element-plus/es/components/container/src/container.mjs
 init_vue_jsxImportSource();
 init_vue_runtime_esm_bundler();
-var __default__11 = defineComponent({
+var __default__12 = defineComponent({
   name: "ElContainer"
 });
-var _sfc_main13 = /* @__PURE__ */ defineComponent({
-  ...__default__11,
+var _sfc_main14 = /* @__PURE__ */ defineComponent({
+  ...__default__12,
   props: {
     direction: {
       type: String
@@ -7211,16 +7272,16 @@ var _sfc_main13 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Container = /* @__PURE__ */ _export_sfc(_sfc_main13, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/container/src/container.vue"]]);
+var Container = /* @__PURE__ */ _export_sfc(_sfc_main14, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/container/src/container.vue"]]);
 
 // node_modules/element-plus/es/components/container/src/aside.mjs
 init_vue_jsxImportSource();
 init_vue_runtime_esm_bundler();
-var __default__12 = defineComponent({
+var __default__13 = defineComponent({
   name: "ElAside"
 });
-var _sfc_main14 = /* @__PURE__ */ defineComponent({
-  ...__default__12,
+var _sfc_main15 = /* @__PURE__ */ defineComponent({
+  ...__default__13,
   props: {
     width: {
       type: String,
@@ -7241,16 +7302,16 @@ var _sfc_main14 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Aside = /* @__PURE__ */ _export_sfc(_sfc_main14, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/container/src/aside.vue"]]);
+var Aside = /* @__PURE__ */ _export_sfc(_sfc_main15, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/container/src/aside.vue"]]);
 
 // node_modules/element-plus/es/components/container/src/footer.mjs
 init_vue_jsxImportSource();
 init_vue_runtime_esm_bundler();
-var __default__13 = defineComponent({
+var __default__14 = defineComponent({
   name: "ElFooter"
 });
-var _sfc_main15 = /* @__PURE__ */ defineComponent({
-  ...__default__13,
+var _sfc_main16 = /* @__PURE__ */ defineComponent({
+  ...__default__14,
   props: {
     height: {
       type: String,
@@ -7271,16 +7332,16 @@ var _sfc_main15 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Footer = /* @__PURE__ */ _export_sfc(_sfc_main15, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/container/src/footer.vue"]]);
+var Footer = /* @__PURE__ */ _export_sfc(_sfc_main16, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/container/src/footer.vue"]]);
 
 // node_modules/element-plus/es/components/container/src/header.mjs
 init_vue_jsxImportSource();
 init_vue_runtime_esm_bundler();
-var __default__14 = defineComponent({
+var __default__15 = defineComponent({
   name: "ElHeader"
 });
-var _sfc_main16 = /* @__PURE__ */ defineComponent({
-  ...__default__14,
+var _sfc_main17 = /* @__PURE__ */ defineComponent({
+  ...__default__15,
   props: {
     height: {
       type: String,
@@ -7305,16 +7366,16 @@ var _sfc_main16 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Header = /* @__PURE__ */ _export_sfc(_sfc_main16, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/container/src/header.vue"]]);
+var Header = /* @__PURE__ */ _export_sfc(_sfc_main17, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/container/src/header.vue"]]);
 
 // node_modules/element-plus/es/components/container/src/main.mjs
 init_vue_jsxImportSource();
 init_vue_runtime_esm_bundler();
-var __default__15 = defineComponent({
+var __default__16 = defineComponent({
   name: "ElMain"
 });
-var _sfc_main17 = /* @__PURE__ */ defineComponent({
-  ...__default__15,
+var _sfc_main18 = /* @__PURE__ */ defineComponent({
+  ...__default__16,
   setup(__props) {
     const ns2 = useNamespace("main");
     return (_ctx, _cache) => {
@@ -7326,7 +7387,7 @@ var _sfc_main17 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Main = /* @__PURE__ */ _export_sfc(_sfc_main17, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/container/src/main.vue"]]);
+var Main = /* @__PURE__ */ _export_sfc(_sfc_main18, [["__file", "/home/runner/work/element-plus/element-plus/packages/components/container/src/main.vue"]]);
 
 // node_modules/element-plus/es/components/container/index.mjs
 var ElContainer = withInstall(Container, {
@@ -7483,7 +7544,7 @@ var Menu = class {
 // node_modules/element-plus/es/components/menu/src/menu-collapse-transition.mjs
 init_vue_jsxImportSource();
 init_vue_runtime_esm_bundler();
-var _sfc_main18 = defineComponent({
+var _sfc_main19 = defineComponent({
   name: "ElMenuCollapseTransition",
   setup() {
     const ns2 = useNamespace("menu");
@@ -7535,7 +7596,7 @@ function _sfc_render3(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 16);
 }
-var ElMenuCollapseTransition = /* @__PURE__ */ _export_sfc(_sfc_main18, [["render", _sfc_render3], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/menu/src/menu-collapse-transition.vue"]]);
+var ElMenuCollapseTransition = /* @__PURE__ */ _export_sfc(_sfc_main19, [["render", _sfc_render3], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/menu/src/menu-collapse-transition.vue"]]);
 
 // node_modules/element-plus/es/components/menu/src/sub-menu.mjs
 init_vue_jsxImportSource();
@@ -8214,7 +8275,7 @@ var menuItemEmits = {
 
 // node_modules/element-plus/es/components/menu/src/menu-item2.mjs
 var COMPONENT_NAME2 = "ElMenuItem";
-var _sfc_main19 = defineComponent({
+var _sfc_main20 = defineComponent({
   name: COMPONENT_NAME2,
   components: {
     ElTooltip
@@ -8302,7 +8363,7 @@ function _sfc_render4(_ctx, _cache, $props, $setup, $data, $options) {
     ], 64))
   ], 2);
 }
-var MenuItem2 = /* @__PURE__ */ _export_sfc(_sfc_main19, [["render", _sfc_render4], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/menu/src/menu-item.vue"]]);
+var MenuItem2 = /* @__PURE__ */ _export_sfc(_sfc_main20, [["render", _sfc_render4], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/menu/src/menu-item.vue"]]);
 
 // node_modules/element-plus/es/components/menu/src/menu-item-group2.mjs
 init_vue_jsxImportSource();
@@ -8316,7 +8377,7 @@ var menuItemGroupProps = {
 
 // node_modules/element-plus/es/components/menu/src/menu-item-group2.mjs
 var COMPONENT_NAME3 = "ElMenuItemGroup";
-var _sfc_main20 = defineComponent({
+var _sfc_main21 = defineComponent({
   name: COMPONENT_NAME3,
   props: menuItemGroupProps,
   setup() {
@@ -8342,7 +8403,7 @@ function _sfc_render5(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ], 2);
 }
-var MenuItemGroup = /* @__PURE__ */ _export_sfc(_sfc_main20, [["render", _sfc_render5], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/menu/src/menu-item-group.vue"]]);
+var MenuItemGroup = /* @__PURE__ */ _export_sfc(_sfc_main21, [["render", _sfc_render5], ["__file", "/home/runner/work/element-plus/element-plus/packages/components/menu/src/menu-item-group.vue"]]);
 
 // node_modules/element-plus/es/components/menu/index.mjs
 var ElMenu = withInstall(Menu2, {
@@ -8356,6 +8417,7 @@ var ElSubMenu = withNoopInstall(SubMenu2);
 
 export {
   ElInput,
+  ElCard,
   ElContainer,
   ElAside,
   ElHeader,

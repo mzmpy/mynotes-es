@@ -7156,9 +7156,11 @@ var init_vue_runtime_esm_bundler = __esm({
 });
 
 // vue-jsxImportSource.js
+var vue_jsxImportSource_default;
 var init_vue_jsxImportSource = __esm({
   "vue-jsxImportSource.js"() {
     init_vue_runtime_esm_bundler();
+    vue_jsxImportSource_default = { h, Fragment };
   }
 });
 
@@ -7166,6 +7168,7 @@ export {
   __commonJS,
   __export,
   __toESM,
+  vue_jsxImportSource_default,
   init_vue_jsxImportSource,
   normalizeStyle,
   normalizeClass,
