@@ -5,7 +5,7 @@ import {
   ElMain,
   ElMenu,
   ElMenuItem
-} from "./chunks/js/chunk-7T2FLUZB.js";
+} from "./chunks/js/chunk-2G3T7LZI.js";
 import {
   Fragment,
   KeepAlive,
@@ -29,7 +29,7 @@ import {
   unref,
   watch,
   watchEffect
-} from "./chunks/js/chunk-R2IQH4YB.js";
+} from "./chunks/js/chunk-M2TUDS5J.js";
 
 // src/index.js
 init_vue_jsxImportSource();
@@ -2512,17 +2512,17 @@ var routes = [
   {
     path: "/",
     name: "root",
-    component: () => import("./chunks/js/friday-AURGVJPC.js")
+    component: () => import("./chunks/js/friday-ZISKF4VM.js")
   },
   {
     path: "/markdown",
     name: "Markdown",
-    component: () => import("./chunks/js/markdown-DNQ5WGXU.js")
+    component: () => import("./chunks/js/markdown-OHRVJAIH.js")
   },
   {
     path: "/test-view",
     name: "TestView",
-    component: () => import("./chunks/js/test-5V4EDYSD.js")
+    component: () => import("./chunks/js/test-XQ74OD2M.js")
   }
 ];
 var routes_default = routes;
@@ -2544,7 +2544,7 @@ init_vue_runtime_esm_bundler();
 
 // src/components/basicFrame/index.module.css
 init_vue_jsxImportSource();
-var styles = { "default-main": { "name": "src__components__basicFrame__index-1c_bGa-default-main", "composes": [], "isReferenced": false }, "default-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-aside", "composes": [], "isReferenced": false }, "basic-frame": { "name": "src__components__basicFrame__index-1c_bGa-basic-frame", "composes": [], "isReferenced": false }, "default-header": { "name": "src__components__basicFrame__index-1c_bGa-default-header", "composes": [], "isReferenced": false }, "default-main-no-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-main-no-aside", "composes": [], "isReferenced": false }, "default-body": { "name": "src__components__basicFrame__index-1c_bGa-default-body", "composes": [], "isReferenced": false } };
+var styles = { "default-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-aside", "composes": [], "isReferenced": false }, "default-main-no-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-main-no-aside", "composes": [], "isReferenced": false }, "default-main": { "name": "src__components__basicFrame__index-1c_bGa-default-main", "composes": [], "isReferenced": false }, "default-header": { "name": "src__components__basicFrame__index-1c_bGa-default-header", "composes": [], "isReferenced": false }, "default-body": { "name": "src__components__basicFrame__index-1c_bGa-default-body", "composes": [], "isReferenced": false }, "basic-frame": { "name": "src__components__basicFrame__index-1c_bGa-basic-frame", "composes": [], "isReferenced": false } };
 var index_module_default = ((styles3) => {
   return (className) => {
     if (typeof className !== "string")
@@ -2587,7 +2587,8 @@ var basicFrame_default = defineComponent({
       console.log("[BasicFrame]: Updated!");
     });
     return () => {
-      return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h("div", { class: [index_module_default("basic-frame"), attrs.class] }, /* @__PURE__ */ h(ElContainer, null, /* @__PURE__ */ h(ElHeader, { class: index_module_default("default-header") }, slots.header?.()), /* @__PURE__ */ h(ElContainer, { class: index_module_default("default-body") }, ["0", "0px"].indexOf(props.aside.width) === -1 ? /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElAside, { width: props.aside.width, class: index_module_default(props.aside.className || "default-aside") }, slots.aside?.()), /* @__PURE__ */ h(ElMain, { class: index_module_default("default-main") }, slots.main?.() || slots.default?.())) : /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElMain, { class: index_module_default("default-main-no-aside") }, slots.main?.() || slots.default?.()))))));
+      var _a, _b, _c, _d, _e, _f;
+      return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h("div", { class: [index_module_default("basic-frame"), attrs.class] }, /* @__PURE__ */ h(ElContainer, null, /* @__PURE__ */ h(ElHeader, { class: index_module_default("default-header") }, (_a = slots.header) == null ? void 0 : _a.call(slots)), /* @__PURE__ */ h(ElContainer, { class: index_module_default("default-body") }, ["0", "0px"].indexOf(props.aside.width) === -1 ? /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElAside, { width: props.aside.width, class: index_module_default(props.aside.className || "default-aside") }, (_b = slots.aside) == null ? void 0 : _b.call(slots)), /* @__PURE__ */ h(ElMain, { class: index_module_default("default-main") }, ((_c = slots.main) == null ? void 0 : _c.call(slots)) || ((_d = slots.default) == null ? void 0 : _d.call(slots)))) : /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElMain, { class: index_module_default("default-main-no-aside") }, ((_e = slots.main) == null ? void 0 : _e.call(slots)) || ((_f = slots.default) == null ? void 0 : _f.call(slots))))))));
     };
   }
 });

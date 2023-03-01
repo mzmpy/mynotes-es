@@ -2,9 +2,10 @@ import {
   ElDrawer,
   ElMenu,
   ElMenuItem
-} from "./chunk-7T2FLUZB.js";
+} from "./chunk-2G3T7LZI.js";
 import {
   Fragment,
+  __async,
   __export,
   defineComponent,
   h,
@@ -12,7 +13,7 @@ import {
   init_vue_runtime_esm_bundler,
   onMounted,
   ref
-} from "./chunk-R2IQH4YB.js";
+} from "./chunk-M2TUDS5J.js";
 
 // src/views/markdown/index.js
 init_vue_jsxImportSource();
@@ -87042,9 +87043,9 @@ var markdown_default2 = defineComponent({
     ElDrawer
   },
   setup(props, ctx) {
-    const markIt = async (val) => {
-      const { marked, setOptions } = await import("./marked.esm-FZZNHJDN.js");
-      const hljs = (await import("./es-KZX26I5Z.js")).default;
+    const markIt = (val) => __async(this, null, function* () {
+      const { marked, setOptions } = yield import("./marked.esm-GB75ENGX.js");
+      const hljs = (yield import("./es-P5ZPSKHV.js")).default;
       setOptions({
         renderer: new marked.Renderer(),
         highlight: function(code, lang) {
@@ -87061,7 +87062,7 @@ var markdown_default2 = defineComponent({
         xhtml: false
       });
       return marked(val);
-    };
+    });
     const mdText = "# There are some demos.\n\nThis is a paragraph.\n\nThere are some Greek letter `$\\alpha$`, `$\\beta$` and `$\\lambda$`.\n\n```katex\nE = mc^{2}\n```\n\nHere defines a Python function `add(x, y)`:\n```python\ndef add(x, y):\n	return x + y\n```\n\u8FD9\u662F\u4E00\u884C\u4E2D\u6587\u3002";
     const markedContent = ref("");
     const drawer = ref(false);
@@ -87071,12 +87072,12 @@ var markdown_default2 = defineComponent({
     const unPreview = () => {
       drawer.value = false;
     };
-    onMounted(async () => {
-      markedContent.value = await markIt(mdText);
+    onMounted(() => __async(this, null, function* () {
+      markedContent.value = yield markIt(mdText);
+    }));
+    const onCodeChanged = (val) => __async(this, null, function* () {
+      markedContent.value = yield markIt(val);
     });
-    const onCodeChanged = async (val) => {
-      markedContent.value = await markIt(val);
-    };
     return () => {
       return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h("div", { class: index_module_default("markdown-container") }, /* @__PURE__ */ h("div", { class: index_module_default("tool-bar") }, /* @__PURE__ */ h(toolBar_default, { onPreview: preview })), /* @__PURE__ */ h(markdownEditor_default, { initialCode: mdText, onCodeChanged }), /* @__PURE__ */ h(ElDrawer, { title: "Preview", "model-value": drawer.value, "append-to-body": true, size: "50%", onClose: unPreview }, /* @__PURE__ */ h(markdownPreview_default, { content: markedContent.value }))));
     };

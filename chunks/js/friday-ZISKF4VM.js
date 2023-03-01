@@ -1,6 +1,6 @@
 import {
   ElCard
-} from "./chunk-7T2FLUZB.js";
+} from "./chunk-2G3T7LZI.js";
 import {
   defineComponent,
   h,
@@ -8,7 +8,7 @@ import {
   init_vue_runtime_esm_bundler,
   inject,
   vue_jsxImportSource_default
-} from "./chunk-R2IQH4YB.js";
+} from "./chunk-M2TUDS5J.js";
 
 // src/components/mdx/friday.js
 init_vue_jsxImportSource();
