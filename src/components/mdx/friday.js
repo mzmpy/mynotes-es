@@ -2,7 +2,7 @@ import {
   defineComponent
 } from 'vue'
 
-import FridayContext from '../../components/mdx/friday.mdx'
+import FridayContext from '@/components/mdx/friday.mdx'
 
 export default defineComponent({
   name: 'Friday',

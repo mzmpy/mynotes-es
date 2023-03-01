@@ -4,9 +4,9 @@ import {
   onMounted
 } from 'vue'
 import styles from './index.module.css'
-import MarkdownEditor from '../../components/markdownEditor'
-import MarkdownPreview from '../../components/markdownPreview'
-import ToolBar from '../../components/toolBar'
+import MarkdownEditor from '@/components/markdownEditor'
+import MarkdownPreview from '@/components/markdownPreview'
+import ToolBar from '@/components/toolBar'
 import {
   ElDrawer
 } from 'element-plus/components'

@@ -20,6 +20,9 @@ esbuild.build({
     '.woff2': 'file',
     '.jpg': 'dataurl'
   },
+  alias: {
+    '@/*': './src/*'
+  },
   assetNames: 'assets/[ext]/[name]-[hash]',
   chunkNames: 'chunks/[ext]/[name]-[hash]',
   // external: ['vue', 'element-plus'],

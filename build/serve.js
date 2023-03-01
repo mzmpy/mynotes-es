@@ -30,6 +30,9 @@ esbuild.build({
   splitting: true,
   format: 'esm',
   sourcemap: true,
+  alias: {
+    '@/*': './src/*'
+  },
   loader: {
     '.js': 'jsx',
     '.ttf': 'file',

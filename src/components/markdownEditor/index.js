@@ -1,8 +1,7 @@
 import { 
   defineComponent,
   onMounted,
-  ref,
-  reactive
+  ref
 } from 'vue'
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 // import 'monaco-editor/esm/vs/basic-languages/markdown/markdown.contribution'

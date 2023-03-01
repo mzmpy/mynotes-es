@@ -2,17 +2,17 @@ const routes = [
   {
     path: '/',
     name: 'root',
-    component: () => import('../../components/mdx/friday')
+    component: () => import('@/components/mdx/friday')
   },
   {
     path: '/markdown',
     name: 'Markdown',
-    component: () => import('../../views/markdown')
+    component: () => import('@/views/markdown')
   },
   {
     path: '/test-view',
     name: 'TestView',
-    component: () => import('../../views/test')
+    component: () => import('@/views/test')
   }
 ]
 
