@@ -1,6 +1,6 @@
 {
-  "name": "esbuild-vue-jsx",
-  "version": "0.0.1",
+  "name": "mynotes-es",
+  "version": "0.0.7",
   "description": "",
   "main": "index.js",
   "type": "module",

@@ -2,7 +2,7 @@ import * as parcelCss from '@parcel/css'
 import fs from 'fs'
 import path from 'path'
 
-export default (options) => {
+export default (options={}) => {
 	return {
 		name: 'parcel-css-plugin',
 		setup(build) {

@@ -11,6 +11,7 @@ import {
   ElMenuItem
 } from 'element-plus/components'
 import BasicFrame from './components/basicFrame'
+import AsideFrame  from './components/asideFrame'
 import styles from './App.module.css'
 import {
   RouterLink,
@@ -21,6 +22,7 @@ export default defineComponent({
   name: 'App',
   components: {
     BasicFrame,
+    AsideFrame,
     ElMenu,
     ElMenuItem
   },
@@ -73,7 +75,9 @@ export default defineComponent({
               </>
             },
             aside: () => {
-              return 'aside'
+              return <>
+                <AsideFrame></AsideFrame>
+              </>
             },
             main: () => {
               return <>

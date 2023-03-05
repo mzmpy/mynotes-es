@@ -3,7 +3,7 @@ import path from 'path'
 
 import { __dirname } from '../../nodeCMP.js'
 
-export default (options) => {
+export default (options={}) => {
   return {
     name: 'html-plugin',
     setup(build) {

@@ -9,6 +9,7 @@ import esbuildPluginHtml from '../plugins/esbuild-plugin-html/index.js'
 import esbuildPluginSmartImport from '../plugins/esbuild-plugin-elementplus-smartimport/index.js'
 import esbuildPluginJsxImportSource, { esbuildMdxJsxImportSource } from '../plugins/esbuild-plugin-jsx-import-source/index.js'
 import esbuildPluginMonacoEditor from '../plugins/esbuild-plugin-monaco-editor/index.js'
+import esbuildPluginMdxToVueComponent from '../plugins/esbuild-plugin-mdx-to-vueComponent/index.js'
 import esbuildMDX from '@mdx-js/esbuild'
 
 import fs from 'fs'
@@ -67,6 +68,9 @@ esbuild.build({
       jsxImportSource: 'vue'
     }),
     esbuildPluginMonacoEditor(),
+    esbuildPluginMdxToVueComponent({
+      include: ['./src/router/routes']
+    }), // This plugin must be front of plugin esbuildMDX, just like what the order is shown here.
     esbuildMDX({
       providerImportSource: '@mdx-js/vue',
       jsxRuntime: 'classic',
@@ -94,7 +98,21 @@ esbuild.build({
 const proxy = new koa()
 const app = new koa()
 
-app.use(historyApiFallback({ whiteList: [prefix] }))
+app.use(async (ctx, next) => {
+  await next()
+
+  const regex = /\/docs\//
+  if(regex.test(ctx.originalUrl)) {
+    if(ctx.headers['sec-fetch-dest'] === 'document') {
+      ctx.body = await fs.promises.readFile('./dist/index.html', { encoding: 'utf-8' })
+    } else {
+      const redirectUrl = ctx.originalUrl.replace(regex, '/')
+      ctx.redirect(redirectUrl)
+    }
+  }
+})
+
+app.use(historyApiFallback({}))
 app.use(koaStatic(process.cwd() + '/dist/'))
 
 proxy.use(koaMount(prefix, app))

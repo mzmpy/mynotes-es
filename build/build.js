@@ -4,6 +4,7 @@ import esbuildPluginHtml from '../plugins/esbuild-plugin-html/index.js'
 import esbuildPluginSmartImport from '../plugins/esbuild-plugin-elementplus-smartimport/index.js'
 import esbuildPluginJsxImportSource, { esbuildMdxJsxImportSource } from '../plugins/esbuild-plugin-jsx-import-source/index.js'
 import esbuildPluginMonacoEditor from '../plugins/esbuild-plugin-monaco-editor/index.js'
+import esbuildPluginMdxToVueComponent from '../plugins/esbuild-plugin-mdx-to-vueComponent/index.js'
 import esbuildMDX from '@mdx-js/esbuild'
 
 esbuild.build({
@@ -43,6 +44,9 @@ esbuild.build({
       jsxImportSource: 'vue'
     }),
     esbuildPluginMonacoEditor(),
+    esbuildPluginMdxToVueComponent({
+      include: ['./src/router/routes']
+    }), // This plugin must be front of plugin esbuildMDX, just like what the order is shown here.
     esbuildMDX({
       providerImportSource: '@mdx-js/vue',
       jsxRuntime: 'classic',

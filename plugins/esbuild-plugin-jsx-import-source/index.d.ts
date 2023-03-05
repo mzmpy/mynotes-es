@@ -8,4 +8,4 @@ declare function esbuildPluginJsxImportSource(options: Options): Plugin
 
 export default esbuildPluginJsxImportSource
 
-export function esbuildMdxJsxImportSource(jsxImportSource: string): string
+export function esbuildMdxJsxImportSource(jsxImportSource?: string): string
