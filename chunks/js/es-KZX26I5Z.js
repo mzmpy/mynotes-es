@@ -2,7 +2,7 @@ import {
   __commonJS,
   __toESM,
   init_vue_jsxImportSource
-} from "./chunk-M2TUDS5J.js";
+} from "./chunk-R2IQH4YB.js";
 
 // node_modules/highlight.js/lib/core.js
 var require_core = __commonJS({

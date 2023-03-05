@@ -1,33 +1,23 @@
 import {
   ElCard
-} from "./chunk-2G3T7LZI.js";
+} from "./chunk-OF3CVV3Z.js";
+import {
+  useMDXComponents
+} from "./chunk-PWQKKYWS.js";
 import {
   defineComponent,
   h,
   init_vue_jsxImportSource,
   init_vue_runtime_esm_bundler,
-  inject,
   vue_jsxImportSource_default
-} from "./chunk-M2TUDS5J.js";
+} from "./chunk-R2IQH4YB.js";
 
-// src/components/mdx/friday.js
+// MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/friday.mdx
 init_vue_jsxImportSource();
 init_vue_runtime_esm_bundler();
 
 // src/components/mdx/friday.mdx
 init_vue_jsxImportSource();
-
-// node_modules/@mdx-js/vue/index.js
-init_vue_jsxImportSource();
-
-// node_modules/@mdx-js/vue/lib/index.js
-init_vue_jsxImportSource();
-init_vue_runtime_esm_bundler();
-function useMDXComponents() {
-  return inject("$mdxComponents", {});
-}
-
-// src/components/mdx/friday.mdx
 init_vue_jsxImportSource();
 
 // src/assets/images/park.jpg
@@ -59,11 +49,12 @@ function MDXContent(props = {}) {
 }
 var friday_default = MDXContent;
 
-// src/components/mdx/friday.js
+// MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/friday.mdx
 var friday_default2 = defineComponent({
-  name: "Friday",
-  setup() {
-    return () => /* @__PURE__ */ h(friday_default, null);
+  name: "MDX_FRIDAY",
+  components: { MDXComponentContext: friday_default },
+  setup(props, ctx) {
+    return () => /* @__PURE__ */ h(friday_default, { ...ctx.attrs });
   }
 });
 export {
