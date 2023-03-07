@@ -13,11 +13,6 @@ const routes = [
     path: '/test-view',
     name: 'TestView',
     component: () => import('@/views/test')
-  },
-  {
-    path: '/docs/:mdxid+',
-    name: 'Document',
-    component: () => import('@/components/mdx/.docs/test.mdx')
   }
 ]
 

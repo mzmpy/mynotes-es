@@ -1,14 +1,10 @@
 import { defineComponent } from 'vue'
-import {
-  ElMenu,
-  ElMenuItem
-} from 'element-plus/components'
+import { DocTree } from '@/components/mdx/.docs'
 
 export default defineComponent({
   name: 'AsideFrame',
   components: {
-    ElMenu,
-    ElMenuItem
+    DocTree
   },
   props: {
     indexs: {
@@ -21,15 +17,7 @@ export default defineComponent({
   setup(props, ctx) {
     return () => {
       return <>
-        <ElMenu
-          mode="vertical"
-          router
-          active-text-color="#ffd04b"
-          background-color="#545c64"
-          text-color="#fff"
-        >
-          <ElMenuItem index="/docs/test.mdx">Test</ElMenuItem>
-        </ElMenu>
+        <DocTree></DocTree>
       </>
     }
   }

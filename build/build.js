@@ -6,6 +6,7 @@ import esbuildPluginJsxImportSource, { esbuildMdxJsxImportSource } from '../plug
 import esbuildPluginMonacoEditor from '../plugins/esbuild-plugin-monaco-editor/index.js'
 import esbuildPluginMdxToVueComponent from '../plugins/esbuild-plugin-mdx-to-vueComponent/index.js'
 import esbuildMDX from '@mdx-js/esbuild'
+import esbuildPluginNoteRoute from '../plugins/esbuild-plugin-note-route/index.js'
 
 esbuild.build({
   entryPoints: ['./src/index.js'],
@@ -53,6 +54,11 @@ esbuild.build({
       pragma: 'MDX_VUE_JSX_IMPORT_SOURCE.h',
       pragmaFrag: 'MDX_VUE_JSX_IMPORT_SOURCE.Fragment',
       pragmaImportSource: esbuildMdxJsxImportSource()
+    }),
+    esbuildPluginNoteRoute({
+      resolveDir: './src/components/mdx/.docs',
+      dirReg: /\/\.docs\/?$/,
+      type: true
     })
   ],
   outdir: './dist'

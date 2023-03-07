@@ -11,6 +11,7 @@ import esbuildPluginJsxImportSource, { esbuildMdxJsxImportSource } from '../plug
 import esbuildPluginMonacoEditor from '../plugins/esbuild-plugin-monaco-editor/index.js'
 import esbuildPluginMdxToVueComponent from '../plugins/esbuild-plugin-mdx-to-vueComponent/index.js'
 import esbuildMDX from '@mdx-js/esbuild'
+import esbuildPluginNoteRoute from '../plugins/esbuild-plugin-note-route/index.js'
 
 import fs from 'fs'
 import path from 'path'
@@ -77,6 +78,11 @@ esbuild.build({
       pragma: 'MDX_VUE_JSX_IMPORT_SOURCE.h',
       pragmaFrag: 'MDX_VUE_JSX_IMPORT_SOURCE.Fragment',
       pragmaImportSource: esbuildMdxJsxImportSource()
+    }),
+    esbuildPluginNoteRoute({
+      resolveDir: './src/components/mdx/.docs',
+      dirReg: /\/\.docs\/?$/,
+      type: true
     })
   ],
   outdir: './dist',
@@ -103,12 +109,13 @@ app.use(async (ctx, next) => {
 
   const regex = /\/docs\//
   if(regex.test(ctx.originalUrl)) {
-    if(ctx.headers['sec-fetch-dest'] === 'document') {
-      ctx.body = await fs.promises.readFile('./dist/index.html', { encoding: 'utf-8' })
-    } else {
-      const redirectUrl = ctx.originalUrl.replace(regex, '/')
-      ctx.redirect(redirectUrl)
-    }
+    ctx.redirect('/mynotes-es/')
+    // if(ctx.headers['sec-fetch-dest'] === 'document') {
+    //   ctx.body = await fs.promises.readFile('./dist/index.html', { encoding: 'utf-8' })
+    // } else {
+    //   const redirectUrl = ctx.originalUrl.replace(regex, '/')
+    //   ctx.redirect(redirectUrl)
+    // }
   }
 })
 
