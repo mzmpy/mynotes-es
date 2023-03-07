@@ -1632,6 +1632,29 @@ function _sfc_render133(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", _hoisted_1133, _hoisted_438);
 }
 var hide_default = /* @__PURE__ */ export_helper_default(hide_vue_vue_type_script_lang_default, [["render", _sfc_render133], ["__file", "hide.vue"]]);
+var key_vue_vue_type_script_lang_default = {
+  name: "Key"
+};
+var _hoisted_1145 = {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 1024 1024"
+};
+var _hoisted_2145 = /* @__PURE__ */ createBaseVNode(
+  "path",
+  {
+    fill: "currentColor",
+    d: "M448 456.064V96a32 32 0 0 1 32-32.064L672 64a32 32 0 0 1 0 64H512v128h160a32 32 0 0 1 0 64H512v128a256 256 0 1 1-64 8.064zM512 896a192 192 0 1 0 0-384 192 192 0 0 0 0 384z"
+  },
+  null,
+  -1
+);
+var _hoisted_3144 = [
+  _hoisted_2145
+];
+function _sfc_render145(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("svg", _hoisted_1145, _hoisted_3144);
+}
+var key_default = /* @__PURE__ */ export_helper_default(key_vue_vue_type_script_lang_default, [["render", _sfc_render145], ["__file", "key.vue"]]);
 var loading_vue_vue_type_script_lang_default = {
   name: "Loading"
 };
@@ -1655,6 +1678,62 @@ function _sfc_render150(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", _hoisted_1150, _hoisted_3149);
 }
 var loading_default = /* @__PURE__ */ export_helper_default(loading_vue_vue_type_script_lang_default, [["render", _sfc_render150], ["__file", "loading.vue"]]);
+var magic_stick_vue_vue_type_script_lang_default = {
+  name: "MagicStick"
+};
+var _hoisted_1156 = {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 1024 1024"
+};
+var _hoisted_2156 = /* @__PURE__ */ createBaseVNode(
+  "path",
+  {
+    fill: "currentColor",
+    d: "M512 64h64v192h-64V64zm0 576h64v192h-64V640zM160 480v-64h192v64H160zm576 0v-64h192v64H736zM249.856 199.04l45.248-45.184L430.848 289.6 385.6 334.848 249.856 199.104zM657.152 606.4l45.248-45.248 135.744 135.744-45.248 45.248L657.152 606.4zM114.048 923.2 68.8 877.952l316.8-316.8 45.248 45.248-316.8 316.8zM702.4 334.848 657.152 289.6l135.744-135.744 45.248 45.248L702.4 334.848z"
+  },
+  null,
+  -1
+);
+var _hoisted_3155 = [
+  _hoisted_2156
+];
+function _sfc_render156(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("svg", _hoisted_1156, _hoisted_3155);
+}
+var magic_stick_default = /* @__PURE__ */ export_helper_default(magic_stick_vue_vue_type_script_lang_default, [["render", _sfc_render156], ["__file", "magic-stick.vue"]]);
+var moon_night_vue_vue_type_script_lang_default = {
+  name: "MoonNight"
+};
+var _hoisted_1172 = {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 1024 1024"
+};
+var _hoisted_2172 = /* @__PURE__ */ createBaseVNode(
+  "path",
+  {
+    fill: "currentColor",
+    d: "M384 512a448 448 0 0 1 215.872-383.296A384 384 0 0 0 213.76 640h188.8A448.256 448.256 0 0 1 384 512zM171.136 704a448 448 0 0 1 636.992-575.296A384 384 0 0 0 499.328 704h-328.32z"
+  },
+  null,
+  -1
+);
+var _hoisted_3171 = /* @__PURE__ */ createBaseVNode(
+  "path",
+  {
+    fill: "currentColor",
+    d: "M32 640h960q32 0 32 32t-32 32H32q-32 0-32-32t32-32zm128 128h384a32 32 0 1 1 0 64H160a32 32 0 1 1 0-64zm160 127.68 224 .256a32 32 0 0 1 32 32V928a32 32 0 0 1-32 32l-224-.384a32 32 0 0 1-32-32v-.064a32 32 0 0 1 32-32z"
+  },
+  null,
+  -1
+);
+var _hoisted_449 = [
+  _hoisted_2172,
+  _hoisted_3171
+];
+function _sfc_render172(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("svg", _hoisted_1172, _hoisted_449);
+}
+var moon_night_default = /* @__PURE__ */ export_helper_default(moon_night_vue_vue_type_script_lang_default, [["render", _sfc_render172], ["__file", "moon-night.vue"]]);
 var more_vue_vue_type_script_lang_default = {
   name: "More"
 };
@@ -1678,6 +1757,29 @@ function _sfc_render175(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", _hoisted_1175, _hoisted_3174);
 }
 var more_default = /* @__PURE__ */ export_helper_default(more_vue_vue_type_script_lang_default, [["render", _sfc_render175], ["__file", "more.vue"]]);
+var sunrise_vue_vue_type_script_lang_default = {
+  name: "Sunrise"
+};
+var _hoisted_1254 = {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 1024 1024"
+};
+var _hoisted_2254 = /* @__PURE__ */ createBaseVNode(
+  "path",
+  {
+    fill: "currentColor",
+    d: "M32 768h960a32 32 0 1 1 0 64H32a32 32 0 1 1 0-64zm129.408-96a352 352 0 0 1 701.184 0h-64.32a288 288 0 0 0-572.544 0h-64.32zM512 128a32 32 0 0 1 32 32v96a32 32 0 0 1-64 0v-96a32 32 0 0 1 32-32zm407.296 168.704a32 32 0 0 1 0 45.248l-67.84 67.84a32 32 0 1 1-45.248-45.248l67.84-67.84a32 32 0 0 1 45.248 0zm-814.592 0a32 32 0 0 1 45.248 0l67.84 67.84a32 32 0 1 1-45.248 45.248l-67.84-67.84a32 32 0 0 1 0-45.248z"
+  },
+  null,
+  -1
+);
+var _hoisted_3253 = [
+  _hoisted_2254
+];
+function _sfc_render254(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("svg", _hoisted_1254, _hoisted_3253);
+}
+var sunrise_default = /* @__PURE__ */ export_helper_default(sunrise_vue_vue_type_script_lang_default, [["render", _sfc_render254], ["__file", "sunrise.vue"]]);
 var view_vue_vue_type_script_lang_default = {
   name: "View"
 };
@@ -2087,8 +2189,8 @@ var buildLocaleContext = (locale) => {
   };
 };
 var localeContextKey = Symbol("localeContextKey");
-var useLocale = () => {
-  const locale = inject(localeContextKey, ref());
+var useLocale = (localeOverrides) => {
+  const locale = localeOverrides || inject(localeContextKey, ref());
   return buildLocaleContext(computed2(() => locale.value || English));
 };
 
@@ -2116,15 +2218,15 @@ var _bem = (namespace, block, blockSuffix, element, modifier) => {
   return cls;
 };
 var namespaceContextKey = Symbol("localeContextKey");
-var useGetDerivedNamespace = () => {
-  const derivedNamespace = inject(namespaceContextKey, ref(defaultNamespace));
+var useGetDerivedNamespace = (namespaceOverrides) => {
+  const derivedNamespace = namespaceOverrides || inject(namespaceContextKey, ref(defaultNamespace));
   const namespace = computed2(() => {
     return unref(derivedNamespace) || defaultNamespace;
   });
   return namespace;
 };
-var useNamespace = (block) => {
-  const namespace = useGetDerivedNamespace();
+var useNamespace = (block, namespaceOverrides) => {
+  const namespace = useGetDerivedNamespace(namespaceOverrides);
   const b = (blockSuffix = "") => _bem(namespace.value, block, blockSuffix, "", "");
   const e = (element) => element ? _bem(namespace.value, block, "", element, "") : "";
   const m = (modifier) => modifier ? _bem(namespace.value, block, "", "", modifier) : "";
@@ -3143,14 +3245,18 @@ var createContainer = (id) => {
   return container;
 };
 var usePopperContainer = () => {
+  const { id, selector } = usePopperContainerId();
   onBeforeMount(() => {
     if (!isClient)
       return;
-    const { id, selector } = usePopperContainerId();
     if (!cachedContainer && !document.body.querySelector(selector.value)) {
       cachedContainer = createContainer(id.value);
     }
   });
+  return {
+    id,
+    selector
+  };
 };
 
 // node_modules/element-plus/es/hooks/use-delayed-toggle/index.mjs
@@ -3221,8 +3327,8 @@ init_vue_runtime_esm_bundler();
 var zIndex = ref(0);
 var defaultInitialZIndex = 2e3;
 var zIndexContextKey = Symbol("zIndexContextKey");
-var useZIndex = () => {
-  const zIndexInjection = inject(zIndexContextKey, void 0);
+var useZIndex = (zIndexOverrides) => {
+  const zIndexInjection = zIndexOverrides || inject(zIndexContextKey, void 0);
   const initialZIndex = computed2(() => {
     const zIndexFromInjection = unref(zIndexInjection);
     return isNumber(zIndexFromInjection) ? zIndexFromInjection : defaultInitialZIndex;
@@ -8511,6 +8617,11 @@ var ElMenuItemGroup = withNoopInstall(MenuItemGroup);
 var ElSubMenu = withNoopInstall(SubMenu2);
 
 export {
+  key_default,
+  magic_stick_default,
+  moon_night_default,
+  sunrise_default,
+  ElIcon,
   ElInput,
   ElCard,
   ElContainer,
@@ -8519,7 +8630,8 @@ export {
   ElMain,
   ElDrawer,
   ElMenu,
-  ElMenuItem
+  ElMenuItem,
+  ElSubMenu
 };
 /*! Element Plus Icons Vue v2.1.0 */
 /**

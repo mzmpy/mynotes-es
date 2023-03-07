@@ -2,10 +2,16 @@ import {
   ElAside,
   ElContainer,
   ElHeader,
+  ElIcon,
   ElMain,
   ElMenu,
-  ElMenuItem
-} from "./chunks/js/chunk-OF3CVV3Z.js";
+  ElMenuItem,
+  ElSubMenu,
+  key_default,
+  magic_stick_default,
+  moon_night_default,
+  sunrise_default
+} from "./chunks/js/chunk-FO25WLJZ.js";
 import {
   Fragment,
   KeepAlive,
@@ -2512,30 +2518,68 @@ var routes = [
   {
     path: "/",
     name: "root",
-    component: () => import("./chunks/js/friday-UU2OYLIZ.js")
+    component: () => import("./chunks/js/friday-3ZCKXOUL.js")
   },
   {
     path: "/markdown",
     name: "Markdown",
-    component: () => import("./chunks/js/markdown-R6LJLCCP.js")
+    component: () => import("./chunks/js/markdown-PZCCYBPG.js")
   },
   {
     path: "/test-view",
     name: "TestView",
-    component: () => import("./chunks/js/test-DYNQXP6J.js")
-  },
-  {
-    path: "/docs/:mdxid+",
-    name: "Document",
-    component: () => import("./chunks/js/test-7JNTRGUO.js")
+    component: () => import("./chunks/js/test-KDZ7Q5HH.js")
   }
 ];
 var routes_default = routes;
+
+// NOTE_ROUTE:@/components/mdx/.docs
+init_vue_jsxImportSource();
+init_vue_runtime_esm_bundler();
+var DocTree = defineComponent({
+  name: "DocTree",
+  components: { ElMenu, ElMenuItem, ElSubMenu, Sunrise: sunrise_default, MoonNight: moon_night_default, Key: key_default },
+  setup() {
+    return () => {
+      return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElMenu, { mode: "vertical", router: true, "active-text-color": "#C6F3FF", "background-color": "#545C64", "text-color": "#b1b1b1" }, {
+        default: () => /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElMenuItem, { index: "/docs/tes1.mdx" }, /* @__PURE__ */ h(ElIcon, { style: "color: #C6F3FF" }, /* @__PURE__ */ h(key_default, null)), "tes1.mdx"), /* @__PURE__ */ h(ElMenuItem, { index: "/docs/test.mdx" }, /* @__PURE__ */ h(ElIcon, { style: "color: #C6F3FF" }, /* @__PURE__ */ h(key_default, null)), "test.mdx"), /* @__PURE__ */ h(ElSubMenu, { index: "src/components/mdx/.docs/testdir", "expand-close-icon": /* @__PURE__ */ h(ElIcon, { style: "color: #FFF9D0" }, /* @__PURE__ */ h(moon_night_default, null)), "expand-open-icon": /* @__PURE__ */ h(ElIcon, { style: "color: #FF4300" }, /* @__PURE__ */ h(sunrise_default, null)) }, {
+          title: () => /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElIcon, { style: "color: #FFEA3E" }, /* @__PURE__ */ h(magic_stick_default, null)), /* @__PURE__ */ h("span", null, "testdir")),
+          default: () => /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElMenuItem, { index: "/docs/testdir/testdir1.mdx" }, /* @__PURE__ */ h(ElIcon, { style: "color: #C6F3FF" }, /* @__PURE__ */ h(key_default, null)), "testdir1.mdx"), /* @__PURE__ */ h(ElSubMenu, { index: "src/components/mdx/.docs/testdir/testdirplus", "expand-close-icon": /* @__PURE__ */ h(ElIcon, { style: "color: #FFF9D0" }, /* @__PURE__ */ h(moon_night_default, null)), "expand-open-icon": /* @__PURE__ */ h(ElIcon, { style: "color: #FF4300" }, /* @__PURE__ */ h(sunrise_default, null)) }, {
+            title: () => /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElIcon, { style: "color: #FFEA3E" }, /* @__PURE__ */ h(magic_stick_default, null)), /* @__PURE__ */ h("span", null, "testdirplus")),
+            default: () => /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElMenuItem, { index: "/docs/testdir/testdirplus/testdirplus1.mdx" }, /* @__PURE__ */ h(ElIcon, { style: "color: #C6F3FF" }, /* @__PURE__ */ h(key_default, null)), "testdirplus1.mdx"), /* @__PURE__ */ h(ElSubMenu, { index: "src/components/mdx/.docs/testdir/testdirplus/testdirpplus", "expand-close-icon": /* @__PURE__ */ h(ElIcon, { style: "color: #FFF9D0" }, /* @__PURE__ */ h(moon_night_default, null)), "expand-open-icon": /* @__PURE__ */ h(ElIcon, { style: "color: #FF4300" }, /* @__PURE__ */ h(sunrise_default, null)) }, {
+              title: () => /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElIcon, { style: "color: #FFEA3E" }, /* @__PURE__ */ h(magic_stick_default, null)), /* @__PURE__ */ h("span", null, "testdirpplus")),
+              default: () => /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElMenuItem, { index: "/docs/testdir/testdirplus/testdirpplus/testdirpplus1.mdx" }, /* @__PURE__ */ h(ElIcon, { style: "color: #C6F3FF" }, /* @__PURE__ */ h(key_default, null)), "testdirpplus1.mdx"))
+            }))
+          }))
+        }))
+      }));
+    };
+  }
+});
+var noteRoutes = [
+  { path: "/docs/tes1.mdx", name: "TES1_MDX", component: () => import("./chunks/js/tes1-GVWXRQFD.js") },
+  { path: "/docs/test.mdx", name: "TEST_MDX", component: () => import("./chunks/js/test-7JNTRGUO.js") },
+  { path: "/docs/testdir/testdir1.mdx", name: "TESTDIR1_MDX", component: () => import("./chunks/js/testdir1-BIFXIAEM.js") },
+  { path: "/docs/testdir/testdirplus/testdirplus1.mdx", name: "TESTDIRPLUS1_MDX", component: () => import("./chunks/js/testdirplus1-ZP5UY5QD.js") },
+  { path: "/docs/testdir/testdirplus/testdirpplus/testdirpplus1.mdx", name: "TESTDIRPPLUS1_MDX", component: () => import("./chunks/js/testdirpplus1-XCF7YAA6.js") }
+];
+var __default = noteRoutes;
 
 // src/router/index.js
 var router = createRouter({
   history: createWebHistory("/mynotes-es/"),
   routes: routes_default
+});
+router.beforeEach((to, from, next) => {
+  const noteRoute = __default.find((noteRoute2) => {
+    return to.path === noteRoute2.path;
+  });
+  if (noteRoute && !router.hasRoute(to.name)) {
+    router.addRoute(noteRoute);
+    next({ ...to, replace: true });
+  } else {
+    next();
+  }
 });
 var router_default = router;
 
@@ -2549,7 +2593,7 @@ init_vue_runtime_esm_bundler();
 
 // src/components/basicFrame/index.module.css
 init_vue_jsxImportSource();
-var styles = { "default-main": { "name": "src__components__basicFrame__index-1c_bGa-default-main", "composes": [], "isReferenced": false }, "default-main-no-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-main-no-aside", "composes": [], "isReferenced": false }, "default-body": { "name": "src__components__basicFrame__index-1c_bGa-default-body", "composes": [], "isReferenced": false }, "default-header": { "name": "src__components__basicFrame__index-1c_bGa-default-header", "composes": [], "isReferenced": false }, "basic-frame": { "name": "src__components__basicFrame__index-1c_bGa-basic-frame", "composes": [], "isReferenced": false }, "default-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-aside", "composes": [], "isReferenced": false } };
+var styles = { "default-main-no-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-main-no-aside", "composes": [], "isReferenced": false }, "basic-frame": { "name": "src__components__basicFrame__index-1c_bGa-basic-frame", "composes": [], "isReferenced": false }, "default-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-aside", "composes": [], "isReferenced": false }, "default-main": { "name": "src__components__basicFrame__index-1c_bGa-default-main", "composes": [], "isReferenced": false }, "default-header": { "name": "src__components__basicFrame__index-1c_bGa-default-header", "composes": [], "isReferenced": false }, "default-body": { "name": "src__components__basicFrame__index-1c_bGa-default-body", "composes": [], "isReferenced": false } };
 var index_module_default = ((styles3) => {
   return (className) => {
     if (typeof className !== "string")
@@ -2603,8 +2647,7 @@ init_vue_runtime_esm_bundler();
 var asideFrame_default = defineComponent({
   name: "AsideFrame",
   components: {
-    ElMenu,
-    ElMenuItem
+    DocTree
   },
   props: {
     indexs: {
@@ -2616,24 +2659,14 @@ var asideFrame_default = defineComponent({
   },
   setup(props, ctx) {
     return () => {
-      return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(
-        ElMenu,
-        {
-          mode: "vertical",
-          router: true,
-          "active-text-color": "#ffd04b",
-          "background-color": "#545c64",
-          "text-color": "#fff"
-        },
-        /* @__PURE__ */ h(ElMenuItem, { index: "/docs/test.mdx" }, "Test")
-      ));
+      return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(DocTree, null));
     };
   }
 });
 
 // src/App.module.css
 init_vue_jsxImportSource();
-var styles2 = { "logo-container": { "name": "src__App-Kl9wQq-logo-container", "composes": [], "isReferenced": false }, "frame": { "name": "src__App-Kl9wQq-frame", "composes": [], "isReferenced": false }, "filler": { "name": "src__App-Kl9wQq-filler", "composes": [], "isReferenced": false } };
+var styles2 = { "frame": { "name": "src__App-Kl9wQq-frame", "composes": [], "isReferenced": false }, "logo-container": { "name": "src__App-Kl9wQq-logo-container", "composes": [], "isReferenced": false }, "filler": { "name": "src__App-Kl9wQq-filler", "composes": [], "isReferenced": false } };
 var App_module_default = ((styles3) => {
   return (className) => {
     if (typeof className !== "string")
