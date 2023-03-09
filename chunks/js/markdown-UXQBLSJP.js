@@ -2,7 +2,7 @@ import {
   ElDrawer,
   ElMenu,
   ElMenuItem
-} from "./chunk-FO25WLJZ.js";
+} from "./chunk-V636POLK.js";
 import {
   Fragment,
   __export,
@@ -12,7 +12,7 @@ import {
   init_vue_runtime_esm_bundler,
   onMounted,
   ref
-} from "./chunk-R2IQH4YB.js";
+} from "./chunk-72A4QWRM.js";
 
 // src/views/markdown/index.js
 init_vue_jsxImportSource();
@@ -87043,8 +87043,8 @@ var markdown_default2 = defineComponent({
   },
   setup(props, ctx) {
     const markIt = async (val) => {
-      const { marked, setOptions } = await import("./marked.esm-FZZNHJDN.js");
-      const hljs = (await import("./es-KZX26I5Z.js")).default;
+      const { marked, setOptions } = await import("./marked.esm-IXVTLR54.js");
+      const hljs = (await import("./es-SS74IK64.js")).default;
       setOptions({
         renderer: new marked.Renderer(),
         highlight: function(code, lang) {

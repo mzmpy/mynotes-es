@@ -11,7 +11,7 @@ import {
   magic_stick_default,
   moon_night_default,
   sunrise_default
-} from "./chunks/js/chunk-FO25WLJZ.js";
+} from "./chunks/js/chunk-V636POLK.js";
 import {
   Fragment,
   KeepAlive,
@@ -33,9 +33,11 @@ import {
   ref,
   shallowRef,
   unref,
+  vShow,
   watch,
-  watchEffect
-} from "./chunks/js/chunk-R2IQH4YB.js";
+  watchEffect,
+  withDirectives
+} from "./chunks/js/chunk-72A4QWRM.js";
 
 // src/index.js
 init_vue_jsxImportSource();
@@ -2511,75 +2513,67 @@ function extractChangingRecords(to, from) {
   }
   return [leavingRecords, updatingRecords, enteringRecords];
 }
+function useRoute() {
+  return inject(routeLocationKey);
+}
 
 // src/router/routes/index.js
 init_vue_jsxImportSource();
-var routes = [
-  {
-    path: "/",
-    name: "root",
-    component: () => import("./chunks/js/friday-3ZCKXOUL.js")
-  },
-  {
-    path: "/markdown",
-    name: "Markdown",
-    component: () => import("./chunks/js/markdown-PZCCYBPG.js")
-  },
-  {
-    path: "/test-view",
-    name: "TestView",
-    component: () => import("./chunks/js/test-KDZ7Q5HH.js")
-  }
-];
-var routes_default = routes;
 
 // NOTE_ROUTE:@/components/mdx/.docs
 init_vue_jsxImportSource();
 init_vue_runtime_esm_bundler();
 var DocTree = defineComponent({
   name: "DocTree",
+  props: { "defaultOpeneds": { type: Array, default: () => [] } },
   components: { ElMenu, ElMenuItem, ElSubMenu, Sunrise: sunrise_default, MoonNight: moon_night_default, Key: key_default },
-  setup() {
+  setup(props) {
     return () => {
-      return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElMenu, { mode: "vertical", router: true, "active-text-color": "#C6F3FF", "background-color": "#545C64", "text-color": "#b1b1b1" }, {
-        default: () => /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElMenuItem, { index: "/docs/tes1.mdx" }, /* @__PURE__ */ h(ElIcon, { style: "color: #C6F3FF" }, /* @__PURE__ */ h(key_default, null)), "tes1.mdx"), /* @__PURE__ */ h(ElMenuItem, { index: "/docs/test.mdx" }, /* @__PURE__ */ h(ElIcon, { style: "color: #C6F3FF" }, /* @__PURE__ */ h(key_default, null)), "test.mdx"), /* @__PURE__ */ h(ElSubMenu, { index: "src/components/mdx/.docs/testdir", "expand-close-icon": /* @__PURE__ */ h(ElIcon, { style: "color: #FFF9D0" }, /* @__PURE__ */ h(moon_night_default, null)), "expand-open-icon": /* @__PURE__ */ h(ElIcon, { style: "color: #FF4300" }, /* @__PURE__ */ h(sunrise_default, null)) }, {
-          title: () => /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElIcon, { style: "color: #FFEA3E" }, /* @__PURE__ */ h(magic_stick_default, null)), /* @__PURE__ */ h("span", null, "testdir")),
-          default: () => /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElMenuItem, { index: "/docs/testdir/testdir1.mdx" }, /* @__PURE__ */ h(ElIcon, { style: "color: #C6F3FF" }, /* @__PURE__ */ h(key_default, null)), "testdir1.mdx"), /* @__PURE__ */ h(ElSubMenu, { index: "src/components/mdx/.docs/testdir/testdirplus", "expand-close-icon": /* @__PURE__ */ h(ElIcon, { style: "color: #FFF9D0" }, /* @__PURE__ */ h(moon_night_default, null)), "expand-open-icon": /* @__PURE__ */ h(ElIcon, { style: "color: #FF4300" }, /* @__PURE__ */ h(sunrise_default, null)) }, {
-            title: () => /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElIcon, { style: "color: #FFEA3E" }, /* @__PURE__ */ h(magic_stick_default, null)), /* @__PURE__ */ h("span", null, "testdirplus")),
-            default: () => /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElMenuItem, { index: "/docs/testdir/testdirplus/testdirplus1.mdx" }, /* @__PURE__ */ h(ElIcon, { style: "color: #C6F3FF" }, /* @__PURE__ */ h(key_default, null)), "testdirplus1.mdx"), /* @__PURE__ */ h(ElSubMenu, { index: "src/components/mdx/.docs/testdir/testdirplus/testdirpplus", "expand-close-icon": /* @__PURE__ */ h(ElIcon, { style: "color: #FFF9D0" }, /* @__PURE__ */ h(moon_night_default, null)), "expand-open-icon": /* @__PURE__ */ h(ElIcon, { style: "color: #FF4300" }, /* @__PURE__ */ h(sunrise_default, null)) }, {
-              title: () => /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElIcon, { style: "color: #FFEA3E" }, /* @__PURE__ */ h(magic_stick_default, null)), /* @__PURE__ */ h("span", null, "testdirpplus")),
-              default: () => /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElMenuItem, { index: "/docs/testdir/testdirplus/testdirpplus/testdirpplus1.mdx" }, /* @__PURE__ */ h(ElIcon, { style: "color: #C6F3FF" }, /* @__PURE__ */ h(key_default, null)), "testdirpplus1.mdx"))
-            }))
-          }))
+      return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElMenu, { mode: "vertical", "default-openeds": props.defaultOpeneds, router: true, "active-text-color": "#C6F3FF", "background-color": "#545C64", "text-color": "#b1b1b1" }, {
+        default: () => /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElSubMenu, { index: "/docs/vue", "expand-close-icon": /* @__PURE__ */ h(ElIcon, { style: "color: #FFF9D0" }, /* @__PURE__ */ h(moon_night_default, null)), "expand-open-icon": /* @__PURE__ */ h(ElIcon, { style: "color: #FF4300" }, /* @__PURE__ */ h(sunrise_default, null)) }, {
+          title: () => /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElIcon, { style: "color: #FFEA3E" }, /* @__PURE__ */ h(magic_stick_default, null)), /* @__PURE__ */ h("span", null, "vue")),
+          default: () => /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElMenuItem, { index: "/docs/vue/vue-router@4.mdx" }, /* @__PURE__ */ h(ElIcon, { style: "color: #C6F3FF" }, /* @__PURE__ */ h(key_default, null)), "vue-router@4.mdx"), /* @__PURE__ */ h(ElMenuItem, { index: "/docs/vue/vue@3.mdx" }, /* @__PURE__ */ h(ElIcon, { style: "color: #C6F3FF" }, /* @__PURE__ */ h(key_default, null)), "vue@3.mdx"))
         }))
       }));
     };
   }
 });
 var noteRoutes = [
-  { path: "/docs/tes1.mdx", name: "TES1_MDX", component: () => import("./chunks/js/tes1-GVWXRQFD.js") },
-  { path: "/docs/test.mdx", name: "TEST_MDX", component: () => import("./chunks/js/test-7JNTRGUO.js") },
-  { path: "/docs/testdir/testdir1.mdx", name: "TESTDIR1_MDX", component: () => import("./chunks/js/testdir1-BIFXIAEM.js") },
-  { path: "/docs/testdir/testdirplus/testdirplus1.mdx", name: "TESTDIRPLUS1_MDX", component: () => import("./chunks/js/testdirplus1-ZP5UY5QD.js") },
-  { path: "/docs/testdir/testdirplus/testdirpplus/testdirpplus1.mdx", name: "TESTDIRPPLUS1_MDX", component: () => import("./chunks/js/testdirpplus1-XCF7YAA6.js") }
+  { path: "/docs/vue/vue-router@4.mdx", name: "VUE-ROUTER@4_MDX", component: () => import("./chunks/js/vue-router@4-443Y2U7C.js") },
+  { path: "/docs/vue/vue@3.mdx", name: "VUE@3_MDX", component: () => import("./chunks/js/vue@3-QVK2X7VS.js") }
+];
+var pathInfo = [
+  { path: "/docs/vue", label: "vue", isDir: true },
+  { path: "/docs/vue/vue-router@4.mdx", label: "vue-router@4.mdx", isDir: false },
+  { path: "/docs/vue/vue@3.mdx", label: "vue@3.mdx", isDir: false }
 ];
 var __default = noteRoutes;
+
+// src/router/routes/index.js
+var routes = [
+  {
+    path: "/",
+    name: "root",
+    component: () => import("./chunks/js/friday-NJVAAGR2.js")
+  },
+  {
+    path: "/markdown",
+    name: "Markdown",
+    component: () => import("./chunks/js/markdown-UXQBLSJP.js")
+  },
+  {
+    path: "/test-view",
+    name: "TestView",
+    component: () => import("./chunks/js/test-MS4OXXT7.js")
+  },
+  ...__default
+];
+var routes_default = routes;
 
 // src/router/index.js
 var router = createRouter({
   history: createWebHistory("/mynotes-es/"),
   routes: routes_default
-});
-router.beforeEach((to, from, next) => {
-  const noteRoute = __default.find((noteRoute2) => {
-    return to.path === noteRoute2.path;
-  });
-  if (noteRoute && !router.hasRoute(to.name)) {
-    router.addRoute(noteRoute);
-    next({ ...to, replace: true });
-  } else {
-    next();
-  }
 });
 var router_default = router;
 
@@ -2593,7 +2587,7 @@ init_vue_runtime_esm_bundler();
 
 // src/components/basicFrame/index.module.css
 init_vue_jsxImportSource();
-var styles = { "default-main-no-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-main-no-aside", "composes": [], "isReferenced": false }, "basic-frame": { "name": "src__components__basicFrame__index-1c_bGa-basic-frame", "composes": [], "isReferenced": false }, "default-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-aside", "composes": [], "isReferenced": false }, "default-main": { "name": "src__components__basicFrame__index-1c_bGa-default-main", "composes": [], "isReferenced": false }, "default-header": { "name": "src__components__basicFrame__index-1c_bGa-default-header", "composes": [], "isReferenced": false }, "default-body": { "name": "src__components__basicFrame__index-1c_bGa-default-body", "composes": [], "isReferenced": false } };
+var styles = { "default-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-aside", "composes": [], "isReferenced": false }, "default-body": { "name": "src__components__basicFrame__index-1c_bGa-default-body", "composes": [], "isReferenced": false }, "default-main-no-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-main-no-aside", "composes": [], "isReferenced": false }, "basic-frame": { "name": "src__components__basicFrame__index-1c_bGa-basic-frame", "composes": [], "isReferenced": false }, "default-header": { "name": "src__components__basicFrame__index-1c_bGa-default-header", "composes": [], "isReferenced": false }, "default-main": { "name": "src__components__basicFrame__index-1c_bGa-default-main", "composes": [], "isReferenced": false } };
 var index_module_default = ((styles3) => {
   return (className) => {
     if (typeof className !== "string")
@@ -2617,7 +2611,8 @@ var basicFrame_default = defineComponent({
       default() {
         return {
           width: "300px",
-          className: ""
+          className: "",
+          display: true
         };
       }
     }
@@ -2636,7 +2631,17 @@ var basicFrame_default = defineComponent({
       console.log("[BasicFrame]: Updated!");
     });
     return () => {
-      return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h("div", { class: [index_module_default("basic-frame"), attrs.class] }, /* @__PURE__ */ h(ElContainer, null, /* @__PURE__ */ h(ElHeader, { class: index_module_default("default-header") }, slots.header?.()), /* @__PURE__ */ h(ElContainer, { class: index_module_default("default-body") }, ["0", "0px"].indexOf(props.aside.width) === -1 ? /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElAside, { width: props.aside.width, class: index_module_default(props.aside.className || "default-aside") }, slots.aside?.()), /* @__PURE__ */ h(ElMain, { class: index_module_default("default-main") }, slots.main?.() || slots.default?.())) : /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElMain, { class: index_module_default("default-main-no-aside") }, slots.main?.() || slots.default?.()))))));
+      return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h("div", { class: [index_module_default("basic-frame"), attrs.class] }, /* @__PURE__ */ h(ElContainer, null, /* @__PURE__ */ h(ElHeader, { class: index_module_default("default-header") }, slots.header?.()), /* @__PURE__ */ h(ElContainer, { class: index_module_default("default-body") }, /* @__PURE__ */ h(Fragment, null, withDirectives(
+        /* @__PURE__ */ h(
+          ElAside,
+          {
+            width: props.aside.width,
+            class: index_module_default(props.aside.className || "default-aside")
+          },
+          slots.aside?.()
+        ),
+        [[vShow, props.aside.display]]
+      ), /* @__PURE__ */ h(ElMain, { class: props.aside.display ? index_module_default("default-main") : index_module_default("default-main-no-aside") }, slots.main?.() || slots.default?.()))))));
     };
   }
 });
@@ -2649,24 +2654,21 @@ var asideFrame_default = defineComponent({
   components: {
     DocTree
   },
-  props: {
-    indexs: {
-      type: Array,
-      default() {
-        return [];
-      }
-    }
-  },
   setup(props, ctx) {
+    const indexes = [];
+    pathInfo.forEach((info) => {
+      if (info.isDir)
+        indexes.push(info.path);
+    });
     return () => {
-      return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(DocTree, null));
+      return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(DocTree, { defaultOpeneds: indexes }));
     };
   }
 });
 
 // src/App.module.css
 init_vue_jsxImportSource();
-var styles2 = { "frame": { "name": "src__App-Kl9wQq-frame", "composes": [], "isReferenced": false }, "logo-container": { "name": "src__App-Kl9wQq-logo-container", "composes": [], "isReferenced": false }, "filler": { "name": "src__App-Kl9wQq-filler", "composes": [], "isReferenced": false } };
+var styles2 = { "logo-container": { "name": "src__App-Kl9wQq-logo-container", "composes": [], "isReferenced": false }, "filler": { "name": "src__App-Kl9wQq-filler", "composes": [], "isReferenced": false }, "frame": { "name": "src__App-Kl9wQq-frame", "composes": [], "isReferenced": false } };
 var App_module_default = ((styles3) => {
   return (className) => {
     if (typeof className !== "string")
@@ -2697,26 +2699,19 @@ var App_default = defineComponent({
     onUpdated(() => {
       console.log("[App]: Updated!");
     });
-    const getDefaultActive = () => {
-      const indexsMap = {
-        "/": "0",
-        "/markdown": "1",
-        "/test-view": "2"
-      };
-      const fragment = location.pathname.match(/\/[^/]*$/)[0];
-      return indexsMap[fragment];
-    };
+    const route = useRoute();
     return () => {
-      return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(basicFrame_default, { class: App_module_default("frame"), aside: { width: "450px" } }, {
+      const asideDisplay = ["/markdown", "/test-view"].indexOf(route.path) === -1 ? true : false;
+      return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(basicFrame_default, { class: App_module_default("frame"), aside: { width: "300px", display: asideDisplay } }, {
         header: () => {
-          return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElMenu, { mode: "horizontal", ellipsis: false, "default-active": getDefaultActive() }, /* @__PURE__ */ h(ElMenuItem, { index: "0", class: App_module_default("logo-container") }, /* @__PURE__ */ h(RouterLink, { to: "/" }, "MyNotes")), /* @__PURE__ */ h("div", { class: App_module_default("filler") }), /* @__PURE__ */ h(ElMenuItem, { index: "1" }, /* @__PURE__ */ h(RouterLink, { to: "/markdown" }, "MarkdownEditor")), /* @__PURE__ */ h(ElMenuItem, { index: "2" }, /* @__PURE__ */ h(RouterLink, { to: "/test-view" }, "Dictionary"))));
+          return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(ElMenu, { mode: "horizontal", ellipsis: false, "default-active": "0" }, /* @__PURE__ */ h(ElMenuItem, { index: "0", class: App_module_default("logo-container") }, /* @__PURE__ */ h(RouterLink, { to: "/" }, "MyNotes")), /* @__PURE__ */ h("div", { class: App_module_default("filler") }), /* @__PURE__ */ h(ElMenuItem, { index: "1" }, /* @__PURE__ */ h(RouterLink, { to: "/markdown" }, "MarkdownEditor")), /* @__PURE__ */ h(ElMenuItem, { index: "2" }, /* @__PURE__ */ h(RouterLink, { to: "/test-view" }, "Dictionary"))));
         },
         aside: () => {
-          return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(asideFrame_default, null));
+          return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(KeepAlive, null, /* @__PURE__ */ h(asideFrame_default, null)));
         },
         main: () => {
           return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(RouterView, null, {
-            default({ Component, route }) {
+            default({ Component, route: route2 }) {
               return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h(KeepAlive, { include: "Markdown" }, /* @__PURE__ */ h(Component, null)));
             }
           }));

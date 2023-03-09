@@ -2,7 +2,7 @@ import {
   init_vue_jsxImportSource,
   init_vue_runtime_esm_bundler,
   inject
-} from "./chunk-R2IQH4YB.js";
+} from "./chunk-72A4QWRM.js";
 
 // node_modules/@mdx-js/vue/lib/index.js
 init_vue_jsxImportSource();

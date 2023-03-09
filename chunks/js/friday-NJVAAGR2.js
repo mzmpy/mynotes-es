@@ -1,16 +1,16 @@
 import {
-  ElCard
-} from "./chunk-FO25WLJZ.js";
-import {
   useMDXComponents
-} from "./chunk-PWQKKYWS.js";
+} from "./chunk-WAOPOIZX.js";
+import {
+  ElCard
+} from "./chunk-V636POLK.js";
 import {
   defineComponent,
   h,
   init_vue_jsxImportSource,
   init_vue_runtime_esm_bundler,
   vue_jsxImportSource_default
-} from "./chunk-R2IQH4YB.js";
+} from "./chunk-72A4QWRM.js";
 
 // MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/friday.mdx
 init_vue_jsxImportSource();
@@ -54,7 +54,7 @@ var friday_default2 = defineComponent({
   name: "MDX_FRIDAY",
   components: { MDXComponentContext: friday_default },
   setup(props, ctx) {
-    return () => /* @__PURE__ */ h(friday_default, { ...ctx.attrs });
+    return () => /* @__PURE__ */ h("div", { class: "markdown-body", style: "padding: 15px;" }, /* @__PURE__ */ h(friday_default, { ...ctx.attrs }));
   }
 });
 export {
