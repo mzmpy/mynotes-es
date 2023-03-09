@@ -1,6 +1,8 @@
 import {
   defineComponent,
   onBeforeMount,
+  withDirectives,
+  vShow,
   onMounted,
   onBeforeUpdate,
   onUpdated
@@ -27,7 +29,8 @@ export default defineComponent({
       default() {
         return {
           width: '300px',
-          className: ''
+          className: '',
+          display: true
         }
       }
     }
@@ -56,14 +59,22 @@ export default defineComponent({
             <ElHeader class={ styles('default-header') }>{ slots.header?.() }</ElHeader>
             <ElContainer class={ styles('default-body') }>
               {
-                ['0', '0px'].indexOf(props.aside.width) === -1
-                  ? <>
-                      <ElAside width={ props.aside.width } class={ styles(props.aside.className || 'default-aside') }>{ slots.aside?.() }</ElAside>
-                      <ElMain class={ styles('default-main') }>{ slots.main?.() || slots.default?.() }</ElMain>
-                    </>
-                  : <>
-                      <ElMain class={ styles('default-main-no-aside') }>{ slots.main?.() || slots.default?.() }</ElMain>
-                    </>
+                <>
+                  {
+                    withDirectives(
+                      <ElAside
+                        width={ props.aside.width }
+                        class={ styles(props.aside.className || 'default-aside') }
+                      >
+                        { slots.aside?.() }
+                      </ElAside>,
+                      [[vShow, props.aside.display]]
+                    )
+                  }
+                  <ElMain class={ props.aside.display ? styles('default-main') : styles('default-main-no-aside') }>
+                    { slots.main?.() || slots.default?.() }
+                  </ElMain>
+                </>
               }
             </ElContainer>
           </ElContainer>

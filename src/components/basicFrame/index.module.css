@@ -18,18 +18,23 @@ body {
 
 .basic-frame .default-body {
   height: calc(100vh - 80px);
+  background-color: #4d525a;
 }
 
 .basic-frame .default-aside {
-  padding: 30px 20px 10px 150px;
+  margin: 30px 20px 10px 150px;
   background-color: #545C64;
-  background-clip: content-box;
 }
 
 .basic-frame .default-main-no-aside {
-  padding: 30px 150px 10px 150px;
+  margin: 30px 150px 10px 150px;
+  padding: 0;
+  background-color: #545c64;
+  overflow: visible;
 }
 
 .basic-frame .default-main {
-  padding: 30px 150px 10px 20px;
+  margin: 30px 150px 10px 20px;
+  padding: 0;
+  background-color: #545c64;
 }

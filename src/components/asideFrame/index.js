@@ -1,23 +1,20 @@
 import { defineComponent } from 'vue'
-import { DocTree } from '@/components/mdx/.docs'
+import { DocTree, pathInfo } from '@/components/mdx/.docs'
 
 export default defineComponent({
   name: 'AsideFrame',
   components: {
     DocTree
   },
-  props: {
-    indexs: {
-      type: Array,
-      default() {
-        return []
-      }
-    }
-  },
   setup(props, ctx) {
+    const indexes = []
+    pathInfo.forEach((info) => {
+      if(info.isDir) indexes.push(info.path)
+    })
+
     return () => {
       return <>
-        <DocTree></DocTree>
+        <DocTree defaultOpeneds={ indexes }></DocTree>
       </>
     }
   }

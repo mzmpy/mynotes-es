@@ -1,3 +1,5 @@
+import noteRoutes from '@/components/mdx/.docs'
+
 const routes = [
   {
     path: '/',
@@ -13,7 +15,8 @@ const routes = [
     path: '/test-view',
     name: 'TestView',
     component: () => import('@/views/test')
-  }
+  },
+  ...noteRoutes
 ]
 
 export default routes

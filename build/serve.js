@@ -13,6 +13,9 @@ import esbuildPluginMdxToVueComponent from '../plugins/esbuild-plugin-mdx-to-vue
 import esbuildMDX from '@mdx-js/esbuild'
 import esbuildPluginNoteRoute from '../plugins/esbuild-plugin-note-route/index.js'
 
+import rehypeHighlight from 'rehype-highlight'
+import remarkGfm from 'remark-gfm'
+
 import fs from 'fs'
 import path from 'path'
 
@@ -77,7 +80,9 @@ esbuild.build({
       jsxRuntime: 'classic',
       pragma: 'MDX_VUE_JSX_IMPORT_SOURCE.h',
       pragmaFrag: 'MDX_VUE_JSX_IMPORT_SOURCE.Fragment',
-      pragmaImportSource: esbuildMdxJsxImportSource()
+      pragmaImportSource: esbuildMdxJsxImportSource(),
+      remarkPlugins: [remarkGfm],
+      rehypePlugins: [rehypeHighlight]
     }),
     esbuildPluginNoteRoute({
       resolveDir: './src/components/mdx/.docs',
@@ -107,15 +112,26 @@ const app = new koa()
 app.use(async (ctx, next) => {
   await next()
 
-  const regex = /\/docs\//
-  if(regex.test(ctx.originalUrl)) {
-    ctx.redirect('/mynotes-es/')
-    // if(ctx.headers['sec-fetch-dest'] === 'document') {
-    //   ctx.body = await fs.promises.readFile('./dist/index.html', { encoding: 'utf-8' })
-    // } else {
-    //   const redirectUrl = ctx.originalUrl.replace(regex, '/')
-    //   ctx.redirect(redirectUrl)
-    // }
+  const regexs = [
+    {
+      test: /\/docs\/[^/]+/,
+      frag: /\/docs\//
+    }, 
+    {
+      test: /\/docs\/vue\/[^/]+/,
+      frag: /\/docs\/vue\//
+    }
+  ]
+
+  for(const regex of regexs) {
+    if(regex.test.test(ctx.originalUrl)) {
+      if(ctx.headers['sec-fetch-dest'] === 'document') {
+        ctx.body = await fs.promises.readFile('./dist/index.html', { encoding: 'utf-8' })
+      } else {
+        const redirectUrl = ctx.originalUrl.replace(regex.frag, '/')
+        ctx.redirect(redirectUrl)
+      }
+    }
   }
 })
 

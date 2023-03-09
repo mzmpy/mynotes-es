@@ -3,7 +3,8 @@ import type { Component } from 'vue'
 
 interface PathInfo {
   path: string,
-  label: string
+  label: string,
+  isDir: string
 }
 
 const noteRoutes: RouteRecordRaw[]

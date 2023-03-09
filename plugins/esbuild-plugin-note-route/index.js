@@ -21,14 +21,14 @@ export default (options={ resolveDir: './.docs', dirReg: /\/\.docs\/?$/, type: f
         const [files, DocTree] = await readdirRecur(options.resolveDir)
 
         for(const file of files) {
-          if(file.isDirectory()) pathInfo += `  { path: '/docs/${file.relpath}', label: '${file.name}', isDir: '${file.isDirectory()}' },\n`
+          if(file.isDirectory()) pathInfo += `  { path: '/docs/${file.relpath}', label: '${file.name}', isDir: ${file.isDirectory()} },\n`
           // avoid file is not mdx or markdown
           if(!/(\.md|\.mdx)/.test(path.extname(file.name))) continue
           
           const name = file.name.split('.').map((item) => item.toUpperCase()).join('_')
           if(file.isFile()) {
             noteRoutes += `  { path: '/docs/${file.relpath}', name: '${name}', component: () => import('${file.abspath}') },\n`
-            pathInfo += `  { path: '/docs/${file.relpath}', label: '${file.name}', isDir: '${file.isDirectory()}' },\n`
+            pathInfo += `  { path: '/docs/${file.relpath}', label: '${file.name}', isDir: ${file.isDirectory()} },\n`
           }
         }
 
@@ -41,8 +41,9 @@ export default (options={ resolveDir: './.docs', dirReg: /\/\.docs\/?$/, type: f
         `import { defineComponent } from 'vue'\n\n` +
         `const DocTree = defineComponent({\n` +
         `  name: 'DocTree',\n` +
+        `  props: { 'defaultOpeneds': { type: Array, default: () => [] } },\n` +
         `  components: { ElMenu, ElMenuItem, ElSubMenu, Sunrise, MoonNight, Key },\n` +
-        `  setup() {\n` +
+        `  setup(props) {\n` +
         `    return () => {\n` +
         `      return <>\n` + DocTree +
         `      </>\n` +
@@ -81,7 +82,7 @@ export default (options={ resolveDir: './.docs', dirReg: /\/\.docs\/?$/, type: f
         `  name: 'MDX_${name.toUpperCase()}',\n` +
         `  components: { MDXComponentContext },` +
         `  setup(props, ctx) {\n` +
-        `    return () => <MDXComponentContext {...ctx.attrs}/>\n` +
+        `    return () => <div class="markdown-body" style="padding: 15px;"><MDXComponentContext {...ctx.attrs}/></div>\n` +
         `  }\n` +
         `})`
 
@@ -96,13 +97,13 @@ export default (options={ resolveDir: './.docs', dirReg: /\/\.docs\/?$/, type: f
 }
 
 // read directory recursively
-async function readdirRecur(resolveDir, level=0) {
+async function readdirRecur(resolveDir, relpath, level=0) {
   const direxts = []
   let DocTree = !level
-    ? spaceRepeat(8) + '<ElMenu mode="vertical" router active-text-color="#C6F3FF" background-color="#545C64" text-color="#b1b1b1">\n' +
+    ? spaceRepeat(8) + `<ElMenu mode="vertical" default-openeds={ props.defaultOpeneds } router active-text-color="#C6F3FF" background-color="#545C64" text-color="#b1b1b1">\n` +
       spaceRepeat(8) + `  {{\n` +
       spaceRepeat(8) + `    default: () => <>\n`
-    : spaceRepeat(6*level+8) + `<ElSubMenu index="${resolveDir}" expand-close-icon={<ElIcon style="color: #FFF9D0"><MoonNight></MoonNight></ElIcon>} expand-open-icon={<ElIcon style="color: #FF4300"><Sunrise></Sunrise></ElIcon>}>\n` +
+    : spaceRepeat(6*level+8) + `<ElSubMenu index="/docs/${relpath}" expand-close-icon={<ElIcon style="color: #FFF9D0"><MoonNight></MoonNight></ElIcon>} expand-open-icon={<ElIcon style="color: #FF4300"><Sunrise></Sunrise></ElIcon>}>\n` +
       spaceRepeat(6*level+8) + `  {{\n` +
       spaceRepeat(6*level+8) + `    title: () => <><ElIcon style="color: #FFEA3E"><MagicStick></MagicStick></ElIcon><span>${resolveDir.split('/').slice(-1)}</span></>,\n` +
       spaceRepeat(6*level+8) + `    default: () => <>\n`
@@ -113,7 +114,7 @@ async function readdirRecur(resolveDir, level=0) {
     direxts.push(dirext)
 
     if(dirext.isDirectory()) {
-      const [subDirexts, subDocTree] = await readdirRecur(dirext.fullpath, level+1)
+      const [subDirexts, subDocTree] = await readdirRecur(dirext.fullpath, dirext.relpath, level+1)
       direxts.push(...subDirexts)
 
       DocTree += subDocTree

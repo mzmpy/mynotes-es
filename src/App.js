@@ -15,7 +15,8 @@ import AsideFrame  from './components/asideFrame'
 import styles from './App.module.css'
 import {
   RouterLink,
-  RouterView
+  RouterView,
+  useRoute
 } from 'vue-router'
 
 export default defineComponent({
@@ -43,24 +44,17 @@ export default defineComponent({
       console.log('[App]: Updated!')
     })
 
-    const getDefaultActive = () => {
-      const indexsMap = {
-        '/': '0',
-        '/markdown': '1',
-        '/test-view': '2',
-      }
-      const fragment = location.pathname.match(/\/[^/]*$/)[0]
-      return indexsMap[fragment]
-    }
+    const route = useRoute()
 
     return () => {
+      const asideDisplay = ['/markdown', '/test-view'].indexOf(route.path) === -1 ? true : false
 
       return <>
-        <BasicFrame class={ styles('frame') } aside={{ width: '450px' }}>
+        <BasicFrame class={ styles('frame') } aside={{ width: '300px', display: asideDisplay }}>
           {{
             header: () => {
               return <>
-                <ElMenu mode="horizontal" ellipsis={ false } default-active={getDefaultActive()}>
+                <ElMenu mode="horizontal" ellipsis={ false } default-active="0">
                   <ElMenuItem index="0" class={ styles('logo-container') }>
                     <RouterLink to="/">MyNotes</RouterLink>
                   </ElMenuItem>
@@ -76,7 +70,9 @@ export default defineComponent({
             },
             aside: () => {
               return <>
-                <AsideFrame></AsideFrame>
+                <KeepAlive>
+                  <AsideFrame></AsideFrame>
+                </KeepAlive>
               </>
             },
             main: () => {

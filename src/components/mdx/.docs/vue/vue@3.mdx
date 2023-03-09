@@ -1,0 +1,38 @@
+import { VShowAndVModelDemo } from '@/components/mdx/constituents/vue/vueDirectives.js'
+
+# vue
+
+* `jsx`生菜：记录关于使用`esbuild`编译`vue`+`jsx`时所用到的一些硬核（生硬）的技巧🐛🦋
+
+  * `v-show`和`v-model`：`jsx`中`v-model`一般需要拆分成`value={ value } onXXX={ actionToValue }`，`v-show`则需要通
+  过`vue`提供的接口`withDirectives`来手动实现；值得注意的是，任何自定义的指令都需要通过这种方式来实现，除非集成类似
+  `esbuild-plugin-vue`这样的插件来使用`vue`的模板语法
+    ```javascript
+    import {
+      defineComponent,
+      withDirectives,
+      ref,
+      vShow
+    } from 'vue'
+    import { ElSwitch } from 'element-plus'
+
+    defineComponent({
+      name: 'Test',
+      components: { ElSwitch },
+      setup() {
+        const show = ref(true)
+        const toggle = () => show.value = !show.value
+
+        return () => {
+          return <>
+            <ElSwitch modelValue={ show.value } onChange={ toggle }></ElSwitch>
+            {
+              withDirectives(<span>🙈</span>, [[vShow, show.value]])
+            }
+          </>
+        }
+      }
+    })
+    ```
+
+    ### `Demo`: { <VShowAndVModelDemo></VShowAndVModelDemo> }

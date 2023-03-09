@@ -8,6 +8,9 @@ import esbuildPluginMdxToVueComponent from '../plugins/esbuild-plugin-mdx-to-vue
 import esbuildMDX from '@mdx-js/esbuild'
 import esbuildPluginNoteRoute from '../plugins/esbuild-plugin-note-route/index.js'
 
+import rehypeHighlight from 'rehype-highlight'
+import remarkGfm from 'remark-gfm'
+
 esbuild.build({
   entryPoints: ['./src/index.js'],
   bundle: true,
@@ -53,7 +56,9 @@ esbuild.build({
       jsxRuntime: 'classic',
       pragma: 'MDX_VUE_JSX_IMPORT_SOURCE.h',
       pragmaFrag: 'MDX_VUE_JSX_IMPORT_SOURCE.Fragment',
-      pragmaImportSource: esbuildMdxJsxImportSource()
+      pragmaImportSource: esbuildMdxJsxImportSource(),
+      remarkPlugins: [remarkGfm],
+      rehypePlugins: [rehypeHighlight]
     }),
     esbuildPluginNoteRoute({
       resolveDir: './src/components/mdx/.docs',
