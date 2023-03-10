@@ -1,6 +1,8 @@
 import koa from 'koa'
 import koaStatic from 'koa-static'
 import koaMount from 'koa-mount'
+import { WebSocketServer } from 'ws'
+import * as chokidar from "chokidar"
 import { historyApiFallback } from 'koa2-connect-history-api-fallback'
 
 import esbuild from 'esbuild'
@@ -19,16 +21,11 @@ import remarkGfm from 'remark-gfm'
 import fs from 'fs'
 import path from 'path'
 
-const clearLastLines = (count) => {
-  process.stdout.moveCursor(0, -count)
-  process.stdout.clearScreenDown()
-}
-
 const prefix = '/mynotes-es'
 
 let timeInMS = new Date()
 
-esbuild.build({
+let ctx = await esbuild.context({
   entryPoints: ['./src/index.js'],
   bundle: true,
   // minify: true,
@@ -50,13 +47,6 @@ esbuild.build({
   // external: ['vue', 'element-plus'],
   jsxFactory: 'h',
   jsxFragment: 'Fragment',
-  watch: {
-    onRebuild(error) {
-      if(error) {
-        console.log(`\nWatch build failed: ${error}`)
-      }
-    }
-  },
   plugins: [
     esbuildPluginParcelCss({
       cssModules: {
@@ -92,19 +82,12 @@ esbuild.build({
   ],
   outdir: './dist',
   metafile: true
-}).then((result) => {
-  fs.writeFile(path.resolve(process.cwd(), './dist/outputMetafile.json'), JSON.stringify(result, null, 2), 'utf-8', (err) => {
-    if(err) {
-      console.log(err)
-    }
-  })
-
-  timeInMS = new Date() - timeInMS
-  console.log(`\nBuilding is done in ${timeInMS} ms.`)
-  setTimeout(() => {
-    clearLastLines(1)
-  }, 3000)
 })
+
+await Rebuild(ctx)
+
+timeInMS = new Date() - timeInMS
+console.log(`First Building is done in ${timeInMS} ms.`)
 
 const proxy = new koa()
 const app = new koa()
@@ -141,3 +124,48 @@ app.use(koaStatic(process.cwd() + '/dist/'))
 proxy.use(koaMount(prefix, app))
 proxy.listen(4375)
 console.log(`Server running at http://127.0.0.1:4375${prefix}/.`)
+
+const wss =new WebSocketServer({
+    port:8080
+})
+
+wss.on('connection', (ws) => {
+  ws.on('error', (error) => {
+    console.log(`WebSocketServer Error: ${error}`)
+  })
+
+  ws.on('message', (msg) => {
+    console.log('\n' + msg)
+    setTimeout(() => {
+      clearLastLines(2)
+    }, 3000)
+  })
+
+  chokidar.watch('./src', {
+    ignoreInitial: true
+  }).on('all', async (eventName, path) => {
+    // console.log(eventName, path)
+
+    await Rebuild(ctx)
+
+    const msg = JSON.stringify({
+      type: 'reload'
+    })
+    ws.send(msg)
+  })
+})
+
+const clearLastLines = (count) => {
+  process.stdout.moveCursor(0, -count)
+  process.stdout.clearScreenDown()
+}
+
+async function Rebuild(ctx) {
+  const result = await ctx.rebuild()
+
+  fs.writeFile(path.resolve(process.cwd(), './dist/outputMetafile.json'), JSON.stringify(result, null, 2), 'utf-8', (err) => {
+    if(err) {
+      console.log(err)
+    }
+  })
+}

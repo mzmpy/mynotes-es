@@ -11,7 +11,12 @@ import esbuildPluginNoteRoute from '../plugins/esbuild-plugin-note-route/index.j
 import rehypeHighlight from 'rehype-highlight'
 import remarkGfm from 'remark-gfm'
 
-esbuild.build({
+import fs from 'fs'
+import path from 'path'
+
+let timeInMS = new Date()
+
+const result = await esbuild.build({
   entryPoints: ['./src/index.js'],
   bundle: true,
   // minify: true,
@@ -67,4 +72,13 @@ esbuild.build({
     })
   ],
   outdir: './dist'
-}).catch(() => process.exit(1))
+})
+
+fs.writeFile(path.resolve(process.cwd(), './dist/outputMetafile.json'), JSON.stringify(result, null, 2), 'utf-8', (err) => {
+  if(err) {
+    console.log(err)
+  }
+})
+
+timeInMS = new Date() - timeInMS
+console.log(`Building is done in ${timeInMS} ms.`)
