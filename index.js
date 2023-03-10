@@ -11,7 +11,7 @@ import {
   magic_stick_default,
   moon_night_default,
   sunrise_default
-} from "./chunks/js/chunk-V636POLK.js";
+} from "./chunks/js/chunk-VNBQYD5P.js";
 import {
   Fragment,
   KeepAlive,
@@ -37,7 +37,7 @@ import {
   watch,
   watchEffect,
   withDirectives
-} from "./chunks/js/chunk-72A4QWRM.js";
+} from "./chunks/js/chunk-ULNEMCHF.js";
 
 // src/index.js
 init_vue_jsxImportSource();
@@ -507,8 +507,11 @@ function useHistoryStateNavigation(base) {
       back: null,
       current: currentLocation.value,
       forward: null,
+      // the length is off by one, we need to decrease it
       position: history2.length - 1,
       replaced: true,
+      // don't add a scroll as the user may have an anchor, and we want
+      // scrollBehavior to be triggered without a saved position
       scroll: null
     }, true);
   }
@@ -530,6 +533,7 @@ function useHistoryStateNavigation(base) {
   function replace(to, data) {
     const state = assign({}, history2.state, buildState(
       historyState.value.back,
+      // keep back and forward entries but override current position
       to,
       historyState.value.forward,
       true
@@ -540,6 +544,9 @@ function useHistoryStateNavigation(base) {
   function push(to, data) {
     const currentState = assign(
       {},
+      // use current history state to gracefully handle a wrong call to
+      // history.replaceState
+      // https://github.com/vuejs/router/issues/366
       historyState.value,
       history2.state,
       {
@@ -576,6 +583,7 @@ function createWebHistory(base) {
     history.go(delta);
   }
   const routerHistory = assign({
+    // it's overridden right after
     location: "",
     base,
     go,
@@ -616,20 +624,35 @@ var NavigationFailureType;
   NavigationFailureType2[NavigationFailureType2["duplicated"] = 16] = "duplicated";
 })(NavigationFailureType || (NavigationFailureType = {}));
 var ErrorTypeMessages = {
-  [1]({ location: location2, currentLocation }) {
+  [
+    1
+    /* ErrorTypes.MATCHER_NOT_FOUND */
+  ]({ location: location2, currentLocation }) {
     return `No match for
  ${JSON.stringify(location2)}${currentLocation ? "\nwhile being at\n" + JSON.stringify(currentLocation) : ""}`;
   },
-  [2]({ from, to }) {
+  [
+    2
+    /* ErrorTypes.NAVIGATION_GUARD_REDIRECT */
+  ]({ from, to }) {
     return `Redirected from "${from.fullPath}" to "${stringifyRoute(to)}" via a navigation guard.`;
   },
-  [4]({ from, to }) {
+  [
+    4
+    /* ErrorTypes.NAVIGATION_ABORTED */
+  ]({ from, to }) {
     return `Navigation aborted from "${from.fullPath}" to "${to.fullPath}" via a navigation guard.`;
   },
-  [8]({ from, to }) {
+  [
+    8
+    /* ErrorTypes.NAVIGATION_CANCELLED */
+  ]({ from, to }) {
     return `Navigation cancelled from "${from.fullPath}" to "${to.fullPath}" with a new navigation.`;
   },
-  [16]({ from, to }) {
+  [
+    16
+    /* ErrorTypes.NAVIGATION_DUPLICATED */
+  ]({ from, to }) {
     return `Avoided redundant navigation to current location: "${from.fullPath}".`;
   }
 };
@@ -676,7 +699,10 @@ function tokensToParser(segments, extraOptions) {
   let pattern = options.start ? "^" : "";
   const keys = [];
   for (const segment of segments) {
-    const segmentScores = segment.length ? [] : [90];
+    const segmentScores = segment.length ? [] : [
+      90
+      /* PathScore.Root */
+    ];
     if (options.strict && !segment.length)
       pattern += "/";
     for (let tokenIndex = 0; tokenIndex < segment.length; tokenIndex++) {
@@ -705,7 +731,9 @@ function tokensToParser(segments, extraOptions) {
         }
         let subPattern = repeatable ? `((?:${re2})(?:/(?:${re2}))*)` : `(${re2})`;
         if (!tokenIndex)
-          subPattern = optional && segment.length < 2 ? `(?:/${subPattern})` : "/" + subPattern;
+          subPattern = // avoid an optional / if there are more segments e.g. /:p?-static
+          // or /:p?-:p2
+          optional && segment.length < 2 ? `(?:/${subPattern})` : "/" + subPattern;
         if (optional)
           subPattern += "?";
         pattern += subPattern;
@@ -956,6 +984,7 @@ function createRouteRecordMatcher(record, parent, options) {
   const matcher = assign(parser, {
     record,
     parent,
+    // these needs to be populated by the parent
     children: [],
     alias: []
   });
@@ -987,9 +1016,14 @@ function createRouterMatcher(routes2, globalOptions) {
       const aliases = typeof record.alias === "string" ? [record.alias] : record.alias;
       for (const alias of aliases) {
         normalizedRecords.push(assign({}, mainNormalizedRecord, {
+          // this allows us to hold a copy of the `components` option
+          // so that async components cache is hold on the original record
           components: originalRecord ? originalRecord.record.components : mainNormalizedRecord.components,
           path: alias,
+          // we might be the child of an alias
           aliasOf: originalRecord ? originalRecord.record : mainNormalizedRecord
+          // the aliases are always of the same kind as the original since they
+          // are defined on the same record
         }));
       }
     }
@@ -1060,7 +1094,9 @@ function createRouterMatcher(routes2, globalOptions) {
   }
   function insertMatcher(matcher) {
     let i = 0;
-    while (i < matchers.length && comparePathParserScore(matcher, matchers[i]) >= 0 && (matcher.record.path !== matchers[i].record.path || !isRecordChildOf(matcher, matchers[i])))
+    while (i < matchers.length && comparePathParserScore(matcher, matchers[i]) >= 0 && // Adding children with empty path should still appear before the parent
+    // https://github.com/vuejs/router/issues/1124
+    (matcher.record.path !== matchers[i].record.path || !isRecordChildOf(matcher, matchers[i])))
       i++;
     matchers.splice(i, 0, matcher);
     if (matcher.record.name && !isAliasRecord(matcher))
@@ -1085,10 +1121,15 @@ function createRouterMatcher(routes2, globalOptions) {
       }
       name = matcher.record.name;
       params = assign(
+        // paramsFromLocation is a new object
         paramsFromLocation(
           currentLocation.params,
+          // only keep params that exist in the resolved location
+          // TODO: only keep optional params coming from a parent record
           matcher.keys.filter((k) => !k.optional).map((k) => k.name)
         ),
+        // discard any existing params in the current location that do not exist here
+        // #1497 this ensures better active/exact matching
         location2.params && paramsFromLocation(location2.params, matcher.keys.map((k) => k.name))
       );
       path = matcher.stringify(params);
@@ -1331,7 +1372,8 @@ function useCallbacks() {
   };
 }
 function guardToPromiseFn(guard, to, from, record, name) {
-  const enterCallbackArray = record && (record.enterCallbacks[name] = record.enterCallbacks[name] || []);
+  const enterCallbackArray = record && // name is defined if record is because of the function overload
+  (record.enterCallbacks[name] = record.enterCallbacks[name] || []);
   return () => new Promise((resolve, reject) => {
     const next = (valid) => {
       if (valid === false) {
@@ -1347,7 +1389,8 @@ function guardToPromiseFn(guard, to, from, record, name) {
           to: valid
         }));
       } else {
-        if (enterCallbackArray && record.enterCallbacks[name] === enterCallbackArray && typeof valid === "function") {
+        if (enterCallbackArray && // since enterCallbackArray is truthy, both record and name also are
+        record.enterCallbacks[name] === enterCallbackArray && typeof valid === "function") {
           enterCallbackArray.push(valid);
         }
         resolve();
@@ -1406,7 +1449,8 @@ function extractComponentsGuards(matched, guardType, to, from) {
           warn(`Component "${name}" in record with path "${record.path}" is a Promise instead of a function that returns a Promise. Did you write "import('./MyPage.vue')" instead of "() => import('./MyPage.vue')" ? This will break in production if not fixed.`);
           const promise = rawComponent;
           rawComponent = () => promise;
-        } else if (rawComponent.__asyncLoader && !rawComponent.__warnedDefineAsync) {
+        } else if (rawComponent.__asyncLoader && // warn only once per component
+        !rawComponent.__warnedDefineAsync) {
           rawComponent.__warnedDefineAsync = true;
           warn(`Component "${name}" in record with path "${record.path}" is defined using "defineAsyncComponent()". Write "() => import('./MyPage.vue')" instead of "defineAsyncComponent(() => import('./MyPage.vue'))".`);
         }
@@ -1455,7 +1499,14 @@ function useLink(props) {
     if (index > -1)
       return index;
     const parentRecordPath = getOriginalPath(matched[length - 2]);
-    return length > 1 && getOriginalPath(routeMatched) === parentRecordPath && currentMatched[currentMatched.length - 1].path !== parentRecordPath ? currentMatched.findIndex(isSameRouteRecord.bind(null, matched[length - 2])) : index;
+    return (
+      // we are dealing with nested routes
+      length > 1 && // if the parent and matched route have the same path, this link is
+      // referring to the empty child. Or we currently are on a different
+      // child of the same parent
+      getOriginalPath(routeMatched) === parentRecordPath && // avoid comparing the child with its parent
+      currentMatched[currentMatched.length - 1].path !== parentRecordPath ? currentMatched.findIndex(isSameRouteRecord.bind(null, matched[length - 2])) : index
+    );
   });
   const isActive = computed(() => activeRecordIndex.value > -1 && includesParams(currentRoute.params, route.value.params));
   const isExactActive = computed(() => activeRecordIndex.value > -1 && activeRecordIndex.value === currentRoute.matched.length - 1 && isSameRouteLocationParams(currentRoute.params, route.value.params));
@@ -1463,6 +1514,7 @@ function useLink(props) {
     if (guardEvent(e)) {
       return router2[unref(props.replace) ? "replace" : "push"](
         unref(props.to)
+        // avoid uncaught errors are they are logged anyway
       ).catch(noop);
     }
     return Promise.resolve();
@@ -1502,6 +1554,7 @@ var RouterLinkImpl = /* @__PURE__ */ defineComponent({
     },
     replace: Boolean,
     activeClass: String,
+    // inactiveClass: String,
     exactActiveClass: String,
     custom: Boolean,
     ariaCurrentValue: {
@@ -1515,6 +1568,11 @@ var RouterLinkImpl = /* @__PURE__ */ defineComponent({
     const { options } = inject(routerKey);
     const elClass = computed(() => ({
       [getLinkClass(props.activeClass, options.linkActiveClass, "router-link-active")]: link.isActive,
+      // [getLinkClass(
+      //   props.inactiveClass,
+      //   options.linkInactiveClass,
+      //   'router-link-inactive'
+      // )]: !link.isExactActive,
       [getLinkClass(props.exactActiveClass, options.linkExactActiveClass, "router-link-exact-active")]: link.isExactActive
     }));
     return () => {
@@ -1522,6 +1580,8 @@ var RouterLinkImpl = /* @__PURE__ */ defineComponent({
       return props.custom ? children : h("a", {
         "aria-current": link.isExactActive ? props.ariaCurrentValue : null,
         href: link.href,
+        // this would override user added attrs but Vue will still add
+        // the listener, so we end up triggering both
         onClick: link.navigate,
         class: elClass.value
       }, children);
@@ -1565,6 +1625,7 @@ function getOriginalPath(record) {
 var getLinkClass = (propClass, globalClass, defaultClass) => propClass != null ? propClass : globalClass != null ? globalClass : defaultClass;
 var RouterViewImpl = /* @__PURE__ */ defineComponent({
   name: "RouterView",
+  // #674 we manually inherit them
   inheritAttrs: false,
   props: {
     name: {
@@ -1573,6 +1634,8 @@ var RouterViewImpl = /* @__PURE__ */ defineComponent({
     },
     route: Object
   },
+  // Better compat for @vue/compat users
+  // https://github.com/vuejs/router/issues/1315
   compatConfig: { MODE: 3 },
   setup(props, { attrs, slots }) {
     warnDeprecatedUsage();
@@ -1605,7 +1668,9 @@ var RouterViewImpl = /* @__PURE__ */ defineComponent({
           }
         }
       }
-      if (instance && to && (!from || !isSameRouteRecord(to, from) || !oldInstance)) {
+      if (instance && to && // if there is no instance but to and from are the same this might be
+      // the first visit
+      (!from || !isSameRouteRecord(to, from) || !oldInstance)) {
         (to.enterCallbacks[name] || []).forEach((callback) => callback(instance));
       }
     }, { flush: "post" });
@@ -1640,7 +1705,11 @@ var RouterViewImpl = /* @__PURE__ */ defineComponent({
           instance.__vrv_devtools = info;
         });
       }
-      return normalizeSlot(slots.default, { Component: component, route }) || component;
+      return (
+        // pass the vnode to the slot as a prop.
+        // h and <component :is="..."> both accept vnodes
+        normalizeSlot(slots.default, { Component: component, route }) || component
+      );
     };
   }
 });
@@ -1668,6 +1737,7 @@ Use slot props instead:
 }
 function formatRouteLocation(routeLocation, tooltip) {
   const copy = assign({}, routeLocation, {
+    // remove variables that can contain vue instances
     matched: routeLocation.matched.map((matched) => omit(matched, ["instances", "children", "aliasOf"]))
   });
   return {
@@ -1838,7 +1908,10 @@ function addDevtools(app2, router2, matcher) {
       let routes2 = matcher.getRoutes().filter((route) => !route.parent);
       routes2.forEach(resetMatchStateOnRouteRecord);
       if (payload.filter) {
-        routes2 = routes2.filter((route) => isRouteMatching(route, payload.filter.toLowerCase()));
+        routes2 = routes2.filter((route) => (
+          // save matches state based on the payload
+          isRouteMatching(route, payload.filter.toLowerCase())
+        ));
       }
       routes2.forEach((route) => markRouteRecordActive(route, router2.currentRoute.value));
       payload.rootNodes = routes2.map(formatRouteRecordForInspector);
@@ -2064,7 +2137,10 @@ function createRouter(options) {
   }
   const normalizeParams = applyToParams.bind(null, (paramValue) => "" + paramValue);
   const encodeParams = applyToParams.bind(null, encodeParam);
-  const decodeParams = applyToParams.bind(null, decode);
+  const decodeParams = (
+    // @ts-expect-error: intentionally avoid the type check
+    applyToParams.bind(null, decode)
+  );
   function addRoute(parentOrRoute, route) {
     let parent;
     let record;
@@ -2112,8 +2188,10 @@ function createRouter(options) {
     }
     let matcherLocation;
     if ("path" in rawLocation) {
-      if ("params" in rawLocation && !("name" in rawLocation) && Object.keys(rawLocation.params).length) {
-        warn(`Path "${rawLocation.path}" was passed with params but they will be ignored. Use a named route alongside params instead.`);
+      if ("params" in rawLocation && !("name" in rawLocation) && // @ts-expect-error: the type is never
+      Object.keys(rawLocation.params).length) {
+        warn(`Path "${// @ts-expect-error: the type is never
+        rawLocation.path}" was passed with params but they will be ignored. Use a named route alongside params instead.`);
       }
       matcherLocation = assign({}, rawLocation, {
         path: parseURL(parseQuery$1, rawLocation.path, currentLocation.path).path
@@ -2150,8 +2228,17 @@ function createRouter(options) {
     }
     return assign({
       fullPath,
+      // keep the hash encoded so fullPath is effectively path + encodedQuery +
+      // hash
       hash,
-      query: stringifyQuery$1 === stringifyQuery ? normalizeQuery(rawLocation.query) : rawLocation.query || {}
+      query: (
+        // if the user is using a custom query lib like qs, we might have
+        // nested objects, so we keep the query as is, meaning it can contain
+        // numbers at `$route.query`, but at the point, the user will have to
+        // use their own type anyway.
+        // https://github.com/vuejs/router/issues/328#issuecomment-649481567
+        stringifyQuery$1 === stringifyQuery ? normalizeQuery(rawLocation.query) : rawLocation.query || {}
+      )
     }, matchedRoute, {
       redirectedFrom: void 0,
       href
@@ -2180,7 +2267,10 @@ function createRouter(options) {
       const { redirect } = lastMatched;
       let newTargetLocation = typeof redirect === "function" ? redirect(to) : redirect;
       if (typeof newTargetLocation === "string") {
-        newTargetLocation = newTargetLocation.includes("?") || newTargetLocation.includes("#") ? newTargetLocation = locationAsObject(newTargetLocation) : { path: newTargetLocation };
+        newTargetLocation = newTargetLocation.includes("?") || newTargetLocation.includes("#") ? newTargetLocation = locationAsObject(newTargetLocation) : (
+          // force empty params
+          { path: newTargetLocation }
+        );
         newTargetLocation.params = {};
       }
       if (!("path" in newTargetLocation) && !("name" in newTargetLocation)) {
@@ -2192,6 +2282,7 @@ ${JSON.stringify(newTargetLocation, null, 2)}
       return assign({
         query: to.query,
         hash: to.hash,
+        // avoid transferring params if the redirect has a path
         params: "path" in newTargetLocation ? {} : to.params
       }, newTargetLocation);
     }
@@ -2210,6 +2301,7 @@ ${JSON.stringify(newTargetLocation, null, 2)}
           force,
           replace: replace2
         }),
+        // keep original redirectedFrom if it exists
         redirectedFrom || targetLocation
       );
     const toLocation = targetLocation;
@@ -2220,24 +2312,51 @@ ${JSON.stringify(newTargetLocation, null, 2)}
       handleScroll(
         from,
         from,
+        // this is a push, the only way for it to be triggered from a
+        // history.listen is with a redirect, which makes it become a push
         true,
+        // This cannot be the first navigation because the initial location
+        // cannot be manually navigated to
         false
       );
     }
-    return (failure ? Promise.resolve(failure) : navigate(toLocation, from)).catch((error) => isNavigationFailure(error) ? isNavigationFailure(error, 2) ? error : markAsReady(error) : triggerError(error, toLocation, from)).then((failure2) => {
+    return (failure ? Promise.resolve(failure) : navigate(toLocation, from)).catch((error) => isNavigationFailure(error) ? (
+      // navigation redirects still mark the router as ready
+      isNavigationFailure(
+        error,
+        2
+        /* ErrorTypes.NAVIGATION_GUARD_REDIRECT */
+      ) ? error : markAsReady(error)
+    ) : (
+      // reject any unknown error
+      triggerError(error, toLocation, from)
+    )).then((failure2) => {
       if (failure2) {
-        if (isNavigationFailure(failure2, 2)) {
-          if (isSameRouteLocation(stringifyQuery$1, resolve(failure2.to), toLocation) && redirectedFrom && (redirectedFrom._count = redirectedFrom._count ? redirectedFrom._count + 1 : 1) > 10) {
+        if (isNavigationFailure(
+          failure2,
+          2
+          /* ErrorTypes.NAVIGATION_GUARD_REDIRECT */
+        )) {
+          if (// we are redirecting to the same location we were already at
+          isSameRouteLocation(stringifyQuery$1, resolve(failure2.to), toLocation) && // and we have done it a couple of times
+          redirectedFrom && // @ts-expect-error: added only in dev
+          (redirectedFrom._count = redirectedFrom._count ? (
+            // @ts-expect-error
+            redirectedFrom._count + 1
+          ) : 1) > 10) {
             warn(`Detected an infinite redirection in a navigation guard when going from "${from.fullPath}" to "${toLocation.fullPath}". Aborting to avoid a Stack Overflow. This will break in production if not fixed.`);
             return Promise.reject(new Error("Infinite redirect in navigation guard"));
           }
           return pushWithRedirect(
+            // keep options
             assign({
+              // preserve an existing replacement but allow the redirect to override it
               replace: replace2
             }, locationAsObject(failure2.to), {
               state: typeof failure2.to === "object" ? assign({}, data, failure2.to.state) : data,
               force
             }),
+            // preserve the original redirectedFrom if any
             redirectedFrom || toLocation
           );
         }
@@ -2305,7 +2424,11 @@ ${JSON.stringify(newTargetLocation, null, 2)}
       }
       guards.push(canceledNavigationCheck);
       return runGuardQueue(guards);
-    }).catch((err) => isNavigationFailure(err, 8) ? err : Promise.reject(err));
+    }).catch((err) => isNavigationFailure(
+      err,
+      8
+      /* ErrorTypes.NAVIGATION_CANCELLED */
+    ) ? err : Promise.reject(err));
   }
   function triggerAfterEach(to, from, failure) {
     for (const guard of afterGuards.list())
@@ -2348,15 +2471,28 @@ ${JSON.stringify(newTargetLocation, null, 2)}
         saveScrollPosition(getScrollKey(from.fullPath, info.delta), computeScrollPosition());
       }
       navigate(toLocation, from).catch((error) => {
-        if (isNavigationFailure(error, 4 | 8)) {
+        if (isNavigationFailure(
+          error,
+          4 | 8
+          /* ErrorTypes.NAVIGATION_CANCELLED */
+        )) {
           return error;
         }
-        if (isNavigationFailure(error, 2)) {
+        if (isNavigationFailure(
+          error,
+          2
+          /* ErrorTypes.NAVIGATION_GUARD_REDIRECT */
+        )) {
           pushWithRedirect(
             error.to,
             toLocation
+            // avoid an uncaught rejection, let push call triggerError
           ).then((failure) => {
-            if (isNavigationFailure(failure, 4 | 16) && !info.delta && info.type === NavigationType.pop) {
+            if (isNavigationFailure(
+              failure,
+              4 | 16
+              /* ErrorTypes.NAVIGATION_DUPLICATED */
+            ) && !info.delta && info.type === NavigationType.pop) {
               routerHistory.go(-1, false);
             }
           }).catch(noop);
@@ -2368,14 +2504,25 @@ ${JSON.stringify(newTargetLocation, null, 2)}
         return triggerError(error, toLocation, from);
       }).then((failure) => {
         failure = failure || finalizeNavigation(
+          // after navigation, all matched components are resolved
           toLocation,
           from,
           false
         );
         if (failure) {
-          if (info.delta && !isNavigationFailure(failure, 8)) {
+          if (info.delta && // a new navigation has been triggered, so we do not want to revert, that will change the current history
+          // entry while a different route is displayed
+          !isNavigationFailure(
+            failure,
+            8
+            /* ErrorTypes.NAVIGATION_CANCELLED */
+          )) {
             routerHistory.go(-info.delta, false);
-          } else if (info.type === NavigationType.pop && isNavigationFailure(failure, 4 | 16)) {
+          } else if (info.type === NavigationType.pop && isNavigationFailure(
+            failure,
+            4 | 16
+            /* ErrorTypes.NAVIGATION_DUPLICATED */
+          )) {
             routerHistory.go(-1, false);
           }
         }
@@ -2453,7 +2600,9 @@ ${JSON.stringify(newTargetLocation, null, 2)}
         enumerable: true,
         get: () => unref(currentRoute)
       });
-      if (isBrowser && !started && currentRoute.value === START_LOCATION_NORMALIZED) {
+      if (isBrowser && // used for the initial navigation client side to avoid pushing
+      // multiple times when the router is used in multiple apps
+      !started && currentRoute.value === START_LOCATION_NORMALIZED) {
         started = true;
         push(routerHistory.location).catch((err) => {
           if (true)
@@ -2539,8 +2688,8 @@ var DocTree = defineComponent({
   }
 });
 var noteRoutes = [
-  { path: "/docs/vue/vue-router@4.mdx", name: "VUE-ROUTER@4_MDX", component: () => import("./chunks/js/vue-router@4-443Y2U7C.js") },
-  { path: "/docs/vue/vue@3.mdx", name: "VUE@3_MDX", component: () => import("./chunks/js/vue@3-QVK2X7VS.js") }
+  { path: "/docs/vue/vue-router@4.mdx", name: "VUE-ROUTER@4_MDX", component: () => import("./chunks/js/vue-router@4-RRDFDTGU.js") },
+  { path: "/docs/vue/vue@3.mdx", name: "VUE@3_MDX", component: () => import("./chunks/js/vue@3-GX4XVMXF.js") }
 ];
 var pathInfo = [
   { path: "/docs/vue", label: "vue", isDir: true },
@@ -2554,17 +2703,17 @@ var routes = [
   {
     path: "/",
     name: "root",
-    component: () => import("./chunks/js/friday-NJVAAGR2.js")
+    component: () => import("./chunks/js/friday-736Y6R4A.js")
   },
   {
     path: "/markdown",
     name: "Markdown",
-    component: () => import("./chunks/js/markdown-UXQBLSJP.js")
+    component: () => import("./chunks/js/markdown-OCJ7UK5W.js")
   },
   {
     path: "/test-view",
     name: "TestView",
-    component: () => import("./chunks/js/test-MS4OXXT7.js")
+    component: () => import("./chunks/js/test-X6SBK6WR.js")
   },
   ...__default
 ];
@@ -2587,7 +2736,7 @@ init_vue_runtime_esm_bundler();
 
 // src/components/basicFrame/index.module.css
 init_vue_jsxImportSource();
-var styles = { "default-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-aside", "composes": [], "isReferenced": false }, "default-body": { "name": "src__components__basicFrame__index-1c_bGa-default-body", "composes": [], "isReferenced": false }, "default-main-no-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-main-no-aside", "composes": [], "isReferenced": false }, "basic-frame": { "name": "src__components__basicFrame__index-1c_bGa-basic-frame", "composes": [], "isReferenced": false }, "default-header": { "name": "src__components__basicFrame__index-1c_bGa-default-header", "composes": [], "isReferenced": false }, "default-main": { "name": "src__components__basicFrame__index-1c_bGa-default-main", "composes": [], "isReferenced": false } };
+var styles = { "default-main": { "name": "src__components__basicFrame__index-1c_bGa-default-main", "composes": [], "isReferenced": false }, "default-header": { "name": "src__components__basicFrame__index-1c_bGa-default-header", "composes": [], "isReferenced": false }, "default-body": { "name": "src__components__basicFrame__index-1c_bGa-default-body", "composes": [], "isReferenced": false }, "basic-frame": { "name": "src__components__basicFrame__index-1c_bGa-basic-frame", "composes": [], "isReferenced": false }, "default-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-aside", "composes": [], "isReferenced": false }, "default-main-no-aside": { "name": "src__components__basicFrame__index-1c_bGa-default-main-no-aside", "composes": [], "isReferenced": false } };
 var index_module_default = ((styles3) => {
   return (className) => {
     if (typeof className !== "string")
@@ -2668,7 +2817,7 @@ var asideFrame_default = defineComponent({
 
 // src/App.module.css
 init_vue_jsxImportSource();
-var styles2 = { "logo-container": { "name": "src__App-Kl9wQq-logo-container", "composes": [], "isReferenced": false }, "filler": { "name": "src__App-Kl9wQq-filler", "composes": [], "isReferenced": false }, "frame": { "name": "src__App-Kl9wQq-frame", "composes": [], "isReferenced": false } };
+var styles2 = { "frame": { "name": "src__App-Kl9wQq-frame", "composes": [], "isReferenced": false }, "logo-container": { "name": "src__App-Kl9wQq-logo-container", "composes": [], "isReferenced": false }, "filler": { "name": "src__App-Kl9wQq-filler", "composes": [], "isReferenced": false } };
 var App_module_default = ((styles3) => {
   return (className) => {
     if (typeof className !== "string")
@@ -2727,8 +2876,12 @@ globalThis.__VUE_PROD_DEVTOOLS__ = false;
 var app = createApp(App_default);
 app.use(router_default);
 app.mount("#app");
-/*!
-  * vue-router v4.1.6
-  * (c) 2022 Eduardo San Martin Morote
-  * @license MIT
-  */
+/*! Bundled license information:
+
+vue-router/dist/vue-router.mjs:
+  (*!
+    * vue-router v4.1.6
+    * (c) 2022 Eduardo San Martin Morote
+    * @license MIT
+    *)
+*/
