@@ -5,21 +5,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script type="text/javascript">
-    const socket = new WebSocket('ws://localhost:8080');
-
-    socket.addEventListener('open', () => {
-      console.log('ws connected.')
-    })
-
-    socket.addEventListener('message', (event) => {
-      const data = JSON.parse(event.data)
-      if(data.type === 'reload') {
-        location.reload()
-        socket.send(`Page[${location.href}] has been reloaded.`)
-      }
-    })
-  </script>
   <!-- inject stylesheet here! --><link rel="stylesheet" href="./index.css"></link>
 </head>
 <body>
