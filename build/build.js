@@ -19,16 +19,19 @@ let timeInMS = new Date()
 const result = await esbuild.build({
   entryPoints: ['./src/index.js'],
   bundle: true,
-  // minify: true,
+  minify: true,
   splitting: true,
   format: 'esm',
   treeShaking: true,
+  platform: 'browser',
+  target: 'esnext',
   loader: {
     '.js': 'jsx',
     '.ttf': 'file',
     '.woff': 'file',
     '.woff2': 'file',
-    '.jpg': 'dataurl'
+    '.jpg': 'dataurl',
+    '.svg': 'dataurl'
   },
   alias: {
     '@/*': './src/*'
