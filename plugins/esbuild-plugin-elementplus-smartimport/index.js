@@ -1,4 +1,9 @@
+import fs from 'fs'
 import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 export default (options = { module: 'es' }) => {
   return {
@@ -26,6 +31,15 @@ export default (options = { module: 'es' }) => {
         return {
           path: redirectPath
         }
+      })
+
+      build.onEnd((result) => {
+        const typesDirPath = path.resolve(process.cwd(), './src/types')
+        if(!fs.existsSync(typesDirPath)) fs.mkdirSync(typesDirPath)
+        fs.writeFileSync(
+          path.resolve(typesDirPath, 'element-plus.d.ts'),
+          fs.readFileSync(path.resolve(__dirname, 'lib/element-plus.d.ts'), { encoding: 'utf-8' })
+        )
       })
     }
   }

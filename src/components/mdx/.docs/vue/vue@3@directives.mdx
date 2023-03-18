@@ -1,0 +1,181 @@
+import VShowAndVModelDemo from '@/components/mdx/constituents/vue/vueVShow.jsx'
+import VLazyDemo from '@/components/mdx/constituents/vue/vueDirectiveVLazy.jsx'
+import VThrottleDemo from '@/components/mdx/constituents/vue/vueDirectiveVThrottle.jsx'
+
+# vue directives
+
+* `jsx`生菜：记录关于使用`esbuild`编译`vue`+`jsx`时所用到的一些硬核（生硬）的技巧🐛🦋
+
+  * `v-show`和`v-model`：`jsx`中`v-model`一般需要拆分成`value={ value } onXXX={ actionToValue }`，`v-show`则需要通
+  过`vue`提供的接口`withDirectives`来手动实现；值得注意的是，任何自定义的指令都需要通过这种方式来实现，除非集成类似
+  `esbuild-plugin-vue`这样的插件来使用`vue`的模板语法
+    ```javascript
+    import {
+      defineComponent,
+      withDirectives,
+      ref,
+      vShow
+    } from 'vue'
+    import { ElSwitch } from 'element-plus/components'
+
+    defineComponent({
+      name: 'Test',
+      components: { ElSwitch },
+      setup() {
+        const show = ref(true)
+        const toggle = () => show.value = !show.value
+
+        return () => {
+          return <>
+            <ElSwitch modelValue={ show.value } onChange={ toggle }></ElSwitch>
+            {
+              withDirectives(<span>🙈</span>, [[vShow, show.value]])
+            }
+          </>
+        }
+      }
+    })
+    ```
+
+    ### `Demo`: { <VShowAndVModelDemo></VShowAndVModelDemo> }
+
+  ## 自定义指令
+
+  * 自定义图片懒加载指令`v-lazy`：
+    ```javascript
+    import { defineComponent, withDirectives } from 'vue'
+    import styles from '@/components/mdx/constituents/styles/vueDirectiveVLazy.module.css'
+    import catGirlImg from '@/assets/images/catgirl.jpg'
+    import defaultImg from '@/assets/images/nopic.svg'
+
+    export default defineComponent({
+      name: 'LazyPicture',
+      setup() {
+        const data = {
+          'http://example.com/catgirl.jpg': catGirlImg
+        }
+
+        const VLazy = {
+          beforeMount(el, binding) {
+            el.dataset.src = el.src
+            el.src = defaultImg
+          },
+          mounted(el, binding) {
+            const lazy = binding.value
+
+            if(lazy) {
+              // 这里有个大坑。。。
+              // IntersectionObserver的回调会在初始化的时候执行一次，
+              // 所以务必做好对entry.intersectionRatio和entry.isIntersecting的判断
+              const observer = new IntersectionObserver((entries) => {
+                for(const entry of entries) {
+                  if(entry.intersectionRatio > 0.0) {
+                    // 模拟异步数据请求
+                    setTimeout(() => {
+                      entry.target.src = data[entry.target.dataset.src]
+                      if(entry.isIntersecting) {
+                        entry.target.removeAttribute('data-src')
+                        observer.unobserve(entry.target)
+                      }
+                    }, 1000)
+                  }
+                }
+              }, {
+                rootMargin: '0px 0px 0px 0px',
+                threshold: 0.0
+              })
+
+              observer.observe(el)
+            }
+          }
+        }
+
+        return () => {
+          return <>
+            <div class={ styles('content') }>
+              {
+                withDirectives(
+                  <img src="http://example.com/catgirl.jpg" class={ styles('cat-girl') }></img>,
+                  [[VLazy, true]]
+                )
+              }
+            </div>
+          </>
+        }
+      }
+    })
+    ```
+    ```css
+    .content {
+      display: flex;
+      justify-content: left;
+    }
+
+    .cat-girl {
+      width: 275px;
+      border-radius: 11px;
+    }
+    ```
+
+    ### `Demo`: { <VLazyDemo></VLazyDemo> }
+  
+  * 自定义节流指令`v-throttle`：
+    ```javascript
+    import { defineComponent, withDirectives } from "vue"
+    import { ElButton, ElMessage } from 'element-plus/components'
+
+    export default defineComponent({
+      name: 'ThrottleButton',
+      components: { ElButton },
+      setup() {
+        const styleDict = { 'vertical-align': 'text-bottom' }
+
+        const onSubmit = () => {
+          ElMessage({
+            message: 'Done!',
+            type: 'success'
+          })
+        }
+
+        const VThrottle = {
+          mounted(el, binding) {
+            const interval = typeof binding.value === 'number' ? binding.value : 1500
+
+            let timer = null
+            el.addEventListener(
+              'click',
+              (ev) => {
+                if(!timer) {
+                  timer = setTimeout(() => {
+                    timer = null
+                  }, interval)
+                } else {
+                  ev && ev.stopImmediatePropagation()
+                }
+              },
+              true
+            )
+          }
+        }
+
+        return () => {
+          return <>
+            {
+              withDirectives(
+                <ElButton
+                  style={ styleDict }
+                  type="primary"
+                  plain size="small"
+                  onClick={ onSubmit }
+                >
+                  提交
+                </ElButton>,
+                [[VThrottle, true]]
+              )
+            }
+          </>
+        }
+      }
+    })
+    ```
+    ### `Demo` { <VThrottleDemo></VThrottleDemo> }

@@ -4,9 +4,9 @@ import {
   ref,
   vShow
 } from 'vue'
-import { ElSwitch } from 'element-plus'
+import { ElSwitch } from 'element-plus/components'
 
-const VShowAndVModelDemo = defineComponent({
+export default defineComponent({
   name: 'Test',
   components: { ElSwitch },
   setup() {
@@ -23,5 +23,3 @@ const VShowAndVModelDemo = defineComponent({
     }
   }
 })
-
-export { VShowAndVModelDemo }

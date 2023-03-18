@@ -1,0 +1,9 @@
+.content {
+  display: flex;
+  justify-content: left;
+}
+
+.cat-girl {
+  width: 275px;
+  border-radius: 11px;
+}

@@ -1,6 +1,7 @@
 import {
   defineComponent,
   KeepAlive,
+  computed,
   onBeforeMount,
   onMounted,
   onBeforeUpdate,
@@ -10,8 +11,8 @@ import {
   ElMenu,
   ElMenuItem
 } from 'element-plus/components'
-import BasicFrame from './components/basicFrame'
-import AsideFrame  from './components/asideFrame'
+import BasicFrame from './components/basicFrame/index.jsx'
+import AsideFrame  from './components/asideFrame/index.jsx'
 import styles from './App.module.css'
 import {
   RouterLink,
@@ -46,11 +47,11 @@ export default defineComponent({
 
     const route = useRoute()
 
-    return () => {
-      const asideDisplay = ['/markdown', '/test-view'].indexOf(route.path) === -1 ? true : false
+    const asideDisplay = computed(() => ['/markdown', '/test-view'].indexOf(route.path) === -1 ? true : false)
 
+    return () => {
       return <>
-        <BasicFrame class={ styles('frame') } aside={{ width: '300px', display: asideDisplay }}>
+        <BasicFrame class={ styles('frame') } aside={{ width: '300px', display: asideDisplay.value }}>
           {{
             header: () => {
               return <>
@@ -96,3 +97,5 @@ export default defineComponent({
     }
   },
 })
+
+export const EXPORT_TEST = 'EXPORT_TEST'

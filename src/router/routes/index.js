@@ -9,12 +9,12 @@ const routes = [
   {
     path: '/markdown',
     name: 'Markdown',
-    component: () => import('@/views/markdown')
+    component: () => import('@/views/markdown/index.jsx')
   },
   {
     path: '/test-view',
     name: 'TestView',
-    component: () => import('@/views/test')
+    component: () => import('@/views/test/index.jsx')
   },
   ...noteRoutes
 ]

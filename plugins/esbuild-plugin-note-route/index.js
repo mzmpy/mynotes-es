@@ -1,11 +1,15 @@
 import fs from 'fs'
 import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 export default (options={ resolveDir: './.docs', dirReg: /\/\.docs\/?$/, type: false, generateDocTree: true }) => {
   return {
     name: 'note-route',
     setup(build) {
-      build.onResolve({ filter: options.dirReg, namespace: 'file' }, async (args) => {
+      build.onResolve({ filter: options.dirReg }, async (args) => {
         return {
           path: args.path,
           namespace: 'NOTE_ROUTE'
@@ -54,7 +58,7 @@ export default (options={ resolveDir: './.docs', dirReg: /\/\.docs\/?$/, type: f
 
         const typeDefinitionFile = options.resolveDir + '/index.d.ts'
         if(options.type && !fs.existsSync(typeDefinitionFile)) {
-          await fs.promises.copyFile('./plugins/esbuild-plugin-note-route/lib/type.d.ts', typeDefinitionFile)
+          await fs.promises.copyFile(path.resolve(__dirname, 'lib/type.d.ts'), typeDefinitionFile)
         }
 
         return {

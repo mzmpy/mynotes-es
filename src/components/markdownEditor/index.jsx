@@ -5,7 +5,7 @@ import {
 } from 'vue'
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 // import 'monaco-editor/esm/vs/basic-languages/markdown/markdown.contribution'
-import markdownExtended from './markdown'
+import markdownExtended from './markdown.js'
 import styles from './index.module.css'
 
 export default defineComponent({

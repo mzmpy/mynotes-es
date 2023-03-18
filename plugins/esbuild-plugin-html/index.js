@@ -1,11 +1,15 @@
 import fs from 'fs'
 import path from 'path'
 
-import { __dirname } from '../../nodeCMP.js'
+import { fileURLToPath } from 'url'
 
-export default (options={}) => {
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+export default (options={ module: true }) => {
   return {
     name: 'html-plugin',
+    // By default, one and only one entry file will be referred into a html file.
     setup(build) {
       // read esbuild's bundling configuration
       const configs = build.initialOptions
@@ -31,6 +35,7 @@ export default (options={}) => {
             throw TypeError('[options.source] must be an array of paths or a path string.')
           
           entryPoints.forEach((item, index) => {
+            if(!outputsMap[path.posix.join(item)]) return
             const sourceFile = isString(options.source) ? options.source : options.source[index]
             writeHtml(path.relative(__dirname, sourceFile) || './default.html', outputsMap[path.posix.join(item)], options.module)
           })
@@ -38,7 +43,8 @@ export default (options={}) => {
           if(!(isObject(options.source) || isString(options.source)))
             throw TypeError('[options.source] must be an object of paths or a path string.')
 
-          for(key in entryPoints) {
+          for(const key in entryPoints) {
+            if(!outputsMap[path.posix.join(entryPoints[key])]) continue
             const sourceFile = isString(options.source) ? options.source : options.source[key]
             writeHtml(path.relative(__dirname, sourceFile) || './default.html', outputsMap[path.posix.join(entryPoints[key])], options.module)
           }
@@ -49,20 +55,23 @@ export default (options={}) => {
 }
 
 function generatePath(sourcePath, suffix='') {
-  return path.join(path.dirname(sourcePath), path.basename(sourcePath, path.extname(sourcePath)) + suffix)
+  // return path.join(path.dirname(sourcePath), path.basename(sourcePath, path.extname(sourcePath)) + suffix)
+  return path.join(path.dirname(sourcePath), 'index' + suffix)
 }
 
-async function writeHtml(sourceFile, info, module=false) {
-  let template = await fs.promises.readFile(path.resolve(__dirname, sourceFile), { encoding: 'utf-8' })
-            
-  const jsReplace = `<!-- inject jscode here! --><script type="${module ? 'module' : 'text/javascript'}" src="./${path.basename(info.outputPoint)}"></script>`
-  const styleReplace = `<!-- inject stylesheet here! --><link rel="stylesheet" href="./${path.basename(info.cssBundle)}"></link>`
+function writeHtml(sourceFile, info, module=true) {
+  let template = fs.readFileSync(path.resolve(__dirname, sourceFile), { encoding: 'utf-8' })
+  
+  const jsReplace = `<!-- inject jscode here! -->` +
+    `<script type="${module ? 'module' : 'text/javascript'}" src="./${path.basename(info.outputPoint)}"></script>`
+  const styleReplace = `<!-- inject stylesheet here! -->` +
+    `<link rel="stylesheet" href="./${path.basename(info.cssBundle)}"></link>`
   
   template = template
     .replace('<!-- inject jscode here! -->', jsReplace)
     .replace('<!-- inject stylesheet here! -->', styleReplace)
   
-  await fs.promises.writeFile(info.generate, template)
+  fs.writeFileSync(info.generate, template)
 }
 
 function isString(str) {

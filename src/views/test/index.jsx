@@ -42,7 +42,7 @@ export default defineComponent({
 
     return () => {
       return <>
-        <div>TestView { text.value }</div>
+        <div>TestView HMR Test { text.value }</div>
         <ElInput ref={ inputRef } style={{ width: '300px!important' }} modelValue={ text.value } onInput={ onInput } placeholder="Hello"></ElInput>
       </>
     }
