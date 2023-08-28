@@ -8,8 +8,5 @@
       "@/*": ["src/*"] // 指定相对于baseUrl选项计算的路径映射，使用webpack别名，智能感知路径
     }
   },
-  "include": ["src/**/*"],
-  "typeAcquisition": {
-    "include": ["sequelize"]
-  }
+  "include": ["src/**/*"]
 }

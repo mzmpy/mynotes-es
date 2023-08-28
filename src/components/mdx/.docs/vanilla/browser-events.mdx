@@ -1,0 +1,68 @@
+# 事件简介
+
+* 事件是触发执行某些代码的信号
+
+* 事件模型：原始事件模型、标准事件模型、`IE`事件模型
+
+  ## 常见的浏览器事件分类
+
+  * 鼠标事件
+
+    * `click`：当鼠标点击一个元素时
+    * `contextmenu`：当鼠标右键点击一个元素时
+    * `mouseup`/`mousedown`：当在元素上按下/释放鼠标按钮时
+    * `mouseover`/`mouseout`：当鼠标指针移入/离开一个元素时
+    * `mousemove`：当鼠标移动时
+  
+  * 键盘事件：
+
+   * `keyup`/`keydown`：当按下/松开一个键盘按键时
+
+  * 表单元素事件：
+
+    * `submit`：当访问者提交表单时
+    * `focus`：当访问者聚焦于一个表单元素时，例如：聚焦于一个`<input>`元素
+
+  * `Document`事件：
+
+    * `DOMContentLoaded`：当`HTML`加载和处理均完成，`DOM`被完全构建完成时
+
+  * `transitionend`：当一个`CSS`动画完成时
+
+  ## 事件冒泡：默认情况下，事件处理（回调）发生在冒泡阶段
+
+  * 当一个事件发生在一个元素上，它会首先运行在该元素上的处理程序，随后该事件会被层层向上传递，运行其父元素上的处理程序，然后一直向上到其他祖先上的处理程序
+
+  * `event.target`和`event.currentTarget`
+
+    * `event.target`：是引发事件的“目标”元素，它在冒泡过程中不会发生变化
+    * `this`（当回调函数不是匿名函数的时候）/`event.currentTarget`：指的是绑定该事件处理程序的元素，它在冒泡过程中会发生变化
+
+  * 停止冒泡之`event.stopPropagation`和`event.stopImmediatePropagation`：当
+
+    * `event.stopPropagation`停止向上移动（冒泡），但是当前元素上的其他处理程序都会继续运行
+    * `event.stopImmediatePropagation`也用于停止冒泡，并阻止当前元素上的处理程序运行；使用该方法之后，当前元素上的其他处理程序就不会被执行了
+
+  ## 事件捕获：捕获阶段很少被使用，但有时也很有用
+
+  * 通过`event.eventPhase`获取当前事件所处阶段（capturing=1，target=2，bubbling=3）
+  * 通过设置`addEventListener`的第三个参数`useCapture = true`/`{ capture: true }`，事件处理将发生在捕获阶段
+
+  ## 事件委托模式
+  
+  * 如果我们有许多以类似方式处理的元素，那么就不必为每个元素分配一个处理程序 —— 而是将单个处理程序放在它们的共同祖先上
+
+  ## 浏览器默认事件：可通过`event.preventDefault`/`onXXX`函数中`return false`阻止
+
+  * 一些常见的浏览器事件：
+
+    * 点击一个链接 —— 触发导航（`navigation`）到该`URL`
+    * 点击表单的提交按钮 —— 触发提交到服务器的行为
+    * 在文本上按下鼠标按钮并移动 —— 选中文本
+    * 鼠标右键单击 —— 显示浏览器上下文菜单
+
+  * `addEventListener`的可选项`passive: true`向浏览器发出信号，表明处理程序将不会调用`preventDefault()`
+
+  ## 自定义事件
+
+  待续。。。

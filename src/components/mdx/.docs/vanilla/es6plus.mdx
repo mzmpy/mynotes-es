@@ -1,0 +1,134 @@
+# `ES6+`的一些特性
+
+* `globalThis`：`globalThis`提供了一个标准的方式来获取不同环境下的全局`this`变量（即全局对象的自身）；关于全局对象，描述如下
+
+  * 在浏览器中，每一个打开的窗口都有一个预先定义的全局对象`window`；另外，`self`作为`window`对象的只读引用也是`window`对象的一个属性
+  * 在浏览器中，`window.frames`返回`window`本身；这是一个类数组对象，列出了当前窗口的所有直接`sub-frames`
+  * 在`Worker`中运行的代码将`WorkerGlobalScope`作为其全局对象
+  * 在`nodejs`环境中运行的脚本具有一个称为`global`的对象作为其全局对象
+
+* `var`、`let`和`const`
+
+  * `let`声明的变量只在其所在代码块有效；`var`声明的是全局变量，而在函数内使用`var`声明的变量则是局部   变量
+    ```javascript
+    {
+      let localLet = 1
+      var globalVar = 2
+    }
+
+    console.log(localLet)   // Uncaught ReferenceError: localLet is not defined
+    console.log(globalVar)   // 2
+
+    function bound() {
+      var localVar = 3
+    }
+
+    console.log(localVar)   // Uncaught ReferenceError: localVar is not defined
+    ```
+
+* `String`：在`javascript`中字符串是不可变的，即我们不能通过索引的方式更改字符串；可能的方法是创建一个新的字符串，并将其分配给`str`而不是以前的字符串，例如
+  ```javascript
+  let str = 'qwe'
+  str[0] = 'a'
+  console.log(str) // 'qwe'，无效修改；正确的方法应该是调用字符串实例的方法
+  ```
+
+  * 特殊字符
+
+    | 字符 | 描述 |
+    | ------ | ----------- |
+    | `\n` | 换行 |
+    | `\r` | 在`Windows`文本文件中，两个字符`\r\n`的组合代表一个换行；而在非`Windows`操作系统上，它就是`\n`；这是历史原因造成的，大多数的`Windows`软件也理解`\n` |
+    | `\', \"` | 引号 |
+    | `\\` | 反斜线 |
+    | `\t` | 制表符 |
+    | `\b, \f, \v` | 退格、换页、垂直标签 —— 为了兼容性，现在已经不使用了 |
+    | `\xXX` | 具有给定十六进制`Unicode XX`的`Unicode`字符，例如：`\x7A`和`z`相同 |
+    | `\uXXXX` | 以`UTF-16`编码的十六进制代码`XXXX`的`Unicode`字符，例如`\u00A9`—— 是版权符号`©`的`Unicode`；它必须正好是`4`个十六进制数字 |
+    | `\u{XXXXXX}` | （`1`到`6`个十六进制字符）具有给定`UTF-32`编码的`Unicode`符号；一些罕见的字符用两个`Unicode`符号编码，占用`4`个字节；这样我们就可以插入长代码了 |
+  
+  * 字符串的方法：
+
+    * `str.toUpperCase()`和`str.toLowerCase()`：大小写转换
+    * `str.charAt(pos)`：获取在位置`pos`的字符
+    * `str.startWith(substr)`和`str.endWith(substr)`：判断字符串`str`是否以`substr`开头/结尾
+    * `str.search(fragment)`：接收参数`fragment`，可以是一个字符串或者正则表达式，也可以是一个`RegExp`对象，搜索成功则返回匹配索引，否则返回`-1`
+    * `str.replace(fragment, replacement)`：搜索字符串片段`fragment`并使用`replacement`进行替换
+
+* `Array`：
+
+  * `Array`构造函数：
+
+    * `new Array`：使用一组值创建一个新的数组，或者传入一个整数创建对应长度但没有任何项的数组
+    * `Array.from`：将两类对象转为真正的数组 —— 类似数组的对象和可遍历（iterable）的对象（包括 ES6 新增的数据结构 Set 和 Map）
+    * `Array.of`：用于将一组值，转换为数组
+
+      ```javascript
+      const arr1 = new Array(1, 2, 3)   // [1, 2, 3]
+      const arr2 = new Array(5)   // create an array with length 5 and nothing other
+
+      const arrayLike = {
+        0: 1,
+        1: 2,
+        2: 3,
+        length: 3
+      }
+
+      const iter = new Set([1, 2, 3])
+      
+      const arr3 = Array.from(arrayLike)   // [1, 2, 3]
+      const arr4 = Array.from(iter)   // [1, 2, 3]
+      const arr5 = Array.of(1, 2, 3)   // [1, 2, 3]
+      ```
+  
+  * 清空数组最简单的方法：`arr.length = 0`
+
+  * `Array`的方法：
+
+    * 对于数组实例`arr`，`arr.at(i)`：返回指定索引的数组元素，如果`i>=0`，则与`arr[i]`相同；如果`i<0`，则与`arr[arr.length + i]`相同
+    * `arr.indexOf(item, from)`：从索引`from`开始搜索`item`，如果找到则返回索引，否则返回`-1`；方法`arr.lastIndexOf`与`indexOf`相同，但从右向左查找
+    * `arr.includes(item, from)`：从索引`from`开始搜索`item`，如果找到则返回`true`，否则返回`false`
+    * `arr.find((item, index, array) => { ... })`：如果对数组的某一项回调函数返回`true`，就停止搜索并返回该项；如果没有搜索到就返回`undefined`
+    * `arr.findIndex((item, index, array) => { ... })`：与`arr.find`类似，但是它返回索引或者`-1`
+    * `arr.findLastIndex((item, index, array) => { ... })`：与`arr.findIndex`类似，但是它从右往左查找
+    * `arr.filter((item, index, array) => { ... })`：`filter`返回一个数组，包含所有符合条件的项
+    * `Array.isArray(value)`：检查`value`是否是一个数组，如果是则返回`true`，否则返回`false`
+    * `arr.fill(value, start, end)`：从索引`start`到`end`，用重复的`value`填充数组
+    * `arr.concat(...items)`：返回一个新数组，包含原数组`arr`的项和任意数量的参数并且这些参数可以是单个值或者数组
+    * `arr.some(fn)/arr.every(fn)`：检查数组，类似于`||`和`&&`运算符 —— 如果`fn`返回`true`，`arr.some(fn)`立即返回`true`并停止迭代其余数组项；如
+    果`fn`返回`false`，`arr.every(fn)`立即返回`false`并停止对其余数组项的迭代
+      ```javascript
+      const arr = ['apple', 'pear', 'watermelon', 'peach', 'orange']
+      arr.lastIndexOf('pear', 3)   // 1
+      arr.findIndex((item) => {
+        return item === 'Apple'
+      })   // -1
+      arr.filter(item => { return item.includes('a') }) // ['apple', 'pear', 'watermelon', 'peach', 'orange']
+      ```
+
+* `Object`：
+
+  * 属性标志与属性描述符：
+
+    * `Object.getOwnPropertyDescriptor(obj, propertyName)`：返回一个属性描述符对象，它包含对应的属性值和属性标志
+      ```javascript
+      const user = {
+        name: 'John'
+      }
+
+      const descriptor = Object.getOwnPropertyDescriptor(user, 'name')
+      console.log(descriptor)
+      /**
+        {
+          configurable: true
+          enumerable: true
+          value: "John"
+          writable: true
+        }
+      */
+      ```
+  
+  * `Object.defineProperty(obj, propertyName, descriptor)`：修改属性标志
+
+  * 批量操作：`Object.getOwnPropertyDescriptors(obj)`和`Object.defineProperties(obj, descriptors)`
+

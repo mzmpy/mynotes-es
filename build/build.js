@@ -10,6 +10,8 @@ import esbuildPluginNoteRoute from '../plugins/esbuild-plugin-note-route/index.j
 
 import rehypeHighlight from 'rehype-highlight'
 import remarkGfm from 'remark-gfm'
+import rehypeKatex from 'rehype-katex'
+import remarkMath from 'remark-math'
 
 import fs from 'fs'
 import path from 'path'
@@ -31,6 +33,7 @@ const result = await esbuild.build({
     '.woff': 'file',
     '.woff2': 'file',
     '.jpg': 'dataurl',
+    '.png': 'dataurl',
     '.svg': 'dataurl'
   },
   alias: {
@@ -65,8 +68,8 @@ const result = await esbuild.build({
       pragma: 'MDX_VUE_JSX_IMPORT_SOURCE.h',
       pragmaFrag: 'MDX_VUE_JSX_IMPORT_SOURCE.Fragment',
       pragmaImportSource: esbuildMdxJsxImportSource(),
-      remarkPlugins: [remarkGfm],
-      rehypePlugins: [rehypeHighlight]
+      remarkPlugins: [remarkGfm, remarkMath],
+      rehypePlugins: [rehypeHighlight, rehypeKatex]
     }),
     esbuildPluginNoteRoute({
       resolveDir: './src/components/mdx/.docs',

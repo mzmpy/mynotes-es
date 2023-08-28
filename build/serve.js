@@ -18,6 +18,8 @@ import esbuildPluginHmr from '../plugins/esbuild-plugin-hmr/index.js'
 
 import rehypeHighlight from 'rehype-highlight'
 import remarkGfm from 'remark-gfm'
+import rehypeKatex from 'rehype-katex'
+import remarkMath from 'remark-math'
 
 import fs from 'fs'
 import path from 'path'
@@ -47,6 +49,7 @@ let ctx = await esbuild.context({
     '.woff': 'file',
     '.woff2': 'file',
     '.jpg': 'dataurl',
+    '.png': 'dataurl',
     '.svg': 'dataurl'
   },
   entryNames: '[name]-[hash]',
@@ -79,8 +82,8 @@ let ctx = await esbuild.context({
       pragma: 'MDX_VUE_JSX_IMPORT_SOURCE.h',
       pragmaFrag: 'MDX_VUE_JSX_IMPORT_SOURCE.Fragment',
       pragmaImportSource: esbuildMdxJsxImportSource(),
-      remarkPlugins: [remarkGfm],
-      rehypePlugins: [rehypeHighlight]
+      remarkPlugins: [remarkGfm, remarkMath],
+      rehypePlugins: [rehypeHighlight, rehypeKatex]
     }),
     esbuildPluginNoteRoute({
       resolveDir: './src/components/mdx/.docs',
@@ -110,8 +113,8 @@ app.use(async (ctx, next) => {
       frag: /\/docs\//
     }, 
     {
-      test: /\/docs\/vue\/[^/]+/,
-      frag: /\/docs\/vue\//
+      test: /\/docs(\/.+\/)+[^/]+/,
+      frag: /\/docs(\/.+\/)+/
     }
   ]
 

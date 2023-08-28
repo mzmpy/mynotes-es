@@ -1,0 +1,30 @@
+# `Redux`
+
+## 什么时候应该使用`Redux`
+
+* 应用中有很多`state`需要在不同组件中被使用，即这些`state`需要被“提升”
+* 应用`state`会随着时间的推移而频繁更新
+* 更新`state`的逻辑很复杂
+* 中型和大型代码量的应用，很多人协同开发
+
+## 单向数据流（one-way data flow）:
+
+* 用`state`来描述应用程序在特定时间点的状况
+* 基于`state`来渲染出`view`
+* 当发生某些事情时（例如用户单击按钮），`state`会根据发生的事情进行更新，生成新的`state`
+* 基于新的`state`重新渲染`view`
+
+## `action`
+
+* `action`是一个具有`type`字段的普通`JavaScript`对象；你可以将`action`视为描述应用程序中发生了什么的事件；`action`对象
+可以有其他字段，其中包含有关发生的事情的附加信息（例如：`payload`）
+
+## `reducer`
+
+* `reducer`是一个函数，接收当前的`state`和一个`action`对象，必要时决定如何更新状态，并返回新状态；函数签名是：
+`(state, action) => newState`； 你可以将`reducer`视为一个事件监听器，它根据接收到的`action`（事件）类型处理事件
+
+## `dispatch`
+
+* `Redux store`有一个方法叫`dispatch`；更新`state`的唯一方法是调用`store.dispatch`并传入一个`action`对象
+

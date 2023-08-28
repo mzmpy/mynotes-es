@@ -1,0 +1,197 @@
+# 网络请求
+
+  ## Fetch
+
+  * `fetch`是一种现代通用的网络请求方式
+
+  ```javascript
+  const response = await fetch(url[, options])
+  // or
+  const request = new Request(input[, init]) // 创建一个Request对象实例
+  const response = await fetch(request)
+  ```
+
+    * `options`选项参数：
+
+      * `method`：`HTTP`请求方法，如：`GET`（默认）、`POST`、`PUT`等
+      * `headers`：设置`HTTP`请求头，是一个Object实例
+      * `body`：默认是`undefined`，也可以是`string`（`application/json`编码）、`FormData`（`multipart/form-data`编码）、
+      `Blob`、`BufferSource`或`URLSearchParams`（`application/x-www-form-urlencoded`编码）之一
+      * `referrer`：`"about:client"`或`""`以不发送`Referer header`，或者是当前源的`url`
+      * `referrerPolicy`：`"no-referrer-when-downgrade"`或者`"no-referrer"`、`"origin"`、`"same-origin"`。。。
+      * `mode`：`"cors"`或者`"same-origin"`、`"no-cors"`
+      * `credentials`：`"same-origin"`或者`"omit"`、`"include"`
+      * `cache`：`"default"`或者`"no-store"`、`"reload"`、`"no-cache"`、`"force-cache"`或`"only-if-cached"`
+      * `redirect`：`"follow"`或者`"manual"`、`"error"`
+      * `integrity`：`""`或者一个`hash`，像`"sha256-abcdef1234567890"`
+      * `keepalive`：`false`或者`true`
+      * `signal`：`undefined`或者`AbortController`来中止请求
+      * `window`：`window`或者`null`
+
+    * `response`:
+
+      * 响应状态相关：
+
+        * `status`：包含`Response`的状态码
+        * `statusText`:包含与该`Response`状态码一致的状态信息
+        * `ok`：`boolean`，标示该`Response`成功（`HTTP`状态码的范围在`200-299`）
+        * `headers`：包含此`Response`所关联的`Headers`
+        * `body`：暴露一个`ReadableStream`类型的`Response body`内容
+
+      * 获取`response body`响应体：
+
+        * `response.text()`：读取`response`，并以文本形式返回`response`
+        * `response.json()`：将`response`解析为`JSON`对象形式
+        * `response.formData()`：以`FormData`对象（`multipart/form-data`编码）的形式返回`response`
+        * `response.blob()`：以`Blob`（具有类型的二进制数据）形式返回`response`
+        * `response.arrayBuffer()`：以`ArrayBuffer`（低级别的二进制数据）形式返回`response`
+
+    * `fetch`获取响应通常需要经过两个阶段：
+      1. 当服务器发送了响应头（`response header`），`fetch`返回的`promise`就使用内建的`Response class`对象来对响应头进行解析；
+      当前还没有响应体（`response body`），我们可以通过检查响应头，来检查`HTTP`状态以确定请求是否成功；如果`fetch`
+      无法建立一个`HTTP`请求，例如网络问题，亦或是请求的网址不存在，那么`promise`就会`reject`；异常的`HTTP`状态，例如`404`或
+      `500`，不会导致出现`error`
+      2. 为了获取`response body`，我们需要使用一个其他的方法调用；`response`提供了多种基于`promise`的方法，来以不同的格式访问
+      `body`：`response.text()`、`response.json()`、`response.formData()`。。。
+  
+  ## 跨域资源共享（Cross-Origin Resource Sharing —— CORS）
+
+  * 源（`origin`）—— 域（domain）、端口（port）、协议（protocol）的组合
+
+  * 前端跨源方法：
+
+    * 使用`script`和`JSONP`：`JSONP`的缺点是需要前后端同时对这一行为提供支持，且只支持`GET`方法
+      ```javascript
+      // 例子：以jsonp的方式从 http://another.com 网站获取天气数据
+
+      // 声明处理天气数据的函数
+      function gotWeather({ temperature, humidity }) {
+        alert(`temperature: ${temperature}, humidity: ${humidity}`)
+      }
+
+      // 动态创建script
+      let script = document.createElement('script');
+      script.src = `http://another.com/weather.json?callback=gotWeather`
+      document.body.append(script)
+      ```
+    
+    * 跨源请求：有两种，安全请求和所有其它请求
+
+      * 安全请求：需要满足以下两个条件
+
+        * 安全的方法：`GET`、`POST`、`HEAD`
+        * 安全的`headers`—— 仅允许自定义下列`header`：
+          * `Accept`
+          * `Accept-Language`
+          * `Content-Language`
+          * `Content-Type`的值为`application/x-www-form-urlencoded`、`multipart/form-data`或`text/plain`
+      
+        * 对于安全请求，浏览器在发送请求时会自动带上`Origin header`；服务器会检查`Origin`，如果同意接受这样的请求，就会在响应
+        中添加一个特殊的`header Access-Control-Allow-Origin`；该`header`包含了允许的源或者一个星号 *（代表允许所有源）；然后
+        响应成功，否则报错
+
+        * 浏览器在这里扮演受被信任的中间人的角色：
+
+          * 它确保发送的跨源请求带有正确的`Origin`
+          * 它检查响应中的许可`Access-Control-Allow-Origin`，如果存在，则允许`JavaScript`访问响应，否则将失败并报错
+      
+      * 非安全请求：
+
+        * 非安全请求会先发送一个初步的、所谓的“预检（preflight）”请求，来请求许可；预检请求使用`OPTIONS`方法，它没有`body`，但是有三个`header`：
+
+          * `Origin`带有发起请求的源
+          * `Access-Control-Request-Method`带有非安全请求的方法
+          * `Access-Control-Request-Headers`提供一个以逗号分隔的非安全`HTTP-Header`列表
+
+        * 如果服务器同意处理请求，那么它会进行响应，此响应的状态码应该为`200`，没有`body`，具有`header`：
+
+          * `ccess-Control-Allow-Origin`必须为`*`或进行请求的源才能允许此请求
+          * `Access-Control-Allow-Methods`必须具有允许的方法
+          * `Access-Control-Allow-Headers`必须具有一个允许的`header`列表
+          * 另外，`Access-Control-Max-Age`可以指定缓存此权限的秒数
+
+        * 预检成功后，浏览器现在发出主请求；过程与安全请求的过程相同
+
+    * `proxy`代理
+
+  ## XMLHttpRequest
+
+  * `XMLHttpRequest`是一个内建的浏览器对象，它允许使用`JavaScript`发送`HTTP`请求
+
+    * 使用构造器`XMLHttpRequest`创建`XMLHttpRequest`实例:
+    ```javascript
+    const xhr = new XMLHttpRequest()
+    ```
+    * 初始化`xhr`；`open`的调用不会建立连接；它仅配置请求，而网络活动仅以`send`调用开启：
+    ```javascript
+    xhr.open(methos, url[, async, user, password])
+    ```
+    * 发送请求使用`send`方法，此方法包含了一个可选的`body`参数：
+    ```javascript
+    xhr.send([body])
+    ```
+    * `XMLHttpRequest`的事件回调：
+    ```javascript
+    // 当请求完成（即使HTTP状态为400或500等），并且响应已完全下载
+    xhr.onload = function() {
+      ...
+    }
+
+    // 当无法发出请求，例如网络中断或者无效的URL
+    xhr.onerror = function() {
+      ...
+    }
+
+    // 在下载响应期间定期触发，报告已经下载进度
+    xhr.onprogress = function(event) {
+      // event包含loaded和total两个属性，分别表示一下载大小和总大小
+      ...
+    }
+    ```
+    * 中止请求：
+      ```javascript
+      // 它会触发abort事件，且xhr.status变为 0
+      xhr.abort()
+      ```
+    * `xhr.upload`专门用于跟踪上传事件：
+    * 读取/写入请求头：
+      ```javascript
+      xhr.setRequestHeader(name, value)
+      xhr.getResponseHeader(name)
+      xhr.getAllResponseHeaders()
+      ```
+    * `xhr`的一些属性：
+      * `status`：`HTTP`状态码，例如`200`、`404`等
+      * `statusText`：`HTTP`状态消息（一个字符串）
+      * `response`：`response body`
+      * 服务器响应一旦有了结果，就可以通过以上属性接收结果
+      * `timeout`：设置超时时间
+      * `responseType`：设置响应数据格式
+        * `""`（默认）—— 响应格式为字符串，
+        * `"text"` —— 响应格式为字符串，
+        * `"arraybuffer"` —— 响应格式为`ArrayBuffer`
+        * `"blob"` —— 响应格式为`Blob`
+        * `"document"` —— 响应格式为`XML document`
+        * `"json"` —— 响应格式为`JSON`（自动解析）
+      * `readyState`：`XMLHttpRequest`的状态（`state`）会随着它的处理进度变化而变化，因此通过`xhr.readyState`来了解当前状态；配合事件`readystatechange`来跟踪它们：
+        ```text
+        UNSENT = 0; // 初始状态
+        OPENED = 1; // open 被调用
+        HEADERS_RECEIVED = 2; // 接收到 response header
+        LOADING = 3; // 响应正在被加载（接收到一个数据包）
+        DONE = 4; // 请求完成
+        ```
+        ```javascript
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState == 3) {
+            // 加载中
+          }
+          if (xhr.readyState == 4) {
+            // 请求完成
+          }
+        }
+        ```
+
+  ## 参考：
+
+  * https://zh.javascript.info

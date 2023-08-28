@@ -1,0 +1,81 @@
+# `Typescript`
+
+* 初始化`tsconfig.json`的两种方式：
+
+  * 手动在项目根目录（或其他）创建`tsconfig.json`文件并填写配置
+  * 通过`tsc --init`初始化`tsconfig.json`文件
+
+* 在`typeScript`的基础类型中，元组`Tuple`表示一个**已知数量**和**类型**的数组
+  ```typescript
+  type List = [number, string, symbol]
+
+  const list: List = [10, 'Mark', Symbol()]
+  ```
+
+* 和`any`类似，所有类型都可以赋给`unknown`类型的变量，即所有类型都是`unknown`的子类型；但是`unknown`也是一个安全的
+类型，对其的任意操作都是不允许的
+
+* `never`类型表示的是那些永不存在的值的类型，任意类型都不是`never`的子类型，例如：
+
+  * 函数执行时抛出了异常，那么这个函数永远不存在返回值
+  * 函数中执行无限循环的代码，使得程序永远无法运行到函数返回值那一步
+
+* 字面量类型：任意的`javascript`字面量（比如，对象、数字等）都可以作为类型使用
+
+* 枚举：在`typescript`中可以使用枚举一种类型，该类型包含一系列常量，并且该类型的变量的值可以是这些常量的其中一个
+  ```typescript
+  // 创建枚举
+  enum Direction { Up, Down, Left, Right }
+  ​
+  // 使用枚举类型
+  function changeDirection(direction: Direction) {
+    console.log(direction)
+  }
+  ​
+  // 调用函数时，需要应该传入：枚举 Direction 成员的任意一个
+  // 类似于 JS 中的对象，直接通过 点（.）语法 访问枚举的成员
+  changeDirection(Direction.Up)
+  ```
+  * 可以看到枚举既可以当作类型使用也可以当值使用
+
+* 泛型中的类型约束：通过`T extends C`语法来声明泛型类型`T`必须满足约束类型`C`
+  ```typescript
+  // 创建一个接口
+  interface ILength { length: number }
+  ​
+  // Type extends ILength 添加泛型约束
+  // 解释：表示传入的 类型 必须满足 ILength 接口的要求才行，也就是得有一个 number 类型的 length 属性
+  function id<Type extends ILength>(value: Type): Type {
+    console.log(value.length)
+    return value
+  }
+  ```
+
+* `typeof`操作符可以用来获取一个变量声明或对象的类型
+
+* `keyof`操作符用于获取某种类型的所有键，其返回类型是联合类型
+  ```typescript
+  interface Person {
+    name: string;
+    age: number;
+  }
+  ​
+  type KT = keyof Person; // "name" | "age"
+  ```
+
+* `Partial`、`Readonly`、`Required`：`Partial<T>/Readonly<T>/Required<T>`将某个类型里的属性全部变为可选项`?`/只读项/必须项
+
+* `Omit<T, U>`从类型`T`中剔除`U`中的所有属性
+  ```typescript
+  interface IPerson {
+      name: string
+      age: number
+  }
+
+  // Omit<T, K extends string | number | symbol>
+  type IOmit = Omit<IPerson, 'age'>
+
+  // type IOmit = {
+  //   name: string
+  // }
+  ```

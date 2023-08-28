@@ -1,0 +1,97 @@
+import ComImg from '@/components/mdx/constituents/utils/commonImg.jsx'
+import epImg from '@/assets/images/ep.jpg'
+import redshiftImg from '@/assets/images/redshift.jpg'
+import RiemannSurfaceImg from '@/assets/images/Riemann-surface.png'
+import ChartCoverAnOpenSubsetImg from '@/assets/images/chart-subset.png'
+import OverlappingCoordinateChartsImg from '@/assets/images/overlapping-coordinate-charts.png'
+
+# Manifolds
+
+## Gravity as geometry
+
+* The **WEP(Weak Equivalence Principle)** can be stated as follows: *The motion of freely-falling particels are the same in a gravitational field and a uniformly accelerated frame, in small enough regions of spacetime*.
+
+* The **EEP(Einstein Equivalence Principle)** can be stated as follows: *In small enough regions of spacetime, the laws of physics reduce to those of specical relativity; it is impossible to detect the existence of a gravitational feild by means of local experiments*.
+
+<ComImg alt="等效原理" src={ epImg }></ComImg>
+
+### 用Einstein等效原理计算引力红移
+
+<ComImg alt="地球表面的引力红移效应" src={ redshiftImg } width="300"></ComImg>
+
+* 在接近地球表面的地方，引力可以看作是均匀的；根据EEP，上图中产生的效应可以等效地理解为：在远离引力场的平坦时空中，两架相距`z`的飞船正在做匀加速度为$a_{g}$的运动，位于后边
+的飞船向前方的飞船发射一束波长为$\lambda_{0}$的电磁波；前方飞船接收到的电磁波波长与电磁波发射时的波长相差$\Delta \lambda$；
+
+  由多普勒效应有：
+  $$
+  \begin{gather}
+  \frac{\Delta\lambda}{\lambda_{0}} = \frac{\Delta v}{c} = \frac{a_{g}z}{c^{2}}
+  \end{gather}
+  $$
+
+  或者更一般地，假设引力场沿着z方向是变化的，则有瞬时加速度$a_{g}$等于牛顿引力势（Nuwtonian potential）$\nabla \Phi$，
+  $$
+  \begin{gather}
+    \frac{\Delta\lambda}{\lambda_{0}} = \frac{\Delta v}{c} = \frac{1}{c} \int \nabla \Phi dt, \\
+    \partial_{x} \Phi = \partial_{x} \Phi = 0, \\
+    dz = cdt
+  \end{gather}
+  $$
+  得到，
+  $$
+  \begin{gather}
+    \frac{\Delta\lambda}{\lambda_{0}} = \frac{\Delta v}{c} = \frac{1}{c^{2}} \int \partial_{z} \Phi dz = \Delta \Phi
+  \end{gather}
+  $$
+  其中这里设光速$c=1$；因此可以看到光束的波长的变化由引力势的变化决定。
+
+## What is manifold?
+
+* The entire manifold(have a complicated topology) is constructed by smoothly sewing together local regoins that just 
+look like flat $\R^{n}$. **A crucial point is that the dimensionality $n$ of the Euclidean spaces being used must be the 
+same in every patch of the manifold**; we then say that the manifold is of dimension $n$. With this approach we can analyze 
+functions on such a space by converting them (locally) to functions in a Euclidean space.
+
+  Examples: 
+
+  * $\R^{n}$ itself
+  * The n-sphere, $S^{n}$
+  * A Riemann surface of genus $g$.
+  <ComImg alt="Riemann Surface of genus g" src={ RiemannSurfaceImg }></ComImg>
+  * The direct product of two manifolds is a manifold. That is, given manifolds $M$ and $M^{\prime}$ of dimension $n$ and 
+  $n^{\prime}$, we can construct a manifold $M \times M^{\prime}$ of dimension $n + n^{\prime}$, consisting of ordered 
+  pairs $(p, p^{\prime})$ with $p \in M$ and $p^{\prime} \in M^{\prime}$
+
+* A map $\phi$ is called **one-to-one** if each element of $N$ has at most one element of $M$ mapped into it, and **onto** 
+if each element of $\Nu$ has at least one element of $\Mu$ mapped into it.
+
+* Maps in more general Euclidean spaces, $\phi$ : $\R^{m} \to \R^{n}$. A map from $\R^{m}$ to $\R^{n}$ takes an m-tuple
+$(x^1, x^2, ..., x^m)$ to an n-tuple $(x^1, x^2, ..., x^n)$, and can therefore be thought of as a collection of n 
+functions $\phi^i$ of m variables: 
+  $$
+  \begin{gather}
+    y^1 = \phi^1(x^1, x^2, ..., x^m) \\
+    y^2 = \phi^2(x^1, x^2, ..., x^m) \\
+    \vdots \\
+    y^n = \phi^n(x^1, x^2, ..., x^m). \\
+  \end{gather}
+  $$
+
+  And refer to the entire map $\phi$ : $\R^{m} \to \R^{n}$ as $\cnums^p$ if each of its component functions are at least 
+$\cnums^p$. $\cnums^{\infty}$ maps are sometimes called smooth.
+
+* We will call two set $M$ and $N$ **diffeomorphic** if there exists a $\cnums^{\infty}$ map $\phi$ : $\R^{m} \to \R^{n}$ 
+with a $\cnums^{\infty}$ inverse map $\phi^{-1}$ : $\R^{n} \to \R^{m}$; the map $\phi$ is then called a diffeomorphism(微分同胚).
+
+* A **chart** or **coordinate system** consists of a subset $U$ of a set $M$, along with a one-to-one map $\phi : U \to \R^{n}$, 
+such that the image $\phi(U)$ is open in $\R^{n}$, written as $(U, \phi)$. Any map is onto its image, so the map $\phi : U \to \phi(U)$ 
+is invertible if it is one-to-one. We can then say that $U$ is a open subset in $M$.
+<ComImg alt="A coordinate chart covering an open subset U of M" src={ ChartCoverAnOpenSubsetImg }></ComImg>
+
+* A $\cnums^p$ **atlas** is an indexed collection of charts $\{(U_{\alpha}, \phi_{\alpha})\}$ that satisfies two conditions: 
+  1. The union of the $U_{\alpha}$ is equal to $M$; that is, the $\{U_{\alpha}\}$ cover $M$.
+  2. The charts are smoothly sewn together. More precisely, if two charts overlap, $U_{\alpha} \cap U_{\beta} \neq \emptyset$, 
+  then the map $(\phi_{\alpha} \circ \phi_{\beta}^{-1})$ takes points in $\phi_{\beta}(U_{\alpha} \cap U_{\beta}) \sub \R^n$ 
+  onto $\phi_{\alpha}(U_{\alpha} \cap U_{\beta}) \sub \R^n$, and all of these maps must be $\cnums^{\infty}$ where they are 
+  defined.
+  <ComImg alt="Overlapping coordinate charts" src={ OverlappingCoordinateChartsImg }></ComImg>

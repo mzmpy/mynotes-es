@@ -1,0 +1,20 @@
+# `Javascript`的一些常见特性
+
+* 关于`this`对象的理解：`this`关键字是函数运行时其内部生成的一个对象，它总是指向调用该函数的对象，比如`window`对象，或者
+其它具体被显式声明的对象
+  ```javascript
+  // 注意：全局作用域中使用let、const声明的变量不是window的属性
+  var prop = 'global-prop'
+
+  function func() {
+    console.log(this.prop)
+  }
+
+  const obj = {
+    prop: 'obj-prop',
+    func
+  }
+
+  func()   // global-prop
+  obj.func()   // obj-prop
+  ```

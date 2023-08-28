@@ -1,0 +1,122 @@
+# react@18有哪些新变化
+
+* 新的创建方式：`createRoot`创建`root`节点，然后调用`root.render`方法进行`DOM`的挂载
+* 并发渲染机制：通过使用`createRoot(rootElem).render(<App />)`的方式开启并发模式；该模式可根据设备性能和网速进行适当的调整，保
+证`React`在比较耗时的渲染过程中依旧保持可交互性，避免页面卡顿或无响应，从而提升用户体验
+* `setState`自动批处理：默认执行批处理来实现了开箱即用的性能改进；而在`v18`之前批处理只在`React`事件处理函数中执行，在`promise`、
+`setTimeout`、原生事件处理函数中、或任何其它事件内的更新都不会进行批处理
+  ```javascript
+  // 函数组件内
+  return (
+    <button
+      onClick={() => {
+        setCount1(count => count + 1);
+        setCount2(count => count + 1);
+        // 在React事件中被批处理
+      }}
+    >
+      {/* ... */}
+    </button>
+  );
+  // ...
+  ```
+* 新的`api`：
+  * `useId`：主要用于`SSR`服务端渲染的场景，方便在服务端渲染和客户端渲染时，产生唯一的`id`
+  * `startTransition/useDeferredValue`：用来标记一次非紧急更新，非紧急更新可被紧急更新中断
+
+# 受控组件和非受控组件
+
+* 受控组件：只能通过`React`控制数据或状态变更的组件，就是受控组件
+
+* 非受控组件：与受控组件相反，如`input`、`textarea`、`select`、`checkbox`等组件，本身控件自己就能控制数据和状态的变更，而且`React`
+是不知道这些变更的
+
+  * 在`React`中有时候我们不得不操作原生`DOM`节点，可以通过`ref`来获取`DOM`的引用：
+
+    * `class`组件：
+      ```javascript
+      class App extends PureComponent {
+        constructor(props) {
+          super(props)
+
+          this.titleRef = createRef()
+          this.titleEl = null
+        }
+
+        render() {
+          return (
+            <div>
+              // 主要有三种方法
+              <h2 ref="title">String Ref</h2>
+              <h2 ref={this.titleRef}>Create Ref</h2>
+              <h2 ref={(element) => (this.titleEl = element)}>Callback Ref</h2>
+
+              <button onClick={(e) => this.changeText()}>改变文本</button>
+            </div>
+          )
+        }
+
+        changeText() {
+          this.refs.title.innerHTML = '你好啊,小和山的菜鸟们'
+          this.titleRef.current.innerHTML = '你好啊,小和山的菜鸟们'
+          this.titleEl.innerHTML = '你好啊,小和山的菜鸟们'
+        }
+      }
+      ```
+    * 函数组件：
+      ```javascript
+      function App() {
+        const h2Ref = useRef(null);
+
+        function changeText() {
+          h2Ref.current.innerHTML = 'Hello useRef'
+        }
+
+        return (
+          <div>
+            <h2 ref={h2Ref}>useRef</h2>
+            <button onClick={(e) => changeText()}>改变文本</button>
+          </div>
+        );
+      }
+      ```
+
+# 高阶组件
+
+* 高阶组件（`HOC`）是一个接收组件作为参数并返回一个新组件的函数；它包裹原组件并增强原组件的功能；主要有以下用于：
+
+  * 逻辑复用
+  * 修改传递给组件的`props`，从而改变组件的行为
+  * 条件渲染
+  * 提供额外的功能，例如错误处理、性能监控或者数据获取
+
+# 为什么要使用`hook`
+
+* 使用`hook`可以使逻辑复用变得更加简单
+* 在类组件中需要显式地去管理生命周期；当组件变得越来越复杂时，可能会使生命周期函数中的代码变得难以理解
+* `class`会让人难以理解，比如需要理解`javascript`中`this`的工作方式，同时`class`不能很好的压缩，并且会使热重载出现不稳定的情况
+
+# Hooks
+
+* `useCallback` is a React hook that lets you cache a function definition between re-renders
+
+* `useContext` is a React hook that lets you read and subscribe to context from your component
+
+* `useEffect` is a React hook that lets you synchronize your component with an external system
+
+* `useLayoutEffect` is a version of `useEffect` that fires before the browser repaints the screen
+
+* `useId` is a React hook for generating unique IDs that can be passed to the accessibility attributes
+
+* `useMemo` is a React hook that lets you cache the result of a calculation between re-renders
+
+* `useReducer` is a React hook that lets you add a reducer to your component
+
+  * pure function(纯函数)：
+
+    * 如果函数的调用参数相同, 则永远返回相同的结果. 它不依赖于程序执行期间函数外部任何状态或数据的变化, 只依赖于传入的参数
+    * 纯函数不会产生任何可观察的副作用, 例如: 网络请求, 输入/输出设备, 或数据突变（mutation）等
+
+* `useRef` is a React hook that lets you reference a value that is not needed for rendering
+
+* `useState` is a React hook that lets you add a state variable to your component

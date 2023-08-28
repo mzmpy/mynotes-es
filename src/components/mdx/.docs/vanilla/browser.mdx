@@ -1,0 +1,86 @@
+import ComImg from '@/components/mdx/constituents/utils/commonImg.jsx'
+import browserImg from '@/assets/images/js-browser.png'
+
+# `Browser`
+
+* `window`对象：
+
+  * 是 JavaScript 代码的全局对象
+  * 代表`浏览器窗口`，并提供了控制它的方法
+
+  <ComImg  src={ browserImg }></ComImg>
+
+  * `DOM`（文档对象模型）：
+
+    * 常见`DOM`操作：
+
+      * 遍历`DOM`：
+
+        * `document.documentElement`：最顶层的树节点可以直接作为`document`的属性来使用，即`document.documentElement`对应根元素`<html>`
+        * `document.body`：对应`<body>`元素
+        * `document.head`：对应`<head>`元素
+        * `parentNode`：访问父节点
+        * `childNodes`：列出了所有子节点，包括文本节点
+        * `firstChild/lastChild`：访问第一个/最后一个子节点
+        * `nextSibling/previousSibling`：访问上一个/下一个兄弟节点
+        * `parentElement`、`children`、`firstElementChild`、`lastElementChild`、`previousElementSibling`、`nextElementSibling`：仅访问元素节点
+
+      * 获取节点：
+
+        * `document.getElementById(id)`：通过`id`来获取元素并返回该元素节点
+        * `document.getElementsByName(name)`：通过`name`属性获取元素，返回元素节点数组
+        * `document.getElementsByClassName(className)`：通过`class`来获取元素，返回元素节点数组（`ie8`以上才有）
+        * `document.getElementsByTagName(tagName)`：通过标签名获取元素，返回元素节点数组
+        * `elem.querySelector(css)`：返回给定`CSS`选择器的第一个元素节点
+        * `elem.querySelectorAll(css)`：返回`elem`中与给定`CSS`选择器匹配的所有元素节点，即一个类数组对象
+
+      * 获取/设置元素的属性值：
+
+        * `elem.getAttribute(name)`：括号传入属性名，返回对应属性的属性值
+        * `elem.setAttribute(name, value)`：传入属性名及设置的值
+        * `elem.hasAttribute(name)`：检查属性是否存在
+        * `elem.removeAttribute(name)`：移除属性
+
+      * 创建节点：
+
+        * `document.createElement(tagName)`：创建一个元素，例如`div`
+        * `document.createTextNode(str)`：创建一个文本节点
+        * `document.createAttribute(attr)`：创建一个属性节点
+          ```javascript
+          const node = document.getElementById("app")
+          const a = document.createAttribute("my_attribute")
+          a.value = "newVal"
+          node.setAttributeNode(a)
+          console.log(node.getAttribute("my_attribute"))   // "newVal"
+          ```
+
+      * 新增节点：
+
+        * `elem.appendChild(node)`：往`elem`内部最后面添加一个节点，参数是节点类型
+        * `elem.insertBefore(newNode, existingNode)`：在`elem`内部的中在`existingNode`前面插入`newNode`
+        * `node.append(...nodes or strings)`：在`node`末尾插入子节点或字符串内容
+        * `node.prepend(...nodes or strings)`：在`node`开头插入子节点或字符串内容
+        * `node.before(...nodes or strings)`：在` node`前面插入节点或字符串
+        * `node.after(...nodes or strings)`：在`node`后面插入节点或字符串
+        * `node.replaceWith(...nodes or strings)`：将`node`替换为给定的节点或字符串
+
+      * 删除节点：
+
+        * `elem.removeChild(node)`：删除当前节点下指定的子节点，删除成功返回该被删除的节点，否则返回`null`
+        * `node.remove()`：移除节点`node`
+    
+    * 元素具有以下几何属性：
+
+      * `offsetParent` —— 是最接近的`CSS`定位的祖先，或者是`td`，`th`，`table`，`body`
+      * `offsetLeft/offsetTop` —— 是相对于`offsetParent`的左上角边缘的坐标
+      * `offsetWidth/offsetHeight` —— 元素的外部`width/height`，边框（`border`）尺寸计算在内
+      * `clientLeft/clientTop` —— 从元素左上角外角到左上角内角的距离；对于从左到右显示内容的操作系统来说，它们始终是左侧/顶部`border`的宽
+      度；而对于从右到左显示内容的操作系统来说，垂直滚动条在左边，所以`clientLeft`也包括滚动条的宽度
+      * `clientWidth/clientHeight` —— 内容的`width/height`，包括`padding`，但不包括滚动条（`scrollbar`）
+      * `scrollWidth/scrollHeight` —— 内容的`width/height`，就像`clientWidth/clientHeight`一样，但还包括元素的滚动出的不可见的部分
+      * `scrollLeft/scrollTop` —— 从元素的左上角开始，滚动出元素的上半部分的`width/height`
+      * 除了`scrollLeft/scrollTop`外，所有属性都是只读的；如果我们修改`scrollLeft/scrollTop`，浏览器会滚动对应的元素
+
+  * `BOM`（浏览器对象模型）：
+
+    *

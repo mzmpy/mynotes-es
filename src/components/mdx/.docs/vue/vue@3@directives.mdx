@@ -6,6 +6,8 @@ import VThrottleDemo from '@/components/mdx/constituents/vue/vueDirectiveVThrott
 
 * `jsx`生菜：记录关于使用`esbuild`编译`vue`+`jsx`时所用到的一些硬核（生硬）的技巧🐛🦋
 
+  ## 原生指令
+
   * `v-show`和`v-model`：`jsx`中`v-model`一般需要拆分成`value={ value } onXXX={ actionToValue }`，`v-show`则需要通
   过`vue`提供的接口`withDirectives`来手动实现；值得注意的是，任何自定义的指令都需要通过这种方式来实现，除非集成类似
   `esbuild-plugin-vue`这样的插件来使用`vue`的模板语法
@@ -67,18 +69,18 @@ import VThrottleDemo from '@/components/mdx/constituents/vue/vueDirectiveVThrott
               // 这里有个大坑。。。
               // IntersectionObserver的回调会在初始化的时候执行一次，
               // 所以务必做好对entry.intersectionRatio和entry.isIntersecting的判断
-              const observer = new IntersectionObserver((entries) => {
-                for(const entry of entries) {
-                  if(entry.intersectionRatio > 0.0) {
-                    // 模拟异步数据请求
-                    setTimeout(() => {
-                      entry.target.src = data[entry.target.dataset.src]
-                      if(entry.isIntersecting) {
-                        entry.target.removeAttribute('data-src')
-                        observer.unobserve(entry.target)
-                      }
-                    }, 1000)
-                  }
+              let timer = null
+              const observer = new IntersectionObserver(([entry]) => {
+                if(entry.intersectionRatio > 0.0 && !timer) {
+                  // 模拟异步数据请求
+                  timer = setTimeout(() => {
+                    entry.target.src = data[entry.target.dataset.src]
+                    if(entry.isIntersecting) {
+                      entry.target.removeAttribute('data-src')
+                      observer.unobserve(entry.target)
+                    }
+                    timer = null
+                  }, 1000)
                 }
               }, {
                 rootMargin: '0px 0px 0px 0px',

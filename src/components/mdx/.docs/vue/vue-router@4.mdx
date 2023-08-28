@@ -1,3 +1,20 @@
 # vue-router@4
 
 * 在单页应用（`SPA`）中，当我们直接访问某个路由时（即通过输入`url`并回车），`vue-router`会从根路由开始逐步导航到目标路由。
+
+* 完整的导航解析流程
+
+  * 导航被触发
+  * 在失活的组件里调用`beforeRouteLeave`守卫
+  * 调用全局的`beforeEach`守卫
+  * 在重用的组件里调用`beforeRouteUpdate`守卫(2.2+)：在当前路由改变，但是该组件被复用的时候调用；例如：对于一个带有动态
+  参数的路径 `/users/:id`，在 `/users/1` 和 `/users/2` 之间跳转的时候，由于使用了相同的路由组件，所以该组件实例被复用；
+  因此`beforeRouteUpdate`钩子在这种情况下被调用，并且可以访问到组件实例`this`
+  * 在路由配置里调用`beforeEnter`
+  * 解析异步路由组件
+  * 在被激活的组件里调用`beforeRouteEnter`
+  * 调用全局的`beforeResolve`守卫(2.5+)
+  * 导航被确认
+  * 调用全局的`afterEach`钩子
+  * 触发`DOM`更新
+  * 调用`beforeRouteEnter`守卫中传给`next`的回调函数，创建好的组件实例会作为回调函数的参数传入
