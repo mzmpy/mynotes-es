@@ -22059,7 +22059,7 @@
         "format": "esm"
       },
       "node_modules/@floating-ui/core/dist/floating-ui.core.mjs": {
-        "bytes": 33693,
+        "bytes": 34237,
         "imports": [
           {
             "path": "node_modules/@floating-ui/utils/dist/floating-ui.utils.mjs",
@@ -22080,7 +22080,7 @@
         "format": "esm"
       },
       "node_modules/@floating-ui/utils/dom/dist/floating-ui.utils.dom.mjs": {
-        "bytes": 4850,
+        "bytes": 5039,
         "imports": [
           {
             "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
@@ -22091,7 +22091,7 @@
         "format": "esm"
       },
       "node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs": {
-        "bytes": 20299,
+        "bytes": 20310,
         "imports": [
           {
             "path": "node_modules/@floating-ui/core/dist/floating-ui.core.mjs",
@@ -23317,7 +23317,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/input/src/input.mjs": {
-        "bytes": 2481,
+        "bytes": 2539,
         "imports": [
           {
             "path": "node_modules/@vue/shared/dist/shared.esm-bundler.js",
@@ -23373,7 +23373,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/input/src/input2.mjs": {
-        "bytes": 20016,
+        "bytes": 20124,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -30232,7 +30232,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/collapse/src/collapse2.mjs": {
-        "bytes": 1239,
+        "bytes": 1174,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -30377,7 +30377,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/collapse/src/collapse-item2.mjs": {
-        "bytes": 3944,
+        "bytes": 3756,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -30793,7 +30793,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/color-picker/src/color-picker2.mjs": {
-        "bytes": 12951,
+        "bytes": 12939,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -31573,7 +31573,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/date-picker/src/props/basic-date-table.mjs": {
-        "bytes": 493,
+        "bytes": 577,
         "imports": [
           {
             "path": "node_modules/element-plus/es/utils/index.mjs",
@@ -31615,6 +31615,62 @@
             "path": "node_modules/@vue/shared/dist/shared.esm-bundler.js",
             "kind": "import-statement",
             "original": "@vue/shared"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "node_modules/element-plus/es/components/date-picker/src/composables/use-basic-date-table.mjs": {
+        "bytes": 11394,
+        "imports": [
+          {
+            "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
+            "kind": "import-statement",
+            "original": "vue"
+          },
+          {
+            "path": "node_modules/dayjs/dayjs.min.js",
+            "kind": "import-statement",
+            "original": "dayjs"
+          },
+          {
+            "path": "node_modules/lodash-unified/import.js",
+            "kind": "import-statement",
+            "original": "lodash-unified"
+          },
+          {
+            "path": "node_modules/element-plus/es/hooks/index.mjs",
+            "kind": "import-statement",
+            "original": "../../../../hooks/index.mjs"
+          },
+          {
+            "path": "node_modules/element-plus/es/utils/index.mjs",
+            "kind": "import-statement",
+            "original": "../../../../utils/index.mjs"
+          },
+          {
+            "path": "node_modules/element-plus/es/components/date-picker/src/utils.mjs",
+            "kind": "import-statement",
+            "original": "../utils.mjs"
+          },
+          {
+            "path": "node_modules/element-plus/es/hooks/use-locale/index.mjs",
+            "kind": "import-statement",
+            "original": "../../../../hooks/use-locale/index.mjs"
+          },
+          {
+            "path": "node_modules/element-plus/es/utils/arrays.mjs",
+            "kind": "import-statement",
+            "original": "../../../../utils/arrays.mjs"
+          },
+          {
+            "path": "node_modules/element-plus/es/hooks/use-namespace/index.mjs",
+            "kind": "import-statement",
+            "original": "../../../../hooks/use-namespace/index.mjs"
           },
           {
             "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
@@ -31682,7 +31738,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-date-table.mjs": {
-        "bytes": 14336,
+        "bytes": 4394,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -31690,34 +31746,14 @@
             "original": "vue"
           },
           {
-            "path": "node_modules/dayjs/dayjs.min.js",
-            "kind": "import-statement",
-            "original": "dayjs"
-          },
-          {
-            "path": "node_modules/lodash-unified/import.js",
-            "kind": "import-statement",
-            "original": "lodash-unified"
-          },
-          {
-            "path": "node_modules/element-plus/es/hooks/index.mjs",
-            "kind": "import-statement",
-            "original": "../../../../hooks/index.mjs"
-          },
-          {
-            "path": "node_modules/element-plus/es/utils/index.mjs",
-            "kind": "import-statement",
-            "original": "../../../../utils/index.mjs"
-          },
-          {
             "path": "node_modules/element-plus/es/components/date-picker/src/props/basic-date-table.mjs",
             "kind": "import-statement",
             "original": "../props/basic-date-table.mjs"
           },
           {
-            "path": "node_modules/element-plus/es/components/date-picker/src/utils.mjs",
+            "path": "node_modules/element-plus/es/components/date-picker/src/composables/use-basic-date-table.mjs",
             "kind": "import-statement",
-            "original": "../utils.mjs"
+            "original": "../composables/use-basic-date-table.mjs"
           },
           {
             "path": "node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-cell-render.mjs",
@@ -31728,21 +31764,6 @@
             "path": "node_modules/element-plus/es/_virtual/plugin-vue_export-helper.mjs",
             "kind": "import-statement",
             "original": "../../../../_virtual/plugin-vue_export-helper.mjs"
-          },
-          {
-            "path": "node_modules/element-plus/es/hooks/use-namespace/index.mjs",
-            "kind": "import-statement",
-            "original": "../../../../hooks/use-namespace/index.mjs"
-          },
-          {
-            "path": "node_modules/element-plus/es/hooks/use-locale/index.mjs",
-            "kind": "import-statement",
-            "original": "../../../../hooks/use-locale/index.mjs"
-          },
-          {
-            "path": "node_modules/element-plus/es/utils/arrays.mjs",
-            "kind": "import-statement",
-            "original": "../../../../utils/arrays.mjs"
           },
           {
             "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
@@ -32196,7 +32217,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-date-range.mjs": {
-        "bytes": 28763,
+        "bytes": 29559,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -32307,7 +32328,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/date-picker/src/props/panel-month-range.mjs": {
-        "bytes": 399,
+        "bytes": 426,
         "imports": [
           {
             "path": "node_modules/element-plus/es/utils/index.mjs",
@@ -32359,7 +32380,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-month-range.mjs": {
-        "bytes": 9619,
+        "bytes": 9702,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -34571,7 +34592,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/image-viewer/src/image-viewer.mjs": {
-        "bytes": 848,
+        "bytes": 882,
         "imports": [
           {
             "path": "node_modules/element-plus/es/utils/index.mjs",
@@ -34602,7 +34623,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/image-viewer/src/image-viewer2.mjs": {
-        "bytes": 14368,
+        "bytes": 14462,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -36125,7 +36146,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/select/src/useSelect.mjs": {
-        "bytes": 26654,
+        "bytes": 26713,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -36511,7 +36532,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/pagination/src/components/sizes.mjs": {
-        "bytes": 689,
+        "bytes": 712,
         "imports": [
           {
             "path": "node_modules/element-plus/es/utils/index.mjs",
@@ -36547,7 +36568,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/pagination/src/components/sizes2.mjs": {
-        "bytes": 2922,
+        "bytes": 2975,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -36819,7 +36840,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/pagination/src/pagination.mjs": {
-        "bytes": 9123,
+        "bytes": 9221,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -37273,7 +37294,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/rate/src/rate2.mjs": {
-        "bytes": 11037,
+        "bytes": 11097,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -40542,7 +40563,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/table/src/table-body/index.mjs": {
-        "bytes": 2223,
+        "bytes": 2237,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -44734,7 +44755,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/upload/src/upload.mjs": {
-        "bytes": 2156,
+        "bytes": 2193,
         "imports": [
           {
             "path": "node_modules/@vue/shared/dist/shared.esm-bundler.js",
@@ -44985,7 +45006,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/upload/src/upload-content2.mjs": {
-        "bytes": 6045,
+        "bytes": 6373,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -45061,7 +45082,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/upload/src/use-handlers.mjs": {
-        "bytes": 4106,
+        "bytes": 4139,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -45102,7 +45123,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/upload/src/upload2.mjs": {
-        "bytes": 4873,
+        "bytes": 4801,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -47495,7 +47516,7 @@
         "imports": []
       },
       "src/components/mdx/.docs/physics/stag/manifolds.mdx": {
-        "bytes": 260476,
+        "bytes": 265876,
         "imports": [
           {
             "path": "node_modules/@mdx-js/vue/index.js",
@@ -65480,7 +65501,7 @@
         "format": "esm"
       },
       "src/components/basicFrame/index.jsx": {
-        "bytes": 1981,
+        "bytes": 2386,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -65588,7 +65609,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/dist/index.css": {
-        "bytes": 368565,
+        "bytes": 368569,
         "imports": [
           {
             "path": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==",
@@ -66167,7 +66188,7 @@
         "imports": []
       },
       "src/styles/markdown/dark.css": {
-        "bytes": 16430,
+        "bytes": 16293,
         "imports": [
           {
             "path": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>",
@@ -66254,10 +66275,10 @@
         },
         "bytes": 4827
       },
-      "dist/chunks/js/friday-F34A5MGG.js": {
+      "dist/chunks/js/friday-DDIPL7ES.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-H2PXVRKL.js",
+            "path": "dist/chunks/js/chunk-XZFYN42U.js",
             "kind": "import-statement"
           },
           {
@@ -66924,10 +66945,10 @@
         },
         "bytes": 1054314
       },
-      "dist/chunks/js/markdown-Y27TIGQZ.js": {
+      "dist/chunks/js/markdown-X2VEIFYL.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-H2PXVRKL.js",
+            "path": "dist/chunks/js/chunk-XZFYN42U.js",
             "kind": "import-statement"
           },
           {
@@ -68293,10 +68314,10 @@
         },
         "bytes": 1773026
       },
-      "dist/chunks/js/test-SPSJCAM2.js": {
+      "dist/chunks/js/test-X4Y3JQZQ.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-H2PXVRKL.js",
+            "path": "dist/chunks/js/chunk-XZFYN42U.js",
             "kind": "import-statement"
           },
           {
@@ -68498,10 +68519,10 @@
         },
         "bytes": 3213
       },
-      "dist/chunks/js/vue@3@directives-RG4ZRRPI.js": {
+      "dist/chunks/js/vue@3@directives-G2RWCUMC.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-H2PXVRKL.js",
+            "path": "dist/chunks/js/chunk-XZFYN42U.js",
             "kind": "import-statement"
           },
           {
@@ -68552,7 +68573,7 @@
       "dist/index.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-H2PXVRKL.js",
+            "path": "dist/chunks/js/chunk-XZFYN42U.js",
             "kind": "import-statement"
           },
           {
@@ -68576,7 +68597,7 @@
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/manifolds-6PRXJGO2.js",
+            "path": "dist/chunks/js/manifolds-JU5LZG7D.js",
             "kind": "dynamic-import"
           },
           {
@@ -68616,7 +68637,7 @@
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/vue@3@directives-RG4ZRRPI.js",
+            "path": "dist/chunks/js/vue@3@directives-G2RWCUMC.js",
             "kind": "dynamic-import"
           },
           {
@@ -68624,15 +68645,15 @@
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/friday-F34A5MGG.js",
+            "path": "dist/chunks/js/friday-DDIPL7ES.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/markdown-Y27TIGQZ.js",
+            "path": "dist/chunks/js/markdown-X2VEIFYL.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/test-SPSJCAM2.js",
+            "path": "dist/chunks/js/test-X4Y3JQZQ.js",
             "kind": "dynamic-import"
           }
         ],
@@ -68674,7 +68695,7 @@
             "bytesInOutput": 905
           },
           "src/components/basicFrame/index.jsx": {
-            "bytesInOutput": 800
+            "bytesInOutput": 889
           },
           "src/components/basicFrame/index.module.css": {
             "bytesInOutput": 852
@@ -68704,9 +68725,9 @@
             "bytesInOutput": 0
           }
         },
-        "bytes": 42371
+        "bytes": 42468
       },
-      "dist/chunks/js/chunk-H2PXVRKL.js": {
+      "dist/chunks/js/chunk-XZFYN42U.js": {
         "imports": [
           {
             "path": "dist/chunks/js/chunk-GXITFN23.js",
@@ -68731,7 +68752,8 @@
           "o",
           "p",
           "q",
-          "r"
+          "r",
+          "s"
         ],
         "inputs": {
           "node_modules/element-plus/es/components/input/index.mjs": {
@@ -68951,7 +68973,7 @@
             "bytesInOutput": 12319
           },
           "node_modules/element-plus/es/utils/vue/props/runtime.mjs": {
-            "bytesInOutput": 617
+            "bytesInOutput": 616
           },
           "node_modules/element-plus/es/utils/vue/install.mjs": {
             "bytesInOutput": 265
@@ -68978,7 +69000,7 @@
             "bytesInOutput": 16
           },
           "node_modules/element-plus/es/components/input/src/input2.mjs": {
-            "bytesInOutput": 7054
+            "bytesInOutput": 7128
           },
           "node_modules/element-plus/es/components/icon/index.mjs": {
             "bytesInOutput": 18
@@ -69014,7 +69036,7 @@
             "bytesInOutput": 1081
           },
           "node_modules/@popperjs/core/dist/index.mjs": {
-            "bytesInOutput": 19941
+            "bytesInOutput": 19947
           },
           "node_modules/element-plus/es/hooks/use-same-target/index.mjs": {
             "bytesInOutput": 217
@@ -69032,7 +69054,7 @@
             "bytesInOutput": 364
           },
           "node_modules/element-plus/es/hooks/use-delayed-toggle/index.mjs": {
-            "bytesInOutput": 369
+            "bytesInOutput": 368
           },
           "node_modules/element-plus/es/hooks/use-forward-ref/index.mjs": {
             "bytesInOutput": 149
@@ -69050,7 +69072,7 @@
             "bytesInOutput": 414
           },
           "node_modules/element-plus/es/components/icon/src/icon.mjs": {
-            "bytesInOutput": 68
+            "bytesInOutput": 67
           },
           "node_modules/element-plus/es/_virtual/plugin-vue_export-helper.mjs": {
             "bytesInOutput": 73
@@ -69068,7 +69090,7 @@
             "bytesInOutput": 1450
           },
           "node_modules/element-plus/es/components/input/src/input.mjs": {
-            "bytesInOutput": 1215
+            "bytesInOutput": 1250
           },
           "node_modules/element-plus/es/components/drawer/index.mjs": {
             "bytesInOutput": 18
@@ -69080,7 +69102,7 @@
             "bytesInOutput": 14
           },
           "node_modules/element-plus/es/components/overlay/src/overlay.mjs": {
-            "bytesInOutput": 730
+            "bytesInOutput": 729
           },
           "node_modules/element-plus/es/components/focus-trap/src/focus-trap.mjs": {
             "bytesInOutput": 2871
@@ -69092,13 +69114,13 @@
             "bytesInOutput": 248
           },
           "node_modules/element-plus/es/components/dialog/src/dialog-content.mjs": {
-            "bytesInOutput": 249
+            "bytesInOutput": 248
           },
           "node_modules/element-plus/es/components/dialog/src/dialog.mjs": {
-            "bytesInOutput": 623
+            "bytesInOutput": 622
           },
           "node_modules/element-plus/es/components/dialog/src/use-dialog.mjs": {
-            "bytesInOutput": 1618
+            "bytesInOutput": 1631
           },
           "node_modules/element-plus/es/components/config-provider/src/config-provider.mjs": {
             "bytesInOutput": 203
@@ -69110,13 +69132,40 @@
             "bytesInOutput": 20
           },
           "node_modules/element-plus/es/components/config-provider/src/config-provider-props.mjs": {
-            "bytesInOutput": 263
+            "bytesInOutput": 262
           },
           "node_modules/element-plus/es/components/drawer/src/drawer.mjs": {
-            "bytesInOutput": 257
+            "bytesInOutput": 256
           },
           "node_modules/element-plus/es/components/index.mjs": {
             "bytesInOutput": 4
+          },
+          "node_modules/element-plus/es/components/scrollbar/index.mjs": {
+            "bytesInOutput": 18
+          },
+          "node_modules/element-plus/es/components/scrollbar/src/scrollbar2.mjs": {
+            "bytesInOutput": 2039
+          },
+          "node_modules/element-plus/es/components/scrollbar/src/util.mjs": {
+            "bytesInOutput": 395
+          },
+          "node_modules/element-plus/es/components/scrollbar/src/bar2.mjs": {
+            "bytesInOutput": 597
+          },
+          "node_modules/element-plus/es/components/scrollbar/src/thumb2.mjs": {
+            "bytesInOutput": 2287
+          },
+          "node_modules/element-plus/es/components/scrollbar/src/constants.mjs": {
+            "bytesInOutput": 41
+          },
+          "node_modules/element-plus/es/components/scrollbar/src/thumb.mjs": {
+            "bytesInOutput": 104
+          },
+          "node_modules/element-plus/es/components/scrollbar/src/bar.mjs": {
+            "bytesInOutput": 138
+          },
+          "node_modules/element-plus/es/components/scrollbar/src/scrollbar.mjs": {
+            "bytesInOutput": 478
           },
           "node_modules/element-plus/es/components/tooltip/index.mjs": {
             "bytesInOutput": 18
@@ -69134,13 +69183,13 @@
             "bytesInOutput": 55
           },
           "node_modules/element-plus/es/components/popper/src/popper.mjs": {
-            "bytesInOutput": 140
+            "bytesInOutput": 139
           },
           "node_modules/element-plus/es/components/popper/src/arrow2.mjs": {
             "bytesInOutput": 490
           },
           "node_modules/element-plus/es/components/popper/src/arrow.mjs": {
-            "bytesInOutput": 53
+            "bytesInOutput": 52
           },
           "node_modules/element-plus/es/components/popper/src/trigger2.mjs": {
             "bytesInOutput": 1437
@@ -69149,13 +69198,13 @@
             "bytesInOutput": 568
           },
           "node_modules/element-plus/es/components/popper/src/trigger.mjs": {
-            "bytesInOutput": 300
+            "bytesInOutput": 299
           },
           "node_modules/element-plus/es/components/popper/src/content2.mjs": {
-            "bytesInOutput": 1973
+            "bytesInOutput": 1980
           },
           "node_modules/element-plus/es/components/popper/src/content.mjs": {
-            "bytesInOutput": 1032
+            "bytesInOutput": 1030
           },
           "node_modules/element-plus/es/components/popper/src/composables/use-content.mjs": {
             "bytesInOutput": 664
@@ -69173,13 +69222,13 @@
             "bytesInOutput": 31
           },
           "node_modules/element-plus/es/components/tooltip/src/tooltip.mjs": {
-            "bytesInOutput": 230
+            "bytesInOutput": 229
           },
           "node_modules/element-plus/es/components/tooltip/src/content.mjs": {
-            "bytesInOutput": 281
+            "bytesInOutput": 280
           },
           "node_modules/element-plus/es/components/tooltip/src/trigger.mjs": {
-            "bytesInOutput": 149
+            "bytesInOutput": 148
           },
           "node_modules/element-plus/es/components/tooltip/src/trigger2.mjs": {
             "bytesInOutput": 1099
@@ -69188,7 +69237,7 @@
             "bytesInOutput": 87
           },
           "node_modules/element-plus/es/components/tooltip/src/content2.mjs": {
-            "bytesInOutput": 2384
+            "bytesInOutput": 2386
           },
           "node_modules/element-plus/es/components/badge/index.mjs": {
             "bytesInOutput": 18
@@ -69197,7 +69246,7 @@
             "bytesInOutput": 709
           },
           "node_modules/element-plus/es/components/badge/src/badge.mjs": {
-            "bytesInOutput": 206
+            "bytesInOutput": 205
           },
           "node_modules/element-plus/es/components/button/index.mjs": {
             "bytesInOutput": 45
@@ -69212,7 +69261,7 @@
             "bytesInOutput": 43
           },
           "node_modules/element-plus/es/components/button/src/button.mjs": {
-            "bytesInOutput": 559
+            "bytesInOutput": 558
           },
           "node_modules/element-plus/es/components/button/src/button-custom.mjs": {
             "bytesInOutput": 1391
@@ -69245,7 +69294,7 @@
             "bytesInOutput": 511
           },
           "node_modules/element-plus/es/components/card/src/card.mjs": {
-            "bytesInOutput": 191
+            "bytesInOutput": 190
           },
           "node_modules/element-plus/es/components/collapse-transition/index.mjs": {
             "bytesInOutput": 54
@@ -69275,7 +69324,7 @@
             "bytesInOutput": 90
           },
           "node_modules/element-plus/es/components/menu/src/menu.mjs": {
-            "bytesInOutput": 3791
+            "bytesInOutput": 3803
           },
           "node_modules/element-plus/es/components/menu/src/utils/menu-bar.mjs": {
             "bytesInOutput": 158
@@ -69290,7 +69339,7 @@
             "bytesInOutput": 1057
           },
           "node_modules/element-plus/es/components/menu/src/sub-menu.mjs": {
-            "bytesInOutput": 5025
+            "bytesInOutput": 5027
           },
           "node_modules/element-plus/es/components/menu/src/use-menu.mjs": {
             "bytesInOutput": 286
@@ -69305,7 +69354,7 @@
             "bytesInOutput": 1486
           },
           "node_modules/element-plus/es/components/menu/src/menu-item.mjs": {
-            "bytesInOutput": 168
+            "bytesInOutput": 167
           },
           "node_modules/element-plus/es/components/menu/src/menu-item-group2.mjs": {
             "bytesInOutput": 464
@@ -69320,7 +69369,7 @@
             "bytesInOutput": 4157
           },
           "node_modules/element-plus/es/components/switch/src/switch.mjs": {
-            "bytesInOutput": 933
+            "bytesInOutput": 932
           },
           "node_modules/element-plus/es/components/message/index.mjs": {
             "bytesInOutput": 29
@@ -69332,13 +69381,13 @@
             "bytesInOutput": 2090
           },
           "node_modules/element-plus/es/components/message/src/message.mjs": {
-            "bytesInOutput": 926
+            "bytesInOutput": 925
           },
           "node_modules/element-plus/es/components/message/src/instance.mjs": {
             "bytesInOutput": 221
           }
         },
-        "bytes": 146652
+        "bytes": 152894
       },
       "dist/chunks/js/@typescript-AU6HMKZZ.js": {
         "imports": [
@@ -69440,7 +69489,7 @@
         },
         "bytes": 508
       },
-      "dist/chunks/js/manifolds-6PRXJGO2.js": {
+      "dist/chunks/js/manifolds-JU5LZG7D.js": {
         "imports": [
           {
             "path": "dist/chunks/js/chunk-FWUQZPXN.js",
@@ -69465,7 +69514,7 @@
             "bytesInOutput": 171
           },
           "src/components/mdx/.docs/physics/stag/manifolds.mdx": {
-            "bytesInOutput": 123576
+            "bytesInOutput": 126287
           },
           "src/assets/images/ep.jpg": {
             "bytesInOutput": 10488
@@ -69483,7 +69532,7 @@
             "bytesInOutput": 105699
           }
         },
-        "bytes": 642584
+        "bytes": 645295
       },
       "dist/chunks/js/chunk-FWUQZPXN.js": {
         "imports": [
@@ -70879,7 +70928,7 @@
             "bytesInOutput": 176
           },
           "node_modules/element-plus/dist/index.css": {
-            "bytesInOutput": 317463
+            "bytesInOutput": 317470
           },
           "node_modules/katex/dist/katex.css": {
             "bytesInOutput": 23912
@@ -70888,10 +70937,10 @@
             "bytesInOutput": 1064
           },
           "src/styles/markdown/dark.css": {
-            "bytesInOutput": 14044
+            "bytesInOutput": 13941
           }
         },
-        "bytes": 393813
+        "bytes": 393717
       },
       "dist/chunks/css/manifolds-75NMKGDC.css": {
         "imports": [],
