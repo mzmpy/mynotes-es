@@ -11,7 +11,8 @@ import {
   ElAside,
   ElContainer,
   ElHeader,
-  ElMain
+  ElMain,
+  ElScrollbar
 } from 'element-plus/components'
 import styles from './index.module.css'
 
@@ -21,7 +22,8 @@ export default defineComponent({
     ElAside,
     ElContainer,
     ElHeader,
-    ElMain
+    ElMain,
+    ElScrollbar
   },
   props: {
     aside: {
@@ -66,13 +68,23 @@ export default defineComponent({
                         width={ props.aside.width }
                         class={ styles(props.aside.className || 'default-aside') }
                       >
-                        { slots.aside?.() }
+                        <ElScrollbar>
+                          { slots.aside?.() }
+                        </ElScrollbar>
                       </ElAside>,
                       [[vShow, props.aside.display]]
                     )
                   }
                   <ElMain class={ props.aside.display ? styles('default-main') : styles('default-main-no-aside') }>
-                    { slots.main?.() || slots.default?.() }
+                    {
+                      props.aside.display
+                        ? <>
+                          <ElScrollbar>
+                            { slots.main?.() || slots.default?.() }
+                          </ElScrollbar>
+                        </>
+                        : slots.main?.() || slots.default?.()
+                    }
                   </ElMain>
                 </>
               }
