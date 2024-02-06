@@ -13,11 +13,11 @@ import OverlappingCoordinateChartsImg from '@/assets/images/overlapping-coordina
 
 * The **EEP(Einstein Equivalence Principle)** can be stated as follows: *In small enough regions of spacetime, the laws of physics reduce to those of specical relativity; it is impossible to detect the existence of a gravitational feild by means of local experiments*.
 
-<ComImg alt="等效原理" src={ epImg }></ComImg>
+  <ComImg alt="等效原理" src={ epImg }></ComImg>
 
-### 用Einstein等效原理计算引力红移
+  ### 用Einstein等效原理计算引力红移
 
-<ComImg alt="地球表面的引力红移效应" src={ redshiftImg } width="300"></ComImg>
+  <ComImg alt="地球表面的引力红移效应" src={ redshiftImg } width="300"></ComImg>
 
 * 在接近地球表面的地方，引力可以看作是均匀的；根据EEP，上图中产生的效应可以等效地理解为：在远离引力场的平坦时空中，两架相距`z`的飞船正在做匀加速度为$a_{g}$的运动，位于后边
 的飞船向前方的飞船发射一束波长为$\lambda_{0}$的电磁波；前方飞船接收到的电磁波波长与电磁波发射时的波长相差$\Delta \lambda$；
@@ -101,3 +101,58 @@ it might be; we really do not know.
 
 * Why was it necessary to be so finicky about charts and their overlays, rather than just covering every mainfold with a single chart? 
 Because most mainfolds cannot be covering with just one chart. A somewhat complicated example is provided by $S^{2}$($P_{61}$ for more).
+
+## Tangent Space
+
+* The tangent space is a set of all vectors at a single point in spacetime.
+
+* Define $\mathcal{F}$ to be the space of all smooth functions on $M$ (that is, $C^{\infty}$ maps $f$: $M \to R$). Then we notice that 
+each curve through $p$ defines an operator on this space, the directional derivative, which maps $f \to df/d\lambda$(at p). We will 
+make the following claim: **the tangent space $T^{p}$ can be identified with the space of directional derivative operator along curves 
+through $p$**. To establish this idea we must demonstrate two things: first, that the space of directional derivative is a vector space. 
+and second that it is the vector space we want(it has the same dimensionality as $M$, yields a natural idea of a vector pointing along a 
+certain direction, and so on).
+
+* The easitest way to convince that the vector space at $p$ is identified with the tangent space is to find a basis for the space.
+
+* **On a curved manifold, a coordinate basis will never be orthonormal throughout a neighborhood of any point where the curvature 
+dose not vanish.**
+
+## Tensor
+
+* **A ($k$, $l$) tensor is a multilinear map from a collection of $k$ dual vectors and $l$ vectors to $\R$**. Its components
+in a coordinate basis can be obtained by acting the tensor on basis one-forms and vectors,
+  $$
+  \begin{gather}
+    T^{\mu_1...\mu_k}_{\phantom{\:\nu_1...\nu_k}\nu_1...\nu_k} = T(dx^{\mu_1},...,dx^{\mu_k},\partial_{\nu_1},...,\partial_{\nu_l})
+  \end{gather}
+  $$
+  The transformation law for general tensors follows the same pattern of replacing the Lorentz transformation matrix used in flat space
+with a matrix representing more general coordinate transformations:
+  $$
+  \begin{gather}
+    T^{\mu^\prime_1...\mu^\prime_k}_{\phantom{\:\nu_1...\nu_k}\nu^\prime_1...\nu^\prime_k}
+    = \frac{\partial x^{\mu^\prime_1}}{\partial x^{\mu_1}}...
+    \frac{\partial x^{\mu^\prime_k}}{\partial x^{\mu_k}}
+    \frac{\partial x^{\nu_1}}{\partial x^{\nu^\prime_1}}...
+    \frac{\partial x^{\nu_l}}{\partial x^{\nu^\prime_l}}
+    T^{\mu_1...\mu_k}_{\phantom{\:\nu_1...\nu_k}\nu_1...\nu_k}
+  \end{gather}
+  $$
+
+## Metric
+
+* In fact, **there always exits a coordinate system on any flat space in which the metric is constant**. But we might not know how 
+to find such a coordinate system, and there are many ways for a space to deviate from flatness; we will therefore want a more 
+precise characterization of the curvature.
+
+* 具有常数分量的度规是判断一个`space`是平直的充分条件。
+
+* We will always deal with continuous, nondegenerate metric. If all of the signs are positive, the metric is called **Euclidean** or 
+**Riemannian**, while if there is a single minus it is called **Lorentzian** or **pseudo-Riemannian**, and any metric with some $+1$'s 
+and some $-1$'s is called indefinite.
+
+* Many physical questions can be cast as an initial-value problem: given the state of a sysytem at some moment in time, what will be 
+the state at some latter time? The fact that such questions have definite answers is due to causality, the idea that future events can 
+be understood as consequences of initial conditions plus the laws of physics. Initial-value problems are as common in GR as in Newtonian 
+physics or specical relativity.
