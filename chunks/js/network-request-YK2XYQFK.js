@@ -1,4 +1,4 @@
-import{a as o}from"./chunk-YBHWL63X.js";import{J as a,d as l,e as h,oa as s,va as d}from"./chunk-GXITFN23.js";h();d();h();h();function c(e){let n=Object.assign({h1:"h1",h2:"h2",ul:"ul",li:"li",code:"code",pre:"pre",span:"span",p:"p",ol:"ol",a:"a"},o(),e.components);return l.h(l.Fragment,null,l.h(n.h1,null,"\u7F51\u7EDC\u8BF7\u6C42"),`
+import{a as o}from"./chunk-5NNLKCHH.js";import{K as a,d as l,e as h,na as s,va as d}from"./chunk-YB6PSBT5.js";h();d();h();h();function c(e){let n=Object.assign({h1:"h1",h2:"h2",ul:"ul",li:"li",code:"code",pre:"pre",span:"span",p:"p",ol:"ol",a:"a"},o(),e.components);return l.h(l.Fragment,null,l.h(n.h1,null,"\u7F51\u7EDC\u8BF7\u6C42"),`
 `,l.h(n.h2,null,"Fetch"),`
 `,l.h(n.ul,null,`
 `,l.h(n.li,null,l.h(n.code,null,"fetch"),"\u662F\u4E00\u79CD\u73B0\u4EE3\u901A\u7528\u7684\u7F51\u7EDC\u8BF7\u6C42\u65B9\u5F0F"),`

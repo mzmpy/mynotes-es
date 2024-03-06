@@ -1,4 +1,4 @@
-import{a as h}from"./chunk-YBHWL63X.js";import{J as t,d as l,e as a,oa as e,va as o}from"./chunk-GXITFN23.js";a();o();a();a();function u(s){let n=Object.assign({h1:"h1",code:"code",ul:"ul",li:"li",p:"p",pre:"pre",span:"span"},h(),s.components);return l.h(l.Fragment,null,l.h(n.h1,null,l.h(n.code,null,"Webpack")),`
+import{a as h}from"./chunk-5NNLKCHH.js";import{K as t,d as l,e as a,na as e,va as o}from"./chunk-YB6PSBT5.js";a();o();a();a();function u(s){let n=Object.assign({h1:"h1",code:"code",ul:"ul",li:"li",p:"p",pre:"pre",span:"span"},h(),s.components);return l.h(l.Fragment,null,l.h(n.h1,null,l.h(n.code,null,"Webpack")),`
 `,l.h(n.ul,null,`
 `,l.h(n.li,null,`
 `,l.h(n.p,null,`\u6A21\u5757\u5316\uFF1A\u6A21\u5757\u5316\u6307\u7684\u662F\u5728\u7A0B\u5E8F\u9879\u76EE\u5F00\u53D1\u8FC7\u7A0B\u4E2D\uFF0C\u5C06\u6D89\u53CA\u7684\u4EE3\u7801\u548C\u8D44\u6E90\u6839\u636E\u5176\u529F\u80FD\u3001\u7C7B\u522B\u7B49\u56E0\u7D20\u5206\u5272\uFF0C\u5C01\u88C5\u5230\u4E0D\u540C\u7684\u57DF\uFF08\u4F8B\u5982\u6587\u4EF6\uFF0C\u4EE3\u7801\u5757\u7B49\uFF09

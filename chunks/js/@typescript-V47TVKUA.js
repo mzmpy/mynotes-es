@@ -1,4 +1,4 @@
-import{a as h}from"./chunk-YBHWL63X.js";import{J as c,d as s,e as a,oa as e,va as p}from"./chunk-GXITFN23.js";a();p();a();a();function o(n){let l=Object.assign({h1:"h1",code:"code",ul:"ul",li:"li",p:"p",strong:"strong",pre:"pre",span:"span"},h(),n.components);return s.h(s.Fragment,null,s.h(l.h1,null,s.h(l.code,null,"Typescript")),`
+import{a as h}from"./chunk-5NNLKCHH.js";import{K as c,d as s,e as a,na as e,va as p}from"./chunk-YB6PSBT5.js";a();p();a();a();function o(n){let l=Object.assign({h1:"h1",code:"code",ul:"ul",li:"li",p:"p",strong:"strong",pre:"pre",span:"span"},h(),n.components);return s.h(s.Fragment,null,s.h(l.h1,null,s.h(l.code,null,"Typescript")),`
 `,s.h(l.ul,null,`
 `,s.h(l.li,null,`
 `,s.h(l.p,null,"\u521D\u59CB\u5316",s.h(l.code,null,"tsconfig.json"),"\u7684\u4E24\u79CD\u65B9\u5F0F\uFF1A"),`

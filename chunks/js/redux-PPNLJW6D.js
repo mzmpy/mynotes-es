@@ -1,4 +1,4 @@
-import{a as u}from"./chunk-YBHWL63X.js";import{J as c,d as l,e as o,oa as t,va as a}from"./chunk-GXITFN23.js";o();a();o();o();function d(e){let n=Object.assign({h1:"h1",code:"code",h2:"h2",ul:"ul",li:"li"},u(),e.components);return l.h(l.Fragment,null,l.h(n.h1,null,l.h(n.code,null,"Redux")),`
+import{a as u}from"./chunk-5NNLKCHH.js";import{K as c,d as l,e as o,na as t,va as a}from"./chunk-YB6PSBT5.js";o();a();o();o();function d(e){let n=Object.assign({h1:"h1",code:"code",h2:"h2",ul:"ul",li:"li"},u(),e.components);return l.h(l.Fragment,null,l.h(n.h1,null,l.h(n.code,null,"Redux")),`
 `,l.h(n.h2,null,"\u4EC0\u4E48\u65F6\u5019\u5E94\u8BE5\u4F7F\u7528",l.h(n.code,null,"Redux")),`
 `,l.h(n.ul,null,`
 `,l.h(n.li,null,"\u5E94\u7528\u4E2D\u6709\u5F88\u591A",l.h(n.code,null,"state"),"\u9700\u8981\u5728\u4E0D\u540C\u7EC4\u4EF6\u4E2D\u88AB\u4F7F\u7528\uFF0C\u5373\u8FD9\u4E9B",l.h(n.code,null,"state"),"\u9700\u8981\u88AB\u201C\u63D0\u5347\u201D"),`

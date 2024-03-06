@@ -1,4 +1,4 @@
-import{a}from"./chunk-YBHWL63X.js";import{J as u,d as n,e,oa as h,va as i}from"./chunk-GXITFN23.js";e();i();e();e();function t(s){let l=Object.assign({h1:"h1",ul:"ul",li:"li",p:"p",code:"code",strong:"strong",h2:"h2",h3:"h3",pre:"pre",span:"span"},a(),s.components);return n.h(n.Fragment,null,n.h(l.h1,null,"\u95ED\u5305\uFF08Closure\uFF09"),`
+import{a}from"./chunk-5NNLKCHH.js";import{K as u,d as n,e,na as h,va as i}from"./chunk-YB6PSBT5.js";e();i();e();e();function t(s){let l=Object.assign({h1:"h1",ul:"ul",li:"li",p:"p",code:"code",strong:"strong",h2:"h2",h3:"h3",pre:"pre",span:"span"},a(),s.components);return n.h(n.Fragment,null,n.h(l.h1,null,"\u95ED\u5305\uFF08Closure\uFF09"),`
 `,n.h(l.ul,null,`
 `,n.h(l.li,null,`
 `,n.h(l.p,null,"\u95ED\u5305\u7531\u51FD\u6570\u4EE5\u53CA\u51FD\u6570\u6240\u80FD\u8BBF\u95EE\u5230\u7684\u53D8\u91CF\u7EC4\u6210"),`

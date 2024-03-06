@@ -1,4 +1,4 @@
-import{a as t}from"./chunk-YBHWL63X.js";import{J as r,d as n,e as o,oa as u,va as d}from"./chunk-GXITFN23.js";o();d();o();o();function c(e){let l=Object.assign({h1:"h1",ul:"ul",li:"li",p:"p",code:"code"},t(),e.components);return n.h(n.Fragment,null,n.h(l.h1,null,"vue-router@4"),`
+import{a as t}from"./chunk-5NNLKCHH.js";import{K as r,d as n,e as o,na as u,va as d}from"./chunk-YB6PSBT5.js";o();d();o();o();function c(e){let l=Object.assign({h1:"h1",ul:"ul",li:"li",p:"p",code:"code"},t(),e.components);return n.h(n.Fragment,null,n.h(l.h1,null,"vue-router@4"),`
 `,n.h(l.ul,null,`
 `,n.h(l.li,null,`
 `,n.h(l.p,null,"\u5728\u5355\u9875\u5E94\u7528\uFF08",n.h(l.code,null,"SPA"),"\uFF09\u4E2D\uFF0C\u5F53\u6211\u4EEC\u76F4\u63A5\u8BBF\u95EE\u67D0\u4E2A\u8DEF\u7531\u65F6\uFF08\u5373\u901A\u8FC7\u8F93\u5165",n.h(l.code,null,"url"),"\u5E76\u56DE\u8F66\uFF09\uFF0C",n.h(l.code,null,"vue-router"),"\u4F1A\u4ECE\u6839\u8DEF\u7531\u5F00\u59CB\u9010\u6B65\u5BFC\u822A\u5230\u76EE\u6807\u8DEF\u7531\u3002"),`

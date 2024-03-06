@@ -1,4 +1,4 @@
-import{a as o}from"./chunk-YBHWL63X.js";import{J as i,d as n,e,oa as h,va as c}from"./chunk-GXITFN23.js";e();c();e();e();function d(u){let l=Object.assign({h1:"h1",ul:"ul",li:"li",p:"p",code:"code",h2:"h2"},o(),u.components);return n.h(n.Fragment,null,n.h(l.h1,null,"\u4E8B\u4EF6\u7B80\u4ECB"),`
+import{a as o}from"./chunk-5NNLKCHH.js";import{K as i,d as n,e,na as h,va as c}from"./chunk-YB6PSBT5.js";e();c();e();e();function d(u){let l=Object.assign({h1:"h1",ul:"ul",li:"li",p:"p",code:"code",h2:"h2"},o(),u.components);return n.h(n.Fragment,null,n.h(l.h1,null,"\u4E8B\u4EF6\u7B80\u4ECB"),`
 `,n.h(l.ul,null,`
 `,n.h(l.li,null,`
 `,n.h(l.p,null,"\u4E8B\u4EF6\u662F\u89E6\u53D1\u6267\u884C\u67D0\u4E9B\u4EE3\u7801\u7684\u4FE1\u53F7"),`
