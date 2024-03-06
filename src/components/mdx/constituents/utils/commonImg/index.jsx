@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import styles from '@/components/mdx/constituents/styles/utils-commonImg.module.css'
+import styles from '@/components/mdx/constituents/utils/commonImg/index.module.css'
 
 export default defineComponent({
   name: 'ComImg',

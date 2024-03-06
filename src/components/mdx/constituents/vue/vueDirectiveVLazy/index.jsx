@@ -1,5 +1,5 @@
 import { defineComponent, withDirectives } from 'vue'
-import styles from '@/components/mdx/constituents/styles/vueDirectiveVLazy.module.css'
+import styles from '@/components/mdx/constituents/vue/vueDirectiveVLazy/index.module.css'
 import catGirlImg from '@/assets/images/catgirl.jpg'
 import defaultImg from '@/assets/images/nopic.svg'
 

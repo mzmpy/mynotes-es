@@ -1,4 +1,4 @@
-import ComImg from '@/components/mdx/constituents/utils/commonImg.jsx'
+import ComImg from '@/components/mdx/constituents/utils/commonImg/index.jsx'
 import epImg from '@/assets/images/ep.jpg'
 import redshiftImg from '@/assets/images/redshift.jpg'
 import RiemannSurfaceImg from '@/assets/images/Riemann-surface.png'
@@ -124,7 +124,7 @@ dose not vanish.**
 in a coordinate basis can be obtained by acting the tensor on basis one-forms and vectors,
   $$
   \begin{gather}
-    T^{\mu_1...\mu_k}_{\phantom{\:\nu_1...\nu_k}\nu_1...\nu_k} = T(dx^{\mu_1},...,dx^{\mu_k},\partial_{\nu_1},...,\partial_{\nu_l})
+    T^{\mu_1...\mu_k}_{\phantom{\:\nu_1...\nu_k}\nu_1...\nu_k} = T(dx^{\mu_1},...,dx^{\mu_k},\partial_{\nu_1},...,\partial_{\nu_l}).
   \end{gather}
   $$
   The transformation law for general tensors follows the same pattern of replacing the Lorentz transformation matrix used in flat space
@@ -136,7 +136,7 @@ with a matrix representing more general coordinate transformations:
     \frac{\partial x^{\mu^\prime_k}}{\partial x^{\mu_k}}
     \frac{\partial x^{\nu_1}}{\partial x^{\nu^\prime_1}}...
     \frac{\partial x^{\nu_l}}{\partial x^{\nu^\prime_l}}
-    T^{\mu_1...\mu_k}_{\phantom{\:\nu_1...\nu_k}\nu_1...\nu_k}
+    T^{\mu_1...\mu_k}_{\phantom{\:\nu_1...\nu_k}\nu_1...\nu_k}.
   \end{gather}
   $$
 
@@ -156,3 +156,54 @@ and some $-1$'s is called indefinite.
 the state at some latter time? The fact that such questions have definite answers is due to causality, the idea that future events can 
 be understood as consequences of initial conditions plus the laws of physics. Initial-value problems are as common in GR as in Newtonian 
 physics or specical relativity.
+
+## Tensor Densities
+
+* The completely antisymmetric Levi-civita symbol, defined as
+  $$
+  \begin{gather}
+    \tilde{\epsilon}_{\mu_1\mu_2...\mu_n} = 
+    \begin{cases}
+      +1 &\text{if } \mu_1\mu_2...\mu_n \text{ is an even permutation of }01...(n-1), \\
+      -1 &\text{if } \mu_1\mu_2...\mu_n \text{ is an odd permutation of }01...(n-1), \\
+      0 &\text{otherwise}.
+    \end{cases}
+  \end{gather}
+  $$
+  This is called a "symbol" because it is not a tensor and not obeying the general coordinate transformation law. Its behavior can be 
+  related to that of an ordinary tensor by first nothing that, given any $n \times n$matrix $M^{\mu}_{\mu\prime}$, the determinant 
+  $|M|$ obeys
+  $$
+  \begin{gather}
+    \tilde{\epsilon}_{\mu^{\prime}_1\mu^{\prime}_2...\mu^{\prime}_n}|M| = 
+    \tilde{\epsilon}_{\mu_1\mu_2...\mu_n}
+    M^{\mu_1}_{\phantom{\:\mu^{\prime}_1}\mu^{\prime}_1}
+    M^{\mu_2}_{\phantom{\:\mu^{\prime}_2}\mu^{\prime}_2}...
+    M^{\mu_n}_{\phantom{\:\mu^{\prime}_n}\mu^{\prime}_n}.
+  \end{gather}
+  $$
+  It follows that, setting $M^{\mu}_{\phantom{\:\mu^{\prime}}\mu^{\prime}} = \partial x^{\mu} / \partial x^{\mu^{\prime}}$
+  $$
+  \begin{gather}
+    \tilde{\epsilon}_{\mu^{\prime}_1\mu^{\prime}_2...\mu^{\prime}_n} = 
+    \bigg\lvert \frac{\partial x^{\mu^{\prime}}}{\partial x^{\mu}} \bigg\rvert
+    \tilde{\epsilon}_{\mu_1\mu_2...\mu_n}
+    \frac{\partial x^{\mu_1}}{\partial x^{\mu_1^{\prime}}}
+    \frac{\partial x^{\mu_2}}{\partial x^{\mu_2^{\prime}}}...
+    \frac{\partial x^{\mu_n}}{\partial x^{\mu_n^{\prime}}}.
+  \end{gather}
+  $$
+  So Levi-Civita symbol transforms in a way close to the tensor transformation law, except for the determinant out front. 
+  Objects transforming in this way are known as  **tensor densities**. Another example is given by the determinant of the 
+  metric, $g = |g_{\mu\nu}|$
+  $$
+  \begin{gather}
+    g(x^{\mu^\prime}) = \bigg\lvert \frac{\partial x^{\mu^{\prime}}}{\partial x^{\mu}} \bigg\rvert^{-2} g(x^{\mu}).
+  \end{gather}
+  $$
+  With this we can define the Levi-Civita tensor as 
+  $$
+  \begin{gather}
+    \epsilon_{\mu_1\mu_2...\mu_n} = \sqrt{|g|}\tilde{\epsilon}_{\mu_1\mu_2...\mu_n}.
+  \end{gather}
+  $$

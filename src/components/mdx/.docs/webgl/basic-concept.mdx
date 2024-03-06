@@ -1,0 +1,129 @@
+import WebGLHelloWorld from '@/components/mdx/constituents/webgl/basic-concept/helloWorld/index.jsx'
+
+# WebGL☘️
+
+* `WebGL`是一个光栅化引擎，可以根据所提供的代码绘制出点、线和三角形。
+* `WebGL`编写的代码能够在`GPU`上运行；`WebGL`的代码需要提供成对的方法，它们分别作为顶点着色器和片段着色器
+并且使用一种和`C`或者`C++`类似的强类型语言`GLSL`；每对着色器组合起来称作一个着色程序。
+* **顶点着色器**的作用是计算顶点的位置。
+* **光栅化**：根据计算出的一系列顶点位置，WebGL可以对点， 线和三角形在内的一些图元进行光栅化处理；当对这些图元进行光栅化处理时需要使用片段着色器方法。
+* **片段着色器**的作用是计算出当前绘制图元中每个像素的颜色值。
+
+## WebGL Hello World
+
+* 编写着色器函数
+  ```javascript
+  function createShader(gl, type, glslSource) {
+    const shader = gl.createShader(type)
+
+    gl.shaderSource(shader, glslSource)
+    gl.compileShader(shader)
+    const success = gl.getShaderParameter(shader, gl.COMPILE_STATUS)
+
+    if(success) {
+      return shader
+    }
+
+    console.log('fail to get shader: ', gl.getShaderInfoLog(shader))
+    gl.deleteShader(shader)
+  }
+  ```
+* 将顶点着色器和片段着色器组合成着色程序
+  ```javascript
+  function createProgram(gl, vertexShader, fragmentShader) {
+    const program = gl.createProgram()
+
+    gl.attachShader(program, vertexShader)
+    gl.attachShader(program, fragmentShader)
+    gl.linkProgram(program)
+
+    const success = gl.getProgramParameter(program, gl.LINK_STATUS)
+
+    if(success) {
+      return program
+    }
+
+    console.log('fail to get program: ', gl.getProgramInfoLog(program))
+    gl.deleteProgram(program)
+  }
+  ```
+* 使用`WebGL`绘制一个三角形
+  ```javascript
+  import { defineComponent, ref, onMounted } from 'vue'
+  import styles from './index.module.css'
+
+  export default defineComponent({
+    name: 'WebGLHelloWorld',
+    setup() {
+      const glVessel = ref()
+      const main = () => {
+        const gl = glVessel.value.getContext('webgl')
+
+        if(!gl) {
+          return
+        }
+
+        // console.log('webgl main: ', gl)
+
+        const vertexShaderSource = `
+        attribute vec4 a_position;
+
+        void main() {
+          gl_Position = a_position;
+        }
+        `
+        const fragmentShaderSource = `
+        precision mediump float;
+
+        void main() {
+          gl_FragColor = vec4(1, 0, 0.5, 1);
+        }
+        `
+
+        const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource)
+        const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource)
+        const program = createProgram(gl, vertexShader, fragmentShader)
+        const positionBuffer = gl.createBuffer()
+        const positions = [
+          -0.5, -0.35,
+          0.5, -0.35,
+          0.0, 0.35
+        ]
+        const positionAttributeLocation = gl.getAttribLocation(program, 'a_position')
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW)
+
+        gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
+        gl.clearColor(0, 0, 0, 0)
+        gl.clear(gl.COLOR_BUFFER_BIT)
+        gl.useProgram(program)
+
+        const size = 2
+        const type = gl.FLOAT
+        const normalized = false
+        const stride = 0
+        const offset = 0
+        // 属性a_position可以从缓冲区读取相应的顶点坐标数据
+        gl.enableVertexAttribArray(positionAttributeLocation)
+        gl.vertexAttribPointer(positionAttributeLocation, size, type, normalized, stride, offset)
+
+        const primitiveType = gl.TRIANGLES
+        const first = 0
+        const count = 3
+        gl.drawArrays(primitiveType, first, count)
+      }
+
+      onMounted(main)
+
+      return () => {
+        return <>
+          <canvas class={ styles('gl-canvas') } width="400" height="300" ref={ glVessel }></canvas>
+        </>
+      }
+    }
+  })
+  ```
+<WebGLHelloWorld></WebGLHelloWorld>
+
+### 一些拓展
