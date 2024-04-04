@@ -171,7 +171,8 @@ physics or specical relativity.
   \end{gather}
   $$
   This is called a "symbol" because it is not a tensor and not obeying the general coordinate transformation law. Its behavior can be 
-  related to that of an ordinary tensor by first nothing that, given any $n \times n$matrix $M^{\mu}_{\mu\prime}$, the determinant 
+  related to that of an ordinary tensor by first nothing that, given any $n \times n$ matrix
+  $M^{\mu}_{\phantom{\:\mu^{\prime}}\mu^{\prime}}$, the determinant 
   $|M|$ obeys
   $$
   \begin{gather}
@@ -205,5 +206,84 @@ physics or specical relativity.
   $$
   \begin{gather}
     \epsilon_{\mu_1\mu_2...\mu_n} = \sqrt{|g|}\tilde{\epsilon}_{\mu_1\mu_2...\mu_n}.
+  \end{gather}
+  $$
+
+## Differential Form
+
+* A differential $p$-form is simply a $(0, p)$ tensor that is completely anti-symmetric. The space of all $p$-forms is 
+denoted $\Lambda^p$, and the space of all $p$-form fields over a mainfold $M$ is denoted $\Lambda^p(M)$
+
+* The number of linearly independent $p$-forms on an n-demensional vector space is $n!/(p!(n-p)!)$; The basic idea is 
+that forms can be both differential and integrated, without the help of any additional geometric structure
+
+* Given a $p$-form $A$ and a $q$-form $B$, we can form a $(p+q)$-form known as the **wedge product** $A \wedge B$ by 
+taking the antisymmetrized tensor product
+  $$
+  \begin{gather}
+    (A \wedge B)_{\mu_1...\mu_{p+q}}=\frac{(p+q)!}{p!q!}A_{\lbrack\mu_1...\mu_p}B_{\mu_{p+1}...\mu_{p+q}\rbrack}
+  \end{gather}
+  $$
+  For example, the wedge product of two $1$-form is
+  $$
+  \begin{gather}
+    (A \wedge B)_{\mu_\nu}=2A_{\lbrack\mu}B_{\nu\rbrack}=A_{\mu}B_{\nu}-B_{\nu}A_{\mu}
+  \end{gather}
+  $$
+  Then we can explore some features of the wedge product of basic dual vector. First, we can see that the wedge product 
+  of two basic dual vectors($1$-form) is
+  $$
+  \begin{gather}
+    dx^{\mu} \wedge dx^{\nu}=2dx^{\lbrack\mu}dx^{\nu\rbrack}=dx^{\mu} \otimes dx^{\nu} - dx^{\nu} \otimes dx^{\mu}
+  \end{gather}
+  $$
+  Then that the wedge product of three basic dual vectors is
+  $$
+  \begin{gather}
+    dx^{\mu} \wedge dx^{\nu} \wedge dx^{\rho}=(dx^{\mu} \wedge dx^{\nu}) \wedge dx^{\rho}
+    =3!dx^{\lbrack\mu}dx^{\nu}dx^{\rho\rbrack}
+  \end{gather}
+  $$
+  In the same way, the n-dual-vector's wedge product is
+  $$
+  \begin{gather}
+    dx^{\mu_1} \wedge dx^{\mu_2} \wedge ... \wedge dx^{\mu_n}=n!dx^{\lbrack\mu_1}dx^{\mu_2}...dx^{\mu_n\rbrack}
+  \end{gather}
+  $$
+  One should note that, for any three differential forms it is
+  $$
+  \begin{gather}
+    A \wedge B \wedge C=\frac{(n+m+l)!}{n!m!l!}A_{\lbrack\mu_1...\mu_n}B_{\nu_1...\nu_m}C_{\rho_1...\rho_l\rbrack}
+  \end{gather}
+  $$
+  And
+  $$
+  \begin{gather}
+    A \wedge B = (-1)^{pq}B \wedge A
+  \end{gather}
+  $$
+  So we can alter the order of a wedge product if we are careful with signs
+
+* (Difinition)The exterior derivative d allows us to differentiate $p$-form fields to obtain $p+1$-form fields
+  $$
+  \begin{gather}
+    (dA)_{\mu_1...\mu_{p+1}}=(p+1)\partial_{\lbrack\mu_1}A_{\mu_2...\mu_{p+1}\rbrack}
+  \end{gather}
+  $$
+  and exterior derivative obey a modified version of the Leibniz rule when applied to the product of a
+  $p$-form $\omega$ and $q$-form $\eta$: 
+  $$
+  \begin{gather}
+    d(\omega \wedge \eta) = (d\omega) \wedge \eta + (-1)^p \omega \wedge (d\eta)
+  \end{gather}
+  $$
+  It is note that the exterior dirivative is a legitimate tendor operator. The partial derivative, however, is not 
+  a tensor operator and we will see that the covariant dirivative is closer to what we might think of as the extension 
+  of the partial derivative to abitrary mainfolds
+
+* Another interesting thing about exterior dirivative is that, for any forms
+  $$
+  \begin{gather}
+  d(dA) = 0
   \end{gather}
   $$
