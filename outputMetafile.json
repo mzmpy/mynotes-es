@@ -19240,7 +19240,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/utils/dom/scroll.mjs": {
-        "bytes": 3485,
+        "bytes": 3562,
         "imports": [
           {
             "path": "node_modules/element-plus/es/utils/browser.mjs",
@@ -19281,7 +19281,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/utils/dom/element.mjs": {
-        "bytes": 368,
+        "bytes": 423,
         "imports": [
           {
             "path": "node_modules/element-plus/es/utils/types.mjs",
@@ -23054,7 +23054,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/locale/lang/en.mjs": {
-        "bytes": 4292,
+        "bytes": 4343,
         "imports": [
           {
             "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
@@ -23580,7 +23580,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/hooks/use-z-index/index.mjs": {
-        "bytes": 941,
+        "bytes": 1588,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -23596,6 +23596,16 @@
             "path": "node_modules/element-plus/es/utils/types.mjs",
             "kind": "import-statement",
             "original": "../../utils/types.mjs"
+          },
+          {
+            "path": "node_modules/@vueuse/core/index.mjs",
+            "kind": "import-statement",
+            "original": "@vueuse/core"
+          },
+          {
+            "path": "node_modules/element-plus/es/utils/error.mjs",
+            "kind": "import-statement",
+            "original": "../../utils/error.mjs"
           },
           {
             "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
@@ -23840,7 +23850,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/hooks/index.mjs": {
-        "bytes": 2273,
+        "bytes": 2295,
         "imports": [
           {
             "path": "node_modules/element-plus/es/hooks/use-attrs/index.mjs",
@@ -24237,8 +24247,8 @@
         ],
         "format": "esm"
       },
-      "node_modules/element-plus/es/components/alert/src/alert2.mjs": {
-        "bytes": 880,
+      "node_modules/element-plus/es/components/alert/src/alert.mjs": {
+        "bytes": 879,
         "imports": [
           {
             "path": "node_modules/element-plus/es/utils/index.mjs",
@@ -24268,7 +24278,7 @@
         ],
         "format": "esm"
       },
-      "node_modules/element-plus/es/components/alert/src/alert.mjs": {
+      "node_modules/element-plus/es/components/alert/src/alert2.mjs": {
         "bytes": 4370,
         "imports": [
           {
@@ -24292,9 +24302,9 @@
             "original": "../../../hooks/index.mjs"
           },
           {
-            "path": "node_modules/element-plus/es/components/alert/src/alert2.mjs",
+            "path": "node_modules/element-plus/es/components/alert/src/alert.mjs",
             "kind": "import-statement",
-            "original": "./alert2.mjs"
+            "original": "./alert.mjs"
           },
           {
             "path": "node_modules/element-plus/es/_virtual/plugin-vue_export-helper.mjs",
@@ -24328,14 +24338,14 @@
             "original": "../../utils/index.mjs"
           },
           {
-            "path": "node_modules/element-plus/es/components/alert/src/alert.mjs",
-            "kind": "import-statement",
-            "original": "./src/alert.mjs"
-          },
-          {
             "path": "node_modules/element-plus/es/components/alert/src/alert2.mjs",
             "kind": "import-statement",
             "original": "./src/alert2.mjs"
+          },
+          {
+            "path": "node_modules/element-plus/es/components/alert/src/alert.mjs",
+            "kind": "import-statement",
+            "original": "./src/alert.mjs"
           },
           {
             "path": "node_modules/element-plus/es/utils/vue/install.mjs",
@@ -27037,7 +27047,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/badge/src/badge.mjs": {
-        "bytes": 518,
+        "bytes": 535,
         "imports": [
           {
             "path": "node_modules/element-plus/es/utils/index.mjs",
@@ -27058,7 +27068,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/badge/src/badge2.mjs": {
-        "bytes": 2259,
+        "bytes": 2345,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -27172,7 +27182,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/breadcrumb/src/breadcrumb2.mjs": {
-        "bytes": 1433,
+        "bytes": 1596,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -27198,6 +27208,11 @@
             "path": "node_modules/element-plus/es/_virtual/plugin-vue_export-helper.mjs",
             "kind": "import-statement",
             "original": "../../../_virtual/plugin-vue_export-helper.mjs"
+          },
+          {
+            "path": "node_modules/element-plus/es/hooks/use-locale/index.mjs",
+            "kind": "import-statement",
+            "original": "../../../hooks/use-locale/index.mjs"
           },
           {
             "path": "node_modules/element-plus/es/hooks/use-namespace/index.mjs",
@@ -29690,7 +29705,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-event.mjs": {
-        "bytes": 2050,
+        "bytes": 2096,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -29828,7 +29843,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox.mjs": {
-        "bytes": 2742,
+        "bytes": 2798,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -29935,7 +29950,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/checkbox/src/checkbox2.mjs": {
-        "bytes": 5452,
+        "bytes": 5652,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -29981,7 +29996,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/checkbox/src/checkbox-button.mjs": {
-        "bytes": 4858,
+        "bytes": 4914,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -30872,7 +30887,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/cascader-panel/src/index.mjs": {
-        "bytes": 11193,
+        "bytes": 11078,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -31219,7 +31234,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/cascader/src/cascader2.mjs": {
-        "bytes": 26049,
+        "bytes": 26266,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -33591,7 +33606,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-date-pick.mjs": {
-        "bytes": 28072,
+        "bytes": 28066,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -33840,7 +33855,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-date-range.mjs": {
-        "bytes": 29503,
+        "bytes": 29563,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -34577,8 +34592,8 @@
         ],
         "format": "esm"
       },
-      "node_modules/element-plus/es/components/dialog/src/dialog-content.mjs": {
-        "bytes": 668,
+      "node_modules/element-plus/es/components/dialog/src/dialog-content2.mjs": {
+        "bytes": 669,
         "imports": [
           {
             "path": "node_modules/element-plus/es/utils/index.mjs",
@@ -34603,7 +34618,7 @@
         ],
         "format": "esm"
       },
-      "node_modules/element-plus/es/components/dialog/src/dialog-content2.mjs": {
+      "node_modules/element-plus/es/components/dialog/src/dialog-content.mjs": {
         "bytes": 4139,
         "imports": [
           {
@@ -34637,9 +34652,9 @@
             "original": "./constants.mjs"
           },
           {
-            "path": "node_modules/element-plus/es/components/dialog/src/dialog-content.mjs",
+            "path": "node_modules/element-plus/es/components/dialog/src/dialog-content2.mjs",
             "kind": "import-statement",
-            "original": "./dialog-content.mjs"
+            "original": "./dialog-content2.mjs"
           },
           {
             "path": "node_modules/element-plus/es/_virtual/plugin-vue_export-helper.mjs",
@@ -34680,7 +34695,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/dialog/src/dialog.mjs": {
-        "bytes": 1497,
+        "bytes": 1498,
         "imports": [
           {
             "path": "node_modules/element-plus/es/utils/index.mjs",
@@ -34693,9 +34708,9 @@
             "original": "../../../constants/index.mjs"
           },
           {
-            "path": "node_modules/element-plus/es/components/dialog/src/dialog-content.mjs",
+            "path": "node_modules/element-plus/es/components/dialog/src/dialog-content2.mjs",
             "kind": "import-statement",
-            "original": "./dialog-content.mjs"
+            "original": "./dialog-content2.mjs"
           },
           {
             "path": "node_modules/element-plus/es/utils/vue/props/runtime.mjs",
@@ -34802,7 +34817,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/dialog/src/dialog2.mjs": {
-        "bytes": 7102,
+        "bytes": 7101,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -34825,9 +34840,9 @@
             "original": "../../focus-trap/index.mjs"
           },
           {
-            "path": "node_modules/element-plus/es/components/dialog/src/dialog-content2.mjs",
+            "path": "node_modules/element-plus/es/components/dialog/src/dialog-content.mjs",
             "kind": "import-statement",
-            "original": "./dialog-content2.mjs"
+            "original": "./dialog-content.mjs"
           },
           {
             "path": "node_modules/element-plus/es/components/dialog/src/constants.mjs",
@@ -35511,8 +35526,8 @@
         ],
         "format": "esm"
       },
-      "node_modules/element-plus/es/components/dropdown/src/dropdown2.mjs": {
-        "bytes": 2654,
+      "node_modules/element-plus/es/components/dropdown/src/dropdown.mjs": {
+        "bytes": 2653,
         "imports": [
           {
             "path": "node_modules/element-plus/es/utils/index.mjs",
@@ -35583,7 +35598,7 @@
         ],
         "format": "esm"
       },
-      "node_modules/element-plus/es/components/dropdown/src/dropdown.mjs": {
+      "node_modules/element-plus/es/components/dropdown/src/dropdown2.mjs": {
         "bytes": 12007,
         "imports": [
           {
@@ -35647,9 +35662,9 @@
             "original": "../../../hooks/index.mjs"
           },
           {
-            "path": "node_modules/element-plus/es/components/dropdown/src/dropdown2.mjs",
+            "path": "node_modules/element-plus/es/components/dropdown/src/dropdown.mjs",
             "kind": "import-statement",
-            "original": "./dropdown2.mjs"
+            "original": "./dropdown.mjs"
           },
           {
             "path": "node_modules/element-plus/es/components/dropdown/src/tokens.mjs",
@@ -35715,7 +35730,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/dropdown/src/dropdown-item-impl.mjs": {
-        "bytes": 4807,
+        "bytes": 4806,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -35753,9 +35768,9 @@
             "original": "../../../constants/index.mjs"
           },
           {
-            "path": "node_modules/element-plus/es/components/dropdown/src/dropdown2.mjs",
+            "path": "node_modules/element-plus/es/components/dropdown/src/dropdown.mjs",
             "kind": "import-statement",
-            "original": "./dropdown2.mjs"
+            "original": "./dropdown.mjs"
           },
           {
             "path": "node_modules/element-plus/es/components/dropdown/src/tokens.mjs",
@@ -35862,7 +35877,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/dropdown/src/dropdown-item.mjs": {
-        "bytes": 4365,
+        "bytes": 4364,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -35890,9 +35905,9 @@
             "original": "./useDropdown.mjs"
           },
           {
-            "path": "node_modules/element-plus/es/components/dropdown/src/dropdown2.mjs",
+            "path": "node_modules/element-plus/es/components/dropdown/src/dropdown.mjs",
             "kind": "import-statement",
-            "original": "./dropdown2.mjs"
+            "original": "./dropdown.mjs"
           },
           {
             "path": "node_modules/element-plus/es/components/dropdown/src/tokens.mjs",
@@ -35923,7 +35938,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/dropdown/src/dropdown-menu.mjs": {
-        "bytes": 4561,
+        "bytes": 4560,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -35961,9 +35976,9 @@
             "original": "./tokens.mjs"
           },
           {
-            "path": "node_modules/element-plus/es/components/dropdown/src/dropdown2.mjs",
+            "path": "node_modules/element-plus/es/components/dropdown/src/dropdown.mjs",
             "kind": "import-statement",
-            "original": "./dropdown2.mjs"
+            "original": "./dropdown.mjs"
           },
           {
             "path": "node_modules/element-plus/es/components/dropdown/src/useDropdown.mjs",
@@ -36043,9 +36058,9 @@
             "original": "../../utils/index.mjs"
           },
           {
-            "path": "node_modules/element-plus/es/components/dropdown/src/dropdown.mjs",
+            "path": "node_modules/element-plus/es/components/dropdown/src/dropdown2.mjs",
             "kind": "import-statement",
-            "original": "./src/dropdown.mjs"
+            "original": "./src/dropdown2.mjs"
           },
           {
             "path": "node_modules/element-plus/es/components/dropdown/src/dropdown-item.mjs",
@@ -36058,9 +36073,9 @@
             "original": "./src/dropdown-menu.mjs"
           },
           {
-            "path": "node_modules/element-plus/es/components/dropdown/src/dropdown2.mjs",
+            "path": "node_modules/element-plus/es/components/dropdown/src/dropdown.mjs",
             "kind": "import-statement",
-            "original": "./src/dropdown2.mjs"
+            "original": "./src/dropdown.mjs"
           },
           {
             "path": "node_modules/element-plus/es/components/dropdown/src/instance.mjs",
@@ -36572,7 +36587,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/input-number/src/input-number2.mjs": {
-        "bytes": 12845,
+        "bytes": 13033,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -37846,7 +37861,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/select/src/useSelect.mjs": {
-        "bytes": 21599,
+        "bytes": 21655,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -38064,7 +38079,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/select/src/select2.mjs": {
-        "bytes": 18830,
+        "bytes": 19045,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -40245,7 +40260,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/select-v2/src/select.mjs": {
-        "bytes": 17782,
+        "bytes": 17793,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -45553,7 +45568,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/tree/src/model/node.mjs": {
-        "bytes": 11872,
+        "bytes": 12220,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -45584,7 +45599,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/tree/src/model/tree-store.mjs": {
-        "bytes": 9107,
+        "bytes": 9182,
         "imports": [
           {
             "path": "node_modules/element-plus/es/utils/index.mjs",
@@ -45605,6 +45620,11 @@
             "path": "node_modules/@vue/shared/dist/shared.esm-bundler.js",
             "kind": "import-statement",
             "original": "@vue/shared"
+          },
+          {
+            "path": "node_modules/element-plus/es/utils/types.mjs",
+            "kind": "import-statement",
+            "original": "../../../../utils/types.mjs"
           },
           {
             "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
@@ -45662,7 +45682,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/tree/src/model/useDragNode.mjs": {
-        "bytes": 5973,
+        "bytes": 6241,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -45698,7 +45718,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/tree/src/tree-node.mjs": {
-        "bytes": 12073,
+        "bytes": 12154,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -47196,8 +47216,8 @@
         ],
         "format": "esm"
       },
-      "node_modules/element-plus/es/components/tour/src/content2.mjs": {
-        "bytes": 942,
+      "node_modules/element-plus/es/components/tour/src/content.mjs": {
+        "bytes": 941,
         "imports": [
           {
             "path": "node_modules/element-plus/es/utils/index.mjs",
@@ -47217,7 +47237,7 @@
         ],
         "format": "esm"
       },
-      "node_modules/element-plus/es/components/tour/src/content.mjs": {
+      "node_modules/element-plus/es/components/tour/src/content2.mjs": {
         "bytes": 2791,
         "imports": [
           {
@@ -47231,9 +47251,9 @@
             "original": "../../focus-trap/index.mjs"
           },
           {
-            "path": "node_modules/element-plus/es/components/tour/src/content2.mjs",
+            "path": "node_modules/element-plus/es/components/tour/src/content.mjs",
             "kind": "import-statement",
-            "original": "./content2.mjs"
+            "original": "./content.mjs"
           },
           {
             "path": "node_modules/element-plus/es/components/tour/src/helper.mjs",
@@ -47290,7 +47310,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/tour/src/tour.mjs": {
-        "bytes": 1680,
+        "bytes": 1679,
         "imports": [
           {
             "path": "node_modules/element-plus/es/utils/index.mjs",
@@ -47303,9 +47323,9 @@
             "original": "../../../constants/index.mjs"
           },
           {
-            "path": "node_modules/element-plus/es/components/tour/src/content2.mjs",
+            "path": "node_modules/element-plus/es/components/tour/src/content.mjs",
             "kind": "import-statement",
-            "original": "./content2.mjs"
+            "original": "./content.mjs"
           },
           {
             "path": "node_modules/element-plus/es/utils/vue/props/runtime.mjs",
@@ -47336,7 +47356,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/tour/src/tour2.mjs": {
-        "bytes": 6156,
+        "bytes": 6157,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -47364,9 +47384,9 @@
             "original": "./mask2.mjs"
           },
           {
-            "path": "node_modules/element-plus/es/components/tour/src/content.mjs",
+            "path": "node_modules/element-plus/es/components/tour/src/content2.mjs",
             "kind": "import-statement",
-            "original": "./content.mjs"
+            "original": "./content2.mjs"
           },
           {
             "path": "node_modules/element-plus/es/components/tour/src/steps.mjs",
@@ -47412,7 +47432,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/tour/src/step.mjs": {
-        "bytes": 1104,
+        "bytes": 1103,
         "imports": [
           {
             "path": "node_modules/element-plus/es/utils/index.mjs",
@@ -47420,9 +47440,9 @@
             "original": "../../../utils/index.mjs"
           },
           {
-            "path": "node_modules/element-plus/es/components/tour/src/content2.mjs",
+            "path": "node_modules/element-plus/es/components/tour/src/content.mjs",
             "kind": "import-statement",
-            "original": "./content2.mjs"
+            "original": "./content.mjs"
           },
           {
             "path": "node_modules/element-plus/es/utils/vue/props/runtime.mjs",
@@ -47587,7 +47607,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/anchor/src/anchor2.mjs": {
-        "bytes": 6460,
+        "bytes": 6552,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -47963,7 +47983,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/message/src/message.mjs": {
-        "bytes": 2007,
+        "bytes": 2110,
         "imports": [
           {
             "path": "node_modules/element-plus/es/utils/index.mjs",
@@ -48015,7 +48035,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/message/src/message2.mjs": {
-        "bytes": 6257,
+        "bytes": 6306,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -48376,8 +48396,8 @@
         ],
         "format": "esm"
       },
-      "node_modules/element-plus/es/components/notification/src/notification2.mjs": {
-        "bytes": 1359,
+      "node_modules/element-plus/es/components/notification/src/notification.mjs": {
+        "bytes": 1358,
         "imports": [
           {
             "path": "node_modules/element-plus/es/utils/index.mjs",
@@ -48402,7 +48422,7 @@
         ],
         "format": "esm"
       },
-      "node_modules/element-plus/es/components/notification/src/notification.mjs": {
+      "node_modules/element-plus/es/components/notification/src/notification2.mjs": {
         "bytes": 6205,
         "imports": [
           {
@@ -48436,9 +48456,9 @@
             "original": "../../config-provider/index.mjs"
           },
           {
-            "path": "node_modules/element-plus/es/components/notification/src/notification2.mjs",
+            "path": "node_modules/element-plus/es/components/notification/src/notification.mjs",
             "kind": "import-statement",
-            "original": "./notification2.mjs"
+            "original": "./notification.mjs"
           },
           {
             "path": "node_modules/element-plus/es/_virtual/plugin-vue_export-helper.mjs",
@@ -48482,14 +48502,14 @@
             "original": "../../../utils/index.mjs"
           },
           {
-            "path": "node_modules/element-plus/es/components/notification/src/notification.mjs",
-            "kind": "import-statement",
-            "original": "./notification.mjs"
-          },
-          {
             "path": "node_modules/element-plus/es/components/notification/src/notification2.mjs",
             "kind": "import-statement",
             "original": "./notification2.mjs"
+          },
+          {
+            "path": "node_modules/element-plus/es/components/notification/src/notification.mjs",
+            "kind": "import-statement",
+            "original": "./notification.mjs"
           },
           {
             "path": "node_modules/@vueuse/core/index.mjs",
@@ -48520,7 +48540,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/notification/index.mjs": {
-        "bytes": 391,
+        "bytes": 390,
         "imports": [
           {
             "path": "node_modules/element-plus/es/utils/index.mjs",
@@ -48533,9 +48553,9 @@
             "original": "./src/notify.mjs"
           },
           {
-            "path": "node_modules/element-plus/es/components/notification/src/notification2.mjs",
+            "path": "node_modules/element-plus/es/components/notification/src/notification.mjs",
             "kind": "import-statement",
-            "original": "./src/notification2.mjs"
+            "original": "./src/notification.mjs"
           },
           {
             "path": "node_modules/element-plus/es/utils/vue/install.mjs",
@@ -48551,7 +48571,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/popover/src/popover.mjs": {
-        "bytes": 1848,
+        "bytes": 1847,
         "imports": [
           {
             "path": "node_modules/element-plus/es/utils/index.mjs",
@@ -48579,9 +48599,9 @@
             "original": "../../tooltip/src/trigger.mjs"
           },
           {
-            "path": "node_modules/element-plus/es/components/dropdown/src/dropdown2.mjs",
+            "path": "node_modules/element-plus/es/components/dropdown/src/dropdown.mjs",
             "kind": "import-statement",
-            "original": "../../dropdown/src/dropdown2.mjs"
+            "original": "../../dropdown/src/dropdown.mjs"
           },
           {
             "path": "node_modules/element-plus/es/components/tooltip/src/content.mjs",
@@ -48700,7 +48720,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/es/components/index.mjs": {
-        "bytes": 15347,
+        "bytes": 15344,
         "imports": [
           {
             "path": "node_modules/element-plus/es/components/affix/index.mjs",
@@ -49108,9 +49128,9 @@
             "original": "./affix/src/affix.mjs"
           },
           {
-            "path": "node_modules/element-plus/es/components/alert/src/alert2.mjs",
+            "path": "node_modules/element-plus/es/components/alert/src/alert.mjs",
             "kind": "import-statement",
-            "original": "./alert/src/alert2.mjs"
+            "original": "./alert/src/alert.mjs"
           },
           {
             "path": "node_modules/element-plus/es/components/autocomplete/src/autocomplete.mjs",
@@ -49308,9 +49328,9 @@
             "original": "./drawer/src/drawer.mjs"
           },
           {
-            "path": "node_modules/element-plus/es/components/dropdown/src/dropdown2.mjs",
+            "path": "node_modules/element-plus/es/components/dropdown/src/dropdown.mjs",
             "kind": "import-statement",
-            "original": "./dropdown/src/dropdown2.mjs"
+            "original": "./dropdown/src/dropdown.mjs"
           },
           {
             "path": "node_modules/element-plus/es/components/dropdown/src/tokens.mjs",
@@ -49788,9 +49808,9 @@
             "original": "./message/src/message.mjs"
           },
           {
-            "path": "node_modules/element-plus/es/components/notification/src/notification2.mjs",
+            "path": "node_modules/element-plus/es/components/notification/src/notification.mjs",
             "kind": "import-statement",
-            "original": "./notification/src/notification2.mjs"
+            "original": "./notification/src/notification.mjs"
           },
           {
             "path": "node_modules/element-plus/es/components/popover/src/popover.mjs",
@@ -49859,7 +49879,7 @@
         "format": "esm"
       },
       "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/@typescript/index.mdx": {
-        "bytes": 390,
+        "bytes": 391,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -49901,7 +49921,7 @@
         "format": "esm"
       },
       "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/@webpack/webpack.mdx": {
-        "bytes": 391,
+        "bytes": 392,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -49943,7 +49963,7 @@
         "format": "esm"
       },
       "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/koa/middleware.mdx": {
-        "bytes": 392,
+        "bytes": 393,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -49985,7 +50005,7 @@
         "format": "esm"
       },
       "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/physics/qft/intro.mdx": {
-        "bytes": 390,
+        "bytes": 391,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -50006,7 +50026,7 @@
         "format": "esm"
       },
       "CSS_MODULE:css-module://src__components__mdx__constituents__utils__commonImg__index": {
-        "bytes": 130,
+        "bytes": 270,
         "imports": []
       },
       "src/components/mdx/constituents/utils/commonImg/index.module.css": {
@@ -50067,7 +50087,7 @@
         "imports": []
       },
       "src/components/mdx/.docs/physics/stag/manifolds.mdx": {
-        "bytes": 595035,
+        "bytes": 806178,
         "imports": [
           {
             "path": "node_modules/@mdx-js/vue/index.js",
@@ -50118,7 +50138,7 @@
         "format": "esm"
       },
       "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/physics/stag/manifolds.mdx": {
-        "bytes": 399,
+        "bytes": 400,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -50160,7 +50180,7 @@
         "format": "esm"
       },
       "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/react/hooks@18.2.0.mdx": {
-        "bytes": 398,
+        "bytes": 399,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -50202,7 +50222,7 @@
         "format": "esm"
       },
       "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/react/redux.mdx": {
-        "bytes": 384,
+        "bytes": 385,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -50244,7 +50264,7 @@
         "format": "esm"
       },
       "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vanilla/browser-events.mdx": {
-        "bytes": 404,
+        "bytes": 405,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -50300,7 +50320,7 @@
         "format": "esm"
       },
       "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vanilla/browser.mdx": {
-        "bytes": 390,
+        "bytes": 391,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -50342,7 +50362,7 @@
         "format": "esm"
       },
       "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vanilla/closure.mdx": {
-        "bytes": 390,
+        "bytes": 391,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -50384,7 +50404,7 @@
         "format": "esm"
       },
       "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vanilla/common-feature.mdx": {
-        "bytes": 404,
+        "bytes": 405,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -50426,7 +50446,7 @@
         "format": "esm"
       },
       "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vanilla/es6plus.mdx": {
-        "bytes": 390,
+        "bytes": 391,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -50468,7 +50488,7 @@
         "format": "esm"
       },
       "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vanilla/network-request.mdx": {
-        "bytes": 406,
+        "bytes": 407,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -50510,7 +50530,7 @@
         "format": "esm"
       },
       "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vue/vue-router@4.mdx": {
-        "bytes": 396,
+        "bytes": 397,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -50668,7 +50688,7 @@
         "format": "esm"
       },
       "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vue/vue@3@directives.mdx": {
-        "bytes": 404,
+        "bytes": 405,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -50710,7 +50730,7 @@
         "format": "esm"
       },
       "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vue/vue@3@intro.mdx": {
-        "bytes": 394,
+        "bytes": 395,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -50731,7 +50751,7 @@
         "format": "esm"
       },
       "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__basic-concept__helloWorld__index": {
-        "bytes": 199,
+        "bytes": 221,
         "imports": []
       },
       "src/components/mdx/constituents/webgl/basic-concept/helloWorld/index.module.css": {
@@ -50750,8 +50770,35 @@
         ],
         "format": "esm"
       },
+      "src/components/mdx/constituents/webgl/common/constants.js": {
+        "bytes": 70,
+        "imports": [
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "src/components/mdx/constituents/webgl/common/index.js": {
+        "bytes": 4836,
+        "imports": [
+          {
+            "path": "src/components/mdx/constituents/webgl/common/constants.js",
+            "kind": "import-statement",
+            "original": "./constants"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
       "src/components/mdx/constituents/webgl/basic-concept/helloWorld/index.jsx": {
-        "bytes": 2590,
+        "bytes": 1901,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -50764,6 +50811,11 @@
             "original": "./index.module.css"
           },
           {
+            "path": "src/components/mdx/constituents/webgl/common/index.js",
+            "kind": "import-statement",
+            "original": "../../common"
+          },
+          {
             "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
             "kind": "import-statement",
             "external": true
@@ -50771,8 +50823,146 @@
         ],
         "format": "esm"
       },
-      "src/components/mdx/.docs/webgl/basic-concept.mdx": {
-        "bytes": 20653,
+      "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__basic-concept__rectangle__index": {
+        "bytes": 220,
+        "imports": []
+      },
+      "src/components/mdx/constituents/webgl/basic-concept/rectangle/index.module.css": {
+        "bytes": 573,
+        "imports": [
+          {
+            "path": "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__basic-concept__rectangle__index",
+            "kind": "import-statement",
+            "original": "css-module://src__components__mdx__constituents__webgl__basic-concept__rectangle__index"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "src/components/mdx/constituents/webgl/basic-concept/rectangle/index.jsx": {
+        "bytes": 2255,
+        "imports": [
+          {
+            "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
+            "kind": "import-statement",
+            "original": "vue"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/basic-concept/rectangle/index.module.css",
+            "kind": "import-statement",
+            "original": "./index.module.css"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/common/index.js",
+            "kind": "import-statement",
+            "original": "../../common"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__basic-concept__circle__index": {
+        "bytes": 217,
+        "imports": []
+      },
+      "src/components/mdx/constituents/webgl/basic-concept/circle/index.module.css": {
+        "bytes": 567,
+        "imports": [
+          {
+            "path": "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__basic-concept__circle__index",
+            "kind": "import-statement",
+            "original": "css-module://src__components__mdx__constituents__webgl__basic-concept__circle__index"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "src/components/mdx/constituents/webgl/basic-concept/circle/index.jsx": {
+        "bytes": 2206,
+        "imports": [
+          {
+            "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
+            "kind": "import-statement",
+            "original": "vue"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/basic-concept/circle/index.module.css",
+            "kind": "import-statement",
+            "original": "./index.module.css"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/common/index.js",
+            "kind": "import-statement",
+            "original": "../../common"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__basic-concept__heartShaped__index": {
+        "bytes": 222,
+        "imports": []
+      },
+      "src/components/mdx/constituents/webgl/basic-concept/heartShaped/index.module.css": {
+        "bytes": 577,
+        "imports": [
+          {
+            "path": "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__basic-concept__heartShaped__index",
+            "kind": "import-statement",
+            "original": "css-module://src__components__mdx__constituents__webgl__basic-concept__heartShaped__index"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "src/components/mdx/constituents/webgl/basic-concept/heartShaped/index.jsx": {
+        "bytes": 2465,
+        "imports": [
+          {
+            "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
+            "kind": "import-statement",
+            "original": "vue"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/basic-concept/heartShaped/index.module.css",
+            "kind": "import-statement",
+            "original": "./index.module.css"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/common/index.js",
+            "kind": "import-statement",
+            "original": "../../common"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "src/components/mdx/.docs/webgl/01-basic-concept.mdx": {
+        "bytes": 60084,
         "imports": [
           {
             "path": "node_modules/@mdx-js/vue/index.js",
@@ -50790,6 +50980,21 @@
             "original": "@/components/mdx/constituents/webgl/basic-concept/helloWorld/index.jsx"
           },
           {
+            "path": "src/components/mdx/constituents/webgl/basic-concept/rectangle/index.jsx",
+            "kind": "import-statement",
+            "original": "@/components/mdx/constituents/webgl/basic-concept/rectangle/index.jsx"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/basic-concept/circle/index.jsx",
+            "kind": "import-statement",
+            "original": "@/components/mdx/constituents/webgl/basic-concept/circle/index.jsx"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/basic-concept/heartShaped/index.jsx",
+            "kind": "import-statement",
+            "original": "@/components/mdx/constituents/webgl/basic-concept/heartShaped/index.jsx"
+          },
+          {
             "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
             "kind": "import-statement",
             "external": true
@@ -50797,8 +51002,8 @@
         ],
         "format": "esm"
       },
-      "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/basic-concept.mdx": {
-        "bytes": 400,
+      "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/01-basic-concept.mdx": {
+        "bytes": 407,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -50806,9 +51011,1049 @@
             "original": "vue"
           },
           {
-            "path": "src/components/mdx/.docs/webgl/basic-concept.mdx",
+            "path": "src/components/mdx/.docs/webgl/01-basic-concept.mdx",
             "kind": "import-statement",
-            "original": "/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/basic-concept.mdx"
+            "original": "/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/01-basic-concept.mdx"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "src/assets/images/vertex-shader-anim.gif": {
+        "bytes": 125456,
+        "imports": []
+      },
+      "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__principle__varying__index": {
+        "bytes": 614,
+        "imports": []
+      },
+      "src/components/mdx/constituents/webgl/principle/varying/index.module.css": {
+        "bytes": 843,
+        "imports": [
+          {
+            "path": "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__principle__varying__index",
+            "kind": "import-statement",
+            "original": "css-module://src__components__mdx__constituents__webgl__principle__varying__index"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "src/components/mdx/constituents/webgl/principle/varying/index.jsx": {
+        "bytes": 3931,
+        "imports": [
+          {
+            "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
+            "kind": "import-statement",
+            "original": "vue"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/principle/varying/index.module.css",
+            "kind": "import-statement",
+            "original": "./index.module.css"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/common/index.js",
+            "kind": "import-statement",
+            "original": "../../common"
+          },
+          {
+            "path": "node_modules/element-plus/es/components/index.mjs",
+            "kind": "import-statement",
+            "original": "element-plus/components"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "src/components/mdx/.docs/webgl/02-principle.mdx": {
+        "bytes": 21155,
+        "imports": [
+          {
+            "path": "node_modules/@mdx-js/vue/index.js",
+            "kind": "import-statement",
+            "original": "@mdx-js/vue"
+          },
+          {
+            "path": "vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "original": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js"
+          },
+          {
+            "path": "src/components/mdx/constituents/utils/commonImg/index.jsx",
+            "kind": "import-statement",
+            "original": "@/components/mdx/constituents/utils/commonImg/index.jsx"
+          },
+          {
+            "path": "src/assets/images/vertex-shader-anim.gif",
+            "kind": "import-statement",
+            "original": "@/assets/images/vertex-shader-anim.gif"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/principle/varying/index.jsx",
+            "kind": "import-statement",
+            "original": "@/components/mdx/constituents/webgl/principle/varying/index.jsx"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/02-principle.mdx": {
+        "bytes": 399,
+        "imports": [
+          {
+            "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
+            "kind": "import-statement",
+            "original": "vue"
+          },
+          {
+            "path": "src/components/mdx/.docs/webgl/02-principle.mdx",
+            "kind": "import-statement",
+            "original": "/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/02-principle.mdx"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__orthographic__transformF__index": {
+        "bytes": 632,
+        "imports": []
+      },
+      "src/components/mdx/constituents/webgl/orthographic/transformF/index.module.css": {
+        "bytes": 867,
+        "imports": [
+          {
+            "path": "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__orthographic__transformF__index",
+            "kind": "import-statement",
+            "original": "css-module://src__components__mdx__constituents__webgl__orthographic__transformF__index"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "src/components/mdx/constituents/webgl/orthographic/transformF/index.jsx": {
+        "bytes": 12197,
+        "imports": [
+          {
+            "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
+            "kind": "import-statement",
+            "original": "vue"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/orthographic/transformF/index.module.css",
+            "kind": "import-statement",
+            "original": "./index.module.css"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/common/index.js",
+            "kind": "import-statement",
+            "original": "../../common"
+          },
+          {
+            "path": "node_modules/element-plus/es/components/index.mjs",
+            "kind": "import-statement",
+            "original": "element-plus/components"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "src/components/mdx/.docs/webgl/03-orthographic.mdx": {
+        "bytes": 77874,
+        "imports": [
+          {
+            "path": "node_modules/@mdx-js/vue/index.js",
+            "kind": "import-statement",
+            "original": "@mdx-js/vue"
+          },
+          {
+            "path": "vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "original": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/orthographic/transformF/index.jsx",
+            "kind": "import-statement",
+            "original": "@/components/mdx/constituents/webgl/orthographic/transformF/index.jsx"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/03-orthographic.mdx": {
+        "bytes": 405,
+        "imports": [
+          {
+            "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
+            "kind": "import-statement",
+            "original": "vue"
+          },
+          {
+            "path": "src/components/mdx/.docs/webgl/03-orthographic.mdx",
+            "kind": "import-statement",
+            "original": "/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/03-orthographic.mdx"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "src/assets/images/perspective-example.svg": {
+        "bytes": 8828,
+        "imports": []
+      },
+      "src/assets/images/perspective-projection.png": {
+        "bytes": 60856,
+        "imports": []
+      },
+      "src/assets/images/perspective-yclip.png": {
+        "bytes": 21754,
+        "imports": []
+      },
+      "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__perspective__perspectiveTransformF__index": {
+        "bytes": 662,
+        "imports": []
+      },
+      "src/components/mdx/constituents/webgl/perspective/perspectiveTransformF/index.module.css": {
+        "bytes": 907,
+        "imports": [
+          {
+            "path": "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__perspective__perspectiveTransformF__index",
+            "kind": "import-statement",
+            "original": "css-module://src__components__mdx__constituents__webgl__perspective__perspectiveTransformF__index"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "src/components/mdx/constituents/webgl/perspective/perspectiveTransformF/index.jsx": {
+        "bytes": 12897,
+        "imports": [
+          {
+            "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
+            "kind": "import-statement",
+            "original": "vue"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/perspective/perspectiveTransformF/index.module.css",
+            "kind": "import-statement",
+            "original": "./index.module.css"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/common/index.js",
+            "kind": "import-statement",
+            "original": "../../common"
+          },
+          {
+            "path": "node_modules/element-plus/es/components/index.mjs",
+            "kind": "import-statement",
+            "original": "element-plus/components"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "src/components/mdx/.docs/webgl/04-perspective.mdx": {
+        "bytes": 367380,
+        "imports": [
+          {
+            "path": "node_modules/@mdx-js/vue/index.js",
+            "kind": "import-statement",
+            "original": "@mdx-js/vue"
+          },
+          {
+            "path": "vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "original": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js"
+          },
+          {
+            "path": "src/assets/images/perspective-example.svg",
+            "kind": "import-statement",
+            "original": "@/assets/images/perspective-example.svg"
+          },
+          {
+            "path": "src/assets/images/perspective-projection.png",
+            "kind": "import-statement",
+            "original": "@/assets/images/perspective-projection.png"
+          },
+          {
+            "path": "src/assets/images/perspective-yclip.png",
+            "kind": "import-statement",
+            "original": "@/assets/images/perspective-yclip.png"
+          },
+          {
+            "path": "src/components/mdx/constituents/utils/commonImg/index.jsx",
+            "kind": "import-statement",
+            "original": "../../constituents/utils/commonImg"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/perspective/perspectiveTransformF/index.jsx",
+            "kind": "import-statement",
+            "original": "@/components/mdx/constituents/webgl/perspective/perspectiveTransformF/index.jsx"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/04-perspective.mdx": {
+        "bytes": 403,
+        "imports": [
+          {
+            "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
+            "kind": "import-statement",
+            "original": "vue"
+          },
+          {
+            "path": "src/components/mdx/.docs/webgl/04-perspective.mdx",
+            "kind": "import-statement",
+            "original": "/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/04-perspective.mdx"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__camera__cameraView__index": {
+        "bytes": 614,
+        "imports": []
+      },
+      "src/components/mdx/constituents/webgl/camera/cameraView/index.module.css": {
+        "bytes": 843,
+        "imports": [
+          {
+            "path": "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__camera__cameraView__index",
+            "kind": "import-statement",
+            "original": "css-module://src__components__mdx__constituents__webgl__camera__cameraView__index"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "node_modules/gl-matrix/esm/common.js": {
+        "bytes": 1366,
+        "imports": [
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "node_modules/gl-matrix/esm/mat2.js": {
+        "bytes": 10014,
+        "imports": [
+          {
+            "path": "node_modules/gl-matrix/esm/common.js",
+            "kind": "import-statement",
+            "original": "./common.js"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "node_modules/gl-matrix/esm/mat2d.js": {
+        "bytes": 11176,
+        "imports": [
+          {
+            "path": "node_modules/gl-matrix/esm/common.js",
+            "kind": "import-statement",
+            "original": "./common.js"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "node_modules/gl-matrix/esm/mat3.js": {
+        "bytes": 18909,
+        "imports": [
+          {
+            "path": "node_modules/gl-matrix/esm/common.js",
+            "kind": "import-statement",
+            "original": "./common.js"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "node_modules/gl-matrix/esm/mat4.js": {
+        "bytes": 50779,
+        "imports": [
+          {
+            "path": "node_modules/gl-matrix/esm/common.js",
+            "kind": "import-statement",
+            "original": "./common.js"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "node_modules/gl-matrix/esm/vec3.js": {
+        "bytes": 19232,
+        "imports": [
+          {
+            "path": "node_modules/gl-matrix/esm/common.js",
+            "kind": "import-statement",
+            "original": "./common.js"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "node_modules/gl-matrix/esm/vec4.js": {
+        "bytes": 15368,
+        "imports": [
+          {
+            "path": "node_modules/gl-matrix/esm/common.js",
+            "kind": "import-statement",
+            "original": "./common.js"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "node_modules/gl-matrix/esm/quat.js": {
+        "bytes": 18213,
+        "imports": [
+          {
+            "path": "node_modules/gl-matrix/esm/common.js",
+            "kind": "import-statement",
+            "original": "./common.js"
+          },
+          {
+            "path": "node_modules/gl-matrix/esm/mat3.js",
+            "kind": "import-statement",
+            "original": "./mat3.js"
+          },
+          {
+            "path": "node_modules/gl-matrix/esm/vec3.js",
+            "kind": "import-statement",
+            "original": "./vec3.js"
+          },
+          {
+            "path": "node_modules/gl-matrix/esm/vec4.js",
+            "kind": "import-statement",
+            "original": "./vec4.js"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "node_modules/gl-matrix/esm/quat2.js": {
+        "bytes": 22130,
+        "imports": [
+          {
+            "path": "node_modules/gl-matrix/esm/common.js",
+            "kind": "import-statement",
+            "original": "./common.js"
+          },
+          {
+            "path": "node_modules/gl-matrix/esm/quat.js",
+            "kind": "import-statement",
+            "original": "./quat.js"
+          },
+          {
+            "path": "node_modules/gl-matrix/esm/mat4.js",
+            "kind": "import-statement",
+            "original": "./mat4.js"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "node_modules/gl-matrix/esm/vec2.js": {
+        "bytes": 14244,
+        "imports": [
+          {
+            "path": "node_modules/gl-matrix/esm/common.js",
+            "kind": "import-statement",
+            "original": "./common.js"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "node_modules/gl-matrix/esm/index.js": {
+        "bytes": 436,
+        "imports": [
+          {
+            "path": "node_modules/gl-matrix/esm/common.js",
+            "kind": "import-statement",
+            "original": "./common.js"
+          },
+          {
+            "path": "node_modules/gl-matrix/esm/mat2.js",
+            "kind": "import-statement",
+            "original": "./mat2.js"
+          },
+          {
+            "path": "node_modules/gl-matrix/esm/mat2d.js",
+            "kind": "import-statement",
+            "original": "./mat2d.js"
+          },
+          {
+            "path": "node_modules/gl-matrix/esm/mat3.js",
+            "kind": "import-statement",
+            "original": "./mat3.js"
+          },
+          {
+            "path": "node_modules/gl-matrix/esm/mat4.js",
+            "kind": "import-statement",
+            "original": "./mat4.js"
+          },
+          {
+            "path": "node_modules/gl-matrix/esm/quat.js",
+            "kind": "import-statement",
+            "original": "./quat.js"
+          },
+          {
+            "path": "node_modules/gl-matrix/esm/quat2.js",
+            "kind": "import-statement",
+            "original": "./quat2.js"
+          },
+          {
+            "path": "node_modules/gl-matrix/esm/vec2.js",
+            "kind": "import-statement",
+            "original": "./vec2.js"
+          },
+          {
+            "path": "node_modules/gl-matrix/esm/vec3.js",
+            "kind": "import-statement",
+            "original": "./vec3.js"
+          },
+          {
+            "path": "node_modules/gl-matrix/esm/vec4.js",
+            "kind": "import-statement",
+            "original": "./vec4.js"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "src/components/mdx/constituents/webgl/camera/cameraView/index.jsx": {
+        "bytes": 11429,
+        "imports": [
+          {
+            "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
+            "kind": "import-statement",
+            "original": "vue"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/common/index.js",
+            "kind": "import-statement",
+            "original": "../../common"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/camera/cameraView/index.module.css",
+            "kind": "import-statement",
+            "original": "./index.module.css"
+          },
+          {
+            "path": "node_modules/gl-matrix/esm/index.js",
+            "kind": "import-statement",
+            "original": "gl-matrix"
+          },
+          {
+            "path": "node_modules/element-plus/es/components/index.mjs",
+            "kind": "import-statement",
+            "original": "element-plus/components"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__camera__cameraFollowView__index": {
+        "bytes": 632,
+        "imports": []
+      },
+      "src/components/mdx/constituents/webgl/camera/cameraFollowView/index.module.css": {
+        "bytes": 867,
+        "imports": [
+          {
+            "path": "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__camera__cameraFollowView__index",
+            "kind": "import-statement",
+            "original": "css-module://src__components__mdx__constituents__webgl__camera__cameraFollowView__index"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "src/components/mdx/constituents/webgl/camera/cameraFollowView/index.jsx": {
+        "bytes": 11674,
+        "imports": [
+          {
+            "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
+            "kind": "import-statement",
+            "original": "vue"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/common/index.js",
+            "kind": "import-statement",
+            "original": "../../common"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/camera/cameraFollowView/index.module.css",
+            "kind": "import-statement",
+            "original": "./index.module.css"
+          },
+          {
+            "path": "node_modules/gl-matrix/esm/index.js",
+            "kind": "import-statement",
+            "original": "gl-matrix"
+          },
+          {
+            "path": "node_modules/element-plus/es/components/index.mjs",
+            "kind": "import-statement",
+            "original": "element-plus/components"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "src/assets/images/lookAt.png": {
+        "bytes": 36456,
+        "imports": []
+      },
+      "src/components/mdx/.docs/webgl/05-camera.mdx": {
+        "bytes": 385984,
+        "imports": [
+          {
+            "path": "node_modules/@mdx-js/vue/index.js",
+            "kind": "import-statement",
+            "original": "@mdx-js/vue"
+          },
+          {
+            "path": "vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "original": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/camera/cameraView/index.jsx",
+            "kind": "import-statement",
+            "original": "@/components/mdx/constituents/webgl/camera/cameraView/index.jsx"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/camera/cameraFollowView/index.jsx",
+            "kind": "import-statement",
+            "original": "@/components/mdx/constituents/webgl/camera/cameraFollowView/index.jsx"
+          },
+          {
+            "path": "src/assets/images/lookAt.png",
+            "kind": "import-statement",
+            "original": "@/assets/images/lookAt.png"
+          },
+          {
+            "path": "src/components/mdx/constituents/utils/commonImg/index.jsx",
+            "kind": "import-statement",
+            "original": "../../constituents/utils/commonImg"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/05-camera.mdx": {
+        "bytes": 393,
+        "imports": [
+          {
+            "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
+            "kind": "import-statement",
+            "original": "vue"
+          },
+          {
+            "path": "src/components/mdx/.docs/webgl/05-camera.mdx",
+            "kind": "import-statement",
+            "original": "/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/05-camera.mdx"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__directional-lighting__parallelLight__index": {
+        "bytes": 665,
+        "imports": []
+      },
+      "src/components/mdx/constituents/webgl/directional-lighting/parallelLight/index.module.css": {
+        "bytes": 911,
+        "imports": [
+          {
+            "path": "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__directional-lighting__parallelLight__index",
+            "kind": "import-statement",
+            "original": "css-module://src__components__mdx__constituents__webgl__directional-lighting__parallelLight__index"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "src/components/mdx/constituents/webgl/directional-lighting/parallelLight/index.jsx": {
+        "bytes": 12623,
+        "imports": [
+          {
+            "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
+            "kind": "import-statement",
+            "original": "vue"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/directional-lighting/parallelLight/index.module.css",
+            "kind": "import-statement",
+            "original": "./index.module.css"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/common/index.js",
+            "kind": "import-statement",
+            "original": "../../common"
+          },
+          {
+            "path": "node_modules/gl-matrix/esm/index.js",
+            "kind": "import-statement",
+            "original": "gl-matrix"
+          },
+          {
+            "path": "node_modules/element-plus/es/components/index.mjs",
+            "kind": "import-statement",
+            "original": "element-plus/components"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "src/components/mdx/.docs/webgl/06-directional-lighting.mdx": {
+        "bytes": 38752,
+        "imports": [
+          {
+            "path": "node_modules/@mdx-js/vue/index.js",
+            "kind": "import-statement",
+            "original": "@mdx-js/vue"
+          },
+          {
+            "path": "vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "original": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/directional-lighting/parallelLight/index.jsx",
+            "kind": "import-statement",
+            "original": "@/components/mdx/constituents/webgl/directional-lighting/parallelLight/index.jsx"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/06-directional-lighting.mdx": {
+        "bytes": 421,
+        "imports": [
+          {
+            "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
+            "kind": "import-statement",
+            "original": "vue"
+          },
+          {
+            "path": "src/components/mdx/.docs/webgl/06-directional-lighting.mdx",
+            "kind": "import-statement",
+            "original": "/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/06-directional-lighting.mdx"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__point-lighting__pointLightSimple__index": {
+        "bytes": 656,
+        "imports": []
+      },
+      "src/components/mdx/constituents/webgl/point-lighting/pointLightSimple/index.module.css": {
+        "bytes": 899,
+        "imports": [
+          {
+            "path": "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__point-lighting__pointLightSimple__index",
+            "kind": "import-statement",
+            "original": "css-module://src__components__mdx__constituents__webgl__point-lighting__pointLightSimple__index"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "src/components/mdx/constituents/webgl/point-lighting/pointLightSimple/index.jsx": {
+        "bytes": 13442,
+        "imports": [
+          {
+            "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
+            "kind": "import-statement",
+            "original": "vue"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/point-lighting/pointLightSimple/index.module.css",
+            "kind": "import-statement",
+            "original": "./index.module.css"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/common/index.js",
+            "kind": "import-statement",
+            "original": "../../common"
+          },
+          {
+            "path": "node_modules/gl-matrix/esm/index.js",
+            "kind": "import-statement",
+            "original": "gl-matrix"
+          },
+          {
+            "path": "node_modules/element-plus/es/components/index.mjs",
+            "kind": "import-statement",
+            "original": "element-plus/components"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "src/assets/images/specular.png": {
+        "bytes": 68101,
+        "imports": []
+      },
+      "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__point-lighting__pointLightSpecular__index": {
+        "bytes": 662,
+        "imports": []
+      },
+      "src/components/mdx/constituents/webgl/point-lighting/pointLightSpecular/index.module.css": {
+        "bytes": 907,
+        "imports": [
+          {
+            "path": "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__point-lighting__pointLightSpecular__index",
+            "kind": "import-statement",
+            "original": "css-module://src__components__mdx__constituents__webgl__point-lighting__pointLightSpecular__index"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "src/components/mdx/constituents/webgl/point-lighting/pointLightSpecular/index.jsx": {
+        "bytes": 14559,
+        "imports": [
+          {
+            "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
+            "kind": "import-statement",
+            "original": "vue"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/point-lighting/pointLightSpecular/index.module.css",
+            "kind": "import-statement",
+            "original": "./index.module.css"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/common/index.js",
+            "kind": "import-statement",
+            "original": "../../common"
+          },
+          {
+            "path": "node_modules/gl-matrix/esm/index.js",
+            "kind": "import-statement",
+            "original": "gl-matrix"
+          },
+          {
+            "path": "node_modules/element-plus/es/components/index.mjs",
+            "kind": "import-statement",
+            "original": "element-plus/components"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "src/components/mdx/.docs/webgl/07-point-lighting.mdx": {
+        "bytes": 10022,
+        "imports": [
+          {
+            "path": "node_modules/@mdx-js/vue/index.js",
+            "kind": "import-statement",
+            "original": "@mdx-js/vue"
+          },
+          {
+            "path": "vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "original": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/point-lighting/pointLightSimple/index.jsx",
+            "kind": "import-statement",
+            "original": "@/components/mdx/constituents/webgl/point-lighting/pointLightSimple/index.jsx"
+          },
+          {
+            "path": "src/components/mdx/constituents/utils/commonImg/index.jsx",
+            "kind": "import-statement",
+            "original": "@commonImg"
+          },
+          {
+            "path": "src/assets/images/specular.png",
+            "kind": "import-statement",
+            "original": "@images/specular.png"
+          },
+          {
+            "path": "src/components/mdx/constituents/webgl/point-lighting/pointLightSpecular/index.jsx",
+            "kind": "import-statement",
+            "original": "@mdx-constituents/webgl/point-lighting/pointLightSpecular/index.jsx"
+          },
+          {
+            "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "format": "esm"
+      },
+      "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/07-point-lighting.mdx": {
+        "bytes": 409,
+        "imports": [
+          {
+            "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
+            "kind": "import-statement",
+            "original": "vue"
+          },
+          {
+            "path": "src/components/mdx/.docs/webgl/07-point-lighting.mdx",
+            "kind": "import-statement",
+            "original": "/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/07-point-lighting.mdx"
           },
           {
             "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
@@ -50819,7 +52064,7 @@
         "format": "esm"
       },
       "NOTE_ROUTE:@/components/mdx/.docs": {
-        "bytes": 13107,
+        "bytes": 15700,
         "imports": [
           {
             "path": "node_modules/element-plus/es/components/index.mjs",
@@ -50922,9 +52167,39 @@
             "original": "/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vue/vue@3@intro.mdx"
           },
           {
-            "path": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/basic-concept.mdx",
+            "path": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/01-basic-concept.mdx",
             "kind": "dynamic-import",
-            "original": "/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/basic-concept.mdx"
+            "original": "/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/01-basic-concept.mdx"
+          },
+          {
+            "path": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/02-principle.mdx",
+            "kind": "dynamic-import",
+            "original": "/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/02-principle.mdx"
+          },
+          {
+            "path": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/03-orthographic.mdx",
+            "kind": "dynamic-import",
+            "original": "/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/03-orthographic.mdx"
+          },
+          {
+            "path": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/04-perspective.mdx",
+            "kind": "dynamic-import",
+            "original": "/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/04-perspective.mdx"
+          },
+          {
+            "path": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/05-camera.mdx",
+            "kind": "dynamic-import",
+            "original": "/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/05-camera.mdx"
+          },
+          {
+            "path": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/06-directional-lighting.mdx",
+            "kind": "dynamic-import",
+            "original": "/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/06-directional-lighting.mdx"
+          },
+          {
+            "path": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/07-point-lighting.mdx",
+            "kind": "dynamic-import",
+            "original": "/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/07-point-lighting.mdx"
           }
         ],
         "format": "esm"
@@ -50965,7 +52240,7 @@
         "format": "esm"
       },
       "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/friday.mdx": {
-        "bytes": 374,
+        "bytes": 375,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -64859,7 +66134,7 @@
         "format": "esm"
       },
       "node_modules/katex/dist/katex.mjs": {
-        "bytes": 604861,
+        "bytes": 606094,
         "imports": [
           {
             "path": "/home/runner/work/mynotes-es/mynotes-es/vue-jsxImportSource.js",
@@ -68052,7 +69327,7 @@
         "format": "esm"
       },
       "src/views/test/index.jsx": {
-        "bytes": 1090,
+        "bytes": 1278,
         "imports": [
           {
             "path": "node_modules/vue/dist/vue.runtime.esm-bundler.js",
@@ -68253,7 +69528,7 @@
         "format": "esm"
       },
       "node_modules/element-plus/dist/index.css": {
-        "bytes": 363154,
+        "bytes": 363036,
         "imports": [
           {
             "path": "#elCarouselHorizontal",
@@ -68523,7 +69798,7 @@
         "imports": []
       },
       "node_modules/katex/dist/katex.css": {
-        "bytes": 26343,
+        "bytes": 26344,
         "imports": [
           {
             "path": "node_modules/katex/dist/fonts/KaTeX_AMS-Regular.woff2",
@@ -68894,78 +70169,18 @@
       }
     },
     "outputs": {
-      "dist/chunks/js/vue@3@intro-5VW5XFTF.js": {
+      "dist/chunks/js/friday-JNWWUW63.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-5NNLKCHH.js",
+            "path": "dist/chunks/js/chunk-2NY2ME5I.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
-            "kind": "import-statement"
-          }
-        ],
-        "exports": [
-          "default"
-        ],
-        "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vue/vue@3@intro.mdx",
-        "inputs": {
-          "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vue/vue@3@intro.mdx": {
-            "bytesInOutput": 173
-          },
-          "src/components/mdx/.docs/vue/vue@3@intro.mdx": {
-            "bytesInOutput": 4527
-          }
-        },
-        "bytes": 4827
-      },
-      "dist/chunks/js/basic-concept-4Y5663FJ.js": {
-        "imports": [
-          {
-            "path": "dist/chunks/js/chunk-5NNLKCHH.js",
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
-            "kind": "import-statement"
-          }
-        ],
-        "exports": [
-          "default"
-        ],
-        "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/basic-concept.mdx",
-        "cssBundle": "dist/chunks/css/basic-concept-V2QSCCF4.css",
-        "inputs": {
-          "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/basic-concept.mdx": {
-            "bytesInOutput": 175
-          },
-          "src/components/mdx/.docs/webgl/basic-concept.mdx": {
-            "bytesInOutput": 12491
-          },
-          "src/components/mdx/constituents/webgl/basic-concept/helloWorld/index.jsx": {
-            "bytesInOutput": 1333
-          },
-          "src/components/mdx/constituents/webgl/basic-concept/helloWorld/index.module.css": {
-            "bytesInOutput": 327
-          },
-          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__basic-concept__helloWorld__index": {
-            "bytesInOutput": 0
-          }
-        },
-        "bytes": 14479
-      },
-      "dist/chunks/js/friday-BMPKLDZA.js": {
-        "imports": [
-          {
-            "path": "dist/chunks/js/chunk-3DBPSMT3.js",
-            "kind": "import-statement"
-          },
-          {
-            "path": "dist/chunks/js/chunk-5NNLKCHH.js",
-            "kind": "import-statement"
-          },
-          {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           }
         ],
@@ -68975,7 +70190,7 @@
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/friday.mdx",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/friday.mdx": {
-            "bytesInOutput": 168
+            "bytesInOutput": 169
           },
           "src/components/mdx/friday.mdx": {
             "bytesInOutput": 481
@@ -68984,12 +70199,12 @@
             "bytesInOutput": 785716
           }
         },
-        "bytes": 786537
+        "bytes": 786538
       },
-      "dist/chunks/js/marked.esm-FRRWMYNH.js": {
+      "dist/chunks/js/marked.esm-73ECDA3G.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           }
         ],
@@ -69018,15 +70233,15 @@
             "bytesInOutput": 37073
           },
           "node_modules/katex/dist/katex.mjs": {
-            "bytesInOutput": 269913
+            "bytesInOutput": 270179
           }
         },
-        "bytes": 307283
+        "bytes": 307549
       },
-      "dist/chunks/js/es-TCQWX2D7.js": {
+      "dist/chunks/js/es-XAPYLSZA.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           }
         ],
@@ -69624,22 +70839,22 @@
         },
         "bytes": 1054661
       },
-      "dist/chunks/js/markdown-VH34UR5C.js": {
+      "dist/chunks/js/markdown-HRZGOVS4.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-3DBPSMT3.js",
+            "path": "dist/chunks/js/chunk-2NY2ME5I.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/marked.esm-FRRWMYNH.js",
+            "path": "dist/chunks/js/marked.esm-73ECDA3G.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/es-TCQWX2D7.js",
+            "path": "dist/chunks/js/es-XAPYLSZA.js",
             "kind": "dynamic-import"
           }
         ],
@@ -70991,16 +72206,16 @@
             "bytesInOutput": 0
           }
         },
-        "bytes": 1773026
+        "bytes": 1773027
       },
-      "dist/chunks/js/test-UGKP4YS7.js": {
+      "dist/chunks/js/test-Z3KKMPZI.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-3DBPSMT3.js",
+            "path": "dist/chunks/js/chunk-2NY2ME5I.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           }
         ],
@@ -71010,19 +72225,488 @@
         "entryPoint": "src/views/test/index.jsx",
         "inputs": {
           "src/views/test/index.jsx": {
-            "bytesInOutput": 578
+            "bytesInOutput": 701
           }
         },
-        "bytes": 745
+        "bytes": 869
       },
-      "dist/chunks/js/browser-events-HGQDA2AI.js": {
+      "dist/chunks/js/vue@3@intro-ZWG52DPG.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-5NNLKCHH.js",
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
+            "kind": "import-statement"
+          }
+        ],
+        "exports": [
+          "default"
+        ],
+        "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vue/vue@3@intro.mdx",
+        "inputs": {
+          "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vue/vue@3@intro.mdx": {
+            "bytesInOutput": 174
+          },
+          "src/components/mdx/.docs/vue/vue@3@intro.mdx": {
+            "bytesInOutput": 4527
+          }
+        },
+        "bytes": 4828
+      },
+      "dist/chunks/js/01-basic-concept-5D5DYBAH.js": {
+        "imports": [
+          {
+            "path": "dist/chunks/js/chunk-PFY6EFXV.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
+            "kind": "import-statement"
+          }
+        ],
+        "exports": [
+          "default"
+        ],
+        "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/01-basic-concept.mdx",
+        "cssBundle": "dist/chunks/css/01-basic-concept-Y2OI6ATA.css",
+        "inputs": {
+          "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/01-basic-concept.mdx": {
+            "bytesInOutput": 180
+          },
+          "src/components/mdx/.docs/webgl/01-basic-concept.mdx": {
+            "bytesInOutput": 34677
+          },
+          "src/components/mdx/constituents/webgl/basic-concept/helloWorld/index.jsx": {
+            "bytesInOutput": 886
+          },
+          "src/components/mdx/constituents/webgl/basic-concept/helloWorld/index.module.css": {
+            "bytesInOutput": 327
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__basic-concept__helloWorld__index": {
+            "bytesInOutput": 0
+          },
+          "src/components/mdx/constituents/webgl/basic-concept/rectangle/index.jsx": {
+            "bytesInOutput": 985
+          },
+          "src/components/mdx/constituents/webgl/basic-concept/rectangle/index.module.css": {
+            "bytesInOutput": 326
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__basic-concept__rectangle__index": {
+            "bytesInOutput": 0
+          },
+          "src/components/mdx/constituents/webgl/basic-concept/circle/index.jsx": {
+            "bytesInOutput": 1073
+          },
+          "src/components/mdx/constituents/webgl/basic-concept/circle/index.module.css": {
+            "bytesInOutput": 323
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__basic-concept__circle__index": {
+            "bytesInOutput": 0
+          },
+          "src/components/mdx/constituents/webgl/basic-concept/heartShaped/index.jsx": {
+            "bytesInOutput": 1189
+          },
+          "src/components/mdx/constituents/webgl/basic-concept/heartShaped/index.module.css": {
+            "bytesInOutput": 328
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__basic-concept__heartShaped__index": {
+            "bytesInOutput": 0
+          }
+        },
+        "bytes": 40503
+      },
+      "dist/chunks/js/02-principle-SNQ3DUKC.js": {
+        "imports": [
+          {
+            "path": "dist/chunks/js/chunk-PFY6EFXV.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-2NY2ME5I.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-YSKIEOOV.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
+            "kind": "import-statement"
+          }
+        ],
+        "exports": [
+          "default"
+        ],
+        "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/02-principle.mdx",
+        "cssBundle": "dist/chunks/css/02-principle-Q47BNM4V.css",
+        "inputs": {
+          "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/02-principle.mdx": {
+            "bytesInOutput": 176
+          },
+          "src/components/mdx/.docs/webgl/02-principle.mdx": {
+            "bytesInOutput": 13921
+          },
+          "src/assets/images/vertex-shader-anim.gif": {
+            "bytesInOutput": 167307
+          },
+          "src/components/mdx/constituents/webgl/principle/varying/index.jsx": {
+            "bytesInOutput": 1771
+          },
+          "src/components/mdx/constituents/webgl/principle/varying/index.module.css": {
+            "bytesInOutput": 580
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__principle__varying__index": {
+            "bytesInOutput": 0
+          }
+        },
+        "bytes": 184051
+      },
+      "dist/chunks/js/03-orthographic-NWGESAY4.js": {
+        "imports": [
+          {
+            "path": "dist/chunks/js/chunk-PFY6EFXV.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-2NY2ME5I.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
+            "kind": "import-statement"
+          }
+        ],
+        "exports": [
+          "default"
+        ],
+        "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/03-orthographic.mdx",
+        "cssBundle": "dist/chunks/css/03-orthographic-NBZ24APG.css",
+        "inputs": {
+          "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/03-orthographic.mdx": {
+            "bytesInOutput": 179
+          },
+          "src/components/mdx/.docs/webgl/03-orthographic.mdx": {
+            "bytesInOutput": 42047
+          },
+          "src/components/mdx/constituents/webgl/orthographic/transformF/index.jsx": {
+            "bytesInOutput": 5078
+          },
+          "src/components/mdx/constituents/webgl/orthographic/transformF/index.module.css": {
+            "bytesInOutput": 600
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__orthographic__transformF__index": {
+            "bytesInOutput": 0
+          }
+        },
+        "bytes": 48183
+      },
+      "dist/chunks/js/04-perspective-4CAAM3UP.js": {
+        "imports": [
+          {
+            "path": "dist/chunks/js/chunk-PFY6EFXV.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-2NY2ME5I.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-YSKIEOOV.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
+            "kind": "import-statement"
+          }
+        ],
+        "exports": [
+          "default"
+        ],
+        "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/04-perspective.mdx",
+        "cssBundle": "dist/chunks/css/04-perspective-5HQG2ZIG.css",
+        "inputs": {
+          "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/04-perspective.mdx": {
+            "bytesInOutput": 178
+          },
+          "src/components/mdx/.docs/webgl/04-perspective.mdx": {
+            "bytesInOutput": 178848
+          },
+          "src/assets/images/perspective-example.svg": {
+            "bytesInOutput": 9524
+          },
+          "src/assets/images/perspective-projection.png": {
+            "bytesInOutput": 81175
+          },
+          "src/assets/images/perspective-yclip.png": {
+            "bytesInOutput": 29039
+          },
+          "src/components/mdx/constituents/webgl/perspective/perspectiveTransformF/index.jsx": {
+            "bytesInOutput": 5389
+          },
+          "src/components/mdx/constituents/webgl/perspective/perspectiveTransformF/index.module.css": {
+            "bytesInOutput": 630
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__perspective__perspectiveTransformF__index": {
+            "bytesInOutput": 0
+          }
+        },
+        "bytes": 305102
+      },
+      "dist/chunks/js/05-camera-O2JHTIXW.js": {
+        "imports": [
+          {
+            "path": "dist/chunks/js/chunk-LFC37YSX.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-PFY6EFXV.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-2NY2ME5I.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-YSKIEOOV.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
+            "kind": "import-statement"
+          }
+        ],
+        "exports": [
+          "default"
+        ],
+        "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/05-camera.mdx",
+        "cssBundle": "dist/chunks/css/05-camera-B3KKVGYZ.css",
+        "inputs": {
+          "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/05-camera.mdx": {
+            "bytesInOutput": 176
+          },
+          "src/components/mdx/.docs/webgl/05-camera.mdx": {
+            "bytesInOutput": 189701
+          },
+          "src/components/mdx/constituents/webgl/camera/cameraView/index.jsx": {
+            "bytesInOutput": 4521
+          },
+          "src/components/mdx/constituents/webgl/camera/cameraView/index.module.css": {
+            "bytesInOutput": 582
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__camera__cameraView__index": {
+            "bytesInOutput": 0
+          },
+          "src/components/mdx/constituents/webgl/camera/cameraFollowView/index.jsx": {
+            "bytesInOutput": 4591
+          },
+          "src/components/mdx/constituents/webgl/camera/cameraFollowView/index.module.css": {
+            "bytesInOutput": 600
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__camera__cameraFollowView__index": {
+            "bytesInOutput": 0
+          },
+          "src/assets/images/lookAt.png": {
+            "bytesInOutput": 48640
+          }
+        },
+        "bytes": 249143
+      },
+      "dist/chunks/js/06-directional-lighting-GX2JOP2E.js": {
+        "imports": [
+          {
+            "path": "dist/chunks/js/chunk-LFC37YSX.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-PFY6EFXV.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-2NY2ME5I.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
+            "kind": "import-statement"
+          }
+        ],
+        "exports": [
+          "default"
+        ],
+        "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/06-directional-lighting.mdx",
+        "cssBundle": "dist/chunks/css/06-directional-lighting-BFM6ADYL.css",
+        "inputs": {
+          "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/06-directional-lighting.mdx": {
+            "bytesInOutput": 187
+          },
+          "src/components/mdx/.docs/webgl/06-directional-lighting.mdx": {
+            "bytesInOutput": 21749
+          },
+          "src/components/mdx/constituents/webgl/directional-lighting/parallelLight/index.jsx": {
+            "bytesInOutput": 5002
+          },
+          "src/components/mdx/constituents/webgl/directional-lighting/parallelLight/index.module.css": {
+            "bytesInOutput": 633
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__directional-lighting__parallelLight__index": {
+            "bytesInOutput": 0
+          }
+        },
+        "bytes": 27862
+      },
+      "dist/chunks/js/07-point-lighting-KTCAUFT5.js": {
+        "imports": [
+          {
+            "path": "dist/chunks/js/chunk-LFC37YSX.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-PFY6EFXV.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-2NY2ME5I.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-YSKIEOOV.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
+            "kind": "import-statement"
+          }
+        ],
+        "exports": [
+          "default"
+        ],
+        "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/07-point-lighting.mdx",
+        "cssBundle": "dist/chunks/css/07-point-lighting-W3HQBS2I.css",
+        "inputs": {
+          "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/07-point-lighting.mdx": {
+            "bytesInOutput": 184
+          },
+          "src/components/mdx/.docs/webgl/07-point-lighting.mdx": {
+            "bytesInOutput": 7077
+          },
+          "src/components/mdx/constituents/webgl/point-lighting/pointLightSimple/index.jsx": {
+            "bytesInOutput": 5559
+          },
+          "src/components/mdx/constituents/webgl/point-lighting/pointLightSimple/index.module.css": {
+            "bytesInOutput": 624
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__point-lighting__pointLightSimple__index": {
+            "bytesInOutput": 0
+          },
+          "src/assets/images/specular.png": {
+            "bytesInOutput": 90836
+          },
+          "src/components/mdx/constituents/webgl/point-lighting/pointLightSpecular/index.jsx": {
+            "bytesInOutput": 6368
+          },
+          "src/components/mdx/constituents/webgl/point-lighting/pointLightSpecular/index.module.css": {
+            "bytesInOutput": 630
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__point-lighting__pointLightSpecular__index": {
+            "bytesInOutput": 0
+          }
+        },
+        "bytes": 111610
+      },
+      "dist/chunks/js/chunk-LFC37YSX.js": {
+        "imports": [
+          {
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
+            "kind": "import-statement"
+          }
+        ],
+        "exports": [
+          "a",
+          "b"
+        ],
+        "inputs": {
+          "node_modules/gl-matrix/esm/mat4.js": {
+            "bytesInOutput": 15893
+          },
+          "node_modules/gl-matrix/esm/common.js": {
+            "bytesInOutput": 215
+          },
+          "node_modules/gl-matrix/esm/vec3.js": {
+            "bytesInOutput": 5309
+          },
+          "node_modules/gl-matrix/esm/index.js": {
+            "bytesInOutput": 4
+          }
+        },
+        "bytes": 21492
+      },
+      "dist/chunks/js/chunk-PFY6EFXV.js": {
+        "imports": [
+          {
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
+            "kind": "import-statement"
+          }
+        ],
+        "exports": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h",
+          "i",
+          "j"
+        ],
+        "inputs": {
+          "src/components/mdx/constituents/webgl/common/index.js": {
+            "bytesInOutput": 1042
+          },
+          "src/components/mdx/constituents/webgl/common/constants.js": {
+            "bytesInOutput": 4
+          }
+        },
+        "bytes": 1165
+      },
+      "dist/chunks/js/browser-events-V5FQA5AD.js": {
+        "imports": [
+          {
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
+            "kind": "import-statement"
+          },
+          {
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           }
         ],
@@ -71032,26 +72716,26 @@
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vanilla/browser-events.mdx",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vanilla/browser-events.mdx": {
-            "bytesInOutput": 176
+            "bytesInOutput": 177
           },
           "src/components/mdx/.docs/vanilla/browser-events.mdx": {
             "bytesInOutput": 7450
           }
         },
-        "bytes": 7753
+        "bytes": 7754
       },
-      "dist/chunks/js/browser-KSYPTJ7I.js": {
+      "dist/chunks/js/browser-NOAX4K2U.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-PA55YKDL.js",
+            "path": "dist/chunks/js/chunk-YSKIEOOV.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-5NNLKCHH.js",
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           }
         ],
@@ -71059,10 +72743,10 @@
           "default"
         ],
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vanilla/browser.mdx",
-        "cssBundle": "dist/chunks/css/browser-BJIMJNK6.css",
+        "cssBundle": "dist/chunks/css/browser-YOLZUMSB.css",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vanilla/browser.mdx": {
-            "bytesInOutput": 169
+            "bytesInOutput": 170
           },
           "src/components/mdx/.docs/vanilla/browser.mdx": {
             "bytesInOutput": 10963
@@ -71071,16 +72755,16 @@
             "bytesInOutput": 17139
           }
         },
-        "bytes": 28443
+        "bytes": 28444
       },
-      "dist/chunks/js/closure-VBZRYASD.js": {
+      "dist/chunks/js/closure-PXDDEJVX.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-5NNLKCHH.js",
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           }
         ],
@@ -71090,22 +72774,22 @@
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vanilla/closure.mdx",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vanilla/closure.mdx": {
-            "bytesInOutput": 169
+            "bytesInOutput": 170
           },
           "src/components/mdx/.docs/vanilla/closure.mdx": {
             "bytesInOutput": 8759
           }
         },
-        "bytes": 9050
+        "bytes": 9051
       },
-      "dist/chunks/js/common-feature-LRBMQRVY.js": {
+      "dist/chunks/js/common-feature-QA7VLQOO.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-5NNLKCHH.js",
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           }
         ],
@@ -71115,22 +72799,22 @@
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vanilla/common-feature.mdx",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vanilla/common-feature.mdx": {
-            "bytesInOutput": 176
+            "bytesInOutput": 177
           },
           "src/components/mdx/.docs/vanilla/common-feature.mdx": {
             "bytesInOutput": 2041
           }
         },
-        "bytes": 2349
+        "bytes": 2350
       },
-      "dist/chunks/js/es6plus-2W4UF4BG.js": {
+      "dist/chunks/js/es6plus-TVF6276U.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-5NNLKCHH.js",
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           }
         ],
@@ -71140,22 +72824,22 @@
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vanilla/es6plus.mdx",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vanilla/es6plus.mdx": {
-            "bytesInOutput": 169
+            "bytesInOutput": 170
           },
           "src/components/mdx/.docs/vanilla/es6plus.mdx": {
             "bytesInOutput": 19218
           }
         },
-        "bytes": 19519
+        "bytes": 19520
       },
-      "dist/chunks/js/network-request-YK2XYQFK.js": {
+      "dist/chunks/js/network-request-47FXQABK.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-5NNLKCHH.js",
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           }
         ],
@@ -71165,22 +72849,22 @@
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vanilla/network-request.mdx",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vanilla/network-request.mdx": {
-            "bytesInOutput": 177
+            "bytesInOutput": 178
           },
           "src/components/mdx/.docs/vanilla/network-request.mdx": {
             "bytesInOutput": 22834
           }
         },
-        "bytes": 23143
+        "bytes": 23144
       },
-      "dist/chunks/js/vue-router@4-PRW5EAAC.js": {
+      "dist/chunks/js/vue-router@4-SN4WOOPM.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-5NNLKCHH.js",
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           }
         ],
@@ -71190,26 +72874,26 @@
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vue/vue-router@4.mdx",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vue/vue-router@4.mdx": {
-            "bytesInOutput": 174
+            "bytesInOutput": 175
           },
           "src/components/mdx/.docs/vue/vue-router@4.mdx": {
             "bytesInOutput": 2907
           }
         },
-        "bytes": 3213
+        "bytes": 3214
       },
-      "dist/chunks/js/vue@3@directives-OZ4PRPDB.js": {
+      "dist/chunks/js/vue@3@directives-TPPXDNTZ.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-3DBPSMT3.js",
+            "path": "dist/chunks/js/chunk-2NY2ME5I.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-5NNLKCHH.js",
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           }
         ],
@@ -71220,7 +72904,7 @@
         "cssBundle": "dist/chunks/css/vue@3@directives-KJRLQEIR.css",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vue/vue@3@directives.mdx": {
-            "bytesInOutput": 179
+            "bytesInOutput": 180
           },
           "src/components/mdx/.docs/vue/vue@3@directives.mdx": {
             "bytesInOutput": 15752
@@ -71247,96 +72931,120 @@
             "bytesInOutput": 434
           }
         },
-        "bytes": 1145404
+        "bytes": 1145406
       },
       "dist/index.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-3DBPSMT3.js",
+            "path": "dist/chunks/js/chunk-2NY2ME5I.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/@typescript-V47TVKUA.js",
+            "path": "dist/chunks/js/@typescript-7YVEFMQT.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/webpack-H4CIOGF2.js",
+            "path": "dist/chunks/js/webpack-OZQ7CNA3.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/middleware-L2HHNAZ3.js",
+            "path": "dist/chunks/js/middleware-QKEJ5BNA.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/intro-CYECISQD.js",
+            "path": "dist/chunks/js/intro-2N2VEPG6.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/manifolds-I3NUENI6.js",
+            "path": "dist/chunks/js/manifolds-F6ARJPTM.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/hooks@18.2.0-4TYSAR4W.js",
+            "path": "dist/chunks/js/hooks@18.2.0-WWGOAN3S.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/redux-PPNLJW6D.js",
+            "path": "dist/chunks/js/redux-BIDOQIMX.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/browser-events-HGQDA2AI.js",
+            "path": "dist/chunks/js/browser-events-V5FQA5AD.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/browser-KSYPTJ7I.js",
+            "path": "dist/chunks/js/browser-NOAX4K2U.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/closure-VBZRYASD.js",
+            "path": "dist/chunks/js/closure-PXDDEJVX.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/common-feature-LRBMQRVY.js",
+            "path": "dist/chunks/js/common-feature-QA7VLQOO.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/es6plus-2W4UF4BG.js",
+            "path": "dist/chunks/js/es6plus-TVF6276U.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/network-request-YK2XYQFK.js",
+            "path": "dist/chunks/js/network-request-47FXQABK.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/vue-router@4-PRW5EAAC.js",
+            "path": "dist/chunks/js/vue-router@4-SN4WOOPM.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/vue@3@directives-OZ4PRPDB.js",
+            "path": "dist/chunks/js/vue@3@directives-TPPXDNTZ.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/vue@3@intro-5VW5XFTF.js",
+            "path": "dist/chunks/js/vue@3@intro-ZWG52DPG.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/basic-concept-4Y5663FJ.js",
+            "path": "dist/chunks/js/01-basic-concept-5D5DYBAH.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/friday-BMPKLDZA.js",
+            "path": "dist/chunks/js/02-principle-SNQ3DUKC.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/markdown-VH34UR5C.js",
+            "path": "dist/chunks/js/03-orthographic-NWGESAY4.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/test-UGKP4YS7.js",
+            "path": "dist/chunks/js/04-perspective-4CAAM3UP.js",
+            "kind": "dynamic-import"
+          },
+          {
+            "path": "dist/chunks/js/05-camera-O2JHTIXW.js",
+            "kind": "dynamic-import"
+          },
+          {
+            "path": "dist/chunks/js/06-directional-lighting-GX2JOP2E.js",
+            "kind": "dynamic-import"
+          },
+          {
+            "path": "dist/chunks/js/07-point-lighting-KTCAUFT5.js",
+            "kind": "dynamic-import"
+          },
+          {
+            "path": "dist/chunks/js/friday-JNWWUW63.js",
+            "kind": "dynamic-import"
+          },
+          {
+            "path": "dist/chunks/js/markdown-HRZGOVS4.js",
+            "kind": "dynamic-import"
+          },
+          {
+            "path": "dist/chunks/js/test-Z3KKMPZI.js",
             "kind": "dynamic-import"
           }
         ],
@@ -71372,7 +73080,7 @@
             "bytesInOutput": 284
           },
           "NOTE_ROUTE:@/components/mdx/.docs": {
-            "bytesInOutput": 8315
+            "bytesInOutput": 10158
           },
           "src/App.jsx": {
             "bytesInOutput": 905
@@ -71408,12 +73116,12 @@
             "bytesInOutput": 0
           }
         },
-        "bytes": 43184
+        "bytes": 45033
       },
-      "dist/chunks/js/chunk-3DBPSMT3.js": {
+      "dist/chunks/js/chunk-2NY2ME5I.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           }
         ],
@@ -71436,7 +73144,8 @@
           "p",
           "q",
           "r",
-          "s"
+          "s",
+          "t"
         ],
         "inputs": {
           "node_modules/element-plus/es/components/input/index.mjs": {
@@ -71507,6 +73216,15 @@
           },
           "node_modules/lodash-es/isArray.js": {
             "bytesInOutput": 31
+          },
+          "node_modules/lodash-es/toNumber.js": {
+            "bytesInOutput": 357
+          },
+          "node_modules/lodash-es/_baseTrim.js": {
+            "bytesInOutput": 87
+          },
+          "node_modules/lodash-es/_trimmedEndIndex.js": {
+            "bytesInOutput": 97
           },
           "node_modules/lodash-es/isObject.js": {
             "bytesInOutput": 89
@@ -71631,6 +73349,12 @@
           "node_modules/lodash-es/_toKey.js": {
             "bytesInOutput": 120
           },
+          "node_modules/lodash-es/debounce.js": {
+            "bytesInOutput": 954
+          },
+          "node_modules/lodash-es/now.js": {
+            "bytesInOutput": 50
+          },
           "node_modules/lodash-es/fromPairs.js": {
             "bytesInOutput": 109
           },
@@ -71653,10 +73377,10 @@
             "bytesInOutput": 209
           },
           "node_modules/@element-plus/icons-vue/dist/index.js": {
-            "bytesInOutput": 12172
+            "bytesInOutput": 13089
           },
           "node_modules/element-plus/es/utils/vue/props/runtime.mjs": {
-            "bytesInOutput": 616
+            "bytesInOutput": 617
           },
           "node_modules/element-plus/es/utils/vue/install.mjs": {
             "bytesInOutput": 265
@@ -71683,7 +73407,7 @@
             "bytesInOutput": 16
           },
           "node_modules/element-plus/es/components/input/src/input2.mjs": {
-            "bytesInOutput": 7108
+            "bytesInOutput": 7098
           },
           "node_modules/element-plus/es/components/icon/index.mjs": {
             "bytesInOutput": 18
@@ -71698,16 +73422,16 @@
             "bytesInOutput": 149
           },
           "node_modules/element-plus/es/hooks/use-locale/index.mjs": {
-            "bytesInOutput": 301
+            "bytesInOutput": 302
           },
           "node_modules/element-plus/es/locale/lang/en.mjs": {
-            "bytesInOutput": 2926
+            "bytesInOutput": 2958
           },
           "node_modules/element-plus/es/hooks/use-lockscreen/index.mjs": {
             "bytesInOutput": 658
           },
           "node_modules/element-plus/es/hooks/use-namespace/index.mjs": {
-            "bytesInOutput": 840
+            "bytesInOutput": 841
           },
           "node_modules/element-plus/es/hooks/use-model-toggle/index.mjs": {
             "bytesInOutput": 1066
@@ -71719,7 +73443,7 @@
             "bytesInOutput": 1081
           },
           "node_modules/@popperjs/core/dist/index.mjs": {
-            "bytesInOutput": 19988
+            "bytesInOutput": 19961
           },
           "node_modules/element-plus/es/hooks/use-same-target/index.mjs": {
             "bytesInOutput": 217
@@ -71728,7 +73452,7 @@
             "bytesInOutput": 148
           },
           "node_modules/element-plus/es/hooks/use-id/index.mjs": {
-            "bytesInOutput": 228
+            "bytesInOutput": 229
           },
           "node_modules/element-plus/es/hooks/use-escape-keydown/index.mjs": {
             "bytesInOutput": 253
@@ -71737,55 +73461,55 @@
             "bytesInOutput": 364
           },
           "node_modules/element-plus/es/hooks/use-delayed-toggle/index.mjs": {
-            "bytesInOutput": 368
+            "bytesInOutput": 369
           },
           "node_modules/element-plus/es/hooks/use-forward-ref/index.mjs": {
             "bytesInOutput": 149
           },
           "node_modules/element-plus/es/hooks/use-z-index/index.mjs": {
-            "bytesInOutput": 243
+            "bytesInOutput": 356
           },
           "node_modules/element-plus/es/hooks/use-cursor/index.mjs": {
             "bytesInOutput": 621
           },
           "node_modules/element-plus/es/hooks/use-size/index.mjs": {
-            "bytesInOutput": 129
+            "bytesInOutput": 130
           },
           "node_modules/element-plus/es/hooks/use-focus-controller/index.mjs": {
             "bytesInOutput": 445
           },
           "node_modules/element-plus/es/components/icon/src/icon.mjs": {
-            "bytesInOutput": 67
+            "bytesInOutput": 68
           },
           "node_modules/element-plus/es/_virtual/plugin-vue_export-helper.mjs": {
             "bytesInOutput": 73
           },
           "node_modules/element-plus/es/components/form/src/hooks/use-form-common-props.mjs": {
-            "bytesInOutput": 307
+            "bytesInOutput": 310
           },
           "node_modules/element-plus/es/components/form/src/constants.mjs": {
             "bytesInOutput": 68
           },
           "node_modules/element-plus/es/components/form/src/hooks/use-form-item.mjs": {
-            "bytesInOutput": 597
+            "bytesInOutput": 599
           },
           "node_modules/element-plus/es/components/input/src/utils.mjs": {
             "bytesInOutput": 1450
           },
           "node_modules/element-plus/es/components/input/src/input.mjs": {
-            "bytesInOutput": 1316
+            "bytesInOutput": 1317
           },
           "node_modules/element-plus/es/components/drawer/index.mjs": {
             "bytesInOutput": 18
           },
           "node_modules/element-plus/es/components/drawer/src/drawer2.mjs": {
-            "bytesInOutput": 2832
+            "bytesInOutput": 2836
           },
           "node_modules/element-plus/es/components/overlay/index.mjs": {
             "bytesInOutput": 14
           },
           "node_modules/element-plus/es/components/overlay/src/overlay.mjs": {
-            "bytesInOutput": 729
+            "bytesInOutput": 730
           },
           "node_modules/element-plus/es/components/focus-trap/src/focus-trap.mjs": {
             "bytesInOutput": 2809
@@ -71796,29 +73520,29 @@
           "node_modules/element-plus/es/components/focus-trap/src/tokens.mjs": {
             "bytesInOutput": 248
           },
-          "node_modules/element-plus/es/components/dialog/src/dialog-content.mjs": {
-            "bytesInOutput": 228
+          "node_modules/element-plus/es/components/dialog/src/dialog-content2.mjs": {
+            "bytesInOutput": 229
           },
           "node_modules/element-plus/es/components/dialog/src/dialog.mjs": {
-            "bytesInOutput": 663
+            "bytesInOutput": 664
           },
           "node_modules/element-plus/es/components/dialog/src/use-dialog.mjs": {
-            "bytesInOutput": 1644
+            "bytesInOutput": 1642
           },
           "node_modules/element-plus/es/components/config-provider/src/config-provider.mjs": {
             "bytesInOutput": 203
           },
           "node_modules/element-plus/es/components/config-provider/src/hooks/use-global-config.mjs": {
-            "bytesInOutput": 953
+            "bytesInOutput": 954
           },
           "node_modules/element-plus/es/components/config-provider/src/constants.mjs": {
             "bytesInOutput": 20
           },
           "node_modules/element-plus/es/components/config-provider/src/config-provider-props.mjs": {
-            "bytesInOutput": 262
+            "bytesInOutput": 263
           },
           "node_modules/element-plus/es/components/drawer/src/drawer.mjs": {
-            "bytesInOutput": 256
+            "bytesInOutput": 257
           },
           "node_modules/element-plus/es/components/index.mjs": {
             "bytesInOutput": 4
@@ -71827,34 +73551,34 @@
             "bytesInOutput": 18
           },
           "node_modules/element-plus/es/components/scrollbar/src/scrollbar2.mjs": {
-            "bytesInOutput": 1742
+            "bytesInOutput": 1743
           },
           "node_modules/element-plus/es/components/scrollbar/src/bar2.mjs": {
-            "bytesInOutput": 835
+            "bytesInOutput": 836
           },
           "node_modules/element-plus/es/components/scrollbar/src/util.mjs": {
             "bytesInOutput": 395
           },
           "node_modules/element-plus/es/components/scrollbar/src/thumb2.mjs": {
-            "bytesInOutput": 2214
+            "bytesInOutput": 2216
           },
           "node_modules/element-plus/es/components/scrollbar/src/constants.mjs": {
             "bytesInOutput": 41
           },
           "node_modules/element-plus/es/components/scrollbar/src/thumb.mjs": {
-            "bytesInOutput": 104
+            "bytesInOutput": 105
           },
           "node_modules/element-plus/es/components/scrollbar/src/bar.mjs": {
-            "bytesInOutput": 83
+            "bytesInOutput": 84
           },
           "node_modules/element-plus/es/components/scrollbar/src/scrollbar.mjs": {
-            "bytesInOutput": 580
+            "bytesInOutput": 581
           },
           "node_modules/element-plus/es/components/tooltip/index.mjs": {
             "bytesInOutput": 18
           },
           "node_modules/element-plus/es/components/tooltip/src/tooltip2.mjs": {
-            "bytesInOutput": 2874
+            "bytesInOutput": 2877
           },
           "node_modules/element-plus/es/components/popper/index.mjs": {
             "bytesInOutput": 18
@@ -71866,31 +73590,31 @@
             "bytesInOutput": 55
           },
           "node_modules/element-plus/es/components/popper/src/popper.mjs": {
-            "bytesInOutput": 139
+            "bytesInOutput": 140
           },
           "node_modules/element-plus/es/components/popper/src/arrow2.mjs": {
-            "bytesInOutput": 414
+            "bytesInOutput": 415
           },
           "node_modules/element-plus/es/components/popper/src/arrow.mjs": {
-            "bytesInOutput": 52
+            "bytesInOutput": 53
           },
           "node_modules/element-plus/es/components/popper/src/trigger2.mjs": {
-            "bytesInOutput": 1361
+            "bytesInOutput": 1363
           },
           "node_modules/element-plus/es/components/slot/src/only-child.mjs": {
-            "bytesInOutput": 567
+            "bytesInOutput": 568
           },
           "node_modules/element-plus/es/components/popper/src/trigger.mjs": {
-            "bytesInOutput": 299
+            "bytesInOutput": 300
           },
           "node_modules/element-plus/es/components/popper/src/content2.mjs": {
-            "bytesInOutput": 1905
+            "bytesInOutput": 1901
           },
           "node_modules/element-plus/es/components/popper/src/content.mjs": {
-            "bytesInOutput": 1030
+            "bytesInOutput": 1032
           },
           "node_modules/element-plus/es/components/popper/src/composables/use-content.mjs": {
-            "bytesInOutput": 663
+            "bytesInOutput": 664
           },
           "node_modules/element-plus/es/components/popper/src/utils.mjs": {
             "bytesInOutput": 544
@@ -71905,46 +73629,46 @@
             "bytesInOutput": 31
           },
           "node_modules/element-plus/es/components/tooltip/src/tooltip.mjs": {
-            "bytesInOutput": 229
+            "bytesInOutput": 230
           },
           "node_modules/element-plus/es/components/tooltip/src/content.mjs": {
-            "bytesInOutput": 280
+            "bytesInOutput": 281
           },
           "node_modules/element-plus/es/components/tooltip/src/trigger.mjs": {
-            "bytesInOutput": 148
+            "bytesInOutput": 149
           },
           "node_modules/element-plus/es/components/tooltip/src/trigger2.mjs": {
-            "bytesInOutput": 1022
+            "bytesInOutput": 1024
           },
           "node_modules/element-plus/es/components/tooltip/src/utils.mjs": {
             "bytesInOutput": 87
           },
           "node_modules/element-plus/es/components/tooltip/src/content2.mjs": {
-            "bytesInOutput": 2313
+            "bytesInOutput": 2307
           },
           "node_modules/element-plus/es/components/badge/index.mjs": {
             "bytesInOutput": 18
           },
           "node_modules/element-plus/es/components/badge/src/badge2.mjs": {
-            "bytesInOutput": 663
+            "bytesInOutput": 700
           },
           "node_modules/element-plus/es/components/badge/src/badge.mjs": {
-            "bytesInOutput": 240
+            "bytesInOutput": 254
           },
           "node_modules/element-plus/es/components/button/index.mjs": {
             "bytesInOutput": 45
           },
           "node_modules/element-plus/es/components/button/src/button2.mjs": {
-            "bytesInOutput": 1147
+            "bytesInOutput": 1150
           },
           "node_modules/element-plus/es/components/button/src/use-button.mjs": {
-            "bytesInOutput": 893
+            "bytesInOutput": 894
           },
           "node_modules/element-plus/es/components/button/src/constants.mjs": {
             "bytesInOutput": 43
           },
           "node_modules/element-plus/es/components/button/src/button.mjs": {
-            "bytesInOutput": 558
+            "bytesInOutput": 559
           },
           "node_modules/element-plus/es/components/button/src/button-custom.mjs": {
             "bytesInOutput": 1391
@@ -71973,6 +73697,9 @@
           "node_modules/element-plus/es/directives/click-outside/index.mjs": {
             "bytesInOutput": 841
           },
+          "node_modules/element-plus/es/directives/repeat-click/index.mjs": {
+            "bytesInOutput": 368
+          },
           "node_modules/element-plus/es/components/card/index.mjs": {
             "bytesInOutput": 18
           },
@@ -71980,13 +73707,13 @@
             "bytesInOutput": 579
           },
           "node_modules/element-plus/es/components/card/src/card.mjs": {
-            "bytesInOutput": 222
+            "bytesInOutput": 223
           },
           "node_modules/element-plus/es/components/collapse-transition/index.mjs": {
             "bytesInOutput": 54
           },
           "node_modules/element-plus/es/components/collapse-transition/src/collapse-transition.mjs": {
-            "bytesInOutput": 1501
+            "bytesInOutput": 1502
           },
           "node_modules/element-plus/es/components/container/index.mjs": {
             "bytesInOutput": 97
@@ -72006,11 +73733,20 @@
           "node_modules/element-plus/es/components/container/src/main.mjs": {
             "bytesInOutput": 182
           },
+          "node_modules/element-plus/es/components/input-number/index.mjs": {
+            "bytesInOutput": 18
+          },
+          "node_modules/element-plus/es/components/input-number/src/input-number2.mjs": {
+            "bytesInOutput": 4710
+          },
+          "node_modules/element-plus/es/components/input-number/src/input-number.mjs": {
+            "bytesInOutput": 756
+          },
           "node_modules/element-plus/es/components/menu/index.mjs": {
             "bytesInOutput": 90
           },
           "node_modules/element-plus/es/components/menu/src/menu.mjs": {
-            "bytesInOutput": 4333
+            "bytesInOutput": 4309
           },
           "node_modules/element-plus/es/components/menu/src/utils/menu-bar.mjs": {
             "bytesInOutput": 158
@@ -72022,10 +73758,10 @@
             "bytesInOutput": 748
           },
           "node_modules/element-plus/es/components/menu/src/menu-collapse-transition.mjs": {
-            "bytesInOutput": 984
+            "bytesInOutput": 985
           },
           "node_modules/element-plus/es/components/menu/src/sub-menu.mjs": {
-            "bytesInOutput": 4573
+            "bytesInOutput": 4556
           },
           "node_modules/element-plus/es/components/menu/src/use-menu.mjs": {
             "bytesInOutput": 286
@@ -72037,10 +73773,10 @@
             "bytesInOutput": 106
           },
           "node_modules/element-plus/es/components/menu/src/menu-item2.mjs": {
-            "bytesInOutput": 1411
+            "bytesInOutput": 1415
           },
           "node_modules/element-plus/es/components/menu/src/menu-item.mjs": {
-            "bytesInOutput": 167
+            "bytesInOutput": 168
           },
           "node_modules/element-plus/es/components/menu/src/menu-item-group2.mjs": {
             "bytesInOutput": 391
@@ -72048,14 +73784,53 @@
           "node_modules/element-plus/es/components/menu/src/menu-item-group.mjs": {
             "bytesInOutput": 26
           },
+          "node_modules/element-plus/es/components/slider/index.mjs": {
+            "bytesInOutput": 18
+          },
+          "node_modules/element-plus/es/components/slider/src/slider2.mjs": {
+            "bytesInOutput": 4430
+          },
+          "node_modules/element-plus/es/components/slider/src/constants.mjs": {
+            "bytesInOutput": 38
+          },
+          "node_modules/element-plus/es/components/slider/src/slider.mjs": {
+            "bytesInOutput": 858
+          },
+          "node_modules/element-plus/es/components/slider/src/button2.mjs": {
+            "bytesInOutput": 1496
+          },
+          "node_modules/element-plus/es/components/slider/src/composables/use-lifecycle.mjs": {
+            "bytesInOutput": 486
+          },
+          "node_modules/element-plus/es/components/slider/src/composables/use-marks.mjs": {
+            "bytesInOutput": 200
+          },
+          "node_modules/element-plus/es/components/slider/src/composables/use-slide.mjs": {
+            "bytesInOutput": 1981
+          },
+          "node_modules/element-plus/es/components/slider/src/composables/use-slider-button.mjs": {
+            "bytesInOutput": 2905
+          },
+          "node_modules/element-plus/es/components/slider/src/composables/use-stops.mjs": {
+            "bytesInOutput": 421
+          },
+          "node_modules/element-plus/es/components/slider/src/composables/use-watch.mjs": {
+            "bytesInOutput": 954
+          },
+          "node_modules/element-plus/es/components/slider/src/button.mjs": {
+            "bytesInOutput": 156
+          },
+          "node_modules/element-plus/es/components/slider/src/marker.mjs": {
+            "bytesInOutput": 286
+          },
           "node_modules/element-plus/es/components/switch/index.mjs": {
             "bytesInOutput": 18
           },
           "node_modules/element-plus/es/components/switch/src/switch2.mjs": {
-            "bytesInOutput": 3496
+            "bytesInOutput": 3502
           },
           "node_modules/element-plus/es/components/switch/src/switch.mjs": {
-            "bytesInOutput": 806
+            "bytesInOutput": 807
           },
           "node_modules/element-plus/es/components/message/index.mjs": {
             "bytesInOutput": 29
@@ -72064,25 +73839,25 @@
             "bytesInOutput": 1287
           },
           "node_modules/element-plus/es/components/message/src/message2.mjs": {
-            "bytesInOutput": 2006
+            "bytesInOutput": 2034
           },
           "node_modules/element-plus/es/components/message/src/message.mjs": {
-            "bytesInOutput": 925
+            "bytesInOutput": 980
           },
           "node_modules/element-plus/es/components/message/src/instance.mjs": {
             "bytesInOutput": 221
           }
         },
-        "bytes": 151552
+        "bytes": 174380
       },
-      "dist/chunks/js/@typescript-V47TVKUA.js": {
+      "dist/chunks/js/@typescript-7YVEFMQT.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-5NNLKCHH.js",
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           }
         ],
@@ -72092,22 +73867,22 @@
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/@typescript/index.mdx",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/@typescript/index.mdx": {
-            "bytesInOutput": 167
+            "bytesInOutput": 168
           },
           "src/components/mdx/.docs/@typescript/index.mdx": {
             "bytesInOutput": 9530
           }
         },
-        "bytes": 9829
+        "bytes": 9830
       },
-      "dist/chunks/js/webpack-H4CIOGF2.js": {
+      "dist/chunks/js/webpack-OZQ7CNA3.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-5NNLKCHH.js",
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           }
         ],
@@ -72117,22 +73892,22 @@
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/@webpack/webpack.mdx",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/@webpack/webpack.mdx": {
-            "bytesInOutput": 169
+            "bytesInOutput": 170
           },
           "src/components/mdx/.docs/@webpack/webpack.mdx": {
             "bytesInOutput": 20392
           }
         },
-        "bytes": 20693
+        "bytes": 20694
       },
-      "dist/chunks/js/middleware-L2HHNAZ3.js": {
+      "dist/chunks/js/middleware-QKEJ5BNA.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-5NNLKCHH.js",
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           }
         ],
@@ -72142,22 +73917,22 @@
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/koa/middleware.mdx",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/koa/middleware.mdx": {
-            "bytesInOutput": 172
+            "bytesInOutput": 173
           },
           "src/components/mdx/.docs/koa/middleware.mdx": {
             "bytesInOutput": 945
           }
         },
-        "bytes": 1249
+        "bytes": 1250
       },
-      "dist/chunks/js/intro-CYECISQD.js": {
+      "dist/chunks/js/intro-2N2VEPG6.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-5NNLKCHH.js",
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           }
         ],
@@ -72167,26 +73942,26 @@
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/physics/qft/intro.mdx",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/physics/qft/intro.mdx": {
-            "bytesInOutput": 167
+            "bytesInOutput": 168
           },
           "src/components/mdx/.docs/physics/qft/intro.mdx": {
             "bytesInOutput": 214
           }
         },
-        "bytes": 508
+        "bytes": 509
       },
-      "dist/chunks/js/manifolds-I3NUENI6.js": {
+      "dist/chunks/js/manifolds-F6ARJPTM.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-PA55YKDL.js",
+            "path": "dist/chunks/js/chunk-YSKIEOOV.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-5NNLKCHH.js",
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           }
         ],
@@ -72194,13 +73969,13 @@
           "default"
         ],
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/physics/stag/manifolds.mdx",
-        "cssBundle": "dist/chunks/css/manifolds-HLS46MFJ.css",
+        "cssBundle": "dist/chunks/css/manifolds-UZWUNSOS.css",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/physics/stag/manifolds.mdx": {
-            "bytesInOutput": 171
+            "bytesInOutput": 172
           },
           "src/components/mdx/.docs/physics/stag/manifolds.mdx": {
-            "bytesInOutput": 283582
+            "bytesInOutput": 382598
           },
           "src/assets/images/ep.jpg": {
             "bytesInOutput": 10488
@@ -72218,12 +73993,12 @@
             "bytesInOutput": 105699
           }
         },
-        "bytes": 802585
+        "bytes": 901607
       },
-      "dist/chunks/js/chunk-PA55YKDL.js": {
+      "dist/chunks/js/chunk-YSKIEOOV.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           }
         ],
@@ -72241,16 +74016,16 @@
             "bytesInOutput": 0
           }
         },
-        "bytes": 866
+        "bytes": 867
       },
-      "dist/chunks/js/hooks@18.2.0-4TYSAR4W.js": {
+      "dist/chunks/js/hooks@18.2.0-WWGOAN3S.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-5NNLKCHH.js",
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           }
         ],
@@ -72260,22 +74035,22 @@
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/react/hooks@18.2.0.mdx",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/react/hooks@18.2.0.mdx": {
-            "bytesInOutput": 174
+            "bytesInOutput": 175
           },
           "src/components/mdx/.docs/react/hooks@18.2.0.mdx": {
             "bytesInOutput": 13936
           }
         },
-        "bytes": 14242
+        "bytes": 14243
       },
-      "dist/chunks/js/redux-PPNLJW6D.js": {
+      "dist/chunks/js/redux-BIDOQIMX.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-5NNLKCHH.js",
+            "path": "dist/chunks/js/chunk-VAXDE6KK.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           }
         ],
@@ -72285,18 +74060,18 @@
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/react/redux.mdx",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/react/redux.mdx": {
-            "bytesInOutput": 167
+            "bytesInOutput": 168
           },
           "src/components/mdx/.docs/react/redux.mdx": {
             "bytesInOutput": 3582
           }
         },
-        "bytes": 3881
+        "bytes": 3882
       },
-      "dist/chunks/js/chunk-5NNLKCHH.js": {
+      "dist/chunks/js/chunk-VAXDE6KK.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-YB6PSBT5.js",
+            "path": "dist/chunks/js/chunk-DPK6XK52.js",
             "kind": "import-statement"
           }
         ],
@@ -72313,7 +74088,7 @@
         },
         "bytes": 121
       },
-      "dist/chunks/js/chunk-YB6PSBT5.js": {
+      "dist/chunks/js/chunk-DPK6XK52.js": {
         "imports": [],
         "exports": [
           "$",
@@ -72389,7 +74164,9 @@
           "v",
           "va",
           "w",
+          "wa",
           "x",
+          "xa",
           "y",
           "z"
         ],
@@ -72398,10 +74175,10 @@
             "bytesInOutput": 2941
           },
           "node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js": {
-            "bytesInOutput": 10969
+            "bytesInOutput": 11055
           },
           "node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js": {
-            "bytesInOutput": 46377
+            "bytesInOutput": 46832
           },
           "node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js": {
             "bytesInOutput": 11288
@@ -72413,16 +74190,7 @@
             "bytesInOutput": 47
           }
         },
-        "bytes": 73798
-      },
-      "dist/chunks/css/basic-concept-V2QSCCF4.css": {
-        "imports": [],
-        "inputs": {
-          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__basic-concept__helloWorld__index": {
-            "bytesInOutput": 175
-          }
-        },
-        "bytes": 176
+        "bytes": 74363
       },
       "dist/assets/ttf/codicon-MO4O4W4B.ttf": {
         "imports": [],
@@ -72577,14 +74345,104 @@
         },
         "bytes": 35822
       },
-      "dist/chunks/css/browser-BJIMJNK6.css": {
+      "dist/chunks/css/01-basic-concept-Y2OI6ATA.css": {
+        "imports": [],
+        "inputs": {
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__basic-concept__helloWorld__index": {
+            "bytesInOutput": 193
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__basic-concept__rectangle__index": {
+            "bytesInOutput": 192
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__basic-concept__circle__index": {
+            "bytesInOutput": 189
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__basic-concept__heartShaped__index": {
+            "bytesInOutput": 194
+          }
+        },
+        "bytes": 769
+      },
+      "dist/chunks/css/02-principle-Q47BNM4V.css": {
         "imports": [],
         "inputs": {
           "CSS_MODULE:css-module://src__components__mdx__constituents__utils__commonImg__index": {
-            "bytesInOutput": 118
+            "bytesInOutput": 243
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__principle__varying__index": {
+            "bytesInOutput": 528
           }
         },
-        "bytes": 119
+        "bytes": 772
+      },
+      "dist/chunks/css/03-orthographic-NBZ24APG.css": {
+        "imports": [],
+        "inputs": {
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__orthographic__transformF__index": {
+            "bytesInOutput": 546
+          }
+        },
+        "bytes": 547
+      },
+      "dist/chunks/css/04-perspective-5HQG2ZIG.css": {
+        "imports": [],
+        "inputs": {
+          "CSS_MODULE:css-module://src__components__mdx__constituents__utils__commonImg__index": {
+            "bytesInOutput": 243
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__perspective__perspectiveTransformF__index": {
+            "bytesInOutput": 576
+          }
+        },
+        "bytes": 820
+      },
+      "dist/chunks/css/05-camera-B3KKVGYZ.css": {
+        "imports": [],
+        "inputs": {
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__camera__cameraView__index": {
+            "bytesInOutput": 528
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__camera__cameraFollowView__index": {
+            "bytesInOutput": 546
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__utils__commonImg__index": {
+            "bytesInOutput": 243
+          }
+        },
+        "bytes": 1318
+      },
+      "dist/chunks/css/06-directional-lighting-BFM6ADYL.css": {
+        "imports": [],
+        "inputs": {
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__directional-lighting__parallelLight__index": {
+            "bytesInOutput": 579
+          }
+        },
+        "bytes": 580
+      },
+      "dist/chunks/css/07-point-lighting-W3HQBS2I.css": {
+        "imports": [],
+        "inputs": {
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__point-lighting__pointLightSimple__index": {
+            "bytesInOutput": 570
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__utils__commonImg__index": {
+            "bytesInOutput": 243
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__point-lighting__pointLightSpecular__index": {
+            "bytesInOutput": 576
+          }
+        },
+        "bytes": 1390
+      },
+      "dist/chunks/css/browser-YOLZUMSB.css": {
+        "imports": [],
+        "inputs": {
+          "CSS_MODULE:css-module://src__components__mdx__constituents__utils__commonImg__index": {
+            "bytesInOutput": 243
+          }
+        },
+        "bytes": 244
       },
       "dist/chunks/css/vue@3@directives-KJRLQEIR.css": {
         "imports": [],
@@ -73479,13 +75337,46 @@
         ],
         "inputs": {
           "CSS_MODULE:css-module://src__components__mdx__constituents__utils__commonImg__index": {
-            "bytesInOutput": 118
+            "bytesInOutput": 243
           },
           "CSS_MODULE:css-module://src__components__mdx__constituents__vue__vueDirectiveVLazy__index": {
             "bytesInOutput": 230
           },
           "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__basic-concept__helloWorld__index": {
-            "bytesInOutput": 175
+            "bytesInOutput": 193
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__basic-concept__rectangle__index": {
+            "bytesInOutput": 192
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__basic-concept__circle__index": {
+            "bytesInOutput": 189
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__basic-concept__heartShaped__index": {
+            "bytesInOutput": 194
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__principle__varying__index": {
+            "bytesInOutput": 528
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__orthographic__transformF__index": {
+            "bytesInOutput": 546
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__perspective__perspectiveTransformF__index": {
+            "bytesInOutput": 576
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__camera__cameraView__index": {
+            "bytesInOutput": 528
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__camera__cameraFollowView__index": {
+            "bytesInOutput": 546
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__directional-lighting__parallelLight__index": {
+            "bytesInOutput": 579
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__point-lighting__pointLightSimple__index": {
+            "bytesInOutput": 570
+          },
+          "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__point-lighting__pointLightSpecular__index": {
+            "bytesInOutput": 576
           },
           "CSS_MODULE:css-module://src__views__markdown__index": {
             "bytesInOutput": 216
@@ -73626,10 +75517,10 @@
             "bytesInOutput": 176
           },
           "node_modules/element-plus/dist/index.css": {
-            "bytesInOutput": 312664
+            "bytesInOutput": 312735
           },
           "node_modules/katex/dist/katex.css": {
-            "bytesInOutput": 23996
+            "bytesInOutput": 23997
           },
           "node_modules/highlight.js/styles/github-dark.css": {
             "bytesInOutput": 1064
@@ -73638,16 +75529,16 @@
             "bytesInOutput": 13941
           }
         },
-        "bytes": 389178
+        "bytes": 394417
       },
-      "dist/chunks/css/manifolds-HLS46MFJ.css": {
+      "dist/chunks/css/manifolds-UZWUNSOS.css": {
         "imports": [],
         "inputs": {
           "CSS_MODULE:css-module://src__components__mdx__constituents__utils__commonImg__index": {
-            "bytesInOutput": 118
+            "bytesInOutput": 243
           }
         },
-        "bytes": 119
+        "bytes": 244
       }
     }
   }
