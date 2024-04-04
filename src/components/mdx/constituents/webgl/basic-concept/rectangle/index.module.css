@@ -1,0 +1,9 @@
+canvas.gl-canvas {
+  width: 250px;
+  height: 250px;
+  background-color: #ffffff;
+  margin: 0 auto;
+  display: block;
+  border-radius: 8px;
+}
+  

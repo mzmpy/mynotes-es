@@ -5,8 +5,12 @@
     "checkJs": false, // 启用javascript文件的类型检查
     "baseUrl": "./", // 解析非相关模块名称的基础目录
     "paths": {
-      "@/*": ["src/*"] // 指定相对于baseUrl选项计算的路径映射，使用webpack别名，智能感知路径
+      "@/*": ["src/*"], // 指定相对于baseUrl选项计算的路径映射，使用webpack别名，智能感知路径
+      "@images/*": ["src/assets/images/*"],
+      "@mdx-constituents/*": ["src/components/mdx/constituents/*"],
+      "@mdx-utils/*": ["src/components/mdx/constituents/utils/*"],
+      "@commonImg": ["src/components/mdx/constituents/utils/commonImg/index.jsx"]
     }
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "src/**/*.mdx"]
 }

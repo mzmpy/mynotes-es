@@ -1,0 +1,181 @@
+import perspectiveExampleImg from '@/assets/images/perspective-example.svg'
+import perspectiveProjectionImg from '@/assets/images/perspective-projection.png'
+import perspectiveYClipImg from '@/assets/images/perspective-yclip.png'
+import ComImg from '../../constituents/utils/commonImg'
+import WebGLPerspectiveTransformF from '@/components/mdx/constituents/webgl/perspective/perspectiveTransformF/index.jsx'
+
+# `WebGL`三维透视投影
+
+* 我们日常生活中观察三维的方式是透视投影的方式，它的基础特性就是离得越远显得越小；例如下方的图片中，远处的物体显得更小
+  <ComImg
+   src={perspectiveExampleImg}
+   alt="此示例中，远处的物体会变小，想要实现例子中近大远小的效果，简单的做法就是将裁减空间中的 X 和 Y 值除以 Z 值"
+   width={500}
+  ></ComImg>
+
+## 齐次坐标
+
+  * 齐次坐标(`Homogeneous coordinates`)，是在`3D`计算机图形学中常用的一种坐标方式；而在`WebGl`也用到这种坐标
+    $$
+    \begin{gather}
+    (x, y, z, w)
+    \end{gather}
+    $$
+    如果`w`不等于`1`和`0`，则$(x, y, z, w)$转换为$(x/w, y/w, z/w)$，通过这种方式，我们可以实现透视投影效果
+
+## 透视投影矩阵
+
+  <ComImg
+   src={perspectiveProjectionImg}
+   alt="截断锥体（透视投影的可视区间）和标准设备的坐标系（normalized device coordinates）"
+   width={500}>
+  </ComImg>
+  * 可以看到，我们即将做的推导是在标准坐标系（即右手坐标系）中进行的，而最终得到的结果却是关于左手坐标系（也称为`normalized device coordinates`
+  或`NDC`）的；这是因为标准设备中一般使用`NDC`而不是标准坐标系，这也是我们在使用`WebGL`的过程中输入顶点坐标时使用的坐标系；但是一般来说我们可以先
+  使用标准坐标系进行设计，然后在使用矩阵变换得到关于`NDC`的坐标
+
+  * 如下图，观察者位于坐标原点，三维空间中的点`e`反射的光线经过位于$z=-n$垂直于`z`轴的截面上（称为在该截面上的投影），投影点为`p`；
+  则根据相似三角形的原理`p`点的坐标为
+    <ComImg src={perspectiveYClipImg} alt="透视投影原理图-沿y轴截面图" width={200}></ComImg>
+
+    $$
+    \begin{gather}
+    x_p = \frac{n \times x_e}{-z_e}
+    \end{gather}
+    $$
+    同理，对于$y_p$也有
+    $$
+    \begin{gather}
+    y_p = \frac{n \times y_e}{-z_e}
+    \end{gather}
+    $$
+    可以看到，如果对可视空间四棱台中每一个坐标的$x$、$y$值都乘上系数$n/-z_e$，就可以把这个四棱台变换成一个长方体了；因此，从数学角度来看，
+    透视投影就是找到一个适当的矩阵，它将$z_e$处$xy$平面上的点影射到$-n$处$xy$平面上；整个影射的式子应该是这样的
+    $$
+    \begin{gather}
+    \begin{pmatrix}
+      x \times \frac{n}{-z} \\
+      y \times \frac{n}{-z} \\
+      z \\
+      1
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      \frac{n}{-z} & 0 & 0 & 0 \\
+      0 & \frac{n}{-z} & 0 & 0 \\
+      \alpha_1 & \alpha_2 & \alpha_3 & \alpha_4 \\
+      0 & 0 & 0 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+      x \\
+      y \\
+      z \\
+      1
+    \end{pmatrix}
+    \end{gather}
+    $$
+    并且$\alpha_i$与$x$、$y$无关；值得注意的是整个投影矩阵应该与具体的坐标点无关，并且
+    $$
+    \begin{equation*}
+    \begin{pmatrix}
+      nx \\
+      ny \\
+      -z^2 \\
+      -z
+    \end{pmatrix}
+    \sim
+    \begin{pmatrix}
+      x \times \frac{n}{-z} \\
+      y \times \frac{n}{-z} \\
+      z \\
+      1
+    \end{pmatrix}
+    \end{equation*}
+    $$
+    所以(4)式写成
+    $$
+    \begin{gather}
+    \begin{pmatrix}
+      nx \\
+      ny \\
+      -z^2 \\
+      -z
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      n & 0 & 0 & 0 \\
+      0 & n & 0 & 0 \\
+      0 & 0 & \alpha_3 & \alpha_4 \\
+      0 & 0 & -1 & 0
+    \end{pmatrix}
+    \begin{pmatrix}
+      x \\
+      y \\
+      z \\
+      1
+    \end{pmatrix}
+    \end{gather}
+    $$
+    将$z=-n$与$z=-f$代入得
+    $$
+    \begin{cases}
+      \alpha_3 = nf \\
+      \alpha_3 = n+f
+    \end{cases}
+    $$
+    到这里我们已经将透视投影转换成正射投影，接下来就是用正射投影的矩阵去乘上边得到的矩阵，就可以得到我们想要的完整的透视投影矩阵了
+    （注意：下边的$n$，$f$是坐标，而不是$z=-n$中的$n$和$f$，即$z=-n \implies n$和$z=-f \implies f$）
+    $$
+    \begin{gather}
+    \begin{pmatrix}
+      \frac{2n}{r-l} & 0 & \frac{r+l}{r-l} & 0 \\
+      0 & \frac{2n}{t-b} & \frac{t+b}{t-b} & 0 \\
+      0 & 0 & \frac{n+f}{n-f} & \frac{2nf}{n-f} \\
+      0 & 0 & -1 & 0
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      \frac{2}{r-l} & 0 & 0 & -\frac{r+l}{r-l} \\
+      0 & \frac{2}{t-b} & 0 & -\frac{t+b}{t-b} \\
+      0 & 0 & \frac{2}{n-f} & -\frac{n+f}{n-f} \\
+      0 & 0 & 0 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+      n & 0 & 0 & 0 \\
+      0 & n & 0 & 0 \\
+      0 & 0 & n+f & nf \\
+      0 & 0 & -1 & 0
+    \end{pmatrix}
+    \end{gather}
+    $$
+    在考虑视角的对称性$r+l=0$、$r-l=2r$、$t+b=0$、$t-b=2t$、$F=tan(\frac{\theta}{2})=\frac{t}{n}$（其中$\theta$被称为视角`field of view`）
+    和$a=\frac{r}{t}$，得到
+    $$
+    \begin{gather}
+    \begin{pmatrix}
+      \frac{1}{Fa} & 0 & 0 & 0 \\
+      0 & \frac{1}{F} & 0 & 0 \\
+      0 & 0 & \frac{n+f}{n-f} & \frac{2nf}{n-f} \\
+      0 & 0 & -1 & 0
+    \end{pmatrix}
+    \end{gather}
+    $$
+
+  ## 编码实践
+
+  * 和正射投影一样，只不过我们要将正射投影的变换矩阵替换成透视投影矩阵，将参数调整到适当的值；这样我们就能得到想要的效果了
+    ```javascript
+    const perspective3d = (fov, aspect, near, far) => {
+      const f = Math.tan(Math.PI * 0.5 - 0.5 * fov);
+      const rangeInv = 1.0 / (near - far);
+    
+      return [
+        f / aspect, 0, 0,                         0,
+        0,          f, 0,                         0,
+        0,          0, (near + far) * rangeInv,   - 1,
+        0,          0, near * far * rangeInv * 2, 0
+      ]
+    }
+    ```
+
+  <WebGLPerspectiveTransformF></WebGLPerspectiveTransformF>

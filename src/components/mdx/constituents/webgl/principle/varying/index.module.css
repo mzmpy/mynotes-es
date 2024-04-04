@@ -1,0 +1,26 @@
+.vessel {
+  width: 370px;
+	height: 250px;
+  position: relative;
+  margin: 0 auto;
+  background-color: #cacaca;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+canvas.gl-canvas {
+  width: 250px;
+	height: 250px;
+	background-color: #ffffff;
+	display: block;
+}
+
+.operation {
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100px;
+  padding: 0 10px;
+}

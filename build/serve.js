@@ -50,7 +50,8 @@ let ctx = await esbuild.context({
     '.woff2': 'file',
     '.jpg': 'dataurl',
     '.png': 'dataurl',
-    '.svg': 'dataurl'
+    '.svg': 'dataurl',
+    '.gif': 'dataurl'
   },
   entryNames: '[name]-[hash]',
   assetNames: 'assets/[ext]/[name]-[hash]',

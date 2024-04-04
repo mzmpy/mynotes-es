@@ -13,7 +13,15 @@ console.log('TestView')
 export default defineComponent({
   name: 'TestView',
   components: { ElInput },
+  props: {
+    test: {
+      type: Number,
+      default: 111
+    }
+  },
   setup(props, ctx) {
+    console.log('[setup]', props, ctx)
+
     const inputRef = ref()
 
     onBeforeMount(() => {
@@ -38,7 +46,10 @@ export default defineComponent({
 
     const onInput = (val) => {
       text.value = val
+      ctx.emit('test', 'test123')
     }
+
+    ctx.expose({ test: 'expose test' })
 
     return () => {
       return <>

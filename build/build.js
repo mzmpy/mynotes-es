@@ -34,7 +34,8 @@ const result = await esbuild.build({
     '.woff2': 'file',
     '.jpg': 'dataurl',
     '.png': 'dataurl',
-    '.svg': 'dataurl'
+    '.svg': 'dataurl',
+    '.gif': 'dataurl'
   },
   alias: {
     '@/*': './src/*'

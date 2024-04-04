@@ -1,0 +1,89 @@
+import PointLightSimple from '@/components/mdx/constituents/webgl/point-lighting/pointLightSimple/index.jsx'
+import ComImg from '@commonImg'
+import specularImg from '@images/specular.png'
+import PointLightSpecular from '@mdx-constituents/webgl/point-lighting/pointLightSpecular/index.jsx'
+
+# `WebGL`三维点光源
+
+* 上一篇我们看到了如何处理平行光的照射及阴影渲染的问题；如果说平行光偏向理想模型一点，那么点光源更加常见；现实中比较
+常见平行光是太阳光，但是事实上太阳光也不是真正的平行光，只是太阳距离我们太远了，它发出的光可以近似地看作平行的；除此
+之外“平行光源”就很难找到了；而点光源可以说到处都是
+
+* 对于点光源照射到物体表面的光线，不同点的光线方向一般都不一样；所以我们需要知道每个点的坐标，法向以及光源点的坐标；
+这样可以计算出所有点处的光照方向并使用平行光的计算方式来处理了
+
+<PointLightSimple></PointLightSimple>
+
+## 镜面反射
+
+* 前面关于光的照射与阴影效果的例子🌰都是关于漫反射的，接下来我们要通过计算光线是否反射到眼前来模拟镜面反射；为此我们
+需要计算物体表面每个点的法向，点到光源的方向向量和点到观察点方向向量，并衡量观察的地点与光线反射的方向偏离程度
+
+<ComImg src={specularImg} alt="镜面反射示例图" width={450}></ComImg>
+
+  主要是修改着色器上的代码，添加镜面反射的权重，或者更准确地说是添加颜色叠加的代码逻辑
+  ```cpp
+  // vertex
+  attribute vec4 a_position;
+  uniform mat4 u_matrix;
+  uniform mat4 u_world_matrix;
+  uniform mat4 u_world_inverse_transpose_matrix;
+  uniform vec3 u_lightWorldPosition;
+  uniform vec3 u_viewWorldPosition;
+  attribute vec3 a_normal;
+  varying vec3 v_normal;
+  varying vec3 v_surfaceToLight;
+  varying vec3 v_surfaceToView;
+
+  void main() {
+    vec3 surfaceWorldPosition = (u_world_matrix * a_position).xyz;
+
+    gl_Position = u_matrix * a_position;
+    v_surfaceToLight = u_lightWorldPosition - surfaceWorldPosition;
+    v_surfaceToView = u_viewWorldPosition - surfaceWorldPosition;
+    v_normal = mat3(u_world_inverse_transpose_matrix) * a_normal;
+  }
+
+  // fragment
+  precision mediump float;
+  varying vec3 v_normal;
+  uniform vec4 u_color;
+  varying vec3 v_surfaceToLight;
+  varying vec3 v_surfaceToView;
+  uniform float u_shininess;
+  uniform vec3 u_lightColor;
+
+  void main() {
+    vec3 normal = normalize(v_normal);
+    vec3 surfaceToLightDirection = normalize(v_surfaceToLight);
+    vec3 surfaceToViewDirection = normalize(v_surfaceToView);
+    vec3 halfVector = normalize(surfaceToLightDirection + surfaceToViewDirection);
+    float light_Weight = dot(normal, surfaceToLightDirection);
+    float specular_weight = 0.0;
+
+    if(light_Weight > 0.0) {
+      specular_weight = pow(dot(normal, halfVector), 10.0 * u_shininess);
+    }
+
+    // u_lightColor默认是[1.0, 1.0, 1.0]，即白色
+    gl_FragColor = u_color;
+    gl_FragColor.rgb *= light_Weight * u_lightColor;
+    gl_FragColor.rgb += specular_weight * u_lightColor;
+  }
+  ```
+
+<PointLightSpecular></PointLightSpecular>
+
+## 有色光与反射
+
+* 使用红色光源的漫反射
+  ```javascript
+  (<PointLightSimple color={[1, 0.6, 0.6]}></PointLightSimple>)
+  ```
+  <PointLightSimple color={[1, 0.6, 0.6]}></PointLightSimple>
+
+* 使用红色光源的镜面反射
+  ```javascript
+  (<PointLightSpecular color={[1, 0.6, 0.6]}></PointLightSpecular>)
+  ```
+  <PointLightSpecular color={[1, 0.6, 0.6]}></PointLightSpecular>

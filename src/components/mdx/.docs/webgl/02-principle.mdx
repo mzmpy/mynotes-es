@@ -1,0 +1,130 @@
+import ComImg from '@/components/mdx/constituents/utils/commonImg/index.jsx'
+import vertexShaderAnnimImg from '@/assets/images/vertex-shader-anim.gif'
+import WebGLVarying from '@/components/mdx/constituents/webgl/principle/varying/index.jsx'
+
+# `WebGL`工作原理
+
+* `WebGL`在`GPU`上的工作基本上分为两部分，第一部分是将顶点（或数据流）转换到裁剪空间的坐标， 第二部分是基于第一部分的结果绘制像素点
+
+<ComImg alt="顶点从像素空间到裁剪空间的转换示意图" src={vertexShaderAnnimImg}></ComImg>
+
+* 顶点着色器（`Vertex Shader`）是你写进`GLSL`中的一个方法，每个顶点调用一次，在这个方法中做一些数学运算后设置了一个特殊的`gl_Position`
+变量， 这个变量就是该顶点转换到裁剪空间中的坐标值，`GPU`接收该值并将其保存起来
+
+* 计算出所需顶点对应的像素后，`WebGL`就会光栅化相应的图元（“光栅化”其实就是“用像素画出来” 的花哨叫法）；对于每一个像素，它会调用你
+的片段着色器询问你使用什么颜色；你通过给片段着色器的一个特殊变量gl_FragColor设置一个颜色值，实现自定义像素颜色
+
+## 使用可变量（`Varying`）绘制渐变颜色三角形
+
+* 顶点着色器
+  ```cpp
+  attribute vec2 a_position;
+  uniform mat3 u_matrix;
+  varying vec4 v_color;
+
+  void main() {
+    gl_Position = vec4((u_matrix * vec3(a_position, 1)).xy, 0, 1);
+    v_color = gl_Position * 0.5 + 0.5;
+  }
+  ```
+
+* 片段着色器
+  ```cpp
+  precision mediump float;
+  varying vec4 v_color;
+
+  void main() {
+    gl_FragColor = v_color;
+  }
+  ```
+
+* 在两个着色器中都定义了可变量`v_color`，它们指向共同的内存地址；可以看到对于每一个顶点都会计算一个颜色值并且三角形
+内部的每个点的颜色都不一样；这是因为在`WebGL`对三角形进行光栅化时会根据三个顶点的颜色值进行插值，每一个像素在调用片段
+着色器时，可变量的值是与之对应的插值；这是也`v_color`称为可变量（`varying`）的原因
+
+* 代码的核心部分如下：
+  ```javascript
+  const drawScene = () => {
+    const gl = glVessel.value.getContext('webgl')
+
+    if(!gl) {
+      return
+    }
+
+    const positionAttributeLocation = gl.getAttribLocation(program, 'a_position')
+    const matrixLocation = gl.getUniformLocation(program, 'u_matrix')
+
+    gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
+    gl.clearColor(0, 0, 0, 0)
+    gl.clear(gl.COLOR_BUFFER_BIT)
+    gl.useProgram(program)
+
+    const size = 2
+    const type = gl.FLOAT
+    const normalized = false
+    const stride = 0
+    const offset = 0
+    const dx = parseFloat(formatValue(xPos.value))
+    const dy = parseFloat(formatValue(yPos.value))
+    const dRadian = formatRadian(radian.value)
+    
+    gl.enableVertexAttribArray(positionAttributeLocation)
+    gl.vertexAttribPointer(positionAttributeLocation, size, type, normalized, stride, offset)
+    gl.uniformMatrix3fv(matrixLocation, false, new Float32Array(transform2dMat(dRadian, 1.0, dx, dy)))
+
+    const primitiveType = gl.TRIANGLES
+    const first = 0
+    const count = 3
+    gl.drawArrays(primitiveType, first, count)
+  }
+
+  const transform2dMat = (theta, alpha, dx, dy) => {
+    return [
+      alpha * Math.cos(theta), alpha * Math.sin(theta), 0,
+      - alpha * Math.sin(theta), alpha * Math.cos(theta), 0,
+      dx, dy, 1,
+    ]
+  }
+  ```
+  每次三角形发生平移和旋转变换时，使用`transform2dMat(dRadian, alpha, dx, dy)`重新计算相应的变换矩阵；并且调用`drawScene`
+  进行重新绘制
+
+<WebGLVarying></WebGLVarying>
+
+## 缓冲（`buffer`）与属性（`attribute`）
+
+* 缓冲操作是在`GPU`上获取顶点和其他顶点数据的一种方式：
+
+  * `gl.createBuffer`创建一个缓冲
+    ```javascript
+    const someBuffer = gl.createBuffer()
+    ```
+  * `gl.bindBuffer`是设置缓冲为当前使用缓冲
+    ```javascript
+    gl.bindBuffer(gl.ARRAY_BUFFER, someBuffer)
+    ```
+    这个命令是将缓冲绑定到`ARRAY_BUFFER`绑定点，它是`WebGL`内部的一个全局变量
+  * `gl.bufferData`将数据拷贝到缓冲，这个操作一般在初始化完成
+  ```javascript
+  // positions是一个顶点数据的数组
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW)
+  ```
+  * 一旦数据存到缓冲中，还需要告诉`WebGL`怎么从缓冲中提取数据传给顶点着色器的属性
+    ```javascript
+    const someLocation = gl.getAttribLocation(program, 'some_position')
+
+    // 告诉WebGL我们想从缓冲中提供数据
+    gl.enableVertexAttribArray(someLocation)
+    // 设置当前使用缓冲
+    gl.bindBuffer(gl.ARRAY_BUFFER, someBuffer)
+    // 告诉WebGL如何从ARRAY_BUFFER绑定点当前绑定的缓冲获取对应的顶点数据
+    gl.vertexAttribPointer(
+      location,
+      size,
+      dataType,
+      normalized,
+      strideToNextPieceOfData,
+      offsetIntoBuffer)
+    // 最后是绘制
+    gl.drawArrays(primitiveType, first, count)
+    ```

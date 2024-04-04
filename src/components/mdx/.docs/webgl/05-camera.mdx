@@ -1,0 +1,278 @@
+import CameraView from '@/components/mdx/constituents/webgl/camera/cameraView/index.jsx'
+import CameraFollowView from '@/components/mdx/constituents/webgl/camera/cameraFollowView/index.jsx'
+import lookAtImg from '@/assets/images/lookAt.png'
+import ComImg from '../../constituents/utils/commonImg'
+
+# `WebGL`三维相机
+
+* 在`WebGL`三维投射投影中，我们一直假设观察者位于远点，通过将被观察的物体移动到视锥内来进行视图渲染；但是更普遍的场景下，真实的情况是
+相反的；即观察者（或者说是相机）往往需要跟随物体进行观察拍摄；但是，如果从数学上“直接地”实现这样的效果是很复杂的；因为我们不仅需要实时
+计算被观察物体的位置大小，姿态等，还要计算相机的实时位置和跟随距离、角度等，需要计算的自由度太多；所以，我们还是要回到之前简单的方式：
+仍然固定相机在原点而将物体移动到相机前，而效果却是相机在移动，观察视角也在实时调整；这就要用到逆矩阵了
+
+* 比如下边的例子就是，我们假设相机围绕着5个“F”旋转拍摄，旋转的半径是`2r`；然而如果从相机的角度也可以看成是：相机处于原点，5个“F”平均
+地附着在某个圆周上，该圆的中心距离原点`2r`远，并且围绕圆心旋转；核心代码如下（需要注意的是我们在这里开始引入`gl-matrix`矩阵库而不用
+自己去实现矩阵计算的细节了）：
+  ```javascript
+  const drawScene = () => {
+    const gl = glVessel.value.getContext('webgl')
+
+    if(!gl) {
+      return
+    }
+
+    const positionAttributeLocation = gl.getAttribLocation(program, 'a_position')
+    const matrixLocation = gl.getUniformLocation(program, 'u_matrix')
+    const colorAttributeLocation = gl.getAttribLocation(program, 'a_color')
+
+    gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
+    gl.enable(gl.CULL_FACE)
+    gl.enable(gl.DEPTH_TEST)
+    gl.useProgram(program)
+
+    const dz = parseFloat(formatZ(zPos.value))
+    const dRadian = formatRadian(radian.value)
+    const dfov = formatFov(fov.value)
+    const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight
+
+    // 相机的运动矩阵
+    const cameraMatrix = mat4.create()
+    mat4.rotateY(cameraMatrix, cameraMatrix, dRadian)
+    mat4.translate(cameraMatrix, cameraMatrix, [0, 0, dz])
+
+    // 求矩阵的逆，用作被观察物体的运动矩阵
+    const viewMatrix = mat4.create()
+    mat4.invert(viewMatrix, cameraMatrix)
+    
+    // 投射投影矩阵
+    const projectionMatrix = mat4.create()
+    mat4.perspective(projectionMatrix, dfov, aspect, 1, 20)
+    
+    const viewProjectionMatrix = mat4.create()
+    mat4.multiply(viewProjectionMatrix, projectionMatrix, viewMatrix)
+
+    const positionBuffer = gl.createBuffer()
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
+    setGeometry(gl)
+    gl.enableVertexAttribArray(positionAttributeLocation)
+    gl.vertexAttribPointer(positionAttributeLocation, 3, gl.FLOAT, false, 0, 0)
+    
+    const colorBuffer = gl.createBuffer()
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer)
+    setColors(gl)
+    gl.enableVertexAttribArray(colorAttributeLocation)
+    gl.vertexAttribPointer(colorAttributeLocation, 3, gl.UNSIGNED_BYTE, true, 0, 0)
+
+    for(let iter = 0; iter < 5; iter ++) {
+      const angle = 2 * Math.PI / 5 * (iter + 1)
+      const x = Math.cos(angle)
+      const z = Math.sin(angle)
+      const matrix = mat4.create()
+
+      mat4.translate(matrix, viewProjectionMatrix, [x, 0.3, z])
+      gl.uniformMatrix4fv(matrixLocation, false, new Float32Array(matrix))
+
+      const primitiveType = gl.TRIANGLES
+      const first = 0
+      const count = 6 * 16
+      
+      gl.drawArrays(primitiveType, first, count)
+    }
+  }
+  ```
+
+<CameraView></CameraView>
+
+## `lookAt`矩阵
+
+* 在`WebGL`中很多时候我们需要将相机锁定某个物体，这就需要所谓的“视图矩阵”；通过它我们可以始终将被观察物体固定在相机视图的中心；所以本质
+上它就是一个同一个点的不同坐标系的变换矩阵；它将被观察物体的世界坐标转换到以相机为原点的视图坐标系下的坐标
+
+* 我们可以假设世界坐标系的坐标基矢为$\mathbf{E}=(e_X, e_Y, e_Z)$，视图坐标系的坐标基矢为$\mathbf{e}=(e_x, e_y, e_z)$，并且两个
+矢量的内积记为$\braket{\cdot|\cdot}$，则两套坐标基矢之间的变换矩阵可表示为
+  $$
+  \begin{gather}
+  \begin{pmatrix}
+    e_x \\
+    e_y \\
+    e_z 
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    \braket{e_X|e_x} & \braket{e_Y|e_x} & \braket{e_Z|e_x} \\
+    \braket{e_X|e_y} & \braket{e_Y|e_y} & \braket{e_Z|e_y} \\
+    \braket{e_X|e_z} & \braket{e_Y|e_z} & \braket{e_Z|e_z}
+  \end{pmatrix}
+  \begin{pmatrix}
+    e_X \\
+    e_Y \\
+    e_Z
+  \end{pmatrix}
+  \end{gather}
+  $$
+  其中
+  $$
+  \begin{gather}
+  M=
+  \begin{pmatrix}
+    \braket{e_X|e_x} & \braket{e_Y|e_x} & \braket{e_Z|e_x} \\
+    \braket{e_X|e_y} & \braket{e_Y|e_y} & \braket{e_Z|e_y} \\
+    \braket{e_X|e_z} & \braket{e_Y|e_z} & \braket{e_Z|e_z}
+  \end{pmatrix}
+  \end{gather}
+  $$
+  如下图，
+  <ComImg src={lookAtImg} alt="相机跟随" width={300}></ComImg>
+  物体的世界坐标为矢量$\mathbf{W}$，视图坐标为$\mathbf{w}$，相机的世界坐标为$\mathbf{V}$，则有关系
+  $$
+  \begin{gather}
+  \mathbf{w} = \mathbf{W} - \mathbf{V}
+  \end{gather}
+  $$
+  并且$\mathbf{M}^{T}=\mathbf{M}^{-1}$；则在视图坐标系下有
+  $$
+  \begin{gather}
+  \begin{pmatrix}
+    w_x & w_y & w_z
+  \end{pmatrix}
+  \begin{pmatrix}
+    e_x \\
+    e_y \\
+    e_z
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    W_X & W_Y & W_Z
+  \end{pmatrix}
+  \mathbf{M}^{T}
+  \begin{pmatrix}
+    e_x \\
+    e_y \\
+    e_z
+  \end{pmatrix}
+  -
+  \begin{pmatrix}
+    V_X & V_Y & V_Z
+  \end{pmatrix}
+  \mathbf{M}^{T}
+  \begin{pmatrix}
+    e_x \\
+    e_y \\
+    e_z
+  \end{pmatrix}
+  \end{gather}
+  $$
+  若仍用$\mathbf{w}$表示$
+  \begin{pmatrix}
+    w_x & w_y & w_z
+  \end{pmatrix}^{T}$，$\mathbf{W}$和$\mathbf{V}$类似，则有
+  $$
+  \begin{gather}
+  \mathbf{w} = \mathbf{M}\mathbf{W} - \mathbf{M}\mathbf{V}
+  \end{gather}
+  $$
+
+  $$
+  \begin{gather}
+  \begin{pmatrix}
+    \mathbf{w} \\
+    1
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    \mathbf{\alpha} & \mathbf{\beta} \\
+    \mathbf{0} & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    \mathbf{W} \\
+    1
+  \end{pmatrix}
+  \end{gather}
+  $$
+  得到$\mathbf{\alpha}=\mathbf{M}$、$\mathbf{\beta}=-\mathbf{M}\mathbf{V}$；取
+  $$
+  \begin{gather}
+  e_X
+  =
+  \begin{pmatrix}
+    1 \\
+    0 \\
+    0
+  \end{pmatrix}, 
+  e_Y
+  =
+  \begin{pmatrix}
+    0 \\
+    1 \\
+    0
+  \end{pmatrix}, 
+  e_Z
+  =
+  \begin{pmatrix}
+    0 \\
+    0 \\
+    1
+  \end{pmatrix}
+  \end{gather}
+  $$
+  则
+  $$
+  \begin{gather}
+  \mathbf{M}
+  =
+  \begin{pmatrix}
+    e_x^T \\
+    \\
+    e_y^T \\
+    \\
+    e_z^T
+  \end{pmatrix}, 
+  \mathbf{MV}
+  =
+  \begin{pmatrix}
+    e_x^T \cdot \mathbf{V} \\
+    \\
+    e_y^T \cdot \mathbf{V} \\
+    \\
+    e_z^T \cdot \mathbf{V}
+  \end{pmatrix}
+  \end{gather}
+  $$
+
+* 最后得到的视图矩阵为
+  $$
+  \begin{gather}
+  T
+  =
+  \begin{pmatrix}
+    \mathbf{M} & -\mathbf{MV} \\
+    \mathbf{0} & 1
+  \end{pmatrix}
+  \end{gather}
+  $$
+  值得注意的是它的逆为
+  $$
+  \begin{gather}
+  T^{-1}
+  =
+  \begin{pmatrix}
+    \mathbf{M}^T & \mathbf{V} \\
+    \mathbf{0} & 1
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    \mathbf{E} & \mathbf{V} \\
+    \mathbf{0} & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    \mathbf{M}^T & \mathbf{0} \\
+    \mathbf{0} & 1
+  \end{pmatrix}
+  \end{gather}
+  $$
+  表示的是旋转相机并将其平移的操作，因此这是所谓的“相机矩阵”；并且“相机矩阵”更直观且容易求得
+
+  <CameraFollowView></CameraFollowView>

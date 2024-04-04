@@ -1,4 +1,9 @@
 .img-container {
   display: flex;
   justify-content: center;
+  margin: 10px 0;
+}
+
+div.img-container > img {
+  background-color: #ffffff;
 }

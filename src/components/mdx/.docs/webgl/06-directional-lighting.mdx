@@ -1,0 +1,214 @@
+import ParallelLight from '@/components/mdx/constituents/webgl/directional-lighting/parallelLight/index.jsx'
+
+# `WebGL`三维方向光源
+
+* `WebGL`中计算方向光非常简单，将方向光的方向和面的朝向点乘就可以得到两个方向的余弦值；该值等于`1`时代表物体表面朝向与
+光源方向相同，即为背光；`-1`则表示物体表面朝向与光源相反，是为向光
+
+* 为此需要给输入的顶点设置法向量，数学上法向量代表的就是面的“正”朝向；仍然使用“`F`”作为例子：我们增加了`a_normal`和
+`u_lightDirection`变量，分别代表法向量和光源方向
+  ```cpp
+  // vertex
+  attribute vec4 a_position;
+  uniform mat4 u_matrix;
+  attribute vec3 a_normal;
+  varying vec3 v_normal;
+
+  void main() {
+    gl_Position = u_matrix * a_position;
+    v_normal = a_normal;
+  }
+
+  // fragment
+  precision mediump float;
+  varying vec3 v_normal;
+  uniform vec4 u_color;
+  uniform vec3 u_lightDirection;
+
+  void main() {
+    vec3 normal = normalize(v_normal);
+    float light_Weight = dot(normal, u_lightDirection);
+
+    gl_FragColor = u_color;
+    gl_FragColor.rgb *= light_Weight;
+  }
+  ```
+  初始化的时候设置相应的法向量
+  ```javascript
+  const setNormals = (gl) => {
+    gl.bufferData(
+      gl.ARRAY_BUFFER,
+      new Float32Array([
+        /* 前面 */
+        // 左竖
+        0, 0, 1,
+        0, 0, 1,
+        0, 0, 1,
+        0, 0, 1,
+        0, 0, 1,
+        0, 0, 1,
+
+        // 上横
+        0, 0, 1,
+        0, 0, 1,
+        0, 0, 1,
+        0, 0, 1,
+        0, 0, 1,
+        0, 0, 1,
+
+        // 中横
+        0, 0, 1,
+        0, 0, 1,
+        0, 0, 1,
+        0, 0, 1,
+        0, 0, 1,
+        0, 0, 1,
+
+        /* 背面 */
+        // 左竖
+        0, 0, -1,
+        0, 0, -1,
+        0, 0, -1,
+        0, 0, -1,
+        0, 0, -1,
+        0, 0, -1,
+
+        // 上横
+        0, 0, -1,
+        0, 0, -1,
+        0, 0, -1,
+        0, 0, -1,
+        0, 0, -1,
+        0, 0, -1,
+
+        // 中横
+        0, 0, -1,
+        0, 0, -1,
+        0, 0, -1,
+        0, 0, -1,
+        0, 0, -1,
+        0, 0, -1,
+
+        /* 顶面 */
+        // 上顶
+        0, 1, 0,
+        0, 1, 0,
+        0, 1, 0,
+        0, 1, 0,
+        0, 1, 0,
+        0, 1, 0,
+
+        // 中顶
+        0, 1, 0,
+        0, 1, 0,
+        0, 1, 0,
+        0, 1, 0,
+        0, 1, 0,
+        0, 1, 0,
+
+        /* 底面 */
+        // 上底
+        0, -1, 0,
+        0, -1, 0,
+        0, -1, 0,
+        0, -1, 0,
+        0, -1, 0,
+        0, -1, 0,
+
+        // 中底
+        0, -1, 0,
+        0, -1, 0,
+        0, -1, 0,
+        0, -1, 0,
+        0, -1, 0,
+        0, -1, 0,
+
+        // 下底
+        0, -1, 0,
+        0, -1, 0,
+        0, -1, 0,
+        0, -1, 0,
+        0, -1, 0,
+        0, -1, 0,
+
+        /* 左侧面 */
+        -1, 0, 0,
+        -1, 0, 0,
+        -1, 0, 0,
+        -1, 0, 0,
+        -1, 0, 0,
+        -1, 0, 0,
+
+        /* 右侧面 */
+        // 上横右侧
+        1, 0, 0,
+        1, 0, 0,
+        1, 0, 0,
+        1, 0, 0,
+        1, 0, 0,
+        1, 0, 0,
+
+        // 左竖右上侧
+        1, 0, 0,
+        1, 0, 0,
+        1, 0, 0,
+        1, 0, 0,
+        1, 0, 0,
+        1, 0, 0,
+
+        // 左竖右下侧
+        1, 0, 0,
+        1, 0, 0,
+        1, 0, 0,
+        1, 0, 0,
+        1, 0, 0,
+        1, 0, 0,
+
+        // 中横右侧
+        1, 0, 0,
+        1, 0, 0,
+        1, 0, 0,
+        1, 0, 0,
+        1, 0, 0,
+        1, 0, 0]),
+      gl.STATIC_DRAW
+    )
+  }
+  ```
+
+<ParallelLight static={true}></ParallelLight>
+
+* 另一方面，也许你已经注意到上个例子中的“`F`”的阴影并不会随着运动而发生合理的变化；很明显，上边的例子中我们设置了物体表
+面的法向后就再也没有改变过它了，所以即使“`F`”发生了运动其阴影也不会变化；所以我们需要在物体运动时重新计算更新它各个表面
+的法向量；和顶点的计算类似，我们也用一个矩阵去乘法向量，让它随着物体的运动而改变；增加`u_world_matrix`，它记录物体的
+运动信息用于实时计算物体各个表面的法向量
+```cpp
+  // vertex
+  attribute vec4 a_position;
+  uniform mat4 u_matrix;
+  uniform mat4 u_world_matrix;
+  attribute vec3 a_normal;
+  varying vec3 v_normal;
+
+  void main() {
+    gl_Position = u_matrix * a_position;
+    // 每次渲染都重新计算物体各个表面的法向量
+    v_normal = mat3(u_world_matrix) * a_normal;
+  }
+
+  // fragment
+  precision mediump float;
+  varying vec3 v_normal;
+  uniform vec4 u_color;
+  uniform vec3 u_lightDirection;
+
+  void main() {
+    vec3 normal = normalize(v_normal);
+    float light_Weight = dot(normal, u_lightDirection);
+
+    gl_FragColor = u_color;
+    gl_FragColor.rgb *= light_Weight;
+  }
+  ```
+
+<ParallelLight></ParallelLight>
