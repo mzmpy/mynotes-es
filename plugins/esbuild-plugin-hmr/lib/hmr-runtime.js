@@ -33,6 +33,7 @@ if (!window.__HMR__) {
             accepted = window.__HMR__.contexts[ctx.__hmrId].emit(module)
           } catch(err) {
             if(err) {
+              console.log('[HMR error]', err)
               window.location.reload()
               socket.send('[HMR] Reloaded.')
             }

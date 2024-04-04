@@ -40,7 +40,7 @@ export default (options={ include: [] }) => {
         `  name: 'MDX_${name.toUpperCase()}',\n` +
         `  components: { MDXComponentContext },` +
         `  setup(props, ctx) {\n` +
-        `    return () => <div class="markdown-body" style="padding: 15px;"><MDXComponentContext {...ctx.attrs}/></div>\n` +
+        `    return () => <div class="markdown-body" style="padding: 15px;"><MDXComponentContext {...ctx?.attrs}/></div>\n` +
         `  }\n` +
         `})`
 

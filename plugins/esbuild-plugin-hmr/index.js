@@ -86,9 +86,12 @@ export default () => {
             `    const api = window.__VUE_HMR_RUNTIME__\n` +
             `    stdin_default.__hmrId = '${id}'\n` +
             `    import.meta.hot.accept((__hmrId, ins) => {\n` +
-            // `      const doRerender = ins.render && ins.setup.toString() === stdin_default.setup.toString()\n` +
             `      if(!api.createRecord(__hmrId, ins)) {\n` +
-            `        api.rerender(__hmrId, ins.render || undefined)\n` +
+            `        const fn = (_ctx, _cache, $props, $setup, $data, $options) => {\n` +
+            `          const render = _ctx?.$ ? ins.setup($props, _ctx.$.setupContext) : () => {}\n` +
+            `          return render()\n` +
+            `        }\n` +
+            `        api.rerender(__hmrId, fn)\n` +
             `      } else {\n` +
             `        api.reload(__hmrId, ins)\n` +
             `      }\n` +

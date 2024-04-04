@@ -129,8 +129,8 @@ async function readdirRecur(resolveDir, relpath, level=0) {
     if(!/(\.md|\.mdx)/.test(path.extname(dirext.name))) continue
     else {
       DocTree += !level
-        ? spaceRepeat(8) + `      <ElMenuItem index={'/docs/${dirext.relpath}'}><ElIcon style="color: #C6F3FF"><Key></Key></ElIcon>${dirext.name}</ElMenuItem>\n`
-        : spaceRepeat(6*level+8) + `      <ElMenuItem index={'/docs/${dirext.relpath}'}><ElIcon style="color: #C6F3FF"><Key></Key></ElIcon>${dirext.name}</ElMenuItem>\n`
+        ? spaceRepeat(8) + `      <ElMenuItem index={'/docs/${dirext.relpath}'}><ElIcon style="color: #C6F3FF"><Key></Key></ElIcon>${path.basename(dirext.name, '.mdx')}</ElMenuItem>\n`
+        : spaceRepeat(6*level+8) + `      <ElMenuItem index={'/docs/${dirext.relpath}'}><ElIcon style="color: #C6F3FF"><Key></Key></ElIcon>${path.basename(dirext.name, '.mdx')}</ElMenuItem>\n`
     }
   }
 
@@ -145,7 +145,7 @@ async function readdirRecur(resolveDir, relpath, level=0) {
   return [direxts, DocTree]
 }
 
-// class name Dirext means entended fs.Dirent
+// class name Dirext means extended fs.Dirent
 class Dirext {
   #Dirent
   #dir
