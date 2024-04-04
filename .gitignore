@@ -4,3 +4,4 @@ dist
 package-lock.json
 *-jsxImportSource.js
 src/components/mdx/.docs/index.d.ts
+.DS_Store
