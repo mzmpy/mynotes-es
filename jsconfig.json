@@ -3,7 +3,7 @@
     "module": "CommonJS",
     "target": "ESNext",
     "checkJs": false, // 启用javascript文件的类型检查
-    "baseUrl": "./", // 解析非相关模块名称的基础目录
+    "baseUrl": ".", // 解析非相关模块名称的基础目录
     "paths": {
       "@/*": ["src/*"], // 指定相对于baseUrl选项计算的路径映射，使用webpack别名，智能感知路径
       "@images/*": ["src/assets/images/*"],
@@ -12,5 +12,9 @@
       "@commonImg": ["src/components/mdx/constituents/utils/commonImg/index.jsx"]
     }
   },
-  "include": ["src/**/*", "src/**/*.mdx"]
+  "mdx": {
+    "checkMdx": true
+  },
+  "include": ["src/**/*", "src/**/*.mdx"],
+  "exclude": ["node_modules"]
 }

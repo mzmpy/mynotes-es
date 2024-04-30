@@ -38,7 +38,11 @@ const result = await esbuild.build({
     '.gif': 'dataurl'
   },
   alias: {
-    '@/*': './src/*'
+    '@/*': './src/*',
+    '@images/*': 'src/assets/images/*',
+    '@mdx-constituents/*': 'src/components/mdx/constituents/*',
+    '@mdx-utils/*': 'src/components/mdx/constituents/utils/*',
+    '@commonImg': 'src/components/mdx/constituents/utils/commonImg/index.jsx'
   },
   assetNames: 'assets/[ext]/[name]-[hash]',
   chunkNames: 'chunks/[ext]/[name]-[hash]',

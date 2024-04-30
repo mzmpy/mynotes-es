@@ -2,7 +2,7 @@ import koa from 'koa'
 import koaStatic from 'koa-static'
 import koaMount from 'koa-mount'
 import WebSocket, { WebSocketServer } from 'ws'
-import * as chokidar from "chokidar"
+import * as chokidar from 'chokidar'
 import { historyApiFallback } from 'koa2-connect-history-api-fallback'
 
 import esbuild from 'esbuild'
@@ -36,12 +36,16 @@ let ctx = await esbuild.context({
   format: 'esm',
   sourcemap: true,
   supported: {
-    "import-meta": true,
+    'import-meta': true,
   },
   platform: 'browser',
   target: 'esnext',
   alias: {
-    '@/*': './src/*'
+    '@/*': './src/*',
+    '@images/*': 'src/assets/images/*',
+    '@mdx-constituents/*': 'src/components/mdx/constituents/*',
+    '@mdx-utils/*': 'src/components/mdx/constituents/utils/*',
+    '@commonImg': 'src/components/mdx/constituents/utils/commonImg/index.jsx'
   },
   loader: {
     '.js': 'jsx',

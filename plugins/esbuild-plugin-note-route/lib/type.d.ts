@@ -7,9 +7,9 @@ interface PathInfo {
   isDir: string
 }
 
-const noteRoutes: RouteRecordRaw[]
-const pathInfo: PathInfo[]
-const DocTree: Component
+declare const noteRoutes: RouteRecordRaw[]
+declare const pathInfo: PathInfo[]
+declare const DocTree: Component
 
 export default noteRoutes
 export { pathInfo, DocTree }
