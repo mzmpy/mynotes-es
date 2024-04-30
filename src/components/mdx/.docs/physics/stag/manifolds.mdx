@@ -124,19 +124,19 @@ dose not vanish.**
 in a coordinate basis can be obtained by acting the tensor on basis one-forms and vectors,
   $$
   \begin{gather}
-    T^{\mu_1...\mu_k}_{\phantom{\:\nu_1...\nu_k}\nu_1...\nu_k} = T(dx^{\mu_1},...,dx^{\mu_k},\partial_{\nu_1},...,\partial_{\nu_l}).
+    T^{\mu_1...\mu_k}_{\phantom{\mu_1...\mu_k}\nu_1...\nu_k} = T(dx^{\mu_1},...,dx^{\mu_k},\partial_{\nu_1},...,\partial_{\nu_l}).
   \end{gather}
   $$
   The transformation law for general tensors follows the same pattern of replacing the Lorentz transformation matrix used in flat space
 with a matrix representing more general coordinate transformations:
   $$
   \begin{gather}
-    T^{\mu^\prime_1...\mu^\prime_k}_{\phantom{\:\nu_1...\nu_k}\nu^\prime_1...\nu^\prime_k}
+    T^{\mu^\prime_1...\mu^\prime_k}_{\phantom{\mu^\prime_1...\mu^\prime_k}\nu^\prime_1...\nu^\prime_k}
     = \frac{\partial x^{\mu^\prime_1}}{\partial x^{\mu_1}}...
     \frac{\partial x^{\mu^\prime_k}}{\partial x^{\mu_k}}
     \frac{\partial x^{\nu_1}}{\partial x^{\nu^\prime_1}}...
     \frac{\partial x^{\nu_l}}{\partial x^{\nu^\prime_l}}
-    T^{\mu_1...\mu_k}_{\phantom{\:\nu_1...\nu_k}\nu_1...\nu_k}.
+    T^{\mu_1...\mu_k}_{\phantom{\mu_1...\mu_k}\nu_1...\nu_k}.
   \end{gather}
   $$
 
@@ -172,18 +172,18 @@ physics or specical relativity.
   $$
   This is called a "symbol" because it is not a tensor and not obeying the general coordinate transformation law. Its behavior can be 
   related to that of an ordinary tensor by first nothing that, given any $n \times n$ matrix
-  $M^{\mu}_{\phantom{\:\mu^{\prime}}\mu^{\prime}}$, the determinant 
+  $M^{\mu}_{\phantom{\mu}\mu^{\prime}}$, the determinant 
   $|M|$ obeys
   $$
   \begin{gather}
     \tilde{\epsilon}_{\mu^{\prime}_1\mu^{\prime}_2...\mu^{\prime}_n}|M| = 
     \tilde{\epsilon}_{\mu_1\mu_2...\mu_n}
-    M^{\mu_1}_{\phantom{\:\mu^{\prime}_1}\mu^{\prime}_1}
-    M^{\mu_2}_{\phantom{\:\mu^{\prime}_2}\mu^{\prime}_2}...
-    M^{\mu_n}_{\phantom{\:\mu^{\prime}_n}\mu^{\prime}_n}.
+    M^{\mu_1}_{\phantom{\mu_1}\mu^{\prime}_1}
+    M^{\mu_2}_{\phantom{\mu_2}\mu^{\prime}_2}...
+    M^{\mu_n}_{\phantom{\mu_n}\mu^{\prime}_n}.
   \end{gather}
   $$
-  It follows that, setting $M^{\mu}_{\phantom{\:\mu^{\prime}}\mu^{\prime}} = \partial x^{\mu} / \partial x^{\mu^{\prime}}$
+  It follows that, setting $M^{\mu}_{\phantom{\mu}\mu^{\prime}} = \partial x^{\mu} / \partial x^{\mu^{\prime}}$
   $$
   \begin{gather}
     \tilde{\epsilon}_{\mu^{\prime}_1\mu^{\prime}_2...\mu^{\prime}_n} = 
@@ -264,7 +264,7 @@ taking the antisymmetrized tensor product
   $$
   So we can alter the order of a wedge product if we are careful with signs
 
-* (Difinition)The exterior derivative d allows us to differentiate $p$-form fields to obtain $p+1$-form fields
+* (Difinition)The exterior derivative d allows us to differentiate $p$-form fields to obtain $(p+1)$-form fields
   $$
   \begin{gather}
     (dA)_{\mu_1...\mu_{p+1}}=(p+1)\partial_{\lbrack\mu_1}A_{\mu_2...\mu_{p+1}\rbrack}
@@ -286,4 +286,236 @@ taking the antisymmetrized tensor product
   \begin{gather}
   d(dA) = 0
   \end{gather}
+  $$
+
+* Suppose that $\omega$ and $\eta$ are closed $p$-forms on mainfold $M$. If they differ from each other by an 
+exact form, that is $\omega-\eta=d\rho$ for some $(p-1)$-form $\rho$, then we say that $\omega$ and $\eta$ are 
+“equivalent” (or “cohomologous”). In this way, we construct equivalence classes of closed $p$-forms that differ 
+by an exact form. Those equivalence classes (which are called “cohomology classes”) form a vector space, which 
+is called the “de Rham cohomology space”. Mathematically, what we are doing here is constructing a quotient vector 
+space. If we write $Z^p(M)$ for the vector space of closed $p$-forms on $M$, and $B^p(M)$ for the vector space of 
+exact $p$-forms on $M$, then the de Rham cohomology space is constructed as the quotient space:
+  $$
+  \begin{gather}
+    H^p(M)=\frac{Z^p(M)}{B^p(M)}
+  \end{gather}
+  $$
+
+### Hodge Duality
+
+* Define the *Hodge star operator* on an $n$-demensional mainfold as a map from $p$-forms to $(n-p)$-forms
+  $$
+  \begin{gather}
+  (*A)_{\mu_1...\mu_{n-p}}=\frac{1}{p!}\epsilon^{\nu_1...\nu_p}_{\phantom{\nu_1...\nu_p}\mu_1...\mu_{n-p}}A_{\nu_1...\nu_p}
+  \end{gather}
+  $$
+  It is obvious that the result(Hodge dual) does depend on the metric of the mainfold and apply the Hodge star 
+  twice return either plus or minus the original form
+  $$
+  **A=(-1)^{s+p(n-p)}A
+  $$
+  where $s$ is the number of minus sings in the eigenvalues of the metric
+
+* Let's concern differential forms in three-dimensional Euclidean space. The Hodge dual of the wedge product 
+of two $1$-forms gives another forms
+  $$
+  \begin{gather}
+  *(U \wedge V)_i=\epsilon_i^{\phantom{i}jk}U_jV_k
+  \end{gather}
+  $$
+  Since $1$-forms in Euclidean space are just like vectors, we have a map from two vectors to single vector. 
+  Your should convince yourself that this is just the conventional cross product 
+
+### Electromagnetic Field strength tensor $F_{\mu\nu}$ and Maxwell's equations
+
+* In conventional notation, the Maxwell's equations are
+  $$
+  \begin{equation}
+    \begin{split}
+      \nabla \times \bold{B} - \partial_t\bold{E} = \bold{J} & \\
+      \nabla \cdotp \bold{E} = \rho & \\
+      \nabla \times \bold{E} + \partial_t\bold{B} = 0 & \\
+      \nabla \cdotp \bold{B} = 0 &
+    \end{split}
+  \end{equation}
+  $$
+  We can, however, rewrite them with tensor notation in a simpler way. The field strength tensor is
+  $$
+  \begin{gather}
+    F_{\mu\nu} = 
+    \begin{pmatrix}
+      0   & -E_1 & -E_2 & -E_3 \\
+      E_1 &  0   &  B_3 & -B_2 \\
+      E_2 & -B_3 &  0   &  B_1  \\
+      E_3 &  B_2 & -B_1 &  0
+    \end{pmatrix}
+  \end{gather}
+  $$
+  and Maxwell's equations can be written simply as 
+  $$
+  \begin{equation}
+    \begin{split}
+      \partial_{\mu}F^{\nu\mu} = J^{\mu} & \\
+      \partial_{\mu}F_{\nu\lambda} + \partial_{\nu}F_{\lambda\mu} + \partial_{\lambda}F_{\mu\nu} = 0
+    \end{split}
+  \end{equation}
+  $$
+  or
+  $$
+  \begin{equation}
+    \begin{split}
+      d(*F) = *J & \\
+      dF = 0
+    \end{split}
+  \end{equation}
+  $$
+
+#### Exercise
+  First, we check that the first equation in `(32)` is just the first two equations in `(30)`. We can get 
+$F^{\mu\nu}$ by raising the two lower indices using metric tensor $g^{\mu\nu}$
+$$
+\begin{gather}
+  F^{\mu\nu}=\eta^{\mu\lambda}\eta^{\nu\rho}F_{\lambda\rho}
+\end{gather}
+$$
+Because $F^{\mu\nu}$is antisymmetric, components $F^{\mu\mu}=0$, and for the rest components we only need to 
+calculate $F^{01}$, $F^{02}$, $F^{03}$, $F^{12}$, $F^{13}$, $F^{23}$
+$$
+\begin{equation}
+  \begin{gather*}
+    F^{01}=\eta^{0\lambda}\eta^{1\rho}F_{\lambda\rho}=-F_{01}, \qquad
+    F^{02}=\eta^{0\lambda}\eta^{2\rho}F_{\lambda\rho}=-F_{02}, \qquad
+    F^{03}=\eta^{0\lambda}\eta^{3\rho}F_{\lambda\rho}=-F_{03} \\
+    F^{12}=\eta^{1\lambda}\eta^{2\rho}F_{\lambda\rho}=F_{12}, \qquad
+    F^{13}=\eta^{1\lambda}\eta^{3\rho}F_{\lambda\rho}=F_{13} \\
+    F^{23}=\eta^{2\lambda}\eta^{3\rho}F_{\lambda\rho}=F_{23}
+  \end{gather*}
+\end{equation}
+$$
+then we get
+$$
+\begin{gather}
+  F^{\mu\nu} = 
+  \begin{pmatrix}
+     0   &  E_1 &  E_2 &  E_3 \\
+    -E_1 &  0   &  B_3 & -B_2 \\
+    -E_2 & -B_3 &  0   &  B_1  \\
+    -E_3 &  B_2 & -B_1 &  0
+  \end{pmatrix}
+\end{gather}
+$$
+And
+$$
+\begin{equation}
+  \begin{gather*}
+    \partial_{\mu}F^{0\mu}=\partial_iE_i=J^0 \rArr \nabla \cdotp \bold{E} = \rho, \\
+    \begin{rcases}
+      \partial_{\mu}F^{1\mu}=-\partial_0E_1 + \partial_2B_3 - \partial_3B_2=J^1 \\
+      \partial_{\mu}F^{2\mu}=-\partial_0E_2 - \partial_1B_3 + \partial_3B_1=J^2 \\
+      \partial_{\mu}F^{3\mu}=-\partial_0E_3 + \partial_1B_2 - \partial_2B_1=J^3
+    \end{rcases} \rArr \nabla \times \bold{B} - \partial_t\bold{E} = \bold{J}
+  \end{gather*}
+\end{equation}
+$$
+where
+$$
+\begin{gather}
+  \nabla \times \bold{B} =
+  \begin{vmatrix}
+    \bold{i}   & \bold{j}   & \bold{k} \\
+    \partial_1 & \partial_2 & \partial_3 \\
+    B_1        & B_2        & B_3
+  \end{vmatrix} =
+  (\partial_2 B_3-\partial_3 B_2)\bold{i} -
+  (\partial_1 B_3-\partial_3 B_1)\bold{j} +
+  (\partial_1 B_2-\partial_2 B_1)\bold{k}
+\end{gather}
+$$
+Then, we check that the second equation in (32) is just the last two equations in (30). What we need 
+to do is find terms whose indices are not equal to each other
+$$
+\begin{equation}
+  \begin{gather*}
+    \partial_1F_{23}+\partial_2F_{31}+\partial_3F_{12}=\partial_iB_i=0 \rArr \nabla \cdotp \bold{B} = 0, \\
+    \begin{rcases}
+      \partial_0F_{12}+\partial_1F_{20}+\partial_2F_{01}=\partial_0B_3 + \partial_1E_2 - \partial_2E_1=0 \\
+      \partial_0F_{13}+\partial_1F_{30}+\partial_3F_{01}=-\partial_0B_2 + \partial_1E_3 - \partial_3E_1=0 \\
+      \partial_0F_{23}+\partial_2F_{30}+\partial_3F_{02}=\partial_0B_1 + \partial_2E_3 - \partial_3E_2=0
+    \end{rcases} \rArr \nabla \times \bold{E} - \partial_t\bold{B} = \bold{0}
+  \end{gather*}
+\end{equation}
+$$
+
+## Integration
+
+* In ordinary calculus on $\R^n$ the volume element $d^nx$ picks up a factor of the Jacobian under change 
+of coordinates:
+  $$
+  \begin{gather}
+    d^nx^{\prime}=\bigg\lvert \frac{\partial x^{\mu^\prime}}{\partial x^{\mu}} \bigg\rvert d^nx
+  \end{gather}
+  $$
+
+* *On an n-demensional mainfold $M$, the integrand is properly understood as an $n$-form*. In the other word, 
+an integral over an n-demensional region $\Sigma \subset M$ is a map from an $n$-form field $\omega$ to the 
+real numbers:
+  $$
+  \begin{gather}
+    \int_{\Sigma}: \omega \to \R
+  \end{gather}
+  $$
+  For example, in one demension we write integrals as $\int \omega(x)dx$; you may think of $dx$ as an infinitesimal 
+  distance, but it is more properly an differential form. To make this more clear, consider more than one demension. 
+  If we are claiming that the integrand is an $n$-form, we need to explain in what sense it is antisymmetric, and for 
+  that matter why it is a $(0, n)$ tensor (a linear map from a set of $n$ vectors to $\R$) at all (For details of the 
+  discussion about this ypu should refer to ***Page 88***)
+
+* The essential insight is to identify the naive volume element $d^nx$ as an antisymmetric tensor density constructed 
+with wedge products:
+  $$
+  \begin{gather}
+    d^nx = dx^0 \wedge ... \wedge dx^{n-1}
+  \end{gather}
+  $$
+  The expression on the right-hand side can be misleading, becuase it looks like a tensor (an $n$-form, actually) but 
+  is really a density. Actually, $dx^{\mu}$ are coordinate functions themselves and coordinate-dependent. So we need 
+  to get the tensor relevant to this density. First notice that the definition of the wedge product allows us to write 
+  $$
+  \begin{gather}
+    dx^0 \wedge ... \wedge dx^{n-1}=
+    \frac{1}{n!}\tilde{\epsilon}_{\mu_1...\mu_n}dx^{\mu_1}\wedge ... \wedge dx^{\mu_n}
+  \end{gather}
+  $$
+  using equation (14) allows us to write
+  $$
+  \begin{equation}
+    \begin{align*}
+      \tilde{\epsilon}_{\mu_1...\mu_n}dx^{\mu_1}\wedge ... \wedge dx^{\mu_n} &=
+      \tilde{\epsilon}_{\mu_1...\mu_n}
+      \frac{\partial x^{\mu_1}}{\partial x^{\mu_1^{\prime}}}...
+      \frac{\partial x^{\mu_n}}{\partial x^{\mu_n^{\prime}}}
+      dx^{\mu^{\prime}_1}\wedge ... \wedge dx^{\mu^{\prime}_n} \\ &=
+      \bigg\lvert \frac{\partial x^{\mu}}{\partial x^{\mu^{\prime}}} \bigg\rvert
+      \tilde{\epsilon}_{\mu^{\prime}_1...\mu^{\prime}_n}
+      dx^{\mu^{\prime}_1}\wedge ... \wedge dx^{\mu^{\prime}_n}
+    \end{align*}
+  \end{equation}
+  $$
+  Then using equation (15) we can get 
+  $$
+  \begin{equation}
+    \begin{align*}
+      \sqrt{\lvert g \rvert}dx^0 \wedge ... \wedge dx^{n-1} &=
+      \frac{1}{n!}\sqrt{\lvert g \rvert}
+      \bigg\lvert \frac{\partial x^{\mu}}{\partial x^{\mu^{\prime}}} \bigg\rvert
+      \tilde{\epsilon}_{\mu^{\prime}_1...\mu^{\prime}_n}
+      dx^{\mu^{\prime}_1}\wedge ... \wedge dx^{\mu^{\prime}_n} \\ &=
+      \sqrt{\lvert g^{\prime} \rvert}dx^{0^{\prime}} \wedge ... \wedge dx^{(n-1)^{\prime}}
+    \end{align*}
+  \end{equation}
+  $$
+
+* The integral $I$ of a scalar field $\phi$ over an $n$-mainfold is written as
+  $$
+  I=\int \phi(x)\sqrt{\lvert g \rvert}d^nx
   $$

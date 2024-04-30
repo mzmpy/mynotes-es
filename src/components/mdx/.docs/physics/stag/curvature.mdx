@@ -1,0 +1,77 @@
+# Curvature
+
+* All the ways in which curvature manifests itself rely on something called "connection", 
+which gives us a way of relating vectors in the tangent spaces of nearby points. There is 
+a unique connection that we can construct from metric, and it is encapsulated in an object 
+called the *Christoffel symbol*, given by
+  $$
+  \begin{gather}
+    \Gamma^{\lambda}_{\mu\nu} = \frac{1}{2}g^{\lambda\sigma}
+    (\partial_{\mu}g_{\nu\sigma} + \partial_{\nu}g_{\sigma\mu} - \partial_{\sigma}g_{\mu\nu})
+  \end{gather}
+  $$
+  The notation make $\Gamma^{\lambda}_{\mu\nu}$ look like a tensor, but in fact it is not.
+
+## Covariant derivative
+
+* What we would like is a covariant derivative, that is, an operator that reduces to the partial
+derivative in flat space with inertial coordinates, but transforms as a tensor on an abitrary
+mainfold.
+
+* It should be noted that the partial derivative $\partial_{\mu}$ is actually a tensor but only belongs to
+flat manifold.
+
+* Covariant derivative $\nabla$ is a map from $(k, l)$ tensor fields, to $(k, l+1)$ tensor fields
+which has these properties:
+  1. linearity: $\nabla(T + S) = \nabla T + \nabla S$
+  2. Leibniz rule: $\nabla(T \otimes S) = (\nabla T) \otimes S + T \otimes (\nabla S)$
+  3. commutes with contractions: 
+  $\nabla_{\mu}(T^{\lambda}_{\phantom{\lambda}\lambda\rho}) = {(\nabla T)_{\mu}}^{\lambda}_{\phantom{\lambda}\lambda\rho}$
+  4. reduces to partial derivative on scalars: $\nabla_{\mu}\phi = \partial\phi$
+
+* If $\nabla$ is going to obey the Leibniz rule, it can always be written as the partial derivative
+  plus some linear transformation. Consider the covariant derivative of a vector $V^{\mu}$, we have
+  $$
+  \begin{gather}
+    \nabla_{\mu} V^{\nu} = \partial_{\mu} V^{\nu} + \Gamma^{\nu}_{\mu\lambda} V^{\lambda}
+  \end{gather}
+  $$
+  Because the *Christoffel symbol* is not a tensor, it do not obey the tensor transformation law: 
+  $$
+  \begin{gather}
+    \Gamma^{\nu^\prime}_{\mu^\prime\lambda^\prime} = 
+    \frac{\partial x^{\mu}}{\partial x^{\mu^\prime}}
+    \frac{\partial x^{\lambda}}{\partial x^{\lambda^\prime}}
+    \frac{\partial x^{\nu^\prime}}{\partial x^{\nu}}
+    \Gamma^{\nu}_{\mu\lambda} - 
+    \frac{\partial x^{\mu}}{\partial x^{\mu^\prime}}
+    \frac{\partial x^{\lambda}}{\partial x^{\lambda^\prime}}
+    \frac{\partial^2 x^{\nu^\prime}}{\partial x^{\mu}\partial x^{\lambda}}
+  \end{gather}
+  $$
+
+* The Kronecker delta is covariant constant, $\nabla_{\mu}\delta^{\rho}_{\lambda}$: 
+
+  For any $(1, 0)$ tensor $v^{\rho} \in M$, we have $v^{\rho} = \delta^{\rho}_{\lambda}v^{\lambda} = 
+  C(\delta^{\rho}_{\sigma}v^{\lambda})$, where $C$ represent the contraction of $\sigma$ and $\lambda$,
+  then
+  $$
+  \begin{equation}
+    \begin{align*}
+      \nabla_{\mu}v^{\rho} &= \nabla_{\mu}(\delta^{\rho}_{\lambda}v^{\lambda})
+      \\ &= \nabla_{\mu}[C(\delta^{\rho}_{\sigma}v^{\lambda})]
+      \\ &= C[\nabla_{\mu}(\delta^{\rho}_{\sigma}v^{\lambda})]
+      \\ &= C[v^{\lambda}\nabla_{\mu}\delta^{\rho}_{\sigma} + \delta^{\rho}_{\sigma}\nabla_{\mu}v^{\lambda}]
+      \\ &= v^{\lambda}\nabla_{\mu}\delta^{\rho}_{\lambda} + \nabla_{\mu}v^{\rho}
+    \end{align*}
+  \end{equation}
+  $$
+  finally we can find that, for every $v^{\lambda}$, $\nabla_{\mu}\delta^{\rho}_{\lambda}=0$.
+  
+  It should note that we should not derive the above result simplifily by
+  $$
+  \begin{gather}
+    \nabla_{\mu}v^{\rho} = \nabla_{\mu}(\delta^{\rho}_{\lambda}v^{\lambda}) =
+    v^{\lambda}\nabla_{\mu}\delta^{\rho}_{\lambda} + \delta^{\rho}_{\lambda}\nabla_{\mu}v^{\lambda}
+  \end{gather}
+  $$
