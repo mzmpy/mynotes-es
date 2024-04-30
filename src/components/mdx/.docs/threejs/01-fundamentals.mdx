@@ -1,0 +1,105 @@
+import ComImg from '@commonImg'
+import threeJsStructureImg from '@images/threejs-structure.svg'
+import ThreeJsFundamentals from '@mdx-constituents/threejs/fundamentals/index.jsx'
+
+# `ThreeJs`的基础概念
+
+`ThreeJs`是一个非常受欢迎且强大的`Javascript`3D渲染库；下图展示了基础的`ThreeJs`应用结构
+<ComImg src={threeJsStructureImg} alt="基础的ThreeJs应用结构t图" width={700}></ComImg>
+
+* 首先有一个渲染器(`Renderer`)；这可以说是`ThreeJs`的主要对象；你传入一个场景(`Scene`)和一个摄像机(`Camera`)到渲染器
+(`Renderer`)中，然后它会将摄像机视椎体中的三维场景渲染成一个二维图片显示在画布上
+
+* 其次有一个场景图它是一个树状结构，由很多对象组成，比如图中包含了一个场景(`Scene`)对象，多个网格(`Mesh`)对象，光源
+(`Light`)对象，群组(`Group`)，三维物体(`Object3D`)，和摄像机(`Camera`)对象；一个场景(`Scene`)对象定义了场景图最基本的要
+素，并包了含背景色和雾等属性；这些对象通过一个层级关系明确的树状结构来展示出各自的位置和方向；子对象的位置和方向总是相
+对于父对象而言的；比如说汽车的轮子是汽车的子对象，这样移动和定位汽车时就会自动移动轮子；你可以在场景图的这篇文章中了
+解更多内容
+
+* 注意图中摄像机(`Camera`)是一半在场景图中，一半在场景图外的；这表示在ThreeJs中，摄像机(`Camera`)和其他对象不同的是，
+它不一定要在场景图中才能起作用；相同的是，摄像机(`Camera`)作为其他对象的子对象，同样会继承它父对象的位置和朝向；在场景
+图这篇文章的结尾部分有放置多个摄像机(`Camera`)在一个场景中的例子
+
+* 网格(`Mesh`)对象可以理解为用一种特定的材质(`Material`)来绘制的一个特定的几何体(`Geometry`)；材质(`Material`)和几何体
+(`Geometry`)可以被多个网格(`Mesh`)对象使用；比如在不同的位置画两个蓝色立方体，我们会需要两个网格(`Mesh`)对象来代表每一个
+立方体的位置和方向；但只需一个几何体(`Geometry`)来存放立方体的顶点数据，和一种材质(`Material`)来定义立方体的颜色为蓝色
+就可以了；两个网格(`Mesh`)对象都引用了相同的几何体(`Geometry`)和材质(`Material`)
+
+* 几何体(`Geometry`)对象顾名思义代表一些几何体，如球体、立方体、平面、狗、猫、人、树、建筑等物体的顶点信息；ThreeJs
+内置了许多基本几何体 ；你也可以创建自定义几何体或从文件中加载几何体
+
+* 材质(`Material`)对象代表绘制几何体的表面属性，包括使用的颜色，和光亮程度；一个材质(`Material`)可以引用一个或多个纹理
+(`Texture`)，这些纹理可以用来，打个比方，将图像包裹到几何体的表面
+
+* 纹理(`Texture`)对象通常表示一幅要么从文件中加载，要么在画布上生成，要么由另一个场景渲染出的图像
+
+* 光源(`Light`)对象代表不同种类的光
+
+## 基本的实战例子
+
+<ThreeJsFundamentals></ThreeJsFundamentals>
+
+  完整代码如下，通过这个可以一窥`ThreeJs`的编码流程：
+```Javascript
+import { defineComponent, ref, onMounted, shallowRef } from 'vue'
+import styles from './index.module.css'
+import * as THREE from 'three'
+import RenderVessel from '@mdx-utils/renderVessel'
+
+export default defineComponent({
+  name: 'ThreeJsFundamentals',
+  setup() {
+    const glVessel = ref()
+    const animation = ref(false)
+    const localFrameTime = ref(0)
+
+    const renderer = shallowRef()
+    const camera = new THREE.PerspectiveCamera(75, 5/3, 0.1, 5)
+    const light = new THREE.DirectionalLight(0xffffff, 3)
+    const scene = new THREE.Scene()
+    const geometry = new THREE.BoxGeometry(1, 1, 1)
+    const material = new THREE.MeshPhongMaterial({ color: 0x44aa88 })
+    const cube = new THREE.Mesh(geometry, material)
+
+    onMounted(() => {
+      renderer.value = new THREE.WebGLRenderer({ antialias: true, canvas: glVessel.value })
+      renderer.value.setClearColor(0xffffff, 1)
+      renderer.value.setPixelRatio(10)
+      camera.position.z = 2
+      light.position.set(-1, 3, 5)
+      scene.add(light, cube)
+
+      requestAnimationFrame(render)
+    })
+
+    const render = (time) => {
+      if(localFrameTime.value === 0) localFrameTime.value = time * 0.001
+      else {
+        localFrameTime.value += 1 / 60
+      }
+
+      cube.rotation.x = localFrameTime.value / 3
+      cube.rotation.y = localFrameTime.value / 3
+
+      renderer.value.render(scene, camera)
+
+      if(animation.value) requestAnimationFrame(render)
+    }
+
+    const onAnimation = (val) => {
+      animation.value = val
+      requestAnimationFrame(render)
+    }
+
+    return () => {
+      return <>
+        <RenderVessel animation={animation.value} onAnimation={onAnimation}>
+          {{
+            canvas: () => <canvas class={ styles('gl-canvas') } ref={ glVessel }></canvas>
+          }}
+        </RenderVessel>
+      </>
+    }
+  }
+})
+```

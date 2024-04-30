@@ -1,0 +1,40 @@
+.vessel {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  background: transparent;
+  border-radius: 8px;
+  contain: content;
+  position: relative;
+  width: fit-content;
+}
+
+.gl-canvas-vessle {
+  display: inline-block;
+	background-color: #ffffff;
+}
+
+.operation {
+  height: calc(100% - 10px) !important;
+  background-color: #cacaca;
+  padding: 5px 10px;
+}
+
+.controller {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 7px 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.7s ease-in;
+}
+
+.vessel:hover {
+  .controller {
+    opacity: 1;
+    transition: opacity 0.7s ease-in;
+  }
+}

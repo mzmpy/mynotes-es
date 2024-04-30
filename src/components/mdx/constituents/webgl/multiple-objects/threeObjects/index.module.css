@@ -1,0 +1,16 @@
+.vessel {
+  width: 600px;
+	height: 300px;
+  position: relative;
+  margin: 0 auto;
+  background-color: #cacaca;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+canvas.gl-canvas {
+  width: 600px;
+	height: 300px;
+	background-color: #ffffff;
+	display: block;
+}
