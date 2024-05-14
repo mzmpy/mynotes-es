@@ -1,4 +1,4 @@
-# react@18有哪些新变化
+## react@18有哪些新变化
 
 * 新的创建方式：`createRoot`创建`root`节点，然后调用`root.render`方法进行`DOM`的挂载
 * 并发渲染机制：通过使用`createRoot(rootElem).render(<App />)`的方式开启并发模式；该模式可根据设备性能和网速进行适当的调整，保
@@ -24,64 +24,64 @@
   * `useId`：主要用于`SSR`服务端渲染的场景，方便在服务端渲染和客户端渲染时，产生唯一的`id`
   * `startTransition/useDeferredValue`：用来标记一次非紧急更新，非紧急更新可被紧急更新中断
 
-# 受控组件和非受控组件
+## 受控组件和非受控组件
 
 * 受控组件：只能通过`React`控制数据或状态变更的组件，就是受控组件
 
 * 非受控组件：与受控组件相反，如`input`、`textarea`、`select`、`checkbox`等组件，本身控件自己就能控制数据和状态的变更，而且`React`
 是不知道这些变更的
 
-  * 在`React`中有时候我们不得不操作原生`DOM`节点，可以通过`ref`来获取`DOM`的引用：
+* 在`React`中有时候我们不得不操作原生`DOM`节点，可以通过`ref`来获取`DOM`的引用：
 
-    * `class`组件：
-      ```javascript
-      class App extends PureComponent {
-        constructor(props) {
-          super(props)
+  * `class`组件：
+    ```javascript
+    class App extends PureComponent {
+      constructor(props) {
+        super(props)
 
-          this.titleRef = createRef()
-          this.titleEl = null
-        }
-
-        render() {
-          return (
-            <div>
-              // 主要有三种方法
-              <h2 ref="title">String Ref</h2>
-              <h2 ref={this.titleRef}>Create Ref</h2>
-              <h2 ref={(element) => (this.titleEl = element)}>Callback Ref</h2>
-
-              <button onClick={(e) => this.changeText()}>改变文本</button>
-            </div>
-          )
-        }
-
-        changeText() {
-          this.refs.title.innerHTML = '你好啊,小和山的菜鸟们'
-          this.titleRef.current.innerHTML = '你好啊,小和山的菜鸟们'
-          this.titleEl.innerHTML = '你好啊,小和山的菜鸟们'
-        }
+        this.titleRef = createRef()
+        this.titleEl = null
       }
-      ```
-    * 函数组件：
-      ```javascript
-      function App() {
-        const h2Ref = useRef(null);
 
-        function changeText() {
-          h2Ref.current.innerHTML = 'Hello useRef'
-        }
-
+      render() {
         return (
           <div>
-            <h2 ref={h2Ref}>useRef</h2>
-            <button onClick={(e) => changeText()}>改变文本</button>
-          </div>
-        );
-      }
-      ```
+            // 主要有三种方法
+            <h2 ref="title">String Ref</h2>
+            <h2 ref={this.titleRef}>Create Ref</h2>
+            <h2 ref={(element) => (this.titleEl = element)}>Callback Ref</h2>
 
-# 高阶组件
+            <button onClick={(e) => this.changeText()}>改变文本</button>
+          </div>
+        )
+      }
+
+      changeText() {
+        this.refs.title.innerHTML = '你好啊,小和山的菜鸟们'
+        this.titleRef.current.innerHTML = '你好啊,小和山的菜鸟们'
+        this.titleEl.innerHTML = '你好啊,小和山的菜鸟们'
+      }
+    }
+    ```
+  * 函数组件：
+    ```javascript
+    function App() {
+      const h2Ref = useRef(null);
+
+      function changeText() {
+        h2Ref.current.innerHTML = 'Hello useRef'
+      }
+
+      return (
+        <div>
+          <h2 ref={h2Ref}>useRef</h2>
+          <button onClick={(e) => changeText()}>改变文本</button>
+        </div>
+      );
+    }
+    ```
+
+## 高阶组件
 
 * 高阶组件（`HOC`）是一个接收组件作为参数并返回一个新组件的函数；它包裹原组件并增强原组件的功能；主要有以下用于：
 
@@ -90,13 +90,13 @@
   * 条件渲染
   * 提供额外的功能，例如错误处理、性能监控或者数据获取
 
-# 为什么要使用`hook`
+## 为什么要使用`hook`
 
 * 使用`hook`可以使逻辑复用变得更加简单
 * 在类组件中需要显式地去管理生命周期；当组件变得越来越复杂时，可能会使生命周期函数中的代码变得难以理解
 * `class`会让人难以理解，比如需要理解`javascript`中`this`的工作方式，同时`class`不能很好的压缩，并且会使热重载出现不稳定的情况
 
-# Hooks
+## Hooks
 
 * `useCallback` is a React hook that lets you cache a function definition between re-renders
 
@@ -120,3 +120,106 @@
 * `useRef` is a React hook that lets you reference a value that is not needed for rendering
 
 * `useState` is a React hook that lets you add a state variable to your component
+
+## Hooks中的闭包陷阱
+
+* 例子一：函数`handleClick`及其引用的变量`count`构成了闭包，导致点击按钮触发`handleClick`之后的1秒内`count`的值
+始终是久的值
+  ```javascript
+  function Counter() {
+    const [count, setCount] = useState(0)
+
+    const handleClick = () => {
+      setTimeout(() => {
+        setCount(count + 1)
+      }, 1000)
+    }
+    
+    const handleReset = () => {
+      setCount(0)
+    }
+
+    return (
+      <div>
+        <p>Count: {count}</p>
+        <button onClick={handleClick}>Increment</button>
+        <button onClick={handleReset}>Reset</button>
+      </div>
+    )
+  }
+  ```
+
+* 例子二：`useEffect`的回调函数只在初次渲染后执行一次，因此我们会看到控制台一直在打印`0`；解决的方法是将`count`作为
+`useEffect`的依赖
+  ```javascript
+  function App() {
+    const [count, setCount] = useState(0)
+
+    useEffect(() => {
+      const timer = setInterval(() => {
+        console.log(count)
+      }, 1000)
+
+      return () => clearInterval(timer)
+    }, [])
+
+    const handleClick = () => {
+      setCount(count + 1)
+    }
+
+    return (
+      <div>
+        <p>Count: {count}</p>
+        <button onClick={handleClick}>Increment</button>
+      </div>
+    )
+  }
+  ```
+
+## React性能优化
+
+### 前端通用性能优化技巧
+
+* 组件按需加载：主要通过动态导入和`React.lazy`方法并配合`Suspense`组件实现；`Suspense`内部主要通过捕获组件
+的状态去判断如何加载，`React.lazy`创建的动态加载组件具有`pending`、`resolved`、`rejected`三种状态，当这个
+组件的状态为`Pending`时显示的是`Suspense`中`fallback`的内容，只有状态变为`resolved`后才显示组件
+  ```javascript
+  import { lazy, Suspense } from "react"
+  import { useLocation } from "react-router-dom"
+
+  import "./index.css"
+
+  export default function DemoContent() {
+    const location = useLocation()
+    const elemName = location.pathname.match(/\/([^/]*)$/)?.[1] || ""
+
+    return (
+      <div className="contents-container">
+        {(() => {
+          const Element = lazy(() => import(`../${elemName}`))
+          return (
+            <Suspense fallback={<div>Loading ...</div>}>
+              <Element></Element>
+            </Suspense>
+          )
+        })()}
+      </div>
+    )
+  }
+  ```
+* 组件懒渲染：当组件进入或即将进入可视区域时才渲染组件
+* 虚拟列表：虚拟列表是懒渲染的一种特殊场景；虚拟列表的组件有`react-window`和`react-virtualized`
+* 使用`debounce`、`throttle`优化频繁触发的回调
+
+### `React`中的优化技巧
+* `note`: 在`React`工作流中，如果只有父组件发生状态更新，即使父组件传给子组件的所有`Props`都没有修改，也会引起子
+组件的`Render`过程
+* 批量更新：在`React`管理的事件回调（例如`onClick`）和生命周期中，`setState`是异步的，而其他时候`setState`都是
+同步；这个问题根本原因就是`React`在自己管理的事件回调和生命周期中，对于`setState`是批量更新的，而在其他时候是立即更
+新的；批量更新`setState`时，多次执行`setState`只会触发一次渲染过程；在`v18`后`React`默认执行批处理来实现了开箱即
+用的性能改进
+* 使用缓存
+  * 使用`useCallback`来缓存函数定义、使用`useMemo`来缓存上次计算的结果
+  * 使用`React.memo`来避免组件重新渲染
+* 列表项使用`key`属性
+* 发布者订阅者模式跳过中间组件渲染过程：例如使用`redux`、`mobx`、`React.createContext`等

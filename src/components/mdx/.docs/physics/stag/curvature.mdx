@@ -16,7 +16,7 @@ called the *Christoffel symbol*, given by
 
 * What we would like is a covariant derivative, that is, an operator that reduces to the partial
 derivative in flat space with inertial coordinates, but transforms as a tensor on an abitrary
-mainfold.
+manifold.
 
 * It should be noted that the partial derivative $\partial_{\mu}$ is actually a tensor but only belongs to
 flat manifold.
@@ -27,13 +27,15 @@ which has these properties:
   2. Leibniz rule: $\nabla(T \otimes S) = (\nabla T) \otimes S + T \otimes (\nabla S)$
   3. commutes with contractions: 
   $\nabla_{\mu}(T^{\lambda}_{\phantom{\lambda}\lambda\rho}) = {(\nabla T)_{\mu}}^{\lambda}_{\phantom{\lambda}\lambda\rho}$
-  4. reduces to partial derivative on scalars: $\nabla_{\mu}\phi = \partial\phi$
+  4. reduces to partial derivative on scalars: $\nabla_{\mu}\phi = \partial_{\mu}\phi$
 
 * If $\nabla$ is going to obey the Leibniz rule, it can always be written as the partial derivative
   plus some linear transformation. Consider the covariant derivative of a vector $V^{\mu}$, we have
   $$
   \begin{gather}
-    \nabla_{\mu} V^{\nu} = \partial_{\mu} V^{\nu} + \Gamma^{\nu}_{\mu\lambda} V^{\lambda}
+    \Gamma^{\sigma}_{\mu\nu} =
+    \frac{1}{2}g^{\sigma\rho}
+    (\partial_{\mu}g_{\nu\rho} + \partial_{\nu}g_{\rho\mu} - \partial_{\rho}g_{\mu\nu})
   \end{gather}
   $$
   Because the *Christoffel symbol* is not a tensor, it do not obey the tensor transformation law: 
@@ -50,7 +52,7 @@ which has these properties:
   \end{gather}
   $$
 
-* The Kronecker delta is covariant constant, $\nabla_{\mu}\delta^{\rho}_{\lambda}$: 
+* The Kronecker delta is covariant constant, $\nabla_{\mu}\delta^{\rho}_{\lambda}=0$: 
 
   For any $(1, 0)$ tensor $v^{\rho} \in M$, we have $v^{\rho} = \delta^{\rho}_{\lambda}v^{\lambda} = 
   C(\delta^{\rho}_{\sigma}v^{\lambda})$, where $C$ represent the contraction of $\sigma$ and $\lambda$,
@@ -68,10 +70,169 @@ which has these properties:
   $$
   finally we can find that, for every $v^{\lambda}$, $\nabla_{\mu}\delta^{\rho}_{\lambda}=0$.
   
-  It should note that we should not derive the above result simplifily by
+  It should note that we can get the above result simplifily,
   $$
   \begin{gather}
     \nabla_{\mu}v^{\rho} = \nabla_{\mu}(\delta^{\rho}_{\lambda}v^{\lambda}) =
     v^{\lambda}\nabla_{\mu}\delta^{\rho}_{\lambda} + \delta^{\rho}_{\lambda}\nabla_{\mu}v^{\lambda}
   \end{gather}
   $$
+
+* It is similar to the covariant derivative of $\nabla_{\mu}V^{\nu}$, the covariant derivative of one-form
+$\nabla_{\mu}\omega_{\nu}$ use the same connection coefficients as  were used for the vector, but now with
+a minus sign and indices matched up somewhat differently:
+  $$
+  \begin{gather}
+    \nabla_{\mu}\omega_{\nu} = \partial_{\mu}\omega_{\nu} - \Gamma^{\lambda}_{\mu\nu}\omega_{\lambda}
+  \end{gather}
+  $$
+
+* With these we can take the covariant derivative of a tensor of abitrary rank straightforward:
+  $$
+  \begin{equation}
+    \begin{align*}
+      \nabla_{\sigma}T^{\mu_1\mu_2 ... \mu_k}_{\phantom{\mu_1\mu_2 ... \mu_k}\nu_1\nu_2 ... \nu_l}
+      &= \partial_{\sigma}T^{\mu_1\mu_2 ... \mu_k}_{\phantom{\mu_1\mu_2 ... \mu_k}\nu_1\nu_2 ... \nu_l}
+      \\ &\phantom{=}+ \Gamma^{\mu_1}_{\sigma\lambda}T^{\lambda\mu_2 ... \mu_k}_{\phantom{\lambda\mu_2 ... \mu_k}\nu_1\nu_2 ... \nu_l}
+         + \Gamma^{\mu_2}_{\sigma\lambda}T^{\mu_1\lambda ... \mu_k}_{\phantom{\mu_1\lambda ... \mu_k}\nu_1\nu_2 ... \nu_l}
+         ...
+         + \Gamma^{\mu_k}_{\sigma\lambda}T^{\mu1\mu_2 ... \lambda}_{\phantom{\mu_1\mu_2 ... \lambda}\nu_1\nu_2 ... \nu_l}
+      \\ &\phantom{=}- \Gamma^{\lambda}_{\sigma\nu_1}T^{\mu_1\mu_2 ... \mu_k}_{\phantom{\mu_1\mu_2 ... \mu_k}\lambda\nu_2 ... \nu_l}
+         - \Gamma^{\lambda}_{\sigma\nu_2}T^{\mu_1\mu_2 ... \mu_k}_{\phantom{\mu_1\mu_2 ... \mu_k}\nu_1\lambda ... \nu_l}
+         ...
+         - \Gamma^{\lambda}_{\sigma\nu_l}T^{\mu_1\mu_2 ... \mu_k}_{\phantom{\mu_1\mu_2 ... \mu_k}\nu_1\nu_2 ... \lambda}
+    \end{align*}
+  \end{equation}
+  $$
+
+* **The name  *connection* comes from the fact that it is used to transport vectors from one tangent
+space to another, as we will soon see; it is sometimes used to refer to the operator $\nabla$, and
+sometimes to the coefficients $\Gamma^{\lambda}_{\mu\nu}$.**
+
+* We could define a large number of connections on any manifold and each of them implies a distinct
+notion of covariant differentiation. In general relativity this freedom is not a big concern, because
+it turns out that every metric defines a unique connection, which is the one used in GR.
+
+* Given a connection specified by $\Gamma^{\lambda}_{\mu\nu}$, we can immediately form another connection
+simply by permuting the lower indices. That is, the set of coefficients $\Gamma^{\lambda}_{\nu\mu}$ will
+also transform according to equation (3), so they determine a distinct connection. There is thus a tensor
+we can associate with any given connection, known as the **torsion tensor**, defined by
+  $$
+  \begin{gather}
+    T^{\lambda}_{\phantom{\lambda}\mu\nu}
+    = \Gamma^{\lambda}_{\mu\nu} - \Gamma^{\lambda}_{\nu\mu}
+    = 2\Gamma^{\lambda}_{[\mu\nu]}
+  \end{gather}
+  $$
+  It is clear that the torsion is antisymmetric in its lower indices, and a connection that is symmetric in
+  its lower indices is known as "torsion-free".
+
+* We can now define a unique connection on a manifold with a metric $g_{\mu\nu}$ by introducing two
+additional properties:
+  $$
+  \begin{gather}
+    \nabla_{\lambda}\epsilon_{\mu\nu\rho\sigma} = 0
+  \end{gather}
+  $$
+  $$
+  \begin{gather}
+    \nabla_{\rho}g^{\mu\nu} = 0
+  \end{gather}
+  $$
+  That is
+  $$
+  \begin{gather}
+    \Gamma^{\sigma}_{\mu\nu} =
+    \frac{1}{2}g^{\sigma\rho}
+    (\partial_{\mu}g_{\nu\rho} + \partial_{\nu}g_{\rho\mu} - \partial_{\rho}g_{\mu\nu})
+  \end{gather}
+  $$
+  This connection is the one on which conventional general relativity is based. It is known by
+  different names: sometimes the **Christoffel** connection, sometimes the **Levi-Civita** connection,
+  sometimes the **Riemannian** connection.
+
+### Exercise
+
+* Calculate the covariant divergence of a vector $V^{\mu}$:\
+  The covariant divergence of $V^{\mu}$ is given by
+  $$
+  \begin{gather}
+    \nabla_{\mu}V^{\mu} = \partial_{\mu}V^{\mu} + \Gamma^{\mu}_{\mu\lambda}V^{\lambda}
+  \end{gather}
+  $$
+  $\Gamma^{\mu}_{\mu\lambda}$ is written as:
+  $$
+  \begin{gather}
+    \Gamma^{\mu}_{\mu\lambda} =
+    \frac{1}{2}g^{\mu\rho}
+    (\partial_{\mu}g_{\lambda\rho} + \partial_{\lambda}g_{\rho\mu} - \partial_{\rho}g_{\mu\lambda})
+  \end{gather}
+  $$
+  Since the metric and its inverse are symmetry, terms of $\partial_{\mu}g_{\lambda\rho}$ and
+  $\partial_{\rho}g_{\mu\lambda}$ will cancel each other out eventually, then
+  $$
+  \begin{gather}
+    \Gamma^{\mu}_{\mu\lambda} =
+    \frac{1}{2}g^{\mu\rho}\partial_{\lambda}g_{\rho\mu}
+  \end{gather}
+  $$
+  One should note that the determinant of the metric $g_{\mu\nu}$ is $|g|$ and can be expanded as the
+  sum of the elements of $\mu$-th row mutiply their algebraic cofactor $A^{\mu\rho}$:
+  $$
+  \begin{gather}
+    |g| = g_{\mu\rho}A^{\mu\rho}
+  \end{gather}
+  $$
+  so $\partial_{\lambda}|g| = A^{\mu\rho}\partial_{\lambda}g_{\mu\rho}$, and
+  $$
+  \begin{gather}
+    \partial_{\lambda}g_{\rho\mu} = \frac{\partial_{\lambda}|g|}{A^{\rho\mu}}
+  \end{gather}
+  $$
+  $g^{\mu\rho}$ as an element of $1/|g|$ can be written as
+  $$
+  \begin{gather}
+    g^{\mu\rho} = \frac{A^{\rho\mu}}{|g|}
+  \end{gather}
+  $$
+  so
+  $$
+  \begin{gather}
+    \Gamma^{\mu}_{\mu\lambda} =
+    \frac{1}{2}g^{\mu\rho}\partial_{\lambda}g_{\rho\mu} =
+    \frac{1}{2|g|}\partial_{\lambda}|g| =
+    \frac{1}{\sqrt{|g|}}\partial_{\lambda}\sqrt{|g|}
+  \end{gather}
+  $$
+  and we therefore obtain
+  $$
+  \begin{gather}
+    \nabla_{\mu}V^{\mu} = \frac{1}{\sqrt{|g|}}\partial_{\mu}(\sqrt{|g|}V^{\mu})
+  \end{gather}
+  $$
+
+* The exterior derivative and the vector-field commutator are both well-defined(at the
+point of view of tensor) in terms of partials, essentially because both involve an
+antisymmetrization that cancels the nontensorial piece of the partial derivative
+transformation law. The same feature implies that they could, on the other hand, be
+equally well-defined in terms of(torsion-free) covariant derivative:
+  $$
+  \begin{gather}
+    (d\omega)_{\mu\nu} = 2\partial_{\lbrack\mu}\omega_{\nu\rbrack}
+  \end{gather}
+  $$
+  and
+  $$
+  \begin{gather}
+    [X, Y]^{\mu} =
+    X^{\lambda}\partial_{\lambda}Y^{\mu} - Y^{\lambda}\partial_{\lambda}X^{\mu} =
+    X^{\lambda}\nabla_{\lambda}Y^{\mu} - Y^{\lambda}\nabla_{\lambda}X^{\mu}
+  \end{gather}
+  $$
+
+## Parallel transport and geodesics
+
+* The covariant derivative quantifies the instantaneous rate of change of a tensor field in
+comparision to what the tensor would be if it were "parallel transported". In other worlds,
+a connection defines a specific way of keeping a tensor constant(along some path), on the basis
+of which we can compare nearby tensor.
