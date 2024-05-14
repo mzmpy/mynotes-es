@@ -1,2 +1,0 @@
-import{a as m}from"./chunk-BBWG7QO3.js";import{L as p,d as n,e,pa as r,xa as c}from"./chunk-K6N7OS5T.js";e();c();e();e();function a(o){let t=Object.assign({h1:"h1"},m(),o.components);return n.h(n.Fragment,null,n.h(t.h1,null,"\u56FE\u5143"),`
-`,console.log("???"))}function u(o={}){let{wrapper:t}=Object.assign({},m(),o.components);return t?n.h(t,o,n.h(a,o)):a(o)}var s=u;var X=p({name:"MDX_02-PRIMITIVES",components:{MDXComponentContext:s},setup(o,t){return()=>r("div",{class:"markdown-body",style:"padding: 15px;"},r(s,{...t?.attrs}))}});export{X as default};
