@@ -15,6 +15,7 @@ import esbuildPluginMdxToVueComponent from '../plugins/esbuild-plugin-mdx-to-vue
 import esbuildMDX from '@mdx-js/esbuild'
 import esbuildPluginNoteRoute from '../plugins/esbuild-plugin-note-route/index.js'
 import esbuildPluginHmr from '../plugins/esbuild-plugin-hmr/index.js'
+import esbuildPluginCopy from 'esbuild-plugin-copy'
 
 import rehypeHighlight from 'rehype-highlight'
 import remarkGfm from 'remark-gfm'
@@ -43,6 +44,7 @@ let ctx = await esbuild.context({
   alias: {
     '@/*': './src/*',
     '@images/*': 'src/assets/images/*',
+    '@models3d/*': 'src/assets/models3d/*',
     '@mdx-constituents/*': 'src/components/mdx/constituents/*',
     '@mdx-utils/*': 'src/components/mdx/constituents/utils/*',
     '@commonImg': 'src/components/mdx/constituents/utils/commonImg/index.jsx'
@@ -55,7 +57,9 @@ let ctx = await esbuild.context({
     '.jpg': 'dataurl',
     '.png': 'dataurl',
     '.svg': 'dataurl',
-    '.gif': 'dataurl'
+    '.gif': 'dataurl',
+    '.obj': 'file',
+    '.mtl': 'file'
   },
   entryNames: '[name]-[hash]',
   assetNames: 'assets/[ext]/[name]-[hash]',
@@ -95,7 +99,15 @@ let ctx = await esbuild.context({
       dirReg: /\/\.docs\/?$/,
       type: true
     }),
-    esbuildPluginHmr()
+    esbuildPluginHmr(),
+    esbuildPluginCopy({
+      assets: [
+        {
+          from: './src/assets/models3d/windmill/textures/*',
+          to: './assets/mtl/textures'
+        }
+      ]
+    })
   ],
   outdir: './dist',
   metafile: true

@@ -9,8 +9,8 @@ export default defineComponent({
     const glVessel = ref()
     const animation = ref(false)
     const localFrameTime = ref(0)
-
     const renderer = shallowRef()
+    
     const camera = new THREE.PerspectiveCamera(75, 5/3, 0.1, 5)
     const light = new THREE.DirectionalLight(0xffffff, 3)
     const scene = new THREE.Scene()
@@ -52,7 +52,7 @@ export default defineComponent({
       return <>
         <RenderVessel animation={animation.value} onAnimation={onAnimation}>
           {{
-            canvas: () => <canvas class={ styles('gl-canvas') } ref={ glVessel }></canvas>
+            canvas: () => <canvas class={styles('gl-canvas')} ref={glVessel}></canvas>
           }}
         </RenderVessel>
       </>

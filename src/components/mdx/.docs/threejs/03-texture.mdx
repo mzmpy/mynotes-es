@@ -1,0 +1,28 @@
+import ThreeJsTextureSimpleCube from '@mdx-constituents/threejs/texture/simpleCube/index.jsx'
+
+# 纹理
+
+* 纹理一般是指我们常见的在一些第三方程序中创建的图像，如Photoshop或GIMP，将它们“贴”
+到使用three.js创建的模型表面。
+
+  <ThreeJsTextureSimpleCube></ThreeJsTextureSimpleCube>
+
+  在这个例子🌰中我们定义了一个加载纹理的方法，使用`THREE.TextureLoader`创建纹理加载器，
+  然后加载纹理到材料中：
+  ```javascript
+  const loaderManager = new THREE.LoadingManager()
+  const loader = new THREE.TextureLoader(loaderManager)
+
+  const loadTexture = (url) => {
+    const texture = loader.load(url)
+    texture.colorSpace = THREE.SRGBColorSpace
+    return texture
+  }
+  ```
+  ```javascript
+  new THREE.MeshBasicMaterial({ map: loadTexture(textureUrl) })
+
+  loaderManager.onload = () => {
+    ... // 相关渲染逻辑的代码
+  }
+  ```

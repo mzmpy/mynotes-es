@@ -7,6 +7,7 @@ import esbuildPluginMonacoEditor from '../plugins/esbuild-plugin-monaco-editor/i
 import esbuildPluginMdxToVueComponent from '../plugins/esbuild-plugin-mdx-to-vueComponent/index.js'
 import esbuildMDX from '@mdx-js/esbuild'
 import esbuildPluginNoteRoute from '../plugins/esbuild-plugin-note-route/index.js'
+import esbuildPluginCopy from 'esbuild-plugin-copy'
 
 import rehypeHighlight from 'rehype-highlight'
 import remarkGfm from 'remark-gfm'
@@ -35,11 +36,14 @@ const result = await esbuild.build({
     '.jpg': 'dataurl',
     '.png': 'dataurl',
     '.svg': 'dataurl',
-    '.gif': 'dataurl'
+    '.gif': 'dataurl',
+    '.obj': 'file',
+    '.mtl': 'file'
   },
   alias: {
     '@/*': './src/*',
     '@images/*': 'src/assets/images/*',
+    '@models3d/*': 'src/assets/models3d/*',
     '@mdx-constituents/*': 'src/components/mdx/constituents/*',
     '@mdx-utils/*': 'src/components/mdx/constituents/utils/*',
     '@commonImg': 'src/components/mdx/constituents/utils/commonImg/index.jsx'
@@ -80,6 +84,14 @@ const result = await esbuild.build({
       resolveDir: './src/components/mdx/.docs',
       dirReg: /\/\.docs\/?$/,
       type: true
+    }),
+    esbuildPluginCopy({
+      assets: [
+        {
+          from: './src/assets/models3d/windmill/textures/*',
+          to: './assets/mtl/textures'
+        }
+      ]
     })
   ],
   outdir: './dist'

@@ -69,14 +69,16 @@ export default (options={}) => {
       build.onResolve({ filter: /css-module:\/\// }, (args) => {
         return {
           path: args.path,
-          namespace: 'CSS_MODULE'
+          namespace: 'CSS_MODULE',
+          pluginData: { resolveDir: args.resolveDir }
         }
       })
 
       build.onLoad({ filter: /.*/, namespace: 'CSS_MODULE' }, (args) => {
         return {
           contents: cssMap.get(args.path),
-          loader: 'css'
+          loader: 'css',
+          resolveDir: args.pluginData.resolveDir
         }
       })
 		}

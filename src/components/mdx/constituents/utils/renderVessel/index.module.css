@@ -5,19 +5,18 @@
   background: transparent;
   border-radius: 8px;
   contain: content;
-  position: relative;
   width: fit-content;
 }
 
 .gl-canvas-vessle {
   display: inline-block;
 	background-color: #ffffff;
+  position: relative;
 }
 
 .operation {
-  height: calc(100% - 10px) !important;
+  height: 100%;
   background-color: #cacaca;
-  padding: 5px 10px;
 }
 
 .controller {
@@ -26,7 +25,7 @@
   right: 0;
   top: 0;
   padding: 7px 10px;
-  background-color: #ffffff;
+  background: transparent;
   border-radius: 8px;
   opacity: 0;
   transition: opacity 0.7s ease-in;
