@@ -8,6 +8,8 @@ import esbuildPluginMdxToVueComponent from '../plugins/esbuild-plugin-mdx-to-vue
 import esbuildMDX from '@mdx-js/esbuild'
 import esbuildPluginNoteRoute from '../plugins/esbuild-plugin-note-route/index.js'
 import esbuildPluginCopy from 'esbuild-plugin-copy'
+import esbuildPluginClean from 'esbuild-plugin-clean'
+import esbuildPluginInlineImage from 'esbuild-plugin-inline-image'
 
 import rehypeHighlight from 'rehype-highlight'
 import remarkGfm from 'remark-gfm'
@@ -33,12 +35,9 @@ const result = await esbuild.build({
     '.ttf': 'file',
     '.woff': 'file',
     '.woff2': 'file',
-    '.jpg': 'dataurl',
-    '.png': 'dataurl',
-    '.svg': 'dataurl',
-    '.gif': 'dataurl',
     '.obj': 'file',
-    '.mtl': 'file'
+    '.mtl': 'file',
+    '.gltf': 'file'
   },
   alias: {
     '@/*': './src/*',
@@ -88,11 +87,23 @@ const result = await esbuild.build({
     esbuildPluginCopy({
       assets: [
         {
-          from: './src/assets/models3d/windmill/textures/*',
-          to: './assets/mtl/textures'
+          from: ['./src/assets/models3d/windmill/textures/*'],
+          to: ['./assets/mtl/textures']
+        },
+        {
+          from: ['./src/assets/models3d/smallCity/textures/*'],
+          to: ['./assets/gltf/textures']
+        },
+        {
+          from: ['./src/assets/models3d/smallCity/scene.bin'],
+          to: ['./assets/gltf/scene.bin']
         }
       ]
-    })
+    }),
+    esbuildPluginClean({
+      patterns: ['./dist/*']
+    }),
+    esbuildPluginInlineImage()
   ],
   outdir: './dist'
 })

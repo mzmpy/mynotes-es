@@ -2,15 +2,15 @@ import { defineComponent, ref, onMounted, shallowRef } from 'vue'
 import styles from './index.module.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
-import {OBJLoader} from 'three/addons/loaders/OBJLoader.js'
-import {MTLLoader} from 'three/addons/loaders/MTLLoader.js'
+import { OBJLoader } from 'three/addons/loaders/OBJLoader.js'
+import { MTLLoader } from 'three/addons/loaders/MTLLoader.js'
 import RenderVessel from '@mdx-utils/renderVessel'
 import checkerImg from '@images/textures/checker.png'
 import windmillOBJ from '@models3d/windmill/windmill_001.obj'
 import windmillMTL from '@models3d/windmill/windmill_001.mtl'
 
 export default defineComponent({
-  name: 'ThreeJsFundamentals',
+  name: 'ThreeJsWindmill',
   setup() {
     const glVessel = ref()
     const renderer = shallowRef()
@@ -20,8 +20,8 @@ export default defineComponent({
     const directionalLight = new THREE.DirectionalLight(0xffffff, 2.5)
     const hemisphereLight = new THREE.HemisphereLight(0xB1E1FF, 0xB97A20, 2)
     camera.position.set(0, 10, 35)
-    directionalLight.position.set( 0, 10, 0 )
-		directionalLight.target.position.set( - 5, 0, 0 )
+    directionalLight.position.set(0, 10, 0)
+		directionalLight.target.position.set(- 5, 0, 0)
     directionalLight.castShadow = true
 
     onMounted(() => {
@@ -72,8 +72,6 @@ export default defineComponent({
 
       requestAnimationFrame(render)
     }
-
-    const onLightPosChange = () => {}
 
     return () => {
       return <>

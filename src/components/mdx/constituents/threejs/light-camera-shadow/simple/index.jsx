@@ -7,7 +7,7 @@ import RenderVessel from '@mdx-utils/renderVessel'
 import checkerImg from '@images/textures/checker.png'
 
 export default defineComponent({
-  name: 'ThreeJsFundamentals',
+  name: 'ThreeJsLightCameraShadowSimple',
   setup() {
     const glVessel = ref()
     const sideBar = ref()
