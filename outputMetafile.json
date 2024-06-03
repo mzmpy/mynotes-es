@@ -74168,7 +74168,7 @@
         },
         "bytes": 125456
       },
-      "dist/chunks/js/02-principle-7BSI5Y2O.js": {
+      "dist/chunks/js/02-principle-AYITKTQQ.js": {
         "imports": [
           {
             "path": "dist/chunks/js/chunk-CEVS3VKV.js",
@@ -74222,7 +74222,7 @@
         },
         "bytes": 16800
       },
-      "dist/chunks/js/03-orthographic-5KTTMDRK.js": {
+      "dist/chunks/js/03-orthographic-24H5XEHE.js": {
         "imports": [
           {
             "path": "dist/chunks/js/chunk-CEVS3VKV.js",
@@ -74285,7 +74285,7 @@
         },
         "bytes": 21754
       },
-      "dist/chunks/js/04-perspective-HUTBXYRM.js": {
+      "dist/chunks/js/04-perspective-YYOZJASD.js": {
         "imports": [
           {
             "path": "dist/chunks/js/chunk-CEVS3VKV.js",
@@ -74359,7 +74359,7 @@
         },
         "bytes": 36456
       },
-      "dist/chunks/js/05-camera-2COF633U.js": {
+      "dist/chunks/js/05-camera-QDAJMFP2.js": {
         "imports": [
           {
             "path": "dist/chunks/js/chunk-BDBUMAND.js",
@@ -74426,7 +74426,7 @@
         },
         "bytes": 200548
       },
-      "dist/chunks/js/06-directional-lighting-JQA3WVUG.js": {
+      "dist/chunks/js/06-directional-lighting-PMI7Z36O.js": {
         "imports": [
           {
             "path": "dist/chunks/js/chunk-BDBUMAND.js",
@@ -74483,7 +74483,7 @@
         },
         "bytes": 68101
       },
-      "dist/chunks/js/07-point-lighting-SKMVLQXG.js": {
+      "dist/chunks/js/07-point-lighting-RY3NLTBU.js": {
         "imports": [
           {
             "path": "dist/chunks/js/chunk-BDBUMAND.js",
@@ -74813,7 +74813,7 @@
         },
         "bytes": 841851
       },
-      "dist/chunks/js/vue@3@directives-H24MQLMT.js": {
+      "dist/chunks/js/vue@3@directives-IBZNFVQV.js": {
         "imports": [
           {
             "path": "dist/chunks/js/chunk-NIX3CF7H.js",
@@ -74928,10 +74928,10 @@
         },
         "bytes": 123539
       },
-      "dist/chunks/js/01-fundamentals-EBNMCQSO.js": {
+      "dist/chunks/js/01-fundamentals-FDE7HCJ7.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-JDJ5FYDV.js",
+            "path": "dist/chunks/js/chunk-DJZVKQMN.js",
             "kind": "import-statement"
           },
           {
@@ -74992,14 +74992,14 @@
         },
         "bytes": 46049
       },
-      "dist/chunks/js/02-scene-USQCKGVE.js": {
+      "dist/chunks/js/02-scene-AAHJZEGX.js": {
         "imports": [
           {
             "path": "dist/chunks/js/chunk-OOYSIAYD.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-JDJ5FYDV.js",
+            "path": "dist/chunks/js/chunk-DJZVKQMN.js",
             "kind": "import-statement"
           },
           {
@@ -75110,10 +75110,10 @@
         },
         "bytes": 117955
       },
-      "dist/chunks/js/03-texture-KHRJAXUZ.js": {
+      "dist/chunks/js/03-texture-L6LGHDVV.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-JDJ5FYDV.js",
+            "path": "dist/chunks/js/chunk-DJZVKQMN.js",
             "kind": "import-statement"
           },
           {
@@ -75195,18 +75195,18 @@
         },
         "bytes": 4727
       },
-      "dist/chunks/js/04-light-camera-shadow-4HXRWGK4.js": {
+      "dist/chunks/js/04-light-camera-shadow-ZQX6UEAJ.js": {
         "imports": [
           {
             "path": "dist/chunks/js/chunk-OOYSIAYD.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-JGXREM6M.js",
+            "path": "dist/chunks/js/chunk-GTKVQPJY.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-JDJ5FYDV.js",
+            "path": "dist/chunks/js/chunk-DJZVKQMN.js",
             "kind": "import-statement"
           },
           {
@@ -75293,14 +75293,14 @@
         },
         "bytes": 205462
       },
-      "dist/chunks/js/05-use-obj-and-gltf-5TO57Z6A.js": {
+      "dist/chunks/js/05-use-obj-and-gltf-OGUR366L.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-JGXREM6M.js",
+            "path": "dist/chunks/js/chunk-GTKVQPJY.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-JDJ5FYDV.js",
+            "path": "dist/chunks/js/chunk-DJZVKQMN.js",
             "kind": "import-statement"
           },
           {
@@ -75382,10 +75382,10 @@
         },
         "bytes": 61952
       },
-      "dist/chunks/js/chunk-JGXREM6M.js": {
+      "dist/chunks/js/chunk-GTKVQPJY.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-JDJ5FYDV.js",
+            "path": "dist/chunks/js/chunk-DJZVKQMN.js",
             "kind": "import-statement"
           },
           {
@@ -75407,7 +75407,7 @@
         },
         "bytes": 14768
       },
-      "dist/chunks/js/chunk-JDJ5FYDV.js": {
+      "dist/chunks/js/chunk-DJZVKQMN.js": {
         "imports": [
           {
             "path": "dist/chunks/js/chunk-NIX3CF7H.js",
@@ -75594,23 +75594,23 @@
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/01-fundamentals-EBNMCQSO.js",
+            "path": "dist/chunks/js/01-fundamentals-FDE7HCJ7.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/02-scene-USQCKGVE.js",
+            "path": "dist/chunks/js/02-scene-AAHJZEGX.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/03-texture-KHRJAXUZ.js",
+            "path": "dist/chunks/js/03-texture-L6LGHDVV.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/04-light-camera-shadow-4HXRWGK4.js",
+            "path": "dist/chunks/js/04-light-camera-shadow-ZQX6UEAJ.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/05-use-obj-and-gltf-5TO57Z6A.js",
+            "path": "dist/chunks/js/05-use-obj-and-gltf-OGUR366L.js",
             "kind": "dynamic-import"
           },
           {
@@ -75646,7 +75646,7 @@
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/vue@3@directives-H24MQLMT.js",
+            "path": "dist/chunks/js/vue@3@directives-IBZNFVQV.js",
             "kind": "dynamic-import"
           },
           {
@@ -75658,27 +75658,27 @@
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/02-principle-7BSI5Y2O.js",
+            "path": "dist/chunks/js/02-principle-AYITKTQQ.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/03-orthographic-5KTTMDRK.js",
+            "path": "dist/chunks/js/03-orthographic-24H5XEHE.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/04-perspective-HUTBXYRM.js",
+            "path": "dist/chunks/js/04-perspective-YYOZJASD.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/05-camera-2COF633U.js",
+            "path": "dist/chunks/js/05-camera-QDAJMFP2.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/06-directional-lighting-JQA3WVUG.js",
+            "path": "dist/chunks/js/06-directional-lighting-PMI7Z36O.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/07-point-lighting-SKMVLQXG.js",
+            "path": "dist/chunks/js/07-point-lighting-RY3NLTBU.js",
             "kind": "dynamic-import"
           },
           {
