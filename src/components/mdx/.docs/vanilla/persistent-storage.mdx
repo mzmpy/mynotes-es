@@ -1,0 +1,25 @@
+# 前端数据持久化存储
+
+* 前端的数据持久化存储方案主要包括`Local Storage`、`Session Storage`、`IndexedDB`和`Cookies`
+
+## Cookie
+
+* HTTP Cookie（也叫 Web Cookie 或浏览器 Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据；
+Cookie通常是由Web服务器使用响应`Set-Cookie` HTTP-header设置的；然后浏览器使用`Cookie` HTTP-header
+将它们自动添加到（几乎）每个对相同域的请求中
+
+* 我们还可以使用`document.cookie`从浏览器访问`cookie`；`document.cookie`的值由`key=value`的
+健值对组成，以`;`分隔，其中每一个健值对都是独立的`cookie`；如下
+  ```javascript
+  document.cookie = "user=John; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT; secure"
+  ```
+
+* `expires`，`max-age`：默认情况下，如果一个`cookie`没有设置这两个参数中的任何一个，那么在关闭浏
+览器之后，它就会消失；此类`cookie`被称为"session cookie”；为了让`cookie`在浏览器关闭后仍然存在，
+我们可以设置`expires`或`max-age`选项中的一个；`expires`的值必须采用GMT的时区格式，我们可以使用
+`data.toUTCString`获取；`max-age`是`expires`的替代选项，指明了`cookie`的过期时间距离当前时间
+的秒数
+
+* `secure`表示Cookie应只能被通过HTTPS传输
+
+## LocalStorage，sessionStorage
