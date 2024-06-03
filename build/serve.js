@@ -41,6 +41,7 @@ let ctx = await esbuild.context({
   supported: {
     'import-meta': true,
   },
+  publicPath: 'http://127.0.0.1:4375/mynotes-es',
   platform: 'browser',
   target: 'esnext',
   alias: {

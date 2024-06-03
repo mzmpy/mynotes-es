@@ -29,6 +29,7 @@ const result = await esbuild.build({
   format: 'esm',
   treeShaking: true,
   platform: 'browser',
+  publicPath: 'https://mzmpy.github.io/mynotes-es',
   target: 'esnext',
   loader: {
     '.js': 'jsx',
