@@ -1,4 +1,0 @@
-import{i as V}from"./chunk-NIX3CF7H.js";import{a as W}from"./chunk-LNJVFRMH.js";import{J as I,d as k,e as Z,na as j,va as q}from"./chunk-OXERZ7B4.js";Z();q();Z();Z();var s="../../assets/jpg/park-Q7RFYSKJ.jpg";function Q(m){let i=Object.assign({h1:"h1",h2:"h2",p:"p"},W(),m.components);return k.h(k.Fragment,null,k.h(i.h1,null,"Friday"),`
-`,k.h(i.h2,null,"Welcome to MyNotes! Today is Friday."),`
-`,k.h(i.p,null,"Relax for freedom!\u2600\uFE0F\u{1F308}\u{1F98A}"),`
-`,k.h(V,{"body-style":{padding:"0px"}},k.h("img",{src:s,class:"image",style:{width:"100%",height:"500px"}})))}function n(m={}){let{wrapper:i}=Object.assign({},W(),m.components);return i?k.h(i,m,k.h(Q,m)):Q(m)}var E=n;var z=I({name:"MDX_FRIDAY",components:{MDXComponentContext:E},setup(m,i){return()=>j("div",{class:"markdown-body",style:"padding: 15px;"},j(E,{...i?.attrs}))}});export{z as default};

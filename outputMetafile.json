@@ -71920,26 +71920,26 @@
       }
     },
     "outputs": {
-      "dist/chunks/js/08-multiple-objects-AXMLBFWZ.js": {
+      "dist/chunks/js/08-multiple-objects-CQ3PC4MF.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-BDBUMAND.js",
+            "path": "dist/chunks/js/chunk-5NNHFQD5.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-CEVS3VKV.js",
+            "path": "dist/chunks/js/chunk-QFPEQH6U.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-NIX3CF7H.js",
+            "path": "dist/chunks/js/chunk-ZJNTFVAV.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -71947,7 +71947,7 @@
           "default"
         ],
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/08-multiple-objects.mdx",
-        "cssBundle": "dist/chunks/css/08-multiple-objects-3A77JPHP.css",
+        "cssBundle": "dist/chunks/css/08-multiple-objects-YK7UBNOJ.css",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/08-multiple-objects.mdx": {
             "bytesInOutput": 183
@@ -71965,16 +71965,16 @@
             "bytesInOutput": 0
           }
         },
-        "bytes": 6750
+        "bytes": 6965
       },
-      "dist/chunks/js/09-scene-2DNVF57Q.js": {
+      "dist/chunks/js/09-scene-GJYTJYQT.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -71990,7 +71990,7 @@
             "bytesInOutput": 1477
           }
         },
-        "bytes": 1775
+        "bytes": 1861
       },
       "dist/assets/jpg/park-Q7RFYSKJ.jpg": {
         "imports": [],
@@ -72002,18 +72002,18 @@
         },
         "bytes": 589261
       },
-      "dist/chunks/js/friday-XUUF3MBQ.js": {
+      "dist/chunks/js/friday-J5M5UWLW.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-NIX3CF7H.js",
+            "path": "dist/chunks/js/chunk-ZJNTFVAV.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           },
           {
@@ -72033,15 +72033,15 @@
             "bytesInOutput": 481
           },
           "src/assets/images/park.jpg": {
-            "bytesInOutput": 43
+            "bytesInOutput": 72
           }
         },
-        "bytes": 865
+        "bytes": 1023
       },
-      "dist/chunks/js/marked.esm-HHINOJE7.js": {
+      "dist/chunks/js/marked.esm-NY3K7LBO.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -72073,12 +72073,12 @@
             "bytesInOutput": 270179
           }
         },
-        "bytes": 307549
+        "bytes": 307592
       },
-      "dist/chunks/js/es-X33C2J7R.js": {
+      "dist/chunks/js/es-VA7K4BZW.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -72674,24 +72674,24 @@
             "bytesInOutput": 40
           }
         },
-        "bytes": 1054661
+        "bytes": 1054704
       },
-      "dist/chunks/js/markdown-O5Q4ASKL.js": {
+      "dist/chunks/js/markdown-JXXKRQFG.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-NIX3CF7H.js",
+            "path": "dist/chunks/js/chunk-ZJNTFVAV.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/marked.esm-HHINOJE7.js",
+            "path": "dist/chunks/js/marked.esm-NY3K7LBO.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/es-X33C2J7R.js",
+            "path": "dist/chunks/js/es-VA7K4BZW.js",
             "kind": "dynamic-import"
           }
         ],
@@ -72699,10 +72699,10 @@
           "default"
         ],
         "entryPoint": "src/views/markdown/index.jsx",
-        "cssBundle": "dist/chunks/css/markdown-XYX6WX3Y.css",
+        "cssBundle": "dist/chunks/css/markdown-FO65Y6T5.css",
         "inputs": {
           "src/views/markdown/index.jsx": {
-            "bytesInOutput": 1181
+            "bytesInOutput": 1267
           },
           "src/views/markdown/index.module.css": {
             "bytesInOutput": 392
@@ -74043,16 +74043,16 @@
             "bytesInOutput": 0
           }
         },
-        "bytes": 1773026
+        "bytes": 1773198
       },
-      "dist/chunks/js/test-Y5HYNGQS.js": {
+      "dist/chunks/js/test-NZC2MMVJ.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-NIX3CF7H.js",
+            "path": "dist/chunks/js/chunk-ZJNTFVAV.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -74065,16 +74065,16 @@
             "bytesInOutput": 701
           }
         },
-        "bytes": 868
+        "bytes": 954
       },
-      "dist/chunks/js/vue@3@intro-JYLS22OE.js": {
+      "dist/chunks/js/vue@3@intro-RP3ONHMR.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -74090,20 +74090,20 @@
             "bytesInOutput": 4527
           }
         },
-        "bytes": 4828
+        "bytes": 4914
       },
-      "dist/chunks/js/01-basic-concept-FTBBCXMU.js": {
+      "dist/chunks/js/01-basic-concept-RNTZ5GSE.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-CEVS3VKV.js",
+            "path": "dist/chunks/js/chunk-QFPEQH6U.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -74111,7 +74111,7 @@
           "default"
         ],
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/01-basic-concept.mdx",
-        "cssBundle": "dist/chunks/css/01-basic-concept-Y2OI6ATA.css",
+        "cssBundle": "dist/chunks/css/01-basic-concept-FZWUWWF2.css",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/01-basic-concept.mdx": {
             "bytesInOutput": 180
@@ -74156,7 +74156,7 @@
             "bytesInOutput": 0
           }
         },
-        "bytes": 40502
+        "bytes": 40631
       },
       "dist/assets/gif/vertex-shader-anim-HZ6RUMBU.gif": {
         "imports": [],
@@ -74168,26 +74168,26 @@
         },
         "bytes": 125456
       },
-      "dist/chunks/js/02-principle-AYITKTQQ.js": {
+      "dist/chunks/js/02-principle-ACHKSFIL.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-CEVS3VKV.js",
+            "path": "dist/chunks/js/chunk-QFPEQH6U.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-NIX3CF7H.js",
+            "path": "dist/chunks/js/chunk-ZJNTFVAV.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-PDI52H65.js",
+            "path": "dist/chunks/js/chunk-O734CBPA.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           },
           {
@@ -74199,7 +74199,7 @@
           "default"
         ],
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/02-principle.mdx",
-        "cssBundle": "dist/chunks/css/02-principle-Q47BNM4V.css",
+        "cssBundle": "dist/chunks/css/02-principle-DKKTTX3L.css",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/02-principle.mdx": {
             "bytesInOutput": 176
@@ -74208,7 +74208,7 @@
             "bytesInOutput": 13921
           },
           "src/assets/images/vertex-shader-anim.gif": {
-            "bytesInOutput": 57
+            "bytesInOutput": 86
           },
           "src/components/mdx/constituents/webgl/principle/varying/index.jsx": {
             "bytesInOutput": 1771
@@ -74220,24 +74220,24 @@
             "bytesInOutput": 0
           }
         },
-        "bytes": 16800
+        "bytes": 17044
       },
-      "dist/chunks/js/03-orthographic-24H5XEHE.js": {
+      "dist/chunks/js/03-orthographic-3OLMJHMA.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-CEVS3VKV.js",
+            "path": "dist/chunks/js/chunk-QFPEQH6U.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-NIX3CF7H.js",
+            "path": "dist/chunks/js/chunk-ZJNTFVAV.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -74245,7 +74245,7 @@
           "default"
         ],
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/03-orthographic.mdx",
-        "cssBundle": "dist/chunks/css/03-orthographic-NBZ24APG.css",
+        "cssBundle": "dist/chunks/css/03-orthographic-UI7CLJ37.css",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/03-orthographic.mdx": {
             "bytesInOutput": 179
@@ -74263,7 +74263,7 @@
             "bytesInOutput": 0
           }
         },
-        "bytes": 48182
+        "bytes": 48354
       },
       "dist/assets/png/perspective-projection-M2CHE5C7.png": {
         "imports": [],
@@ -74285,26 +74285,26 @@
         },
         "bytes": 21754
       },
-      "dist/chunks/js/04-perspective-YYOZJASD.js": {
+      "dist/chunks/js/04-perspective-JRIHTGFK.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-CEVS3VKV.js",
+            "path": "dist/chunks/js/chunk-QFPEQH6U.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-NIX3CF7H.js",
+            "path": "dist/chunks/js/chunk-ZJNTFVAV.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-PDI52H65.js",
+            "path": "dist/chunks/js/chunk-O734CBPA.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           },
           {
@@ -74320,7 +74320,7 @@
           "default"
         ],
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/04-perspective.mdx",
-        "cssBundle": "dist/chunks/css/04-perspective-5HQG2ZIG.css",
+        "cssBundle": "dist/chunks/css/04-perspective-X5ZOV5I2.css",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/04-perspective.mdx": {
             "bytesInOutput": 178
@@ -74332,10 +74332,10 @@
             "bytesInOutput": 9524
           },
           "src/assets/images/perspective-projection.png": {
-            "bytesInOutput": 61
+            "bytesInOutput": 90
           },
           "src/assets/images/perspective-yclip.png": {
-            "bytesInOutput": 56
+            "bytesInOutput": 85
           },
           "src/components/mdx/constituents/webgl/perspective/perspectiveTransformF/index.jsx": {
             "bytesInOutput": 5389
@@ -74347,7 +74347,7 @@
             "bytesInOutput": 0
           }
         },
-        "bytes": 195004
+        "bytes": 195277
       },
       "dist/assets/png/lookAt-UENAQDTT.png": {
         "imports": [],
@@ -74359,30 +74359,30 @@
         },
         "bytes": 36456
       },
-      "dist/chunks/js/05-camera-QDAJMFP2.js": {
+      "dist/chunks/js/05-camera-BWBUJKI4.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-BDBUMAND.js",
+            "path": "dist/chunks/js/chunk-5NNHFQD5.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-CEVS3VKV.js",
+            "path": "dist/chunks/js/chunk-QFPEQH6U.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-NIX3CF7H.js",
+            "path": "dist/chunks/js/chunk-ZJNTFVAV.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-PDI52H65.js",
+            "path": "dist/chunks/js/chunk-O734CBPA.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           },
           {
@@ -74394,7 +74394,7 @@
           "default"
         ],
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/05-camera.mdx",
-        "cssBundle": "dist/chunks/css/05-camera-B3KKVGYZ.css",
+        "cssBundle": "dist/chunks/css/05-camera-33A4XS6D.css",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/05-camera.mdx": {
             "bytesInOutput": 176
@@ -74421,31 +74421,31 @@
             "bytesInOutput": 0
           },
           "src/assets/images/lookAt.png": {
-            "bytesInOutput": 46
+            "bytesInOutput": 75
           }
         },
-        "bytes": 200548
+        "bytes": 200835
       },
-      "dist/chunks/js/06-directional-lighting-PMI7Z36O.js": {
+      "dist/chunks/js/06-directional-lighting-OCKN5FOR.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-BDBUMAND.js",
+            "path": "dist/chunks/js/chunk-5NNHFQD5.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-CEVS3VKV.js",
+            "path": "dist/chunks/js/chunk-QFPEQH6U.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-NIX3CF7H.js",
+            "path": "dist/chunks/js/chunk-ZJNTFVAV.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -74453,7 +74453,7 @@
           "default"
         ],
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/06-directional-lighting.mdx",
-        "cssBundle": "dist/chunks/css/06-directional-lighting-BFM6ADYL.css",
+        "cssBundle": "dist/chunks/css/06-directional-lighting-TCNUZ7TN.css",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/06-directional-lighting.mdx": {
             "bytesInOutput": 187
@@ -74471,7 +74471,7 @@
             "bytesInOutput": 0
           }
         },
-        "bytes": 27866
+        "bytes": 28081
       },
       "dist/assets/png/specular-L46Z3SLK.png": {
         "imports": [],
@@ -74483,30 +74483,30 @@
         },
         "bytes": 68101
       },
-      "dist/chunks/js/07-point-lighting-RY3NLTBU.js": {
+      "dist/chunks/js/07-point-lighting-23U2JSEY.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-BDBUMAND.js",
+            "path": "dist/chunks/js/chunk-5NNHFQD5.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-CEVS3VKV.js",
+            "path": "dist/chunks/js/chunk-QFPEQH6U.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-NIX3CF7H.js",
+            "path": "dist/chunks/js/chunk-ZJNTFVAV.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-PDI52H65.js",
+            "path": "dist/chunks/js/chunk-O734CBPA.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           },
           {
@@ -74518,7 +74518,7 @@
           "default"
         ],
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/07-point-lighting.mdx",
-        "cssBundle": "dist/chunks/css/07-point-lighting-W3HQBS2I.css",
+        "cssBundle": "dist/chunks/css/07-point-lighting-CDLWZ3NA.css",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/webgl/07-point-lighting.mdx": {
             "bytesInOutput": 184
@@ -74536,7 +74536,7 @@
             "bytesInOutput": 0
           },
           "src/assets/images/specular.png": {
-            "bytesInOutput": 48
+            "bytesInOutput": 77
           },
           "src/components/mdx/constituents/webgl/point-lighting/pointLightSpecular/index.jsx": {
             "bytesInOutput": 6368
@@ -74548,12 +74548,12 @@
             "bytesInOutput": 0
           }
         },
-        "bytes": 20821
+        "bytes": 21108
       },
-      "dist/chunks/js/chunk-BDBUMAND.js": {
+      "dist/chunks/js/chunk-5NNHFQD5.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -74575,12 +74575,12 @@
             "bytesInOutput": 4
           }
         },
-        "bytes": 21492
+        "bytes": 21535
       },
-      "dist/chunks/js/chunk-CEVS3VKV.js": {
+      "dist/chunks/js/chunk-QFPEQH6U.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -74604,7 +74604,7 @@
             "bytesInOutput": 4
           }
         },
-        "bytes": 1165
+        "bytes": 1208
       },
       "dist/assets/png/js-browser-G2FFSK66.png": {
         "imports": [],
@@ -74616,18 +74616,18 @@
         },
         "bytes": 12829
       },
-      "dist/chunks/js/browser-MQHULECK.js": {
+      "dist/chunks/js/browser-SGROKKXN.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-PDI52H65.js",
+            "path": "dist/chunks/js/chunk-O734CBPA.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           },
           {
@@ -74639,7 +74639,7 @@
           "default"
         ],
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vanilla/browser.mdx",
-        "cssBundle": "dist/chunks/css/browser-YOLZUMSB.css",
+        "cssBundle": "dist/chunks/css/browser-NJXHML6Z.css",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vanilla/browser.mdx": {
             "bytesInOutput": 170
@@ -74648,19 +74648,19 @@
             "bytesInOutput": 10963
           },
           "src/assets/images/js-browser.png": {
-            "bytesInOutput": 49
+            "bytesInOutput": 78
           }
         },
-        "bytes": 11354
+        "bytes": 11512
       },
-      "dist/chunks/js/closure-YZCNZ4OC.js": {
+      "dist/chunks/js/closure-RC32FNXP.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -74676,16 +74676,16 @@
             "bytesInOutput": 8759
           }
         },
-        "bytes": 9051
+        "bytes": 9137
       },
-      "dist/chunks/js/common-feature-UJKOP7NF.js": {
+      "dist/chunks/js/common-feature-7YHXWZQG.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -74701,16 +74701,16 @@
             "bytesInOutput": 2041
           }
         },
-        "bytes": 2350
+        "bytes": 2436
       },
-      "dist/chunks/js/es6plus-FSGBEHTM.js": {
+      "dist/chunks/js/es6plus-2W3QTB34.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -74726,16 +74726,16 @@
             "bytesInOutput": 19218
           }
         },
-        "bytes": 19520
+        "bytes": 19606
       },
-      "dist/chunks/js/network-request-ERSYMN3F.js": {
+      "dist/chunks/js/network-request-AEDRIA6C.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -74751,16 +74751,16 @@
             "bytesInOutput": 22902
           }
         },
-        "bytes": 23212
+        "bytes": 23298
       },
-      "dist/chunks/js/persistent-storage-HTYMQLIY.js": {
+      "dist/chunks/js/persistent-storage-WW6LF6VR.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -74776,16 +74776,16 @@
             "bytesInOutput": 6777
           }
         },
-        "bytes": 7090
+        "bytes": 7176
       },
-      "dist/chunks/js/vue-router@4-N5DL3KPB.js": {
+      "dist/chunks/js/vue-router@4-IQKT4ZFV.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -74801,7 +74801,7 @@
             "bytesInOutput": 2907
           }
         },
-        "bytes": 3214
+        "bytes": 3300
       },
       "dist/assets/jpg/catgirl-F7V72D4B.jpg": {
         "imports": [],
@@ -74813,18 +74813,18 @@
         },
         "bytes": 841851
       },
-      "dist/chunks/js/vue@3@directives-IBZNFVQV.js": {
+      "dist/chunks/js/vue@3@directives-FO433RV6.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-NIX3CF7H.js",
+            "path": "dist/chunks/js/chunk-ZJNTFVAV.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           },
           {
@@ -74836,7 +74836,7 @@
           "default"
         ],
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vue/vue@3@directives.mdx",
-        "cssBundle": "dist/chunks/css/vue@3@directives-KJRLQEIR.css",
+        "cssBundle": "dist/chunks/css/vue@3@directives-FFD7FJTF.css",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/vue/vue@3@directives.mdx": {
             "bytesInOutput": 180
@@ -74857,7 +74857,7 @@
             "bytesInOutput": 0
           },
           "src/assets/images/catgirl.jpg": {
-            "bytesInOutput": 46
+            "bytesInOutput": 75
           },
           "src/assets/images/nopic.svg": {
             "bytesInOutput": 5080
@@ -74866,16 +74866,16 @@
             "bytesInOutput": 434
           }
         },
-        "bytes": 22951
+        "bytes": 23109
       },
-      "dist/chunks/js/hooks@18.2.0-NK35TVWS.js": {
+      "dist/chunks/js/hooks@18.2.0-5PK4Y3ZJ.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -74891,16 +74891,16 @@
             "bytesInOutput": 25908
           }
         },
-        "bytes": 26215
+        "bytes": 26301
       },
-      "dist/chunks/js/redux-ETGWTOD5.js": {
+      "dist/chunks/js/redux-HGP4IMAQ.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -74916,7 +74916,7 @@
             "bytesInOutput": 3582
           }
         },
-        "bytes": 3882
+        "bytes": 3968
       },
       "dist/assets/svg/threejs-structure-Z6NJ3YBC.svg": {
         "imports": [],
@@ -74928,26 +74928,26 @@
         },
         "bytes": 123539
       },
-      "dist/chunks/js/01-fundamentals-FDE7HCJ7.js": {
+      "dist/chunks/js/01-fundamentals-CX23FBZ5.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-DJZVKQMN.js",
+            "path": "dist/chunks/js/chunk-VOOGTLK7.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-NIX3CF7H.js",
+            "path": "dist/chunks/js/chunk-ZJNTFVAV.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-PDI52H65.js",
+            "path": "dist/chunks/js/chunk-O734CBPA.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           },
           {
@@ -74959,7 +74959,7 @@
           "default"
         ],
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/threejs/01-fundamentals.mdx",
-        "cssBundle": "dist/chunks/css/01-fundamentals-GBHSRB2S.css",
+        "cssBundle": "dist/chunks/css/01-fundamentals-D42CAW3N.css",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/threejs/01-fundamentals.mdx": {
             "bytesInOutput": 179
@@ -74968,7 +74968,7 @@
             "bytesInOutput": 15801
           },
           "src/assets/images/threejs-structure.svg": {
-            "bytesInOutput": 56
+            "bytesInOutput": 85
           },
           "src/components/mdx/constituents/threejs/fundamentals/index.jsx": {
             "bytesInOutput": 683
@@ -74980,7 +74980,7 @@
             "bytesInOutput": 0
           }
         },
-        "bytes": 17356
+        "bytes": 17600
       },
       "dist/assets/svg/scene-graph-sun-earth-moon-XWK5IRLS.svg": {
         "imports": [],
@@ -74992,30 +74992,30 @@
         },
         "bytes": 46049
       },
-      "dist/chunks/js/02-scene-AAHJZEGX.js": {
+      "dist/chunks/js/02-scene-JZD5WOXX.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-OOYSIAYD.js",
+            "path": "dist/chunks/js/chunk-RIOL354N.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-DJZVKQMN.js",
+            "path": "dist/chunks/js/chunk-VOOGTLK7.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-NIX3CF7H.js",
+            "path": "dist/chunks/js/chunk-ZJNTFVAV.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-PDI52H65.js",
+            "path": "dist/chunks/js/chunk-O734CBPA.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           },
           {
@@ -75027,7 +75027,7 @@
           "default"
         ],
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/threejs/02-scene.mdx",
-        "cssBundle": "dist/chunks/css/02-scene-JXCUKWKI.css",
+        "cssBundle": "dist/chunks/css/02-scene-TUPGEPHT.css",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/threejs/02-scene.mdx": {
             "bytesInOutput": 172
@@ -75045,10 +75045,10 @@
             "bytesInOutput": 0
           },
           "src/assets/images/scene-graph-sun-earth-moon.svg": {
-            "bytesInOutput": 65
+            "bytesInOutput": 94
           }
         },
-        "bytes": 21484
+        "bytes": 21771
       },
       "dist/assets/jpg/zhejiang01-TRLAF7KS.jpg": {
         "imports": [],
@@ -75110,22 +75110,22 @@
         },
         "bytes": 117955
       },
-      "dist/chunks/js/03-texture-L6LGHDVV.js": {
+      "dist/chunks/js/03-texture-4XQ6RYJO.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-DJZVKQMN.js",
+            "path": "dist/chunks/js/chunk-VOOGTLK7.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-NIX3CF7H.js",
+            "path": "dist/chunks/js/chunk-ZJNTFVAV.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           },
           {
@@ -75157,7 +75157,7 @@
           "default"
         ],
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/threejs/03-texture.mdx",
-        "cssBundle": "dist/chunks/css/03-texture-7OJWY22J.css",
+        "cssBundle": "dist/chunks/css/03-texture-ITB4O33I.css",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/threejs/03-texture.mdx": {
             "bytesInOutput": 174
@@ -75175,50 +75175,50 @@
             "bytesInOutput": 0
           },
           "src/assets/images/textures/simpleCube/zhejiang01.jpg": {
-            "bytesInOutput": 49
+            "bytesInOutput": 78
           },
           "src/assets/images/textures/simpleCube/zhejiang02.jpg": {
-            "bytesInOutput": 49
+            "bytesInOutput": 78
           },
           "src/assets/images/textures/simpleCube/zhejiang03.jpg": {
-            "bytesInOutput": 49
+            "bytesInOutput": 78
           },
           "src/assets/images/textures/simpleCube/zhejiang04.jpg": {
-            "bytesInOutput": 49
+            "bytesInOutput": 78
           },
           "src/assets/images/textures/simpleCube/zhejiang05.jpg": {
-            "bytesInOutput": 49
+            "bytesInOutput": 78
           },
           "src/assets/images/textures/simpleCube/zhejiang06.jpg": {
-            "bytesInOutput": 49
+            "bytesInOutput": 78
           }
         },
-        "bytes": 4727
+        "bytes": 5073
       },
-      "dist/chunks/js/04-light-camera-shadow-ZQX6UEAJ.js": {
+      "dist/chunks/js/04-light-camera-shadow-HXPY5J3H.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-OOYSIAYD.js",
+            "path": "dist/chunks/js/chunk-RIOL354N.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-GTKVQPJY.js",
+            "path": "dist/chunks/js/chunk-KU3MRGUK.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-DJZVKQMN.js",
+            "path": "dist/chunks/js/chunk-VOOGTLK7.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-NIX3CF7H.js",
+            "path": "dist/chunks/js/chunk-ZJNTFVAV.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -75226,7 +75226,7 @@
           "default"
         ],
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/threejs/04-light-camera-shadow.mdx",
-        "cssBundle": "dist/chunks/css/04-light-camera-shadow-ELYRHVXF.css",
+        "cssBundle": "dist/chunks/css/04-light-camera-shadow-B25SQROI.css",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/threejs/04-light-camera-shadow.mdx": {
             "bytesInOutput": 186
@@ -75244,12 +75244,12 @@
             "bytesInOutput": 0
           }
         },
-        "bytes": 2909
+        "bytes": 3167
       },
-      "dist/chunks/js/chunk-OOYSIAYD.js": {
+      "dist/chunks/js/chunk-RIOL354N.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -75261,7 +75261,7 @@
             "bytesInOutput": 29149
           }
         },
-        "bytes": 29426
+        "bytes": 29469
       },
       "dist/assets/obj/windmill_001-XQOMCDYN.obj": {
         "imports": [],
@@ -75293,26 +75293,26 @@
         },
         "bytes": 205462
       },
-      "dist/chunks/js/05-use-obj-and-gltf-OGUR366L.js": {
+      "dist/chunks/js/05-use-obj-and-gltf-AJ4VSRSI.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-GTKVQPJY.js",
+            "path": "dist/chunks/js/chunk-KU3MRGUK.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-DJZVKQMN.js",
+            "path": "dist/chunks/js/chunk-VOOGTLK7.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-NIX3CF7H.js",
+            "path": "dist/chunks/js/chunk-ZJNTFVAV.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           },
           {
@@ -75332,7 +75332,7 @@
           "default"
         ],
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/threejs/05-use-obj-and-gltf.mdx",
-        "cssBundle": "dist/chunks/css/05-use-obj-and-gltf-IJEXPMIR.css",
+        "cssBundle": "dist/chunks/css/05-use-obj-and-gltf-5WS2KKLA.css",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/threejs/05-use-obj-and-gltf.mdx": {
             "bytesInOutput": 186
@@ -75356,10 +75356,10 @@
             "bytesInOutput": 3934
           },
           "src/assets/models3d/windmill/windmill_001.obj": {
-            "bytesInOutput": 52
+            "bytesInOutput": 81
           },
           "src/assets/models3d/windmill/windmill_001.mtl": {
-            "bytesInOutput": 52
+            "bytesInOutput": 81
           },
           "src/components/mdx/constituents/threejs/use-obj-and-gltf/smallCity/index.jsx": {
             "bytesInOutput": 1268
@@ -75377,19 +75377,19 @@
             "bytesInOutput": 995
           },
           "src/assets/models3d/smallCity/scene.gltf": {
-            "bytesInOutput": 47
+            "bytesInOutput": 76
           }
         },
-        "bytes": 61952
+        "bytes": 62254
       },
-      "dist/chunks/js/chunk-GTKVQPJY.js": {
+      "dist/chunks/js/chunk-KU3MRGUK.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-DJZVKQMN.js",
+            "path": "dist/chunks/js/chunk-VOOGTLK7.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -75405,16 +75405,16 @@
             "bytesInOutput": 1388
           }
         },
-        "bytes": 14768
+        "bytes": 14854
       },
-      "dist/chunks/js/chunk-DJZVKQMN.js": {
+      "dist/chunks/js/chunk-VOOGTLK7.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-NIX3CF7H.js",
+            "path": "dist/chunks/js/chunk-ZJNTFVAV.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -75520,16 +75520,16 @@
             "bytesInOutput": 0
           }
         },
-        "bytes": 508524
+        "bytes": 508610
       },
-      "dist/chunks/js/browser-events-UP67XFPG.js": {
+      "dist/chunks/js/browser-events-Z7QOHLJF.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -75545,160 +75545,160 @@
             "bytesInOutput": 7450
           }
         },
-        "bytes": 7754
+        "bytes": 7840
       },
       "dist/index.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-NIX3CF7H.js",
+            "path": "dist/chunks/js/chunk-ZJNTFVAV.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/@typescript-UYJN7T7Z.js",
+            "path": "dist/chunks/js/@typescript-OFF3SYHK.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/webpack-LVGMUCCO.js",
+            "path": "dist/chunks/js/webpack-HW744Z3N.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/middleware-TIQCLF6O.js",
+            "path": "dist/chunks/js/middleware-HO44LECA.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/intrduction-CRH6BWUW.js",
+            "path": "dist/chunks/js/intrduction-GLVCGWXG.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/intro-RCV5T3EP.js",
+            "path": "dist/chunks/js/intro-NECF3EDC.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/curvature-MXELSEJF.js",
+            "path": "dist/chunks/js/curvature-COVC3CNC.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/manifolds-3M2MZG4L.js",
+            "path": "dist/chunks/js/manifolds-BBZHH377.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/hooks@18.2.0-NK35TVWS.js",
+            "path": "dist/chunks/js/hooks@18.2.0-5PK4Y3ZJ.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/redux-ETGWTOD5.js",
+            "path": "dist/chunks/js/redux-HGP4IMAQ.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/01-fundamentals-FDE7HCJ7.js",
+            "path": "dist/chunks/js/01-fundamentals-CX23FBZ5.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/02-scene-AAHJZEGX.js",
+            "path": "dist/chunks/js/02-scene-JZD5WOXX.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/03-texture-L6LGHDVV.js",
+            "path": "dist/chunks/js/03-texture-4XQ6RYJO.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/04-light-camera-shadow-ZQX6UEAJ.js",
+            "path": "dist/chunks/js/04-light-camera-shadow-HXPY5J3H.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/05-use-obj-and-gltf-OGUR366L.js",
+            "path": "dist/chunks/js/05-use-obj-and-gltf-AJ4VSRSI.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/browser-events-UP67XFPG.js",
+            "path": "dist/chunks/js/browser-events-Z7QOHLJF.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/browser-MQHULECK.js",
+            "path": "dist/chunks/js/browser-SGROKKXN.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/closure-YZCNZ4OC.js",
+            "path": "dist/chunks/js/closure-RC32FNXP.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/common-feature-UJKOP7NF.js",
+            "path": "dist/chunks/js/common-feature-7YHXWZQG.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/es6plus-FSGBEHTM.js",
+            "path": "dist/chunks/js/es6plus-2W3QTB34.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/network-request-ERSYMN3F.js",
+            "path": "dist/chunks/js/network-request-AEDRIA6C.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/persistent-storage-HTYMQLIY.js",
+            "path": "dist/chunks/js/persistent-storage-WW6LF6VR.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/vue-router@4-N5DL3KPB.js",
+            "path": "dist/chunks/js/vue-router@4-IQKT4ZFV.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/vue@3@directives-IBZNFVQV.js",
+            "path": "dist/chunks/js/vue@3@directives-FO433RV6.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/vue@3@intro-JYLS22OE.js",
+            "path": "dist/chunks/js/vue@3@intro-RP3ONHMR.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/01-basic-concept-FTBBCXMU.js",
+            "path": "dist/chunks/js/01-basic-concept-RNTZ5GSE.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/02-principle-AYITKTQQ.js",
+            "path": "dist/chunks/js/02-principle-ACHKSFIL.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/03-orthographic-24H5XEHE.js",
+            "path": "dist/chunks/js/03-orthographic-3OLMJHMA.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/04-perspective-YYOZJASD.js",
+            "path": "dist/chunks/js/04-perspective-JRIHTGFK.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/05-camera-QDAJMFP2.js",
+            "path": "dist/chunks/js/05-camera-BWBUJKI4.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/06-directional-lighting-PMI7Z36O.js",
+            "path": "dist/chunks/js/06-directional-lighting-OCKN5FOR.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/07-point-lighting-RY3NLTBU.js",
+            "path": "dist/chunks/js/07-point-lighting-23U2JSEY.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/08-multiple-objects-AXMLBFWZ.js",
+            "path": "dist/chunks/js/08-multiple-objects-CQ3PC4MF.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/09-scene-2DNVF57Q.js",
+            "path": "dist/chunks/js/09-scene-GJYTJYQT.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/friday-XUUF3MBQ.js",
+            "path": "dist/chunks/js/friday-J5M5UWLW.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/markdown-O5Q4ASKL.js",
+            "path": "dist/chunks/js/markdown-JXXKRQFG.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/test-Y5HYNGQS.js",
+            "path": "dist/chunks/js/test-NZC2MMVJ.js",
             "kind": "dynamic-import"
           }
         ],
@@ -75731,10 +75731,10 @@
             "bytesInOutput": 312
           },
           "src/router/routes/index.js": {
-            "bytesInOutput": 284
+            "bytesInOutput": 383
           },
           "NOTE_ROUTE:@/components/mdx/.docs": {
-            "bytesInOutput": 13890
+            "bytesInOutput": 14979
           },
           "src/App.jsx": {
             "bytesInOutput": 905
@@ -75770,12 +75770,12 @@
             "bytesInOutput": 0
           }
         },
-        "bytes": 48913
+        "bytes": 50167
       },
-      "dist/chunks/js/chunk-NIX3CF7H.js": {
+      "dist/chunks/js/chunk-ZJNTFVAV.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -76586,16 +76586,16 @@
             "bytesInOutput": 221
           }
         },
-        "bytes": 179291
+        "bytes": 179334
       },
-      "dist/chunks/js/@typescript-UYJN7T7Z.js": {
+      "dist/chunks/js/@typescript-OFF3SYHK.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -76611,16 +76611,16 @@
             "bytesInOutput": 9530
           }
         },
-        "bytes": 9830
+        "bytes": 9916
       },
-      "dist/chunks/js/webpack-LVGMUCCO.js": {
+      "dist/chunks/js/webpack-HW744Z3N.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -76636,16 +76636,16 @@
             "bytesInOutput": 20392
           }
         },
-        "bytes": 20694
+        "bytes": 20780
       },
-      "dist/chunks/js/middleware-TIQCLF6O.js": {
+      "dist/chunks/js/middleware-HO44LECA.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -76661,7 +76661,7 @@
             "bytesInOutput": 945
           }
         },
-        "bytes": 1250
+        "bytes": 1336
       },
       "dist/assets/png/reverse-proxy-QMG4CQY3.png": {
         "imports": [],
@@ -76673,18 +76673,18 @@
         },
         "bytes": 57062
       },
-      "dist/chunks/js/intrduction-CRH6BWUW.js": {
+      "dist/chunks/js/intrduction-GLVCGWXG.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-PDI52H65.js",
+            "path": "dist/chunks/js/chunk-O734CBPA.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           },
           {
@@ -76696,7 +76696,7 @@
           "default"
         ],
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/nginx/intrduction.mdx",
-        "cssBundle": "dist/chunks/css/intrduction-HUCYNIWS.css",
+        "cssBundle": "dist/chunks/css/intrduction-6574NIIE.css",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/nginx/intrduction.mdx": {
             "bytesInOutput": 174
@@ -76705,19 +76705,19 @@
             "bytesInOutput": 2841
           },
           "src/assets/images/reverse-proxy.png": {
-            "bytesInOutput": 52
+            "bytesInOutput": 81
           }
         },
-        "bytes": 3239
+        "bytes": 3397
       },
-      "dist/chunks/js/intro-RCV5T3EP.js": {
+      "dist/chunks/js/intro-NECF3EDC.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -76733,7 +76733,7 @@
             "bytesInOutput": 214
           }
         },
-        "bytes": 509
+        "bytes": 595
       },
       "dist/assets/png/twin-paradox-O7QN3IQT.png": {
         "imports": [],
@@ -76745,18 +76745,18 @@
         },
         "bytes": 40423
       },
-      "dist/chunks/js/curvature-MXELSEJF.js": {
+      "dist/chunks/js/curvature-COVC3CNC.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-PDI52H65.js",
+            "path": "dist/chunks/js/chunk-O734CBPA.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           },
           {
@@ -76768,7 +76768,7 @@
           "default"
         ],
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/physics/stag/curvature.mdx",
-        "cssBundle": "dist/chunks/css/curvature-ITIKMGFG.css",
+        "cssBundle": "dist/chunks/css/curvature-J5VHO4QT.css",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/physics/stag/curvature.mdx": {
             "bytesInOutput": 172
@@ -76777,10 +76777,10 @@
             "bytesInOutput": 619429
           },
           "src/assets/images/twin-paradox.png": {
-            "bytesInOutput": 51
+            "bytesInOutput": 80
           }
         },
-        "bytes": 619819
+        "bytes": 619977
       },
       "dist/assets/jpg/redshift-EK5EQ5ST.jpg": {
         "imports": [],
@@ -76822,18 +76822,18 @@
         },
         "bytes": 79250
       },
-      "dist/chunks/js/manifolds-3M2MZG4L.js": {
+      "dist/chunks/js/manifolds-BBZHH377.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-PDI52H65.js",
+            "path": "dist/chunks/js/chunk-O734CBPA.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-LNJVFRMH.js",
+            "path": "dist/chunks/js/chunk-KLQSSXLF.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           },
           {
@@ -76857,7 +76857,7 @@
           "default"
         ],
         "entryPoint": "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/physics/stag/manifolds.mdx",
-        "cssBundle": "dist/chunks/css/manifolds-UZWUNSOS.css",
+        "cssBundle": "dist/chunks/css/manifolds-YUT5FYBH.css",
         "inputs": {
           "MDX_TO_VUE_COMPONENT:/home/runner/work/mynotes-es/mynotes-es/src/components/mdx/.docs/physics/stag/manifolds.mdx": {
             "bytesInOutput": 172
@@ -76869,24 +76869,24 @@
             "bytesInOutput": 10488
           },
           "src/assets/images/redshift.jpg": {
-            "bytesInOutput": 47
+            "bytesInOutput": 76
           },
           "src/assets/images/Riemann-surface.png": {
-            "bytesInOutput": 54
+            "bytesInOutput": 83
           },
           "src/assets/images/chart-subset.png": {
-            "bytesInOutput": 51
+            "bytesInOutput": 80
           },
           "src/assets/images/overlapping-coordinate-charts.png": {
-            "bytesInOutput": 68
+            "bytesInOutput": 97
           }
         },
-        "bytes": 752529
+        "bytes": 752774
       },
-      "dist/chunks/js/chunk-PDI52H65.js": {
+      "dist/chunks/js/chunk-O734CBPA.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -76904,12 +76904,12 @@
             "bytesInOutput": 0
           }
         },
-        "bytes": 866
+        "bytes": 909
       },
-      "dist/chunks/js/chunk-LNJVFRMH.js": {
+      "dist/chunks/js/chunk-KLQSSXLF.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-OXERZ7B4.js",
+            "path": "dist/chunks/js/chunk-RMEIYZWT.js",
             "kind": "import-statement"
           }
         ],
@@ -76924,9 +76924,9 @@
             "bytesInOutput": 4
           }
         },
-        "bytes": 121
+        "bytes": 164
       },
-      "dist/chunks/js/chunk-OXERZ7B4.js": {
+      "dist/chunks/js/chunk-RMEIYZWT.js": {
         "imports": [],
         "exports": [
           "$",
@@ -77028,7 +77028,7 @@
         },
         "bytes": 74539
       },
-      "dist/chunks/css/08-multiple-objects-3A77JPHP.css": {
+      "dist/chunks/css/08-multiple-objects-YK7UBNOJ.css": {
         "imports": [],
         "inputs": {
           "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__multiple-objects__threeObjects__index": {
@@ -77047,7 +77047,7 @@
         },
         "bytes": 70776
       },
-      "dist/chunks/css/markdown-XYX6WX3Y.css": {
+      "dist/chunks/css/markdown-FO65Y6T5.css": {
         "imports": [
           {
             "path": "dist/assets/ttf/codicon-MO4O4W4B.ttf",
@@ -77134,7 +77134,7 @@
             "bytesInOutput": 154
           },
           "node_modules/monaco-editor/esm/vs/base/browser/ui/codicons/codicon/codicon.css": {
-            "bytesInOutput": 394
+            "bytesInOutput": 423
           },
           "node_modules/monaco-editor/esm/vs/base/browser/ui/codicons/codicon/codicon-modifiers.css": {
             "bytesInOutput": 495
@@ -77188,9 +77188,9 @@
             "bytesInOutput": 67
           }
         },
-        "bytes": 35822
+        "bytes": 35851
       },
-      "dist/chunks/css/01-basic-concept-Y2OI6ATA.css": {
+      "dist/chunks/css/01-basic-concept-FZWUWWF2.css": {
         "imports": [],
         "inputs": {
           "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__basic-concept__helloWorld__index": {
@@ -77208,7 +77208,7 @@
         },
         "bytes": 769
       },
-      "dist/chunks/css/02-principle-Q47BNM4V.css": {
+      "dist/chunks/css/02-principle-DKKTTX3L.css": {
         "imports": [],
         "inputs": {
           "CSS_MODULE:css-module://src__components__mdx__constituents__utils__commonImg__index": {
@@ -77220,7 +77220,7 @@
         },
         "bytes": 772
       },
-      "dist/chunks/css/03-orthographic-NBZ24APG.css": {
+      "dist/chunks/css/03-orthographic-UI7CLJ37.css": {
         "imports": [],
         "inputs": {
           "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__orthographic__transformF__index": {
@@ -77229,7 +77229,7 @@
         },
         "bytes": 547
       },
-      "dist/chunks/css/04-perspective-5HQG2ZIG.css": {
+      "dist/chunks/css/04-perspective-X5ZOV5I2.css": {
         "imports": [],
         "inputs": {
           "CSS_MODULE:css-module://src__components__mdx__constituents__utils__commonImg__index": {
@@ -77241,7 +77241,7 @@
         },
         "bytes": 820
       },
-      "dist/chunks/css/05-camera-B3KKVGYZ.css": {
+      "dist/chunks/css/05-camera-33A4XS6D.css": {
         "imports": [],
         "inputs": {
           "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__camera__cameraView__index": {
@@ -77256,7 +77256,7 @@
         },
         "bytes": 1318
       },
-      "dist/chunks/css/06-directional-lighting-BFM6ADYL.css": {
+      "dist/chunks/css/06-directional-lighting-TCNUZ7TN.css": {
         "imports": [],
         "inputs": {
           "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__directional-lighting__parallelLight__index": {
@@ -77265,7 +77265,7 @@
         },
         "bytes": 580
       },
-      "dist/chunks/css/07-point-lighting-W3HQBS2I.css": {
+      "dist/chunks/css/07-point-lighting-CDLWZ3NA.css": {
         "imports": [],
         "inputs": {
           "CSS_MODULE:css-module://src__components__mdx__constituents__webgl__point-lighting__pointLightSimple__index": {
@@ -77280,7 +77280,7 @@
         },
         "bytes": 1390
       },
-      "dist/chunks/css/browser-YOLZUMSB.css": {
+      "dist/chunks/css/browser-NJXHML6Z.css": {
         "imports": [],
         "inputs": {
           "CSS_MODULE:css-module://src__components__mdx__constituents__utils__commonImg__index": {
@@ -77289,7 +77289,7 @@
         },
         "bytes": 244
       },
-      "dist/chunks/css/vue@3@directives-KJRLQEIR.css": {
+      "dist/chunks/css/vue@3@directives-FFD7FJTF.css": {
         "imports": [],
         "inputs": {
           "CSS_MODULE:css-module://src__components__mdx__constituents__vue__vueDirectiveVLazy__index": {
@@ -77298,7 +77298,7 @@
         },
         "bytes": 231
       },
-      "dist/chunks/css/01-fundamentals-GBHSRB2S.css": {
+      "dist/chunks/css/01-fundamentals-D42CAW3N.css": {
         "imports": [],
         "inputs": {
           "CSS_MODULE:css-module://src__components__mdx__constituents__utils__commonImg__index": {
@@ -77313,7 +77313,7 @@
         },
         "bytes": 1270
       },
-      "dist/chunks/css/02-scene-JXCUKWKI.css": {
+      "dist/chunks/css/02-scene-TUPGEPHT.css": {
         "imports": [],
         "inputs": {
           "CSS_MODULE:css-module://src__components__mdx__constituents__threejs__scene__index": {
@@ -77338,7 +77338,7 @@
         },
         "bytes": 1558073
       },
-      "dist/chunks/css/03-texture-7OJWY22J.css": {
+      "dist/chunks/css/03-texture-ITB4O33I.css": {
         "imports": [
           {
             "path": "dist/assets/jpg/zhejiangxihu-YOXHUMLH.jpg",
@@ -77347,15 +77347,15 @@
         ],
         "inputs": {
           "CSS_MODULE:css-module://src__components__mdx__constituents__threejs__texture__simpleCube__index": {
-            "bytesInOutput": 277
+            "bytesInOutput": 306
           },
           "CSS_MODULE:css-module://src__components__mdx__constituents__utils__renderVessel__index": {
             "bytesInOutput": 898
           }
         },
-        "bytes": 1176
+        "bytes": 1205
       },
-      "dist/chunks/css/04-light-camera-shadow-ELYRHVXF.css": {
+      "dist/chunks/css/04-light-camera-shadow-B25SQROI.css": {
         "imports": [],
         "inputs": {
           "CSS_MODULE:css-module://src__components__mdx__constituents__threejs__light-camera-shadow__simple__index": {
@@ -77367,7 +77367,7 @@
         },
         "bytes": 1042
       },
-      "dist/chunks/css/05-use-obj-and-gltf-IJEXPMIR.css": {
+      "dist/chunks/css/05-use-obj-and-gltf-5WS2KKLA.css": {
         "imports": [],
         "inputs": {
           "CSS_MODULE:css-module://src__components__mdx__constituents__threejs__use-obj-and-gltf__windmill__index": {
@@ -78282,7 +78282,7 @@
             "bytesInOutput": 121
           },
           "CSS_MODULE:css-module://src__components__mdx__constituents__threejs__texture__simpleCube__index": {
-            "bytesInOutput": 273
+            "bytesInOutput": 306
           },
           "CSS_MODULE:css-module://src__components__mdx__constituents__threejs__light-camera-shadow__simple__index": {
             "bytesInOutput": 143
@@ -78414,7 +78414,7 @@
             "bytesInOutput": 154
           },
           "node_modules/monaco-editor/esm/vs/base/browser/ui/codicons/codicon/codicon.css": {
-            "bytesInOutput": 390
+            "bytesInOutput": 423
           },
           "node_modules/monaco-editor/esm/vs/base/browser/ui/codicons/codicon/codicon-modifiers.css": {
             "bytesInOutput": 495
@@ -78477,7 +78477,7 @@
             "bytesInOutput": 322206
           },
           "node_modules/katex/dist/katex.css": {
-            "bytesInOutput": 23997
+            "bytesInOutput": 25977
           },
           "node_modules/highlight.js/styles/github-dark.css": {
             "bytesInOutput": 1064
@@ -78486,9 +78486,9 @@
             "bytesInOutput": 13941
           }
         },
-        "bytes": 406114
+        "bytes": 408160
       },
-      "dist/chunks/css/intrduction-HUCYNIWS.css": {
+      "dist/chunks/css/intrduction-6574NIIE.css": {
         "imports": [],
         "inputs": {
           "CSS_MODULE:css-module://src__components__mdx__constituents__utils__commonImg__index": {
@@ -78497,7 +78497,7 @@
         },
         "bytes": 244
       },
-      "dist/chunks/css/curvature-ITIKMGFG.css": {
+      "dist/chunks/css/curvature-J5VHO4QT.css": {
         "imports": [],
         "inputs": {
           "CSS_MODULE:css-module://src__components__mdx__constituents__utils__commonImg__index": {
@@ -78506,7 +78506,7 @@
         },
         "bytes": 244
       },
-      "dist/chunks/css/manifolds-UZWUNSOS.css": {
+      "dist/chunks/css/manifolds-YUT5FYBH.css": {
         "imports": [],
         "inputs": {
           "CSS_MODULE:css-module://src__components__mdx__constituents__utils__commonImg__index": {
