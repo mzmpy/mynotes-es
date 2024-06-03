@@ -1,3 +1,6 @@
+import ComImg from '@/components/mdx/constituents/utils/commonImg/index.jsx'
+import TwinParadoxImg from '@/assets/images/twin-paradox.png'
+
 # Curvature
 
 * All the ways in which curvature manifests itself rely on something called "connection", 
@@ -177,7 +180,7 @@ additional properties:
   \end{gather}
   $$
   One should note that the determinant of the metric $g_{\mu\nu}$ is $|g|$ and can be expanded as the
-  sum of the elements of $\mu$-th row mutiply their algebraic cofactor $A^{\mu\rho}$:
+  sum of the elements of $\mu$-th row multiply their algebraic cofactor $A^{\mu\rho}$:
   $$
   \begin{gather}
     |g| = g_{\mu\rho}A^{\mu\rho}
@@ -218,7 +221,8 @@ transformation law. The same feature implies that they could, on the other hand,
 equally well-defined in terms of(torsion-free) covariant derivative:
   $$
   \begin{gather}
-    (d\omega)_{\mu\nu} = 2\partial_{\lbrack\mu}\omega_{\nu\rbrack}
+    (d\omega)_{\mu\nu} = 2\partial_{\lbrack\mu}\omega_{\nu\rbrack} =
+    2\nabla_{\lbrack\mu}\omega_{\nu\rbrack}
   \end{gather}
   $$
   and
@@ -236,3 +240,203 @@ equally well-defined in terms of(torsion-free) covariant derivative:
 comparision to what the tensor would be if it were "parallel transported". In other worlds,
 a connection defines a specific way of keeping a tensor constant(along some path), on the basis
 of which we can compare nearby tensor.
+
+* The concept of moving a vector along a path, keeping constant all the while, is known as parallel
+transport. In a curved space, the result of parallel transporting a vector from one point to another
+will depend on the path taken between the points. Parallel transport is supposed to be the curved-space
+generalization of the concept of "keeping the tensor constant" as we move it along a path. The rigorous
+definition of this is
+  $$
+  \begin{gather}
+    \frac{D}{d\lambda}T^{\mu_1\mu_2...\mu_k}_{\phantom{\mu_1\mu_2...\mu_k}\nu_1\nu_2...\nu_l} \equiv
+    \frac{dx^{\sigma}}{d\lambda}\nabla_{\sigma}
+    T^{\mu_1\mu_2...\mu_k}_{\phantom{\mu_1\mu_2...\mu_k}\nu_1\nu_2...\nu_l} =
+    0
+  \end{gather}
+  $$
+  known as the **equation of parallel transport**. For a vector it takes the form
+  $$
+  \begin{gather}
+    \frac{d}{d\lambda}V^{\mu} + \Gamma^{\mu}_{\sigma\rho}\frac{dx^{\sigma}}{d\lambda}V^{\rho} = 0
+  \end{gather}
+  $$
+
+* A geodesic is a curve along which the tangent vector is parallel-transported, that is
+  $$
+  \begin{gather}
+    \frac{D}{d\lambda}\frac{dx^{\mu}}{d\lambda} = 0
+  \end{gather}
+  $$
+  or alternatively
+  $$
+  \begin{gather}
+    \frac{d^2x^{\mu}}{d\lambda^2} +
+    \Gamma^{\mu}_{\rho\sigma}\frac{dx^{\rho}}{d\lambda}\frac{dx^{\sigma}}{d\lambda} = 0
+  \end{gather}
+  $$
+  This is the **geodesic equation**. In flat space, $\Gamma^{\mu}_{\rho\sigma}=0$ and the
+  geodesic equation reduce to $d^2x^{\mu}/d\lambda^2=0$, which is exactly the equation for
+  a straight line.
+
+### The deifinition of geodesic at the point of view of curve with shortest distance between two points in manifold
+
+  * At the begining of introduce this, let's look at the so-called **twin paradox**:\
+    First, the notation of proper time is $\tau$ which satisfies
+    $$
+    \begin{gather}
+      (\Delta\tau)^2 = -(\Delta s)^2 = -\eta_{\mu\nu}\Delta x^{\mu}\Delta x^{\nu}
+    \end{gather}
+    $$
+    **A crucial feature of the spacetime interval is that the proper time between two
+    events measures the time elapsed as seen by an observer moving on a straight path
+    between the events**. This is easily seen in the very special case that the two
+    events have the same spatial coordinates, and are only separated in time; this
+    corresponds to the observer traveling between the events being at rest in the
+    coordinates system used. Then $(\Delta\tau)^2 = -\eta_{\mu\nu}\Delta x^{\mu}
+    \Delta x^{\nu} = (\Delta t)^2$. So $\Delta \tau = \Delta t$, and of course we
+    define $t$ as the time measured by a clock located at a fixed spatial position.
+
+    <ComImg alt="双子谬论" src={ TwinParadoxImg } width="300"></ComImg>
+
+    A crucial fact is that, for more general trajectories, the proper time and coordinate
+    time are different. Consider two trajectories between events $A$ and $C$, one a straight
+    line passing through a halfway point marked $B$, and another traveled by an observer
+    moving away from $A$ at a constant velocity $v=dx/dt$ to a point $B^{\prime}$ and then
+    back at a constant velocity $-v$ to intersect at the event $C$. Choose inertial coordinates
+    such that the straight trajectory describes a motionless particle, with event $A$ located at
+    $(t, x)=(0, 0)$ and $C$ located at $(\Delta t, 0)$. The two paths then describe an isosceles
+    triangle in spacetime; $B$ has coordinates $(\frac{1}{2}\Delta t, 0)$ and $B^{\prime}$ has
+    coordinates $(\frac{1}{2}\Delta t, \Delta x)$, with $\Delta x = \frac{1}{2}v\Delta t$.
+    Clearly, $\Delta \tau_{AB} = \frac{1}{2}\Delta t$, but
+    $$
+    \begin{equation}
+      \begin{align*}
+        \Delta \tau_{AB^{\prime}}
+        &= \sqrt{(\frac{1}{2}\Delta t)^2 - (\Delta x)^2}
+        \\&= \frac{1}{2}\sqrt{1 - v^2} \Delta t
+      \end{align*}
+    \end{equation}
+    $$
+    It should be obvious that $\tau_{BC}=\tau_{AB}$ and $\tau_{B^{\prime}C}=\tau_{AB^{\prime}}$.
+    Thus, the observer on the straight-line trip from event $A$ to $C$ experiences an elapsed
+    time of $\tau_{ABC} = \Delta t$, whereas the one who traveled out and returned experiences
+    $$
+    \begin{gather}
+      \tau_{AB^{\prime}C} = \sqrt{1 - v^2} \Delta t \lt \Delta t
+    \end{gather}
+    $$
+    Even though the two observers begin and end at the same points in spacetime, they have aged
+    different amounts. This is the famous "twin paradox". The truth is straightforward: a nonstraight
+    path in spacetime has a different interval than a straight path.\
+    
+  * Now let's begin to do the calculation and in the name of simplicity we will do it just for a
+    timelike path - the resulting equation will turn out to be good for any path, so we are not
+    losing any generality. We therefore consider the proper time functional,
+    $$
+    \begin{gather}
+      \tau = \int \bigg(
+      -g_{\mu\nu}\frac{dx^{\mu}}{d\lambda}\frac{dx^{\nu}}{d\lambda}
+      \bigg)^{1/2} d\lambda
+    \end{gather}
+    $$
+    where the inegral is over the path. Mark $g_{\mu\nu}(dx^{\mu}/d\lambda)(dx^{\nu}/d\lambda)$
+    as $f$ and do the usual calculus-of-variations treatment to seek critical points of this
+    functional:
+    $$
+    \begin{equation}
+      \begin{align*}
+        \delta\tau &= \int \delta\sqrt{-f}d\lambda
+        \\&= -\int \frac{1}{2}(-f)^{-1/2}\delta f d\lambda
+      \end{align*}
+    \end{equation}
+    $$
+    It makes thing easier if we now specify that our parameter is the proper time itself, rather
+    than the abitrary parameter $\lambda$. This fixes the value of $f$,
+    $$
+    \begin{gather}
+      f = g_{\mu\nu}\frac{dx^{\mu}}{d\tau}\frac{dx^{\nu}}{d\tau} = 1
+    \end{gather}
+    $$
+    From `(30)` we then have
+    $$
+    \begin{gather}
+      \delta\tau = -\frac{1}{2}\int \delta f d\tau
+    \end{gather}
+    $$
+    Consider the change in the integral under infinitesimal variations of path,
+    $$
+    \begin{equation}
+      \begin{gather*}
+        x^{\mu} \to x^{\mu} + \delta x^{\mu} \\
+        g_{\mu\nu} \to g_{\mu\nu} + (\partial_{\sigma}g_{\mu\nu})\delta x^{\sigma}
+      \end{gather*}
+    \end{equation}
+    $$
+    Use `(33)` into `(32)` and keeping only terms first-order in $\delta x^{\mu}$, we get
+    $$
+    \begin{gather}
+      \delta\tau = -\frac{1}{2}\int\bigg[
+        \partial_{\sigma}g_{\mu\nu}\frac{dx^{\mu}}{d\tau}\frac{dx^{\nu}}{d\tau}\delta x^{\sigma} +
+        g_{\mu\nu}\frac{d(\delta x^{\mu})}{d\tau}\frac{dx^{\nu}}{d\tau} +
+        g_{\mu\nu}\frac{dx^{\mu}}{d\tau}\frac{d(\delta x^{\nu})}{d\tau}
+      \bigg]d\tau
+    \end{gather}
+    $$
+    where we use the result that
+    $$
+    \begin{gather}
+      \delta\bigg(\frac{dx^{\mu}}{d\tau}\bigg) =
+      \frac{d(x^{\mu} + \delta x^{\mu})}{d\tau} - \frac{dx^{\mu}}{d\tau} =
+      \frac{d(\delta x^{\mu})}{d\tau}
+    \end{gather}
+    $$
+    The last two terms of `(34)` can be integrated by parts; for example,
+    $$
+    \begin{equation}
+      \begin{align*}
+        -\frac{1}{2}\int\bigg[
+          g_{\mu\nu}\frac{dx^{\mu}}{d\tau}\frac{d(\delta x^{\nu})}{d\tau}
+        \bigg]d\tau &= -\frac{1}{2}\int \frac{d}{d\tau}\bigg[
+          g_{\mu\nu}\frac{dx^{\mu}}{d\tau}\delta x^{\mu}
+        \bigg] d\tau +
+        \frac{1}{2}\int\bigg[
+          g_{\mu\nu}\frac{d^2x^{\mu}}{d\tau^2} + \frac{dg_{\mu\nu}}{d\tau}\frac{dx^{\mu}}{d\tau}
+        \bigg]\delta x^{\nu}d\tau
+        \\& = \frac{1}{2}\int\bigg[
+          g_{\mu\nu}\frac{d^2x^{\mu}}{d\tau^2} +
+          \partial_{\sigma}g_{\mu\nu}\frac{dx^{\sigma}}{d\tau}\frac{dx^{\mu}}{d\tau}
+        \bigg]\delta x^{\nu}d\tau
+      \end{align*}
+    \end{equation}
+    $$
+    where the boundary terms vanish because we take our variation $\delta x^{\mu}$ to vanish
+    at the endpoints of the path. The variation `(34)` then becomes, after rearranging some
+    dummy indices,
+    $$
+    \begin{gather}
+      \delta\tau = \int\bigg[
+        g_{\mu\sigma}\frac{d^2x^{\mu}}{d\tau^2} +
+        \frac{1}{2}(\partial_{\mu}g_{\nu\sigma} + \partial_{\nu}g_{\sigma\mu} - \partial_{\sigma}g_{\mu\nu})
+        \frac{dx^{\mu}}{d\tau}\frac{dx^{\nu}}{d\tau}
+      \bigg]\delta x^{\sigma}d\tau
+    \end{gather}
+    $$
+    Since we are searching for stationary points, we want $\delta\tau$ to vanish for
+    any variation $\delta x^{\sigma}$; this implies
+    $$
+    \begin{gather}
+      g_{\mu\sigma}\frac{d^2x^{\mu}}{d\tau^2} +
+      \frac{1}{2}(\partial_{\mu}g_{\nu\sigma} + \partial_{\nu}g_{\sigma\mu} - \partial_{\sigma}g_{\mu\nu})
+      \frac{dx^{\mu}}{d\tau}\frac{dx^{\nu}}{d\tau} = 0
+    \end{gather}
+    $$
+    and multiplying by the inverse metric $g^{\rho\sigma}$ finally leads to
+    $$
+    \begin{gather}
+      \frac{d^2x^{\rho}}{d\tau^2} +
+      \frac{1}{2}g^{\rho\sigma}(\partial_{\mu}g_{\nu\sigma} + \partial_{\nu}g_{\sigma\mu} - \partial_{\sigma}g_{\mu\nu})
+      \frac{dx^{\mu}}{d\tau}\frac{dx^{\nu}}{d\tau} = 0
+    \end{gather}
+    $$
+    We see that this is precisely the geodesic equation `(25)`, but with the specific choice
+    of Christoffel connection `(11)`.
