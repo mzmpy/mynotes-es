@@ -343,8 +343,6 @@ import{a as u,b as v,c as A}from"https://mzmpy.github.io/mynotes-es/chunks/js/ch
   gl.`,a.h(s.span,{className:"hljs-title function_"},"drawArrays"),"(gl.",a.h(s.span,{className:"hljs-property"},"TRIANGLES"),", ",a.h(s.span,{className:"hljs-number"},"0"),", ",a.h(s.span,{className:"hljs-number"},"3"),`)
 }
 `)),`
-`),`
-`,a.h(s.li,null,`
 `,a.h(s.pre,null,a.h(s.code,{className:"hljs language-javascript"},a.h(s.span,{className:"hljs-keyword"},"import")," { defineComponent, ref, onMounted } ",a.h(s.span,{className:"hljs-keyword"},"from")," ",a.h(s.span,{className:"hljs-string"},"'vue'"),`
 `,a.h(s.span,{className:"hljs-keyword"},"import")," styles ",a.h(s.span,{className:"hljs-keyword"},"from")," ",a.h(s.span,{className:"hljs-string"},"'./index.module.css'"),`
 `,a.h(s.span,{className:"hljs-keyword"},"import")," { createShader, createProgram, setCanvasPixel } ",a.h(s.span,{className:"hljs-keyword"},"from")," ",a.h(s.span,{className:"hljs-string"},"'../../common'"),`
