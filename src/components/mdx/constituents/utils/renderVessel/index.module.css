@@ -14,6 +14,20 @@
   position: relative;
 }
 
+.progress {
+  display: flex;
+  flex-direction: column;
+  width: 81%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.progress-title {
+  text-align: center;
+}
+
 .operation {
   height: 100%;
   background-color: #cacaca;

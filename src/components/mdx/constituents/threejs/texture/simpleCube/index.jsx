@@ -19,6 +19,8 @@ export default defineComponent({
     const loaderManager = new THREE.LoadingManager()
     const loader = new THREE.TextureLoader(loaderManager)
     const objects = []
+    const progress = ref(0)
+    const progressTitle = ref('')
 
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(45, 7/5, 0.1, 50)
@@ -47,6 +49,14 @@ export default defineComponent({
         objects.push(cube)
 
         requestAnimationFrame(render)
+      }
+
+      loaderManager.onProgress = (url, loaded, total) => {
+        const percentage = Math.round(loaded / total * 100)
+
+        console.log(`loaded ${percentage}%`, url)
+        progressTitle.value = `正在加载资源...`
+        progress.value = percentage
       }
     })
 
@@ -79,7 +89,12 @@ export default defineComponent({
 
     return () => {
       return <>
-        <RenderVessel animation={animation.value} onAnimation={onAnimation}>
+        <RenderVessel
+          animation={animation.value}
+          onAnimation={onAnimation}
+          progress={progress.value}
+          progressTitle={progressTitle.value}
+        >
           {{
             canvas: () => <canvas class={styles('gl-canvas')} ref={glVessel}></canvas>
           }}

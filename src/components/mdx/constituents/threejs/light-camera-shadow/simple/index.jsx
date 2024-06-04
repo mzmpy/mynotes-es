@@ -12,6 +12,10 @@ export default defineComponent({
     const glVessel = ref()
     const sideBar = ref()
     const renderer = shallowRef()
+    const loaderManager = new THREE.LoadingManager()
+    const loader = new THREE.TextureLoader(loaderManager)
+    const progress = ref(0)
+    const progressTitle = ref('')
     
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(45, 3/2, 0.1, 500)
@@ -26,20 +30,9 @@ export default defineComponent({
     onMounted(() => {
       const planeSize = 40
       const planeGeometry = new THREE.PlaneGeometry(planeSize, planeSize)
-      const loader = new THREE.TextureLoader()
-      loader.load(checkerImg, (texture) => {
-        texture.colorSpace = THREE.SRGBColorSpace
-        texture.wrapS = THREE.RepeatWrapping
-        texture.wrapT = THREE.RepeatWrapping
-        texture.magFilter = THREE.NearestFilter
-        texture.repeat.set(planeSize / 2, planeSize / 2)
-
-        const planeMaterial = new THREE.MeshPhongMaterial({ map: texture, side: THREE.DoubleSide })
-        const plane = new THREE.Mesh(planeGeometry, planeMaterial)
-
-        plane.rotation.x = - 0.5 * Math.PI
-        plane.receiveShadow = true
-        scene.add(plane)
+      const planeMaterial = new THREE.MeshPhongMaterial({
+        map: loadTexture(checkerImg, planeSize),
+        side: THREE.DoubleSide
       })
 
       const radius = 3
@@ -85,7 +78,23 @@ export default defineComponent({
       controls.target.set(0, 5, 0)
       controls.update()
 
-      requestAnimationFrame(render)
+      loaderManager.onLoad = () => {
+        const plane = new THREE.Mesh(planeGeometry, planeMaterial)
+
+        plane.rotation.x = - 0.5 * Math.PI
+        plane.receiveShadow = true
+        scene.add(plane)
+
+        requestAnimationFrame(render)
+      }
+
+      loaderManager.onProgress = (url, loaded, total) => {
+        const percentage = Math.round(loaded / total * 100)
+
+        console.log(`loaded ${percentage}%`, url)
+        progressTitle.value = `正在加载资源...`
+        progress.value = percentage
+      }
     })
 
     const render = () => {
@@ -94,11 +103,21 @@ export default defineComponent({
       requestAnimationFrame(render)
     }
 
+    const loadTexture = (url, size) => {
+      const texture = loader.load(url)
+      texture.colorSpace = THREE.SRGBColorSpace
+      texture.wrapS = THREE.RepeatWrapping
+      texture.wrapT = THREE.RepeatWrapping
+      texture.magFilter = THREE.NearestFilter
+      texture.repeat.set(size / 2, size / 2)
+      return texture
+    }
+
     const onLightPosChange = () => {}
 
     return () => {
       return <>
-        <RenderVessel showAnimation={false}>
+        <RenderVessel showAnimation={false} progress={progress.value} progressTitle={progressTitle.value}>
           {{
             canvas: () => <canvas class={styles('gl-canvas')} ref={glVessel}></canvas>,
             sideBar: () => <div ref={sideBar}></div>

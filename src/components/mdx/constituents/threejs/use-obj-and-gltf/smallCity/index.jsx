@@ -12,7 +12,10 @@ export default defineComponent({
   setup() {
     const glVessel = ref()
     const renderer = shallowRef()
+    const progress = ref(0)
+    const progressTitle = ref('')
     
+    const loaderManager = new THREE.LoadingManager()
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(45, 3/2, 0.1, 5000)
     const directionalLight = new THREE.DirectionalLight(0xffffff, 2.5)
@@ -26,7 +29,7 @@ export default defineComponent({
       const planeSize = 40
       const planeGeometry = new THREE.PlaneGeometry(planeSize, planeSize)
       const controls = new OrbitControls(camera, glVessel.value)
-      const loader = new THREE.TextureLoader()
+      const loader = new THREE.TextureLoader(loaderManager)
       loader.load(checkerImg, (texture) => {
         texture.colorSpace = THREE.SRGBColorSpace
         texture.wrapS = THREE.RepeatWrapping
@@ -42,7 +45,7 @@ export default defineComponent({
         scene.add(plane)
       })
 
-      const gltfLoader = new GLTFLoader()
+      const gltfLoader = new GLTFLoader(loaderManager)
       gltfLoader.load(smallCityGSTF, (gltf) => {
         const root = gltf.scene
         scene.add(root)
@@ -56,6 +59,14 @@ export default defineComponent({
         controls.maxDistance = boxSize * 10
         controls.target.copy(boxCenter)
       })
+
+      loaderManager.onProgress = (url, loaded, total) => {
+        const percentage = Math.round(loaded / total * 100)
+
+        console.log(`loaded ${percentage}%`, url)
+        progressTitle.value = `正在加载资源...`
+        progress.value = percentage
+      }
       
       renderer.value = new THREE.WebGLRenderer({ antialias: true, canvas: glVessel.value })
       renderer.value.shadowMap.enabled = true
@@ -94,7 +105,11 @@ export default defineComponent({
 
     return () => {
       return <>
-        <RenderVessel showAnimation={false}>
+        <RenderVessel
+          showAnimation={false}
+          progress={progress.value}
+          progressTitle={progressTitle.value}
+        >
           {{
             canvas: () => <canvas class={styles('gl-canvas')} ref={glVessel}></canvas>
           }}
