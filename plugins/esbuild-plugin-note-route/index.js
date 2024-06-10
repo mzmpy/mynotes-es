@@ -42,12 +42,14 @@ export default (options={ resolveDir: './.docs', dirReg: /\/\.docs\/?$/, type: f
         const contents =
         `import { ElMenu, ElMenuItem, ElSubMenu, ElIcon } from 'element-plus/components'\n` +
         `import { Sunrise, MoonNight, MagicStick, Key } from '@element-plus/icons-vue'\n` +
-        `import { defineComponent } from 'vue'\n\n` +
+        `import { defineComponent } from 'vue'\n` +
+        `import { useRoute } from 'vue-router'\n` +
         `const DocTree = defineComponent({\n` +
         `  name: 'DocTree',\n` +
         `  props: { 'defaultOpeneds': { type: Array, default: () => [] } },\n` +
         `  components: { ElMenu, ElMenuItem, ElSubMenu, Sunrise, MoonNight, Key },\n` +
         `  setup(props) {\n` +
+        `    const route = useRoute()\n` +
         `    return () => {\n` +
         `      return <>\n` + DocTree +
         `      </>\n` +
@@ -104,7 +106,7 @@ export default (options={ resolveDir: './.docs', dirReg: /\/\.docs\/?$/, type: f
 async function readdirRecur(resolveDir, relpath, level=0) {
   const direxts = []
   let DocTree = !level
-    ? spaceRepeat(8) + `<ElMenu mode="vertical" default-openeds={ props.defaultOpeneds } router active-text-color="#C6F3FF" background-color="#545C64" text-color="#b1b1b1">\n` +
+    ? spaceRepeat(8) + `<ElMenu mode="vertical" default-active={route.path} default-openeds={ props.defaultOpeneds } router active-text-color="#C6F3FF" background-color="#545C64" text-color="#b1b1b1">\n` +
       spaceRepeat(8) + `  {{\n` +
       spaceRepeat(8) + `    default: () => <>\n`
     : spaceRepeat(6*level+8) + `<ElSubMenu index="/docs/${relpath}" expand-close-icon={<ElIcon style="color: #FFF9D0"><MoonNight></MoonNight></ElIcon>} expand-open-icon={<ElIcon style="color: #FF4300"><Sunrise></Sunrise></ElIcon>}>\n` +
