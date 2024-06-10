@@ -72172,7 +72172,7 @@
         },
         "bytes": 954
       },
-      "dist/chunks/js/06-directional-lighting-6VGK2PSJ.js": {
+      "dist/chunks/js/06-directional-lighting-AVTDU5JG.js": {
         "imports": [
           {
             "path": "dist/chunks/js/chunk-5NNHFQD5.js",
@@ -72229,7 +72229,7 @@
         },
         "bytes": 68101
       },
-      "dist/chunks/js/07-point-lighting-Q4JRJ2RV.js": {
+      "dist/chunks/js/07-point-lighting-XCUCI6R3.js": {
         "imports": [
           {
             "path": "dist/chunks/js/chunk-5NNHFQD5.js",
@@ -74456,7 +74456,7 @@
         },
         "bytes": 841851
       },
-      "dist/chunks/js/vue@3@directives-HL7ULSRI.js": {
+      "dist/chunks/js/vue@3@directives-G4BGZKSR.js": {
         "imports": [
           {
             "path": "dist/chunks/js/chunk-XDQZBUBU.js",
@@ -74612,7 +74612,7 @@
         },
         "bytes": 125456
       },
-      "dist/chunks/js/02-principle-GI3U42PL.js": {
+      "dist/chunks/js/02-principle-2V3JGQPE.js": {
         "imports": [
           {
             "path": "dist/chunks/js/chunk-QFPEQH6U.js",
@@ -74666,7 +74666,7 @@
         },
         "bytes": 17044
       },
-      "dist/chunks/js/03-orthographic-V2Q5B2W7.js": {
+      "dist/chunks/js/03-orthographic-FH2GZKXE.js": {
         "imports": [
           {
             "path": "dist/chunks/js/chunk-QFPEQH6U.js",
@@ -74729,7 +74729,7 @@
         },
         "bytes": 21754
       },
-      "dist/chunks/js/04-perspective-5HCWJ6QX.js": {
+      "dist/chunks/js/04-perspective-37KHYMC6.js": {
         "imports": [
           {
             "path": "dist/chunks/js/chunk-QFPEQH6U.js",
@@ -74803,7 +74803,7 @@
         },
         "bytes": 36456
       },
-      "dist/chunks/js/05-camera-ZWSH3KFM.js": {
+      "dist/chunks/js/05-camera-SVNQXHJS.js": {
         "imports": [
           {
             "path": "dist/chunks/js/chunk-5NNHFQD5.js",
@@ -74926,22 +74926,22 @@
         },
         "bytes": 1208
       },
-      "dist/chunks/js/07-xiaomiSu7-4PZHEGU2.js": {
+      "dist/chunks/js/07-xiaomiSu7-IPZ6BQ5A.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-WFIYV4TD.js",
+            "path": "dist/chunks/js/chunk-JGEX7YOJ.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-LRZ27PKO.js",
+            "path": "dist/chunks/js/chunk-NTPH7H4L.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-L5PEXPPN.js",
+            "path": "dist/chunks/js/chunk-T6RMWFAS.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-57G6XYKB.js",
+            "path": "dist/chunks/js/chunk-SEV6P6ER.js",
             "kind": "import-statement"
           },
           {
@@ -74970,7 +74970,7 @@
             "bytesInOutput": 364
           },
           "src/components/mdx/constituents/threejs/use-obj-and-gltf/xiaomiSu7/index.jsx": {
-            "bytesInOutput": 1660
+            "bytesInOutput": 1682
           },
           "src/components/mdx/constituents/threejs/use-obj-and-gltf/xiaomiSu7/index.module.css": {
             "bytesInOutput": 331
@@ -74979,7 +74979,7 @@
             "bytesInOutput": 0
           }
         },
-        "bytes": 3266
+        "bytes": 3288
       },
       "dist/chunks/js/browser-events-Z7QOHLJF.js": {
         "imports": [
@@ -75238,10 +75238,10 @@
         },
         "bytes": 123539
       },
-      "dist/chunks/js/01-fundamentals-SQBZTWBS.js": {
+      "dist/chunks/js/01-fundamentals-HITZGOJT.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-57G6XYKB.js",
+            "path": "dist/chunks/js/chunk-SEV6P6ER.js",
             "kind": "import-statement"
           },
           {
@@ -75302,14 +75302,14 @@
         },
         "bytes": 46049
       },
-      "dist/chunks/js/02-scene-ON6EI5OD.js": {
+      "dist/chunks/js/02-scene-BVCAHVTP.js": {
         "imports": [
           {
             "path": "dist/chunks/js/chunk-RIOL354N.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-57G6XYKB.js",
+            "path": "dist/chunks/js/chunk-SEV6P6ER.js",
             "kind": "import-statement"
           },
           {
@@ -75420,10 +75420,10 @@
         },
         "bytes": 117955
       },
-      "dist/chunks/js/03-texture-ZDINALQM.js": {
+      "dist/chunks/js/03-texture-AYPLNPZB.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-57G6XYKB.js",
+            "path": "dist/chunks/js/chunk-SEV6P6ER.js",
             "kind": "import-statement"
           },
           {
@@ -75505,7 +75505,7 @@
         },
         "bytes": 5267
       },
-      "dist/chunks/js/04-light-camera-shadow-QFQHD465.js": {
+      "dist/chunks/js/04-light-camera-shadow-YZY43MMJ.js": {
         "imports": [
           {
             "path": "dist/chunks/js/chunk-RIOL354N.js",
@@ -75516,11 +75516,11 @@
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-L5PEXPPN.js",
+            "path": "dist/chunks/js/chunk-T6RMWFAS.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-57G6XYKB.js",
+            "path": "dist/chunks/js/chunk-SEV6P6ER.js",
             "kind": "import-statement"
           },
           {
@@ -75577,22 +75577,22 @@
         },
         "bytes": 29469
       },
-      "dist/chunks/js/05-use-obj-and-gltf-OBYUT2DC.js": {
+      "dist/chunks/js/05-use-obj-and-gltf-THT5HU2Y.js": {
         "imports": [
           {
             "path": "dist/chunks/js/chunk-TO2YGDRS.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-LRZ27PKO.js",
+            "path": "dist/chunks/js/chunk-NTPH7H4L.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-L5PEXPPN.js",
+            "path": "dist/chunks/js/chunk-T6RMWFAS.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-57G6XYKB.js",
+            "path": "dist/chunks/js/chunk-SEV6P6ER.js",
             "kind": "import-statement"
           },
           {
@@ -75621,7 +75621,7 @@
             "bytesInOutput": 1209
           },
           "src/components/mdx/constituents/threejs/use-obj-and-gltf/windmill/index.jsx": {
-            "bytesInOutput": 1237
+            "bytesInOutput": 1259
           },
           "src/components/mdx/constituents/threejs/use-obj-and-gltf/windmill/index.module.css": {
             "bytesInOutput": 333
@@ -75636,7 +75636,7 @@
             "bytesInOutput": 3936
           },
           "src/components/mdx/constituents/threejs/use-obj-and-gltf/smallCity/index.jsx": {
-            "bytesInOutput": 1512
+            "bytesInOutput": 1523
           },
           "src/components/mdx/constituents/threejs/use-obj-and-gltf/smallCity/index.module.css": {
             "bytesInOutput": 334
@@ -75645,7 +75645,7 @@
             "bytesInOutput": 0
           }
         },
-        "bytes": 18167
+        "bytes": 18200
       },
       "dist/chunks/js/chunk-TO2YGDRS.js": {
         "imports": [],
@@ -75659,22 +75659,22 @@
         },
         "bytes": 1403
       },
-      "dist/chunks/js/06-ferrari-N4STDTFR.js": {
+      "dist/chunks/js/06-ferrari-2CLHZCBI.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-WFIYV4TD.js",
+            "path": "dist/chunks/js/chunk-JGEX7YOJ.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-LRZ27PKO.js",
+            "path": "dist/chunks/js/chunk-NTPH7H4L.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-L5PEXPPN.js",
+            "path": "dist/chunks/js/chunk-T6RMWFAS.js",
             "kind": "import-statement"
           },
           {
-            "path": "dist/chunks/js/chunk-57G6XYKB.js",
+            "path": "dist/chunks/js/chunk-SEV6P6ER.js",
             "kind": "import-statement"
           },
           {
@@ -75703,7 +75703,7 @@
             "bytesInOutput": 353
           },
           "src/components/mdx/constituents/threejs/use-obj-and-gltf/ferrariCar/index.jsx": {
-            "bytesInOutput": 2825
+            "bytesInOutput": 2847
           },
           "src/components/mdx/constituents/threejs/use-obj-and-gltf/ferrariCar/index.module.css": {
             "bytesInOutput": 335
@@ -75712,12 +75712,12 @@
             "bytesInOutput": 0
           }
         },
-        "bytes": 4461
+        "bytes": 4483
       },
-      "dist/chunks/js/chunk-WFIYV4TD.js": {
+      "dist/chunks/js/chunk-JGEX7YOJ.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-57G6XYKB.js",
+            "path": "dist/chunks/js/chunk-SEV6P6ER.js",
             "kind": "import-statement"
           },
           {
@@ -75735,10 +75735,10 @@
         },
         "bytes": 6315
       },
-      "dist/chunks/js/chunk-LRZ27PKO.js": {
+      "dist/chunks/js/chunk-NTPH7H4L.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-57G6XYKB.js",
+            "path": "dist/chunks/js/chunk-SEV6P6ER.js",
             "kind": "import-statement"
           },
           {
@@ -75759,10 +75759,10 @@
         },
         "bytes": 45222
       },
-      "dist/chunks/js/chunk-L5PEXPPN.js": {
+      "dist/chunks/js/chunk-T6RMWFAS.js": {
         "imports": [
           {
-            "path": "dist/chunks/js/chunk-57G6XYKB.js",
+            "path": "dist/chunks/js/chunk-SEV6P6ER.js",
             "kind": "import-statement"
           },
           {
@@ -75780,7 +75780,7 @@
         },
         "bytes": 13458
       },
-      "dist/chunks/js/chunk-57G6XYKB.js": {
+      "dist/chunks/js/chunk-SEV6P6ER.js": {
         "imports": [
           {
             "path": "dist/chunks/js/chunk-XDQZBUBU.js",
@@ -75943,31 +75943,31 @@
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/01-fundamentals-SQBZTWBS.js",
+            "path": "dist/chunks/js/01-fundamentals-HITZGOJT.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/02-scene-ON6EI5OD.js",
+            "path": "dist/chunks/js/02-scene-BVCAHVTP.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/03-texture-ZDINALQM.js",
+            "path": "dist/chunks/js/03-texture-AYPLNPZB.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/04-light-camera-shadow-QFQHD465.js",
+            "path": "dist/chunks/js/04-light-camera-shadow-YZY43MMJ.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/05-use-obj-and-gltf-OBYUT2DC.js",
+            "path": "dist/chunks/js/05-use-obj-and-gltf-THT5HU2Y.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/06-ferrari-N4STDTFR.js",
+            "path": "dist/chunks/js/06-ferrari-2CLHZCBI.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/07-xiaomiSu7-4PZHEGU2.js",
+            "path": "dist/chunks/js/07-xiaomiSu7-IPZ6BQ5A.js",
             "kind": "dynamic-import"
           },
           {
@@ -76003,7 +76003,7 @@
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/vue@3@directives-HL7ULSRI.js",
+            "path": "dist/chunks/js/vue@3@directives-G4BGZKSR.js",
             "kind": "dynamic-import"
           },
           {
@@ -76015,27 +76015,27 @@
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/02-principle-GI3U42PL.js",
+            "path": "dist/chunks/js/02-principle-2V3JGQPE.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/03-orthographic-V2Q5B2W7.js",
+            "path": "dist/chunks/js/03-orthographic-FH2GZKXE.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/04-perspective-5HCWJ6QX.js",
+            "path": "dist/chunks/js/04-perspective-37KHYMC6.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/05-camera-ZWSH3KFM.js",
+            "path": "dist/chunks/js/05-camera-SVNQXHJS.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/06-directional-lighting-6VGK2PSJ.js",
+            "path": "dist/chunks/js/06-directional-lighting-AVTDU5JG.js",
             "kind": "dynamic-import"
           },
           {
-            "path": "dist/chunks/js/07-point-lighting-Q4JRJ2RV.js",
+            "path": "dist/chunks/js/07-point-lighting-XCUCI6R3.js",
             "kind": "dynamic-import"
           },
           {
