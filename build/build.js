@@ -19,6 +19,9 @@ import remarkMath from 'remark-math'
 import fs from 'fs'
 import path from 'path'
 
+const DRACOPATH = '/resource/three/gltf'
+const MODELSRESOURCEPATH = '/resource/three/models'
+
 let timeInMS = new Date()
 
 const result = await esbuild.build({
@@ -35,10 +38,11 @@ const result = await esbuild.build({
     '.js': 'jsx',
     '.ttf': 'file',
     '.woff': 'file',
-    '.woff2': 'file',
-    '.obj': 'file',
-    '.mtl': 'file',
-    '.gltf': 'file'
+    '.woff2': 'file'
+  },
+  define: {
+    DRACOPATH: `'${DRACOPATH}/'`,
+    MODELSRESOURCEPATH: `'${MODELSRESOURCEPATH}'`,
   },
   alias: {
     '@/*': './src/*',
@@ -88,16 +92,12 @@ const result = await esbuild.build({
     esbuildPluginCopy({
       assets: [
         {
-          from: ['./src/assets/models3d/windmill/textures/*'],
-          to: ['./assets/mtl/textures']
+          from: ['./src/assets/models3d/**/*'],
+          to: [`.${MODELSRESOURCEPATH}`]
         },
         {
-          from: ['./src/assets/models3d/smallCity/textures/*'],
-          to: ['./assets/gltf/textures']
-        },
-        {
-          from: ['./src/assets/models3d/smallCity/scene.bin'],
-          to: ['./assets/gltf/scene.bin']
+          from: ['./node_modules/three/examples/jsm/libs/draco/gltf/**/*'],
+          to: [`.${DRACOPATH}`]
         }
       ]
     }),

@@ -28,6 +28,8 @@ import fs from 'fs'
 import path from 'path'
 
 const prefix = '/mynotes-es'
+const DRACOPATH = '/resource/three/gltf'
+const MODELSRESOURCEPATH = '/resource/three/models'
 
 let timeInMS = new Date()
 
@@ -56,10 +58,11 @@ let ctx = await esbuild.context({
     '.js': 'jsx',
     '.ttf': 'file',
     '.woff': 'file',
-    '.woff2': 'file',
-    '.obj': 'file',
-    '.mtl': 'file',
-    '.gltf': 'file'
+    '.woff2': 'file'
+  },
+  define: {
+    DRACOPATH: `'${prefix + DRACOPATH}/'`,
+    MODELSRESOURCEPATH: `'${prefix + MODELSRESOURCEPATH}'`,
   },
   entryNames: '[name]-[hash]',
   assetNames: 'assets/[ext]/[name]-[hash]',
@@ -103,16 +106,12 @@ let ctx = await esbuild.context({
     esbuildPluginCopy({
       assets: [
         {
-          from: ['./src/assets/models3d/windmill/textures/*'],
-          to: ['./assets/mtl/textures']
+          from: ['./src/assets/models3d/**/*'],
+          to: [`.${MODELSRESOURCEPATH}`]
         },
         {
-          from: ['./src/assets/models3d/smallCity/textures/*'],
-          to: ['./assets/gltf/textures']
-        },
-        {
-          from: ['./src/assets/models3d/smallCity/scene.bin'],
-          to: ['./assets/gltf/scene.bin']
+          from: ['./node_modules/three/examples/jsm/libs/draco/gltf/**/*'],
+          to: [`.${DRACOPATH}`]
         }
       ]
     }),
