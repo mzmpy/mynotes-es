@@ -19,6 +19,7 @@ import remarkMath from 'remark-math'
 import fs from 'fs'
 import path from 'path'
 
+const prefix = '/mynotes-es'
 const DRACOPATH = '/resource/three/gltf'
 const MODELSRESOURCEPATH = '/resource/three/models'
 
@@ -41,8 +42,8 @@ const result = await esbuild.build({
     '.woff2': 'file'
   },
   define: {
-    DRACOPATH: `'${DRACOPATH}/'`,
-    MODELSRESOURCEPATH: `'${MODELSRESOURCEPATH}'`,
+    DRACOPATH: `'${prefix + DRACOPATH}/'`,
+    MODELSRESOURCEPATH: `'${prefix + MODELSRESOURCEPATH}'`,
   },
   alias: {
     '@/*': './src/*',
