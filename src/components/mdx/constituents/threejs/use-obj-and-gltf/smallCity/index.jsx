@@ -1,11 +1,12 @@
 import { defineComponent, ref, onMounted, shallowRef } from 'vue'
 import styles from './index.module.css'
 import * as THREE from 'three'
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import RenderVessel from '@mdx-utils/renderVessel'
 import checkerImg from '@images/textures/checker.png'
-import smallCityGSTF from '@models3d/smallCity/scene.gltf'
+
+const smallCityGSTF = `${MODELSRESOURCEPATH}/smallCity/scene.gltf`
 
 export default defineComponent({
   name: 'ThreeJsSmallCity',

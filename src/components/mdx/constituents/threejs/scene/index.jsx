@@ -2,7 +2,7 @@ import { defineComponent, ref, shallowRef, onMounted } from 'vue'
 import styles from './index.module.css'
 import * as THREE from 'three'
 import RenderVessel from '@mdx-utils/renderVessel'
-import { GUI } from 'three/addons/libs/lil-gui.module.min.js'
+import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min.js'
 
 export default defineComponent({
   name: 'ThreeJsScene',

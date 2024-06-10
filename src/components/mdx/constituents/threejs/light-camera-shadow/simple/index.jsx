@@ -1,8 +1,8 @@
 import { defineComponent, ref, onMounted, shallowRef } from 'vue'
 import styles from './index.module.css'
 import * as THREE from 'three'
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
-import { GUI } from 'three/addons/libs/lil-gui.module.min.js'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min.js'
 import RenderVessel from '@mdx-utils/renderVessel'
 import checkerImg from '@images/textures/checker.png'
 

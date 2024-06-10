@@ -9,7 +9,7 @@ import { mat4 } from 'gl-matrix'
 import { ElSlider } from 'element-plus/components'
 
 export default defineComponent({
-	name: 'PointLightSpecular',
+	name: 'ThreeObjects',
   components: { ElSlider },
   props: {
     color: {
@@ -86,7 +86,7 @@ export default defineComponent({
     }
 
 		const drawScene = (time) => {
-      const gl = glVessel.value.getContext('webgl')
+      const gl = glVessel.value?.getContext('webgl')
 
 			if(!gl) {
 				return

@@ -1,13 +1,14 @@
 import { defineComponent, ref, onMounted, shallowRef } from 'vue'
 import styles from './index.module.css'
 import * as THREE from 'three'
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
-import { OBJLoader } from 'three/addons/loaders/OBJLoader.js'
-import { MTLLoader } from 'three/addons/loaders/MTLLoader.js'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
+import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js'
 import RenderVessel from '@mdx-utils/renderVessel'
 import checkerImg from '@images/textures/checker.png'
-import windmillOBJ from '@models3d/windmill/windmill_001.obj'
-import windmillMTL from '@models3d/windmill/windmill_001.mtl'
+
+const windmillOBJ = `${MODELSRESOURCEPATH}/windmill/windmill_001.obj`
+const windmillMTL = `${MODELSRESOURCEPATH}/windmill/windmill_001.mtl`
 
 export default defineComponent({
   name: 'ThreeJsWindmill',
