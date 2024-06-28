@@ -132,3 +132,24 @@
 
   * 批量操作：`Object.getOwnPropertyDescriptors(obj)`和`Object.defineProperties(obj, descriptors)`
 
+* ES6中如何遍历`Map`和`Set`：
+
+  * 遍历`Map`
+
+    ```javascript
+    // forEach
+    mapIns.forEach(((value, key)) => { ... })
+
+    // for ... of
+    for(let [key, value] of mapIns) { ... }
+
+    // keys() or values() or entries
+    mapIns.keys() // 返回keys的数组
+    mapIns.values() // 返回values的数组
+    mapIns.entries() // 返回[key, value]的数组
+
+    // 扩展运算符
+    let list = [...mapIns]
+    ```
+  
+  * 遍历`Set`和遍历`Map`类似

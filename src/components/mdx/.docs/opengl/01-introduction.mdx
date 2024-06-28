@@ -1,0 +1,17 @@
+# OpenGL
+
+* OpenGL一般它被认为是一个API(Application Programming Interface, 应用程序编程接口)，包含了一系列
+可以操作图形、图像的函数。然而，OpenGL本身并不是一个API，它仅仅是一个由Khronos组织制定并维护的规范
+(Specification)。
+
+* 核心模式与立即渲染模式
+
+  * 立即渲染模式（Immediate mode），也就是固定渲染管线。立即渲染模式下OpenGL绘制图片非常方便。于此同时
+    OpenGL的大多数功能都被库隐藏起来，开发者很少有控制OpenGL如何进行计算的自由（正所谓有得必有失～）。
+  * OpenGL的核心模式(Core-profile)使用更加现代的函数，使得编码具有更高的灵活性和效率，但也更加困难。
+
+* OpenGL的一些特性：
+
+  * 状态机：OpenGL自身是一个巨大的状态机(State Machine)，一系列的变量描述OpenGL此刻应当如何运行，称为
+    OpenGL上下文(Context)。
+  * 对象（Object）：对象属于OpenGL的抽象层，它是一些选项的集合，它代表OpenGL状态的一个子集。
