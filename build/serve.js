@@ -3,7 +3,6 @@ import koaStatic from 'koa-static'
 import koaMount from 'koa-mount'
 import WebSocket, { WebSocketServer } from 'ws'
 import * as chokidar from 'chokidar'
-import { historyApiFallback } from 'koa2-connect-history-api-fallback'
 
 import esbuild from 'esbuild'
 import esbuildPluginParcelCss from '../plugins/esbuild-plugin-parcel-css/index.js'
@@ -132,33 +131,6 @@ console.log(`First Building is done in ${timeInMS} ms.`)
 const proxy = new koa()
 const app = new koa()
 
-app.use(async (ctx, next) => {
-  await next()
-
-  const regexs = [
-    {
-      test: /\/docs\/[^/]+/,
-      frag: /\/docs\//
-    }, 
-    {
-      test: /\/docs(\/.+\/)+[^/]+/,
-      frag: /\/docs(\/.+\/)+/
-    }
-  ]
-
-  for(const regex of regexs) {
-    if(regex.test.test(ctx.originalUrl)) {
-      if(ctx.headers['sec-fetch-dest'] === 'document') {
-        ctx.body = await fs.promises.readFile('./dist/index.html', { encoding: 'utf-8' })
-      } else {
-        const redirectUrl = ctx.originalUrl.replace(regex.frag, '/')
-        ctx.redirect(redirectUrl)
-      }
-    }
-  }
-})
-
-app.use(historyApiFallback({}))
 app.use(koaStatic(process.cwd() + '/dist/'))
 
 proxy.use(koaMount(prefix, app))
