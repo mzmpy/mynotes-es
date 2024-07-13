@@ -1,0 +1,29 @@
+# React与工程化
+
+* 通过`babel-loader`来编译`tsx`文件， 应该如何配置？
+  * 如果你想使用`babel-loader`来编译TypeScript文件（`.tsx`），你需要在`babel.config.js`
+  和`webpack.config.js`两个文件中进行相应的配置
+
+    首先，在`babel.config.js`文件中，你需要添加`@babel/preset-typescript`预设，以便兼容TypeScript：
+    ```javascript
+    module.exports = {
+      presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript']
+    };
+    ```
+    接下来，在`webpack.config.js`文件中，你需要对`.tsx`文件使用`babel-loader`：
+    ```javascript
+    module.exports = {
+      // ...其他配置项
+      module: {
+        rules: [
+          // ...其他规则
+          {
+            test: /\.(ts|tsx)$/,
+            exclude: /node_modules/,
+            use: 'babel-loader',
+          },
+        ],
+      },
+    };
+    ```
+    这样，当webpack执行构建时，`babel-loader`将会使用`babel.config.js`中配置的预设来编译`.tsx`文件
