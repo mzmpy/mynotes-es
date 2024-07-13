@@ -192,6 +192,45 @@
         }
         ```
 
+  ## 琐碎
+
+  * 常见的请求Content-Type有以下几种：
+    * `application/x-www-form-urlencoded`：用于URL编码的表单数据，数据以键值对的形式发送
+    * `multipart/form-data`：用于发送带有文件上传的表单数据，可以包含文本字段和文件字段
+    * `application/json`：用于发送JSON格式的数据
+    * `text/plain`：用于发送纯文本数据
+    * `application/xml`：用于发送XML格式的数据
+    * `text/xml`：用于发送XML格式的数据，与application/xml类似，但将数据视为纯文本
+    * `application/octet-stream`：用于发送任意的二进制数据
+
+  * HTTP（超文本传输协议）中常见的状态码包括：
+
+    * 1xx（信息性状态码）：表示请求已被接收并正在处理
+      * 100（Continue）：请求已接收，客户端应继续发送请求的剩余部分
+      * 101（Switching Protocols）：服务器要求客户端切换协议
+    
+    * 2xx（成功状态码）：表示请求已成功处理
+      * 200（OK）：请求成功
+      * 201（Created）：请求已成功并创建新的资源
+      * 202（Accepted）：请求已接受，但尚未处理完成
+      * 204（No Content）：服务器已成功处理请求，但无返回内容
+    
+    * 3xx（重定向状态码）：表示需要进一步操作才能完成请求
+      * 301（Moved Permanently）：请求的资源已永久移动到新位置
+      * 302（Found）：请求的资源临时移动到不同的位置
+      * 304（Not Modified）：资源未被修改，可使用缓存版本
+    
+    * 4xx（客户端错误状态码）：表示客户端发生错误
+      * 400（Bad Request）：无效的请求
+      * 401（Unauthorized）：请求需要身份验证或凭证无效
+      * 403（Forbidden）：服务器拒绝请求
+      * 404（Not Found）：请求的资源不存在
+
+    * 5xx（服务器错误状态码）：表示服务器发生错误
+      * 500（Internal Server Error）：服务器遇到了错误，无法完成请求
+      * 502（Bad Gateway）：服务器作为网关或代理，从上游服务器收到无效响应
+      * 503（Service Unavailable）：服务器无法处理请求，通常是因为过载或停机维护
+
   ## 参考：
 
   * https://zh.javascript.info
