@@ -31,7 +31,7 @@ export default (options={ resolveDir: './.docs', dirReg: /\/\.docs\/?$/, type: f
           
           const name = file.name.split('.').map((item) => item.toUpperCase()).join('_')
           if(file.isFile()) {
-            noteRoutes += `  { path: '/docs/${file.relpath}', name: '${name}', component: () => import('${file.abspath}') },\n`
+            noteRoutes += `  { path: '${encodeURI('/docs/' + file.relpath)}', name: '${name}', component: () => import('${file.abspath}') },\n`
             pathInfo += `  { path: '/docs/${file.relpath}', label: '${file.name}', isDir: ${file.isDirectory()} },\n`
           }
         }
@@ -131,8 +131,8 @@ async function readdirRecur(resolveDir, relpath, level=0) {
     if(!/(\.md|\.mdx)/.test(path.extname(dirext.name))) continue
     else {
       DocTree += !level
-        ? spaceRepeat(8) + `      <ElMenuItem index={'/docs/${dirext.relpath}'}><ElIcon style="color: #C6F3FF"><Key></Key></ElIcon>${path.basename(dirext.name, '.mdx')}</ElMenuItem>\n`
-        : spaceRepeat(6*level+8) + `      <ElMenuItem index={'/docs/${dirext.relpath}'}><ElIcon style="color: #C6F3FF"><Key></Key></ElIcon>${path.basename(dirext.name, '.mdx')}</ElMenuItem>\n`
+        ? spaceRepeat(8) + `      <ElMenuItem index={'${encodeURI('/docs/' + dirext.relpath)}'}><ElIcon style="color: #C6F3FF"><Key></Key></ElIcon>${path.basename(dirext.name, '.mdx')}</ElMenuItem>\n`
+        : spaceRepeat(6*level+8) + `      <ElMenuItem index={'${encodeURI('/docs/' + dirext.relpath)}'}><ElIcon style="color: #C6F3FF"><Key></Key></ElIcon>${path.basename(dirext.name, '.mdx')}</ElMenuItem>\n`
     }
   }
 
