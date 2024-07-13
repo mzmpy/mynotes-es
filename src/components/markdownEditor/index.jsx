@@ -3,9 +3,10 @@ import {
   onMounted,
   ref
 } from 'vue'
-import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
-// import 'monaco-editor/esm/vs/basic-languages/markdown/markdown.contribution'
-import markdownExtended from './markdown.js'
+import * as monaco from 'monaco-editor'
+import { monacoTextmate, initTextmate } from './textmate.js'
+import { loadWASM } from 'onigasm'
+import codeSandBoxTheme from './themes/codeSandBox.json'
 import styles from './index.module.css'
 
 export default defineComponent({
@@ -25,21 +26,36 @@ export default defineComponent({
     const editorRef = ref()
     let editorInstance = null
 
-    onMounted(() => {
-      monaco.languages.register({ id: 'markdown' })
-      monaco.languages.setMonarchTokensProvider('markdown', markdownExtended)
+    onMounted(async () => {
+      await initTextmate()
+      monaco.editor.defineTheme('vs-code-theme-converted', codeSandBoxTheme)
 
       editorInstance = monaco.editor.create(editorRef.value, {
-        value: props.initialCode,
-        theme: props.theme,
-        automaticLayout: true,
-        language: 'markdown'
+        model: null,
+        theme: 'vs-code-theme-converted',
+        automaticLayout: true
       })
+      updateDoc(editorInstance, props.initialCode, 'mdx')
+      monacoTextmate(monaco, editorInstance, 'mdx')
       
       editorInstance.onDidChangeModelContent(() => {
         emit('codeChanged', editorInstance.getValue())
       })
     })
+
+    const updateDoc = (editor, code, language) => {
+      if(!editor) {
+        return
+      }
+
+      const oldModel = editor.getModel()
+      const newModel = monaco.editor.createModel(code, language)
+      editor.setModel(newModel)
+
+      if (oldModel) {
+        oldModel.dispose()
+      }
+    }
 
     return () => {
       return <>

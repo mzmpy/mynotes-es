@@ -2,7 +2,7 @@ import esbuild from 'esbuild'
 import fs from 'fs'
 import path from 'path'
 
-export default () => {
+export default (options={ workers: [] }) => {
   return {
     name: 'monaco-editor-plugin',
     setup(build) {
@@ -33,24 +33,34 @@ export default () => {
         if(!args.pluginData?.MONACO_EDITOR_IMPORT) return
 
         const MonacoEditorCode = await fs.promises.readFile(args.path, { encoding: 'utf-8' })
-        const contents = 
-        `self.MonacoEnvironment = {` + 
-        `  getWorkerUrl: function (moduleId, label) {` + 
-        `    if (label === 'json') {` + 
-        `      return './vs/language/json/json.worker.js';` + 
-        `    }` + 
-        `    if (label === 'css' || label === 'scss' || label === 'less') {` + 
-        `      return './vs/language/css/css.worker.js';` + 
-        `    }` + 
-        `    if (label === 'html' || label === 'handlebars' || label === 'razor') {` + 
-        `      return './vs/language/html/html.worker.js';` + 
-        `    }` + 
-        `    if (label === 'typescript' || label === 'javascript') {` + 
-        `      return './vs/language/typescript/ts.worker.js';` + 
-        `    }` + 
-        `    return './vs/editor/editor.worker.js';` + 
-        `  }` + 
-        `}\n${MonacoEditorCode}`
+        const jsonPart =
+        `    if(label === 'json') {\n` +
+        `      return './vs/language/json/json.worker.js'\n` +
+        `    }\n`
+        const stylePart =
+        `    if(label === 'css' || label === 'scss' || label === 'less') {\n` +
+        `      return './vs/language/css/css.worker.js'\n` +
+        `    }\n`
+        const htmlPart =
+        `    if(label === 'html' || label === 'handlebars' || label === 'razor') {\n` +
+        `      return './vs/language/html/html.worker.js'\n` +
+        `    }\n`
+        const scriptPart =
+        `    if(label === 'typescript' || label === 'javascript') {\n` +
+        `      return './vs/language/typescript/ts.worker.js'\n` +
+        `    }\n`
+        
+        const contents =
+        `${MonacoEditorCode}\n` +
+        `self.MonacoEnvironment = {\n` +
+        `  getWorkerUrl: function (moduleId, label) {\n` +
+        `${options.workers.includes('json') ? jsonPart : ''}` +
+        `${options.workers.includes('css') ? stylePart : ''}` +
+        `${options.workers.includes('html') ? htmlPart : ''}` +
+        `${options.workers.includes('javascript') || options.workers.includes('typescript') ? scriptPart : ''}` +
+        `    return './vs/editor/editor.worker.js'\n` +
+        `  }\n` +
+        `}`
 
         return {
           contents: contents,

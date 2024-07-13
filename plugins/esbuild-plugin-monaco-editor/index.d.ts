@@ -1,5 +1,9 @@
 import type { Plugin } from 'esbuild'
 
-declare function esbuildPluginMonacoEditor(): Plugin
+interface Options {
+  workers: Array<'json'|'css'|'html'|'javascript'|'typescript'>
+}
+
+declare function esbuildPluginMonacoEditor(options: Options): Plugin
 
 export default esbuildPluginMonacoEditor

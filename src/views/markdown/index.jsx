@@ -43,7 +43,98 @@ export default defineComponent({
       return marked(val)
     }
 
-    const mdText = '# There are some demos.\n\nThis is a paragraph.\n\nThere are some Greek letter `$\\alpha$`, `$\\beta$` and `$\\lambda$`.\n\n```katex\nE = mc^{2}\n```\n\nHere defines a Python function `add(x, y)`:\n```python\ndef add(x, y):\n\treturn x + y\n```\n这是一行中文。'
+    const mdText =
+    `---
+title: Hello!
+---
+
+import {Chart} from './chart.js'
+import population from './population.js'
+import {External} from './some/place.js'
+
+export const year = 2018
+export const pi = 3.14
+
+export function SomeComponent(props) {
+  const name = (props || {}).name || 'world'
+
+  return <div>
+    <p>Hi, {name}!</p>
+
+    <p>and some more things</p>
+  </div>
+}
+
+export function Local(props) {
+  return <span style={{color: 'red'}} {...props} />
+}
+
+# Last year's snowfall
+
+In {year}, the snowfall was above average.
+It was followed by a warm spring which caused
+flood conditions in many of the nearby rivers.
+
+<Chart year={year} color="#fcb32c" />
+
+<div className="note">
+  Some notable things in a block quote!
+</div>
+
+# Heading (rank 1)
+## Heading 2
+### 3
+#### 4
+##### 5
+###### 6
+
+> Block quote
+
+* Unordered
+* List
+
+1. Ordered
+2. List
+
+A paragraph, introducing a thematic break:
+
+---
+
+\`\`\`js
+// Get an element.
+const element = document.querySelectorAll('#hi')
+
+// Add a class.
+element.classList.add('asd')
+\`\`\`
+
+a [link](https://example.com), an ![image](./image.png), some *emphasis*,
+something **strong**, and finally a little \`code()\`.
+
+<Component
+  open
+  x={1}
+  label={'this is a string, *not* markdown!'}
+  icon={<Icon />}
+/>
+
+Two 🍰 is: {Math.PI * 2}
+
+{(function () {
+  const guess = Math.random()
+
+  if (guess > 0.66) {
+    return <span style={{color: 'tomato'}}>Look at us.</span>
+  }
+
+  if (guess > 0.33) {
+    return <span style={{color: 'violet'}}>Who would have guessed?!</span>
+  }
+
+  return <span style={{color: 'goldenrod'}}>Not me.</span>
+})()}
+
+{/* A comment! */}`
     const markedContent = ref('')
     const drawer = ref(false)
 
