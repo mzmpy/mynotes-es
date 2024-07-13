@@ -1,0 +1,188 @@
+import '@mdx-constituents/styles/@html/layout.css'
+
+# 关于布局
+
+## BFC块级格式化上下文
+
+* BFC是 (Block Formatting context)的简称，即块格式化上下文
+
+  * BFC的块不会和浮动块重叠
+  * 计算BFC元素的高度时，会包括浮动元素
+  * 在一个BFC下的块 margin 会发生重叠，不在同一个则不会
+  * BFC元素是一个独立的容器，使得里面的元素和外部元素隔离开，互不影响
+
+* 触发BFC
+
+  * `float`的值不为`none`
+  * `overflow`的值为`auto`, `scroll`和`hidden`
+  * `display`的值为`table-cell`, `table-caption`和`inline-block`
+  * `position`设置为`absolute`和`fixed`
+  * `html`元素本身默认就是一个BFC元素
+
+## 水平/垂直居中布局方案
+
+* 水平垂直居中
+
+  1. 栗子一
+
+    <div style="
+      width: 100%;
+      height: 100px;
+      background-color: blue;
+      position: relative;
+      margin: 10px 0;
+    ">
+      <span style="
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 50%;
+        height: 30%;
+        background-color: red;
+      ">
+        { '行内块' }
+      </span>
+    </div>
+    
+    ```html
+    <div style="
+      width: 100%;
+      height: 100px;
+      background-color: blue;
+      position: relative;
+      margin: 10px 0;
+    ">
+      <span style="
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 50%;
+        height: 30%;
+        background-color: red;
+      ">
+        行内块
+      </span>
+    </div>
+    ```
+  
+  2. 栗子二
+
+    <div style="
+      width: 100%;
+      height: 100px;
+      background-color: blue;
+      position: relative;
+      margin: 10px 0;
+    ">
+      <span style="
+        display: inline-block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background-color: red;
+      ">
+        { '行内块' }
+      </span>
+    </div>
+    
+    ```html
+    <div style="
+      width: 100%;
+      height: 100px;
+      background-color: blue;
+      position: relative;
+      margin: 10px 0;
+    ">
+      <span style="
+        display: inline-block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background-color: red;
+      ">
+        行内块
+      </span>
+    </div>
+    ```
+  
+  3. 栗子三
+
+    <div class="vc" style="
+      width: 100%;
+      height: 100px;
+      background-color: blue;
+      text-align: center;
+      margin: 10px 0;
+    ">
+      <span style="
+        display: inline-block;
+        background-color: red;
+        vertical-align: middle;
+      ">
+        { '行内块' }
+      </span>
+    </div>
+    
+    ```css
+      .vc::before {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+      }
+    ```
+    ```html
+    <div class="vc" style="
+      width: 100%;
+      height: 100px;
+      background-color: blue;
+      text-align: center;
+      margin: 10px 0;
+    ">
+      <span style="
+        display: inline-block;
+        background-color: red;
+        vertical-align: middle;
+      ">
+        行内块
+      </span>
+    </div>
+    ```
+  
+  4. 栗子四
+
+    <div style="
+      display: flex;
+      width: 100%;
+      height: 100px;
+      justify-content: center;
+      align-items: center;
+      background-color: blue;
+      margin: 10px 0;
+    ">
+      <span style="background-color: red;">{ '行内块' }</span>
+    </div>
+
+    ```html
+    <div style="
+      display: flex;
+      width: 100%;
+      height: 100px;
+      justify-content: center;
+      align-items: center;
+      background-color: blue;
+      margin: 10px 0;
+    ">
+      <span style="background-color: red;">行内块</span>
+    </div>
+    ```
