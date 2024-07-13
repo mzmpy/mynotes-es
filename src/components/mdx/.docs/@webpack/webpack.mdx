@@ -4,7 +4,13 @@
 中，不同代码之间可以互相引用，所有的代码资源最终都直接或者间接地被导入到程序的入口文件中使用；代码的模块化可以项目更加结构化，
 降低代码之间的耦合，方便对程序的开发和维护
 
-* 模块化规范：`CommonJS`、`RequireJS`、`ESModules`
+* 模块化规范：`CommonJS`、`AMD`、`UMD`、`ESModules`
+  * ESM (ECMAScript Modules): 这是JavaScript ES6中引入的官方标准模块系统；使用`import`和
+  `export`语句来导入和导出模块
+  * CommonJS: 主要用于Node.js，允许使用`require()`来加载模块和`module.exports`来导出模块
+  * AMD (Asynchronous Module Definition): 用于异步加载模块，并使用`define`方法来定义模块
+  * UMD (Universal Module Definition): 结合了AMD和CommonJS的特点，并支持全局变量定义的方式，
+  使得模块可以在客户端和服务端上运行
 
 * `webpack`解决了一下问题：
   * 模块化：开发过程中对`javascript`、`css`、`html`、`json`、`图片`等文件资源的模块化，包括导入导出等
@@ -39,10 +45,258 @@
 * `webpack proxy`，即`webpack`提供的代理服务功能；基本行为就是接收客户端发送的请求后转发给其他服务器；其目的是为了便于开发者
 在开发模式下解决跨域问题（浏览器安全策略限制）
 
-* `webpack`构建性能优化：
+* `webpack`配置项`mode`：`string: none|developement|production`，用于指定`webpack`构建情景并自动使用相应的优化
+  * `developement`: 主要体现在增量构建和开发体验（例如热模块替换、source map、proxy等）上的优化
+  * `production`：主要体现在代码压缩、Tree Shaking等方面的优化
+
+## `webpack`代码分离：
+
+  * 入口配置：以lodash为例，将固定复用的代码写在一个js文件中，然后放在`entry`入口配置里（该
+  方法有隐患且不够灵活，建议谨慎使用😐）
+
+    ```javascript
+    // 这种方式会导致如果'./src/lodash.js'和'./src/index.js'导入了相同模块X的时候，模块X
+    // 会被重复打包
+    const HtmlWebpackPlugin = require('html-webpack-plugin');
+    const path = require('path');
+    module.exports = {
+      mode: 'development',
+      entry: {
+        lodash: './src/lodash.js', // 注意顺序，lodash 写在前面
+        index: './src/index.js' // 这样 index.js 的代码才能用到 lodash
+      },
+      output: {
+        filename: '[name].js',
+        path: path.resolve(__dirname, 'dist'),
+      },
+      plugins: [
+        new HtmlWebpackPlugin({
+          filename: 'index.html'
+        })
+      ]
+    }
+
+    // 另一种改进的方法，避免重复打包
+    const HtmlWebpackPlugin = require('html-webpack-plugin');
+    const path = require('path');
+    module.exports = {
+      mode: 'development',
+      entry: {
+        lodash: {
+          import: './src/lodash.js',
+          dependOn: 'shared'
+        },
+        index: {
+          import: './src/index.js',
+          dependOn: 'shared'
+        },
+        shared: 'lodash'
+      },
+      output: {
+        filename: '[name].js',
+        path: path.resolve(__dirname, 'dist'),
+      },
+      optimization: {
+        runtimeChunk: 'single'
+      },
+      plugins: [
+        new HtmlWebpackPlugin({
+          filename: 'index.html'
+        })
+      ]
+    }
+    ```
+  * Code Splitting：
+    * 异步代码分离（默认，异步引用的代码为`import('path/to/async/code.js')`）：`webpack`提供了代码分离的
+    特性，默认是将异步代码按照以下方式进行代码分离
+
+      ```javascript
+      module.exports = {
+        //...
+        optimization: {
+          splitChunks: {
+            chunks: 'async', // 同步 or 异步，这里是异步
+            minSize: 20000, // 如果模块大小小于20kb，则不会被分割
+            minRemainingSize: 0, // 最小可保存大小，开发模式下为 0，其他情况下等于 minSize，一般不用手动配置
+            minChunks: 1, // 如果模块被引用次数小于这个值，则不会被分割
+            maxAsyncRequests: 30, // 异步模块，一次最多被加载的次数
+            maxInitialRequests: 30, // 入口模块最多被加载的次数
+            enforceSizeThreshold: 50000, // 强制分割的大小阈值 50kb
+            cacheGroups: { // 缓存组
+              // 打包第三方库
+              defaultVendors: {
+                test: /[\\/]node_modules[\\/]/, // 正则匹配第三方库文件
+                priority: -10, // 优先级
+                reuseExistingChunk: true, // 如果一个模块已经被打包过了，那么这个模块也不会被打包
+              },
+              // 打包公共模块
+              default: {
+                minChunks: 2, // 被超过两个模块引用，才会被打包
+                priority: -20, // 优先级
+                reuseExistingChunk: true, // 如果一个模块已经被打包过了，那么这个模块也不会被打包
+              },
+            }
+          }
+        }
+      }
+      ```
+    * 同步代码分离：`optimization.splitChunks.chunks`的值设置为`all`，它表示：不管同步还是异步，都会进行代码分离
+      ```javascript
+      module.exports = {
+        //...
+        optimization: {
+          splitChunks: {
+            chunks: 'all', // 同步或异步
+            minSize: 100, // 自己设置最小分割大小
+            cacheGroups: { // 缓存组
+              // 打包第三方库
+              defaultVendors: {
+                test: /[\\/]node_modules[\\/]/, // 正则匹配第三方库文件
+                priority: -10, // 优先级
+                reuseExistingChunk: true, // 如果一个模块已经被打包过了，那么这个模块也不会被打包
+                filename: 'vendors.js' // 打包后的文件名
+              },
+              // 打包公共模块
+              default: {
+                minChunks: 2, // 被超过两个模块引用，才会被打包（可以去掉）
+                priority: -20, // 优先级
+                reuseExistingChunk: true, // 如果一个模块已经被打包过了，那么这个模块也不会被打包
+                filename: 'common.js' // 打包后的文件名
+              },
+            }
+          }
+        }
+      }
+      ```
+  * 预获取/预加载模块：
+    * 预获取`prefetch`：在浏览器加载完必要的资源后，空闲时就会去获取可能需要的资源
+    * 预加载`preload`：预先加载当前页面可能需要的资源，它与必要资源并行请求
+
+    ```javascript
+    // 使用注释“/* webpackPrefetch: true */”告诉webpack进行预获取
+    import(/* webpackPrefetch: true */ './assets/js/click.js')
+    // 使用注释“/* webpackPreload: true */”告诉webpack进行预加载
+    import(/* webpackPreload: true */ 'ChartingLibrary');
+    ```
+  * css代码分离：使用`MiniCssExtractPlugin.loader`取代`style-loader`进行css代码分离
+
+
+## `webpack`构建性能优化：
+
   * 分析工具：`webpackbar`、`speed-measure-webpack-plugin`、`webpack-bundle-analyzer`
   * 多线程构建：
     * 使用`thread-loader`：放置在此`loader`之后的`loader`会在一个独立的`worker`池中运行
+
+      ```javascript
+      module.exports = {
+        ...
+        module:{
+          rules:[
+            {
+                test: /\.js$/,
+                use: ['thread-loader','babel-loader']
+            }
+          ]
+        },
+        ...
+      }
+      ```
+
+  * 使用缓存提高二次构建速度：
+    * 使用`cache-loader`：在一些性能开销较大的`loader`之前添加此`cache-loader`，以将结果缓存到磁盘中
+
+      ```javascript
+      module.exports = {
+        ...
+        module: {
+          rules: [
+            {
+              test: /\.js$/,
+              use: ['cache-loader','babel-loader']
+            }
+          ]
+        }
+        ...
+      }
+      ```
+
+    * 对于`babel-loader`可以直接在`babel-loader`后面加上`?cacheDirectory=true`使用缓存
+
+      ```javascript
+      module.exports = {
+        ...
+        module: {
+          rules: [
+            {
+              test: /\.js$/,
+              use: ['babel-loader?cacheDirectory=true']
+            }
+          ]
+        }
+        ...
+      }
+      ```
+
+  * 使用动态链接库：
+
+    * 使用`DllPlugin`打包第三方库：新建一个`webpack`配置文件`webpack.dll.js`用于打包第三方库
+
+      ```javascript
+      const path = require('path')
+      const webpack = require('webpack')
+
+      module.exports = {
+        mode: 'production',
+        entry: {
+          three: ['three', 'dat.gui']   // 第三方库数组
+        },
+        output: {
+          filename: '[name].dll.js',    //[name]就是在entry
+          path: path.resolve(__dirname, 'dist/lib'),
+          library: '[name]'
+        },
+        plugins: [
+          new webpack.DllPlugin({
+            name: '[name]',
+            path: path.resolve(__dirname, 'dist/lib/[name].json') //manifest.json的存放位置
+          })
+        ]
+      }
+      ```
+
+    * 使用`DLLReferencePlugin`引用`manifest.json`，去关联上一步中已经打好的包
+
+      ```javascript
+      const path = require('path')
+      const webpack = require('webpack')
+      const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin'); // 顾名思义，把资源加到 html 里，那这个插件把 dll 加入到 index.html 里
+      module.exports = {
+        ...
+        plugins:[
+          //修改CleanWebpackPlugin配置
+          new CleanWebpackPlugin({
+            cleanOnceBeforeBuildPatterns: [  
+              '!lib/**'              //在每次清楚dist目录时，不清理lib文件夹的内容
+            ]
+          }),
+          // dll相关配置
+          new webpack.DllReferencePlugin({    
+            // 将manifest字段配置成我们第1步中打包出来的json文件
+            context: __dirname,
+            manifest: require('./dist/lib/three.json')  
+          }),
+          new AddAssetHtmlPlugin({
+            filepath: path.resolve(__dirname, 'dist/lib/three.dll.js'),
+            publicPath: './'
+          })
+        ]
+        ...
+      }
+      ```
+
+  * `include`/`exclude`：通常来说，`loader`会处理符合匹配规则的所有文件；比如`babel-loader`会遍历项目中用到的所有`js`文件，
+  对每个文件的代码进行编译转换；而`node_modules`里的`js`文件基本上都是转译好了的，不需要再次处理，所以我们用`include/exclude`
+  来帮我们避免这种不必要的转译
 
     ```javascript
     module.exports = {
@@ -51,126 +305,15 @@
         rules:[
           {
               test: /\.js$/,
-              use: ['thread-loader','babel-loader']
+              use: ['babel-loader'],
+              exclude: /node_modules/
+              //或者  include: [path.resolve(__dirname, 'src')]
           }
         ]
       },
       ...
     }
     ```
-
-  * 使用缓存提高二次构建速度：
-    * 使用`cache-loader`：在一些性能开销较大的`loader`之前添加此`cache-loader`，以将结果缓存到磁盘中
-
-    ```javascript
-    module.exports = {
-      ...
-      module: {
-        rules: [
-          {
-            test: /\.js$/,
-            use: ['cache-loader','babel-loader']
-          }
-        ]
-      }
-      ...
-    }
-    ```
-
-    * 对于`babel-loader`可以直接在`babel-loader`后面加上`?cacheDirectory=true`使用缓存
-
-    ```javascript
-    module.exports = {
-      ...
-      module: {
-        rules: [
-          {
-            test: /\.js$/,
-            use: ['babel-loader?cacheDirectory=true']
-          }
-        ]
-      }
-      ...
-    }
-    ```
-
-  * 使用动态链接库：
-
-    * 使用`DllPlugin`打包第三方库：新建一个`webpack`配置文件`webpack.dll.js`用于打包第三方库
-
-    ```javascript
-    const path = require('path')
-    const webpack = require('webpack')
-
-    module.exports = {
-      mode: 'production',
-      entry: {
-        three: ['three', 'dat.gui']   // 第三方库数组
-      },
-      output: {
-        filename: '[name].dll.js',    //[name]就是在entry
-        path: path.resolve(__dirname, 'dist/lib'),
-        library: '[name]'
-      },
-      plugins: [
-        new webpack.DllPlugin({
-          name: '[name]',
-          path: path.resolve(__dirname, 'dist/lib/[name].json') //manifest.json的存放位置
-        })
-      ]
-    }
-    ```
-
-    * 使用`DLLReferencePlugin`引用`manifest.json`，去关联上一步中已经打好的包
-
-    ```javascript
-    const path = require('path')
-    const webpack = require('webpack')
-    const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin'); // 顾名思义，把资源加到 html 里，那这个插件把 dll 加入到 index.html 里
-    module.exports = {
-      ...
-      plugins:[
-        //修改CleanWebpackPlugin配置
-        new CleanWebpackPlugin({
-          cleanOnceBeforeBuildPatterns: [  
-            '!lib/**'              //在每次清楚dist目录时，不清理lib文件夹的内容
-          ]
-        }),
-        // dll相关配置
-        new webpack.DllReferencePlugin({    
-          // 将manifest字段配置成我们第1步中打包出来的json文件
-          context: __dirname,
-          manifest: require('./dist/lib/three.json')  
-        }),
-        new AddAssetHtmlPlugin({
-          filepath: path.resolve(__dirname, 'dist/lib/three.dll.js'),
-          publicPath: './'
-        })
-      ]
-      ...
-    }
-    ```
-
-  * `include`/`exclude`：通常来说，`loader`会处理符合匹配规则的所有文件；比如`babel-loader`会遍历项目中用到的所有`js`文件，
-  对每个文件的代码进行编译转换；而`node_modules`里的`js`文件基本上都是转译好了的，不需要再次处理，所以我们用`include/exclude`
-  来帮我们避免这种不必要的转译
-
-  ```javascript
-  module.exports = {
-    ...
-    module:{
-      rules:[
-        {
-            test: /\.js$/,
-            use: ['babel-loader'],
-            exclude: /node_modules/
-            //或者  include: [path.resolve(__dirname, 'src')]
-        }
-      ]
-    },
-    ...
-  }
-  ```
 
   * 优化`resolve.alias`、`resolve.modules`、`resolve.extensions`
     * `resolve.alias`：给常用路径定义别名，减少路径查找过程
