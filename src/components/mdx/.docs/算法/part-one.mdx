@@ -1,0 +1,264 @@
+# Javascript中常见的关于算法的案例
+
+## List2Tree
+
+```javascript
+const list = [
+  { "name": "数据1", "parent": null, "id": 1 },
+  { "name": "数据2", "id": 2, "parent": 1 },
+  { "name": "数据3", "parent": 2, "id": 3 },
+  { "name": "数据4", "parent": 3, "id": 4 },
+  { "name": "数据5", "parent": 4, "id": 5 },
+  { "name": "数据6", "parent": 2, "id": 6 }
+];
+
+function listToTree(list) {
+  const map = {};
+  const roots = [];
+
+  // 首先将每个节点按照 id 存入 map
+  for (const item of list) {
+    map[item.id] = { ...item, children: [] };
+  }
+
+  for (const item of list) {
+    if (item.parent === null) {
+      // 顶级节点
+      roots.push(map[item.id]);
+    } else if (map[item.parent]) {
+      // 非顶级节点，找到父节点并添加到其 children 数组中
+      map[item.parent].children.push(map[item.id]);
+    }
+  }
+
+  return roots;
+}
+
+const tree = listToTree(list);
+console.log(tree)
+```
+
+## 树节点查找
+
+```javascript
+const tree = [
+  {
+    name: "数据1",
+    parent: null,
+    id: 1,
+    children: [
+      {
+        name: "数据2",
+        id: 2,
+        parent: 1,
+        children: [
+          {
+            name: "数据3",
+            parent: 2,
+            id: 3,
+            children: [
+              {
+                name: "数据4",
+                parent: 3,
+                id: 4,
+                children: [
+                  {
+                    name: "数据5",
+                    parent: 4,
+                    id: 5,
+                    children: []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            name: "数据6",
+            parent: 2,
+            id: 6,
+            children: []
+          }
+        ]
+      },
+      {
+        name: "数据7",
+        id: 7,
+        parent: 1,
+        children: null
+      }
+    ]
+  }
+];
+
+function look4TreeNodeById(tree, id) {
+  for(const root of tree || []) {
+    if (root.id === id) return root;
+    else {
+      const res = look4TreeNodeById(root.children || [], id);
+      if(res) return res;
+    }
+  }
+
+  return null;
+}
+
+console.log(look4TreeNodeById(tree, 7));
+```
+
+## 时间日期格式化
+
+```javascript
+Date.prototype.format = function (format) {
+  const date = this;
+
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const seconds = date.getSeconds();
+
+  format = format.replace('YYYY', year);
+  format = format.replace('MM', month.toString().padStart(2, '0'));
+  format = format.replace('DD', day.toString().padStart(2, '0'));
+  format = format.replace('HH', hours.toString().padStart(2, '0'));
+  format = format.replace('hh', (hours % 12).toString().padStart(2, '0'));
+  format = format.replace('mm', minutes.toString().padStart(2, '0'));
+  format = format.replace('ss', seconds.toString().padStart(2, '0'));
+
+  return format;
+};
+
+// 示例用法
+const date = new Date();
+const formattedDate = date.format('YYYY/MM/DD HH:mm:ss');
+console.log(formattedDate); // 输出结果为当前日期和时间的格式化字符串
+```
+
+## JS中创建可迭代对象
+
+```javascript
+// 可以应用 for..of 的对象被称为 可迭代的
+// Iterable 实现了 Symbol.iterator 方法的对象
+// Array-like 是有索引和 length 属性的对象，所以它们看起来很像数组
+// Array.from 可以接受一个可迭代或类数组的值，并从中获取一个“真正的”数组
+
+let range = {
+  from: 1,
+  to: 5
+};
+
+// 1. for..of 调用首先会调用这个：
+range[Symbol.iterator] = function() {
+  // 它返回迭代器对象（iterator object）：
+  // 接下来，for..of 仅与下面的迭代器对象一起工作，要求它提供下一个值
+  return {
+    current: this.from,
+    last: this.to,
+
+    // 3. next() 在 for..of 的每一轮循环迭代中被调用
+    next() {
+      // 4. 它将会返回 {done:.., value :...} 格式的对象
+      if (this.current <= this.last) {
+        return { done: false, value: this.current++ };
+      } else {
+        return { done: true };
+      }
+    }
+  };
+};
+
+for (let num of range) {
+  console.log(num); // 1, 然后是 2, 3, 4, 5
+}
+
+let list = {
+  start: 0,
+  end: 10,
+
+  [Symbol.iterator]: function* () {
+    for(let i = this.start; i < this.end; i++) {
+      yield i;
+    }
+  }
+}
+
+for (let li of list) {
+  console.log(li);
+}
+```
+
+## JS中引用数据的深克隆
+
+```javascript
+function deepClone(obj, visited = new WeakMap()) {
+    if (typeof obj !== "object" || obj === null) return obj;
+    // 防止循环引用
+    if (visited.has(obj)) {
+      return visited.get(obj);
+    }
+    // 获取对象的构造函数
+    const constructor = obj.constructor;
+    // 处理特殊对象类型~正则对象和时间对象
+    if(/^(RegExp|Date|WeakMap|WeakSet)/.test(constructor.name)) {
+        const res = new constructor(obj);
+        visited.set(obj, res);
+        return res;
+    }
+    // Map
+    if (constructor === Map) {
+      const map = new Map();
+      visited.set(obj, map);
+      obj.forEach((value, key) => {
+        map.set(key, deepClone(value, visited));
+      });
+      return map;
+    }
+    // Set
+    if (constructor === Set) {
+      const set = new Set();
+      visited.set(obj, set);
+      obj.forEach((value) => {
+        set.add(deepClone(value, visited));
+      });
+      return set;
+    }
+    // 处理函数对象和箭头函数
+    if(constructor === Function) {
+        let res;
+        if(!obj.hasOwnProperty("prototype")) { // 箭头函数
+            res = new Function(`return ${obj.toString()}`)()
+            visited.set(obj, res); // 避免循环引用
+            return res;
+        }
+        // 考虑到构造函数和普通对象
+        res = function(...args) {
+            return obj.call(this, ...args);
+        }
+        visited.set(obj, res); // 避免循环引用
+        // 普通对象的自身的属性，比如fn.a = 2这种静态属性
+        Object.keys(obj).forEach(key => res[key] = obj[key]);
+        // 原型继承，寄生组合继承，复制该函数的原型链
+        res.prototype = Object.create(obj.prototype);
+        res.prototype.constructor = res;
+        return res;
+    }
+    // 处理普通对象和数组
+    const result = Array.isArray(obj) ? [] : {};
+    visited.set(obj, result);
+    // 获取对象的所有属性名，包括不可枚举属性
+    const props = Object.getOwnPropertyNames(obj); // 不可枚举类型
+    const symbolProps = Object.getOwnPropertySymbols(obj); // Symbol类型
+    props.concat(symbolProps).forEach(key => {
+        const descriptor = Object.getOwnPropertyDescriptor(obj, key);
+        if(descriptor) {
+            const { value, writable, enumerable, configurable } = descriptor;
+            Object.defineProperty(result, key, {
+                value: deepClone(value, visited),
+                writable, enumerable, configurable
+            })
+        }
+    });
+    return result;
+}
+```
