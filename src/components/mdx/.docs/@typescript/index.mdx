@@ -34,12 +34,12 @@
   ```typescript
   // 创建枚举
   enum Direction { Up, Down, Left, Right }
-  ​
+
   // 使用枚举类型
   function changeDirection(direction: Direction) {
     console.log(direction)
   }
-  ​
+
   // 调用函数时，需要应该传入：枚举 Direction 成员的任意一个
   // 类似于 JS 中的对象，直接通过 点（.）语法 访问枚举的成员
   changeDirection(Direction.Up)
@@ -52,7 +52,7 @@
   ```typescript
   // 创建一个接口
   interface ILength { length: number }
-  ​
+
   // Type extends ILength 添加泛型约束
   // 解释：表示传入的 类型 必须满足 ILength 接口的要求才行，也就是得有一个 number 类型的 length 属性
   function id<Type extends ILength>(value: Type): Type {

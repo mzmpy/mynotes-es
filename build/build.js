@@ -22,6 +22,8 @@ import path from 'path'
 const prefix = '/mynotes-es'
 const DRACOPATH = '/resource/three/gltf'
 const MODELSRESOURCEPATH = '/resource/three/models'
+const ONIGASMPATH = '/resource/onigasm'
+const MDXPATH = '/resource/mdx'
 
 let timeInMS = new Date()
 
@@ -39,11 +41,15 @@ const result = await esbuild.build({
     '.js': 'jsx',
     '.ttf': 'file',
     '.woff': 'file',
-    '.woff2': 'file'
+    '.woff2': 'file',
+    '.json': 'json'
   },
   define: {
+    PUBLICPATH: `'${prefix}'`,
     DRACOPATH: `'${prefix + DRACOPATH}/'`,
     MODELSRESOURCEPATH: `'${prefix + MODELSRESOURCEPATH}'`,
+    ONIGASMPATH: `'${prefix + ONIGASMPATH}'`,
+    MDXPATH: `'${prefix + MDXPATH}'`
   },
   alias: {
     '@/*': './src/*',
@@ -99,6 +105,14 @@ const result = await esbuild.build({
         {
           from: ['./node_modules/three/examples/jsm/libs/draco/gltf/**/*'],
           to: [`.${DRACOPATH}`]
+        },
+        {
+          from: './node_modules/onigasm/lib/onigasm.wasm',
+          to: [`.${ONIGASMPATH}`]
+        },
+        {
+          from: ['./src/assets/mdx/**/*'],
+          to: [`.${MDXPATH}`]
         }
       ]
     }),

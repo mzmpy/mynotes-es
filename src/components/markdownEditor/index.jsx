@@ -3,11 +3,14 @@ import {
   onMounted,
   ref
 } from 'vue'
-import * as monaco from 'monaco-editor'
-import { monacoTextmate, initTextmate } from './textmate.js'
+import * as monaco from 'monaco-editor-core'
+import { URI } from 'vscode-uri'
+import { loadGrammars, initOnigasm } from './textmate.js'
 import { loadWASM } from 'onigasm'
 import codeSandBoxTheme from './themes/codeSandBox.json'
+import { initMonacoEnv, getOrCreateModel, setMDXConfiguration } from './env.js'
 import styles from './index.module.css'
+import createStore from '@/store/index.js'
 
 export default defineComponent({
   name: 'MarkdownEditor',
@@ -24,38 +27,50 @@ export default defineComponent({
   emits: ['codeChanged'],
   setup(props, { emit }) {
     const editorRef = ref()
+    const store = createStore()
     let editorInstance = null
 
+    initMonacoEnv(store)
+
     onMounted(async () => {
-      await initTextmate()
+      await initOnigasm()
       monaco.editor.defineTheme('vs-code-theme-converted', codeSandBoxTheme)
 
+      const model = getOrCreateModel(props.initialCode, 'mdx', URI.parse('file:///demo.mdx'))
       editorInstance = monaco.editor.create(editorRef.value, {
-        model: null,
+        model: model,
         theme: 'vs-code-theme-converted',
-        automaticLayout: true
+        automaticLayout: true,
+        inlineSuggest: {
+          enabled: false,
+        }
       })
-      updateDoc(editorInstance, props.initialCode, 'mdx')
-      monacoTextmate(monaco, editorInstance, 'mdx')
+      await loadGrammars(monaco, editorInstance)
+      setMDXConfiguration()
+
+      // Support for semantic highlighting
+      const t = editorInstance._themeService._theme
+      t.semanticHighlighting = true
+      t.getTokenStyleMetadata = (type, modifiers, _language) => {
+        const _readonly = modifiers.includes('readonly')
+        switch (type) {
+          case 'function':
+          case 'method':
+            return { foreground: 12 }
+          case 'class':
+            return { foreground: 11 }
+          case 'variable':
+          case 'property':
+            return { foreground: _readonly ? 19 : 9 }
+          default:
+            return { foreground: 0 }
+        }
+      }
       
       editorInstance.onDidChangeModelContent(() => {
         emit('codeChanged', editorInstance.getValue())
       })
     })
-
-    const updateDoc = (editor, code, language) => {
-      if(!editor) {
-        return
-      }
-
-      const oldModel = editor.getModel()
-      const newModel = monaco.editor.createModel(code, language)
-      editor.setModel(newModel)
-
-      if (oldModel) {
-        oldModel.dispose()
-      }
-    }
 
     return () => {
       return <>

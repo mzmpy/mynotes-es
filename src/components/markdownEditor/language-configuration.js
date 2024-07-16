@@ -55,8 +55,8 @@ export default {
   folding: {
     offSide: true,
     markers: {
-      start: "^\\s*{/*\\s*#?region\\b.**/}",
-      end: "^\\s*{/*\\s*#?endregion\\b.**/}"
+      start: /^\s*\/\/\s*#?region\b/,
+      end: /^\s*\/\/\s*#?endregion\b/
     }
   }
 }
