@@ -43,99 +43,98 @@ export default defineComponent({
       return marked(val)
     }
 
-    const mdText = 'export const pi = 3.141592657'
+    const mdText = 
+    `---
+title: Hello!
+---
 
-//     `---
-// title: Hello!
-// ---
+import {Chart} from './chart.js'
+import population from './population.js'
+import {External} from './some/place.js'
 
-// import {Chart} from './chart.js'
-// import population from './population.js'
-// import {External} from './some/place.js'
+export const year = 2018
+export const pi = 3.14
 
-// export const year = 2018
-// export const pi = 3.14
+export function SomeComponent(props) {
+  const name = (props || {}).name || 'world'
 
-// export function SomeComponent(props) {
-//   const name = (props || {}).name || 'world'
+  return <div>
+    <p>Hi, {name}!</p>
 
-//   return <div>
-//     <p>Hi, {name}!</p>
+    <p>and some more things</p>
+  </div>
+}
 
-//     <p>and some more things</p>
-//   </div>
-// }
+export function Local(props) {
+  return <span style={{color: 'red'}} {...props} />
+}
 
-// export function Local(props) {
-//   return <span style={{color: 'red'}} {...props} />
-// }
+# Last year's snowfall
 
-// # Last year's snowfall
+In {year}, the snowfall was above average.
+It was followed by a warm spring which caused
+flood conditions in many of the nearby rivers.
 
-// In {year}, the snowfall was above average.
-// It was followed by a warm spring which caused
-// flood conditions in many of the nearby rivers.
+<Chart year={year} color="#fcb32c" />
 
-// <Chart year={year} color="#fcb32c" />
+<div className="note">
+  Some notable things in a block quote!
+</div>
 
-// <div className="note">
-//   Some notable things in a block quote!
-// </div>
+# Heading (rank 1)
+## Heading 2
+### 3
+#### 4
+##### 5
+###### 6
 
-// # Heading (rank 1)
-// ## Heading 2
-// ### 3
-// #### 4
-// ##### 5
-// ###### 6
+> Block quote
 
-// > Block quote
+* Unordered
+* List
 
-// * Unordered
-// * List
+1. Ordered
+2. List
 
-// 1. Ordered
-// 2. List
+A paragraph, introducing a thematic break:
 
-// A paragraph, introducing a thematic break:
+---
 
-// ---
+\`\`\`js
+// Get an element.
+const element = document.querySelectorAll('#hi')
 
-// \`\`\`js
-// // Get an element.
-// const element = document.querySelectorAll('#hi')
+// Add a class.
+element.classList.add('asd')
+\`\`\`
 
-// // Add a class.
-// element.classList.add('asd')
-// \`\`\`
+a [link](https://example.com), an ![image](./image.png), some *emphasis*,
+something **strong**, and finally a little \`code()\`.
 
-// a [link](https://example.com), an ![image](./image.png), some *emphasis*,
-// something **strong**, and finally a little \`code()\`.
+<Component
+  open
+  x={1}
+  label={'this is a string, *not* markdown!'}
+  icon={<Icon />}
+/>
 
-// <Component
-//   open
-//   x={1}
-//   label={'this is a string, *not* markdown!'}
-//   icon={<Icon />}
-// />
+Two 🍰 is: {Math.PI * 2}
 
-// Two 🍰 is: {Math.PI * 2}
+{(function () {
+  const guess = Math.random()
 
-// {(function () {
-//   const guess = Math.random()
+  if (guess > 0.66) {
+    return <span style={{color: 'tomato'}}>Look at us.</span>
+  }
 
-//   if (guess > 0.66) {
-//     return <span style={{color: 'tomato'}}>Look at us.</span>
-//   }
+  if (guess > 0.33) {
+    return <span style={{color: 'violet'}}>Who would have guessed?!</span>
+  }
 
-//   if (guess > 0.33) {
-//     return <span style={{color: 'violet'}}>Who would have guessed?!</span>
-//   }
+  return <span style={{color: 'goldenrod'}}>Not me.</span>
+})()}
 
-//   return <span style={{color: 'goldenrod'}}>Not me.</span>
-// })()}
-
-// {/* A comment! */}`
+{/* A comment! */}`
 
     const markedContent = ref('')
     const drawer = ref(false)

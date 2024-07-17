@@ -27,6 +27,7 @@ self.onmessage = async (msg) => {
     )
     const asFileName = uri => uri.path
     const asUri = fileName => URI.file(fileName)
+    const tsServicePlugins = createTypeScriptPlugins(ts)
 
     return createTypeScriptWorkerService({
       env: {
@@ -43,7 +44,6 @@ self.onmessage = async (msg) => {
           },
           (pkgName) => dependencies[pkgName],
           (path, content) => {
-            console.log(path, content)
             ctx.host.onFetchCdnFile(
               asUri('/node_modules/' + path).toString(),
               content,
@@ -58,9 +58,11 @@ self.onmessage = async (msg) => {
       },
       typescript: ts,
       compilerOptions: compilerOptions,
-      languagePlugins: [createMdxLanguagePlugin()],
+      languagePlugins: [
+        createMdxLanguagePlugin()
+      ],
       languageServicePlugins: [
-        ...createTypeScriptPlugins(ts),
+        ...tsServicePlugins,
         createMdxServicePlugin()
       ],
       setup({ project }) {

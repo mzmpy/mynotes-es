@@ -41,9 +41,14 @@ export default defineComponent({
         model: model,
         theme: 'vs-code-theme-converted',
         automaticLayout: true,
+        scrollBeyondLastLine: false,
+        minimap: {
+          enabled: false,
+        },
         inlineSuggest: {
           enabled: false,
-        }
+        },
+        fixedOverflowWidgets: true
       })
       await loadGrammars(monaco, editorInstance)
       setMDXConfiguration()

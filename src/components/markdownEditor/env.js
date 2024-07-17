@@ -1,7 +1,7 @@
 import MdxWorker from '@/worker/mdx.worker.js?worker'
 import EditorWorker from 'monaco-editor-core/esm/vs/editor/editor.worker.js?worker'
 import { activateMarkers, activateAutoInsertion, registerProviders } from '@volar/monaco'
-import { editor, languages } from 'monaco-editor-core'
+import { editor, languages, Uri } from 'monaco-editor-core'
 import languageConfiguration from './language-configuration.js'
 
 let initted = false
@@ -39,7 +39,6 @@ function useVolarMonacoEnv(store) {
   
   let disposeMdx
   const setup = async () => {
-    console.log('mdx???')
     disposeMdx?.()
 
     const worker = editor.createWebWorker({
@@ -89,7 +88,7 @@ function useVolarMonacoEnv(store) {
   languages.onLanguage('mdx', setup)
 }
 
-export function getOrCreateModel(code, language, uri='') {
+export function getOrCreateModel(code='', language, uri='') {
   const model = editor.getModel(uri)
 
   if(model) {
@@ -101,46 +100,46 @@ export function getOrCreateModel(code, language, uri='') {
 }
 
 export function setMDXConfiguration() {
-  // languages.setLanguageConfiguration('mdx', languageConfiguration)
-  // languages.registerCompletionItemProvider('mdx', {
-  //   triggerCharacters: ['>'],
-  //   provideCompletionItems: (model, position) => {
-  //     const codePre = model.getValueInRange({
-  //       startLineNumber: position.lineNumber,
-  //       startColumn: 1,
-  //       endLineNumber: position.lineNumber,
-  //       endColumn: position.column
-  //     })
+  languages.setLanguageConfiguration('mdx', languageConfiguration)
+  languages.registerCompletionItemProvider('mdx', {
+    triggerCharacters: ['>'],
+    provideCompletionItems: (model, position) => {
+      const codePre = model.getValueInRange({
+        startLineNumber: position.lineNumber,
+        startColumn: 1,
+        endLineNumber: position.lineNumber,
+        endColumn: position.column
+      })
   
-  //     const tag = codePre.match(/.*<(\w+)>$/)?.[1]
+      const tag = codePre.match(/.*<(\w+)>$/)?.[1]
   
-  //     if (!tag) {
-  //       return {}
-  //     }
+      if (!tag) {
+        return {}
+      }
   
-  //     const word = model.getWordUntilPosition(position)
+      const word = model.getWordUntilPosition(position)
   
-  //     return {
-  //       suggestions: [
-  //         {
-  //           label: `</${tag}>`,
-  //           kind: languages.CompletionItemKind.EnumMember,
-  //           insertText: `</${tag}>`,
-  //           range:  {
-  //               startLineNumber: position.lineNumber,
-  //               endLineNumber: position.lineNumber,
-  //               startColumn: word.startColumn,
-  //               endColumn: word.endColumn,
-  //           }
-  //         }
-  //       ]
-  //     }
-  //   }
-  // })
+      return {
+        suggestions: [
+          {
+            label: `</${tag}>`,
+            kind: languages.CompletionItemKind.EnumMember,
+            insertText: `</${tag}>`,
+            range:  {
+                startLineNumber: position.lineNumber,
+                endLineNumber: position.lineNumber,
+                startColumn: word.startColumn,
+                endColumn: word.endColumn,
+            }
+          }
+        ]
+      }
+    }
+  })
 }
 
 class WorkerHost {
   onFetchCdnFile(uri, text) {
-    getOrCreateModel(Uri.parse(uri), undefined, text)
+    getOrCreateModel(text, undefined, Uri.parse(uri))
   }
 }
