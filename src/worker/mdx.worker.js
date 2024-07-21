@@ -1,3 +1,5 @@
+import './fix'
+
 import * as worker from 'monaco-editor-core/esm/vs/editor/editor.worker'
 import { createTypeScriptWorkerService } from "@volar/monaco/worker"
 import { create as createTypeScriptPlugins } from 'volar-service-typescript'

@@ -43,10 +43,16 @@ export default defineComponent({
       return marked(val)
     }
 
-    const mdText = 
-    `---
+    const mdText = `{/******* 这是一个MDX文档的模版，用于测试 *******/}
+
+---
 title: Hello!
 ---
+
+{/**
+  * @typedef Iprops
+  * @property {string} name
+  */}
 
 import {Chart} from './chart.js'
 import population from './population.js'
@@ -55,14 +61,19 @@ import {External} from './some/place.js'
 export const year = 2018
 export const pi = 3.14
 
+{/**
+  * @param {Iprops} props 
+  */}
 export function SomeComponent(props) {
   const name = (props || {}).name || 'world'
 
-  return <div>
-    <p>Hi, {name}!</p>
+  return (
+    <div>
+      <p>Hi, {name}!</p>
 
-    <p>and some more things</p>
-  </div>
+      <p>and some more things</p>
+    </div>
+  )
 }
 
 export function Local(props) {
@@ -134,7 +145,8 @@ Two 🍰 is: {Math.PI * 2}
   return <span style={{color: 'goldenrod'}}>Not me.</span>
 })()}
 
-{/* A comment! */}`
+{/* A comment! */}
+`
 
     const markedContent = ref('')
     const drawer = ref(false)

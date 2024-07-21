@@ -42,9 +42,6 @@ export default defineComponent({
         theme: 'vs-code-theme-converted',
         automaticLayout: true,
         scrollBeyondLastLine: false,
-        minimap: {
-          enabled: false,
-        },
         inlineSuggest: {
           enabled: false,
         },

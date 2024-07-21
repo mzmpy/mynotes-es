@@ -24,6 +24,7 @@
     "@volar/monaco": "^2.4.0-alpha.12",
     "element-plus": "^2.2.19",
     "gl-matrix": "^3.4.3",
+    "he": "^1.2.0",
     "highlight.js": "^11.7.0",
     "monaco-editor-core": "^0.50.0",
     "monaco-editor-textmate": "^4.0.0",

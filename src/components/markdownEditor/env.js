@@ -114,12 +114,15 @@ export function setMDXConfiguration() {
       const tag = codePre.match(/.*<(\w+)>$/)?.[1]
   
       if (!tag) {
-        return {}
+        return {
+          suggestions: []
+        }
       }
   
       const word = model.getWordUntilPosition(position)
   
       return {
+        incomplete: true,
         suggestions: [
           {
             label: `</${tag}>`,
