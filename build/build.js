@@ -3,7 +3,6 @@ import esbuildPluginParcelCss from '../plugins/esbuild-plugin-parcel-css/index.j
 import esbuildPluginHtml from '../plugins/esbuild-plugin-html/index.js'
 import esbuildPluginSmartImport from '../plugins/esbuild-plugin-elementplus-smartimport/index.js'
 import esbuildPluginJsxImportSource, { esbuildMdxJsxImportSource } from '../plugins/esbuild-plugin-jsx-import-source/index.js'
-import esbuildPluginMonacoEditor from '../plugins/esbuild-plugin-monaco-editor/index.js'
 import esbuildPluginMdxToVueComponent from '../plugins/esbuild-plugin-mdx-to-vueComponent/index.js'
 import esbuildMDX from '@mdx-js/esbuild'
 import esbuildPluginNoteRoute from '../plugins/esbuild-plugin-note-route/index.js'
@@ -22,8 +21,6 @@ import path from 'path'
 const prefix = '/mynotes-es'
 const DRACOPATH = '/resource/three/gltf'
 const MODELSRESOURCEPATH = '/resource/three/models'
-const ONIGASMPATH = '/resource/onigasm'
-const MDXPATH = '/resource/mdx'
 
 let timeInMS = new Date()
 
@@ -47,9 +44,7 @@ const result = await esbuild.build({
   define: {
     PUBLICPATH: `'${prefix}'`,
     DRACOPATH: `'${prefix + DRACOPATH}/'`,
-    MODELSRESOURCEPATH: `'${prefix + MODELSRESOURCEPATH}'`,
-    ONIGASMPATH: `'${prefix + ONIGASMPATH}'`,
-    MDXPATH: `'${prefix + MDXPATH}'`
+    MODELSRESOURCEPATH: `'${prefix + MODELSRESOURCEPATH}'`
   },
   alias: {
     '@/*': './src/*',
@@ -78,7 +73,6 @@ const result = await esbuild.build({
     esbuildPluginJsxImportSource({
       jsxImportSource: 'vue'
     }),
-    esbuildPluginMonacoEditor(),
     esbuildPluginMdxToVueComponent({
       include: ['./src/router/routes']
     }), // This plugin must be front of plugin esbuildMDX, just like what the order is shown here.
@@ -105,14 +99,6 @@ const result = await esbuild.build({
         {
           from: ['./node_modules/three/examples/jsm/libs/draco/gltf/**/*'],
           to: [`.${DRACOPATH}`]
-        },
-        {
-          from: './node_modules/onigasm/lib/onigasm.wasm',
-          to: [`.${ONIGASMPATH}`]
-        },
-        {
-          from: ['./src/assets/mdx/**/*'],
-          to: [`.${MDXPATH}`]
         }
       ]
     }),

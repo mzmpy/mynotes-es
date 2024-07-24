@@ -5,12 +5,10 @@ import {
 } from 'vue'
 import * as monaco from 'monaco-editor-core'
 import { URI } from 'vscode-uri'
-import { loadGrammars, initOnigasm } from './textmate.js'
-import { loadWASM } from 'onigasm'
-import codeSandBoxTheme from './themes/codeSandBox.json'
 import { initMonacoEnv, getOrCreateModel, setMDXConfiguration } from './env.js'
 import styles from './index.module.css'
 import createStore from '@/store/index.js'
+import { highlight } from './highlight.js'
 
 export default defineComponent({
   name: 'MarkdownEditor',
@@ -33,13 +31,15 @@ export default defineComponent({
     initMonacoEnv(store)
 
     onMounted(async () => {
-      await initOnigasm()
-      monaco.editor.defineTheme('vs-code-theme-converted', codeSandBoxTheme)
+      const themes = await highlight({
+        langs: ['javascript', 'typescript', 'tsx', 'jsx', 'mdx'],
+        themes: ['tokyo-night']
+      })
 
       const model = getOrCreateModel(props.initialCode, 'mdx', URI.parse('file:///demo.mdx'))
       editorInstance = monaco.editor.create(editorRef.value, {
         model: model,
-        theme: 'vs-code-theme-converted',
+        theme: themes['tokyo-night'],
         automaticLayout: true,
         scrollBeyondLastLine: false,
         inlineSuggest: {
@@ -47,7 +47,6 @@ export default defineComponent({
         },
         fixedOverflowWidgets: true
       })
-      await loadGrammars(monaco, editorInstance)
       setMDXConfiguration()
 
       // Support for semantic highlighting
