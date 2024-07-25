@@ -8,14 +8,14 @@ import '@mdx-constituents/styles/@html/layout.css'
 
   * BFC的块不会和浮动块重叠
   * 计算BFC元素的高度时，会包括浮动元素
-  * 在一个BFC下的块 margin 会发生重叠，不在同一个则不会
+  * 在一个BFC下的块margin会发生重叠，不在同一个则不会
   * BFC元素是一个独立的容器，使得里面的元素和外部元素隔离开，互不影响
 
 * 触发BFC
 
   * `float`的值不为`none`
-  * `overflow`的值为`auto`, `scroll`和`hidden`
-  * `display`的值为`table-cell`, `table-caption`和`inline-block`
+  * `overflow`的值为`auto`，`scroll`和`hidden`
+  * `display`的值为`inline-block`，`inline-flex`，`flex`，`table-cell`，`table-caption`和`flow-root`
   * `position`设置为`absolute`和`fixed`
   * `html`元素本身默认就是一个BFC元素
 
@@ -23,7 +23,7 @@ import '@mdx-constituents/styles/@html/layout.css'
 
 * 水平垂直居中
 
-  1. 栗子一
+  1. 栗子一：定位+`margin: auto`
 
     <div style="
       width: 100%;
@@ -73,7 +73,7 @@ import '@mdx-constituents/styles/@html/layout.css'
     </div>
     ```
   
-  2. 栗子二
+  2. 栗子二：定位+`transform`
 
     <div style="
       width: 100%;
@@ -115,7 +115,7 @@ import '@mdx-constituents/styles/@html/layout.css'
     </div>
     ```
   
-  3. 栗子三
+  3. 栗子三：伪元素+`vertical-align: middle`
 
     <div class="vc" style="
       width: 100%;
@@ -159,7 +159,7 @@ import '@mdx-constituents/styles/@html/layout.css'
     </div>
     ```
   
-  4. 栗子四
+  4. 栗子四：`flex`布局
 
     <div style="
       display: flex;
