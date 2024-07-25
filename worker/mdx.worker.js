@@ -284,9 +284,9 @@
     }
   });
 
-  // node_modules/@volar/source-map/lib/binarySearch.js
+  // node_modules/@volar/monaco/node_modules/@volar/source-map/lib/binarySearch.js
   var require_binarySearch = __commonJS({
-    "node_modules/@volar/source-map/lib/binarySearch.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/source-map/lib/binarySearch.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.binarySearch = binarySearch;
@@ -315,30 +315,16 @@
     }
   });
 
-  // node_modules/@volar/source-map/lib/translateOffset.js
+  // node_modules/@volar/monaco/node_modules/@volar/source-map/lib/translateOffset.js
   var require_translateOffset = __commonJS({
-    "node_modules/@volar/source-map/lib/translateOffset.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/source-map/lib/translateOffset.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.translateOffset = translateOffset;
-      var warned = false;
       function translateOffset(start2, fromOffsets, toOffsets, fromLengths, toLengths = fromLengths) {
         const isSorted = fromOffsets.every((value, index4) => index4 === 0 || fromOffsets[index4 - 1] <= value);
         if (!isSorted) {
-          for (let i = 0; i < fromOffsets.length; i++) {
-            const fromOffset = fromOffsets[i];
-            const fromLength = fromLengths[i];
-            if (start2 >= fromOffset && start2 <= fromOffset + fromLength) {
-              const toLength = toLengths[i];
-              const toOffset = toOffsets[i];
-              let rangeOffset = Math.min(start2 - fromOffset, toLength);
-              return toOffset + rangeOffset;
-            }
-          }
-          if (!warned) {
-            warned = true;
-            console.warn("fromOffsets should be sorted in ascending order");
-          }
+          throw new Error("fromOffsets must be sorted in ascending order");
         }
         let low = 0;
         let high = fromOffsets.length - 1;
@@ -361,9 +347,9 @@
     }
   });
 
-  // node_modules/@volar/source-map/lib/sourceMap.js
+  // node_modules/@volar/monaco/node_modules/@volar/source-map/lib/sourceMap.js
   var require_sourceMap = __commonJS({
-    "node_modules/@volar/source-map/lib/sourceMap.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/source-map/lib/sourceMap.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.SourceMap = void 0;
@@ -469,9 +455,9 @@
     }
   });
 
-  // node_modules/@volar/source-map/index.js
+  // node_modules/@volar/monaco/node_modules/@volar/source-map/index.js
   var require_source_map = __commonJS({
-    "node_modules/@volar/source-map/index.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/source-map/index.js"(exports3) {
       "use strict";
       var __createBinding = exports3 && exports3.__createBinding || (Object.create ? function(o, m, k, k2) {
         if (k2 === void 0)
@@ -499,9 +485,9 @@
     }
   });
 
-  // node_modules/@volar/language-core/lib/editorFeatures.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-core/lib/editorFeatures.js
   var require_editorFeatures = __commonJS({
-    "node_modules/@volar/language-core/lib/editorFeatures.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-core/lib/editorFeatures.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.isHoverEnabled = isHoverEnabled;
@@ -611,9 +597,9 @@
     }
   });
 
-  // node_modules/@volar/language-core/lib/linkedCodeMap.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-core/lib/linkedCodeMap.js
   var require_linkedCodeMap = __commonJS({
-    "node_modules/@volar/language-core/lib/linkedCodeMap.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-core/lib/linkedCodeMap.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.LinkedCodeMap = void 0;
@@ -632,17 +618,17 @@
     }
   });
 
-  // node_modules/@volar/language-core/lib/types.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-core/lib/types.js
   var require_types = __commonJS({
-    "node_modules/@volar/language-core/lib/types.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-core/lib/types.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
     }
   });
 
-  // node_modules/@volar/language-core/lib/utils.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-core/lib/utils.js
   var require_utils = __commonJS({
-    "node_modules/@volar/language-core/lib/utils.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-core/lib/utils.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.FileMap = void 0;
@@ -681,9 +667,9 @@
     }
   });
 
-  // node_modules/@volar/language-core/index.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-core/index.js
   var require_language_core = __commonJS({
-    "node_modules/@volar/language-core/index.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-core/index.js"(exports3) {
       "use strict";
       var __createBinding = exports3 && exports3.__createBinding || (Object.create ? function(o, m, k, k2) {
         if (k2 === void 0)
@@ -1553,9 +1539,9 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/utils/cancellation.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/cancellation.js
   var require_cancellation = __commonJS({
-    "node_modules/@volar/language-service/lib/utils/cancellation.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/cancellation.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.NoneCancellationToken = void 0;
@@ -1567,9 +1553,9 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/utils/featureWorkers.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/featureWorkers.js
   var require_featureWorkers = __commonJS({
-    "node_modules/@volar/language-service/lib/utils/featureWorkers.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/featureWorkers.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.documentFeatureWorker = documentFeatureWorker;
@@ -1734,17 +1720,19 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideAutoInsertSnippet.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideAutoInsertSnippet.js
   var require_provideAutoInsertSnippet = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideAutoInsertSnippet.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideAutoInsertSnippet.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
       var language_core_1 = require_language_core();
+      var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
       var featureWorkers_1 = require_featureWorkers();
       function register2(context) {
-        return (uri, selection, change, token = cancellation_1.NoneCancellationToken) => {
+        return (_uri, selection, change, token = cancellation_1.NoneCancellationToken) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           return (0, featureWorkers_1.languageFeatureWorker)(context, uri, () => ({ selection, change }), function* (docs) {
             for (const mappedPosition of (0, featureWorkers_1.getGeneratedPositions)(docs, selection, language_core_1.isAutoInsertEnabled)) {
               for (const mapped of docs[2].toGeneratedLocation(change.rangeOffset)) {
@@ -1770,9 +1758,9 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/utils/dedupe.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/dedupe.js
   var require_dedupe = __commonJS({
-    "node_modules/@volar/language-service/lib/utils/dedupe.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/dedupe.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.createLocationSet = createLocationSet;
@@ -1895,9 +1883,9 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideCallHierarchyItems.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideCallHierarchyItems.js
   var require_provideCallHierarchyItems = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideCallHierarchyItems.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideCallHierarchyItems.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
@@ -1908,7 +1896,8 @@
       var featureWorkers_1 = require_featureWorkers();
       function register2(context) {
         return {
-          getCallHierarchyItems(uri, position4, token = cancellation_1.NoneCancellationToken) {
+          getCallHierarchyItems(_uri, position4, token = cancellation_1.NoneCancellationToken) {
+            const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
             return (0, featureWorkers_1.languageFeatureWorker)(context, uri, () => position4, (docs) => (0, featureWorkers_1.getGeneratedPositions)(docs, position4, language_core_1.isCallHierarchyEnabled), async (plugin, document5, position5, map4) => {
               if (token.isCancellationRequested) {
                 return;
@@ -2057,9 +2046,9 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/utils/common.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/common.js
   var require_common = __commonJS({
-    "node_modules/@volar/language-service/lib/utils/common.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/common.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.findOverlapCodeRange = findOverlapCodeRange;
@@ -2148,9 +2137,9 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/utils/transform.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/transform.js
   var require_transform = __commonJS({
-    "node_modules/@volar/language-service/lib/utils/transform.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/transform.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.transformDocumentLinkTarget = transformDocumentLinkTarget;
@@ -2569,20 +2558,22 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideCodeActions.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideCodeActions.js
   var require_provideCodeActions = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideCodeActions.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideCodeActions.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
       var language_core_1 = require_language_core();
+      var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
       var common_1 = require_common();
       var dedupe = require_dedupe();
       var featureWorkers_1 = require_featureWorkers();
       var transform_1 = require_transform();
       function register2(context) {
-        return async (uri, range, codeActionContext, token = cancellation_1.NoneCancellationToken) => {
+        return async (_uri, range, codeActionContext, token = cancellation_1.NoneCancellationToken) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           const sourceScript = context.language.scripts.get(uri);
           if (!sourceScript) {
             return;
@@ -2664,17 +2655,19 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideCodeLenses.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideCodeLenses.js
   var require_provideCodeLenses = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideCodeLenses.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideCodeLenses.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
       var language_core_1 = require_language_core();
+      var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
       var featureWorkers_1 = require_featureWorkers();
       function register2(context) {
-        return async (uri, token = cancellation_1.NoneCancellationToken) => {
+        return async (_uri, token = cancellation_1.NoneCancellationToken) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           return await (0, featureWorkers_1.documentFeatureWorker)(context, uri, (docs) => docs[2].mappings.some((mapping) => (0, language_core_1.isCodeLensEnabled)(mapping.data)), async (plugin, document5) => {
             if (token.isCancellationRequested) {
               return;
@@ -2726,17 +2719,19 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideColorPresentations.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideColorPresentations.js
   var require_provideColorPresentations = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideColorPresentations.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideColorPresentations.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
       var language_core_1 = require_language_core();
+      var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
       var featureWorkers_1 = require_featureWorkers();
       function register2(context) {
-        return (uri, color3, range, token = cancellation_1.NoneCancellationToken) => {
+        return (_uri, color3, range, token = cancellation_1.NoneCancellationToken) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           return (0, featureWorkers_1.languageFeatureWorker)(context, uri, () => range, function* (docs) {
             for (const mappedRange of (0, featureWorkers_1.getGeneratedRanges)(docs, range, language_core_1.isColorEnabled)) {
               yield mappedRange;
@@ -2775,9 +2770,9 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideCompletionItems.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideCompletionItems.js
   var require_provideCompletionItems = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideCompletionItems.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideCompletionItems.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
@@ -2788,7 +2783,8 @@
       var transform_1 = require_transform();
       function register2(context) {
         let lastResult;
-        return async (uri, position4, completionContext = { triggerKind: 1 }, token = cancellation_1.NoneCancellationToken) => {
+        return async (_uri, position4, completionContext = { triggerKind: 1 }, token = cancellation_1.NoneCancellationToken) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           let langaugeIdAndSnapshot;
           let sourceScript;
           const decoded = context.decodeEmbeddedDocumentUri(uri);
@@ -2961,9 +2957,9 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideDefinition.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDefinition.js
   var require_provideDefinition = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideDefinition.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDefinition.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
@@ -2972,7 +2968,8 @@
       var dedupe = require_dedupe();
       var featureWorkers_1 = require_featureWorkers();
       function register2(context, apiName, isValidPosition) {
-        return (uri, position4, token = cancellation_1.NoneCancellationToken) => {
+        return (_uri, position4, token = cancellation_1.NoneCancellationToken) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           return (0, featureWorkers_1.languageFeatureWorker)(context, uri, () => position4, (docs) => (0, featureWorkers_1.getGeneratedPositions)(docs, position4, isValidPosition), async (plugin, document5, position5) => {
             if (token.isCancellationRequested) {
               return;
@@ -3086,9 +3083,9 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/utils/uriMap.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/uriMap.js
   var require_uriMap = __commonJS({
-    "node_modules/@volar/language-service/lib/utils/uriMap.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/uriMap.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.createUriMap = createUriMap2;
@@ -3159,9 +3156,9 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideDiagnostics.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDiagnostics.js
   var require_provideDiagnostics = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideDiagnostics.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDiagnostics.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.errorMarkups = void 0;
@@ -3247,7 +3244,8 @@
           cacheMaps.semantic.clear();
           cacheMaps.syntactic.clear();
         });
-        return async (uri, response, token = cancellation_1.NoneCancellationToken) => {
+        return async (_uri, token = cancellation_1.NoneCancellationToken, response) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           let langaugeIdAndSnapshot;
           const decoded = context.decodeEmbeddedDocumentUri(uri);
           if (decoded) {
@@ -3387,17 +3385,19 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideDocumentColors.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentColors.js
   var require_provideDocumentColors = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideDocumentColors.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentColors.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
       var language_core_1 = require_language_core();
+      var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
       var featureWorkers_1 = require_featureWorkers();
       function register2(context) {
-        return (uri, token = cancellation_1.NoneCancellationToken) => {
+        return (_uri, token = cancellation_1.NoneCancellationToken) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           return (0, featureWorkers_1.documentFeatureWorker)(context, uri, (docs) => docs[2].mappings.some((mapping) => (0, language_core_1.isColorEnabled)(mapping.data)), (plugin, document5) => {
             if (token.isCancellationRequested) {
               return;
@@ -3422,17 +3422,19 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideDocumentDropEdits.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentDropEdits.js
   var require_provideDocumentDropEdits = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideDocumentDropEdits.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentDropEdits.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
+      var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
       var featureWorkers_1 = require_featureWorkers();
       var transform_1 = require_transform();
       function register2(context) {
-        return (uri, position4, dataTransfer, token = cancellation_1.NoneCancellationToken) => {
+        return (_uri, position4, dataTransfer, token = cancellation_1.NoneCancellationToken) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           return (0, featureWorkers_1.languageFeatureWorker)(context, uri, () => position4, function* (docs) {
             for (const mappedPosition of (0, featureWorkers_1.getGeneratedPositions)(docs, position4)) {
               yield mappedPosition;
@@ -3453,9 +3455,9 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideDocumentFormattingEdits.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentFormattingEdits.js
   var require_provideDocumentFormattingEdits = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideDocumentFormattingEdits.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentFormattingEdits.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
@@ -3466,7 +3468,8 @@
       var common_1 = require_common();
       var featureWorkers_1 = require_featureWorkers();
       function register2(context) {
-        return async (uri, options, range, onTypeParams, token = cancellation_1.NoneCancellationToken) => {
+        return async (_uri, options, range, onTypeParams, token = cancellation_1.NoneCancellationToken) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           const sourceScript = context.language.scripts.get(uri);
           if (!sourceScript) {
             return;
@@ -3676,9 +3679,9 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideDocumentHighlights.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentHighlights.js
   var require_provideDocumentHighlights = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideDocumentHighlights.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentHighlights.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
@@ -3688,7 +3691,8 @@
       var dedupe = require_dedupe();
       var featureWorkers_1 = require_featureWorkers();
       function register2(context) {
-        return (uri, position4, token = cancellation_1.NoneCancellationToken) => {
+        return (_uri, position4, token = cancellation_1.NoneCancellationToken) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           return (0, featureWorkers_1.languageFeatureWorker)(context, uri, () => position4, (docs) => (0, featureWorkers_1.getGeneratedPositions)(docs, position4, language_core_1.isHighlightEnabled), async (plugin, document5, position5) => {
             if (token.isCancellationRequested) {
               return;
@@ -3745,18 +3749,20 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideDocumentLinks.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentLinks.js
   var require_provideDocumentLinks = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideDocumentLinks.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentLinks.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
       var language_core_1 = require_language_core();
+      var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
       var featureWorkers_1 = require_featureWorkers();
       var transform_1 = require_transform();
       function register2(context) {
-        return async (uri, token = cancellation_1.NoneCancellationToken) => {
+        return async (_uri, token = cancellation_1.NoneCancellationToken) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           return await (0, featureWorkers_1.documentFeatureWorker)(context, uri, (docs) => docs[2].mappings.some((mapping) => (0, language_core_1.isDocumentLinkEnabled)(mapping.data)), async (plugin, document5) => {
             if (token.isCancellationRequested) {
               return;
@@ -3796,9 +3802,9 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/utils/SemanticTokensBuilder.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/SemanticTokensBuilder.js
   var require_SemanticTokensBuilder = __commonJS({
-    "node_modules/@volar/language-service/lib/utils/SemanticTokensBuilder.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/SemanticTokensBuilder.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.SemanticTokensBuilder = void 0;
@@ -3844,19 +3850,21 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideDocumentSemanticTokens.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentSemanticTokens.js
   var require_provideDocumentSemanticTokens = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideDocumentSemanticTokens.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentSemanticTokens.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
       var language_core_1 = require_language_core();
+      var vscode_uri_1 = require_umd();
       var SemanticTokensBuilder_1 = require_SemanticTokensBuilder();
       var cancellation_1 = require_cancellation();
       var common_1 = require_common();
       var featureWorkers_1 = require_featureWorkers();
       function register2(context) {
-        return async (uri, range, legend, _reportProgress, token = cancellation_1.NoneCancellationToken) => {
+        return async (_uri, range, legend, token = cancellation_1.NoneCancellationToken, _reportProgress) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           const sourceScript = context.language.scripts.get(uri);
           if (!sourceScript) {
             return;
@@ -3920,19 +3928,21 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideDocumentSymbols.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentSymbols.js
   var require_provideDocumentSymbols = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideDocumentSymbols.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentSymbols.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
       var language_core_1 = require_language_core();
+      var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
       var common_1 = require_common();
       var featureWorkers_1 = require_featureWorkers();
       var transform_1 = require_transform();
       function register2(context) {
-        return (uri, token = cancellation_1.NoneCancellationToken) => {
+        return (_uri, token = cancellation_1.NoneCancellationToken) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           return (0, featureWorkers_1.documentFeatureWorker)(context, uri, (docs) => docs[2].mappings.some((mapping) => (0, language_core_1.isSymbolsEnabled)(mapping.data)), (plugin, document5) => {
             if (token.isCancellationRequested) {
               return;
@@ -3976,9 +3986,9 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideFileReferences.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideFileReferences.js
   var require_provideFileReferences = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideFileReferences.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideFileReferences.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
@@ -3988,7 +3998,8 @@
       var dedupe = require_dedupe();
       var featureWorkers_1 = require_featureWorkers();
       function register2(context) {
-        return (uri, token = cancellation_1.NoneCancellationToken) => {
+        return (_uri, token = cancellation_1.NoneCancellationToken) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           return (0, featureWorkers_1.documentFeatureWorker)(context, uri, () => true, async (plugin, document5) => {
             if (token.isCancellationRequested) {
               return;
@@ -4018,17 +4029,20 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideFileRenameEdits.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideFileRenameEdits.js
   var require_provideFileRenameEdits = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideFileRenameEdits.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideFileRenameEdits.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
+      var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
       var dedupe = require_dedupe();
       var transform_1 = require_transform();
       function register2(context) {
-        return async (oldUri, newUri, token = cancellation_1.NoneCancellationToken) => {
+        return async (_oldUri, _newUri, token = cancellation_1.NoneCancellationToken) => {
+          const oldUri = _oldUri instanceof vscode_uri_1.URI ? _oldUri : vscode_uri_1.URI.from(_oldUri);
+          const newUri = _newUri instanceof vscode_uri_1.URI ? _newUri : vscode_uri_1.URI.from(_newUri);
           for (const plugin of context.plugins) {
             if (context.disabledServicePlugins.has(plugin[1])) {
               continue;
@@ -4053,18 +4067,20 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideFoldingRanges.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideFoldingRanges.js
   var require_provideFoldingRanges = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideFoldingRanges.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideFoldingRanges.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
       var language_core_1 = require_language_core();
+      var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
       var featureWorkers_1 = require_featureWorkers();
       var transform_1 = require_transform();
       function register2(context) {
-        return (uri, token = cancellation_1.NoneCancellationToken) => {
+        return (_uri, token = cancellation_1.NoneCancellationToken) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           return (0, featureWorkers_1.documentFeatureWorker)(context, uri, (docs) => docs[2].mappings.some((mapping) => (0, language_core_1.isFoldingRangesEnabled)(mapping.data)), (plugin, document5) => {
             if (token.isCancellationRequested) {
               return;
@@ -4081,20 +4097,22 @@
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideHover.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideHover.js
   var require_provideHover = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideHover.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideHover.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
       var language_core_1 = require_language_core();
+      var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
       var common_1 = require_common();
       var featureWorkers_1 = require_featureWorkers();
       var transform_1 = require_transform();
       var provideDiagnostics_1 = require_provideDiagnostics();
       function register2(context) {
-        return async (uri, position4, token = cancellation_1.NoneCancellationToken) => {
+        return async (_uri, position4, token = cancellation_1.NoneCancellationToken) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           let hover = await (0, featureWorkers_1.languageFeatureWorker)(context, uri, () => position4, (docs) => (0, featureWorkers_1.getGeneratedPositions)(docs, position4, language_core_1.isHoverEnabled), (plugin, document5, position5) => {
             if (token.isCancellationRequested) {
               return;
@@ -4180,19 +4198,21 @@ ${hover.contents.value}
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideInlayHints.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideInlayHints.js
   var require_provideInlayHints = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideInlayHints.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideInlayHints.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
       var language_core_1 = require_language_core();
+      var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
       var common_1 = require_common();
       var featureWorkers_1 = require_featureWorkers();
       var transform_1 = require_transform();
       function register2(context) {
-        return async (uri, range, token = cancellation_1.NoneCancellationToken) => {
+        return async (_uri, range, token = cancellation_1.NoneCancellationToken) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           const sourceScript = context.language.scripts.get(uri);
           if (!sourceScript) {
             return;
@@ -4240,17 +4260,19 @@ ${hover.contents.value}
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideLinkedEditingRanges.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideLinkedEditingRanges.js
   var require_provideLinkedEditingRanges = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideLinkedEditingRanges.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideLinkedEditingRanges.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
       var language_core_1 = require_language_core();
+      var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
       var featureWorkers_1 = require_featureWorkers();
       function register2(context) {
-        return (uri, position4, token = cancellation_1.NoneCancellationToken) => {
+        return (_uri, position4, token = cancellation_1.NoneCancellationToken) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           return (0, featureWorkers_1.languageFeatureWorker)(context, uri, () => position4, function* (docs) {
             for (const pos of (0, featureWorkers_1.getGeneratedPositions)(docs, position4, language_core_1.isLinkedEditingEnabled)) {
               yield pos;
@@ -4274,9 +4296,9 @@ ${hover.contents.value}
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideReferences.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideReferences.js
   var require_provideReferences = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideReferences.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideReferences.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
@@ -4286,7 +4308,8 @@ ${hover.contents.value}
       var dedupe = require_dedupe();
       var featureWorkers_1 = require_featureWorkers();
       function register2(context) {
-        return (uri, position4, referenceContext, token = cancellation_1.NoneCancellationToken) => {
+        return (_uri, position4, referenceContext, token = cancellation_1.NoneCancellationToken) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           return (0, featureWorkers_1.languageFeatureWorker)(context, uri, () => position4, (docs) => (0, featureWorkers_1.getGeneratedPositions)(docs, position4, language_core_1.isReferencesEnabled), async (plugin, document5, position5) => {
             if (token.isCancellationRequested) {
               return;
@@ -4356,9 +4379,9 @@ ${hover.contents.value}
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideRenameEdits.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideRenameEdits.js
   var require_provideRenameEdits = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideRenameEdits.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideRenameEdits.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
@@ -4370,7 +4393,8 @@ ${hover.contents.value}
       var featureWorkers_1 = require_featureWorkers();
       var transform_1 = require_transform();
       function register2(context) {
-        return (uri, position4, newName, token = cancellation_1.NoneCancellationToken) => {
+        return (_uri, position4, newName, token = cancellation_1.NoneCancellationToken) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           return (0, featureWorkers_1.languageFeatureWorker)(context, uri, () => ({ position: position4, newName }), function* (docs) {
             let _data;
             for (const mappedPosition of (0, featureWorkers_1.getGeneratedPositions)(docs, position4, (data2) => {
@@ -4499,17 +4523,19 @@ ${hover.contents.value}
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideRenameRange.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideRenameRange.js
   var require_provideRenameRange = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideRenameRange.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideRenameRange.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
       var language_core_1 = require_language_core();
+      var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
       var featureWorkers_1 = require_featureWorkers();
       function register2(context) {
-        return (uri, position4, token = cancellation_1.NoneCancellationToken) => {
+        return (_uri, position4, token = cancellation_1.NoneCancellationToken) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           return (0, featureWorkers_1.languageFeatureWorker)(context, uri, () => position4, (docs) => (0, featureWorkers_1.getGeneratedPositions)(docs, position4, language_core_1.isRenameEnabled), (plugin, document5, position5) => {
             if (token.isCancellationRequested) {
               return;
@@ -4536,19 +4562,21 @@ ${hover.contents.value}
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideSelectionRanges.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideSelectionRanges.js
   var require_provideSelectionRanges = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideSelectionRanges.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideSelectionRanges.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
       var language_core_1 = require_language_core();
+      var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
       var common_1 = require_common();
       var featureWorkers_1 = require_featureWorkers();
       var transform_1 = require_transform();
       function register2(context) {
-        return (uri, positions, token = cancellation_1.NoneCancellationToken) => {
+        return (_uri, positions, token = cancellation_1.NoneCancellationToken) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           return (0, featureWorkers_1.languageFeatureWorker)(context, uri, () => positions, function* (docs) {
             const result = positions.map((position4) => {
               for (const mappedPosition of (0, featureWorkers_1.getGeneratedPositions)(docs, position4, language_core_1.isSelectionRangesEnabled)) {
@@ -4608,20 +4636,22 @@ ${hover.contents.value}
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideSignatureHelp.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideSignatureHelp.js
   var require_provideSignatureHelp = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideSignatureHelp.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideSignatureHelp.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
       var language_core_1 = require_language_core();
+      var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
       var featureWorkers_1 = require_featureWorkers();
       function register2(context) {
-        return (uri, position4, signatureHelpContext = {
+        return (_uri, position4, signatureHelpContext = {
           triggerKind: 1,
           isRetrigger: false
         }, token = cancellation_1.NoneCancellationToken) => {
+          const uri = _uri instanceof vscode_uri_1.URI ? _uri : vscode_uri_1.URI.from(_uri);
           return (0, featureWorkers_1.languageFeatureWorker)(context, uri, () => position4, (docs) => (0, featureWorkers_1.getGeneratedPositions)(docs, position4, language_core_1.isSignatureHelpEnabled), (plugin, document5, position5) => {
             if (token.isCancellationRequested) {
               return;
@@ -4636,9 +4666,9 @@ ${hover.contents.value}
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideWorkspaceDiagnostics.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideWorkspaceDiagnostics.js
   var require_provideWorkspaceDiagnostics = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideWorkspaceDiagnostics.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideWorkspaceDiagnostics.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
@@ -4703,9 +4733,9 @@ ${hover.contents.value}
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/provideWorkspaceSymbols.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideWorkspaceSymbols.js
   var require_provideWorkspaceSymbols = __commonJS({
-    "node_modules/@volar/language-service/lib/features/provideWorkspaceSymbols.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideWorkspaceSymbols.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
@@ -4764,9 +4794,9 @@ ${hover.contents.value}
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/resolveCodeAction.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveCodeAction.js
   var require_resolveCodeAction = __commonJS({
-    "node_modules/@volar/language-service/lib/features/resolveCodeAction.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveCodeAction.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
@@ -4793,9 +4823,9 @@ ${hover.contents.value}
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/resolveCodeLens.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveCodeLens.js
   var require_resolveCodeLens = __commonJS({
-    "node_modules/@volar/language-service/lib/features/resolveCodeLens.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveCodeLens.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
@@ -4824,9 +4854,9 @@ ${hover.contents.value}
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/resolveCompletionItem.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveCompletionItem.js
   var require_resolveCompletionItem = __commonJS({
-    "node_modules/@volar/language-service/lib/features/resolveCompletionItem.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveCompletionItem.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
@@ -4869,9 +4899,9 @@ ${hover.contents.value}
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/resolveDocumentLink.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveDocumentLink.js
   var require_resolveDocumentLink = __commonJS({
-    "node_modules/@volar/language-service/lib/features/resolveDocumentLink.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveDocumentLink.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
@@ -4897,9 +4927,9 @@ ${hover.contents.value}
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/resolveInlayHint.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveInlayHint.js
   var require_resolveInlayHint = __commonJS({
-    "node_modules/@volar/language-service/lib/features/resolveInlayHint.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveInlayHint.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
@@ -4921,9 +4951,9 @@ ${hover.contents.value}
     }
   });
 
-  // node_modules/@volar/language-service/lib/features/resolveWorkspaceSymbol.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveWorkspaceSymbol.js
   var require_resolveWorkspaceSymbol = __commonJS({
-    "node_modules/@volar/language-service/lib/features/resolveWorkspaceSymbol.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveWorkspaceSymbol.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.register = register2;
@@ -4945,13 +4975,13 @@ ${hover.contents.value}
     }
   });
 
-  // node_modules/@volar/language-service/lib/languageService.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/languageService.js
   var require_languageService = __commonJS({
-    "node_modules/@volar/language-service/lib/languageService.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/languageService.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.embeddedContentScheme = void 0;
-      exports3.createLanguageService = createLanguageService2;
+      exports3.createLanguageService = createLanguageService;
       exports3.decodeEmbeddedDocumentUri = decodeEmbeddedDocumentUri;
       exports3.encodeEmbeddedDocumentUri = encodeEmbeddedDocumentUri;
       var language_core_1 = require_language_core();
@@ -4994,7 +5024,7 @@ ${hover.contents.value}
       var cancellation_1 = require_cancellation();
       var uriMap_1 = require_uriMap();
       exports3.embeddedContentScheme = "volar-embedded-content";
-      function createLanguageService2(language, plugins, env2, project) {
+      function createLanguageService(language, plugins, env2, project) {
         const documentVersions = (0, uriMap_1.createUriMap)();
         const snapshot2Doc = /* @__PURE__ */ new WeakMap();
         const context = {
@@ -5112,18 +5142,20 @@ ${hover.contents.value}
         });
       }
       function createLanguageServiceBase(plugins, context) {
-        const tokenModifiers = plugins.map((plugin) => plugin.capabilities.semanticTokensProvider?.legend?.tokenModifiers ?? []).flat();
-        const tokenTypes = plugins.map((plugin) => plugin.capabilities.semanticTokensProvider?.legend?.tokenTypes ?? []).flat();
         return {
-          semanticTokenLegend: {
-            tokenModifiers: [...new Set(tokenModifiers)],
-            tokenTypes: [...new Set(tokenTypes)]
+          getSemanticTokenLegend: () => {
+            const tokenModifiers = plugins.map((plugin) => plugin.capabilities.semanticTokensProvider?.legend?.tokenModifiers ?? []).flat();
+            const tokenTypes = plugins.map((plugin) => plugin.capabilities.semanticTokensProvider?.legend?.tokenTypes ?? []).flat();
+            return {
+              tokenModifiers: [...new Set(tokenModifiers)],
+              tokenTypes: [...new Set(tokenTypes)]
+            };
           },
-          commands: plugins.map((plugin) => plugin.capabilities.executeCommandProvider?.commands ?? []).flat(),
-          triggerCharacters: plugins.map((plugin) => plugin.capabilities.completionProvider?.triggerCharacters ?? []).flat(),
-          autoFormatTriggerCharacters: plugins.map((plugin) => plugin.capabilities.documentOnTypeFormattingProvider?.triggerCharacters ?? []).flat(),
-          signatureHelpTriggerCharacters: plugins.map((plugin) => plugin.capabilities.signatureHelpProvider?.triggerCharacters ?? []).flat(),
-          signatureHelpRetriggerCharacters: plugins.map((plugin) => plugin.capabilities.signatureHelpProvider?.retriggerCharacters ?? []).flat(),
+          getCommands: () => plugins.map((plugin) => plugin.capabilities.executeCommandProvider?.commands ?? []).flat(),
+          getTriggerCharacters: () => plugins.map((plugin) => plugin.capabilities.completionProvider?.triggerCharacters ?? []).flat(),
+          getAutoFormatTriggerCharacters: () => plugins.map((plugin) => plugin.capabilities.documentOnTypeFormattingProvider?.triggerCharacters ?? []).flat(),
+          getSignatureHelpTriggerCharacters: () => plugins.map((plugin) => plugin.capabilities.signatureHelpProvider?.triggerCharacters ?? []).flat(),
+          getSignatureHelpRetriggerCharacters: () => plugins.map((plugin) => plugin.capabilities.signatureHelpProvider?.retriggerCharacters ?? []).flat(),
           executeCommand(command, args, token = cancellation_1.NoneCancellationToken) {
             for (const plugin of context.plugins) {
               if (context.disabledServicePlugins.has(plugin[1])) {
@@ -5178,9 +5210,9 @@ ${hover.contents.value}
     }
   });
 
-  // node_modules/@volar/language-service/lib/types.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/types.js
   var require_types2 = __commonJS({
-    "node_modules/@volar/language-service/lib/types.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/types.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.FileType = void 0;
@@ -5194,9 +5226,9 @@ ${hover.contents.value}
     }
   });
 
-  // node_modules/@volar/language-service/index.js
+  // node_modules/@volar/monaco/node_modules/@volar/language-service/index.js
   var require_language_service = __commonJS({
-    "node_modules/@volar/language-service/index.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/index.js"(exports3) {
       "use strict";
       var __createBinding = exports3 && exports3.__createBinding || (Object.create ? function(o, m, k, k2) {
         if (k2 === void 0)
@@ -5264,6 +5296,622 @@ ${hover.contents.value}
     }
   });
 
+  // node_modules/@volar/typescript/node_modules/@volar/source-map/lib/binarySearch.js
+  var require_binarySearch2 = __commonJS({
+    "node_modules/@volar/typescript/node_modules/@volar/source-map/lib/binarySearch.js"(exports3) {
+      "use strict";
+      Object.defineProperty(exports3, "__esModule", { value: true });
+      exports3.binarySearch = binarySearch;
+      function binarySearch(values, searchValue) {
+        let low = 0;
+        let high = values.length - 1;
+        let match;
+        while (low <= high) {
+          const mid = Math.floor((low + high) / 2);
+          const midValue = values[mid];
+          if (midValue < searchValue) {
+            low = mid + 1;
+          } else if (midValue > searchValue) {
+            high = mid - 1;
+          } else {
+            low = mid;
+            high = mid;
+            match = mid;
+            break;
+          }
+        }
+        const finalLow = Math.max(Math.min(low, high, values.length - 1), 0);
+        const finalHigh = Math.min(Math.max(low, high, 0), values.length - 1);
+        return { low: finalLow, high: finalHigh, match };
+      }
+    }
+  });
+
+  // node_modules/@volar/typescript/node_modules/@volar/source-map/lib/translateOffset.js
+  var require_translateOffset2 = __commonJS({
+    "node_modules/@volar/typescript/node_modules/@volar/source-map/lib/translateOffset.js"(exports3) {
+      "use strict";
+      Object.defineProperty(exports3, "__esModule", { value: true });
+      exports3.translateOffset = translateOffset;
+      function translateOffset(start2, fromOffsets, toOffsets, fromLengths, toLengths = fromLengths) {
+        const isSorted = fromOffsets.every((value, index4) => index4 === 0 || fromOffsets[index4 - 1] <= value);
+        if (!isSorted) {
+          throw new Error("fromOffsets must be sorted in ascending order");
+        }
+        let low = 0;
+        let high = fromOffsets.length - 1;
+        while (low <= high) {
+          const mid = Math.floor((low + high) / 2);
+          const fromOffset = fromOffsets[mid];
+          const fromLength = fromLengths[mid];
+          if (start2 >= fromOffset && start2 <= fromOffset + fromLength) {
+            const toLength = toLengths[mid];
+            const toOffset = toOffsets[mid];
+            let rangeOffset = Math.min(start2 - fromOffset, toLength);
+            return toOffset + rangeOffset;
+          } else if (start2 < fromOffset) {
+            high = mid - 1;
+          } else {
+            low = mid + 1;
+          }
+        }
+      }
+    }
+  });
+
+  // node_modules/@volar/typescript/node_modules/@volar/source-map/lib/sourceMap.js
+  var require_sourceMap2 = __commonJS({
+    "node_modules/@volar/typescript/node_modules/@volar/source-map/lib/sourceMap.js"(exports3) {
+      "use strict";
+      Object.defineProperty(exports3, "__esModule", { value: true });
+      exports3.SourceMap = void 0;
+      var binarySearch_1 = require_binarySearch2();
+      var translateOffset_1 = require_translateOffset2();
+      var SourceMap = class {
+        constructor(mappings) {
+          this.mappings = mappings;
+        }
+        toSourceRange(generatedStart, generatedEnd, fallbackToAnyMatch, filter) {
+          return this.findMatchingStartEnd(generatedStart, generatedEnd, fallbackToAnyMatch, "generatedOffsets", filter);
+        }
+        toGeneratedRange(sourceStart, sourceEnd, fallbackToAnyMatch, filter) {
+          return this.findMatchingStartEnd(sourceStart, sourceEnd, fallbackToAnyMatch, "sourceOffsets", filter);
+        }
+        toSourceLocation(generatedOffset, filter) {
+          return this.findMatchingOffsets(generatedOffset, "generatedOffsets", filter);
+        }
+        toGeneratedLocation(sourceOffset, filter) {
+          return this.findMatchingOffsets(sourceOffset, "sourceOffsets", filter);
+        }
+        *findMatchingOffsets(offset2, fromRange, filter) {
+          const memo = this.getMemoBasedOnRange(fromRange);
+          if (memo.offsets.length === 0) {
+            return;
+          }
+          const { low: start2, high: end } = (0, binarySearch_1.binarySearch)(memo.offsets, offset2);
+          const skip = /* @__PURE__ */ new Set();
+          const toRange = fromRange == "sourceOffsets" ? "generatedOffsets" : "sourceOffsets";
+          for (let i = start2; i <= end; i++) {
+            for (const mapping of memo.mappings[i]) {
+              if (skip.has(mapping)) {
+                continue;
+              }
+              skip.add(mapping);
+              if (filter && !filter(mapping.data)) {
+                continue;
+              }
+              const mapped = (0, translateOffset_1.translateOffset)(offset2, mapping[fromRange], mapping[toRange], getLengths(mapping, fromRange), getLengths(mapping, toRange));
+              if (mapped !== void 0) {
+                yield [mapped, mapping];
+              }
+            }
+          }
+        }
+        *findMatchingStartEnd(start2, end, fallbackToAnyMatch, fromRange, filter) {
+          const toRange = fromRange == "sourceOffsets" ? "generatedOffsets" : "sourceOffsets";
+          const mappedStarts = [];
+          let hadMatch = false;
+          for (const [mappedStart, mapping] of this.findMatchingOffsets(start2, fromRange)) {
+            if (filter && !filter(mapping.data)) {
+              continue;
+            }
+            mappedStarts.push([mappedStart, mapping]);
+            const mappedEnd = (0, translateOffset_1.translateOffset)(end, mapping[fromRange], mapping[toRange], getLengths(mapping, fromRange), getLengths(mapping, toRange));
+            if (mappedEnd !== void 0) {
+              hadMatch = true;
+              yield [mappedStart, mappedEnd, mapping, mapping];
+            }
+          }
+          if (!hadMatch && fallbackToAnyMatch) {
+            for (const [mappedStart, mappingStart] of mappedStarts) {
+              for (const [mappedEnd, mappingEnd] of this.findMatchingOffsets(end, fromRange)) {
+                if (filter && !filter(mappingEnd.data) || mappedEnd < mappedStart) {
+                  continue;
+                }
+                yield [mappedStart, mappedEnd, mappingStart, mappingEnd];
+                break;
+              }
+              ;
+            }
+          }
+        }
+        getMemoBasedOnRange(fromRange) {
+          return fromRange === "sourceOffsets" ? this.sourceCodeOffsetsMemo ??= this.createMemo("sourceOffsets") : this.generatedCodeOffsetsMemo ??= this.createMemo("generatedOffsets");
+        }
+        createMemo(key) {
+          const offsetsSet = /* @__PURE__ */ new Set();
+          for (const mapping of this.mappings) {
+            for (let i = 0; i < mapping[key].length; i++) {
+              offsetsSet.add(mapping[key][i]);
+              offsetsSet.add(mapping[key][i] + getLengths(mapping, key)[i]);
+            }
+          }
+          const offsets = [...offsetsSet].sort((a, b) => a - b);
+          const mappings = offsets.map(() => /* @__PURE__ */ new Set());
+          for (const mapping of this.mappings) {
+            for (let i = 0; i < mapping[key].length; i++) {
+              const startIndex = (0, binarySearch_1.binarySearch)(offsets, mapping[key][i]).match;
+              const endIndex = (0, binarySearch_1.binarySearch)(offsets, mapping[key][i] + getLengths(mapping, key)[i]).match;
+              for (let i2 = startIndex; i2 <= endIndex; i2++) {
+                mappings[i2].add(mapping);
+              }
+            }
+          }
+          return { offsets, mappings };
+        }
+      };
+      exports3.SourceMap = SourceMap;
+      function getLengths(mapping, key) {
+        return key == "sourceOffsets" ? mapping.lengths : mapping.generatedLengths ?? mapping.lengths;
+      }
+    }
+  });
+
+  // node_modules/@volar/typescript/node_modules/@volar/source-map/index.js
+  var require_source_map2 = __commonJS({
+    "node_modules/@volar/typescript/node_modules/@volar/source-map/index.js"(exports3) {
+      "use strict";
+      var __createBinding = exports3 && exports3.__createBinding || (Object.create ? function(o, m, k, k2) {
+        if (k2 === void 0)
+          k2 = k;
+        var desc = Object.getOwnPropertyDescriptor(m, k);
+        if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+          desc = { enumerable: true, get: function() {
+            return m[k];
+          } };
+        }
+        Object.defineProperty(o, k2, desc);
+      } : function(o, m, k, k2) {
+        if (k2 === void 0)
+          k2 = k;
+        o[k2] = m[k];
+      });
+      var __exportStar = exports3 && exports3.__exportStar || function(m, exports4) {
+        for (var p in m)
+          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports4, p))
+            __createBinding(exports4, m, p);
+      };
+      Object.defineProperty(exports3, "__esModule", { value: true });
+      __exportStar(require_sourceMap2(), exports3);
+      __exportStar(require_translateOffset2(), exports3);
+    }
+  });
+
+  // node_modules/@volar/typescript/node_modules/@volar/language-core/lib/editorFeatures.js
+  var require_editorFeatures2 = __commonJS({
+    "node_modules/@volar/typescript/node_modules/@volar/language-core/lib/editorFeatures.js"(exports3) {
+      "use strict";
+      Object.defineProperty(exports3, "__esModule", { value: true });
+      exports3.isHoverEnabled = isHoverEnabled;
+      exports3.isInlayHintsEnabled = isInlayHintsEnabled;
+      exports3.isCodeLensEnabled = isCodeLensEnabled;
+      exports3.isSemanticTokensEnabled = isSemanticTokensEnabled;
+      exports3.isCallHierarchyEnabled = isCallHierarchyEnabled;
+      exports3.isRenameEnabled = isRenameEnabled;
+      exports3.isDefinitionEnabled = isDefinitionEnabled;
+      exports3.isTypeDefinitionEnabled = isTypeDefinitionEnabled;
+      exports3.isReferencesEnabled = isReferencesEnabled;
+      exports3.isImplementationEnabled = isImplementationEnabled;
+      exports3.isHighlightEnabled = isHighlightEnabled;
+      exports3.isSymbolsEnabled = isSymbolsEnabled;
+      exports3.isFoldingRangesEnabled = isFoldingRangesEnabled;
+      exports3.isSelectionRangesEnabled = isSelectionRangesEnabled;
+      exports3.isLinkedEditingEnabled = isLinkedEditingEnabled;
+      exports3.isColorEnabled = isColorEnabled;
+      exports3.isDocumentLinkEnabled = isDocumentLinkEnabled;
+      exports3.isDiagnosticsEnabled = isDiagnosticsEnabled;
+      exports3.isCodeActionsEnabled = isCodeActionsEnabled;
+      exports3.isFormattingEnabled = isFormattingEnabled;
+      exports3.isCompletionEnabled = isCompletionEnabled;
+      exports3.isAutoInsertEnabled = isAutoInsertEnabled;
+      exports3.isSignatureHelpEnabled = isSignatureHelpEnabled;
+      exports3.shouldReportDiagnostics = shouldReportDiagnostics;
+      exports3.resolveRenameNewName = resolveRenameNewName;
+      exports3.resolveRenameEditText = resolveRenameEditText;
+      function isHoverEnabled(info) {
+        return !!info.semantic;
+      }
+      function isInlayHintsEnabled(info) {
+        return !!info.semantic;
+      }
+      function isCodeLensEnabled(info) {
+        return !!info.semantic;
+      }
+      function isSemanticTokensEnabled(info) {
+        return typeof info.semantic === "object" ? info.semantic.shouldHighlight?.() ?? true : !!info.semantic;
+      }
+      function isCallHierarchyEnabled(info) {
+        return !!info.navigation;
+      }
+      function isRenameEnabled(info) {
+        return typeof info.navigation === "object" ? info.navigation.shouldRename?.() ?? true : !!info.navigation;
+      }
+      function isDefinitionEnabled(info) {
+        return !!info.navigation;
+      }
+      function isTypeDefinitionEnabled(info) {
+        return !!info.navigation;
+      }
+      function isReferencesEnabled(info) {
+        return !!info.navigation;
+      }
+      function isImplementationEnabled(info) {
+        return !!info.navigation;
+      }
+      function isHighlightEnabled(info) {
+        return !!info.navigation;
+      }
+      function isSymbolsEnabled(info) {
+        return !!info.structure;
+      }
+      function isFoldingRangesEnabled(info) {
+        return !!info.structure;
+      }
+      function isSelectionRangesEnabled(info) {
+        return !!info.structure;
+      }
+      function isLinkedEditingEnabled(info) {
+        return !!info.structure;
+      }
+      function isColorEnabled(info) {
+        return !!info.structure;
+      }
+      function isDocumentLinkEnabled(info) {
+        return !!info.structure;
+      }
+      function isDiagnosticsEnabled(info) {
+        return !!info.verification;
+      }
+      function isCodeActionsEnabled(info) {
+        return !!info.verification;
+      }
+      function isFormattingEnabled(info) {
+        return !!info.format;
+      }
+      function isCompletionEnabled(info) {
+        return !!info.completion;
+      }
+      function isAutoInsertEnabled(info) {
+        return !!info.completion;
+      }
+      function isSignatureHelpEnabled(info) {
+        return !!info.completion;
+      }
+      function shouldReportDiagnostics(info) {
+        return typeof info.verification === "object" ? info.verification.shouldReport?.() ?? true : !!info.verification;
+      }
+      function resolveRenameNewName(newName, info) {
+        return typeof info.navigation === "object" ? info.navigation.resolveRenameNewName?.(newName) ?? newName : newName;
+      }
+      function resolveRenameEditText(text4, info) {
+        return typeof info.navigation === "object" ? info.navigation.resolveRenameEditText?.(text4) ?? text4 : text4;
+      }
+    }
+  });
+
+  // node_modules/@volar/typescript/node_modules/@volar/language-core/lib/linkedCodeMap.js
+  var require_linkedCodeMap2 = __commonJS({
+    "node_modules/@volar/typescript/node_modules/@volar/language-core/lib/linkedCodeMap.js"(exports3) {
+      "use strict";
+      Object.defineProperty(exports3, "__esModule", { value: true });
+      exports3.LinkedCodeMap = void 0;
+      var source_map_1 = require_source_map2();
+      var LinkedCodeMap = class extends source_map_1.SourceMap {
+        *getLinkedOffsets(start2) {
+          for (const mapped of this.toGeneratedLocation(start2)) {
+            yield mapped[0];
+          }
+          for (const mapped of this.toSourceLocation(start2)) {
+            yield mapped[0];
+          }
+        }
+      };
+      exports3.LinkedCodeMap = LinkedCodeMap;
+    }
+  });
+
+  // node_modules/@volar/typescript/node_modules/@volar/language-core/lib/types.js
+  var require_types3 = __commonJS({
+    "node_modules/@volar/typescript/node_modules/@volar/language-core/lib/types.js"(exports3) {
+      "use strict";
+      Object.defineProperty(exports3, "__esModule", { value: true });
+    }
+  });
+
+  // node_modules/@volar/typescript/node_modules/@volar/language-core/lib/utils.js
+  var require_utils2 = __commonJS({
+    "node_modules/@volar/typescript/node_modules/@volar/language-core/lib/utils.js"(exports3) {
+      "use strict";
+      Object.defineProperty(exports3, "__esModule", { value: true });
+      exports3.FileMap = void 0;
+      var FileMap = class extends Map {
+        constructor(caseSensitive) {
+          super();
+          this.caseSensitive = caseSensitive;
+          this.originalFileNames = /* @__PURE__ */ new Map();
+        }
+        keys() {
+          return this.originalFileNames.values();
+        }
+        get(key) {
+          return super.get(this.normalizeId(key));
+        }
+        has(key) {
+          return super.has(this.normalizeId(key));
+        }
+        set(key, value) {
+          this.originalFileNames.set(this.normalizeId(key), key);
+          return super.set(this.normalizeId(key), value);
+        }
+        delete(key) {
+          this.originalFileNames.delete(this.normalizeId(key));
+          return super.delete(this.normalizeId(key));
+        }
+        clear() {
+          this.originalFileNames.clear();
+          return super.clear();
+        }
+        normalizeId(id) {
+          return this.caseSensitive ? id : id.toLowerCase();
+        }
+      };
+      exports3.FileMap = FileMap;
+    }
+  });
+
+  // node_modules/@volar/typescript/node_modules/@volar/language-core/index.js
+  var require_language_core2 = __commonJS({
+    "node_modules/@volar/typescript/node_modules/@volar/language-core/index.js"(exports3) {
+      "use strict";
+      var __createBinding = exports3 && exports3.__createBinding || (Object.create ? function(o, m, k, k2) {
+        if (k2 === void 0)
+          k2 = k;
+        var desc = Object.getOwnPropertyDescriptor(m, k);
+        if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+          desc = { enumerable: true, get: function() {
+            return m[k];
+          } };
+        }
+        Object.defineProperty(o, k2, desc);
+      } : function(o, m, k, k2) {
+        if (k2 === void 0)
+          k2 = k;
+        o[k2] = m[k];
+      });
+      var __exportStar = exports3 && exports3.__exportStar || function(m, exports4) {
+        for (var p in m)
+          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports4, p))
+            __createBinding(exports4, m, p);
+      };
+      Object.defineProperty(exports3, "__esModule", { value: true });
+      exports3.defaultMapperFactory = exports3.SourceMap = void 0;
+      exports3.createLanguage = createLanguage2;
+      exports3.forEachEmbeddedCode = forEachEmbeddedCode;
+      var source_map_1 = require_source_map2();
+      Object.defineProperty(exports3, "SourceMap", { enumerable: true, get: function() {
+        return source_map_1.SourceMap;
+      } });
+      __exportStar(require_editorFeatures2(), exports3);
+      __exportStar(require_linkedCodeMap2(), exports3);
+      __exportStar(require_types3(), exports3);
+      __exportStar(require_utils2(), exports3);
+      var source_map_2 = require_source_map2();
+      var linkedCodeMap_1 = require_linkedCodeMap2();
+      var defaultMapperFactory = (mappings) => new source_map_2.SourceMap(mappings);
+      exports3.defaultMapperFactory = defaultMapperFactory;
+      function createLanguage2(plugins, scriptRegistry, sync) {
+        const virtualCodeToSourceScriptMap = /* @__PURE__ */ new WeakMap();
+        const virtualCodeToSourceMap = /* @__PURE__ */ new WeakMap();
+        const virtualCodeToLinkedCodeMap = /* @__PURE__ */ new WeakMap();
+        const language = {
+          mapperFactory: exports3.defaultMapperFactory,
+          plugins,
+          scripts: {
+            fromVirtualCode(virtualCode) {
+              return virtualCodeToSourceScriptMap.get(virtualCode);
+            },
+            get(id) {
+              sync(id);
+              const result = scriptRegistry.get(id);
+              if (result?.isAssociationDirty) {
+                this.set(id, result.snapshot, result.languageId);
+              }
+              return scriptRegistry.get(id);
+            },
+            set(id, snapshot, languageId, _plugins = plugins) {
+              if (!languageId) {
+                for (const plugin of plugins) {
+                  languageId = plugin.getLanguageId?.(id);
+                  if (languageId) {
+                    break;
+                  }
+                }
+              }
+              if (!languageId) {
+                console.warn(`languageId not found for ${id}`);
+                return;
+              }
+              let associatedOnly = false;
+              for (const plugin of plugins) {
+                if (plugin.isAssociatedFileOnly?.(id, languageId)) {
+                  associatedOnly = true;
+                  break;
+                }
+              }
+              if (scriptRegistry.has(id)) {
+                const sourceScript = scriptRegistry.get(id);
+                if (sourceScript.languageId !== languageId || sourceScript.associatedOnly !== associatedOnly) {
+                  this.delete(id);
+                  return this.set(id, snapshot, languageId);
+                } else if (associatedOnly) {
+                  sourceScript.snapshot = snapshot;
+                } else if (sourceScript.isAssociationDirty || sourceScript.snapshot !== snapshot) {
+                  sourceScript.snapshot = snapshot;
+                  const codegenCtx = prepareCreateVirtualCode(sourceScript);
+                  if (sourceScript.generated) {
+                    const { updateVirtualCode, createVirtualCode } = sourceScript.generated.languagePlugin;
+                    const newVirtualCode = updateVirtualCode ? updateVirtualCode(id, sourceScript.generated.root, snapshot, codegenCtx) : createVirtualCode?.(id, languageId, snapshot, codegenCtx);
+                    if (newVirtualCode) {
+                      sourceScript.generated.root = newVirtualCode;
+                      sourceScript.generated.embeddedCodes.clear();
+                      for (const code2 of forEachEmbeddedCode(sourceScript.generated.root)) {
+                        virtualCodeToSourceScriptMap.set(code2, sourceScript);
+                        sourceScript.generated.embeddedCodes.set(code2.id, code2);
+                      }
+                      return sourceScript;
+                    } else {
+                      this.delete(id);
+                      return;
+                    }
+                  }
+                  triggerTargetsDirty(sourceScript);
+                } else {
+                  return sourceScript;
+                }
+              } else {
+                const sourceScript = {
+                  id,
+                  languageId,
+                  snapshot,
+                  associatedIds: /* @__PURE__ */ new Set(),
+                  targetIds: /* @__PURE__ */ new Set(),
+                  associatedOnly
+                };
+                scriptRegistry.set(id, sourceScript);
+                if (associatedOnly) {
+                  return sourceScript;
+                }
+                for (const languagePlugin of _plugins) {
+                  const virtualCode = languagePlugin.createVirtualCode?.(id, languageId, snapshot, prepareCreateVirtualCode(sourceScript));
+                  if (virtualCode) {
+                    sourceScript.generated = {
+                      root: virtualCode,
+                      languagePlugin,
+                      embeddedCodes: /* @__PURE__ */ new Map()
+                    };
+                    for (const code2 of forEachEmbeddedCode(virtualCode)) {
+                      virtualCodeToSourceScriptMap.set(code2, sourceScript);
+                      sourceScript.generated.embeddedCodes.set(code2.id, code2);
+                    }
+                    break;
+                  }
+                }
+                return sourceScript;
+              }
+            },
+            delete(id) {
+              const sourceScript = scriptRegistry.get(id);
+              if (sourceScript) {
+                sourceScript.generated?.languagePlugin.disposeVirtualCode?.(id, sourceScript.generated.root);
+                scriptRegistry.delete(id);
+                triggerTargetsDirty(sourceScript);
+              }
+            }
+          },
+          maps: {
+            get(virtualCode, sourceScript) {
+              let mapCache = virtualCodeToSourceMap.get(virtualCode.snapshot);
+              if (!mapCache) {
+                virtualCodeToSourceMap.set(virtualCode.snapshot, mapCache = /* @__PURE__ */ new WeakMap());
+              }
+              if (!mapCache.has(sourceScript.snapshot)) {
+                const mappings = virtualCode.associatedScriptMappings?.get(sourceScript.id) ?? virtualCode.mappings;
+                mapCache.set(sourceScript.snapshot, language.mapperFactory(mappings));
+              }
+              return mapCache.get(sourceScript.snapshot);
+            },
+            *forEach(virtualCode) {
+              const sourceScript = virtualCodeToSourceScriptMap.get(virtualCode);
+              yield [
+                sourceScript,
+                this.get(virtualCode, sourceScript)
+              ];
+              if (virtualCode.associatedScriptMappings) {
+                for (const [relatedScriptId] of virtualCode.associatedScriptMappings) {
+                  const relatedSourceScript = scriptRegistry.get(relatedScriptId);
+                  if (relatedSourceScript) {
+                    yield [
+                      relatedSourceScript,
+                      this.get(virtualCode, relatedSourceScript)
+                    ];
+                  }
+                }
+              }
+            }
+          },
+          linkedCodeMaps: {
+            get(virtualCode) {
+              const sourceScript = virtualCodeToSourceScriptMap.get(virtualCode);
+              let mapCache = virtualCodeToLinkedCodeMap.get(virtualCode.snapshot);
+              if (mapCache?.[0] !== sourceScript.snapshot) {
+                virtualCodeToLinkedCodeMap.set(virtualCode.snapshot, mapCache = [
+                  sourceScript.snapshot,
+                  virtualCode.linkedCodeMappings ? new linkedCodeMap_1.LinkedCodeMap(virtualCode.linkedCodeMappings) : void 0
+                ]);
+              }
+              return mapCache[1];
+            }
+          }
+        };
+        return language;
+        function triggerTargetsDirty(sourceScript) {
+          sourceScript.targetIds.forEach((id) => {
+            const sourceScript2 = scriptRegistry.get(id);
+            if (sourceScript2) {
+              sourceScript2.isAssociationDirty = true;
+            }
+          });
+        }
+        function prepareCreateVirtualCode(sourceScript) {
+          for (const id of sourceScript.associatedIds) {
+            scriptRegistry.get(id)?.targetIds.delete(sourceScript.id);
+          }
+          sourceScript.associatedIds.clear();
+          sourceScript.isAssociationDirty = false;
+          return {
+            getAssociatedScript(id) {
+              sync(id);
+              const relatedSourceScript = scriptRegistry.get(id);
+              if (relatedSourceScript) {
+                relatedSourceScript.targetIds.add(sourceScript.id);
+                sourceScript.associatedIds.add(relatedSourceScript.id);
+              }
+              return relatedSourceScript;
+            }
+          };
+        }
+      }
+      function* forEachEmbeddedCode(virtualCode) {
+        yield virtualCode;
+        if (virtualCode.embeddedCodes) {
+          for (const embeddedCode of virtualCode.embeddedCodes) {
+            yield* forEachEmbeddedCode(embeddedCode);
+          }
+        }
+      }
+    }
+  });
+
   // node_modules/@volar/typescript/lib/node/dedupe.js
   var require_dedupe2 = __commonJS({
     "node_modules/@volar/typescript/lib/node/dedupe.js"(exports3) {
@@ -5288,7 +5936,7 @@ ${hover.contents.value}
   });
 
   // node_modules/@volar/typescript/lib/node/utils.js
-  var require_utils2 = __commonJS({
+  var require_utils3 = __commonJS({
     "node_modules/@volar/typescript/lib/node/utils.js"(exports3) {
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
@@ -5340,8 +5988,8 @@ ${hover.contents.value}
       exports3.toGeneratedOffset = toGeneratedOffset;
       exports3.toGeneratedOffsets = toGeneratedOffsets;
       exports3.getMappingOffset = getMappingOffset;
-      var language_core_1 = require_language_core();
-      var utils_1 = require_utils2();
+      var language_core_1 = require_language_core2();
+      var utils_1 = require_utils3();
       var transformedDiagnostics = /* @__PURE__ */ new WeakMap();
       var transformedSourceFile = /* @__PURE__ */ new WeakSet();
       function transformCallHierarchyItem(language, item, filter) {
@@ -5571,10 +6219,10 @@ ${hover.contents.value}
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.createProxyLanguageService = createProxyLanguageService;
-      var language_core_1 = require_language_core();
+      var language_core_1 = require_language_core2();
       var dedupe_1 = require_dedupe2();
       var transform_1 = require_transform2();
-      var utils_1 = require_utils2();
+      var utils_1 = require_utils3();
       var windowsPathReg = /\\/g;
       function createProxyLanguageService(languageService) {
         const proxyCache = /* @__PURE__ */ new Map();
@@ -5615,8 +6263,6 @@ ${hover.contents.value}
                   return getApplicableRefactors(language, target[p]);
                 case "getEditsForRefactor":
                   return getEditsForRefactor(language, target[p]);
-                case "getCombinedCodeFix":
-                  return getCombinedCodeFix(language, target[p]);
                 case "getRenameInfo":
                   return getRenameInfo(language, target[p]);
                 case "getCodeFixesAtPosition":
@@ -5651,8 +6297,6 @@ ${hover.contents.value}
                   return provideInlayHints(language, target[p]);
                 case "getFileReferences":
                   return getFileReferences(language, target[p]);
-                case "getNavigateToItems":
-                  return getNavigateToItems(language, target[p]);
               }
             };
           },
@@ -6035,13 +6679,6 @@ ${hover.contents.value}
           }
         };
       }
-      function getCombinedCodeFix(language, getCombinedCodeFix2) {
-        return (...args) => {
-          const codeActions = getCombinedCodeFix2(...args);
-          codeActions.changes = (0, transform_1.transformFileTextChanges)(language, codeActions.changes, language_core_1.isCodeActionsEnabled);
-          return codeActions;
-        };
-      }
       function getRenameInfo(language, getRenameInfo2) {
         return (filePath, position4, options) => {
           const fileName = filePath.replace(windowsPathReg, "/");
@@ -6387,13 +7024,6 @@ ${hover.contents.value}
           return (0, dedupe_1.dedupeDocumentSpans)(resolved);
         };
       }
-      function getNavigateToItems(language, getNavigateToItems2) {
-        return (...args) => {
-          const unresolved = getNavigateToItems2(...args);
-          const resolved = unresolved.map((s) => (0, transform_1.transformDocumentSpan)(language, s, language_core_1.isReferencesEnabled)).filter((s) => !!s);
-          return (0, dedupe_1.dedupeDocumentSpans)(resolved);
-        };
-      }
       function linkedCodeFeatureWorker(language, fileName, position4, filter, worker, getLinkedCodes) {
         const results = [];
         const processedFilePositions = /* @__PURE__ */ new Set();
@@ -6676,7 +7306,7 @@ ${hover.contents.value}
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.decorateProgram = decorateProgram;
       var transform_1 = require_transform2();
-      var utils_1 = require_utils2();
+      var utils_1 = require_utils3();
       function decorateProgram(language, program) {
         const emit = program.emit;
         const getSyntacticDiagnostics = program.getSyntacticDiagnostics;
@@ -6738,7 +7368,7 @@ ${hover.contents.value}
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.proxyCreateProgram = proxyCreateProgram;
-      var language_core_1 = require_language_core();
+      var language_core_1 = require_language_core2();
       var resolveModuleName_1 = require_resolveModuleName();
       var decorateProgram_1 = require_decorateProgram();
       var common_1 = require_common2();
@@ -7339,7 +7969,7 @@ ${hover.contents.value}
       "use strict";
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.createLanguageServiceHost = createLanguageServiceHost2;
-      var language_core_1 = require_language_core();
+      var language_core_1 = require_language_core2();
       var path = require_path_browserify();
       var resolveModuleName_1 = require_resolveModuleName();
       function createLanguageServiceHost2(ts2, sys, language, asScriptId, projectHost) {
@@ -12940,7 +13570,7 @@ ${hover.contents.value}
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.createAutoImportProviderProjectStatic = void 0;
       var project_1 = require_project();
-      function createAutoImportProviderProjectStatic(tsBase, host, createLanguageService2) {
+      function createAutoImportProviderProjectStatic(tsBase, host, createLanguageService) {
         const ts2 = tsBase;
         const { combinePaths, inferredTypesContainingFile, arrayFrom, resolvePackageNameToPackageJson, concatenate, forEach, startsWith, getEntrypointsFromPackageJsonInfo, mapDefined, timestamp } = ts2;
         return {
@@ -13074,16 +13704,16 @@ ${hover.contents.value}
             if (!rootNames.length) {
               return void 0;
             }
-            return createAutoImportProviderProject(tsBase, host, createLanguageService2, { self: this, hostProject, rootNames, compilerOptions });
+            return createAutoImportProviderProject(tsBase, host, createLanguageService, { self: this, hostProject, rootNames, compilerOptions });
           }
         };
       }
       exports3.createAutoImportProviderProjectStatic = createAutoImportProviderProjectStatic;
-      function createAutoImportProviderProject(tsBase, host, createLanguageService2, options) {
+      function createAutoImportProviderProject(tsBase, host, createLanguageService, options) {
         const { self: self2, rootNames, compilerOptions, hostProject } = options;
         const ts2 = tsBase;
         const { some } = ts2;
-        const project = Object.assign(Object.assign({}, (0, project_1.createProject)(tsBase, host, createLanguageService2, {
+        const project = Object.assign(Object.assign({}, (0, project_1.createProject)(tsBase, host, createLanguageService, {
           projectService: hostProject.projectService,
           currentDirectory: hostProject.currentDirectory,
           compilerOptions
@@ -13165,7 +13795,7 @@ ${hover.contents.value}
             project[key] = value;
             return true;
           }
-        }), createLanguageService2);
+        }), createLanguageService);
       }
     }
   });
@@ -13178,10 +13808,10 @@ ${hover.contents.value}
       exports3.initProject = exports3.createProject = void 0;
       var moduleSpecifierCache_1 = require_moduleSpecifierCache3();
       var autoImportProviderProject_1 = require_autoImportProviderProject();
-      function createProject(ts2, host, createLanguageService2, options) {
+      function createProject(ts2, host, createLanguageService, options) {
         var _a4;
         const { combinePaths, inferredTypesContainingFile, createSymlinkCache, toPath, createCacheableExportInfoMap, timestamp, isInsideNodeModules, LanguageServiceMode } = ts2;
-        const AutoImportProviderProject = (0, autoImportProviderProject_1.createAutoImportProviderProjectStatic)(ts2, host, createLanguageService2);
+        const AutoImportProviderProject = (0, autoImportProviderProject_1.createAutoImportProviderProjectStatic)(ts2, host, createLanguageService);
         const { projectService, compilerOptions, currentDirectory } = options;
         function updateProjectIfDirty(project) {
           return project.dirty && project.updateGraph();
@@ -13326,8 +13956,8 @@ ${hover.contents.value}
         };
       }
       exports3.createProject = createProject;
-      function initProject(project, host, createLanguageService2) {
-        const languageService = createLanguageService2(host);
+      function initProject(project, host, createLanguageService) {
+        const languageService = createLanguageService(host);
         project.languageService = languageService;
         project.program = languageService.getProgram();
         return project;
@@ -13345,12 +13975,12 @@ ${hover.contents.value}
       var project_1 = require_project();
       var projectService;
       var projects = /* @__PURE__ */ new Set();
-      function default_1(ts2, sys, host, createLanguageService2, _createProject = project_1.createProject) {
+      function default_1(ts2, sys, host, createLanguageService, _createProject = project_1.createProject) {
         const hostConfiguration = { preferences: { includePackageJsonAutoImports: "auto" } };
         if (!projectService) {
           projectService = (0, projectService_1.createProjectService)(ts2, sys, host.getCurrentDirectory(), hostConfiguration, ts2.LanguageServiceMode.Semantic);
         }
-        const project = _createProject(ts2, host, createLanguageService2, {
+        const project = _createProject(ts2, host, createLanguageService, {
           projectService,
           currentDirectory: host.getCurrentDirectory(),
           compilerOptions: host.getCompilationSettings()
@@ -13366,7 +13996,7 @@ ${hover.contents.value}
           "useSourceOfProjectReferenceRedirect"
         ];
         proxyMethods.forEach((key) => host[key] = project[key].bind(project));
-        (0, project_1.initProject)(project, host, createLanguageService2);
+        (0, project_1.initProject)(project, host, createLanguageService);
         projects.add(project);
         return {
           languageService: project.languageService,
@@ -13401,9 +14031,9 @@ ${hover.contents.value}
       Object.defineProperty(exports3, "__esModule", { value: true });
       exports3.createProject = void 0;
       var project_1 = require_project();
-      function createProject(ts2, host, createLanguageService2, options) {
+      function createProject(ts2, host, createLanguageService, options) {
         const { createSymlinkCache, ensureTrailingDirectorySeparator } = ts2;
-        const project = (0, project_1.createProject)(ts2, host, createLanguageService2, options);
+        const project = (0, project_1.createProject)(ts2, host, createLanguageService, options);
         project.getSymlinkCache = () => {
           if (!project.symlinks) {
             project.symlinks = createSymlinkCache(project.getCurrentDirectory(), project.getCanonicalFileName);
@@ -13441,8 +14071,8 @@ ${hover.contents.value}
       Object.defineProperty(exports3, "__esModule", { value: true });
       var _5_0_1 = require__4();
       var project_1 = require_project2();
-      function default_1(ts2, sys, host, createLanguageService2) {
-        return (0, _5_0_1.default)(ts2, sys, host, createLanguageService2, project_1.createProject);
+      function default_1(ts2, sys, host, createLanguageService) {
+        return (0, _5_0_1.default)(ts2, sys, host, createLanguageService, project_1.createProject);
       }
       exports3.default = default_1;
     }
@@ -13551,9 +14181,9 @@ ${hover.contents.value}
       exports3.createProject = void 0;
       var project_1 = require_project2();
       var moduleSpecifierCache_1 = require_moduleSpecifierCache4();
-      function createProject(ts2, host, createLanguageService2, options) {
+      function createProject(ts2, host, createLanguageService, options) {
         options.createModuleSpecifierCache = moduleSpecifierCache_1.createModuleSpecifierCache;
-        return (0, project_1.createProject)(ts2, host, createLanguageService2, options);
+        return (0, project_1.createProject)(ts2, host, createLanguageService, options);
       }
       exports3.createProject = createProject;
     }
@@ -13566,8 +14196,8 @@ ${hover.contents.value}
       Object.defineProperty(exports3, "__esModule", { value: true });
       var _5_0_1 = require__4();
       var project_1 = require_project3();
-      function default_1(ts2, sys, host, createLanguageService2) {
-        return (0, _5_0_1.default)(ts2, sys, host, createLanguageService2, project_1.createProject);
+      function default_1(ts2, sys, host, createLanguageService) {
+        return (0, _5_0_1.default)(ts2, sys, host, createLanguageService, project_1.createProject);
       }
       exports3.default = default_1;
     }
@@ -13586,29 +14216,29 @@ ${hover.contents.value}
       var _5_0_1 = require__4();
       var _5_3_1 = require__5();
       var _5_5_1 = require__6();
-      function createLanguageService2(ts2, sys, host, createLanguageService3) {
+      function createLanguageService(ts2, sys, host, createLanguageService2) {
         if (semver.gte(ts2.version, "5.5.1")) {
-          return (0, _5_5_1.default)(ts2, sys, host, createLanguageService3);
+          return (0, _5_5_1.default)(ts2, sys, host, createLanguageService2);
         } else if (semver.gte(ts2.version, "5.3.0")) {
-          return (0, _5_3_1.default)(ts2, sys, host, createLanguageService3);
+          return (0, _5_3_1.default)(ts2, sys, host, createLanguageService2);
         } else if (semver.gte(ts2.version, "5.0.0")) {
-          return (0, _5_0_1.default)(ts2, sys, host, createLanguageService3);
+          return (0, _5_0_1.default)(ts2, sys, host, createLanguageService2);
         } else if (semver.gte(ts2.version, "4.7.0")) {
-          const service = createLanguageService3(host);
+          const service = createLanguageService2(host);
           (0, _4_7_1.default)(ts2, host, service);
           return { languageService: service };
         } else if (semver.gte(ts2.version, "4.4.0")) {
-          const service = createLanguageService3(host);
+          const service = createLanguageService2(host);
           (0, _4_4_1.default)(ts2, host, service);
           return { languageService: service };
         } else if (semver.gte(ts2.version, "4.0.0")) {
-          const service = createLanguageService3(host);
+          const service = createLanguageService2(host);
           (0, _4_0_1.default)(ts2, host, service);
           return { languageService: service };
         }
-        return { languageService: createLanguageService3(host) };
+        return { languageService: createLanguageService2(host) };
       }
-      exports3.createLanguageService = createLanguageService2;
+      exports3.createLanguageService = createLanguageService;
     }
   });
 
@@ -34585,10 +35215,7 @@ ${hover.contents.value}
   // node_modules/@volar/monaco/worker.js
   var worker_exports = {};
   __export(worker_exports, {
-    WorkerLanguageService: () => WorkerLanguageService,
-    createSimpleWorkerLanguageService: () => createSimpleWorkerLanguageService,
     createSimpleWorkerService: () => createSimpleWorkerService,
-    createTypeScriptWorkerLanguageService: () => createTypeScriptWorkerLanguageService,
     createTypeScriptWorkerService: () => createTypeScriptWorkerService
   });
   var import_language_service = __toESM(require_language_service(), 1);
@@ -34975,9 +35602,7 @@ ${hover.contents.value}
   // node_modules/@volar/monaco/worker.js
   __reExport(worker_exports, __toESM(require_language_service(), 1));
   var fsFileSnapshots = (0, import_language_service.createUriMap)();
-  var createSimpleWorkerService = createSimpleWorkerLanguageService;
-  var createTypeScriptWorkerService = createTypeScriptWorkerLanguageService;
-  function createSimpleWorkerLanguageService({ env: env2, workerContext, languagePlugins, languageServicePlugins, setup }) {
+  function createSimpleWorkerService({ env: env2, workerContext, languagePlugins, languageServicePlugins, extraApis = {}, setup }) {
     const snapshots = /* @__PURE__ */ new Map();
     const language = (0, import_language_service.createLanguage)(languagePlugins, (0, import_language_service.createUriMap)(false), (uri) => {
       const model = workerContext.getMirrorModels().find((model2) => model2.uri.toString() === uri.toString());
@@ -35000,9 +35625,9 @@ ${hover.contents.value}
     });
     const project = {};
     setup?.({ language, project });
-    return new WorkerLanguageService((0, import_language_service.createLanguageService)(language, languageServicePlugins, env2, project));
+    return createWorkerService(language, languageServicePlugins, env2, project, extraApis);
   }
-  function createTypeScriptWorkerLanguageService({ typescript: ts2, compilerOptions, env: env2, uriConverter, workerContext, languagePlugins, languageServicePlugins, setup }) {
+  function createTypeScriptWorkerService({ typescript: ts2, compilerOptions, env: env2, uriConverter, workerContext, languagePlugins, languageServicePlugins, extraApis = {}, setup }) {
     let projectVersion = 0;
     const modelSnapshot = /* @__PURE__ */ new WeakMap();
     const modelVersions = /* @__PURE__ */ new Map();
@@ -35075,7 +35700,7 @@ ${hover.contents.value}
       }
     };
     setup?.({ language, project });
-    return new WorkerLanguageService((0, import_language_service.createLanguageService)(language, languageServicePlugins, env2, project));
+    return createWorkerService(language, languageServicePlugins, env2, project, extraApis);
     function getModelSnapshot(uri) {
       const model = workerContext.getMirrorModels().find((model2) => model2.uri.toString() === uri.toString());
       if (model) {
@@ -35093,180 +35718,25 @@ ${hover.contents.value}
       }
     }
   }
-  var WorkerLanguageService = class {
-    constructor(languageService) {
-      this.languageService = languageService;
-      this.pendingRequests = /* @__PURE__ */ new Map();
+  function createWorkerService(language, servicePlugins, env2, projectContext, extraApis = {}) {
+    const languageService = (0, import_language_service.createLanguageService)(language, servicePlugins, env2, projectContext);
+    class WorkerService {
     }
-    getSemanticTokenLegend() {
-      return this.languageService.semanticTokenLegend;
-    }
-    getCommands() {
-      return this.languageService.commands;
-    }
-    getTriggerCharacters() {
-      return this.languageService.triggerCharacters;
-    }
-    getAutoFormatTriggerCharacters() {
-      return this.languageService.autoFormatTriggerCharacters;
-    }
-    getSignatureHelpTriggerCharacters() {
-      return this.languageService.signatureHelpTriggerCharacters;
-    }
-    getSignatureHelpRetriggerCharacters() {
-      return this.languageService.signatureHelpRetriggerCharacters;
-    }
-    executeCommand(requestId, ...args) {
-      return this.withToken(requestId, (token) => this.languageService.executeCommand(...args, token));
-    }
-    getDocumentFormattingEdits(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getDocumentFormattingEdits(URI2.from(uri), ...restArgs, token));
-    }
-    getFoldingRanges(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getFoldingRanges(URI2.from(uri), ...restArgs, token));
-    }
-    getSelectionRanges(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getSelectionRanges(URI2.from(uri), ...restArgs, token));
-    }
-    getLinkedEditingRanges(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getLinkedEditingRanges(URI2.from(uri), ...restArgs, token));
-    }
-    getDocumentSymbols(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getDocumentSymbols(URI2.from(uri), ...restArgs, token));
-    }
-    getDocumentColors(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getDocumentColors(URI2.from(uri), ...restArgs, token));
-    }
-    getColorPresentations(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getColorPresentations(URI2.from(uri), ...restArgs, token));
-    }
-    getDiagnostics(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getDiagnostics(URI2.from(uri), ...restArgs, token));
-    }
-    getWorkspaceDiagnostics(requestId) {
-      return this.withToken(requestId, (token) => this.languageService.getWorkspaceDiagnostics(token));
-    }
-    getReferences(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getReferences(URI2.from(uri), ...restArgs, token));
-    }
-    getFileReferences(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getFileReferences(URI2.from(uri), ...restArgs, token));
-    }
-    getDefinition(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getDefinition(URI2.from(uri), ...restArgs, token));
-    }
-    getTypeDefinition(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getTypeDefinition(URI2.from(uri), ...restArgs, token));
-    }
-    getImplementations(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getImplementations(URI2.from(uri), ...restArgs, token));
-    }
-    getRenameRange(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getRenameRange(URI2.from(uri), ...restArgs, token));
-    }
-    getRenameEdits(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getRenameEdits(URI2.from(uri), ...restArgs, token));
-    }
-    getFileRenameEdits(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getFileRenameEdits(URI2.from(uri), ...restArgs, token));
-    }
-    getSemanticTokens(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getSemanticTokens(URI2.from(uri), ...restArgs, token));
-    }
-    getHover(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getHover(URI2.from(uri), ...restArgs, token));
-    }
-    getCompletionItems(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getCompletionItems(URI2.from(uri), ...restArgs, token));
-    }
-    getCodeActions(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getCodeActions(URI2.from(uri), ...restArgs, token));
-    }
-    getSignatureHelp(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getSignatureHelp(URI2.from(uri), ...restArgs, token));
-    }
-    getCodeLenses(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getCodeLenses(URI2.from(uri), ...restArgs, token));
-    }
-    getDocumentHighlights(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getDocumentHighlights(URI2.from(uri), ...restArgs, token));
-    }
-    getDocumentLinks(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getDocumentLinks(URI2.from(uri), ...restArgs, token));
-    }
-    getWorkspaceSymbols(requestId, ...args) {
-      return this.withToken(requestId, (token) => this.languageService.getWorkspaceSymbols(...args, token));
-    }
-    getAutoInsertSnippet(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getAutoInsertSnippet(URI2.from(uri), ...restArgs, token));
-    }
-    getDocumentDropEdits(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getDocumentDropEdits(URI2.from(uri), ...restArgs, token));
-    }
-    getInlayHints(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getInlayHints(URI2.from(uri), ...restArgs, token));
-    }
-    resolveCodeAction(requestId, ...args) {
-      return this.withToken(requestId, (token) => this.languageService.resolveCodeAction(...args, token));
-    }
-    resolveCompletionItem(requestId, ...args) {
-      return this.withToken(requestId, (token) => this.languageService.resolveCompletionItem(...args, token));
-    }
-    resolveCodeLens(requestId, ...args) {
-      return this.withToken(requestId, (token) => this.languageService.resolveCodeLens(...args, token));
-    }
-    resolveDocumentLink(requestId, ...args) {
-      return this.withToken(requestId, (token) => this.languageService.resolveDocumentLink(...args, token));
-    }
-    resolveInlayHint(requestId, ...args) {
-      return this.withToken(requestId, (token) => this.languageService.resolveInlayHint(...args, token));
-    }
-    resolveWorkspaceSymbol(requestId, ...args) {
-      return this.withToken(requestId, (token) => this.languageService.resolveWorkspaceSymbol(...args, token));
-    }
-    getCallHierarchyItems(requestId, uri, ...restArgs) {
-      return this.withToken(requestId, (token) => this.languageService.getCallHierarchyItems(URI2.from(uri), ...restArgs, token));
-    }
-    getCallHierarchyIncomingCalls(requestId, ...args) {
-      return this.withToken(requestId, (token) => this.languageService.getCallHierarchyIncomingCalls(...args, token));
-    }
-    getCallHierarchyOutgoingCalls(requestId, ...args) {
-      return this.withToken(requestId, (token) => this.languageService.getCallHierarchyOutgoingCalls(...args, token));
-    }
-    dispose() {
-      this.languageService.dispose();
-    }
-    cancelRequest(requestId) {
-      this.pendingRequests.delete(requestId);
-    }
-    async withToken(requestId, fn) {
-      const { pendingRequests } = this;
-      const token = {
-        get isCancellationRequested() {
-          return !!pendingRequests.has(requestId);
-        },
-        onCancellationRequested(cb) {
-          let callbacks = pendingRequests.get(requestId);
-          if (!callbacks) {
-            callbacks = /* @__PURE__ */ new Set();
-            pendingRequests.set(requestId, callbacks);
-          }
-          callbacks.add(cb);
-          return {
-            dispose() {
-              callbacks.delete(cb);
-            }
-          };
-        }
-      };
-      this.pendingRequests.set(requestId, void 0);
-      try {
-        return await fn(token);
-      } finally {
-        this.pendingRequests.delete(requestId);
+    ;
+    for (const api in languageService) {
+      const isFunction = typeof languageService[api] === "function";
+      if (isFunction) {
+        WorkerService.prototype[api] = languageService[api];
       }
     }
-  };
+    for (const api in extraApis) {
+      const isFunction = typeof extraApis[api] === "function";
+      if (isFunction) {
+        WorkerService.prototype[api] = extraApis[api];
+      }
+    }
+    return new WorkerService();
+  }
 
   // src/worker/mdx.worker.js
   var import_volar_service_typescript = __toESM(require_volar_service_typescript(), 1);
