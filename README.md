@@ -2,6 +2,8 @@
 
 ## [博客地址](https://mzmpy.github.io/mynotes-es/)
 
+## [`mdx`编辑器，目前已实现针对mdx的语法高亮和`javascript`/`typescript`代码的智能提示等代码编辑器功能](https://mzmpy.github.io/mynotes-es/#/markdown)
+
 ## 部分目录
 
   * [Typescript相关](https://mzmpy.github.io/mynotes-es/#/docs/@typescript/index.mdx)
@@ -16,7 +18,7 @@
     * [网络请求](https://mzmpy.github.io/mynotes-es/#/docs/vanilla/network-request.mdx)
     * [前端数据持久化存储](https://mzmpy.github.io/mynotes-es/#/docs/vanilla/persistent-storage.mdx)
   * vue3
-    * [vue概览](https://mzmpy.github.io/mynotes-es/#/docs/react/hooks@18.2.0.mdx)
+    * [vue概览](https://mzmpy.github.io/mynotes-es/#/docs/vue/vue3概览.mdx)
     * [vue指令](https://mzmpy.github.io/mynotes-es/#/docs/vue/vue3@directives.mdx)
     * [vue路由](https://mzmpy.github.io/mynotes-es/#/docs/vue/vue-router%20v4.mdx)
   * react
