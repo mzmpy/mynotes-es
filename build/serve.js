@@ -11,7 +11,6 @@ import esbuildPluginCopy from 'esbuild-plugin-copy'
 import esbuildPluginClean from 'esbuild-plugin-clean'
 import esbuildPluginInlineImage from 'esbuild-plugin-inline-image'
 import esbuildWorkerPlugin from '../plugins/esbuild-plugin-worker/index.js'
-import { nodeModulesPolyfillPlugin } from 'esbuild-plugins-node-modules-polyfill'
 
 import rehypeHighlight from 'rehype-highlight'
 import remarkGfm from 'remark-gfm'
@@ -109,11 +108,6 @@ await esbuild.build({
       patterns: ['./dist/*']
     }),
     esbuildPluginInlineImage(),
-    nodeModulesPolyfillPlugin({
-      modules: {
-        path: true
-      }
-    }),
     esbuildWorkerPlugin()
   ],
   outdir: './dist',

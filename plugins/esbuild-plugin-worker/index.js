@@ -2,6 +2,7 @@
 import path from 'path'
 import esbuild from 'esbuild'
 import { nodeModulesPolyfillPlugin } from 'esbuild-plugins-node-modules-polyfill'
+import esbuildPluginImportPathModifier from '../esbuild-plugin-importPath-modifier/index.js'
 
 export default () => { 
   return {
@@ -41,6 +42,15 @@ export default () => {
             bundle: true,
             format: 'iife',
             plugins: [
+              esbuildPluginImportPathModifier({
+                filters: [
+                  /node:path\/posix$/
+                ],
+                replacements: [
+                  `import { posix as path } from 'path'\n` +
+                  `export default path\n`
+                ]
+              }),
               nodeModulesPolyfillPlugin({
                 modules: {
                   path: true

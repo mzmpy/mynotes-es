@@ -9,6 +9,7 @@ import esbuildPluginNoteRoute from '../plugins/esbuild-plugin-note-route/index.j
 import esbuildPluginCopy from 'esbuild-plugin-copy'
 import esbuildPluginClean from 'esbuild-plugin-clean'
 import esbuildPluginInlineImage from 'esbuild-plugin-inline-image'
+import esbuildWorkerPlugin from '../plugins/esbuild-plugin-worker/index.js'
 
 import rehypeHighlight from 'rehype-highlight'
 import remarkGfm from 'remark-gfm'
@@ -105,7 +106,8 @@ const result = await esbuild.build({
     esbuildPluginClean({
       patterns: ['./dist/*']
     }),
-    esbuildPluginInlineImage()
+    esbuildPluginInlineImage(),
+    esbuildWorkerPlugin()
   ],
   outdir: './dist'
 })
