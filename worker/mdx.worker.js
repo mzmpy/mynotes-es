@@ -918,7 +918,7 @@
     let rightIdx = 0;
     let i = 0;
     while (leftIdx < left.length && rightIdx < right.length) {
-      let ret = compare(left[leftIdx], right[rightIdx]);
+      const ret = compare(left[leftIdx], right[rightIdx]);
       if (ret <= 0) {
         data2[i++] = left[leftIdx++];
       } else {
@@ -936,8 +936,8 @@
   function computeLineOffsets(text4, isAtLineStart, textOffset = 0) {
     const result = isAtLineStart ? [textOffset] : [];
     for (let i = 0; i < text4.length; i++) {
-      let ch = text4.charCodeAt(i);
-      if (ch === 13 || ch === 10) {
+      const ch = text4.charCodeAt(i);
+      if (isEOL(ch)) {
         if (ch === 13 && i + 1 < text4.length && text4.charCodeAt(i + 1) === 10) {
           i++;
         }
@@ -945,6 +945,9 @@
       }
     }
     return result;
+  }
+  function isEOL(char) {
+    return char === 13 || char === 10;
   }
   function getWellformedRange(range) {
     const start2 = range.start;
@@ -991,7 +994,7 @@
           return this._content;
         }
         update(changes, version2) {
-          for (let change of changes) {
+          for (const change of changes) {
             if (FullTextDocument.isIncremental(change)) {
               const range = getWellformedRange(change.range);
               const startOffset = this.offsetAt(range.start);
@@ -1035,42 +1038,53 @@
         }
         positionAt(offset2) {
           offset2 = Math.max(Math.min(offset2, this._content.length), 0);
-          let lineOffsets = this.getLineOffsets();
+          const lineOffsets = this.getLineOffsets();
           let low = 0, high = lineOffsets.length;
           if (high === 0) {
             return { line: 0, character: offset2 };
           }
           while (low < high) {
-            let mid = Math.floor((low + high) / 2);
+            const mid = Math.floor((low + high) / 2);
             if (lineOffsets[mid] > offset2) {
               high = mid;
             } else {
               low = mid + 1;
             }
           }
-          let line = low - 1;
+          const line = low - 1;
+          offset2 = this.ensureBeforeEOL(offset2, lineOffsets[line]);
           return { line, character: offset2 - lineOffsets[line] };
         }
         offsetAt(position4) {
-          let lineOffsets = this.getLineOffsets();
+          const lineOffsets = this.getLineOffsets();
           if (position4.line >= lineOffsets.length) {
             return this._content.length;
           } else if (position4.line < 0) {
             return 0;
           }
-          let lineOffset = lineOffsets[position4.line];
-          let nextLineOffset = position4.line + 1 < lineOffsets.length ? lineOffsets[position4.line + 1] : this._content.length;
-          return Math.max(Math.min(lineOffset + position4.character, nextLineOffset), lineOffset);
+          const lineOffset = lineOffsets[position4.line];
+          if (position4.character <= 0) {
+            return lineOffset;
+          }
+          const nextLineOffset = position4.line + 1 < lineOffsets.length ? lineOffsets[position4.line + 1] : this._content.length;
+          const offset2 = Math.min(lineOffset + position4.character, nextLineOffset);
+          return this.ensureBeforeEOL(offset2, lineOffset);
+        }
+        ensureBeforeEOL(offset2, lineOffset) {
+          while (offset2 > lineOffset && isEOL(this._content.charCodeAt(offset2 - 1))) {
+            offset2--;
+          }
+          return offset2;
         }
         get lineCount() {
           return this.getLineOffsets().length;
         }
         static isIncremental(event) {
-          let candidate = event;
+          const candidate = event;
           return candidate !== void 0 && candidate !== null && typeof candidate.text === "string" && candidate.range !== void 0 && (candidate.rangeLength === void 0 || typeof candidate.rangeLength === "number");
         }
         static isFull(event) {
-          let candidate = event;
+          const candidate = event;
           return candidate !== void 0 && candidate !== null && typeof candidate.text === "string" && candidate.range === void 0 && candidate.rangeLength === void 0;
         }
       };
@@ -1089,9 +1103,9 @@
         }
         TextDocument2.update = update;
         function applyEdits(document5, edits) {
-          let text4 = document5.getText();
-          let sortedEdits = mergeSort(edits.map(getWellformedEdit), (a, b) => {
-            let diff = a.range.start.line - b.range.start.line;
+          const text4 = document5.getText();
+          const sortedEdits = mergeSort(edits.map(getWellformedEdit), (a, b) => {
+            const diff = a.range.start.line - b.range.start.line;
             if (diff === 0) {
               return a.range.start.character - b.range.start.character;
             }
@@ -1100,7 +1114,7 @@
           let lastModifiedOffset = 0;
           const spans = [];
           for (const e of sortedEdits) {
-            let startOffset = document5.offsetAt(e.range.start);
+            const startOffset = document5.offsetAt(e.range.start);
             if (startOffset < lastModifiedOffset) {
               throw new Error("Overlapping edit");
             } else if (startOffset > lastModifiedOffset) {
@@ -13809,8 +13823,16 @@ ${hover.contents.value}
       var moduleSpecifierCache_1 = require_moduleSpecifierCache3();
       var autoImportProviderProject_1 = require_autoImportProviderProject();
       function createProject(ts2, host, createLanguageService, options) {
-        var _a4;
+        var _a4, _b3;
         const { combinePaths, inferredTypesContainingFile, createSymlinkCache, toPath, createCacheableExportInfoMap, timestamp, isInsideNodeModules, LanguageServiceMode } = ts2;
+        const tsCreateModuleSpecifierCache = (_a4 = ts2.server) === null || _a4 === void 0 ? void 0 : _a4.createModuleSpecifierCache;
+        const noopHost = {
+          watchNodeModulesForPackageJsonChanges: () => ({ close: () => {
+          } }),
+          toPath(fileName) {
+            return toPath(fileName, host.getCurrentDirectory(), projectService.toCanonicalFileName);
+          }
+        };
         const AutoImportProviderProject = (0, autoImportProviderProject_1.createAutoImportProviderProjectStatic)(ts2, host, createLanguageService);
         const { projectService, compilerOptions, currentDirectory } = options;
         function updateProjectIfDirty(project) {
@@ -13831,7 +13853,7 @@ ${hover.contents.value}
             var _a5;
             (_a5 = this.exportMapCache) === null || _a5 === void 0 ? void 0 : _a5.clear();
           },
-          moduleSpecifierCache: ((_a4 = options.createModuleSpecifierCache) !== null && _a4 !== void 0 ? _a4 : moduleSpecifierCache_1.createModuleSpecifierCache)(),
+          moduleSpecifierCache: tsCreateModuleSpecifierCache ? tsCreateModuleSpecifierCache(noopHost) : ((_b3 = options.createModuleSpecifierCache) !== null && _b3 !== void 0 ? _b3 : moduleSpecifierCache_1.createModuleSpecifierCache)(),
           getModuleSpecifierCache() {
             return this.moduleSpecifierCache;
           },
@@ -14203,6 +14225,138 @@ ${hover.contents.value}
     }
   });
 
+  // node_modules/typescript-auto-import-cache/out/5_6/moduleSpecifierCache.js
+  var require_moduleSpecifierCache5 = __commonJS({
+    "node_modules/typescript-auto-import-cache/out/5_6/moduleSpecifierCache.js"(exports3) {
+      "use strict";
+      Object.defineProperty(exports3, "__esModule", { value: true });
+      exports3.createModuleSpecifierCache = void 0;
+      function createModuleSpecifierCache() {
+        let containedNodeModulesWatchers;
+        let cache;
+        let currentKey;
+        const result = {
+          get(fromFileName, toFileName, preferences, options) {
+            if (!cache || currentKey !== key(fromFileName, preferences, options))
+              return void 0;
+            return cache.get(toFileName);
+          },
+          set(fromFileName, toFileName, preferences, options, kind, modulePaths, moduleSpecifiers) {
+            ensureCache(fromFileName, preferences, options).set(toFileName, createInfo(
+              kind,
+              modulePaths,
+              moduleSpecifiers,
+              /*packageName */
+              void 0,
+              /*isBlockedByPackageJsonDependencies*/
+              false
+            ));
+            if (moduleSpecifiers) {
+              for (const p of modulePaths) {
+                if (p.isInNodeModules) {
+                }
+              }
+            }
+          },
+          setModulePaths(fromFileName, toFileName, preferences, options, modulePaths) {
+            const cache2 = ensureCache(fromFileName, preferences, options);
+            const info = cache2.get(toFileName);
+            if (info) {
+              info.modulePaths = modulePaths;
+            } else {
+              cache2.set(toFileName, createInfo(
+                /*kind*/
+                void 0,
+                modulePaths,
+                /*moduleSpecifiers*/
+                void 0,
+                /*packageName */
+                void 0,
+                /*isBlockedByPackageJsonDependencies*/
+                void 0
+              ));
+            }
+          },
+          setBlockedByPackageJsonDependencies(fromFileName, toFileName, preferences, options, packageName, isBlockedByPackageJsonDependencies) {
+            const cache2 = ensureCache(fromFileName, preferences, options);
+            const info = cache2.get(toFileName);
+            if (info) {
+              info.isBlockedByPackageJsonDependencies = isBlockedByPackageJsonDependencies;
+              info.packageName = packageName;
+            } else {
+              cache2.set(toFileName, createInfo(
+                /*kind*/
+                void 0,
+                /*modulePaths*/
+                void 0,
+                /*moduleSpecifiers*/
+                void 0,
+                /*packageName */
+                void 0,
+                isBlockedByPackageJsonDependencies
+              ));
+            }
+          },
+          clear() {
+            containedNodeModulesWatchers === null || containedNodeModulesWatchers === void 0 ? void 0 : containedNodeModulesWatchers.forEach((watcher) => watcher.close());
+            cache === null || cache === void 0 ? void 0 : cache.clear();
+            containedNodeModulesWatchers === null || containedNodeModulesWatchers === void 0 ? void 0 : containedNodeModulesWatchers.clear();
+            currentKey = void 0;
+          },
+          count() {
+            return cache ? cache.size : 0;
+          }
+        };
+        return result;
+        function ensureCache(fromFileName, preferences, options) {
+          const newKey = key(fromFileName, preferences, options);
+          if (cache && currentKey !== newKey) {
+            result.clear();
+          }
+          currentKey = newKey;
+          return cache || (cache = /* @__PURE__ */ new Map());
+        }
+        function key(fromFileName, preferences, options) {
+          return `${fromFileName},${preferences.importModuleSpecifierEnding},${preferences.importModuleSpecifierPreference},${options.overrideImportMode}`;
+        }
+        function createInfo(kind, modulePaths, moduleSpecifiers, packageName, isBlockedByPackageJsonDependencies) {
+          return { kind, modulePaths, moduleSpecifiers, packageName, isBlockedByPackageJsonDependencies };
+        }
+      }
+      exports3.createModuleSpecifierCache = createModuleSpecifierCache;
+    }
+  });
+
+  // node_modules/typescript-auto-import-cache/out/5_6/project.js
+  var require_project4 = __commonJS({
+    "node_modules/typescript-auto-import-cache/out/5_6/project.js"(exports3) {
+      "use strict";
+      Object.defineProperty(exports3, "__esModule", { value: true });
+      exports3.createProject = void 0;
+      var project_1 = require_project2();
+      var moduleSpecifierCache_1 = require_moduleSpecifierCache5();
+      function createProject(ts2, host, createLanguageService, options) {
+        options.createModuleSpecifierCache = moduleSpecifierCache_1.createModuleSpecifierCache;
+        return (0, project_1.createProject)(ts2, host, createLanguageService, options);
+      }
+      exports3.createProject = createProject;
+    }
+  });
+
+  // node_modules/typescript-auto-import-cache/out/5_6/index.js
+  var require__7 = __commonJS({
+    "node_modules/typescript-auto-import-cache/out/5_6/index.js"(exports3) {
+      "use strict";
+      Object.defineProperty(exports3, "__esModule", { value: true });
+      var _5_0_1 = require__4();
+      var project_1 = require_project4();
+      function default_1(ts2, sys, host, createLanguageService) {
+        return (0, _5_0_1.default)(ts2, sys, host, createLanguageService, project_1.createProject);
+      }
+      exports3.default = default_1;
+    }
+  });
+
   // node_modules/typescript-auto-import-cache/out/index.js
   var require_out = __commonJS({
     "node_modules/typescript-auto-import-cache/out/index.js"(exports3) {
@@ -14216,7 +14370,11 @@ ${hover.contents.value}
       var _5_0_1 = require__4();
       var _5_3_1 = require__5();
       var _5_5_1 = require__6();
+      var _5_6_1 = require__7();
       function createLanguageService(ts2, sys, host, createLanguageService2) {
+        if (semver.gte(ts2.version, "5.6.1-rc")) {
+          return (0, _5_6_1.default)(ts2, sys, host, createLanguageService2);
+        }
         if (semver.gte(ts2.version, "5.5.1")) {
           return (0, _5_5_1.default)(ts2, sys, host, createLanguageService2);
         } else if (semver.gte(ts2.version, "5.3.0")) {
@@ -16355,10 +16513,10 @@ ${hover.contents.value}
         typeof exports3 === "object" && typeof module !== "undefined" ? factory(exports3) : typeof define === "function" && define.amd ? define(["exports"], factory) : (global2 = typeof globalThis !== "undefined" ? globalThis : global2 || self, factory(global2.acorn = {}));
       })(exports3, function(exports4) {
         "use strict";
-        var astralIdentifierCodes2 = [509, 0, 227, 0, 150, 4, 294, 9, 1368, 2, 2, 1, 6, 3, 41, 2, 5, 0, 166, 1, 574, 3, 9, 9, 370, 1, 81, 2, 71, 10, 50, 3, 123, 2, 54, 14, 32, 10, 3, 1, 11, 3, 46, 10, 8, 0, 46, 9, 7, 2, 37, 13, 2, 9, 6, 1, 45, 0, 13, 2, 49, 13, 9, 3, 2, 11, 83, 11, 7, 0, 3, 0, 158, 11, 6, 9, 7, 3, 56, 1, 2, 6, 3, 1, 3, 2, 10, 0, 11, 1, 3, 6, 4, 4, 193, 17, 10, 9, 5, 0, 82, 19, 13, 9, 214, 6, 3, 8, 28, 1, 83, 16, 16, 9, 82, 12, 9, 9, 84, 14, 5, 9, 243, 14, 166, 9, 71, 5, 2, 1, 3, 3, 2, 0, 2, 1, 13, 9, 120, 6, 3, 6, 4, 0, 29, 9, 41, 6, 2, 3, 9, 0, 10, 10, 47, 15, 406, 7, 2, 7, 17, 9, 57, 21, 2, 13, 123, 5, 4, 0, 2, 1, 2, 6, 2, 0, 9, 9, 49, 4, 2, 1, 2, 4, 9, 9, 330, 3, 10, 1, 2, 0, 49, 6, 4, 4, 14, 9, 5351, 0, 7, 14, 13835, 9, 87, 9, 39, 4, 60, 6, 26, 9, 1014, 0, 2, 54, 8, 3, 82, 0, 12, 1, 19628, 1, 4706, 45, 3, 22, 543, 4, 4, 5, 9, 7, 3, 6, 31, 3, 149, 2, 1418, 49, 513, 54, 5, 49, 9, 0, 15, 0, 23, 4, 2, 14, 1361, 6, 2, 16, 3, 6, 2, 1, 2, 4, 101, 0, 161, 6, 10, 9, 357, 0, 62, 13, 499, 13, 983, 6, 110, 6, 6, 9, 4759, 9, 787719, 239];
-        var astralIdentifierStartCodes2 = [0, 11, 2, 25, 2, 18, 2, 1, 2, 14, 3, 13, 35, 122, 70, 52, 268, 28, 4, 48, 48, 31, 14, 29, 6, 37, 11, 29, 3, 35, 5, 7, 2, 4, 43, 157, 19, 35, 5, 35, 5, 39, 9, 51, 13, 10, 2, 14, 2, 6, 2, 1, 2, 10, 2, 14, 2, 6, 2, 1, 68, 310, 10, 21, 11, 7, 25, 5, 2, 41, 2, 8, 70, 5, 3, 0, 2, 43, 2, 1, 4, 0, 3, 22, 11, 22, 10, 30, 66, 18, 2, 1, 11, 21, 11, 25, 71, 55, 7, 1, 65, 0, 16, 3, 2, 2, 2, 28, 43, 28, 4, 28, 36, 7, 2, 27, 28, 53, 11, 21, 11, 18, 14, 17, 111, 72, 56, 50, 14, 50, 14, 35, 349, 41, 7, 1, 79, 28, 11, 0, 9, 21, 43, 17, 47, 20, 28, 22, 13, 52, 58, 1, 3, 0, 14, 44, 33, 24, 27, 35, 30, 0, 3, 0, 9, 34, 4, 0, 13, 47, 15, 3, 22, 0, 2, 0, 36, 17, 2, 24, 20, 1, 64, 6, 2, 0, 2, 3, 2, 14, 2, 9, 8, 46, 39, 7, 3, 1, 3, 21, 2, 6, 2, 1, 2, 4, 4, 0, 19, 0, 13, 4, 159, 52, 19, 3, 21, 2, 31, 47, 21, 1, 2, 0, 185, 46, 42, 3, 37, 47, 21, 0, 60, 42, 14, 0, 72, 26, 38, 6, 186, 43, 117, 63, 32, 7, 3, 0, 3, 7, 2, 1, 2, 23, 16, 0, 2, 0, 95, 7, 3, 38, 17, 0, 2, 0, 29, 0, 11, 39, 8, 0, 22, 0, 12, 45, 20, 0, 19, 72, 264, 8, 2, 36, 18, 0, 50, 29, 113, 6, 2, 1, 2, 37, 22, 0, 26, 5, 2, 1, 2, 31, 15, 0, 328, 18, 16, 0, 2, 12, 2, 33, 125, 0, 80, 921, 103, 110, 18, 195, 2637, 96, 16, 1071, 18, 5, 4026, 582, 8634, 568, 8, 30, 18, 78, 18, 29, 19, 47, 17, 3, 32, 20, 6, 18, 689, 63, 129, 74, 6, 0, 67, 12, 65, 1, 2, 0, 29, 6135, 9, 1237, 43, 8, 8936, 3, 2, 6, 2, 1, 2, 290, 16, 0, 30, 2, 3, 0, 15, 3, 9, 395, 2309, 106, 6, 12, 4, 8, 8, 9, 5991, 84, 2, 70, 2, 1, 3, 0, 3, 1, 3, 3, 2, 11, 2, 0, 2, 6, 2, 64, 2, 3, 3, 7, 2, 6, 2, 27, 2, 3, 2, 4, 2, 0, 4, 6, 2, 339, 3, 24, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 7, 1845, 30, 7, 5, 262, 61, 147, 44, 11, 6, 17, 0, 322, 29, 19, 43, 485, 27, 757, 6, 2, 3, 2, 1, 2, 14, 2, 196, 60, 67, 8, 0, 1205, 3, 2, 26, 2, 1, 2, 0, 3, 0, 2, 9, 2, 3, 2, 0, 2, 0, 7, 0, 5, 0, 2, 0, 2, 0, 2, 2, 2, 1, 2, 0, 3, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 1, 2, 0, 3, 3, 2, 6, 2, 3, 2, 3, 2, 0, 2, 9, 2, 16, 6, 2, 2, 4, 2, 16, 4421, 42719, 33, 4153, 7, 221, 3, 5761, 15, 7472, 16, 621, 2467, 541, 1507, 4938, 6, 4191];
-        var nonASCIIidentifierChars2 = "\u200C\u200D\xB7\u0300-\u036F\u0387\u0483-\u0487\u0591-\u05BD\u05BF\u05C1\u05C2\u05C4\u05C5\u05C7\u0610-\u061A\u064B-\u0669\u0670\u06D6-\u06DC\u06DF-\u06E4\u06E7\u06E8\u06EA-\u06ED\u06F0-\u06F9\u0711\u0730-\u074A\u07A6-\u07B0\u07C0-\u07C9\u07EB-\u07F3\u07FD\u0816-\u0819\u081B-\u0823\u0825-\u0827\u0829-\u082D\u0859-\u085B\u0898-\u089F\u08CA-\u08E1\u08E3-\u0903\u093A-\u093C\u093E-\u094F\u0951-\u0957\u0962\u0963\u0966-\u096F\u0981-\u0983\u09BC\u09BE-\u09C4\u09C7\u09C8\u09CB-\u09CD\u09D7\u09E2\u09E3\u09E6-\u09EF\u09FE\u0A01-\u0A03\u0A3C\u0A3E-\u0A42\u0A47\u0A48\u0A4B-\u0A4D\u0A51\u0A66-\u0A71\u0A75\u0A81-\u0A83\u0ABC\u0ABE-\u0AC5\u0AC7-\u0AC9\u0ACB-\u0ACD\u0AE2\u0AE3\u0AE6-\u0AEF\u0AFA-\u0AFF\u0B01-\u0B03\u0B3C\u0B3E-\u0B44\u0B47\u0B48\u0B4B-\u0B4D\u0B55-\u0B57\u0B62\u0B63\u0B66-\u0B6F\u0B82\u0BBE-\u0BC2\u0BC6-\u0BC8\u0BCA-\u0BCD\u0BD7\u0BE6-\u0BEF\u0C00-\u0C04\u0C3C\u0C3E-\u0C44\u0C46-\u0C48\u0C4A-\u0C4D\u0C55\u0C56\u0C62\u0C63\u0C66-\u0C6F\u0C81-\u0C83\u0CBC\u0CBE-\u0CC4\u0CC6-\u0CC8\u0CCA-\u0CCD\u0CD5\u0CD6\u0CE2\u0CE3\u0CE6-\u0CEF\u0CF3\u0D00-\u0D03\u0D3B\u0D3C\u0D3E-\u0D44\u0D46-\u0D48\u0D4A-\u0D4D\u0D57\u0D62\u0D63\u0D66-\u0D6F\u0D81-\u0D83\u0DCA\u0DCF-\u0DD4\u0DD6\u0DD8-\u0DDF\u0DE6-\u0DEF\u0DF2\u0DF3\u0E31\u0E34-\u0E3A\u0E47-\u0E4E\u0E50-\u0E59\u0EB1\u0EB4-\u0EBC\u0EC8-\u0ECE\u0ED0-\u0ED9\u0F18\u0F19\u0F20-\u0F29\u0F35\u0F37\u0F39\u0F3E\u0F3F\u0F71-\u0F84\u0F86\u0F87\u0F8D-\u0F97\u0F99-\u0FBC\u0FC6\u102B-\u103E\u1040-\u1049\u1056-\u1059\u105E-\u1060\u1062-\u1064\u1067-\u106D\u1071-\u1074\u1082-\u108D\u108F-\u109D\u135D-\u135F\u1369-\u1371\u1712-\u1715\u1732-\u1734\u1752\u1753\u1772\u1773\u17B4-\u17D3\u17DD\u17E0-\u17E9\u180B-\u180D\u180F-\u1819\u18A9\u1920-\u192B\u1930-\u193B\u1946-\u194F\u19D0-\u19DA\u1A17-\u1A1B\u1A55-\u1A5E\u1A60-\u1A7C\u1A7F-\u1A89\u1A90-\u1A99\u1AB0-\u1ABD\u1ABF-\u1ACE\u1B00-\u1B04\u1B34-\u1B44\u1B50-\u1B59\u1B6B-\u1B73\u1B80-\u1B82\u1BA1-\u1BAD\u1BB0-\u1BB9\u1BE6-\u1BF3\u1C24-\u1C37\u1C40-\u1C49\u1C50-\u1C59\u1CD0-\u1CD2\u1CD4-\u1CE8\u1CED\u1CF4\u1CF7-\u1CF9\u1DC0-\u1DFF\u200C\u200D\u203F\u2040\u2054\u20D0-\u20DC\u20E1\u20E5-\u20F0\u2CEF-\u2CF1\u2D7F\u2DE0-\u2DFF\u302A-\u302F\u3099\u309A\u30FB\uA620-\uA629\uA66F\uA674-\uA67D\uA69E\uA69F\uA6F0\uA6F1\uA802\uA806\uA80B\uA823-\uA827\uA82C\uA880\uA881\uA8B4-\uA8C5\uA8D0-\uA8D9\uA8E0-\uA8F1\uA8FF-\uA909\uA926-\uA92D\uA947-\uA953\uA980-\uA983\uA9B3-\uA9C0\uA9D0-\uA9D9\uA9E5\uA9F0-\uA9F9\uAA29-\uAA36\uAA43\uAA4C\uAA4D\uAA50-\uAA59\uAA7B-\uAA7D\uAAB0\uAAB2-\uAAB4\uAAB7\uAAB8\uAABE\uAABF\uAAC1\uAAEB-\uAAEF\uAAF5\uAAF6\uABE3-\uABEA\uABEC\uABED\uABF0-\uABF9\uFB1E\uFE00-\uFE0F\uFE20-\uFE2F\uFE33\uFE34\uFE4D-\uFE4F\uFF10-\uFF19\uFF3F\uFF65";
-        var nonASCIIidentifierStartChars2 = "\xAA\xB5\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u037F\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u052F\u0531-\u0556\u0559\u0560-\u0588\u05D0-\u05EA\u05EF-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u0860-\u086A\u0870-\u0887\u0889-\u088E\u08A0-\u08C9\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0980\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u09FC\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0AF9\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C39\u0C3D\u0C58-\u0C5A\u0C5D\u0C60\u0C61\u0C80\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDD\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D04-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D54-\u0D56\u0D5F-\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E86-\u0E8A\u0E8C-\u0EA3\u0EA5\u0EA7-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F5\u13F8-\u13FD\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u16EE-\u16F8\u1700-\u1711\u171F-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1878\u1880-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191E\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19B0-\u19C9\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4C\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1C80-\u1C88\u1C90-\u1CBA\u1CBD-\u1CBF\u1CE9-\u1CEC\u1CEE-\u1CF3\u1CF5\u1CF6\u1CFA\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2118-\u211D\u2124\u2126\u2128\u212A-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2160-\u2188\u2C00-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u3005-\u3007\u3021-\u3029\u3031-\u3035\u3038-\u303C\u3041-\u3096\u309B-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312F\u3131-\u318E\u31A0-\u31BF\u31F0-\u31FF\u3400-\u4DBF\u4E00-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA69D\uA6A0-\uA6EF\uA717-\uA71F\uA722-\uA788\uA78B-\uA7CA\uA7D0\uA7D1\uA7D3\uA7D5-\uA7D9\uA7F2-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA8FD\uA8FE\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uA9E0-\uA9E4\uA9E6-\uA9EF\uA9FA-\uA9FE\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA7E-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uAB30-\uAB5A\uAB5C-\uAB69\uAB70-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC";
+        var astralIdentifierCodes2 = [509, 0, 227, 0, 150, 4, 294, 9, 1368, 2, 2, 1, 6, 3, 41, 2, 5, 0, 166, 1, 574, 3, 9, 9, 7, 9, 32, 4, 318, 1, 80, 3, 71, 10, 50, 3, 123, 2, 54, 14, 32, 10, 3, 1, 11, 3, 46, 10, 8, 0, 46, 9, 7, 2, 37, 13, 2, 9, 6, 1, 45, 0, 13, 2, 49, 13, 9, 3, 2, 11, 83, 11, 7, 0, 3, 0, 158, 11, 6, 9, 7, 3, 56, 1, 2, 6, 3, 1, 3, 2, 10, 0, 11, 1, 3, 6, 4, 4, 68, 8, 2, 0, 3, 0, 2, 3, 2, 4, 2, 0, 15, 1, 83, 17, 10, 9, 5, 0, 82, 19, 13, 9, 214, 6, 3, 8, 28, 1, 83, 16, 16, 9, 82, 12, 9, 9, 7, 19, 58, 14, 5, 9, 243, 14, 166, 9, 71, 5, 2, 1, 3, 3, 2, 0, 2, 1, 13, 9, 120, 6, 3, 6, 4, 0, 29, 9, 41, 6, 2, 3, 9, 0, 10, 10, 47, 15, 343, 9, 54, 7, 2, 7, 17, 9, 57, 21, 2, 13, 123, 5, 4, 0, 2, 1, 2, 6, 2, 0, 9, 9, 49, 4, 2, 1, 2, 4, 9, 9, 330, 3, 10, 1, 2, 0, 49, 6, 4, 4, 14, 10, 5350, 0, 7, 14, 11465, 27, 2343, 9, 87, 9, 39, 4, 60, 6, 26, 9, 535, 9, 470, 0, 2, 54, 8, 3, 82, 0, 12, 1, 19628, 1, 4178, 9, 519, 45, 3, 22, 543, 4, 4, 5, 9, 7, 3, 6, 31, 3, 149, 2, 1418, 49, 513, 54, 5, 49, 9, 0, 15, 0, 23, 4, 2, 14, 1361, 6, 2, 16, 3, 6, 2, 1, 2, 4, 101, 0, 161, 6, 10, 9, 357, 0, 62, 13, 499, 13, 245, 1, 2, 9, 726, 6, 110, 6, 6, 9, 4759, 9, 787719, 239];
+        var astralIdentifierStartCodes2 = [0, 11, 2, 25, 2, 18, 2, 1, 2, 14, 3, 13, 35, 122, 70, 52, 268, 28, 4, 48, 48, 31, 14, 29, 6, 37, 11, 29, 3, 35, 5, 7, 2, 4, 43, 157, 19, 35, 5, 35, 5, 39, 9, 51, 13, 10, 2, 14, 2, 6, 2, 1, 2, 10, 2, 14, 2, 6, 2, 1, 4, 51, 13, 310, 10, 21, 11, 7, 25, 5, 2, 41, 2, 8, 70, 5, 3, 0, 2, 43, 2, 1, 4, 0, 3, 22, 11, 22, 10, 30, 66, 18, 2, 1, 11, 21, 11, 25, 71, 55, 7, 1, 65, 0, 16, 3, 2, 2, 2, 28, 43, 28, 4, 28, 36, 7, 2, 27, 28, 53, 11, 21, 11, 18, 14, 17, 111, 72, 56, 50, 14, 50, 14, 35, 39, 27, 10, 22, 251, 41, 7, 1, 17, 2, 60, 28, 11, 0, 9, 21, 43, 17, 47, 20, 28, 22, 13, 52, 58, 1, 3, 0, 14, 44, 33, 24, 27, 35, 30, 0, 3, 0, 9, 34, 4, 0, 13, 47, 15, 3, 22, 0, 2, 0, 36, 17, 2, 24, 20, 1, 64, 6, 2, 0, 2, 3, 2, 14, 2, 9, 8, 46, 39, 7, 3, 1, 3, 21, 2, 6, 2, 1, 2, 4, 4, 0, 19, 0, 13, 4, 31, 9, 2, 0, 3, 0, 2, 37, 2, 0, 26, 0, 2, 0, 45, 52, 19, 3, 21, 2, 31, 47, 21, 1, 2, 0, 185, 46, 42, 3, 37, 47, 21, 0, 60, 42, 14, 0, 72, 26, 38, 6, 186, 43, 117, 63, 32, 7, 3, 0, 3, 7, 2, 1, 2, 23, 16, 0, 2, 0, 95, 7, 3, 38, 17, 0, 2, 0, 29, 0, 11, 39, 8, 0, 22, 0, 12, 45, 20, 0, 19, 72, 200, 32, 32, 8, 2, 36, 18, 0, 50, 29, 113, 6, 2, 1, 2, 37, 22, 0, 26, 5, 2, 1, 2, 31, 15, 0, 328, 18, 16, 0, 2, 12, 2, 33, 125, 0, 80, 921, 103, 110, 18, 195, 2637, 96, 16, 1071, 18, 5, 26, 3994, 6, 582, 6842, 29, 1763, 568, 8, 30, 18, 78, 18, 29, 19, 47, 17, 3, 32, 20, 6, 18, 433, 44, 212, 63, 129, 74, 6, 0, 67, 12, 65, 1, 2, 0, 29, 6135, 9, 1237, 42, 9, 8936, 3, 2, 6, 2, 1, 2, 290, 16, 0, 30, 2, 3, 0, 15, 3, 9, 395, 2309, 106, 6, 12, 4, 8, 8, 9, 5991, 84, 2, 70, 2, 1, 3, 0, 3, 1, 3, 3, 2, 11, 2, 0, 2, 6, 2, 64, 2, 3, 3, 7, 2, 6, 2, 27, 2, 3, 2, 4, 2, 0, 4, 6, 2, 339, 3, 24, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 7, 1845, 30, 7, 5, 262, 61, 147, 44, 11, 6, 17, 0, 322, 29, 19, 43, 485, 27, 229, 29, 3, 0, 496, 6, 2, 3, 2, 1, 2, 14, 2, 196, 60, 67, 8, 0, 1205, 3, 2, 26, 2, 1, 2, 0, 3, 0, 2, 9, 2, 3, 2, 0, 2, 0, 7, 0, 5, 0, 2, 0, 2, 0, 2, 2, 2, 1, 2, 0, 3, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 1, 2, 0, 3, 3, 2, 6, 2, 3, 2, 3, 2, 0, 2, 9, 2, 16, 6, 2, 2, 4, 2, 16, 4421, 42719, 33, 4153, 7, 221, 3, 5761, 15, 7472, 16, 621, 2467, 541, 1507, 4938, 6, 4191];
+        var nonASCIIidentifierChars2 = "\u200C\u200D\xB7\u0300-\u036F\u0387\u0483-\u0487\u0591-\u05BD\u05BF\u05C1\u05C2\u05C4\u05C5\u05C7\u0610-\u061A\u064B-\u0669\u0670\u06D6-\u06DC\u06DF-\u06E4\u06E7\u06E8\u06EA-\u06ED\u06F0-\u06F9\u0711\u0730-\u074A\u07A6-\u07B0\u07C0-\u07C9\u07EB-\u07F3\u07FD\u0816-\u0819\u081B-\u0823\u0825-\u0827\u0829-\u082D\u0859-\u085B\u0897-\u089F\u08CA-\u08E1\u08E3-\u0903\u093A-\u093C\u093E-\u094F\u0951-\u0957\u0962\u0963\u0966-\u096F\u0981-\u0983\u09BC\u09BE-\u09C4\u09C7\u09C8\u09CB-\u09CD\u09D7\u09E2\u09E3\u09E6-\u09EF\u09FE\u0A01-\u0A03\u0A3C\u0A3E-\u0A42\u0A47\u0A48\u0A4B-\u0A4D\u0A51\u0A66-\u0A71\u0A75\u0A81-\u0A83\u0ABC\u0ABE-\u0AC5\u0AC7-\u0AC9\u0ACB-\u0ACD\u0AE2\u0AE3\u0AE6-\u0AEF\u0AFA-\u0AFF\u0B01-\u0B03\u0B3C\u0B3E-\u0B44\u0B47\u0B48\u0B4B-\u0B4D\u0B55-\u0B57\u0B62\u0B63\u0B66-\u0B6F\u0B82\u0BBE-\u0BC2\u0BC6-\u0BC8\u0BCA-\u0BCD\u0BD7\u0BE6-\u0BEF\u0C00-\u0C04\u0C3C\u0C3E-\u0C44\u0C46-\u0C48\u0C4A-\u0C4D\u0C55\u0C56\u0C62\u0C63\u0C66-\u0C6F\u0C81-\u0C83\u0CBC\u0CBE-\u0CC4\u0CC6-\u0CC8\u0CCA-\u0CCD\u0CD5\u0CD6\u0CE2\u0CE3\u0CE6-\u0CEF\u0CF3\u0D00-\u0D03\u0D3B\u0D3C\u0D3E-\u0D44\u0D46-\u0D48\u0D4A-\u0D4D\u0D57\u0D62\u0D63\u0D66-\u0D6F\u0D81-\u0D83\u0DCA\u0DCF-\u0DD4\u0DD6\u0DD8-\u0DDF\u0DE6-\u0DEF\u0DF2\u0DF3\u0E31\u0E34-\u0E3A\u0E47-\u0E4E\u0E50-\u0E59\u0EB1\u0EB4-\u0EBC\u0EC8-\u0ECE\u0ED0-\u0ED9\u0F18\u0F19\u0F20-\u0F29\u0F35\u0F37\u0F39\u0F3E\u0F3F\u0F71-\u0F84\u0F86\u0F87\u0F8D-\u0F97\u0F99-\u0FBC\u0FC6\u102B-\u103E\u1040-\u1049\u1056-\u1059\u105E-\u1060\u1062-\u1064\u1067-\u106D\u1071-\u1074\u1082-\u108D\u108F-\u109D\u135D-\u135F\u1369-\u1371\u1712-\u1715\u1732-\u1734\u1752\u1753\u1772\u1773\u17B4-\u17D3\u17DD\u17E0-\u17E9\u180B-\u180D\u180F-\u1819\u18A9\u1920-\u192B\u1930-\u193B\u1946-\u194F\u19D0-\u19DA\u1A17-\u1A1B\u1A55-\u1A5E\u1A60-\u1A7C\u1A7F-\u1A89\u1A90-\u1A99\u1AB0-\u1ABD\u1ABF-\u1ACE\u1B00-\u1B04\u1B34-\u1B44\u1B50-\u1B59\u1B6B-\u1B73\u1B80-\u1B82\u1BA1-\u1BAD\u1BB0-\u1BB9\u1BE6-\u1BF3\u1C24-\u1C37\u1C40-\u1C49\u1C50-\u1C59\u1CD0-\u1CD2\u1CD4-\u1CE8\u1CED\u1CF4\u1CF7-\u1CF9\u1DC0-\u1DFF\u200C\u200D\u203F\u2040\u2054\u20D0-\u20DC\u20E1\u20E5-\u20F0\u2CEF-\u2CF1\u2D7F\u2DE0-\u2DFF\u302A-\u302F\u3099\u309A\u30FB\uA620-\uA629\uA66F\uA674-\uA67D\uA69E\uA69F\uA6F0\uA6F1\uA802\uA806\uA80B\uA823-\uA827\uA82C\uA880\uA881\uA8B4-\uA8C5\uA8D0-\uA8D9\uA8E0-\uA8F1\uA8FF-\uA909\uA926-\uA92D\uA947-\uA953\uA980-\uA983\uA9B3-\uA9C0\uA9D0-\uA9D9\uA9E5\uA9F0-\uA9F9\uAA29-\uAA36\uAA43\uAA4C\uAA4D\uAA50-\uAA59\uAA7B-\uAA7D\uAAB0\uAAB2-\uAAB4\uAAB7\uAAB8\uAABE\uAABF\uAAC1\uAAEB-\uAAEF\uAAF5\uAAF6\uABE3-\uABEA\uABEC\uABED\uABF0-\uABF9\uFB1E\uFE00-\uFE0F\uFE20-\uFE2F\uFE33\uFE34\uFE4D-\uFE4F\uFF10-\uFF19\uFF3F\uFF65";
+        var nonASCIIidentifierStartChars2 = "\xAA\xB5\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u037F\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u052F\u0531-\u0556\u0559\u0560-\u0588\u05D0-\u05EA\u05EF-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u0860-\u086A\u0870-\u0887\u0889-\u088E\u08A0-\u08C9\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0980\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u09FC\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0AF9\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C39\u0C3D\u0C58-\u0C5A\u0C5D\u0C60\u0C61\u0C80\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDD\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D04-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D54-\u0D56\u0D5F-\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E86-\u0E8A\u0E8C-\u0EA3\u0EA5\u0EA7-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F5\u13F8-\u13FD\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u16EE-\u16F8\u1700-\u1711\u171F-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1878\u1880-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191E\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19B0-\u19C9\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4C\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1C80-\u1C8A\u1C90-\u1CBA\u1CBD-\u1CBF\u1CE9-\u1CEC\u1CEE-\u1CF3\u1CF5\u1CF6\u1CFA\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2118-\u211D\u2124\u2126\u2128\u212A-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2160-\u2188\u2C00-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u3005-\u3007\u3021-\u3029\u3031-\u3035\u3038-\u303C\u3041-\u3096\u309B-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312F\u3131-\u318E\u31A0-\u31BF\u31F0-\u31FF\u3400-\u4DBF\u4E00-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA69D\uA6A0-\uA6EF\uA717-\uA71F\uA722-\uA788\uA78B-\uA7CD\uA7D0\uA7D1\uA7D3\uA7D5-\uA7DC\uA7F2-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA8FD\uA8FE\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uA9E0-\uA9E4\uA9E6-\uA9EF\uA9FA-\uA9FE\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA7E-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uAB30-\uAB5A\uAB5C-\uAB69\uAB70-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC";
         var reservedWords2 = {
           3: "abstract boolean byte char class double enum export extends final float goto implements import int interface long native package private protected public short static super synchronized throws transient volatile",
           5: "class enum extends super const export import",
@@ -17803,6 +17961,9 @@ ${hover.contents.value}
             this.unexpected();
           }
           node3.source = this.parseExprAtom();
+          if (this.options.ecmaVersion >= 16) {
+            node3.attributes = this.parseWithClause();
+          }
           this.semicolon();
           return this.finishNode(node3, "ExportAllDeclaration");
         };
@@ -17833,6 +17994,9 @@ ${hover.contents.value}
                 this.unexpected();
               }
               node3.source = this.parseExprAtom();
+              if (this.options.ecmaVersion >= 16) {
+                node3.attributes = this.parseWithClause();
+              }
             } else {
               for (var i2 = 0, list5 = node3.specifiers; i2 < list5.length; i2 += 1) {
                 var spec = list5[i2];
@@ -17954,6 +18118,9 @@ ${hover.contents.value}
             this.expectContextual("from");
             node3.source = this.type === types$12.string ? this.parseExprAtom() : this.unexpected();
           }
+          if (this.options.ecmaVersion >= 16) {
+            node3.attributes = this.parseWithClause();
+          }
           this.semicolon();
           return this.finishNode(node3, "ImportDeclaration");
         };
@@ -18008,6 +18175,43 @@ ${hover.contents.value}
             nodes.push(this.parseImportSpecifier());
           }
           return nodes;
+        };
+        pp$82.parseWithClause = function() {
+          var nodes = [];
+          if (!this.eat(types$12._with)) {
+            return nodes;
+          }
+          this.expect(types$12.braceL);
+          var attributeKeys = {};
+          var first = true;
+          while (!this.eat(types$12.braceR)) {
+            if (!first) {
+              this.expect(types$12.comma);
+              if (this.afterTrailingComma(types$12.braceR)) {
+                break;
+              }
+            } else {
+              first = false;
+            }
+            var attr = this.parseImportAttribute();
+            var keyName = attr.key.type === "Identifier" ? attr.key.name : attr.key.value;
+            if (hasOwn2(attributeKeys, keyName)) {
+              this.raiseRecoverable(attr.key.start, "Duplicate attribute key '" + keyName + "'");
+            }
+            attributeKeys[keyName] = true;
+            nodes.push(attr);
+          }
+          return nodes;
+        };
+        pp$82.parseImportAttribute = function() {
+          var node3 = this.startNode();
+          node3.key = this.type === types$12.string ? this.parseExprAtom() : this.parseIdent(this.options.allowReserved !== "never");
+          this.expect(types$12.colon);
+          if (this.type !== types$12.string) {
+            this.unexpected();
+          }
+          node3.value = this.parseExprAtom();
+          return this.finishNode(node3, "ImportAttribute");
         };
         pp$82.parseModuleExportName = function() {
           if (this.options.ecmaVersion >= 13 && this.type === types$12.string) {
@@ -18892,12 +19096,31 @@ ${hover.contents.value}
         pp$52.parseDynamicImport = function(node3) {
           this.next();
           node3.source = this.parseMaybeAssign();
-          if (!this.eat(types$12.parenR)) {
-            var errorPos = this.start;
-            if (this.eat(types$12.comma) && this.eat(types$12.parenR)) {
-              this.raiseRecoverable(errorPos, "Trailing comma is not allowed in import()");
+          if (this.options.ecmaVersion >= 16) {
+            if (!this.eat(types$12.parenR)) {
+              this.expect(types$12.comma);
+              if (!this.afterTrailingComma(types$12.parenR)) {
+                node3.options = this.parseMaybeAssign();
+                if (!this.eat(types$12.parenR)) {
+                  this.expect(types$12.comma);
+                  if (!this.afterTrailingComma(types$12.parenR)) {
+                    this.unexpected();
+                  }
+                }
+              } else {
+                node3.options = null;
+              }
             } else {
-              this.unexpected(errorPos);
+              node3.options = null;
+            }
+          } else {
+            if (!this.eat(types$12.parenR)) {
+              var errorPos = this.start;
+              if (this.eat(types$12.comma) && this.eat(types$12.parenR)) {
+                this.raiseRecoverable(errorPos, "Trailing comma is not allowed in import()");
+              } else {
+                this.unexpected(errorPos);
+              }
             }
           }
           return this.finishNode(node3, "ImportExpression");
@@ -19583,6 +19806,7 @@ ${hover.contents.value}
           }
           return newNode;
         };
+        var scriptValuesAddedInUnicode2 = "Gara Garay Gukh Gurung_Khema Hrkt Katakana_Or_Hiragana Kawi Kirat_Rai Krai Nag_Mundari Nagm Ol_Onal Onao Sunu Sunuwar Todhri Todr Tulu_Tigalari Tutg Unknown Zzzz";
         var ecma9BinaryProperties2 = "ASCII ASCII_Hex_Digit AHex Alphabetic Alpha Any Assigned Bidi_Control Bidi_C Bidi_Mirrored Bidi_M Case_Ignorable CI Cased Changes_When_Casefolded CWCF Changes_When_Casemapped CWCM Changes_When_Lowercased CWL Changes_When_NFKC_Casefolded CWKCF Changes_When_Titlecased CWT Changes_When_Uppercased CWU Dash Default_Ignorable_Code_Point DI Deprecated Dep Diacritic Dia Emoji Emoji_Component Emoji_Modifier Emoji_Modifier_Base Emoji_Presentation Extender Ext Grapheme_Base Gr_Base Grapheme_Extend Gr_Ext Hex_Digit Hex IDS_Binary_Operator IDSB IDS_Trinary_Operator IDST ID_Continue IDC ID_Start IDS Ideographic Ideo Join_Control Join_C Logical_Order_Exception LOE Lowercase Lower Math Noncharacter_Code_Point NChar Pattern_Syntax Pat_Syn Pattern_White_Space Pat_WS Quotation_Mark QMark Radical Regional_Indicator RI Sentence_Terminal STerm Soft_Dotted SD Terminal_Punctuation Term Unified_Ideograph UIdeo Uppercase Upper Variation_Selector VS White_Space space XID_Continue XIDC XID_Start XIDS";
         var ecma10BinaryProperties2 = ecma9BinaryProperties2 + " Extended_Pictographic";
         var ecma11BinaryProperties2 = ecma10BinaryProperties2;
@@ -19612,7 +19836,7 @@ ${hover.contents.value}
         var ecma11ScriptValues2 = ecma10ScriptValues2 + " Elymaic Elym Nandinagari Nand Nyiakeng_Puachue_Hmong Hmnp Wancho Wcho";
         var ecma12ScriptValues2 = ecma11ScriptValues2 + " Chorasmian Chrs Diak Dives_Akuru Khitan_Small_Script Kits Yezi Yezidi";
         var ecma13ScriptValues2 = ecma12ScriptValues2 + " Cypro_Minoan Cpmn Old_Uyghur Ougr Tangsa Tnsa Toto Vithkuqi Vith";
-        var ecma14ScriptValues2 = ecma13ScriptValues2 + " Hrkt Katakana_Or_Hiragana Kawi Nag_Mundari Nagm Unknown Zzzz";
+        var ecma14ScriptValues2 = ecma13ScriptValues2 + " " + scriptValuesAddedInUnicode2;
         var unicodeScriptValues2 = {
           9: ecma9ScriptValues2,
           10: ecma10ScriptValues2,
@@ -20033,18 +20257,47 @@ ${hover.contents.value}
             if (state.eat(
               63
               /* ? */
-            ) && state.eat(
-              58
-              /* : */
             )) {
-              this.regexp_disjunction(state);
-              if (state.eat(
-                41
-                /* ) */
-              )) {
-                return true;
+              if (this.options.ecmaVersion >= 16) {
+                var addModifiers = this.regexp_eatModifiers(state);
+                var hasHyphen = state.eat(
+                  45
+                  /* - */
+                );
+                if (addModifiers || hasHyphen) {
+                  for (var i2 = 0; i2 < addModifiers.length; i2++) {
+                    var modifier = addModifiers.charAt(i2);
+                    if (addModifiers.indexOf(modifier, i2 + 1) > -1) {
+                      state.raise("Duplicate regular expression modifiers");
+                    }
+                  }
+                  if (hasHyphen) {
+                    var removeModifiers = this.regexp_eatModifiers(state);
+                    if (!addModifiers && !removeModifiers && state.current() === 58) {
+                      state.raise("Invalid regular expression modifiers");
+                    }
+                    for (var i$1 = 0; i$1 < removeModifiers.length; i$1++) {
+                      var modifier$1 = removeModifiers.charAt(i$1);
+                      if (removeModifiers.indexOf(modifier$1, i$1 + 1) > -1 || addModifiers.indexOf(modifier$1) > -1) {
+                        state.raise("Duplicate regular expression modifiers");
+                      }
+                    }
+                  }
+                }
               }
-              state.raise("Unterminated group");
+              if (state.eat(
+                58
+                /* : */
+              )) {
+                this.regexp_disjunction(state);
+                if (state.eat(
+                  41
+                  /* ) */
+                )) {
+                  return true;
+                }
+                state.raise("Unterminated group");
+              }
             }
             state.pos = start2;
           }
@@ -20072,6 +20325,18 @@ ${hover.contents.value}
           }
           return false;
         };
+        pp$12.regexp_eatModifiers = function(state) {
+          var modifiers = "";
+          var ch = 0;
+          while ((ch = state.current()) !== -1 && isRegularExpressionModifier2(ch)) {
+            modifiers += codePointToString2(ch);
+            state.advance();
+          }
+          return modifiers;
+        };
+        function isRegularExpressionModifier2(ch) {
+          return ch === 105 || ch === 109 || ch === 115;
+        }
         pp$12.regexp_eatExtendedAtom = function(state) {
           return state.eat(
             46
@@ -21726,7 +21991,7 @@ ${hover.contents.value}
           }
           return this.finishToken(type, word);
         };
-        var version2 = "8.12.1";
+        var version2 = "8.14.0";
         Parser3.acorn = {
           Parser: Parser3,
           version: version2,
@@ -35796,9 +36061,12 @@ ${hover.contents.value}
     this.config.enter.data.call(this, token);
     this.config.exit.data.call(this, token);
   }
-  function handleMdxExpression(node3) {
+  function handleMdxExpression(node3, parent, state) {
     const value = node3.value || "";
-    return "{" + value + "}";
+    const result = state.indentLines(value, function(line, index4, blank) {
+      return (index4 === 0 || blank ? "" : "  ") + line;
+    });
+    return "{" + result + "}";
   }
 
   // node_modules/ccount/index.js
@@ -36972,10 +37240,10 @@ ${hover.contents.value}
   }
 
   // node_modules/acorn/dist/acorn.mjs
-  var astralIdentifierCodes = [509, 0, 227, 0, 150, 4, 294, 9, 1368, 2, 2, 1, 6, 3, 41, 2, 5, 0, 166, 1, 574, 3, 9, 9, 370, 1, 81, 2, 71, 10, 50, 3, 123, 2, 54, 14, 32, 10, 3, 1, 11, 3, 46, 10, 8, 0, 46, 9, 7, 2, 37, 13, 2, 9, 6, 1, 45, 0, 13, 2, 49, 13, 9, 3, 2, 11, 83, 11, 7, 0, 3, 0, 158, 11, 6, 9, 7, 3, 56, 1, 2, 6, 3, 1, 3, 2, 10, 0, 11, 1, 3, 6, 4, 4, 193, 17, 10, 9, 5, 0, 82, 19, 13, 9, 214, 6, 3, 8, 28, 1, 83, 16, 16, 9, 82, 12, 9, 9, 84, 14, 5, 9, 243, 14, 166, 9, 71, 5, 2, 1, 3, 3, 2, 0, 2, 1, 13, 9, 120, 6, 3, 6, 4, 0, 29, 9, 41, 6, 2, 3, 9, 0, 10, 10, 47, 15, 406, 7, 2, 7, 17, 9, 57, 21, 2, 13, 123, 5, 4, 0, 2, 1, 2, 6, 2, 0, 9, 9, 49, 4, 2, 1, 2, 4, 9, 9, 330, 3, 10, 1, 2, 0, 49, 6, 4, 4, 14, 9, 5351, 0, 7, 14, 13835, 9, 87, 9, 39, 4, 60, 6, 26, 9, 1014, 0, 2, 54, 8, 3, 82, 0, 12, 1, 19628, 1, 4706, 45, 3, 22, 543, 4, 4, 5, 9, 7, 3, 6, 31, 3, 149, 2, 1418, 49, 513, 54, 5, 49, 9, 0, 15, 0, 23, 4, 2, 14, 1361, 6, 2, 16, 3, 6, 2, 1, 2, 4, 101, 0, 161, 6, 10, 9, 357, 0, 62, 13, 499, 13, 983, 6, 110, 6, 6, 9, 4759, 9, 787719, 239];
-  var astralIdentifierStartCodes = [0, 11, 2, 25, 2, 18, 2, 1, 2, 14, 3, 13, 35, 122, 70, 52, 268, 28, 4, 48, 48, 31, 14, 29, 6, 37, 11, 29, 3, 35, 5, 7, 2, 4, 43, 157, 19, 35, 5, 35, 5, 39, 9, 51, 13, 10, 2, 14, 2, 6, 2, 1, 2, 10, 2, 14, 2, 6, 2, 1, 68, 310, 10, 21, 11, 7, 25, 5, 2, 41, 2, 8, 70, 5, 3, 0, 2, 43, 2, 1, 4, 0, 3, 22, 11, 22, 10, 30, 66, 18, 2, 1, 11, 21, 11, 25, 71, 55, 7, 1, 65, 0, 16, 3, 2, 2, 2, 28, 43, 28, 4, 28, 36, 7, 2, 27, 28, 53, 11, 21, 11, 18, 14, 17, 111, 72, 56, 50, 14, 50, 14, 35, 349, 41, 7, 1, 79, 28, 11, 0, 9, 21, 43, 17, 47, 20, 28, 22, 13, 52, 58, 1, 3, 0, 14, 44, 33, 24, 27, 35, 30, 0, 3, 0, 9, 34, 4, 0, 13, 47, 15, 3, 22, 0, 2, 0, 36, 17, 2, 24, 20, 1, 64, 6, 2, 0, 2, 3, 2, 14, 2, 9, 8, 46, 39, 7, 3, 1, 3, 21, 2, 6, 2, 1, 2, 4, 4, 0, 19, 0, 13, 4, 159, 52, 19, 3, 21, 2, 31, 47, 21, 1, 2, 0, 185, 46, 42, 3, 37, 47, 21, 0, 60, 42, 14, 0, 72, 26, 38, 6, 186, 43, 117, 63, 32, 7, 3, 0, 3, 7, 2, 1, 2, 23, 16, 0, 2, 0, 95, 7, 3, 38, 17, 0, 2, 0, 29, 0, 11, 39, 8, 0, 22, 0, 12, 45, 20, 0, 19, 72, 264, 8, 2, 36, 18, 0, 50, 29, 113, 6, 2, 1, 2, 37, 22, 0, 26, 5, 2, 1, 2, 31, 15, 0, 328, 18, 16, 0, 2, 12, 2, 33, 125, 0, 80, 921, 103, 110, 18, 195, 2637, 96, 16, 1071, 18, 5, 4026, 582, 8634, 568, 8, 30, 18, 78, 18, 29, 19, 47, 17, 3, 32, 20, 6, 18, 689, 63, 129, 74, 6, 0, 67, 12, 65, 1, 2, 0, 29, 6135, 9, 1237, 43, 8, 8936, 3, 2, 6, 2, 1, 2, 290, 16, 0, 30, 2, 3, 0, 15, 3, 9, 395, 2309, 106, 6, 12, 4, 8, 8, 9, 5991, 84, 2, 70, 2, 1, 3, 0, 3, 1, 3, 3, 2, 11, 2, 0, 2, 6, 2, 64, 2, 3, 3, 7, 2, 6, 2, 27, 2, 3, 2, 4, 2, 0, 4, 6, 2, 339, 3, 24, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 7, 1845, 30, 7, 5, 262, 61, 147, 44, 11, 6, 17, 0, 322, 29, 19, 43, 485, 27, 757, 6, 2, 3, 2, 1, 2, 14, 2, 196, 60, 67, 8, 0, 1205, 3, 2, 26, 2, 1, 2, 0, 3, 0, 2, 9, 2, 3, 2, 0, 2, 0, 7, 0, 5, 0, 2, 0, 2, 0, 2, 2, 2, 1, 2, 0, 3, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 1, 2, 0, 3, 3, 2, 6, 2, 3, 2, 3, 2, 0, 2, 9, 2, 16, 6, 2, 2, 4, 2, 16, 4421, 42719, 33, 4153, 7, 221, 3, 5761, 15, 7472, 16, 621, 2467, 541, 1507, 4938, 6, 4191];
-  var nonASCIIidentifierChars = "\u200C\u200D\xB7\u0300-\u036F\u0387\u0483-\u0487\u0591-\u05BD\u05BF\u05C1\u05C2\u05C4\u05C5\u05C7\u0610-\u061A\u064B-\u0669\u0670\u06D6-\u06DC\u06DF-\u06E4\u06E7\u06E8\u06EA-\u06ED\u06F0-\u06F9\u0711\u0730-\u074A\u07A6-\u07B0\u07C0-\u07C9\u07EB-\u07F3\u07FD\u0816-\u0819\u081B-\u0823\u0825-\u0827\u0829-\u082D\u0859-\u085B\u0898-\u089F\u08CA-\u08E1\u08E3-\u0903\u093A-\u093C\u093E-\u094F\u0951-\u0957\u0962\u0963\u0966-\u096F\u0981-\u0983\u09BC\u09BE-\u09C4\u09C7\u09C8\u09CB-\u09CD\u09D7\u09E2\u09E3\u09E6-\u09EF\u09FE\u0A01-\u0A03\u0A3C\u0A3E-\u0A42\u0A47\u0A48\u0A4B-\u0A4D\u0A51\u0A66-\u0A71\u0A75\u0A81-\u0A83\u0ABC\u0ABE-\u0AC5\u0AC7-\u0AC9\u0ACB-\u0ACD\u0AE2\u0AE3\u0AE6-\u0AEF\u0AFA-\u0AFF\u0B01-\u0B03\u0B3C\u0B3E-\u0B44\u0B47\u0B48\u0B4B-\u0B4D\u0B55-\u0B57\u0B62\u0B63\u0B66-\u0B6F\u0B82\u0BBE-\u0BC2\u0BC6-\u0BC8\u0BCA-\u0BCD\u0BD7\u0BE6-\u0BEF\u0C00-\u0C04\u0C3C\u0C3E-\u0C44\u0C46-\u0C48\u0C4A-\u0C4D\u0C55\u0C56\u0C62\u0C63\u0C66-\u0C6F\u0C81-\u0C83\u0CBC\u0CBE-\u0CC4\u0CC6-\u0CC8\u0CCA-\u0CCD\u0CD5\u0CD6\u0CE2\u0CE3\u0CE6-\u0CEF\u0CF3\u0D00-\u0D03\u0D3B\u0D3C\u0D3E-\u0D44\u0D46-\u0D48\u0D4A-\u0D4D\u0D57\u0D62\u0D63\u0D66-\u0D6F\u0D81-\u0D83\u0DCA\u0DCF-\u0DD4\u0DD6\u0DD8-\u0DDF\u0DE6-\u0DEF\u0DF2\u0DF3\u0E31\u0E34-\u0E3A\u0E47-\u0E4E\u0E50-\u0E59\u0EB1\u0EB4-\u0EBC\u0EC8-\u0ECE\u0ED0-\u0ED9\u0F18\u0F19\u0F20-\u0F29\u0F35\u0F37\u0F39\u0F3E\u0F3F\u0F71-\u0F84\u0F86\u0F87\u0F8D-\u0F97\u0F99-\u0FBC\u0FC6\u102B-\u103E\u1040-\u1049\u1056-\u1059\u105E-\u1060\u1062-\u1064\u1067-\u106D\u1071-\u1074\u1082-\u108D\u108F-\u109D\u135D-\u135F\u1369-\u1371\u1712-\u1715\u1732-\u1734\u1752\u1753\u1772\u1773\u17B4-\u17D3\u17DD\u17E0-\u17E9\u180B-\u180D\u180F-\u1819\u18A9\u1920-\u192B\u1930-\u193B\u1946-\u194F\u19D0-\u19DA\u1A17-\u1A1B\u1A55-\u1A5E\u1A60-\u1A7C\u1A7F-\u1A89\u1A90-\u1A99\u1AB0-\u1ABD\u1ABF-\u1ACE\u1B00-\u1B04\u1B34-\u1B44\u1B50-\u1B59\u1B6B-\u1B73\u1B80-\u1B82\u1BA1-\u1BAD\u1BB0-\u1BB9\u1BE6-\u1BF3\u1C24-\u1C37\u1C40-\u1C49\u1C50-\u1C59\u1CD0-\u1CD2\u1CD4-\u1CE8\u1CED\u1CF4\u1CF7-\u1CF9\u1DC0-\u1DFF\u200C\u200D\u203F\u2040\u2054\u20D0-\u20DC\u20E1\u20E5-\u20F0\u2CEF-\u2CF1\u2D7F\u2DE0-\u2DFF\u302A-\u302F\u3099\u309A\u30FB\uA620-\uA629\uA66F\uA674-\uA67D\uA69E\uA69F\uA6F0\uA6F1\uA802\uA806\uA80B\uA823-\uA827\uA82C\uA880\uA881\uA8B4-\uA8C5\uA8D0-\uA8D9\uA8E0-\uA8F1\uA8FF-\uA909\uA926-\uA92D\uA947-\uA953\uA980-\uA983\uA9B3-\uA9C0\uA9D0-\uA9D9\uA9E5\uA9F0-\uA9F9\uAA29-\uAA36\uAA43\uAA4C\uAA4D\uAA50-\uAA59\uAA7B-\uAA7D\uAAB0\uAAB2-\uAAB4\uAAB7\uAAB8\uAABE\uAABF\uAAC1\uAAEB-\uAAEF\uAAF5\uAAF6\uABE3-\uABEA\uABEC\uABED\uABF0-\uABF9\uFB1E\uFE00-\uFE0F\uFE20-\uFE2F\uFE33\uFE34\uFE4D-\uFE4F\uFF10-\uFF19\uFF3F\uFF65";
-  var nonASCIIidentifierStartChars = "\xAA\xB5\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u037F\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u052F\u0531-\u0556\u0559\u0560-\u0588\u05D0-\u05EA\u05EF-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u0860-\u086A\u0870-\u0887\u0889-\u088E\u08A0-\u08C9\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0980\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u09FC\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0AF9\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C39\u0C3D\u0C58-\u0C5A\u0C5D\u0C60\u0C61\u0C80\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDD\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D04-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D54-\u0D56\u0D5F-\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E86-\u0E8A\u0E8C-\u0EA3\u0EA5\u0EA7-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F5\u13F8-\u13FD\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u16EE-\u16F8\u1700-\u1711\u171F-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1878\u1880-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191E\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19B0-\u19C9\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4C\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1C80-\u1C88\u1C90-\u1CBA\u1CBD-\u1CBF\u1CE9-\u1CEC\u1CEE-\u1CF3\u1CF5\u1CF6\u1CFA\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2118-\u211D\u2124\u2126\u2128\u212A-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2160-\u2188\u2C00-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u3005-\u3007\u3021-\u3029\u3031-\u3035\u3038-\u303C\u3041-\u3096\u309B-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312F\u3131-\u318E\u31A0-\u31BF\u31F0-\u31FF\u3400-\u4DBF\u4E00-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA69D\uA6A0-\uA6EF\uA717-\uA71F\uA722-\uA788\uA78B-\uA7CA\uA7D0\uA7D1\uA7D3\uA7D5-\uA7D9\uA7F2-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA8FD\uA8FE\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uA9E0-\uA9E4\uA9E6-\uA9EF\uA9FA-\uA9FE\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA7E-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uAB30-\uAB5A\uAB5C-\uAB69\uAB70-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC";
+  var astralIdentifierCodes = [509, 0, 227, 0, 150, 4, 294, 9, 1368, 2, 2, 1, 6, 3, 41, 2, 5, 0, 166, 1, 574, 3, 9, 9, 7, 9, 32, 4, 318, 1, 80, 3, 71, 10, 50, 3, 123, 2, 54, 14, 32, 10, 3, 1, 11, 3, 46, 10, 8, 0, 46, 9, 7, 2, 37, 13, 2, 9, 6, 1, 45, 0, 13, 2, 49, 13, 9, 3, 2, 11, 83, 11, 7, 0, 3, 0, 158, 11, 6, 9, 7, 3, 56, 1, 2, 6, 3, 1, 3, 2, 10, 0, 11, 1, 3, 6, 4, 4, 68, 8, 2, 0, 3, 0, 2, 3, 2, 4, 2, 0, 15, 1, 83, 17, 10, 9, 5, 0, 82, 19, 13, 9, 214, 6, 3, 8, 28, 1, 83, 16, 16, 9, 82, 12, 9, 9, 7, 19, 58, 14, 5, 9, 243, 14, 166, 9, 71, 5, 2, 1, 3, 3, 2, 0, 2, 1, 13, 9, 120, 6, 3, 6, 4, 0, 29, 9, 41, 6, 2, 3, 9, 0, 10, 10, 47, 15, 343, 9, 54, 7, 2, 7, 17, 9, 57, 21, 2, 13, 123, 5, 4, 0, 2, 1, 2, 6, 2, 0, 9, 9, 49, 4, 2, 1, 2, 4, 9, 9, 330, 3, 10, 1, 2, 0, 49, 6, 4, 4, 14, 10, 5350, 0, 7, 14, 11465, 27, 2343, 9, 87, 9, 39, 4, 60, 6, 26, 9, 535, 9, 470, 0, 2, 54, 8, 3, 82, 0, 12, 1, 19628, 1, 4178, 9, 519, 45, 3, 22, 543, 4, 4, 5, 9, 7, 3, 6, 31, 3, 149, 2, 1418, 49, 513, 54, 5, 49, 9, 0, 15, 0, 23, 4, 2, 14, 1361, 6, 2, 16, 3, 6, 2, 1, 2, 4, 101, 0, 161, 6, 10, 9, 357, 0, 62, 13, 499, 13, 245, 1, 2, 9, 726, 6, 110, 6, 6, 9, 4759, 9, 787719, 239];
+  var astralIdentifierStartCodes = [0, 11, 2, 25, 2, 18, 2, 1, 2, 14, 3, 13, 35, 122, 70, 52, 268, 28, 4, 48, 48, 31, 14, 29, 6, 37, 11, 29, 3, 35, 5, 7, 2, 4, 43, 157, 19, 35, 5, 35, 5, 39, 9, 51, 13, 10, 2, 14, 2, 6, 2, 1, 2, 10, 2, 14, 2, 6, 2, 1, 4, 51, 13, 310, 10, 21, 11, 7, 25, 5, 2, 41, 2, 8, 70, 5, 3, 0, 2, 43, 2, 1, 4, 0, 3, 22, 11, 22, 10, 30, 66, 18, 2, 1, 11, 21, 11, 25, 71, 55, 7, 1, 65, 0, 16, 3, 2, 2, 2, 28, 43, 28, 4, 28, 36, 7, 2, 27, 28, 53, 11, 21, 11, 18, 14, 17, 111, 72, 56, 50, 14, 50, 14, 35, 39, 27, 10, 22, 251, 41, 7, 1, 17, 2, 60, 28, 11, 0, 9, 21, 43, 17, 47, 20, 28, 22, 13, 52, 58, 1, 3, 0, 14, 44, 33, 24, 27, 35, 30, 0, 3, 0, 9, 34, 4, 0, 13, 47, 15, 3, 22, 0, 2, 0, 36, 17, 2, 24, 20, 1, 64, 6, 2, 0, 2, 3, 2, 14, 2, 9, 8, 46, 39, 7, 3, 1, 3, 21, 2, 6, 2, 1, 2, 4, 4, 0, 19, 0, 13, 4, 31, 9, 2, 0, 3, 0, 2, 37, 2, 0, 26, 0, 2, 0, 45, 52, 19, 3, 21, 2, 31, 47, 21, 1, 2, 0, 185, 46, 42, 3, 37, 47, 21, 0, 60, 42, 14, 0, 72, 26, 38, 6, 186, 43, 117, 63, 32, 7, 3, 0, 3, 7, 2, 1, 2, 23, 16, 0, 2, 0, 95, 7, 3, 38, 17, 0, 2, 0, 29, 0, 11, 39, 8, 0, 22, 0, 12, 45, 20, 0, 19, 72, 200, 32, 32, 8, 2, 36, 18, 0, 50, 29, 113, 6, 2, 1, 2, 37, 22, 0, 26, 5, 2, 1, 2, 31, 15, 0, 328, 18, 16, 0, 2, 12, 2, 33, 125, 0, 80, 921, 103, 110, 18, 195, 2637, 96, 16, 1071, 18, 5, 26, 3994, 6, 582, 6842, 29, 1763, 568, 8, 30, 18, 78, 18, 29, 19, 47, 17, 3, 32, 20, 6, 18, 433, 44, 212, 63, 129, 74, 6, 0, 67, 12, 65, 1, 2, 0, 29, 6135, 9, 1237, 42, 9, 8936, 3, 2, 6, 2, 1, 2, 290, 16, 0, 30, 2, 3, 0, 15, 3, 9, 395, 2309, 106, 6, 12, 4, 8, 8, 9, 5991, 84, 2, 70, 2, 1, 3, 0, 3, 1, 3, 3, 2, 11, 2, 0, 2, 6, 2, 64, 2, 3, 3, 7, 2, 6, 2, 27, 2, 3, 2, 4, 2, 0, 4, 6, 2, 339, 3, 24, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 7, 1845, 30, 7, 5, 262, 61, 147, 44, 11, 6, 17, 0, 322, 29, 19, 43, 485, 27, 229, 29, 3, 0, 496, 6, 2, 3, 2, 1, 2, 14, 2, 196, 60, 67, 8, 0, 1205, 3, 2, 26, 2, 1, 2, 0, 3, 0, 2, 9, 2, 3, 2, 0, 2, 0, 7, 0, 5, 0, 2, 0, 2, 0, 2, 2, 2, 1, 2, 0, 3, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 1, 2, 0, 3, 3, 2, 6, 2, 3, 2, 3, 2, 0, 2, 9, 2, 16, 6, 2, 2, 4, 2, 16, 4421, 42719, 33, 4153, 7, 221, 3, 5761, 15, 7472, 16, 621, 2467, 541, 1507, 4938, 6, 4191];
+  var nonASCIIidentifierChars = "\u200C\u200D\xB7\u0300-\u036F\u0387\u0483-\u0487\u0591-\u05BD\u05BF\u05C1\u05C2\u05C4\u05C5\u05C7\u0610-\u061A\u064B-\u0669\u0670\u06D6-\u06DC\u06DF-\u06E4\u06E7\u06E8\u06EA-\u06ED\u06F0-\u06F9\u0711\u0730-\u074A\u07A6-\u07B0\u07C0-\u07C9\u07EB-\u07F3\u07FD\u0816-\u0819\u081B-\u0823\u0825-\u0827\u0829-\u082D\u0859-\u085B\u0897-\u089F\u08CA-\u08E1\u08E3-\u0903\u093A-\u093C\u093E-\u094F\u0951-\u0957\u0962\u0963\u0966-\u096F\u0981-\u0983\u09BC\u09BE-\u09C4\u09C7\u09C8\u09CB-\u09CD\u09D7\u09E2\u09E3\u09E6-\u09EF\u09FE\u0A01-\u0A03\u0A3C\u0A3E-\u0A42\u0A47\u0A48\u0A4B-\u0A4D\u0A51\u0A66-\u0A71\u0A75\u0A81-\u0A83\u0ABC\u0ABE-\u0AC5\u0AC7-\u0AC9\u0ACB-\u0ACD\u0AE2\u0AE3\u0AE6-\u0AEF\u0AFA-\u0AFF\u0B01-\u0B03\u0B3C\u0B3E-\u0B44\u0B47\u0B48\u0B4B-\u0B4D\u0B55-\u0B57\u0B62\u0B63\u0B66-\u0B6F\u0B82\u0BBE-\u0BC2\u0BC6-\u0BC8\u0BCA-\u0BCD\u0BD7\u0BE6-\u0BEF\u0C00-\u0C04\u0C3C\u0C3E-\u0C44\u0C46-\u0C48\u0C4A-\u0C4D\u0C55\u0C56\u0C62\u0C63\u0C66-\u0C6F\u0C81-\u0C83\u0CBC\u0CBE-\u0CC4\u0CC6-\u0CC8\u0CCA-\u0CCD\u0CD5\u0CD6\u0CE2\u0CE3\u0CE6-\u0CEF\u0CF3\u0D00-\u0D03\u0D3B\u0D3C\u0D3E-\u0D44\u0D46-\u0D48\u0D4A-\u0D4D\u0D57\u0D62\u0D63\u0D66-\u0D6F\u0D81-\u0D83\u0DCA\u0DCF-\u0DD4\u0DD6\u0DD8-\u0DDF\u0DE6-\u0DEF\u0DF2\u0DF3\u0E31\u0E34-\u0E3A\u0E47-\u0E4E\u0E50-\u0E59\u0EB1\u0EB4-\u0EBC\u0EC8-\u0ECE\u0ED0-\u0ED9\u0F18\u0F19\u0F20-\u0F29\u0F35\u0F37\u0F39\u0F3E\u0F3F\u0F71-\u0F84\u0F86\u0F87\u0F8D-\u0F97\u0F99-\u0FBC\u0FC6\u102B-\u103E\u1040-\u1049\u1056-\u1059\u105E-\u1060\u1062-\u1064\u1067-\u106D\u1071-\u1074\u1082-\u108D\u108F-\u109D\u135D-\u135F\u1369-\u1371\u1712-\u1715\u1732-\u1734\u1752\u1753\u1772\u1773\u17B4-\u17D3\u17DD\u17E0-\u17E9\u180B-\u180D\u180F-\u1819\u18A9\u1920-\u192B\u1930-\u193B\u1946-\u194F\u19D0-\u19DA\u1A17-\u1A1B\u1A55-\u1A5E\u1A60-\u1A7C\u1A7F-\u1A89\u1A90-\u1A99\u1AB0-\u1ABD\u1ABF-\u1ACE\u1B00-\u1B04\u1B34-\u1B44\u1B50-\u1B59\u1B6B-\u1B73\u1B80-\u1B82\u1BA1-\u1BAD\u1BB0-\u1BB9\u1BE6-\u1BF3\u1C24-\u1C37\u1C40-\u1C49\u1C50-\u1C59\u1CD0-\u1CD2\u1CD4-\u1CE8\u1CED\u1CF4\u1CF7-\u1CF9\u1DC0-\u1DFF\u200C\u200D\u203F\u2040\u2054\u20D0-\u20DC\u20E1\u20E5-\u20F0\u2CEF-\u2CF1\u2D7F\u2DE0-\u2DFF\u302A-\u302F\u3099\u309A\u30FB\uA620-\uA629\uA66F\uA674-\uA67D\uA69E\uA69F\uA6F0\uA6F1\uA802\uA806\uA80B\uA823-\uA827\uA82C\uA880\uA881\uA8B4-\uA8C5\uA8D0-\uA8D9\uA8E0-\uA8F1\uA8FF-\uA909\uA926-\uA92D\uA947-\uA953\uA980-\uA983\uA9B3-\uA9C0\uA9D0-\uA9D9\uA9E5\uA9F0-\uA9F9\uAA29-\uAA36\uAA43\uAA4C\uAA4D\uAA50-\uAA59\uAA7B-\uAA7D\uAAB0\uAAB2-\uAAB4\uAAB7\uAAB8\uAABE\uAABF\uAAC1\uAAEB-\uAAEF\uAAF5\uAAF6\uABE3-\uABEA\uABEC\uABED\uABF0-\uABF9\uFB1E\uFE00-\uFE0F\uFE20-\uFE2F\uFE33\uFE34\uFE4D-\uFE4F\uFF10-\uFF19\uFF3F\uFF65";
+  var nonASCIIidentifierStartChars = "\xAA\xB5\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u037F\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u052F\u0531-\u0556\u0559\u0560-\u0588\u05D0-\u05EA\u05EF-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u0860-\u086A\u0870-\u0887\u0889-\u088E\u08A0-\u08C9\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0980\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u09FC\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0AF9\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C39\u0C3D\u0C58-\u0C5A\u0C5D\u0C60\u0C61\u0C80\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDD\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D04-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D54-\u0D56\u0D5F-\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E86-\u0E8A\u0E8C-\u0EA3\u0EA5\u0EA7-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F5\u13F8-\u13FD\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u16EE-\u16F8\u1700-\u1711\u171F-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1878\u1880-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191E\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19B0-\u19C9\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4C\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1C80-\u1C8A\u1C90-\u1CBA\u1CBD-\u1CBF\u1CE9-\u1CEC\u1CEE-\u1CF3\u1CF5\u1CF6\u1CFA\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2118-\u211D\u2124\u2126\u2128\u212A-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2160-\u2188\u2C00-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u3005-\u3007\u3021-\u3029\u3031-\u3035\u3038-\u303C\u3041-\u3096\u309B-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312F\u3131-\u318E\u31A0-\u31BF\u31F0-\u31FF\u3400-\u4DBF\u4E00-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA69D\uA6A0-\uA6EF\uA717-\uA71F\uA722-\uA788\uA78B-\uA7CD\uA7D0\uA7D1\uA7D3\uA7D5-\uA7DC\uA7F2-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA8FD\uA8FE\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uA9E0-\uA9E4\uA9E6-\uA9EF\uA9FA-\uA9FE\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA7E-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uAB30-\uAB5A\uAB5C-\uAB69\uAB70-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC";
   var reservedWords = {
     3: "abstract boolean byte char class double enum export extends final float goto implements import int interface long native package private protected public short static super synchronized throws transient volatile",
     5: "class enum extends super const export import",
@@ -38438,6 +38706,9 @@ ${hover.contents.value}
       this.unexpected();
     }
     node3.source = this.parseExprAtom();
+    if (this.options.ecmaVersion >= 16) {
+      node3.attributes = this.parseWithClause();
+    }
     this.semicolon();
     return this.finishNode(node3, "ExportAllDeclaration");
   };
@@ -38468,6 +38739,9 @@ ${hover.contents.value}
           this.unexpected();
         }
         node3.source = this.parseExprAtom();
+        if (this.options.ecmaVersion >= 16) {
+          node3.attributes = this.parseWithClause();
+        }
       } else {
         for (var i = 0, list4 = node3.specifiers; i < list4.length; i += 1) {
           var spec = list4[i];
@@ -38589,6 +38863,9 @@ ${hover.contents.value}
       this.expectContextual("from");
       node3.source = this.type === types$1.string ? this.parseExprAtom() : this.unexpected();
     }
+    if (this.options.ecmaVersion >= 16) {
+      node3.attributes = this.parseWithClause();
+    }
     this.semicolon();
     return this.finishNode(node3, "ImportDeclaration");
   };
@@ -38643,6 +38920,43 @@ ${hover.contents.value}
       nodes.push(this.parseImportSpecifier());
     }
     return nodes;
+  };
+  pp$8.parseWithClause = function() {
+    var nodes = [];
+    if (!this.eat(types$1._with)) {
+      return nodes;
+    }
+    this.expect(types$1.braceL);
+    var attributeKeys = {};
+    var first = true;
+    while (!this.eat(types$1.braceR)) {
+      if (!first) {
+        this.expect(types$1.comma);
+        if (this.afterTrailingComma(types$1.braceR)) {
+          break;
+        }
+      } else {
+        first = false;
+      }
+      var attr = this.parseImportAttribute();
+      var keyName = attr.key.type === "Identifier" ? attr.key.name : attr.key.value;
+      if (hasOwn(attributeKeys, keyName)) {
+        this.raiseRecoverable(attr.key.start, "Duplicate attribute key '" + keyName + "'");
+      }
+      attributeKeys[keyName] = true;
+      nodes.push(attr);
+    }
+    return nodes;
+  };
+  pp$8.parseImportAttribute = function() {
+    var node3 = this.startNode();
+    node3.key = this.type === types$1.string ? this.parseExprAtom() : this.parseIdent(this.options.allowReserved !== "never");
+    this.expect(types$1.colon);
+    if (this.type !== types$1.string) {
+      this.unexpected();
+    }
+    node3.value = this.parseExprAtom();
+    return this.finishNode(node3, "ImportAttribute");
   };
   pp$8.parseModuleExportName = function() {
     if (this.options.ecmaVersion >= 13 && this.type === types$1.string) {
@@ -39527,12 +39841,31 @@ ${hover.contents.value}
   pp$5.parseDynamicImport = function(node3) {
     this.next();
     node3.source = this.parseMaybeAssign();
-    if (!this.eat(types$1.parenR)) {
-      var errorPos = this.start;
-      if (this.eat(types$1.comma) && this.eat(types$1.parenR)) {
-        this.raiseRecoverable(errorPos, "Trailing comma is not allowed in import()");
+    if (this.options.ecmaVersion >= 16) {
+      if (!this.eat(types$1.parenR)) {
+        this.expect(types$1.comma);
+        if (!this.afterTrailingComma(types$1.parenR)) {
+          node3.options = this.parseMaybeAssign();
+          if (!this.eat(types$1.parenR)) {
+            this.expect(types$1.comma);
+            if (!this.afterTrailingComma(types$1.parenR)) {
+              this.unexpected();
+            }
+          }
+        } else {
+          node3.options = null;
+        }
       } else {
-        this.unexpected(errorPos);
+        node3.options = null;
+      }
+    } else {
+      if (!this.eat(types$1.parenR)) {
+        var errorPos = this.start;
+        if (this.eat(types$1.comma) && this.eat(types$1.parenR)) {
+          this.raiseRecoverable(errorPos, "Trailing comma is not allowed in import()");
+        } else {
+          this.unexpected(errorPos);
+        }
       }
     }
     return this.finishNode(node3, "ImportExpression");
@@ -40218,6 +40551,7 @@ ${hover.contents.value}
     }
     return newNode;
   };
+  var scriptValuesAddedInUnicode = "Gara Garay Gukh Gurung_Khema Hrkt Katakana_Or_Hiragana Kawi Kirat_Rai Krai Nag_Mundari Nagm Ol_Onal Onao Sunu Sunuwar Todhri Todr Tulu_Tigalari Tutg Unknown Zzzz";
   var ecma9BinaryProperties = "ASCII ASCII_Hex_Digit AHex Alphabetic Alpha Any Assigned Bidi_Control Bidi_C Bidi_Mirrored Bidi_M Case_Ignorable CI Cased Changes_When_Casefolded CWCF Changes_When_Casemapped CWCM Changes_When_Lowercased CWL Changes_When_NFKC_Casefolded CWKCF Changes_When_Titlecased CWT Changes_When_Uppercased CWU Dash Default_Ignorable_Code_Point DI Deprecated Dep Diacritic Dia Emoji Emoji_Component Emoji_Modifier Emoji_Modifier_Base Emoji_Presentation Extender Ext Grapheme_Base Gr_Base Grapheme_Extend Gr_Ext Hex_Digit Hex IDS_Binary_Operator IDSB IDS_Trinary_Operator IDST ID_Continue IDC ID_Start IDS Ideographic Ideo Join_Control Join_C Logical_Order_Exception LOE Lowercase Lower Math Noncharacter_Code_Point NChar Pattern_Syntax Pat_Syn Pattern_White_Space Pat_WS Quotation_Mark QMark Radical Regional_Indicator RI Sentence_Terminal STerm Soft_Dotted SD Terminal_Punctuation Term Unified_Ideograph UIdeo Uppercase Upper Variation_Selector VS White_Space space XID_Continue XIDC XID_Start XIDS";
   var ecma10BinaryProperties = ecma9BinaryProperties + " Extended_Pictographic";
   var ecma11BinaryProperties = ecma10BinaryProperties;
@@ -40247,7 +40581,7 @@ ${hover.contents.value}
   var ecma11ScriptValues = ecma10ScriptValues + " Elymaic Elym Nandinagari Nand Nyiakeng_Puachue_Hmong Hmnp Wancho Wcho";
   var ecma12ScriptValues = ecma11ScriptValues + " Chorasmian Chrs Diak Dives_Akuru Khitan_Small_Script Kits Yezi Yezidi";
   var ecma13ScriptValues = ecma12ScriptValues + " Cypro_Minoan Cpmn Old_Uyghur Ougr Tangsa Tnsa Toto Vithkuqi Vith";
-  var ecma14ScriptValues = ecma13ScriptValues + " Hrkt Katakana_Or_Hiragana Kawi Nag_Mundari Nagm Unknown Zzzz";
+  var ecma14ScriptValues = ecma13ScriptValues + " " + scriptValuesAddedInUnicode;
   var unicodeScriptValues = {
     9: ecma9ScriptValues,
     10: ecma10ScriptValues,
@@ -40671,18 +41005,47 @@ ${hover.contents.value}
       if (state.eat(
         63
         /* ? */
-      ) && state.eat(
-        58
-        /* : */
       )) {
-        this.regexp_disjunction(state);
-        if (state.eat(
-          41
-          /* ) */
-        )) {
-          return true;
+        if (this.options.ecmaVersion >= 16) {
+          var addModifiers = this.regexp_eatModifiers(state);
+          var hasHyphen = state.eat(
+            45
+            /* - */
+          );
+          if (addModifiers || hasHyphen) {
+            for (var i = 0; i < addModifiers.length; i++) {
+              var modifier = addModifiers.charAt(i);
+              if (addModifiers.indexOf(modifier, i + 1) > -1) {
+                state.raise("Duplicate regular expression modifiers");
+              }
+            }
+            if (hasHyphen) {
+              var removeModifiers = this.regexp_eatModifiers(state);
+              if (!addModifiers && !removeModifiers && state.current() === 58) {
+                state.raise("Invalid regular expression modifiers");
+              }
+              for (var i$1 = 0; i$1 < removeModifiers.length; i$1++) {
+                var modifier$1 = removeModifiers.charAt(i$1);
+                if (removeModifiers.indexOf(modifier$1, i$1 + 1) > -1 || addModifiers.indexOf(modifier$1) > -1) {
+                  state.raise("Duplicate regular expression modifiers");
+                }
+              }
+            }
+          }
         }
-        state.raise("Unterminated group");
+        if (state.eat(
+          58
+          /* : */
+        )) {
+          this.regexp_disjunction(state);
+          if (state.eat(
+            41
+            /* ) */
+          )) {
+            return true;
+          }
+          state.raise("Unterminated group");
+        }
       }
       state.pos = start2;
     }
@@ -40710,6 +41073,18 @@ ${hover.contents.value}
     }
     return false;
   };
+  pp$1.regexp_eatModifiers = function(state) {
+    var modifiers = "";
+    var ch = 0;
+    while ((ch = state.current()) !== -1 && isRegularExpressionModifier(ch)) {
+      modifiers += codePointToString(ch);
+      state.advance();
+    }
+    return modifiers;
+  };
+  function isRegularExpressionModifier(ch) {
+    return ch === 105 || ch === 109 || ch === 115;
+  }
   pp$1.regexp_eatExtendedAtom = function(state) {
     return state.eat(
       46
@@ -42364,7 +42739,7 @@ ${hover.contents.value}
     }
     return this.finishToken(type, word);
   };
-  var version = "8.12.1";
+  var version = "8.14.0";
   Parser.acorn = {
     Parser,
     version,
@@ -42400,12 +42775,37 @@ ${hover.contents.value}
   function markdownLineEnding(code2) {
     return code2 !== null && code2 < -2;
   }
+  function markdownSpace(code2) {
+    return code2 === -2 || code2 === -1 || code2 === 32;
+  }
   var unicodePunctuation = regexCheck(/\p{P}|\p{S}/u);
   var unicodeWhitespace = regexCheck(/\s/);
   function regexCheck(regex) {
     return check;
     function check(code2) {
       return code2 !== null && code2 > -1 && regex.test(String.fromCharCode(code2));
+    }
+  }
+
+  // node_modules/micromark-factory-mdx-expression/node_modules/micromark-factory-space/index.js
+  function factorySpace(effects, ok3, type, max) {
+    const limit = max ? max - 1 : Number.POSITIVE_INFINITY;
+    let size = 0;
+    return start2;
+    function start2(code2) {
+      if (markdownSpace(code2)) {
+        effects.enter(type);
+        return prefix(code2);
+      }
+      return ok3(code2);
+    }
+    function prefix(code2) {
+      if (markdownSpace(code2) && size++ < limit) {
+        effects.consume(code2);
+        return prefix;
+      }
+      effects.exit(type);
+      return ok3(code2);
     }
   }
 
@@ -42770,8 +43170,9 @@ ${hover.contents.value}
   }
 
   // node_modules/micromark-factory-mdx-expression/index.js
+  var indentSize = 2;
   var trouble = "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression";
-  var unexpectedEofHash = "#unexpected-end-of-file-in-expression-expected-a-corresponding-closing-brace-for-";
+  var unexpectedEndOfFileHash = "#unexpected-end-of-file-in-expression-expected-a-corresponding-closing-brace-for-";
   var unexpectedLazyHash = "#unexpected-lazy-line-in-expression-in-container-expected-line-to-be-prefixed";
   var nonSpreadHash = "#unexpected-type-in-code-expected-an-object-spread-spread";
   var spreadExtraHash = "#unexpected-extra-content-in-spread-only-a-single-spread-is-supported";
@@ -42795,15 +43196,12 @@ ${hover.contents.value}
       if (code2 === null) {
         if (lastCrash)
           throw lastCrash;
-        const error = new VFileMessage(
-          "Unexpected end of file in expression, expected a corresponding closing brace for `{`",
-          {
-            place: self2.now(),
-            ruleId: "unexpected-eof",
-            source: "micromark-extension-mdx-expression"
-          }
-        );
-        error.url = trouble + unexpectedEofHash;
+        const error = new VFileMessage("Unexpected end of file in expression, expected a corresponding closing brace for `{`", {
+          place: self2.now(),
+          ruleId: "unexpected-eof",
+          source: "micromark-extension-mdx-expression"
+        });
+        error.url = trouble + unexpectedEndOfFileHash;
         throw error;
       }
       if (markdownLineEnding(code2)) {
@@ -42813,16 +43211,7 @@ ${hover.contents.value}
         return eolAfter;
       }
       if (code2 === 125 && size === 0) {
-        const next = acorn ? mdxExpressionParse.call(
-          self2,
-          acorn,
-          acornOptions,
-          chunkType,
-          eventStart,
-          pointStart,
-          allowEmpty || false,
-          spread || false
-        ) : {
+        const next = acorn ? mdxExpressionParse.call(self2, acorn, acornOptions, chunkType, eventStart, pointStart, allowEmpty || false, spread || false) : {
           type: "ok",
           estree: void 0
         };
@@ -42862,16 +43251,16 @@ ${hover.contents.value}
     function eolAfter(code2) {
       const now = self2.now();
       if (now.line !== pointStart.line && !allowLazy && self2.parser.lazy[now.line]) {
-        const error = new VFileMessage(
-          "Unexpected lazy line in expression in container, expected line to be prefixed with `>` when in a block quote, whitespace when in a list, etc",
-          {
-            place: self2.now(),
-            ruleId: "unexpected-lazy",
-            source: "micromark-extension-mdx-expression"
-          }
-        );
+        const error = new VFileMessage("Unexpected lazy line in expression in container, expected line to be prefixed with `>` when in a block quote, whitespace when in a list, etc", {
+          place: self2.now(),
+          ruleId: "unexpected-lazy",
+          source: "micromark-extension-mdx-expression"
+        });
         error.url = trouble + unexpectedLazyHash;
         throw error;
+      }
+      if (markdownSpace(code2)) {
+        return factorySpace(effects, before, "linePrefix", indentSize + 1)(code2);
       }
       return before(code2);
     }
@@ -42892,40 +43281,31 @@ ${hover.contents.value}
       const head = estree.body[0];
       if (head.type !== "ExpressionStatement" || head.expression.type !== "ObjectExpression") {
         const place = positionFromEstree(head);
-        const error = new VFileMessage(
-          "Unexpected `" + head.type + "` in code: expected an object spread (`{...spread}`)",
-          {
-            place: place.start,
-            ruleId: "non-spread",
-            source: "micromark-extension-mdx-expression"
-          }
-        );
+        const error = new VFileMessage("Unexpected `" + head.type + "` in code: expected an object spread (`{...spread}`)", {
+          place: place.start,
+          ruleId: "non-spread",
+          source: "micromark-extension-mdx-expression"
+        });
         error.url = trouble + nonSpreadHash;
         throw error;
       }
       if (head.expression.properties[1]) {
         const place = positionFromEstree(head.expression.properties[1]);
-        const error = new VFileMessage(
-          "Unexpected extra content in spread: only a single spread is supported",
-          {
-            place: place.start,
-            ruleId: "spread-extra",
-            source: "micromark-extension-mdx-expression"
-          }
-        );
+        const error = new VFileMessage("Unexpected extra content in spread: only a single spread is supported", {
+          place: place.start,
+          ruleId: "spread-extra",
+          source: "micromark-extension-mdx-expression"
+        });
         error.url = trouble + spreadExtraHash;
         throw error;
       }
       if (head.expression.properties[0] && head.expression.properties[0].type !== "SpreadElement") {
         const place = positionFromEstree(head.expression.properties[0]);
-        const error = new VFileMessage(
-          "Unexpected `" + head.expression.properties[0].type + "` in code: only spread elements are supported",
-          {
-            place: place.start,
-            ruleId: "non-spread",
-            source: "micromark-extension-mdx-expression"
-          }
-        );
+        const error = new VFileMessage("Unexpected `" + head.expression.properties[0].type + "` in code: only spread elements are supported", {
+          place: place.start,
+          ruleId: "non-spread",
+          source: "micromark-extension-mdx-expression"
+        });
         error.url = trouble + nonSpreadHash;
         throw error;
       }
@@ -42963,7 +43343,7 @@ ${hover.contents.value}
   function markdownLineEnding2(code2) {
     return code2 !== null && code2 < -2;
   }
-  function markdownSpace(code2) {
+  function markdownSpace2(code2) {
     return code2 === -2 || code2 === -1 || code2 === 32;
   }
   var unicodePunctuation2 = regexCheck2(/\p{P}|\p{S}/u);
@@ -42976,19 +43356,19 @@ ${hover.contents.value}
   }
 
   // node_modules/micromark-extension-mdx-expression/node_modules/micromark-factory-space/index.js
-  function factorySpace(effects, ok3, type, max) {
+  function factorySpace2(effects, ok3, type, max) {
     const limit = max ? max - 1 : Number.POSITIVE_INFINITY;
     let size = 0;
     return start2;
     function start2(code2) {
-      if (markdownSpace(code2)) {
+      if (markdownSpace2(code2)) {
         effects.enter(type);
         return prefix(code2);
       }
       return ok3(code2);
     }
     function prefix(code2) {
-      if (markdownSpace(code2) && size++ < limit) {
+      if (markdownSpace2(code2) && size++ < limit) {
         effects.consume(code2);
         return prefix;
       }
@@ -43044,7 +43424,7 @@ ${hover.contents.value}
         return factoryMdxExpression.call(self2, effects, after, "mdxFlowExpression", "mdxFlowExpressionMarker", "mdxFlowExpressionChunk", acorn, acornOptions, addResult, spread, allowEmpty)(code2);
       }
       function after(code2) {
-        return markdownSpace(code2) ? factorySpace(effects, end, "whitespace")(code2) : end(code2);
+        return markdownSpace2(code2) ? factorySpace2(effects, end, "whitespace")(code2) : end(code2);
       }
       function end(code2) {
         const lessThanValue = self2.parser.constructs.flow[60];
@@ -43097,7 +43477,7 @@ ${hover.contents.value}
   function markdownLineEndingOrSpace(code2) {
     return code2 !== null && (code2 < 0 || code2 === 32);
   }
-  function markdownSpace2(code2) {
+  function markdownSpace3(code2) {
     return code2 === -2 || code2 === -1 || code2 === 32;
   }
   var unicodePunctuation3 = regexCheck3(/\p{P}|\p{S}/u);
@@ -43431,7 +43811,7 @@ ${hover.contents.value}
         effects.exit("lineEnding");
         return esWhitespaceEolAfter;
       }
-      if (markdownSpace2(code2) || unicodeWhitespace3(code2)) {
+      if (markdownSpace3(code2) || unicodeWhitespace3(code2)) {
         effects.enter("esWhitespace");
         return esWhitespaceInside(code2);
       }
@@ -43442,7 +43822,7 @@ ${hover.contents.value}
         effects.exit("esWhitespace");
         return esWhitespaceStart(code2);
       }
-      if (markdownSpace2(code2) || unicodeWhitespace3(code2)) {
+      if (markdownSpace3(code2) || unicodeWhitespace3(code2)) {
         effects.consume(code2);
         return esWhitespaceInside;
       }
@@ -43479,19 +43859,19 @@ ${hover.contents.value}
   }
 
   // node_modules/micromark-extension-mdx-jsx/node_modules/micromark-factory-space/index.js
-  function factorySpace2(effects, ok3, type, max) {
+  function factorySpace3(effects, ok3, type, max) {
     const limit = max ? max - 1 : Number.POSITIVE_INFINITY;
     let size = 0;
     return start2;
     function start2(code2) {
-      if (markdownSpace2(code2)) {
+      if (markdownSpace3(code2)) {
         effects.enter(type);
         return prefix(code2);
       }
       return ok3(code2);
     }
     function prefix(code2) {
-      if (markdownSpace2(code2) && size++ < limit) {
+      if (markdownSpace3(code2) && size++ < limit) {
         effects.consume(code2);
         return prefix;
       }
@@ -43517,7 +43897,7 @@ ${hover.contents.value}
         return factoryTag.call(self2, effects, after, nok, acorn, options.acornOptions, options.addResult, false, "mdxJsxFlowTag", "mdxJsxFlowTagMarker", "mdxJsxFlowTagClosingMarker", "mdxJsxFlowTagSelfClosingMarker", "mdxJsxFlowTagName", "mdxJsxFlowTagNamePrimary", "mdxJsxFlowTagNameMemberMarker", "mdxJsxFlowTagNameMember", "mdxJsxFlowTagNamePrefixMarker", "mdxJsxFlowTagNameLocal", "mdxJsxFlowTagExpressionAttribute", "mdxJsxFlowTagExpressionAttributeMarker", "mdxJsxFlowTagExpressionAttributeValue", "mdxJsxFlowTagAttribute", "mdxJsxFlowTagAttributeName", "mdxJsxFlowTagAttributeNamePrimary", "mdxJsxFlowTagAttributeNamePrefixMarker", "mdxJsxFlowTagAttributeNameLocal", "mdxJsxFlowTagAttributeInitializerMarker", "mdxJsxFlowTagAttributeValueLiteral", "mdxJsxFlowTagAttributeValueLiteralMarker", "mdxJsxFlowTagAttributeValueLiteralValue", "mdxJsxFlowTagAttributeValueExpression", "mdxJsxFlowTagAttributeValueExpressionMarker", "mdxJsxFlowTagAttributeValueExpressionValue")(code2);
       }
       function after(code2) {
-        return markdownSpace2(code2) ? factorySpace2(effects, end, "whitespace")(code2) : end(code2);
+        return markdownSpace3(code2) ? factorySpace3(effects, end, "whitespace")(code2) : end(code2);
       }
       function end(code2) {
         const leftBraceValue = self2.parser.constructs.flow[123];
@@ -43572,18 +43952,15 @@ ${hover.contents.value}
     };
   }
 
-  // node_modules/micromark-extension-mdxjs-esm/node_modules/micromark-util-character/index.js
+  // node_modules/micromark-util-classify-character/node_modules/micromark-util-character/index.js
   var asciiAlpha4 = regexCheck4(/[A-Za-z]/);
   var asciiAlphanumeric4 = regexCheck4(/[\dA-Za-z]/);
   var asciiAtext4 = regexCheck4(/[#-'*+\--9=?A-Z^-~]/);
   var asciiDigit4 = regexCheck4(/\d/);
   var asciiHexDigit4 = regexCheck4(/[\dA-Fa-f]/);
   var asciiPunctuation4 = regexCheck4(/[!-/:-@[-`{-~]/);
-  function markdownLineEnding4(code2) {
-    return code2 !== null && code2 < -2;
-  }
-  function markdownSpace3(code2) {
-    return code2 === -2 || code2 === -1 || code2 === 32;
+  function markdownLineEndingOrSpace2(code2) {
+    return code2 !== null && (code2 < 0 || code2 === 32);
   }
   var unicodePunctuation4 = regexCheck4(/\p{P}|\p{S}/u);
   var unicodeWhitespace4 = regexCheck4(/\s/);
@@ -43594,20 +43971,52 @@ ${hover.contents.value}
     }
   }
 
+  // node_modules/micromark-util-classify-character/index.js
+  function classifyCharacter(code2) {
+    if (code2 === null || markdownLineEndingOrSpace2(code2) || unicodeWhitespace4(code2)) {
+      return 1;
+    }
+    if (unicodePunctuation4(code2)) {
+      return 2;
+    }
+  }
+
+  // node_modules/micromark-extension-mdxjs-esm/node_modules/micromark-util-character/index.js
+  var asciiAlpha5 = regexCheck5(/[A-Za-z]/);
+  var asciiAlphanumeric5 = regexCheck5(/[\dA-Za-z]/);
+  var asciiAtext5 = regexCheck5(/[#-'*+\--9=?A-Z^-~]/);
+  var asciiDigit5 = regexCheck5(/\d/);
+  var asciiHexDigit5 = regexCheck5(/[\dA-Fa-f]/);
+  var asciiPunctuation5 = regexCheck5(/[!-/:-@[-`{-~]/);
+  function markdownLineEnding4(code2) {
+    return code2 !== null && code2 < -2;
+  }
+  function markdownSpace4(code2) {
+    return code2 === -2 || code2 === -1 || code2 === 32;
+  }
+  var unicodePunctuation5 = regexCheck5(/\p{P}|\p{S}/u);
+  var unicodeWhitespace5 = regexCheck5(/\s/);
+  function regexCheck5(regex) {
+    return check;
+    function check(code2) {
+      return code2 !== null && code2 > -1 && regex.test(String.fromCharCode(code2));
+    }
+  }
+
   // node_modules/micromark-extension-mdxjs-esm/node_modules/micromark-factory-space/index.js
-  function factorySpace3(effects, ok3, type, max) {
+  function factorySpace4(effects, ok3, type, max) {
     const limit = max ? max - 1 : Number.POSITIVE_INFINITY;
     let size = 0;
     return start2;
     function start2(code2) {
-      if (markdownSpace3(code2)) {
+      if (markdownSpace4(code2)) {
         effects.enter(type);
         return prefix(code2);
       }
       return ok3(code2);
     }
     function prefix(code2) {
-      if (markdownSpace3(code2) && size++ < limit) {
+      if (markdownSpace4(code2) && size++ < limit) {
         effects.consume(code2);
         return prefix;
       }
@@ -43618,13 +44027,13 @@ ${hover.contents.value}
 
   // node_modules/micromark-extension-mdxjs-esm/node_modules/micromark-core-commonmark/lib/blank-line.js
   var blankLine = {
-    tokenize: tokenizeBlankLine,
-    partial: true
+    partial: true,
+    tokenize: tokenizeBlankLine
   };
   function tokenizeBlankLine(effects, ok3, nok) {
     return start2;
     function start2(code2) {
-      return markdownSpace3(code2) ? factorySpace3(effects, after, "linePrefix")(code2) : after(code2);
+      return markdownSpace4(code2) ? factorySpace4(effects, after, "linePrefix")(code2) : after(code2);
     }
     function after(code2) {
       return code2 === null || markdownLineEnding4(code2) ? ok3(code2) : nok(code2);
@@ -43703,7 +44112,7 @@ ${hover.contents.value}
         return word;
       }
       function word(code2) {
-        if (asciiAlpha4(code2)) {
+        if (asciiAlpha5(code2)) {
           effects.consume(code2);
           buffer += String.fromCharCode(code2);
           return word;
@@ -43892,10 +44301,7 @@ ${hover.contents.value}
   // node_modules/remark-mdx/lib/index.js
   var emptyOptions2 = {};
   function remarkMdx(options) {
-    const self2 = (
-      /** @type {Processor} */
-      this
-    );
+    const self2 = this;
     const settings = options || emptyOptions2;
     const data2 = self2.data();
     const micromarkExtensions = data2.micromarkExtensions || (data2.micromarkExtensions = []);
@@ -44043,9 +44449,9 @@ ${hover.contents.value}
   }
 
   // node_modules/remark-parse/node_modules/micromark-util-character/index.js
-  var asciiAlpha5 = regexCheck5(/[A-Za-z]/);
-  var asciiAlphanumeric5 = regexCheck5(/[\dA-Za-z]/);
-  var asciiAtext5 = regexCheck5(/[#-'*+\--9=?A-Z^-~]/);
+  var asciiAlpha6 = regexCheck6(/[A-Za-z]/);
+  var asciiAlphanumeric6 = regexCheck6(/[\dA-Za-z]/);
+  var asciiAtext6 = regexCheck6(/[#-'*+\--9=?A-Z^-~]/);
   function asciiControl(code2) {
     return (
       // Special whitespace codes (which have negative values), C0 and Control
@@ -44053,21 +44459,21 @@ ${hover.contents.value}
       code2 !== null && (code2 < 32 || code2 === 127)
     );
   }
-  var asciiDigit5 = regexCheck5(/\d/);
-  var asciiHexDigit5 = regexCheck5(/[\dA-Fa-f]/);
-  var asciiPunctuation5 = regexCheck5(/[!-/:-@[-`{-~]/);
+  var asciiDigit6 = regexCheck6(/\d/);
+  var asciiHexDigit6 = regexCheck6(/[\dA-Fa-f]/);
+  var asciiPunctuation6 = regexCheck6(/[!-/:-@[-`{-~]/);
   function markdownLineEnding5(code2) {
     return code2 !== null && code2 < -2;
   }
-  function markdownLineEndingOrSpace2(code2) {
+  function markdownLineEndingOrSpace3(code2) {
     return code2 !== null && (code2 < 0 || code2 === 32);
   }
-  function markdownSpace4(code2) {
+  function markdownSpace5(code2) {
     return code2 === -2 || code2 === -1 || code2 === 32;
   }
-  var unicodePunctuation5 = regexCheck5(/\p{P}|\p{S}/u);
-  var unicodeWhitespace5 = regexCheck5(/\s/);
-  function regexCheck5(regex) {
+  var unicodePunctuation6 = regexCheck6(/\p{P}|\p{S}/u);
+  var unicodeWhitespace6 = regexCheck6(/\s/);
+  function regexCheck6(regex) {
     return check;
     function check(code2) {
       return code2 !== null && code2 > -1 && regex.test(String.fromCharCode(code2));
@@ -44075,19 +44481,19 @@ ${hover.contents.value}
   }
 
   // node_modules/remark-parse/node_modules/micromark-factory-space/index.js
-  function factorySpace4(effects, ok3, type, max) {
+  function factorySpace5(effects, ok3, type, max) {
     const limit = max ? max - 1 : Number.POSITIVE_INFINITY;
     let size = 0;
     return start2;
     function start2(code2) {
-      if (markdownSpace4(code2)) {
+      if (markdownSpace5(code2)) {
         effects.enter(type);
         return prefix(code2);
       }
       return ok3(code2);
     }
     function prefix(code2) {
-      if (markdownSpace4(code2) && size++ < limit) {
+      if (markdownSpace5(code2) && size++ < limit) {
         effects.consume(code2);
         return prefix;
       }
@@ -44101,11 +44507,7 @@ ${hover.contents.value}
     tokenize: initializeContent
   };
   function initializeContent(effects) {
-    const contentStart = effects.attempt(
-      this.parser.constructs.contentInitial,
-      afterContentStartConstruct,
-      paragraphInitial
-    );
+    const contentStart = effects.attempt(this.parser.constructs.contentInitial, afterContentStartConstruct, paragraphInitial);
     let previous2;
     return contentStart;
     function afterContentStartConstruct(code2) {
@@ -44116,7 +44518,7 @@ ${hover.contents.value}
       effects.enter("lineEnding");
       effects.consume(code2);
       effects.exit("lineEnding");
-      return factorySpace4(effects, contentStart, "linePrefix");
+      return factorySpace5(effects, contentStart, "linePrefix");
     }
     function paragraphInitial(code2) {
       effects.enter("paragraph");
@@ -44169,11 +44571,7 @@ ${hover.contents.value}
       if (continued < stack.length) {
         const item = stack[continued];
         self2.containerState = item[1];
-        return effects.attempt(
-          item[0].continuation,
-          documentContinue,
-          checkNewContainers
-        )(code2);
+        return effects.attempt(item[0].continuation, documentContinue, checkNewContainers)(code2);
       }
       return checkNewContainers(code2);
     }
@@ -44196,15 +44594,12 @@ ${hover.contents.value}
         exitContainers(continued);
         let index4 = indexBeforeExits;
         while (index4 < self2.events.length) {
-          self2.events[index4][1].end = Object.assign({}, point5);
+          self2.events[index4][1].end = {
+            ...point5
+          };
           index4++;
         }
-        splice2(
-          self2.events,
-          indexBeforeFlow + 1,
-          0,
-          self2.events.slice(indexBeforeExits)
-        );
+        splice2(self2.events, indexBeforeFlow + 1, 0, self2.events.slice(indexBeforeExits));
         self2.events.length = index4;
         return checkNewContainers(code2);
       }
@@ -44218,16 +44613,10 @@ ${hover.contents.value}
         if (childFlow.currentConstruct && childFlow.currentConstruct.concrete) {
           return flowStart(code2);
         }
-        self2.interrupt = Boolean(
-          childFlow.currentConstruct && !childFlow._gfmTableDynamicInterruptHack
-        );
+        self2.interrupt = Boolean(childFlow.currentConstruct && !childFlow._gfmTableDynamicInterruptHack);
       }
       self2.containerState = {};
-      return effects.check(
-        containerConstruct,
-        thereIsANewContainer,
-        thereIsNoNewContainer
-      )(code2);
+      return effects.check(containerConstruct, thereIsANewContainer, thereIsNoNewContainer)(code2);
     }
     function thereIsANewContainer(code2) {
       if (childFlow)
@@ -44242,11 +44631,7 @@ ${hover.contents.value}
     }
     function documentContinued(code2) {
       self2.containerState = {};
-      return effects.attempt(
-        containerConstruct,
-        containerContinue,
-        flowStart
-      )(code2);
+      return effects.attempt(containerConstruct, containerContinue, flowStart)(code2);
     }
     function containerContinue(code2) {
       continued++;
@@ -44263,9 +44648,9 @@ ${hover.contents.value}
       }
       childFlow = childFlow || self2.parser.flow(self2.now());
       effects.enter("chunkFlow", {
+        _tokenizer: childFlow,
         contentType: "flow",
-        previous: childToken,
-        _tokenizer: childFlow
+        previous: childToken
       });
       return flowContinue(code2);
     }
@@ -44286,9 +44671,9 @@ ${hover.contents.value}
       effects.consume(code2);
       return flowContinue;
     }
-    function writeToChild(token, eof) {
+    function writeToChild(token, endOfFile) {
       const stream = self2.sliceStream(token);
-      if (eof)
+      if (endOfFile)
         stream.push(null);
       token.previous = childToken;
       if (childToken)
@@ -44324,15 +44709,12 @@ ${hover.contents.value}
         exitContainers(continued);
         index4 = indexBeforeExits;
         while (index4 < self2.events.length) {
-          self2.events[index4][1].end = Object.assign({}, point5);
+          self2.events[index4][1].end = {
+            ...point5
+          };
           index4++;
         }
-        splice2(
-          self2.events,
-          indexBeforeFlow + 1,
-          0,
-          self2.events.slice(indexBeforeExits)
-        );
+        splice2(self2.events, indexBeforeFlow + 1, 0, self2.events.slice(indexBeforeExits));
         self2.events.length = index4;
       }
     }
@@ -44353,22 +44735,7 @@ ${hover.contents.value}
     }
   }
   function tokenizeContainer(effects, ok3, nok) {
-    return factorySpace4(
-      effects,
-      effects.attempt(this.parser.constructs.document, ok3, nok),
-      "linePrefix",
-      this.parser.constructs.disable.null.includes("codeIndented") ? void 0 : 4
-    );
-  }
-
-  // node_modules/remark-parse/node_modules/micromark-util-classify-character/index.js
-  function classifyCharacter(code2) {
-    if (code2 === null || markdownLineEndingOrSpace2(code2) || unicodeWhitespace5(code2)) {
-      return 1;
-    }
-    if (unicodePunctuation5(code2)) {
-      return 2;
-    }
+    return factorySpace5(effects, effects.attempt(this.parser.constructs.document, ok3, nok), "linePrefix", this.parser.constructs.disable.null.includes("codeIndented") ? void 0 : 4);
   }
 
   // node_modules/remark-parse/node_modules/micromark-util-resolve-all/index.js
@@ -44388,8 +44755,8 @@ ${hover.contents.value}
   // node_modules/remark-parse/node_modules/micromark-core-commonmark/lib/attention.js
   var attention = {
     name: "attention",
-    tokenize: tokenizeAttention,
-    resolveAll: resolveAllAttention
+    resolveAll: resolveAllAttention,
+    tokenize: tokenizeAttention
   };
   function resolveAllAttention(events, context) {
     let index4 = -1;
@@ -44411,32 +44778,52 @@ ${hover.contents.value}
               continue;
             }
             use = events[open][1].end.offset - events[open][1].start.offset > 1 && events[index4][1].end.offset - events[index4][1].start.offset > 1 ? 2 : 1;
-            const start2 = Object.assign({}, events[open][1].end);
-            const end = Object.assign({}, events[index4][1].start);
+            const start2 = {
+              ...events[open][1].end
+            };
+            const end = {
+              ...events[index4][1].start
+            };
             movePoint(start2, -use);
             movePoint(end, use);
             openingSequence = {
               type: use > 1 ? "strongSequence" : "emphasisSequence",
               start: start2,
-              end: Object.assign({}, events[open][1].end)
+              end: {
+                ...events[open][1].end
+              }
             };
             closingSequence = {
               type: use > 1 ? "strongSequence" : "emphasisSequence",
-              start: Object.assign({}, events[index4][1].start),
+              start: {
+                ...events[index4][1].start
+              },
               end
             };
             text4 = {
               type: use > 1 ? "strongText" : "emphasisText",
-              start: Object.assign({}, events[open][1].end),
-              end: Object.assign({}, events[index4][1].start)
+              start: {
+                ...events[open][1].end
+              },
+              end: {
+                ...events[index4][1].start
+              }
             };
             group = {
               type: use > 1 ? "strong" : "emphasis",
-              start: Object.assign({}, openingSequence.start),
-              end: Object.assign({}, closingSequence.end)
+              start: {
+                ...openingSequence.start
+              },
+              end: {
+                ...closingSequence.end
+              }
             };
-            events[open][1].end = Object.assign({}, openingSequence.start);
-            events[index4][1].start = Object.assign({}, closingSequence.end);
+            events[open][1].end = {
+              ...openingSequence.start
+            };
+            events[index4][1].start = {
+              ...closingSequence.end
+            };
             nextEvents = [];
             if (events[open][1].end.offset - events[open][1].start.offset) {
               nextEvents = push(nextEvents, [["enter", events[open][1], context], ["exit", events[open][1], context]]);
@@ -44513,7 +44900,7 @@ ${hover.contents.value}
       return open;
     }
     function open(code2) {
-      if (asciiAlpha5(code2)) {
+      if (asciiAlpha6(code2)) {
         effects.consume(code2);
         return schemeOrEmailAtext;
       }
@@ -44523,7 +44910,7 @@ ${hover.contents.value}
       return emailAtext(code2);
     }
     function schemeOrEmailAtext(code2) {
-      if (code2 === 43 || code2 === 45 || code2 === 46 || asciiAlphanumeric5(code2)) {
+      if (code2 === 43 || code2 === 45 || code2 === 46 || asciiAlphanumeric6(code2)) {
         size = 1;
         return schemeInsideOrEmailAtext(code2);
       }
@@ -44535,7 +44922,7 @@ ${hover.contents.value}
         size = 0;
         return urlInside;
       }
-      if ((code2 === 43 || code2 === 45 || code2 === 46 || asciiAlphanumeric5(code2)) && size++ < 32) {
+      if ((code2 === 43 || code2 === 45 || code2 === 46 || asciiAlphanumeric6(code2)) && size++ < 32) {
         effects.consume(code2);
         return schemeInsideOrEmailAtext;
       }
@@ -44562,14 +44949,14 @@ ${hover.contents.value}
         effects.consume(code2);
         return emailAtSignOrDot;
       }
-      if (asciiAtext5(code2)) {
+      if (asciiAtext6(code2)) {
         effects.consume(code2);
         return emailAtext;
       }
       return nok(code2);
     }
     function emailAtSignOrDot(code2) {
-      return asciiAlphanumeric5(code2) ? emailLabel(code2) : nok(code2);
+      return asciiAlphanumeric6(code2) ? emailLabel(code2) : nok(code2);
     }
     function emailLabel(code2) {
       if (code2 === 46) {
@@ -44588,7 +44975,7 @@ ${hover.contents.value}
       return emailValue(code2);
     }
     function emailValue(code2) {
-      if ((code2 === 45 || asciiAlphanumeric5(code2)) && size++ < 63) {
+      if ((code2 === 45 || asciiAlphanumeric6(code2)) && size++ < 63) {
         const next = code2 === 45 ? emailValue : emailLabel;
         effects.consume(code2);
         return next;
@@ -44599,13 +44986,13 @@ ${hover.contents.value}
 
   // node_modules/remark-parse/node_modules/micromark-core-commonmark/lib/blank-line.js
   var blankLine2 = {
-    tokenize: tokenizeBlankLine2,
-    partial: true
+    partial: true,
+    tokenize: tokenizeBlankLine2
   };
   function tokenizeBlankLine2(effects, ok3, nok) {
     return start2;
     function start2(code2) {
-      return markdownSpace4(code2) ? factorySpace4(effects, after, "linePrefix")(code2) : after(code2);
+      return markdownSpace5(code2) ? factorySpace5(effects, after, "linePrefix")(code2) : after(code2);
     }
     function after(code2) {
       return code2 === null || markdownLineEnding5(code2) ? ok3(code2) : nok(code2);
@@ -44614,12 +45001,12 @@ ${hover.contents.value}
 
   // node_modules/remark-parse/node_modules/micromark-core-commonmark/lib/block-quote.js
   var blockQuote = {
-    name: "blockQuote",
-    tokenize: tokenizeBlockQuoteStart,
     continuation: {
       tokenize: tokenizeBlockQuoteContinuation
     },
-    exit
+    exit,
+    name: "blockQuote",
+    tokenize: tokenizeBlockQuoteStart
   };
   function tokenizeBlockQuoteStart(effects, ok3, nok) {
     const self2 = this;
@@ -44642,7 +45029,7 @@ ${hover.contents.value}
       return nok(code2);
     }
     function after(code2) {
-      if (markdownSpace4(code2)) {
+      if (markdownSpace5(code2)) {
         effects.enter("blockQuotePrefixWhitespace");
         effects.consume(code2);
         effects.exit("blockQuotePrefixWhitespace");
@@ -44657,8 +45044,8 @@ ${hover.contents.value}
     const self2 = this;
     return contStart;
     function contStart(code2) {
-      if (markdownSpace4(code2)) {
-        return factorySpace4(effects, contBefore, "linePrefix", self2.parser.constructs.disable.null.includes("codeIndented") ? void 0 : 4)(code2);
+      if (markdownSpace5(code2)) {
+        return factorySpace5(effects, contBefore, "linePrefix", self2.parser.constructs.disable.null.includes("codeIndented") ? void 0 : 4)(code2);
       }
       return contBefore(code2);
     }
@@ -44685,7 +45072,7 @@ ${hover.contents.value}
       return inside;
     }
     function inside(code2) {
-      if (asciiPunctuation5(code2)) {
+      if (asciiPunctuation6(code2)) {
         effects.enter("characterEscapeValue");
         effects.consume(code2);
         effects.exit("characterEscapeValue");
@@ -44723,7 +45110,7 @@ ${hover.contents.value}
       }
       effects.enter("characterReferenceValue");
       max = 31;
-      test = asciiAlphanumeric5;
+      test = asciiAlphanumeric6;
       return value(code2);
     }
     function numeric(code2) {
@@ -44733,18 +45120,18 @@ ${hover.contents.value}
         effects.exit("characterReferenceMarkerHexadecimal");
         effects.enter("characterReferenceValue");
         max = 6;
-        test = asciiHexDigit5;
+        test = asciiHexDigit6;
         return value;
       }
       effects.enter("characterReferenceValue");
       max = 7;
-      test = asciiDigit5;
+      test = asciiDigit6;
       return value(code2);
     }
     function value(code2) {
       if (code2 === 59 && size) {
         const token = effects.exit("characterReferenceValue");
-        if (test === asciiAlphanumeric5 && !decodeNamedCharacterReference(self2.sliceSerialize(token))) {
+        if (test === asciiAlphanumeric6 && !decodeNamedCharacterReference(self2.sliceSerialize(token))) {
           return nok(code2);
         }
         effects.enter("characterReferenceMarker");
@@ -44763,19 +45150,19 @@ ${hover.contents.value}
 
   // node_modules/remark-parse/node_modules/micromark-core-commonmark/lib/code-fenced.js
   var nonLazyContinuation = {
-    tokenize: tokenizeNonLazyContinuation,
-    partial: true
+    partial: true,
+    tokenize: tokenizeNonLazyContinuation
   };
   var codeFenced = {
+    concrete: true,
     name: "codeFenced",
-    tokenize: tokenizeCodeFenced,
-    concrete: true
+    tokenize: tokenizeCodeFenced
   };
   function tokenizeCodeFenced(effects, ok3, nok) {
     const self2 = this;
     const closeStart = {
-      tokenize: tokenizeCloseStart,
-      partial: true
+      partial: true,
+      tokenize: tokenizeCloseStart
     };
     let initialPrefix = 0;
     let sizeOpen = 0;
@@ -44803,7 +45190,7 @@ ${hover.contents.value}
         return nok(code2);
       }
       effects.exit("codeFencedFenceSequence");
-      return markdownSpace4(code2) ? factorySpace4(effects, infoBefore, "whitespace")(code2) : infoBefore(code2);
+      return markdownSpace5(code2) ? factorySpace5(effects, infoBefore, "whitespace")(code2) : infoBefore(code2);
     }
     function infoBefore(code2) {
       if (code2 === null || markdownLineEnding5(code2)) {
@@ -44822,10 +45209,10 @@ ${hover.contents.value}
         effects.exit("codeFencedFenceInfo");
         return infoBefore(code2);
       }
-      if (markdownSpace4(code2)) {
+      if (markdownSpace5(code2)) {
         effects.exit("chunkString");
         effects.exit("codeFencedFenceInfo");
-        return factorySpace4(effects, metaBefore, "whitespace")(code2);
+        return factorySpace5(effects, metaBefore, "whitespace")(code2);
       }
       if (code2 === 96 && code2 === marker) {
         return nok(code2);
@@ -44865,7 +45252,7 @@ ${hover.contents.value}
       return contentStart;
     }
     function contentStart(code2) {
-      return initialPrefix > 0 && markdownSpace4(code2) ? factorySpace4(effects, beforeContentChunk, "linePrefix", initialPrefix + 1)(code2) : beforeContentChunk(code2);
+      return initialPrefix > 0 && markdownSpace5(code2) ? factorySpace5(effects, beforeContentChunk, "linePrefix", initialPrefix + 1)(code2) : beforeContentChunk(code2);
     }
     function beforeContentChunk(code2) {
       if (code2 === null || markdownLineEnding5(code2)) {
@@ -44897,7 +45284,7 @@ ${hover.contents.value}
       }
       function start3(code2) {
         effects2.enter("codeFencedFence");
-        return markdownSpace4(code2) ? factorySpace4(effects2, beforeSequenceClose, "linePrefix", self2.parser.constructs.disable.null.includes("codeIndented") ? void 0 : 4)(code2) : beforeSequenceClose(code2);
+        return markdownSpace5(code2) ? factorySpace5(effects2, beforeSequenceClose, "linePrefix", self2.parser.constructs.disable.null.includes("codeIndented") ? void 0 : 4)(code2) : beforeSequenceClose(code2);
       }
       function beforeSequenceClose(code2) {
         if (code2 === marker) {
@@ -44914,7 +45301,7 @@ ${hover.contents.value}
         }
         if (size >= sizeOpen) {
           effects2.exit("codeFencedFenceSequence");
-          return markdownSpace4(code2) ? factorySpace4(effects2, sequenceCloseAfter, "whitespace")(code2) : sequenceCloseAfter(code2);
+          return markdownSpace5(code2) ? factorySpace5(effects2, sequenceCloseAfter, "whitespace")(code2) : sequenceCloseAfter(code2);
         }
         return nok2(code2);
       }
@@ -44950,15 +45337,15 @@ ${hover.contents.value}
     tokenize: tokenizeCodeIndented
   };
   var furtherStart = {
-    tokenize: tokenizeFurtherStart,
-    partial: true
+    partial: true,
+    tokenize: tokenizeFurtherStart
   };
   function tokenizeCodeIndented(effects, ok3, nok) {
     const self2 = this;
     return start2;
     function start2(code2) {
       effects.enter("codeIndented");
-      return factorySpace4(effects, afterPrefix, "linePrefix", 4 + 1)(code2);
+      return factorySpace5(effects, afterPrefix, "linePrefix", 4 + 1)(code2);
     }
     function afterPrefix(code2) {
       const tail = self2.events[self2.events.length - 1];
@@ -45000,7 +45387,7 @@ ${hover.contents.value}
         effects.exit("lineEnding");
         return furtherStart2;
       }
-      return factorySpace4(effects, afterPrefix, "linePrefix", 4 + 1)(code2);
+      return factorySpace5(effects, afterPrefix, "linePrefix", 4 + 1)(code2);
     }
     function afterPrefix(code2) {
       const tail = self2.events[self2.events.length - 1];
@@ -45011,9 +45398,9 @@ ${hover.contents.value}
   // node_modules/remark-parse/node_modules/micromark-core-commonmark/lib/code-text.js
   var codeText = {
     name: "codeText",
-    tokenize: tokenizeCodeText,
+    previous,
     resolve: resolveCodeText,
-    previous
+    tokenize: tokenizeCodeText
   };
   function resolveCodeText(events) {
     let tailExitIndex = events.length - 4;
@@ -45378,7 +45765,9 @@ ${hover.contents.value}
           }
         }
         if (lineIndex) {
-          event[1].end = Object.assign({}, events.get(lineIndex)[1].start);
+          event[1].end = {
+            ...events.get(lineIndex)[1].start
+          };
           parameters = events.slice(lineIndex, index4);
           parameters.unshift(event);
           events.splice(lineIndex, index4 - lineIndex + 1, parameters);
@@ -45465,12 +45854,12 @@ ${hover.contents.value}
 
   // node_modules/remark-parse/node_modules/micromark-core-commonmark/lib/content.js
   var content2 = {
-    tokenize: tokenizeContent,
-    resolve: resolveContent
+    resolve: resolveContent,
+    tokenize: tokenizeContent
   };
   var continuationConstruct = {
-    tokenize: tokenizeContinuation,
-    partial: true
+    partial: true,
+    tokenize: tokenizeContinuation
   };
   function resolveContent(events) {
     subtokenize(events);
@@ -45520,7 +45909,7 @@ ${hover.contents.value}
       effects.enter("lineEnding");
       effects.consume(code2);
       effects.exit("lineEnding");
-      return factorySpace4(effects, prefixed, "linePrefix");
+      return factorySpace5(effects, prefixed, "linePrefix");
     }
     function prefixed(code2) {
       if (code2 === null || markdownLineEnding5(code2)) {
@@ -45594,7 +45983,7 @@ ${hover.contents.value}
       return enclosed(code2);
     }
     function raw(code2) {
-      if (!balance && (code2 === null || code2 === 41 || markdownLineEndingOrSpace2(code2))) {
+      if (!balance && (code2 === null || code2 === 41 || markdownLineEndingOrSpace3(code2))) {
         effects.exit("chunkString");
         effects.exit(stringType);
         effects.exit(rawType);
@@ -45675,7 +46064,7 @@ ${hover.contents.value}
       }
       effects.consume(code2);
       if (!seen)
-        seen = !markdownSpace4(code2);
+        seen = !markdownSpace5(code2);
       return code2 === 92 ? labelEscape : labelInside;
     }
     function labelEscape(code2) {
@@ -45726,7 +46115,7 @@ ${hover.contents.value}
         effects.enter("lineEnding");
         effects.consume(code2);
         effects.exit("lineEnding");
-        return factorySpace4(effects, atBreak, "linePrefix");
+        return factorySpace5(effects, atBreak, "linePrefix");
       }
       effects.enter("chunkString", {
         contentType: "string"
@@ -45762,12 +46151,8 @@ ${hover.contents.value}
         seen = true;
         return start2;
       }
-      if (markdownSpace4(code2)) {
-        return factorySpace4(
-          effects,
-          start2,
-          seen ? "linePrefix" : "lineSuffix"
-        )(code2);
+      if (markdownSpace5(code2)) {
+        return factorySpace5(effects, start2, seen ? "linePrefix" : "lineSuffix")(code2);
       }
       return ok3(code2);
     }
@@ -45779,8 +46164,8 @@ ${hover.contents.value}
     tokenize: tokenizeDefinition
   };
   var titleBefore = {
-    tokenize: tokenizeTitleBefore,
-    partial: true
+    partial: true,
+    tokenize: tokenizeTitleBefore
   };
   function tokenizeDefinition(effects, ok3, nok) {
     const self2 = this;
@@ -45813,7 +46198,7 @@ ${hover.contents.value}
       return nok(code2);
     }
     function markerAfter(code2) {
-      return markdownLineEndingOrSpace2(code2) ? factoryWhitespace(effects, destinationBefore)(code2) : destinationBefore(code2);
+      return markdownLineEndingOrSpace3(code2) ? factoryWhitespace(effects, destinationBefore)(code2) : destinationBefore(code2);
     }
     function destinationBefore(code2) {
       return factoryDestination(
@@ -45832,7 +46217,7 @@ ${hover.contents.value}
       return effects.attempt(titleBefore, after, after)(code2);
     }
     function after(code2) {
-      return markdownSpace4(code2) ? factorySpace4(effects, afterWhitespace, "whitespace")(code2) : afterWhitespace(code2);
+      return markdownSpace5(code2) ? factorySpace5(effects, afterWhitespace, "whitespace")(code2) : afterWhitespace(code2);
     }
     function afterWhitespace(code2) {
       if (code2 === null || markdownLineEnding5(code2)) {
@@ -45846,13 +46231,13 @@ ${hover.contents.value}
   function tokenizeTitleBefore(effects, ok3, nok) {
     return titleBefore2;
     function titleBefore2(code2) {
-      return markdownLineEndingOrSpace2(code2) ? factoryWhitespace(effects, beforeMarker)(code2) : nok(code2);
+      return markdownLineEndingOrSpace3(code2) ? factoryWhitespace(effects, beforeMarker)(code2) : nok(code2);
     }
     function beforeMarker(code2) {
       return factoryTitle(effects, titleAfter, nok, "definitionTitle", "definitionTitleMarker", "definitionTitleString")(code2);
     }
     function titleAfter(code2) {
-      return markdownSpace4(code2) ? factorySpace4(effects, titleAfterOptionalWhitespace, "whitespace")(code2) : titleAfterOptionalWhitespace(code2);
+      return markdownSpace5(code2) ? factorySpace5(effects, titleAfterOptionalWhitespace, "whitespace")(code2) : titleAfterOptionalWhitespace(code2);
     }
     function titleAfterOptionalWhitespace(code2) {
       return code2 === null || markdownLineEnding5(code2) ? ok3(code2) : nok(code2);
@@ -45883,8 +46268,8 @@ ${hover.contents.value}
   // node_modules/remark-parse/node_modules/micromark-core-commonmark/lib/heading-atx.js
   var headingAtx = {
     name: "headingAtx",
-    tokenize: tokenizeHeadingAtx,
-    resolve: resolveHeadingAtx
+    resolve: resolveHeadingAtx,
+    tokenize: tokenizeHeadingAtx
   };
   function resolveHeadingAtx(events, context) {
     let contentEnd = events.length - 2;
@@ -45932,7 +46317,7 @@ ${hover.contents.value}
         effects.consume(code2);
         return sequenceOpen;
       }
-      if (code2 === null || markdownLineEndingOrSpace2(code2)) {
+      if (code2 === null || markdownLineEndingOrSpace3(code2)) {
         effects.exit("atxHeadingSequence");
         return atBreak(code2);
       }
@@ -45947,8 +46332,8 @@ ${hover.contents.value}
         effects.exit("atxHeading");
         return ok3(code2);
       }
-      if (markdownSpace4(code2)) {
-        return factorySpace4(effects, atBreak, "whitespace")(code2);
+      if (markdownSpace5(code2)) {
+        return factorySpace5(effects, atBreak, "whitespace")(code2);
       }
       effects.enter("atxHeadingText");
       return data2(code2);
@@ -45962,7 +46347,7 @@ ${hover.contents.value}
       return atBreak(code2);
     }
     function data2(code2) {
-      if (code2 === null || code2 === 35 || markdownLineEndingOrSpace2(code2)) {
+      if (code2 === null || code2 === 35 || markdownLineEndingOrSpace3(code2)) {
         effects.exit("atxHeadingText");
         return atBreak(code2);
       }
@@ -46040,18 +46425,18 @@ ${hover.contents.value}
 
   // node_modules/remark-parse/node_modules/micromark-core-commonmark/lib/html-flow.js
   var htmlFlow = {
+    concrete: true,
     name: "htmlFlow",
-    tokenize: tokenizeHtmlFlow,
     resolveTo: resolveToHtmlFlow,
-    concrete: true
+    tokenize: tokenizeHtmlFlow
   };
   var blankLineBefore2 = {
-    tokenize: tokenizeBlankLineBefore,
-    partial: true
+    partial: true,
+    tokenize: tokenizeBlankLineBefore
   };
   var nonLazyContinuationStart = {
-    tokenize: tokenizeNonLazyContinuationStart,
-    partial: true
+    partial: true,
+    tokenize: tokenizeNonLazyContinuationStart
   };
   function resolveToHtmlFlow(events) {
     let index4 = events.length;
@@ -46099,7 +46484,7 @@ ${hover.contents.value}
         marker = 3;
         return self2.interrupt ? ok3 : continuationDeclarationInside;
       }
-      if (asciiAlpha5(code2)) {
+      if (asciiAlpha6(code2)) {
         effects.consume(code2);
         buffer = String.fromCharCode(code2);
         return tagName;
@@ -46118,7 +46503,7 @@ ${hover.contents.value}
         index4 = 0;
         return cdataOpenInside;
       }
-      if (asciiAlpha5(code2)) {
+      if (asciiAlpha6(code2)) {
         effects.consume(code2);
         marker = 4;
         return self2.interrupt ? ok3 : continuationDeclarationInside;
@@ -46144,7 +46529,7 @@ ${hover.contents.value}
       return nok(code2);
     }
     function tagCloseStart(code2) {
-      if (asciiAlpha5(code2)) {
+      if (asciiAlpha6(code2)) {
         effects.consume(code2);
         buffer = String.fromCharCode(code2);
         return tagName;
@@ -46152,7 +46537,7 @@ ${hover.contents.value}
       return nok(code2);
     }
     function tagName(code2) {
-      if (code2 === null || code2 === 47 || code2 === 62 || markdownLineEndingOrSpace2(code2)) {
+      if (code2 === null || code2 === 47 || code2 === 62 || markdownLineEndingOrSpace3(code2)) {
         const slash = code2 === 47;
         const name2 = buffer.toLowerCase();
         if (!slash && !closingTag && htmlRawNames.includes(name2)) {
@@ -46170,7 +46555,7 @@ ${hover.contents.value}
         marker = 7;
         return self2.interrupt && !self2.parser.lazy[self2.now().line] ? nok(code2) : closingTag ? completeClosingTagAfter(code2) : completeAttributeNameBefore(code2);
       }
-      if (code2 === 45 || asciiAlphanumeric5(code2)) {
+      if (code2 === 45 || asciiAlphanumeric6(code2)) {
         effects.consume(code2);
         buffer += String.fromCharCode(code2);
         return tagName;
@@ -46185,7 +46570,7 @@ ${hover.contents.value}
       return nok(code2);
     }
     function completeClosingTagAfter(code2) {
-      if (markdownSpace4(code2)) {
+      if (markdownSpace5(code2)) {
         effects.consume(code2);
         return completeClosingTagAfter;
       }
@@ -46196,18 +46581,18 @@ ${hover.contents.value}
         effects.consume(code2);
         return completeEnd;
       }
-      if (code2 === 58 || code2 === 95 || asciiAlpha5(code2)) {
+      if (code2 === 58 || code2 === 95 || asciiAlpha6(code2)) {
         effects.consume(code2);
         return completeAttributeName;
       }
-      if (markdownSpace4(code2)) {
+      if (markdownSpace5(code2)) {
         effects.consume(code2);
         return completeAttributeNameBefore;
       }
       return completeEnd(code2);
     }
     function completeAttributeName(code2) {
-      if (code2 === 45 || code2 === 46 || code2 === 58 || code2 === 95 || asciiAlphanumeric5(code2)) {
+      if (code2 === 45 || code2 === 46 || code2 === 58 || code2 === 95 || asciiAlphanumeric6(code2)) {
         effects.consume(code2);
         return completeAttributeName;
       }
@@ -46218,7 +46603,7 @@ ${hover.contents.value}
         effects.consume(code2);
         return completeAttributeValueBefore;
       }
-      if (markdownSpace4(code2)) {
+      if (markdownSpace5(code2)) {
         effects.consume(code2);
         return completeAttributeNameAfter;
       }
@@ -46233,7 +46618,7 @@ ${hover.contents.value}
         markerB = code2;
         return completeAttributeValueQuoted;
       }
-      if (markdownSpace4(code2)) {
+      if (markdownSpace5(code2)) {
         effects.consume(code2);
         return completeAttributeValueBefore;
       }
@@ -46252,14 +46637,14 @@ ${hover.contents.value}
       return completeAttributeValueQuoted;
     }
     function completeAttributeValueUnquoted(code2) {
-      if (code2 === null || code2 === 34 || code2 === 39 || code2 === 47 || code2 === 60 || code2 === 61 || code2 === 62 || code2 === 96 || markdownLineEndingOrSpace2(code2)) {
+      if (code2 === null || code2 === 34 || code2 === 39 || code2 === 47 || code2 === 60 || code2 === 61 || code2 === 62 || code2 === 96 || markdownLineEndingOrSpace3(code2)) {
         return completeAttributeNameAfter(code2);
       }
       effects.consume(code2);
       return completeAttributeValueUnquoted;
     }
     function completeAttributeValueQuotedAfter(code2) {
-      if (code2 === 47 || code2 === 62 || markdownSpace4(code2)) {
+      if (code2 === 47 || code2 === 62 || markdownSpace5(code2)) {
         return completeAttributeNameBefore(code2);
       }
       return nok(code2);
@@ -46275,7 +46660,7 @@ ${hover.contents.value}
       if (code2 === null || markdownLineEnding5(code2)) {
         return continuation(code2);
       }
-      if (markdownSpace4(code2)) {
+      if (markdownSpace5(code2)) {
         effects.consume(code2);
         return completeAfter;
       }
@@ -46353,7 +46738,7 @@ ${hover.contents.value}
         }
         return continuation(code2);
       }
-      if (asciiAlpha5(code2) && buffer.length < 8) {
+      if (asciiAlpha6(code2) && buffer.length < 8) {
         effects.consume(code2);
         buffer += String.fromCharCode(code2);
         return continuationRawEndTag;
@@ -46447,7 +46832,7 @@ ${hover.contents.value}
         effects.consume(code2);
         return instruction;
       }
-      if (asciiAlpha5(code2)) {
+      if (asciiAlpha6(code2)) {
         effects.consume(code2);
         return tagOpen;
       }
@@ -46463,7 +46848,7 @@ ${hover.contents.value}
         index4 = 0;
         return cdataOpenInside;
       }
-      if (asciiAlpha5(code2)) {
+      if (asciiAlpha6(code2)) {
         effects.consume(code2);
         return declaration;
       }
@@ -46571,14 +46956,14 @@ ${hover.contents.value}
       return code2 === 62 ? end(code2) : instruction(code2);
     }
     function tagCloseStart(code2) {
-      if (asciiAlpha5(code2)) {
+      if (asciiAlpha6(code2)) {
         effects.consume(code2);
         return tagClose;
       }
       return nok(code2);
     }
     function tagClose(code2) {
-      if (code2 === 45 || asciiAlphanumeric5(code2)) {
+      if (code2 === 45 || asciiAlphanumeric6(code2)) {
         effects.consume(code2);
         return tagClose;
       }
@@ -46589,18 +46974,18 @@ ${hover.contents.value}
         returnState = tagCloseBetween;
         return lineEndingBefore(code2);
       }
-      if (markdownSpace4(code2)) {
+      if (markdownSpace5(code2)) {
         effects.consume(code2);
         return tagCloseBetween;
       }
       return end(code2);
     }
     function tagOpen(code2) {
-      if (code2 === 45 || asciiAlphanumeric5(code2)) {
+      if (code2 === 45 || asciiAlphanumeric6(code2)) {
         effects.consume(code2);
         return tagOpen;
       }
-      if (code2 === 47 || code2 === 62 || markdownLineEndingOrSpace2(code2)) {
+      if (code2 === 47 || code2 === 62 || markdownLineEndingOrSpace3(code2)) {
         return tagOpenBetween(code2);
       }
       return nok(code2);
@@ -46610,7 +46995,7 @@ ${hover.contents.value}
         effects.consume(code2);
         return end;
       }
-      if (code2 === 58 || code2 === 95 || asciiAlpha5(code2)) {
+      if (code2 === 58 || code2 === 95 || asciiAlpha6(code2)) {
         effects.consume(code2);
         return tagOpenAttributeName;
       }
@@ -46618,14 +47003,14 @@ ${hover.contents.value}
         returnState = tagOpenBetween;
         return lineEndingBefore(code2);
       }
-      if (markdownSpace4(code2)) {
+      if (markdownSpace5(code2)) {
         effects.consume(code2);
         return tagOpenBetween;
       }
       return end(code2);
     }
     function tagOpenAttributeName(code2) {
-      if (code2 === 45 || code2 === 46 || code2 === 58 || code2 === 95 || asciiAlphanumeric5(code2)) {
+      if (code2 === 45 || code2 === 46 || code2 === 58 || code2 === 95 || asciiAlphanumeric6(code2)) {
         effects.consume(code2);
         return tagOpenAttributeName;
       }
@@ -46640,7 +47025,7 @@ ${hover.contents.value}
         returnState = tagOpenAttributeNameAfter;
         return lineEndingBefore(code2);
       }
-      if (markdownSpace4(code2)) {
+      if (markdownSpace5(code2)) {
         effects.consume(code2);
         return tagOpenAttributeNameAfter;
       }
@@ -46659,7 +47044,7 @@ ${hover.contents.value}
         returnState = tagOpenAttributeValueBefore;
         return lineEndingBefore(code2);
       }
-      if (markdownSpace4(code2)) {
+      if (markdownSpace5(code2)) {
         effects.consume(code2);
         return tagOpenAttributeValueBefore;
       }
@@ -46686,14 +47071,14 @@ ${hover.contents.value}
       if (code2 === null || code2 === 34 || code2 === 39 || code2 === 60 || code2 === 61 || code2 === 96) {
         return nok(code2);
       }
-      if (code2 === 47 || code2 === 62 || markdownLineEndingOrSpace2(code2)) {
+      if (code2 === 47 || code2 === 62 || markdownLineEndingOrSpace3(code2)) {
         return tagOpenBetween(code2);
       }
       effects.consume(code2);
       return tagOpenAttributeValueUnquoted;
     }
     function tagOpenAttributeValueQuotedAfter(code2) {
-      if (code2 === 47 || code2 === 62 || markdownLineEndingOrSpace2(code2)) {
+      if (code2 === 47 || code2 === 62 || markdownLineEndingOrSpace3(code2)) {
         return tagOpenBetween(code2);
       }
       return nok(code2);
@@ -46715,7 +47100,7 @@ ${hover.contents.value}
       return lineEndingAfter;
     }
     function lineEndingAfter(code2) {
-      return markdownSpace4(code2) ? factorySpace4(effects, lineEndingAfterPrefix, "linePrefix", self2.parser.constructs.disable.null.includes("codeIndented") ? void 0 : 4)(code2) : lineEndingAfterPrefix(code2);
+      return markdownSpace5(code2) ? factorySpace5(effects, lineEndingAfterPrefix, "linePrefix", self2.parser.constructs.disable.null.includes("codeIndented") ? void 0 : 4)(code2) : lineEndingAfterPrefix(code2);
     }
     function lineEndingAfterPrefix(code2) {
       effects.enter("htmlTextData");
@@ -46726,9 +47111,9 @@ ${hover.contents.value}
   // node_modules/remark-parse/node_modules/micromark-core-commonmark/lib/label-end.js
   var labelEnd = {
     name: "labelEnd",
-    tokenize: tokenizeLabelEnd,
+    resolveAll: resolveAllLabelEnd,
     resolveTo: resolveToLabelEnd,
-    resolveAll: resolveAllLabelEnd
+    tokenize: tokenizeLabelEnd
   };
   var resourceConstruct = {
     tokenize: tokenizeResource
@@ -46741,13 +47126,18 @@ ${hover.contents.value}
   };
   function resolveAllLabelEnd(events) {
     let index4 = -1;
+    const newEvents = [];
     while (++index4 < events.length) {
       const token = events[index4][1];
+      newEvents.push(events[index4]);
       if (token.type === "labelImage" || token.type === "labelLink" || token.type === "labelEnd") {
-        events.splice(index4 + 1, token.type === "labelImage" ? 4 : 2);
+        const offset2 = token.type === "labelImage" ? 4 : 2;
         token.type = "data";
-        index4++;
+        index4 += offset2;
       }
+    }
+    if (events.length !== newEvents.length) {
+      splice2(events, 0, events.length, newEvents);
     }
     return events;
   }
@@ -46781,18 +47171,30 @@ ${hover.contents.value}
     }
     const group = {
       type: events[open][1].type === "labelLink" ? "link" : "image",
-      start: Object.assign({}, events[open][1].start),
-      end: Object.assign({}, events[events.length - 1][1].end)
+      start: {
+        ...events[open][1].start
+      },
+      end: {
+        ...events[events.length - 1][1].end
+      }
     };
     const label = {
       type: "label",
-      start: Object.assign({}, events[open][1].start),
-      end: Object.assign({}, events[close][1].end)
+      start: {
+        ...events[open][1].start
+      },
+      end: {
+        ...events[close][1].end
+      }
     };
     const text4 = {
       type: "labelText",
-      start: Object.assign({}, events[open + offset2 + 2][1].end),
-      end: Object.assign({}, events[close - 2][1].start)
+      start: {
+        ...events[open + offset2 + 2][1].end
+      },
+      end: {
+        ...events[close - 2][1].start
+      }
     };
     media = [["enter", group, context], ["enter", label, context]];
     media = push(media, events.slice(open + 1, open + offset2 + 3));
@@ -46864,7 +47266,7 @@ ${hover.contents.value}
       return resourceBefore;
     }
     function resourceBefore(code2) {
-      return markdownLineEndingOrSpace2(code2) ? factoryWhitespace(effects, resourceOpen)(code2) : resourceOpen(code2);
+      return markdownLineEndingOrSpace3(code2) ? factoryWhitespace(effects, resourceOpen)(code2) : resourceOpen(code2);
     }
     function resourceOpen(code2) {
       if (code2 === 41) {
@@ -46873,7 +47275,7 @@ ${hover.contents.value}
       return factoryDestination(effects, resourceDestinationAfter, resourceDestinationMissing, "resourceDestination", "resourceDestinationLiteral", "resourceDestinationLiteralMarker", "resourceDestinationRaw", "resourceDestinationString", 32)(code2);
     }
     function resourceDestinationAfter(code2) {
-      return markdownLineEndingOrSpace2(code2) ? factoryWhitespace(effects, resourceBetween)(code2) : resourceEnd(code2);
+      return markdownLineEndingOrSpace3(code2) ? factoryWhitespace(effects, resourceBetween)(code2) : resourceEnd(code2);
     }
     function resourceDestinationMissing(code2) {
       return nok(code2);
@@ -46885,7 +47287,7 @@ ${hover.contents.value}
       return resourceEnd(code2);
     }
     function resourceTitleAfter(code2) {
-      return markdownLineEndingOrSpace2(code2) ? factoryWhitespace(effects, resourceEnd)(code2) : resourceEnd(code2);
+      return markdownLineEndingOrSpace3(code2) ? factoryWhitespace(effects, resourceEnd)(code2) : resourceEnd(code2);
     }
     function resourceEnd(code2) {
       if (code2 === 41) {
@@ -46935,8 +47337,8 @@ ${hover.contents.value}
   // node_modules/remark-parse/node_modules/micromark-core-commonmark/lib/label-start-image.js
   var labelStartImage = {
     name: "labelStartImage",
-    tokenize: tokenizeLabelStartImage,
-    resolveAll: labelEnd.resolveAll
+    resolveAll: labelEnd.resolveAll,
+    tokenize: tokenizeLabelStartImage
   };
   function tokenizeLabelStartImage(effects, ok3, nok) {
     const self2 = this;
@@ -46966,8 +47368,8 @@ ${hover.contents.value}
   // node_modules/remark-parse/node_modules/micromark-core-commonmark/lib/label-start-link.js
   var labelStartLink = {
     name: "labelStartLink",
-    tokenize: tokenizeLabelStartLink,
-    resolveAll: labelEnd.resolveAll
+    resolveAll: labelEnd.resolveAll,
+    tokenize: tokenizeLabelStartLink
   };
   function tokenizeLabelStartLink(effects, ok3, nok) {
     const self2 = this;
@@ -46996,7 +47398,7 @@ ${hover.contents.value}
       effects.enter("lineEnding");
       effects.consume(code2);
       effects.exit("lineEnding");
-      return factorySpace4(effects, ok3, "linePrefix");
+      return factorySpace5(effects, ok3, "linePrefix");
     }
   }
 
@@ -47035,26 +47437,26 @@ ${hover.contents.value}
         return sequence;
       }
       effects.exit("thematicBreakSequence");
-      return markdownSpace4(code2) ? factorySpace4(effects, atBreak, "whitespace")(code2) : atBreak(code2);
+      return markdownSpace5(code2) ? factorySpace5(effects, atBreak, "whitespace")(code2) : atBreak(code2);
     }
   }
 
   // node_modules/remark-parse/node_modules/micromark-core-commonmark/lib/list.js
   var list = {
-    name: "list",
-    tokenize: tokenizeListStart,
     continuation: {
       tokenize: tokenizeListContinuation
     },
-    exit: tokenizeListEnd
+    exit: tokenizeListEnd,
+    name: "list",
+    tokenize: tokenizeListStart
   };
   var listItemPrefixWhitespaceConstruct = {
-    tokenize: tokenizeListItemPrefixWhitespace,
-    partial: true
+    partial: true,
+    tokenize: tokenizeListItemPrefixWhitespace
   };
   var indentConstruct = {
-    tokenize: tokenizeIndent,
-    partial: true
+    partial: true,
+    tokenize: tokenizeIndent
   };
   function tokenizeListStart(effects, ok3, nok) {
     const self2 = this;
@@ -47064,7 +47466,7 @@ ${hover.contents.value}
     return start2;
     function start2(code2) {
       const kind = self2.containerState.type || (code2 === 42 || code2 === 43 || code2 === 45 ? "listUnordered" : "listOrdered");
-      if (kind === "listUnordered" ? !self2.containerState.marker || code2 === self2.containerState.marker : asciiDigit5(code2)) {
+      if (kind === "listUnordered" ? !self2.containerState.marker || code2 === self2.containerState.marker : asciiDigit6(code2)) {
         if (!self2.containerState.type) {
           self2.containerState.type = kind;
           effects.enter(kind, {
@@ -47084,7 +47486,7 @@ ${hover.contents.value}
       return nok(code2);
     }
     function inside(code2) {
-      if (asciiDigit5(code2) && ++size < 10) {
+      if (asciiDigit6(code2) && ++size < 10) {
         effects.consume(code2);
         return inside;
       }
@@ -47112,7 +47514,7 @@ ${hover.contents.value}
       return endOfPrefix(code2);
     }
     function otherPrefix(code2) {
-      if (markdownSpace4(code2)) {
+      if (markdownSpace5(code2)) {
         effects.enter("listItemPrefixWhitespace");
         effects.consume(code2);
         effects.exit("listItemPrefixWhitespace");
@@ -47131,10 +47533,10 @@ ${hover.contents.value}
     return effects.check(blankLine2, onBlank, notBlank);
     function onBlank(code2) {
       self2.containerState.furtherBlankLines = self2.containerState.furtherBlankLines || self2.containerState.initialBlankLine;
-      return factorySpace4(effects, ok3, "listItemIndent", self2.containerState.size + 1)(code2);
+      return factorySpace5(effects, ok3, "listItemIndent", self2.containerState.size + 1)(code2);
     }
     function notBlank(code2) {
-      if (self2.containerState.furtherBlankLines || !markdownSpace4(code2)) {
+      if (self2.containerState.furtherBlankLines || !markdownSpace5(code2)) {
         self2.containerState.furtherBlankLines = void 0;
         self2.containerState.initialBlankLine = void 0;
         return notInCurrentItem(code2);
@@ -47146,12 +47548,12 @@ ${hover.contents.value}
     function notInCurrentItem(code2) {
       self2.containerState._closeFlow = true;
       self2.interrupt = void 0;
-      return factorySpace4(effects, effects.attempt(list, ok3, nok), "linePrefix", self2.parser.constructs.disable.null.includes("codeIndented") ? void 0 : 4)(code2);
+      return factorySpace5(effects, effects.attempt(list, ok3, nok), "linePrefix", self2.parser.constructs.disable.null.includes("codeIndented") ? void 0 : 4)(code2);
     }
   }
   function tokenizeIndent(effects, ok3, nok) {
     const self2 = this;
-    return factorySpace4(effects, afterPrefix, "listItemIndent", self2.containerState.size + 1);
+    return factorySpace5(effects, afterPrefix, "listItemIndent", self2.containerState.size + 1);
     function afterPrefix(code2) {
       const tail = self2.events[self2.events.length - 1];
       return tail && tail[1].type === "listItemIndent" && tail[2].sliceSerialize(tail[1], true).length === self2.containerState.size ? ok3(code2) : nok(code2);
@@ -47162,18 +47564,18 @@ ${hover.contents.value}
   }
   function tokenizeListItemPrefixWhitespace(effects, ok3, nok) {
     const self2 = this;
-    return factorySpace4(effects, afterPrefix, "listItemPrefixWhitespace", self2.parser.constructs.disable.null.includes("codeIndented") ? void 0 : 4 + 1);
+    return factorySpace5(effects, afterPrefix, "listItemPrefixWhitespace", self2.parser.constructs.disable.null.includes("codeIndented") ? void 0 : 4 + 1);
     function afterPrefix(code2) {
       const tail = self2.events[self2.events.length - 1];
-      return !markdownSpace4(code2) && tail && tail[1].type === "listItemPrefixWhitespace" ? ok3(code2) : nok(code2);
+      return !markdownSpace5(code2) && tail && tail[1].type === "listItemPrefixWhitespace" ? ok3(code2) : nok(code2);
     }
   }
 
   // node_modules/remark-parse/node_modules/micromark-core-commonmark/lib/setext-underline.js
   var setextUnderline = {
     name: "setextUnderline",
-    tokenize: tokenizeSetextUnderline,
-    resolveTo: resolveToSetextUnderline
+    resolveTo: resolveToSetextUnderline,
+    tokenize: tokenizeSetextUnderline
   };
   function resolveToSetextUnderline(events, context) {
     let index4 = events.length;
@@ -47200,14 +47602,20 @@ ${hover.contents.value}
     }
     const heading2 = {
       type: "setextHeading",
-      start: Object.assign({}, events[text4][1].start),
-      end: Object.assign({}, events[events.length - 1][1].end)
+      start: {
+        ...events[text4][1].start
+      },
+      end: {
+        ...events[events.length - 1][1].end
+      }
     };
     events[text4][1].type = "setextHeadingText";
     if (definition3) {
       events.splice(text4, 0, ["enter", heading2, context]);
       events.splice(definition3 + 1, 0, ["exit", events[content3][1], context]);
-      events[content3][1].end = Object.assign({}, events[definition3][1].end);
+      events[content3][1].end = {
+        ...events[definition3][1].end
+      };
     } else {
       events[content3][1] = heading2;
     }
@@ -47244,7 +47652,7 @@ ${hover.contents.value}
         return inside;
       }
       effects.exit("setextHeadingLineSequence");
-      return markdownSpace4(code2) ? factorySpace4(effects, after, "lineSuffix")(code2) : after(code2);
+      return markdownSpace5(code2) ? factorySpace5(effects, after, "lineSuffix")(code2) : after(code2);
     }
     function after(code2) {
       if (code2 === null || markdownLineEnding5(code2)) {
@@ -47266,19 +47674,7 @@ ${hover.contents.value}
       blankLine2,
       atBlankEnding,
       // Try to parse initial flow (essentially, only code).
-      effects.attempt(
-        this.parser.constructs.flowInitial,
-        afterConstruct,
-        factorySpace4(
-          effects,
-          effects.attempt(
-            this.parser.constructs.flow,
-            afterConstruct,
-            effects.attempt(content2, afterConstruct)
-          ),
-          "linePrefix"
-        )
-      )
+      effects.attempt(this.parser.constructs.flowInitial, afterConstruct, factorySpace5(effects, effects.attempt(this.parser.constructs.flow, afterConstruct, effects.attempt(content2, afterConstruct)), "linePrefix"))
     );
     return initial;
     function atBlankEnding(code2) {
@@ -47313,10 +47709,8 @@ ${hover.contents.value}
   var text = initializeFactory("text");
   function initializeFactory(field) {
     return {
-      tokenize: initializeText,
-      resolveAll: createResolver(
-        field === "text" ? resolveAllLineSuffixes : void 0
-      )
+      resolveAll: createResolver(field === "text" ? resolveAllLineSuffixes : void 0),
+      tokenize: initializeText
     };
     function initializeText(effects) {
       const self2 = this;
@@ -47418,24 +47812,23 @@ ${hover.contents.value}
           const token = {
             type: eventIndex === events.length || tabs || size < 2 ? "lineSuffix" : "hardBreakTrailing",
             start: {
+              _bufferIndex: index4 ? bufferIndex : data2.start._bufferIndex + bufferIndex,
+              _index: data2.start._index + index4,
               line: data2.end.line,
               column: data2.end.column - size,
-              offset: data2.end.offset - size,
-              _index: data2.start._index + index4,
-              _bufferIndex: index4 ? bufferIndex : data2.start._bufferIndex + bufferIndex
+              offset: data2.end.offset - size
             },
-            end: Object.assign({}, data2.end)
+            end: {
+              ...data2.end
+            }
           };
-          data2.end = Object.assign({}, token.start);
+          data2.end = {
+            ...token.start
+          };
           if (data2.start.offset === data2.end.offset) {
             Object.assign(data2, token);
           } else {
-            events.splice(
-              eventIndex,
-              0,
-              ["enter", token, context],
-              ["exit", token, context]
-            );
+            events.splice(eventIndex, 0, ["enter", token, context], ["exit", token, context]);
             eventIndex += 2;
           }
         }
@@ -47445,44 +47838,115 @@ ${hover.contents.value}
     return events;
   }
 
+  // node_modules/remark-parse/node_modules/micromark/lib/constructs.js
+  var constructs_exports = {};
+  __export(constructs_exports, {
+    attentionMarkers: () => attentionMarkers,
+    contentInitial: () => contentInitial,
+    disable: () => disable,
+    document: () => document4,
+    flow: () => flow2,
+    flowInitial: () => flowInitial,
+    insideSpan: () => insideSpan,
+    string: () => string2,
+    text: () => text2
+  });
+  var document4 = {
+    [42]: list,
+    [43]: list,
+    [45]: list,
+    [48]: list,
+    [49]: list,
+    [50]: list,
+    [51]: list,
+    [52]: list,
+    [53]: list,
+    [54]: list,
+    [55]: list,
+    [56]: list,
+    [57]: list,
+    [62]: blockQuote
+  };
+  var contentInitial = {
+    [91]: definition
+  };
+  var flowInitial = {
+    [-2]: codeIndented,
+    [-1]: codeIndented,
+    [32]: codeIndented
+  };
+  var flow2 = {
+    [35]: headingAtx,
+    [42]: thematicBreak,
+    [45]: [setextUnderline, thematicBreak],
+    [60]: htmlFlow,
+    [61]: setextUnderline,
+    [95]: thematicBreak,
+    [96]: codeFenced,
+    [126]: codeFenced
+  };
+  var string2 = {
+    [38]: characterReference,
+    [92]: characterEscape
+  };
+  var text2 = {
+    [-5]: lineEnding,
+    [-4]: lineEnding,
+    [-3]: lineEnding,
+    [33]: labelStartImage,
+    [38]: characterReference,
+    [42]: attention,
+    [60]: [autolink, htmlText],
+    [91]: labelStartLink,
+    [92]: [hardBreakEscape, characterEscape],
+    [93]: labelEnd,
+    [95]: attention,
+    [96]: codeText
+  };
+  var insideSpan = {
+    null: [attention, resolver]
+  };
+  var attentionMarkers = {
+    null: [42, 95]
+  };
+  var disable = {
+    null: []
+  };
+
   // node_modules/remark-parse/node_modules/micromark/lib/create-tokenizer.js
   function createTokenizer(parser, initialize2, from) {
-    let point5 = Object.assign(
-      from ? Object.assign({}, from) : {
-        line: 1,
-        column: 1,
-        offset: 0
-      },
-      {
-        _index: 0,
-        _bufferIndex: -1
-      }
-    );
+    let point5 = {
+      _bufferIndex: -1,
+      _index: 0,
+      line: from && from.line || 1,
+      column: from && from.column || 1,
+      offset: from && from.offset || 0
+    };
     const columnStart = {};
     const resolveAllConstructs = [];
     let chunks = [];
     let stack = [];
     let consumed = true;
     const effects = {
+      attempt: constructFactory(onsuccessfulconstruct),
+      check: constructFactory(onsuccessfulcheck),
       consume,
       enter,
       exit: exit2,
-      attempt: constructFactory(onsuccessfulconstruct),
-      check: constructFactory(onsuccessfulcheck),
       interrupt: constructFactory(onsuccessfulcheck, {
         interrupt: true
       })
     };
     const context = {
-      previous: null,
       code: null,
       containerState: {},
-      events: [],
-      parser,
-      sliceStream,
-      sliceSerialize,
-      now,
       defineSkip,
+      events: [],
+      now,
+      parser,
+      previous: null,
+      sliceSerialize,
+      sliceStream,
       write
     };
     let state = initialize2.tokenize.call(context, effects);
@@ -47508,13 +47972,19 @@ ${hover.contents.value}
       return sliceChunks(chunks, token);
     }
     function now() {
-      const { line, column, offset: offset2, _index, _bufferIndex } = point5;
-      return {
+      const {
+        _bufferIndex,
+        _index,
         line,
         column,
-        offset: offset2,
+        offset: offset2
+      } = point5;
+      return {
+        _bufferIndex,
         _index,
-        _bufferIndex
+        line,
+        column,
+        offset: offset2
       };
     }
     function defineSkip(value) {
@@ -47557,7 +48027,10 @@ ${hover.contents.value}
         point5._index++;
       } else {
         point5._bufferIndex++;
-        if (point5._bufferIndex === chunks[point5._index].length) {
+        if (point5._bufferIndex === // Points w/ non-negative `_bufferIndex` reference
+        // strings.
+        /** @type {string} */
+        chunks[point5._index].length) {
           point5._bufferIndex = -1;
           point5._index++;
         }
@@ -47592,19 +48065,25 @@ ${hover.contents.value}
         let constructIndex;
         let currentConstruct;
         let info;
-        return Array.isArray(constructs3) ? handleListOfConstructs(constructs3) : "tokenize" in constructs3 ? (
-          // @ts-expect-error Looks like a construct.
-          handleListOfConstructs([constructs3])
+        return Array.isArray(constructs3) ? (
+          /* c8 ignore next 1 */
+          handleListOfConstructs(constructs3)
+        ) : "tokenize" in constructs3 ? (
+          // Looks like a construct.
+          handleListOfConstructs([
+            /** @type {Construct} */
+            constructs3
+          ])
         ) : handleMapOfConstructs(constructs3);
         function handleMapOfConstructs(map4) {
           return start2;
           function start2(code2) {
-            const def = code2 !== null && map4[code2];
+            const left = code2 !== null && map4[code2];
             const all3 = code2 !== null && map4.null;
             const list4 = [
               // To do: add more extension tests.
               /* c8 ignore next 2 */
-              ...Array.isArray(def) ? def : def ? [def] : [],
+              ...Array.isArray(left) ? left : left ? [left] : [],
               ...Array.isArray(all3) ? all3 : all3 ? [all3] : []
             ];
             return handleListOfConstructs(list4)(code2);
@@ -47660,12 +48139,7 @@ ${hover.contents.value}
         resolveAllConstructs.push(construct);
       }
       if (construct.resolve) {
-        splice2(
-          context.events,
-          from2,
-          context.events.length - from2,
-          construct.resolve(context.events.slice(from2), context)
-        );
+        splice2(context.events, from2, context.events.length - from2, construct.resolve(context.events.slice(from2), context));
       }
       if (construct.resolveTo) {
         context.events = construct.resolveTo(context.events, context);
@@ -47678,8 +48152,8 @@ ${hover.contents.value}
       const startEventsIndex = context.events.length;
       const startStack = Array.from(stack);
       return {
-        restore,
-        from: startEventsIndex
+        from: startEventsIndex,
+        restore
       };
       function restore() {
         point5 = startPoint;
@@ -47764,81 +48238,6 @@ ${hover.contents.value}
     return result.join("");
   }
 
-  // node_modules/remark-parse/node_modules/micromark/lib/constructs.js
-  var constructs_exports = {};
-  __export(constructs_exports, {
-    attentionMarkers: () => attentionMarkers,
-    contentInitial: () => contentInitial,
-    disable: () => disable,
-    document: () => document4,
-    flow: () => flow2,
-    flowInitial: () => flowInitial,
-    insideSpan: () => insideSpan,
-    string: () => string2,
-    text: () => text2
-  });
-  var document4 = {
-    [42]: list,
-    [43]: list,
-    [45]: list,
-    [48]: list,
-    [49]: list,
-    [50]: list,
-    [51]: list,
-    [52]: list,
-    [53]: list,
-    [54]: list,
-    [55]: list,
-    [56]: list,
-    [57]: list,
-    [62]: blockQuote
-  };
-  var contentInitial = {
-    [91]: definition
-  };
-  var flowInitial = {
-    [-2]: codeIndented,
-    [-1]: codeIndented,
-    [32]: codeIndented
-  };
-  var flow2 = {
-    [35]: headingAtx,
-    [42]: thematicBreak,
-    [45]: [setextUnderline, thematicBreak],
-    [60]: htmlFlow,
-    [61]: setextUnderline,
-    [95]: thematicBreak,
-    [96]: codeFenced,
-    [126]: codeFenced
-  };
-  var string2 = {
-    [38]: characterReference,
-    [92]: characterEscape
-  };
-  var text2 = {
-    [-5]: lineEnding,
-    [-4]: lineEnding,
-    [-3]: lineEnding,
-    [33]: labelStartImage,
-    [38]: characterReference,
-    [42]: attention,
-    [60]: [autolink, htmlText],
-    [91]: labelStartLink,
-    [92]: [hardBreakEscape, characterEscape],
-    [93]: labelEnd,
-    [95]: attention,
-    [96]: codeText
-  };
-  var insideSpan = {
-    null: [attention, resolver]
-  };
-  var attentionMarkers = {
-    null: [42, 95]
-  };
-  var disable = {
-    null: []
-  };
-
   // node_modules/remark-parse/node_modules/micromark/lib/parse.js
   function parse3(options) {
     const settings = options || {};
@@ -47847,12 +48246,12 @@ ${hover.contents.value}
       combineExtensions2([constructs_exports, ...settings.extensions || []])
     );
     const parser = {
-      defined: [],
-      lazy: {},
       constructs: constructs3,
       content: create(content),
+      defined: [],
       document: create(document3),
       flow: create(flow),
+      lazy: {},
       string: create(string),
       text: create(text)
     };
@@ -48277,7 +48676,7 @@ ${hover.contents.value}
       const siblings = parent.children;
       siblings.push(node3);
       this.stack.push(node3);
-      this.tokenStack.push([token, errorHandler2]);
+      this.tokenStack.push([token, errorHandler2 || void 0]);
       node3.position = {
         start: point4(token.start),
         // @ts-expect-error: `end` will be patched later.
@@ -50382,30 +50781,29 @@ ${hover.contents.value}
     if (node3.type === "MemberExpression") {
       return !node3.computed && is_reference(node3.object, node3);
     }
-    if (node3.type === "Identifier") {
-      if (!parent)
+    if (node3.type !== "Identifier")
+      return false;
+    switch (parent?.type) {
+      case "MemberExpression":
+        return parent.computed || node3 === parent.object;
+      case "MethodDefinition":
+        return parent.computed;
+      case "MetaProperty":
+        return parent.meta === node3;
+      case "PropertyDefinition":
+        return parent.computed || node3 === parent.value;
+      case "Property":
+        return parent.computed || node3 === parent.value;
+      case "ExportSpecifier":
+      case "ImportSpecifier":
+        return node3 === parent.local;
+      case "LabeledStatement":
+      case "BreakStatement":
+      case "ContinueStatement":
+        return false;
+      default:
         return true;
-      switch (parent.type) {
-        case "MemberExpression":
-          return parent.computed || node3 === parent.object;
-        case "MethodDefinition":
-          return parent.computed;
-        case "PropertyDefinition":
-          return parent.computed || node3 === parent.value;
-        case "Property":
-          return parent.computed || node3 === parent.value;
-        case "ExportSpecifier":
-        case "ImportSpecifier":
-          return node3 === parent.local;
-        case "LabeledStatement":
-        case "BreakStatement":
-        case "ContinueStatement":
-          return false;
-        default:
-          return true;
-      }
     }
-    return false;
   }
 
   // node_modules/periscopic/src/index.js
@@ -52214,23 +52612,88 @@ export default function MDXContent(props) {
     return marker;
   }
 
+  // node_modules/mdast-util-to-markdown/lib/util/encode-character-reference.js
+  function encodeCharacterReference(code2) {
+    return "&#x" + code2.toString(16).toUpperCase() + ";";
+  }
+
+  // node_modules/mdast-util-to-markdown/lib/util/encode-info.js
+  function encodeInfo(outside, inside, marker) {
+    const outsideKind = classifyCharacter(outside);
+    const insideKind = classifyCharacter(inside);
+    if (outsideKind === void 0) {
+      return insideKind === void 0 ? (
+        // Letter inside:
+        // we have to encode *both* letters for `_` as it is looser.
+        // it already forms for `*` (and GFMs `~`).
+        marker === "_" ? { inside: true, outside: true } : { inside: false, outside: false }
+      ) : insideKind === 1 ? (
+        // Whitespace inside: encode both (letter, whitespace).
+        { inside: true, outside: true }
+      ) : (
+        // Punctuation inside: encode outer (letter)
+        { inside: false, outside: true }
+      );
+    }
+    if (outsideKind === 1) {
+      return insideKind === void 0 ? (
+        // Letter inside: already forms.
+        { inside: false, outside: false }
+      ) : insideKind === 1 ? (
+        // Whitespace inside: encode both (whitespace).
+        { inside: true, outside: true }
+      ) : (
+        // Punctuation inside: already forms.
+        { inside: false, outside: false }
+      );
+    }
+    return insideKind === void 0 ? (
+      // Letter inside: already forms.
+      { inside: false, outside: false }
+    ) : insideKind === 1 ? (
+      // Whitespace inside: encode inner (whitespace).
+      { inside: true, outside: false }
+    ) : (
+      // Punctuation inside: already forms.
+      { inside: false, outside: false }
+    );
+  }
+
   // node_modules/mdast-util-to-markdown/lib/handle/emphasis.js
   emphasis.peek = emphasisPeek;
   function emphasis(node3, _, state, info) {
     const marker = checkEmphasis(state);
     const exit2 = state.enter("emphasis");
     const tracker = state.createTracker(info);
-    let value = tracker.move(marker);
-    value += tracker.move(
+    const before = tracker.move(marker);
+    let between2 = tracker.move(
       state.containerPhrasing(node3, {
-        before: value,
         after: marker,
+        before,
         ...tracker.current()
       })
     );
-    value += tracker.move(marker);
+    const betweenHead = between2.charCodeAt(0);
+    const open = encodeInfo(
+      info.before.charCodeAt(info.before.length - 1),
+      betweenHead,
+      marker
+    );
+    if (open.inside) {
+      between2 = encodeCharacterReference(betweenHead) + between2.slice(1);
+    }
+    const betweenTail = between2.charCodeAt(between2.length - 1);
+    const close = encodeInfo(info.after.charCodeAt(0), betweenTail, marker);
+    if (close.inside) {
+      between2 = between2.slice(0, -1) + encodeCharacterReference(betweenTail);
+    }
+    const after = tracker.move(marker);
     exit2();
-    return value;
+    state.attentionEncodeSurroundingInfo = {
+      after: close.outside,
+      before: open.outside
+    };
+    return before + between2 + after;
   }
   function emphasisPeek(_, _1, state) {
     return state.options.emphasis || "*";
@@ -52516,7 +52979,7 @@ export default function MDXContent(props) {
       ...tracker.current()
     });
     if (/^[\t ]/.test(value)) {
-      value = "&#x" + value.charCodeAt(0).toString(16).toUpperCase() + ";" + value.slice(1);
+      value = encodeCharacterReference(value.charCodeAt(0)) + value.slice(1);
     }
     value = value ? sequence + " " + value : sequence;
     if (state.options.closeAtx) {
@@ -52974,8 +53437,8 @@ export default function MDXContent(props) {
     const hasPhrasing = node3.children.some(function(d) {
       return phrasing(d);
     });
-    const fn = hasPhrasing ? state.containerPhrasing : state.containerFlow;
-    return fn.call(state, node3, info);
+    const container = hasPhrasing ? state.containerPhrasing : state.containerFlow;
+    return container.call(state, node3, info);
   }
 
   // node_modules/mdast-util-to-markdown/lib/util/check-strong.js
@@ -52995,17 +53458,35 @@ export default function MDXContent(props) {
     const marker = checkStrong(state);
     const exit2 = state.enter("strong");
     const tracker = state.createTracker(info);
-    let value = tracker.move(marker + marker);
-    value += tracker.move(
+    const before = tracker.move(marker + marker);
+    let between2 = tracker.move(
       state.containerPhrasing(node3, {
-        before: value,
         after: marker,
+        before,
         ...tracker.current()
       })
     );
-    value += tracker.move(marker + marker);
+    const betweenHead = between2.charCodeAt(0);
+    const open = encodeInfo(
+      info.before.charCodeAt(info.before.length - 1),
+      betweenHead,
+      marker
+    );
+    if (open.inside) {
+      between2 = encodeCharacterReference(betweenHead) + between2.slice(1);
+    }
+    const betweenTail = between2.charCodeAt(between2.length - 1);
+    const close = encodeInfo(info.after.charCodeAt(0), betweenTail, marker);
+    if (close.inside) {
+      between2 = between2.slice(0, -1) + encodeCharacterReference(betweenTail);
+    }
+    const after = tracker.move(marker + marker);
     exit2();
-    return value;
+    state.attentionEncodeSurroundingInfo = {
+      after: close.outside,
+      before: open.outside
+    };
+    return before + between2 + after;
   }
   function strongPeek(_, _1, state) {
     return state.options.strong || "*";
@@ -53270,6 +53751,7 @@ export default function MDXContent(props) {
     const results = [];
     let index4 = -1;
     let before = info.before;
+    let encodeAfter;
     indexStack.push(-1);
     let tracker = state.createTracker(info);
     while (++index4 < children.length) {
@@ -53297,16 +53779,27 @@ export default function MDXContent(props) {
         tracker = state.createTracker(info);
         tracker.move(results.join(""));
       }
-      results.push(
-        tracker.move(
-          state.handle(child, parent, state, {
-            ...tracker.current(),
-            before,
-            after
-          })
-        )
-      );
-      before = results[results.length - 1].slice(-1);
+      let value = state.handle(child, parent, state, {
+        ...tracker.current(),
+        after,
+        before
+      });
+      if (encodeAfter && encodeAfter === value.slice(0, 1)) {
+        value = encodeCharacterReference(encodeAfter.charCodeAt(0)) + value.slice(1);
+      }
+      const encodingInfo = state.attentionEncodeSurroundingInfo;
+      state.attentionEncodeSurroundingInfo = void 0;
+      encodeAfter = void 0;
+      if (encodingInfo) {
+        if (results.length > 0 && encodingInfo.before && before === results[results.length - 1].slice(-1)) {
+          results[results.length - 1] = results[results.length - 1].slice(0, -1) + encodeCharacterReference(before.charCodeAt(0));
+        }
+        if (encodingInfo.after)
+          encodeAfter = after;
+      }
+      tracker.move(value);
+      results.push(value);
+      before = value.slice(-1);
     }
     indexStack.pop();
     return results.join("");
@@ -53431,9 +53924,7 @@ export default function MDXContent(props) {
       if (/[!-/:-@[-`{-~]/.test(value.charAt(position4)) && (!config.encode || !config.encode.includes(value.charAt(position4)))) {
         result.push("\\");
       } else {
-        result.push(
-          "&#x" + value.charCodeAt(position4).toString(16).toUpperCase() + ";"
-        );
+        result.push(encodeCharacterReference(value.charCodeAt(position4)));
         start2++;
       }
     }
@@ -53490,28 +53981,29 @@ export default function MDXContent(props) {
   }
 
   // node_modules/mdast-util-to-markdown/lib/index.js
-  function toMarkdown(tree, options = {}) {
+  function toMarkdown(tree, options) {
+    const settings = options || {};
     const state = {
-      enter,
-      indentLines,
       associationId: association,
       containerPhrasing: containerPhrasingBound,
       containerFlow: containerFlowBound,
       createTracker: track,
       compilePattern,
-      safe: safeBound,
-      stack: [],
-      unsafe: [...unsafe],
-      join: [...join3],
+      enter,
       // @ts-expect-error: GFM / frontmatter are typed in `mdast` but not defined
       // here.
       handlers: { ...handle },
-      options: {},
-      indexStack: [],
       // @ts-expect-error: add `handle` in a second.
-      handle: void 0
+      handle: void 0,
+      indentLines,
+      indexStack: [],
+      join: [...join3],
+      options: {},
+      safe: safeBound,
+      stack: [],
+      unsafe: [...unsafe]
     };
-    configure2(state, options);
+    configure2(state, settings);
     if (state.options.tightDefinitions) {
       state.join.push(joinDefinition);
     }
