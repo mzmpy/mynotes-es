@@ -45,9 +45,9 @@
 * `webpack proxy`，即`webpack`提供的代理服务功能；基本行为就是接收客户端发送的请求后转发给其他服务器；其目的是为了便于开发者
 在开发模式下解决跨域问题（浏览器安全策略限制）
 
-* `webpack`配置项`mode`：`string: none|developement|production`，用于指定`webpack`构建情景并自动使用相应的优化
-  * `developement`: 主要体现在增量构建和开发体验（例如热模块替换、source map、proxy等）上的优化
-  * `production`：主要体现在代码压缩、Tree Shaking等方面的优化
+* `webpack`配置项`mode`：`string: none|development|production`，用于指定`webpack`构建情景并自动使用相应的优化
+  * `development`: 主要体现在增量构建和开发体验（例如热模块替换、source map、proxy等）上的优化，`process.env.NODE_ENV = "development"`
+  * `production`：主要体现在代码压缩、Tree Shaking、代码兼容等方面的优化，`process.env.NODE_ENV = "production"`
 
 ## `webpack`代码分离：
 
@@ -340,15 +340,15 @@
 
   * 图片优化：
 
-    * 图片压缩
+    * 压缩图片，在尽可能不改变图片清晰度的情况下控制图片大小
     * 图片渐进加载优化（渐进式图片的加载流程则是先显示图片整体的一个模糊效果，随着下载数据的增多，逐渐细化图片中的各个
     细节，使得图片分辨率逐渐提高，最终还原出完整的图像内容）
-    * 小图片（例如：`<10k`）使用Data URI
+    * 图片懒加载：页面首次加载时使用缩略图，当图片即将出现在视窗中时加载原图片进行替换
+    * 小图片（例如：`<10k`）使用`Data URI`
     * 图片雪碧图（使用多个小图片拼接大图片）
 
-  * 代码压缩优化
+  * 包体积与Tree-shaking优化
+  * 代码分割，避免重复打包代码；使用懒加载/预加载提高页面渲染速度
   * 减少页面回流和重绘
-  * 懒加载/预加载
-  * 大量数据渲染优化
-  * 合理使用缓存
-  
+  * 大量数据渲染优化，避免页面卡顿
+  * 合理使用缓存，减少不必要的http请求次数

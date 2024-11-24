@@ -26,6 +26,45 @@
     console.log(localVar)   // Uncaught ReferenceError: localVar is not defined
     ```
 
+* `Promise`
+
+  * 关于异步的调用顺序，举个例子：
+    ```javascript
+    console.log('sync start')
+
+    setTimeout(() => {
+      console.log('timeout log 1')
+    }, 0)
+
+    const p = new Promise((resolve) => {
+      console.log('new promise log')
+      resolve()
+    })
+    p.then(() => console.log('promise then log 1'))
+
+    console.log('sync log')
+
+    setTimeout(() => {
+      console.log('timeout log 2')
+    }, 100)
+
+    setTimeout(() => {
+      console.log('timeout log 3')
+    }, 0)
+
+    console.log('sync end')
+
+    /****** log result ******/
+    // sync start
+    // new promise log
+    // sync log
+    // sync end
+    // promise then log 1
+    // timeout log 1
+    // timeout log 3
+    // timeout log 2
+    ```
+
 * `String`：在`javascript`中字符串是不可变的，即我们不能通过索引的方式更改字符串；可能的方法是创建一个新的字符串，并将其分配给`str`而不是以前的字符串，例如
   ```javascript
   let str = 'qwe'
@@ -49,11 +88,15 @@
   
   * 字符串的方法：
 
-    * `str.toUpperCase()`和`str.toLowerCase()`：大小写转换
+    * `str.toUpperCase()`和`str.toLowerCase()`：大小写转换，该方法不会改变原字符串
     * `str.charAt(pos)`：获取在位置`pos`的字符
-    * `str.startWith(substr)`和`str.endWith(substr)`：判断字符串`str`是否以`substr`开头/结尾
+    * `str.charCodeAt(pos)`：返回一个整数，表示给定索引处的`UTF-16`码元，其值介于`0`和`65535`之间
+    * `str.startsWith(substr)`和`str.endsWith(substr)`：判断字符串`str`是否以`substr`开头/结尾
     * `str.search(fragment)`：接收参数`fragment`，可以是一个字符串或者正则表达式，也可以是一个`RegExp`对象，搜索成功则返回匹配索引，否则返回`-1`
-    * `str.replace(fragment, replacement)`：搜索字符串片段`fragment`并使用`replacement`进行替换
+    * `str.includes(substr)`：执行区分大小写的搜索，以确定是否可以在一个字符串中找到另一个字符串，并根据情况返回`true`或`false`
+    * `str.replace(fragment, replacement)`：搜索字符串片段`fragment`并使用`replacement`进行替换，该方法不会改变原字符串
+    * `str.padStart(targetLength, padString=' ')`和`str.padEnd(targetLength, padString=' ')`：用一个字符串从字符串开头/末尾开始填充当前字
+    符串（如果需要会重复填充），直到达到给定的长度并返回填充后的字符串，该方法不会改变原字符串
 
 * `Array`：
 
@@ -93,7 +136,7 @@
     * `arr.findLastIndex((item, index, array) => { ... })`：与`arr.findIndex`类似，但是它从右往左查找
     * `arr.filter((item, index, array) => { ... })`：`filter`返回一个数组，包含所有符合条件的项
     * `Array.isArray(value)`：检查`value`是否是一个数组，如果是则返回`true`，否则返回`false`
-    * `arr.fill(value, start, end)`：从索引`start`到`end`，用重复的`value`填充数组
+    * `arr.fill(value, start, end)`：从索引`start`到`end`，用重复的`value`填充数组，该方法会改变原数组
     * `arr.concat(...items)`：返回一个新数组，包含原数组`arr`的项和任意数量的参数并且这些参数可以是单个值或者数组
     * `arr.some(fn)/arr.every(fn)`：检查数组，类似于`||`和`&&`运算符 —— 如果`fn`返回`true`，`arr.some(fn)`立即返回`true`并停止迭代其余数组项；如
     果`fn`返回`false`，`arr.every(fn)`立即返回`false`并停止对其余数组项的迭代
@@ -105,6 +148,8 @@
       })   // -1
       arr.filter(item => { return item.includes('a') }) // ['apple', 'pear', 'watermelon', 'peach', 'orange']
       ```
+    * `arr.sort(fn)`：对数组进行就地（`in-place`）排序，然后返回排序后的数组，该方法会改变原数组
+    * `arr.reverse()`：就地（`in-place`）反转数组，然后返回它，该方法会改变原数组
 
 * `Object`：
 
