@@ -101,6 +101,10 @@ await esbuild.build({
         {
           from: ['./node_modules/three/examples/jsm/libs/draco/gltf/**/*'],
           to: [`.${DRACOPATH}`]
+        },
+        {
+          from: ['./node_modules/leaflet/dist/images/**/*'],
+          to: [`./`]
         }
       ]
     }),
