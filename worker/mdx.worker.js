@@ -36262,7 +36262,6 @@ ${hover.contents.value}
   }
 
   // node_modules/parse-entities/lib/index.js
-  var fromCharCode = String.fromCharCode;
   var messages = [
     "",
     /* 1: Non terminated (named) */
@@ -36280,20 +36279,21 @@ ${hover.contents.value}
     /* 7: Prohibited (numeric) */
     "Numeric character references cannot be outside the permissible Unicode range"
   ];
-  function parseEntities(value, options = {}) {
-    const additional = typeof options.additional === "string" ? options.additional.charCodeAt(0) : options.additional;
+  function parseEntities(value, options) {
+    const settings = options || {};
+    const additional = typeof settings.additional === "string" ? settings.additional.charCodeAt(0) : settings.additional;
     const result = [];
     let index4 = 0;
     let lines = -1;
     let queue = "";
     let point5;
     let indent2;
-    if (options.position) {
-      if ("start" in options.position || "indent" in options.position) {
-        indent2 = options.position.indent;
-        point5 = options.position.start;
+    if (settings.position) {
+      if ("start" in settings.position || "indent" in settings.position) {
+        indent2 = settings.position.indent;
+        point5 = settings.position.start;
       } else {
-        point5 = options.position;
+        point5 = settings.position;
       }
     }
     let line = (point5 ? point5.line : 0) || 1;
@@ -36309,7 +36309,7 @@ ${hover.contents.value}
       if (character === 38) {
         const following = value.charCodeAt(index4 + 1);
         if (following === 9 || following === 10 || following === 12 || following === 32 || following === 38 || following === 60 || Number.isNaN(following) || additional && following === additional) {
-          queue += fromCharCode(character);
+          queue += String.fromCharCode(character);
           column++;
           continue;
         }
@@ -36339,7 +36339,7 @@ ${hover.contents.value}
           if (!test(following2)) {
             break;
           }
-          characters += fromCharCode(following2);
+          characters += String.fromCharCode(following2);
           if (type === "named" && characterEntitiesLegacy.includes(characters)) {
             characterReferenceCharacters = characters;
             characterReference2 = decodeNamedCharacterReference(characters);
@@ -36356,7 +36356,7 @@ ${hover.contents.value}
         }
         let diff = 1 + end - start2;
         let reference = "";
-        if (!terminated && options.nonTerminated === false) {
+        if (!terminated && settings.nonTerminated === false) {
         } else if (!characters) {
           if (type !== "named") {
             warning(4, diff);
@@ -36372,7 +36372,7 @@ ${hover.contents.value}
             }
             if (!terminated) {
               const reason = characterReferenceCharacters ? 1 : 3;
-              if (options.attribute) {
+              if (settings.attribute) {
                 const following2 = value.charCodeAt(end);
                 if (following2 === 61) {
                   warning(reason, diff);
@@ -36398,7 +36398,7 @@ ${hover.contents.value}
           );
           if (prohibited(referenceCode)) {
             warning(7, diff);
-            reference = fromCharCode(
+            reference = String.fromCharCode(
               65533
               /* `�` */
             );
@@ -36412,10 +36412,12 @@ ${hover.contents.value}
             }
             if (referenceCode > 65535) {
               referenceCode -= 65536;
-              output += fromCharCode(referenceCode >>> (10 & 1023) | 55296);
+              output += String.fromCharCode(
+                referenceCode >>> (10 & 1023) | 55296
+              );
               referenceCode = 56320 | referenceCode & 1023;
             }
-            reference = output + fromCharCode(referenceCode);
+            reference = output + String.fromCharCode(referenceCode);
           }
         }
         if (reference) {
@@ -36426,9 +36428,9 @@ ${hover.contents.value}
           result.push(reference);
           const next = now();
           next.offset++;
-          if (options.reference) {
-            options.reference.call(
-              options.referenceContext,
+          if (settings.reference) {
+            settings.reference.call(
+              settings.referenceContext || void 0,
               reference,
               { start: previous2, end: next },
               value.slice(start2 - 1, end)
@@ -36450,7 +36452,7 @@ ${hover.contents.value}
         if (Number.isNaN(character)) {
           flush();
         } else {
-          queue += fromCharCode(character);
+          queue += String.fromCharCode(character);
           column++;
         }
       }
@@ -36465,12 +36467,12 @@ ${hover.contents.value}
     }
     function warning(code2, offset2) {
       let position4;
-      if (options.warning) {
+      if (settings.warning) {
         position4 = now();
         position4.column += offset2;
         position4.offset += offset2;
-        options.warning.call(
-          options.warningContext,
+        settings.warning.call(
+          settings.warningContext || void 0,
           messages[code2],
           position4,
           code2
@@ -36480,8 +36482,8 @@ ${hover.contents.value}
     function flush() {
       if (queue) {
         result.push(queue);
-        if (options.text) {
-          options.text.call(options.textContext, queue, {
+        if (settings.text) {
+          settings.text.call(settings.textContext || void 0, queue, {
             start: previous2,
             end: now()
           });
