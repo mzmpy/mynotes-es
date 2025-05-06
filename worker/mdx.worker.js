@@ -36,9 +36,9 @@
 
   // node_modules/he/he.js
   var require_he = __commonJS({
-    "node_modules/he/he.js"(exports3, module) {
+    "node_modules/he/he.js"(exports2, module) {
       (function(root2) {
-        var freeExports = typeof exports3 == "object" && exports3;
+        var freeExports = typeof exports2 == "object" && exports2;
         var freeModule = typeof module == "object" && module && module.exports == freeExports && module;
         var freeGlobal = typeof globalThis == "object" && globalThis;
         if (freeGlobal.global === freeGlobal || freeGlobal.window === freeGlobal) {
@@ -280,16 +280,16 @@
         } else {
           root2.he = he;
         }
-      })(exports3);
+      })(exports2);
     }
   });
 
   // node_modules/@volar/monaco/node_modules/@volar/source-map/lib/binarySearch.js
   var require_binarySearch = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/source-map/lib/binarySearch.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/source-map/lib/binarySearch.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.binarySearch = binarySearch;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.binarySearch = binarySearch;
       function binarySearch(values, searchValue) {
         let low = 0;
         let high = values.length - 1;
@@ -317,10 +317,10 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/source-map/lib/translateOffset.js
   var require_translateOffset = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/source-map/lib/translateOffset.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/source-map/lib/translateOffset.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.translateOffset = translateOffset;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.translateOffset = translateOffset;
       function translateOffset(start2, fromOffsets, toOffsets, fromLengths, toLengths = fromLengths) {
         const isSorted = fromOffsets.every((value, index4) => index4 === 0 || fromOffsets[index4 - 1] <= value);
         if (!isSorted) {
@@ -349,10 +349,10 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/source-map/lib/sourceMap.js
   var require_sourceMap = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/source-map/lib/sourceMap.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/source-map/lib/sourceMap.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.SourceMap = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.SourceMap = void 0;
       var binarySearch_1 = require_binarySearch();
       var translateOffset_1 = require_translateOffset();
       var SourceMap = class {
@@ -448,7 +448,7 @@
           return { offsets, mappings };
         }
       };
-      exports3.SourceMap = SourceMap;
+      exports2.SourceMap = SourceMap;
       function getLengths(mapping, key) {
         return key == "sourceOffsets" ? mapping.lengths : mapping.generatedLengths ?? mapping.lengths;
       }
@@ -457,9 +457,9 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/source-map/index.js
   var require_source_map = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/source-map/index.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/source-map/index.js"(exports2) {
       "use strict";
-      var __createBinding = exports3 && exports3.__createBinding || (Object.create ? function(o, m, k, k2) {
+      var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
         if (k2 === void 0)
           k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -474,48 +474,48 @@
           k2 = k;
         o[k2] = m[k];
       });
-      var __exportStar = exports3 && exports3.__exportStar || function(m, exports4) {
+      var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
         for (var p in m)
-          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports4, p))
-            __createBinding(exports4, m, p);
+          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p))
+            __createBinding(exports3, m, p);
       };
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      __exportStar(require_sourceMap(), exports3);
-      __exportStar(require_translateOffset(), exports3);
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      __exportStar(require_sourceMap(), exports2);
+      __exportStar(require_translateOffset(), exports2);
     }
   });
 
   // node_modules/@volar/monaco/node_modules/@volar/language-core/lib/editorFeatures.js
   var require_editorFeatures = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-core/lib/editorFeatures.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-core/lib/editorFeatures.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.isHoverEnabled = isHoverEnabled;
-      exports3.isInlayHintsEnabled = isInlayHintsEnabled;
-      exports3.isCodeLensEnabled = isCodeLensEnabled;
-      exports3.isSemanticTokensEnabled = isSemanticTokensEnabled;
-      exports3.isCallHierarchyEnabled = isCallHierarchyEnabled;
-      exports3.isRenameEnabled = isRenameEnabled;
-      exports3.isDefinitionEnabled = isDefinitionEnabled;
-      exports3.isTypeDefinitionEnabled = isTypeDefinitionEnabled;
-      exports3.isReferencesEnabled = isReferencesEnabled;
-      exports3.isImplementationEnabled = isImplementationEnabled;
-      exports3.isHighlightEnabled = isHighlightEnabled;
-      exports3.isSymbolsEnabled = isSymbolsEnabled;
-      exports3.isFoldingRangesEnabled = isFoldingRangesEnabled;
-      exports3.isSelectionRangesEnabled = isSelectionRangesEnabled;
-      exports3.isLinkedEditingEnabled = isLinkedEditingEnabled;
-      exports3.isColorEnabled = isColorEnabled;
-      exports3.isDocumentLinkEnabled = isDocumentLinkEnabled;
-      exports3.isDiagnosticsEnabled = isDiagnosticsEnabled;
-      exports3.isCodeActionsEnabled = isCodeActionsEnabled;
-      exports3.isFormattingEnabled = isFormattingEnabled;
-      exports3.isCompletionEnabled = isCompletionEnabled;
-      exports3.isAutoInsertEnabled = isAutoInsertEnabled;
-      exports3.isSignatureHelpEnabled = isSignatureHelpEnabled;
-      exports3.shouldReportDiagnostics = shouldReportDiagnostics;
-      exports3.resolveRenameNewName = resolveRenameNewName;
-      exports3.resolveRenameEditText = resolveRenameEditText;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.isHoverEnabled = isHoverEnabled;
+      exports2.isInlayHintsEnabled = isInlayHintsEnabled;
+      exports2.isCodeLensEnabled = isCodeLensEnabled;
+      exports2.isSemanticTokensEnabled = isSemanticTokensEnabled;
+      exports2.isCallHierarchyEnabled = isCallHierarchyEnabled;
+      exports2.isRenameEnabled = isRenameEnabled;
+      exports2.isDefinitionEnabled = isDefinitionEnabled;
+      exports2.isTypeDefinitionEnabled = isTypeDefinitionEnabled;
+      exports2.isReferencesEnabled = isReferencesEnabled;
+      exports2.isImplementationEnabled = isImplementationEnabled;
+      exports2.isHighlightEnabled = isHighlightEnabled;
+      exports2.isSymbolsEnabled = isSymbolsEnabled;
+      exports2.isFoldingRangesEnabled = isFoldingRangesEnabled;
+      exports2.isSelectionRangesEnabled = isSelectionRangesEnabled;
+      exports2.isLinkedEditingEnabled = isLinkedEditingEnabled;
+      exports2.isColorEnabled = isColorEnabled;
+      exports2.isDocumentLinkEnabled = isDocumentLinkEnabled;
+      exports2.isDiagnosticsEnabled = isDiagnosticsEnabled;
+      exports2.isCodeActionsEnabled = isCodeActionsEnabled;
+      exports2.isFormattingEnabled = isFormattingEnabled;
+      exports2.isCompletionEnabled = isCompletionEnabled;
+      exports2.isAutoInsertEnabled = isAutoInsertEnabled;
+      exports2.isSignatureHelpEnabled = isSignatureHelpEnabled;
+      exports2.shouldReportDiagnostics = shouldReportDiagnostics;
+      exports2.resolveRenameNewName = resolveRenameNewName;
+      exports2.resolveRenameEditText = resolveRenameEditText;
       function isHoverEnabled(info) {
         return !!info.semantic;
       }
@@ -599,10 +599,10 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-core/lib/linkedCodeMap.js
   var require_linkedCodeMap = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-core/lib/linkedCodeMap.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-core/lib/linkedCodeMap.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.LinkedCodeMap = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.LinkedCodeMap = void 0;
       var source_map_1 = require_source_map();
       var LinkedCodeMap = class extends source_map_1.SourceMap {
         *getLinkedOffsets(start2) {
@@ -614,24 +614,24 @@
           }
         }
       };
-      exports3.LinkedCodeMap = LinkedCodeMap;
+      exports2.LinkedCodeMap = LinkedCodeMap;
     }
   });
 
   // node_modules/@volar/monaco/node_modules/@volar/language-core/lib/types.js
   var require_types = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-core/lib/types.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-core/lib/types.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
+      Object.defineProperty(exports2, "__esModule", { value: true });
     }
   });
 
   // node_modules/@volar/monaco/node_modules/@volar/language-core/lib/utils.js
   var require_utils = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-core/lib/utils.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-core/lib/utils.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.FileMap = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.FileMap = void 0;
       var FileMap = class extends Map {
         constructor(caseSensitive) {
           super();
@@ -663,15 +663,15 @@
           return this.caseSensitive ? id : id.toLowerCase();
         }
       };
-      exports3.FileMap = FileMap;
+      exports2.FileMap = FileMap;
     }
   });
 
   // node_modules/@volar/monaco/node_modules/@volar/language-core/index.js
   var require_language_core = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-core/index.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-core/index.js"(exports2) {
       "use strict";
-      var __createBinding = exports3 && exports3.__createBinding || (Object.create ? function(o, m, k, k2) {
+      var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
         if (k2 === void 0)
           k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -686,33 +686,33 @@
           k2 = k;
         o[k2] = m[k];
       });
-      var __exportStar = exports3 && exports3.__exportStar || function(m, exports4) {
+      var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
         for (var p in m)
-          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports4, p))
-            __createBinding(exports4, m, p);
+          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p))
+            __createBinding(exports3, m, p);
       };
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.defaultMapperFactory = exports3.SourceMap = void 0;
-      exports3.createLanguage = createLanguage2;
-      exports3.forEachEmbeddedCode = forEachEmbeddedCode;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.defaultMapperFactory = exports2.SourceMap = void 0;
+      exports2.createLanguage = createLanguage2;
+      exports2.forEachEmbeddedCode = forEachEmbeddedCode;
       var source_map_1 = require_source_map();
-      Object.defineProperty(exports3, "SourceMap", { enumerable: true, get: function() {
+      Object.defineProperty(exports2, "SourceMap", { enumerable: true, get: function() {
         return source_map_1.SourceMap;
       } });
-      __exportStar(require_editorFeatures(), exports3);
-      __exportStar(require_linkedCodeMap(), exports3);
-      __exportStar(require_types(), exports3);
-      __exportStar(require_utils(), exports3);
+      __exportStar(require_editorFeatures(), exports2);
+      __exportStar(require_linkedCodeMap(), exports2);
+      __exportStar(require_types(), exports2);
+      __exportStar(require_utils(), exports2);
       var source_map_2 = require_source_map();
       var linkedCodeMap_1 = require_linkedCodeMap();
       var defaultMapperFactory = (mappings) => new source_map_2.SourceMap(mappings);
-      exports3.defaultMapperFactory = defaultMapperFactory;
+      exports2.defaultMapperFactory = defaultMapperFactory;
       function createLanguage2(plugins, scriptRegistry, sync) {
         const virtualCodeToSourceScriptMap = /* @__PURE__ */ new WeakMap();
         const virtualCodeToSourceMap = /* @__PURE__ */ new WeakMap();
         const virtualCodeToLinkedCodeMap = /* @__PURE__ */ new WeakMap();
         const language = {
-          mapperFactory: exports3.defaultMapperFactory,
+          mapperFactory: exports2.defaultMapperFactory,
           plugins,
           scripts: {
             fromVirtualCode(virtualCode) {
@@ -969,10 +969,10 @@
     "node_modules/vscode-languageserver-textdocument/lib/esm/main.js"() {
       "use strict";
       FullTextDocument = class {
-        constructor(uri, languageId, version2, content3) {
+        constructor(uri, languageId, version3, content3) {
           this._uri = uri;
           this._languageId = languageId;
-          this._version = version2;
+          this._version = version3;
           this._content = content3;
           this._lineOffsets = void 0;
         }
@@ -993,7 +993,7 @@
           }
           return this._content;
         }
-        update(changes, version2) {
+        update(changes, version3) {
           for (const change of changes) {
             if (FullTextDocument.isIncremental(change)) {
               const range = getWellformedRange(change.range);
@@ -1028,7 +1028,7 @@
               throw new Error("Unknown change event received");
             }
           }
-          this._version = version2;
+          this._version = version3;
         }
         getLineOffsets() {
           if (this._lineOffsets === void 0) {
@@ -1089,13 +1089,13 @@
         }
       };
       (function(TextDocument2) {
-        function create(uri, languageId, version2, content3) {
-          return new FullTextDocument(uri, languageId, version2, content3);
+        function create(uri, languageId, version3, content3) {
+          return new FullTextDocument(uri, languageId, version3, content3);
         }
         TextDocument2.create = create;
-        function update(document5, changes, version2) {
+        function update(document5, changes, version3) {
           if (document5 instanceof FullTextDocument) {
-            document5.update(changes, version2);
+            document5.update(changes, version3);
             return document5;
           } else {
             throw new Error("TextDocument.update: document must be created by TextDocument.create");
@@ -1135,20 +1135,20 @@
 
   // node_modules/vscode-uri/lib/umd/index.js
   var require_umd = __commonJS({
-    "node_modules/vscode-uri/lib/umd/index.js"(exports3, module) {
+    "node_modules/vscode-uri/lib/umd/index.js"(exports2, module) {
       !function(t, e) {
-        if ("object" == typeof exports3 && "object" == typeof module)
+        if ("object" == typeof exports2 && "object" == typeof module)
           module.exports = e();
         else if ("function" == typeof define && define.amd)
           define([], e);
         else {
           var r = e();
           for (var n in r)
-            ("object" == typeof exports3 ? exports3 : t)[n] = r[n];
+            ("object" == typeof exports2 ? exports2 : t)[n] = r[n];
         }
-      }(exports3, () => (() => {
+      }(exports2, () => (() => {
         "use strict";
-        var t = { 470: (t2) => {
+        var t = { 975: (t2) => {
           function e2(t3) {
             if ("string" != typeof t3)
               throw new TypeError("Path must be a string. Received " + JSON.stringify(t3));
@@ -1317,16 +1317,16 @@
             return -1 === s || -1 === h || 0 === u || 1 === u && s === h - 1 && s === a + 1 ? -1 !== h && (r3.base = r3.name = 0 === a && o ? t3.slice(1, h) : t3.slice(a, h)) : (0 === a && o ? (r3.name = t3.slice(1, s), r3.base = t3.slice(1, h)) : (r3.name = t3.slice(a, s), r3.base = t3.slice(a, h)), r3.ext = t3.slice(s, h)), a > 0 ? r3.dir = t3.slice(0, a - 1) : o && (r3.dir = "/"), r3;
           }, sep: "/", delimiter: ":", win32: null, posix: null };
           n2.posix = n2, t2.exports = n2;
-        }, 674: (t2, e2) => {
+        }, 70: (t2, e2) => {
           if (Object.defineProperty(e2, "__esModule", { value: true }), e2.isWindows = void 0, "object" == typeof process)
             e2.isWindows = "win32" === process.platform;
           else if ("object" == typeof navigator) {
             let t3 = navigator.userAgent;
             e2.isWindows = t3.indexOf("Windows") >= 0;
           }
-        }, 796: (t2, e2, r2) => {
+        }, 231: (t2, e2, r2) => {
           Object.defineProperty(e2, "__esModule", { value: true }), e2.uriToFsPath = e2.URI = void 0;
-          const n2 = r2(674), i = /^\w[\w\d+.-]*$/, o = /^\//, s = /^\/\//;
+          const n2 = r2(70), i = /^\w[\w\d+.-]*$/, o = /^\//, s = /^\/\//;
           function a(t3, e3) {
             if (!t3.scheme && e3)
               throw new Error(`[UriError]: Scheme is missing: {scheme: "", authority: "${t3.authority}", path: "${t3.path}", query: "${t3.query}", fragment: "${t3.fragment}"}`);
@@ -1484,7 +1484,7 @@
           function w(t3) {
             return t3.match(C) ? t3.replace(C, (t4) => b(t4)) : t3;
           }
-        }, 679: function(t2, e2, r2) {
+        }, 552: function(t2, e2, r2) {
           var n2 = this && this.__createBinding || (Object.create ? function(t3, e3, r3, n3) {
             void 0 === n3 && (n3 = r3);
             var i2 = Object.getOwnPropertyDescriptor(e3, r3);
@@ -1507,7 +1507,7 @@
             return i(e3, t3), e3;
           };
           Object.defineProperty(e2, "__esModule", { value: true }), e2.Utils = void 0;
-          const s = o(r2(470)), a = s.posix || s, h = "/";
+          const s = o(r2(975)), a = s.posix || s, h = "/";
           var c;
           !function(t3) {
             t3.joinPath = function(t4, ...e3) {
@@ -1540,11 +1540,11 @@
         return (() => {
           var t2 = n;
           Object.defineProperty(t2, "__esModule", { value: true }), t2.Utils = t2.URI = void 0;
-          const e2 = r(796);
+          const e2 = r(231);
           Object.defineProperty(t2, "URI", { enumerable: true, get: function() {
             return e2.URI;
           } });
-          const i = r(679);
+          const i = r(552);
           Object.defineProperty(t2, "Utils", { enumerable: true, get: function() {
             return i.Utils;
           } });
@@ -1555,11 +1555,11 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/cancellation.js
   var require_cancellation = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/cancellation.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/cancellation.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.NoneCancellationToken = void 0;
-      exports3.NoneCancellationToken = {
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.NoneCancellationToken = void 0;
+      exports2.NoneCancellationToken = {
         isCancellationRequested: false,
         onCancellationRequested: () => ({ dispose: () => {
         } })
@@ -1569,20 +1569,20 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/featureWorkers.js
   var require_featureWorkers = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/featureWorkers.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/featureWorkers.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.documentFeatureWorker = documentFeatureWorker;
-      exports3.languageFeatureWorker = languageFeatureWorker;
-      exports3.safeCall = safeCall;
-      exports3.forEachEmbeddedDocument = forEachEmbeddedDocument;
-      exports3.getSourceRange = getSourceRange;
-      exports3.getGeneratedRange = getGeneratedRange;
-      exports3.getSourceRanges = getSourceRanges;
-      exports3.getGeneratedRanges = getGeneratedRanges;
-      exports3.getSourcePositions = getSourcePositions;
-      exports3.getGeneratedPositions = getGeneratedPositions;
-      exports3.getLinkedCodePositions = getLinkedCodePositions;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.documentFeatureWorker = documentFeatureWorker;
+      exports2.languageFeatureWorker = languageFeatureWorker;
+      exports2.safeCall = safeCall;
+      exports2.forEachEmbeddedDocument = forEachEmbeddedDocument;
+      exports2.getSourceRange = getSourceRange;
+      exports2.getGeneratedRange = getGeneratedRange;
+      exports2.getSourceRanges = getSourceRanges;
+      exports2.getGeneratedRanges = getGeneratedRanges;
+      exports2.getSourcePositions = getSourcePositions;
+      exports2.getGeneratedPositions = getGeneratedPositions;
+      exports2.getLinkedCodePositions = getLinkedCodePositions;
       function documentFeatureWorker(context, uri, valid, worker, transformResult, combineResult) {
         return languageFeatureWorker(context, uri, () => void 0, function* (map4) {
           if (valid(map4)) {
@@ -1736,10 +1736,10 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideAutoInsertSnippet.js
   var require_provideAutoInsertSnippet = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideAutoInsertSnippet.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideAutoInsertSnippet.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
@@ -1774,19 +1774,19 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/dedupe.js
   var require_dedupe = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/dedupe.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/dedupe.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.createLocationSet = createLocationSet;
-      exports3.withCodeAction = withCodeAction;
-      exports3.withTextEdits = withTextEdits;
-      exports3.withDocumentChanges = withDocumentChanges;
-      exports3.withDiagnostics = withDiagnostics;
-      exports3.withLocations = withLocations;
-      exports3.withLocationLinks = withLocationLinks;
-      exports3.withCallHierarchyIncomingCalls = withCallHierarchyIncomingCalls;
-      exports3.withCallHierarchyOutgoingCalls = withCallHierarchyOutgoingCalls;
-      exports3.withRanges = withRanges;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.createLocationSet = createLocationSet;
+      exports2.withCodeAction = withCodeAction;
+      exports2.withTextEdits = withTextEdits;
+      exports2.withDocumentChanges = withDocumentChanges;
+      exports2.withDiagnostics = withDiagnostics;
+      exports2.withLocations = withLocations;
+      exports2.withLocationLinks = withLocationLinks;
+      exports2.withCallHierarchyIncomingCalls = withCallHierarchyIncomingCalls;
+      exports2.withCallHierarchyOutgoingCalls = withCallHierarchyOutgoingCalls;
+      exports2.withRanges = withRanges;
       function createLocationSet() {
         const set = /* @__PURE__ */ new Set();
         return {
@@ -1899,10 +1899,10 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideCallHierarchyItems.js
   var require_provideCallHierarchyItems = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideCallHierarchyItems.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideCallHierarchyItems.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
@@ -2062,14 +2062,14 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/common.js
   var require_common = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/common.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/common.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.findOverlapCodeRange = findOverlapCodeRange;
-      exports3.isInsideRange = isInsideRange;
-      exports3.isEqualRange = isEqualRange;
-      exports3.stringToSnapshot = stringToSnapshot;
-      exports3.sleep = sleep;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.findOverlapCodeRange = findOverlapCodeRange;
+      exports2.isInsideRange = isInsideRange;
+      exports2.isEqualRange = isEqualRange;
+      exports2.stringToSnapshot = stringToSnapshot;
+      exports2.sleep = sleep;
       function findOverlapCodeRange(start2, end, map4, filter) {
         let mappedStart;
         let mappedEnd;
@@ -2153,24 +2153,24 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/transform.js
   var require_transform = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/transform.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/transform.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.transformDocumentLinkTarget = transformDocumentLinkTarget;
-      exports3.transformMarkdown = transformMarkdown;
-      exports3.transformCompletionItem = transformCompletionItem;
-      exports3.transformCompletionList = transformCompletionList;
-      exports3.transformDocumentSymbol = transformDocumentSymbol;
-      exports3.transformFoldingRanges = transformFoldingRanges;
-      exports3.transformHover = transformHover;
-      exports3.transformLocation = transformLocation;
-      exports3.transformLocations = transformLocations;
-      exports3.transformSelectionRange = transformSelectionRange;
-      exports3.transformSelectionRanges = transformSelectionRanges;
-      exports3.transformTextEdit = transformTextEdit;
-      exports3.transformWorkspaceSymbol = transformWorkspaceSymbol;
-      exports3.transformWorkspaceEdit = transformWorkspaceEdit;
-      exports3.pushEditToDocumentChanges = pushEditToDocumentChanges;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.transformDocumentLinkTarget = transformDocumentLinkTarget;
+      exports2.transformMarkdown = transformMarkdown;
+      exports2.transformCompletionItem = transformCompletionItem;
+      exports2.transformCompletionList = transformCompletionList;
+      exports2.transformDocumentSymbol = transformDocumentSymbol;
+      exports2.transformFoldingRanges = transformFoldingRanges;
+      exports2.transformHover = transformHover;
+      exports2.transformLocation = transformLocation;
+      exports2.transformLocations = transformLocations;
+      exports2.transformSelectionRange = transformSelectionRange;
+      exports2.transformSelectionRanges = transformSelectionRanges;
+      exports2.transformTextEdit = transformTextEdit;
+      exports2.transformWorkspaceSymbol = transformWorkspaceSymbol;
+      exports2.transformWorkspaceEdit = transformWorkspaceEdit;
+      exports2.pushEditToDocumentChanges = pushEditToDocumentChanges;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var featureWorkers_1 = require_featureWorkers();
@@ -2403,7 +2403,7 @@
           location: loc
         };
       }
-      function transformWorkspaceEdit(edit, context, mode, versions = {}) {
+      function transformWorkspaceEdit(edit, context, mode, versions2 = {}) {
         const sourceResult = {};
         let hasResult = false;
         for (const tsUri in edit.changeAnnotations) {
@@ -2479,7 +2479,7 @@
                   sourceEdit = {
                     textDocument: {
                       uri: sourceDocument.uri,
-                      version: versions[sourceDocument.uri] ?? null
+                      version: versions2[sourceDocument.uri] ?? null
                     },
                     edits: []
                   };
@@ -2574,10 +2574,10 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideCodeActions.js
   var require_provideCodeActions = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideCodeActions.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideCodeActions.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
@@ -2671,10 +2671,10 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideCodeLenses.js
   var require_provideCodeLenses = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideCodeLenses.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideCodeLenses.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
@@ -2735,10 +2735,10 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideColorPresentations.js
   var require_provideColorPresentations = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideColorPresentations.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideColorPresentations.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
@@ -2786,10 +2786,10 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideCompletionItems.js
   var require_provideCompletionItems = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideCompletionItems.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideCompletionItems.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
@@ -2973,10 +2973,10 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDefinition.js
   var require_provideDefinition = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDefinition.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDefinition.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
       var dedupe = require_dedupe();
@@ -3099,10 +3099,10 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/uriMap.js
   var require_uriMap = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/uriMap.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/uriMap.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.createUriMap = createUriMap2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.createUriMap = createUriMap2;
       function createUriMap2(caseSensitive = false) {
         const map4 = /* @__PURE__ */ new Map();
         const rawUriToNormalizedUri = /* @__PURE__ */ new Map();
@@ -3172,13 +3172,13 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDiagnostics.js
   var require_provideDiagnostics = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDiagnostics.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDiagnostics.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.errorMarkups = void 0;
-      exports3.updateRange = updateRange;
-      exports3.register = register2;
-      exports3.transformDiagnostic = transformDiagnostic;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.errorMarkups = void 0;
+      exports2.updateRange = updateRange;
+      exports2.register = register2;
+      exports2.transformDiagnostic = transformDiagnostic;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
@@ -3246,7 +3246,7 @@
         }
         return false;
       }
-      exports3.errorMarkups = (0, uriMap_1.createUriMap)();
+      exports2.errorMarkups = (0, uriMap_1.createUriMap)();
       function register2(context) {
         const lastResponses = (0, uriMap_1.createUriMap)();
         const cacheMaps = {
@@ -3401,10 +3401,10 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentColors.js
   var require_provideDocumentColors = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentColors.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentColors.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
@@ -3438,10 +3438,10 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentDropEdits.js
   var require_provideDocumentDropEdits = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentDropEdits.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentDropEdits.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
       var featureWorkers_1 = require_featureWorkers();
@@ -3471,10 +3471,10 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentFormattingEdits.js
   var require_provideDocumentFormattingEdits = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentFormattingEdits.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentFormattingEdits.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var language_core_1 = require_language_core();
       var vscode_languageserver_textdocument_1 = (init_main(), __toCommonJS(main_exports));
       var vscode_uri_1 = require_umd();
@@ -3695,10 +3695,10 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentHighlights.js
   var require_provideDocumentHighlights = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentHighlights.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentHighlights.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
@@ -3765,10 +3765,10 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentLinks.js
   var require_provideDocumentLinks = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentLinks.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentLinks.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
@@ -3818,10 +3818,10 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/SemanticTokensBuilder.js
   var require_SemanticTokensBuilder = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/SemanticTokensBuilder.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/utils/SemanticTokensBuilder.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.SemanticTokensBuilder = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.SemanticTokensBuilder = void 0;
       var SemanticTokensBuilder = class {
         constructor() {
           this.initialize();
@@ -3860,16 +3860,16 @@
           };
         }
       };
-      exports3.SemanticTokensBuilder = SemanticTokensBuilder;
+      exports2.SemanticTokensBuilder = SemanticTokensBuilder;
     }
   });
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentSemanticTokens.js
   var require_provideDocumentSemanticTokens = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentSemanticTokens.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentSemanticTokens.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var SemanticTokensBuilder_1 = require_SemanticTokensBuilder();
@@ -3944,10 +3944,10 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentSymbols.js
   var require_provideDocumentSymbols = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentSymbols.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideDocumentSymbols.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
@@ -4002,10 +4002,10 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideFileReferences.js
   var require_provideFileReferences = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideFileReferences.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideFileReferences.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
@@ -4045,10 +4045,10 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideFileRenameEdits.js
   var require_provideFileRenameEdits = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideFileRenameEdits.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideFileRenameEdits.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
       var dedupe = require_dedupe();
@@ -4083,10 +4083,10 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideFoldingRanges.js
   var require_provideFoldingRanges = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideFoldingRanges.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideFoldingRanges.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
@@ -4113,10 +4113,10 @@
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideHover.js
   var require_provideHover = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideHover.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideHover.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
@@ -4214,10 +4214,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideInlayHints.js
   var require_provideInlayHints = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideInlayHints.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideInlayHints.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
@@ -4276,10 +4276,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideLinkedEditingRanges.js
   var require_provideLinkedEditingRanges = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideLinkedEditingRanges.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideLinkedEditingRanges.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
@@ -4312,10 +4312,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideReferences.js
   var require_provideReferences = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideReferences.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideReferences.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
@@ -4395,11 +4395,11 @@ ${hover.contents.value}
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideRenameEdits.js
   var require_provideRenameEdits = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideRenameEdits.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideRenameEdits.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
-      exports3.mergeWorkspaceEdits = mergeWorkspaceEdits;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
+      exports2.mergeWorkspaceEdits = mergeWorkspaceEdits;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
@@ -4539,10 +4539,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideRenameRange.js
   var require_provideRenameRange = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideRenameRange.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideRenameRange.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
@@ -4578,10 +4578,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideSelectionRanges.js
   var require_provideSelectionRanges = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideSelectionRanges.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideSelectionRanges.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
@@ -4652,10 +4652,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideSignatureHelp.js
   var require_provideSignatureHelp = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideSignatureHelp.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideSignatureHelp.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
@@ -4682,10 +4682,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideWorkspaceDiagnostics.js
   var require_provideWorkspaceDiagnostics = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideWorkspaceDiagnostics.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideWorkspaceDiagnostics.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var language_core_1 = require_language_core();
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
@@ -4749,10 +4749,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideWorkspaceSymbols.js
   var require_provideWorkspaceSymbols = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideWorkspaceSymbols.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/provideWorkspaceSymbols.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
       var featureWorkers_1 = require_featureWorkers();
@@ -4810,10 +4810,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveCodeAction.js
   var require_resolveCodeAction = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveCodeAction.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveCodeAction.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var cancellation_1 = require_cancellation();
       var transform_1 = require_transform();
       function register2(context) {
@@ -4839,10 +4839,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveCodeLens.js
   var require_resolveCodeLens = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveCodeLens.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveCodeLens.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
       var references = require_provideReferences();
@@ -4870,10 +4870,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveCompletionItem.js
   var require_resolveCompletionItem = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveCompletionItem.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveCompletionItem.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var vscode_uri_1 = require_umd();
       var cancellation_1 = require_cancellation();
       var featureWorkers_1 = require_featureWorkers();
@@ -4915,10 +4915,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveDocumentLink.js
   var require_resolveDocumentLink = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveDocumentLink.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveDocumentLink.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var cancellation_1 = require_cancellation();
       var transform_1 = require_transform();
       function register2(context) {
@@ -4943,10 +4943,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveInlayHint.js
   var require_resolveInlayHint = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveInlayHint.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveInlayHint.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var cancellation_1 = require_cancellation();
       function register2(context) {
         return async (item, token = cancellation_1.NoneCancellationToken) => {
@@ -4967,10 +4967,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveWorkspaceSymbol.js
   var require_resolveWorkspaceSymbol = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveWorkspaceSymbol.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/features/resolveWorkspaceSymbol.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var cancellation_1 = require_cancellation();
       function register2(context) {
         return async (symbol, token = cancellation_1.NoneCancellationToken) => {
@@ -4991,13 +4991,13 @@ ${hover.contents.value}
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/languageService.js
   var require_languageService = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/languageService.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/languageService.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.embeddedContentScheme = void 0;
-      exports3.createLanguageService = createLanguageService;
-      exports3.decodeEmbeddedDocumentUri = decodeEmbeddedDocumentUri;
-      exports3.encodeEmbeddedDocumentUri = encodeEmbeddedDocumentUri;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.embeddedContentScheme = void 0;
+      exports2.createLanguageService = createLanguageService;
+      exports2.decodeEmbeddedDocumentUri = decodeEmbeddedDocumentUri;
+      exports2.encodeEmbeddedDocumentUri = encodeEmbeddedDocumentUri;
       var language_core_1 = require_language_core();
       var vscode_languageserver_textdocument_1 = (init_main(), __toCommonJS(main_exports));
       var vscode_uri_1 = require_umd();
@@ -5037,8 +5037,8 @@ ${hover.contents.value}
       var workspaceSymbolResolve = require_resolveWorkspaceSymbol();
       var cancellation_1 = require_cancellation();
       var uriMap_1 = require_uriMap();
-      exports3.embeddedContentScheme = "volar-embedded-content";
-      function createLanguageService(language, plugins, env2, project) {
+      exports2.embeddedContentScheme = "volar-embedded-content";
+      function createLanguageService(language, plugins, env3, project) {
         const documentVersions = (0, uriMap_1.createUriMap)();
         const snapshot2Doc = /* @__PURE__ */ new WeakMap();
         const context = {
@@ -5052,14 +5052,14 @@ ${hover.contents.value}
               }
               const map4 = snapshot2Doc.get(snapshot);
               if (!map4.has(uri)) {
-                const version2 = documentVersions.get(uri) ?? 0;
-                documentVersions.set(uri, version2 + 1);
-                map4.set(uri, vscode_languageserver_textdocument_1.TextDocument.create(uri.toString(), languageId, version2, snapshot.getText(0, snapshot.getLength())));
+                const version3 = documentVersions.get(uri) ?? 0;
+                documentVersions.set(uri, version3 + 1);
+                map4.set(uri, vscode_languageserver_textdocument_1.TextDocument.create(uri.toString(), languageId, version3, snapshot.getText(0, snapshot.getLength())));
               }
               return map4.get(uri);
             }
           },
-          env: env2,
+          env: env3,
           inject: (key, ...args) => {
             for (const plugin of context.plugins) {
               if (context.disabledServicePlugins.has(plugin[1])) {
@@ -5136,7 +5136,7 @@ ${hover.contents.value}
         return langaugeService;
       }
       function decodeEmbeddedDocumentUri(maybeEmbeddedContentUri) {
-        if (maybeEmbeddedContentUri.scheme === exports3.embeddedContentScheme) {
+        if (maybeEmbeddedContentUri.scheme === exports2.embeddedContentScheme) {
           const embeddedCodeId = decodeURIComponent(maybeEmbeddedContentUri.authority);
           const documentUri = decodeURIComponent(maybeEmbeddedContentUri.path.substring(1));
           return [
@@ -5150,7 +5150,7 @@ ${hover.contents.value}
           console.error(`embeddedContentId must be lowercase: ${embeddedContentId}`);
         }
         return vscode_uri_1.URI.from({
-          scheme: exports3.embeddedContentScheme,
+          scheme: exports2.embeddedContentScheme,
           authority: encodeURIComponent(embeddedContentId),
           path: "/" + encodeURIComponent(documentUri.toString())
         });
@@ -5226,25 +5226,25 @@ ${hover.contents.value}
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/lib/types.js
   var require_types2 = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/types.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/lib/types.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.FileType = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.FileType = void 0;
       var FileType;
       (function(FileType2) {
         FileType2[FileType2["Unknown"] = 0] = "Unknown";
         FileType2[FileType2["File"] = 1] = "File";
         FileType2[FileType2["Directory"] = 2] = "Directory";
         FileType2[FileType2["SymbolicLink"] = 64] = "SymbolicLink";
-      })(FileType || (exports3.FileType = FileType = {}));
+      })(FileType || (exports2.FileType = FileType = {}));
     }
   });
 
   // node_modules/@volar/monaco/node_modules/@volar/language-service/index.js
   var require_language_service = __commonJS({
-    "node_modules/@volar/monaco/node_modules/@volar/language-service/index.js"(exports3) {
+    "node_modules/@volar/monaco/node_modules/@volar/language-service/index.js"(exports2) {
       "use strict";
-      var __createBinding = exports3 && exports3.__createBinding || (Object.create ? function(o, m, k, k2) {
+      var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
         if (k2 === void 0)
           k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -5259,31 +5259,31 @@ ${hover.contents.value}
           k2 = k;
         o[k2] = m[k];
       });
-      var __exportStar = exports3 && exports3.__exportStar || function(m, exports4) {
+      var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
         for (var p in m)
-          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports4, p))
-            __createBinding(exports4, m, p);
+          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p))
+            __createBinding(exports3, m, p);
       };
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.mergeWorkspaceEdits = void 0;
-      __exportStar(require_language_core(), exports3);
-      __exportStar(require_languageService(), exports3);
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.mergeWorkspaceEdits = void 0;
+      __exportStar(require_language_core(), exports2);
+      __exportStar(require_languageService(), exports2);
       var provideRenameEdits_1 = require_provideRenameEdits();
-      Object.defineProperty(exports3, "mergeWorkspaceEdits", { enumerable: true, get: function() {
+      Object.defineProperty(exports2, "mergeWorkspaceEdits", { enumerable: true, get: function() {
         return provideRenameEdits_1.mergeWorkspaceEdits;
       } });
-      __exportStar(require_types2(), exports3);
-      __exportStar(require_transform(), exports3);
-      __exportStar(require_uriMap(), exports3);
+      __exportStar(require_types2(), exports2);
+      __exportStar(require_transform(), exports2);
+      __exportStar(require_uriMap(), exports2);
     }
   });
 
   // node_modules/@volar/typescript/lib/common.js
   var require_common2 = __commonJS({
-    "node_modules/@volar/typescript/lib/common.js"(exports3) {
+    "node_modules/@volar/typescript/lib/common.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.resolveFileLanguageId = resolveFileLanguageId2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.resolveFileLanguageId = resolveFileLanguageId2;
       function resolveFileLanguageId2(path) {
         const ext = path.split(".").pop();
         switch (ext) {
@@ -5312,10 +5312,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/typescript/node_modules/@volar/source-map/lib/binarySearch.js
   var require_binarySearch2 = __commonJS({
-    "node_modules/@volar/typescript/node_modules/@volar/source-map/lib/binarySearch.js"(exports3) {
+    "node_modules/@volar/typescript/node_modules/@volar/source-map/lib/binarySearch.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.binarySearch = binarySearch;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.binarySearch = binarySearch;
       function binarySearch(values, searchValue) {
         let low = 0;
         let high = values.length - 1;
@@ -5343,10 +5343,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/typescript/node_modules/@volar/source-map/lib/translateOffset.js
   var require_translateOffset2 = __commonJS({
-    "node_modules/@volar/typescript/node_modules/@volar/source-map/lib/translateOffset.js"(exports3) {
+    "node_modules/@volar/typescript/node_modules/@volar/source-map/lib/translateOffset.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.translateOffset = translateOffset;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.translateOffset = translateOffset;
       function translateOffset(start2, fromOffsets, toOffsets, fromLengths, toLengths = fromLengths) {
         const isSorted = fromOffsets.every((value, index4) => index4 === 0 || fromOffsets[index4 - 1] <= value);
         if (!isSorted) {
@@ -5375,10 +5375,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/typescript/node_modules/@volar/source-map/lib/sourceMap.js
   var require_sourceMap2 = __commonJS({
-    "node_modules/@volar/typescript/node_modules/@volar/source-map/lib/sourceMap.js"(exports3) {
+    "node_modules/@volar/typescript/node_modules/@volar/source-map/lib/sourceMap.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.SourceMap = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.SourceMap = void 0;
       var binarySearch_1 = require_binarySearch2();
       var translateOffset_1 = require_translateOffset2();
       var SourceMap = class {
@@ -5474,7 +5474,7 @@ ${hover.contents.value}
           return { offsets, mappings };
         }
       };
-      exports3.SourceMap = SourceMap;
+      exports2.SourceMap = SourceMap;
       function getLengths(mapping, key) {
         return key == "sourceOffsets" ? mapping.lengths : mapping.generatedLengths ?? mapping.lengths;
       }
@@ -5483,9 +5483,9 @@ ${hover.contents.value}
 
   // node_modules/@volar/typescript/node_modules/@volar/source-map/index.js
   var require_source_map2 = __commonJS({
-    "node_modules/@volar/typescript/node_modules/@volar/source-map/index.js"(exports3) {
+    "node_modules/@volar/typescript/node_modules/@volar/source-map/index.js"(exports2) {
       "use strict";
-      var __createBinding = exports3 && exports3.__createBinding || (Object.create ? function(o, m, k, k2) {
+      var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
         if (k2 === void 0)
           k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -5500,48 +5500,48 @@ ${hover.contents.value}
           k2 = k;
         o[k2] = m[k];
       });
-      var __exportStar = exports3 && exports3.__exportStar || function(m, exports4) {
+      var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
         for (var p in m)
-          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports4, p))
-            __createBinding(exports4, m, p);
+          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p))
+            __createBinding(exports3, m, p);
       };
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      __exportStar(require_sourceMap2(), exports3);
-      __exportStar(require_translateOffset2(), exports3);
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      __exportStar(require_sourceMap2(), exports2);
+      __exportStar(require_translateOffset2(), exports2);
     }
   });
 
   // node_modules/@volar/typescript/node_modules/@volar/language-core/lib/editorFeatures.js
   var require_editorFeatures2 = __commonJS({
-    "node_modules/@volar/typescript/node_modules/@volar/language-core/lib/editorFeatures.js"(exports3) {
+    "node_modules/@volar/typescript/node_modules/@volar/language-core/lib/editorFeatures.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.isHoverEnabled = isHoverEnabled;
-      exports3.isInlayHintsEnabled = isInlayHintsEnabled;
-      exports3.isCodeLensEnabled = isCodeLensEnabled;
-      exports3.isSemanticTokensEnabled = isSemanticTokensEnabled;
-      exports3.isCallHierarchyEnabled = isCallHierarchyEnabled;
-      exports3.isRenameEnabled = isRenameEnabled;
-      exports3.isDefinitionEnabled = isDefinitionEnabled;
-      exports3.isTypeDefinitionEnabled = isTypeDefinitionEnabled;
-      exports3.isReferencesEnabled = isReferencesEnabled;
-      exports3.isImplementationEnabled = isImplementationEnabled;
-      exports3.isHighlightEnabled = isHighlightEnabled;
-      exports3.isSymbolsEnabled = isSymbolsEnabled;
-      exports3.isFoldingRangesEnabled = isFoldingRangesEnabled;
-      exports3.isSelectionRangesEnabled = isSelectionRangesEnabled;
-      exports3.isLinkedEditingEnabled = isLinkedEditingEnabled;
-      exports3.isColorEnabled = isColorEnabled;
-      exports3.isDocumentLinkEnabled = isDocumentLinkEnabled;
-      exports3.isDiagnosticsEnabled = isDiagnosticsEnabled;
-      exports3.isCodeActionsEnabled = isCodeActionsEnabled;
-      exports3.isFormattingEnabled = isFormattingEnabled;
-      exports3.isCompletionEnabled = isCompletionEnabled;
-      exports3.isAutoInsertEnabled = isAutoInsertEnabled;
-      exports3.isSignatureHelpEnabled = isSignatureHelpEnabled;
-      exports3.shouldReportDiagnostics = shouldReportDiagnostics;
-      exports3.resolveRenameNewName = resolveRenameNewName;
-      exports3.resolveRenameEditText = resolveRenameEditText;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.isHoverEnabled = isHoverEnabled;
+      exports2.isInlayHintsEnabled = isInlayHintsEnabled;
+      exports2.isCodeLensEnabled = isCodeLensEnabled;
+      exports2.isSemanticTokensEnabled = isSemanticTokensEnabled;
+      exports2.isCallHierarchyEnabled = isCallHierarchyEnabled;
+      exports2.isRenameEnabled = isRenameEnabled;
+      exports2.isDefinitionEnabled = isDefinitionEnabled;
+      exports2.isTypeDefinitionEnabled = isTypeDefinitionEnabled;
+      exports2.isReferencesEnabled = isReferencesEnabled;
+      exports2.isImplementationEnabled = isImplementationEnabled;
+      exports2.isHighlightEnabled = isHighlightEnabled;
+      exports2.isSymbolsEnabled = isSymbolsEnabled;
+      exports2.isFoldingRangesEnabled = isFoldingRangesEnabled;
+      exports2.isSelectionRangesEnabled = isSelectionRangesEnabled;
+      exports2.isLinkedEditingEnabled = isLinkedEditingEnabled;
+      exports2.isColorEnabled = isColorEnabled;
+      exports2.isDocumentLinkEnabled = isDocumentLinkEnabled;
+      exports2.isDiagnosticsEnabled = isDiagnosticsEnabled;
+      exports2.isCodeActionsEnabled = isCodeActionsEnabled;
+      exports2.isFormattingEnabled = isFormattingEnabled;
+      exports2.isCompletionEnabled = isCompletionEnabled;
+      exports2.isAutoInsertEnabled = isAutoInsertEnabled;
+      exports2.isSignatureHelpEnabled = isSignatureHelpEnabled;
+      exports2.shouldReportDiagnostics = shouldReportDiagnostics;
+      exports2.resolveRenameNewName = resolveRenameNewName;
+      exports2.resolveRenameEditText = resolveRenameEditText;
       function isHoverEnabled(info) {
         return !!info.semantic;
       }
@@ -5625,10 +5625,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/typescript/node_modules/@volar/language-core/lib/linkedCodeMap.js
   var require_linkedCodeMap2 = __commonJS({
-    "node_modules/@volar/typescript/node_modules/@volar/language-core/lib/linkedCodeMap.js"(exports3) {
+    "node_modules/@volar/typescript/node_modules/@volar/language-core/lib/linkedCodeMap.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.LinkedCodeMap = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.LinkedCodeMap = void 0;
       var source_map_1 = require_source_map2();
       var LinkedCodeMap = class extends source_map_1.SourceMap {
         *getLinkedOffsets(start2) {
@@ -5640,24 +5640,24 @@ ${hover.contents.value}
           }
         }
       };
-      exports3.LinkedCodeMap = LinkedCodeMap;
+      exports2.LinkedCodeMap = LinkedCodeMap;
     }
   });
 
   // node_modules/@volar/typescript/node_modules/@volar/language-core/lib/types.js
   var require_types3 = __commonJS({
-    "node_modules/@volar/typescript/node_modules/@volar/language-core/lib/types.js"(exports3) {
+    "node_modules/@volar/typescript/node_modules/@volar/language-core/lib/types.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
+      Object.defineProperty(exports2, "__esModule", { value: true });
     }
   });
 
   // node_modules/@volar/typescript/node_modules/@volar/language-core/lib/utils.js
   var require_utils2 = __commonJS({
-    "node_modules/@volar/typescript/node_modules/@volar/language-core/lib/utils.js"(exports3) {
+    "node_modules/@volar/typescript/node_modules/@volar/language-core/lib/utils.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.FileMap = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.FileMap = void 0;
       var FileMap = class extends Map {
         constructor(caseSensitive) {
           super();
@@ -5689,15 +5689,15 @@ ${hover.contents.value}
           return this.caseSensitive ? id : id.toLowerCase();
         }
       };
-      exports3.FileMap = FileMap;
+      exports2.FileMap = FileMap;
     }
   });
 
   // node_modules/@volar/typescript/node_modules/@volar/language-core/index.js
   var require_language_core2 = __commonJS({
-    "node_modules/@volar/typescript/node_modules/@volar/language-core/index.js"(exports3) {
+    "node_modules/@volar/typescript/node_modules/@volar/language-core/index.js"(exports2) {
       "use strict";
-      var __createBinding = exports3 && exports3.__createBinding || (Object.create ? function(o, m, k, k2) {
+      var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
         if (k2 === void 0)
           k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -5712,33 +5712,33 @@ ${hover.contents.value}
           k2 = k;
         o[k2] = m[k];
       });
-      var __exportStar = exports3 && exports3.__exportStar || function(m, exports4) {
+      var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
         for (var p in m)
-          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports4, p))
-            __createBinding(exports4, m, p);
+          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p))
+            __createBinding(exports3, m, p);
       };
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.defaultMapperFactory = exports3.SourceMap = void 0;
-      exports3.createLanguage = createLanguage2;
-      exports3.forEachEmbeddedCode = forEachEmbeddedCode;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.defaultMapperFactory = exports2.SourceMap = void 0;
+      exports2.createLanguage = createLanguage2;
+      exports2.forEachEmbeddedCode = forEachEmbeddedCode;
       var source_map_1 = require_source_map2();
-      Object.defineProperty(exports3, "SourceMap", { enumerable: true, get: function() {
+      Object.defineProperty(exports2, "SourceMap", { enumerable: true, get: function() {
         return source_map_1.SourceMap;
       } });
-      __exportStar(require_editorFeatures2(), exports3);
-      __exportStar(require_linkedCodeMap2(), exports3);
-      __exportStar(require_types3(), exports3);
-      __exportStar(require_utils2(), exports3);
+      __exportStar(require_editorFeatures2(), exports2);
+      __exportStar(require_linkedCodeMap2(), exports2);
+      __exportStar(require_types3(), exports2);
+      __exportStar(require_utils2(), exports2);
       var source_map_2 = require_source_map2();
       var linkedCodeMap_1 = require_linkedCodeMap2();
       var defaultMapperFactory = (mappings) => new source_map_2.SourceMap(mappings);
-      exports3.defaultMapperFactory = defaultMapperFactory;
+      exports2.defaultMapperFactory = defaultMapperFactory;
       function createLanguage2(plugins, scriptRegistry, sync) {
         const virtualCodeToSourceScriptMap = /* @__PURE__ */ new WeakMap();
         const virtualCodeToSourceMap = /* @__PURE__ */ new WeakMap();
         const virtualCodeToLinkedCodeMap = /* @__PURE__ */ new WeakMap();
         const language = {
-          mapperFactory: exports3.defaultMapperFactory,
+          mapperFactory: exports2.defaultMapperFactory,
           plugins,
           scripts: {
             fromVirtualCode(virtualCode) {
@@ -5928,10 +5928,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/typescript/lib/node/dedupe.js
   var require_dedupe2 = __commonJS({
-    "node_modules/@volar/typescript/lib/node/dedupe.js"(exports3) {
+    "node_modules/@volar/typescript/lib/node/dedupe.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.dedupeDocumentSpans = dedupeDocumentSpans;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.dedupeDocumentSpans = dedupeDocumentSpans;
       function dedupeDocumentSpans(items) {
         return dedupe(items, (item) => [
           item.fileName,
@@ -5951,10 +5951,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/typescript/lib/node/utils.js
   var require_utils3 = __commonJS({
-    "node_modules/@volar/typescript/lib/node/utils.js"(exports3) {
+    "node_modules/@volar/typescript/lib/node/utils.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.getServiceScript = getServiceScript;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.getServiceScript = getServiceScript;
       function getServiceScript(language, fileName) {
         const sourceScript = language.scripts.get(fileName);
         if (sourceScript?.targetIds.size) {
@@ -5984,24 +5984,24 @@ ${hover.contents.value}
 
   // node_modules/@volar/typescript/lib/node/transform.js
   var require_transform2 = __commonJS({
-    "node_modules/@volar/typescript/lib/node/transform.js"(exports3) {
+    "node_modules/@volar/typescript/lib/node/transform.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.transformCallHierarchyItem = transformCallHierarchyItem;
-      exports3.transformDiagnostic = transformDiagnostic;
-      exports3.fillSourceFileText = fillSourceFileText;
-      exports3.transformFileTextChanges = transformFileTextChanges;
-      exports3.transformDocumentSpan = transformDocumentSpan;
-      exports3.transformSpan = transformSpan;
-      exports3.transformTextChange = transformTextChange;
-      exports3.transformTextSpan = transformTextSpan;
-      exports3.toSourceOffset = toSourceOffset;
-      exports3.toSourceRanges = toSourceRanges;
-      exports3.toSourceOffsets = toSourceOffsets;
-      exports3.toGeneratedRanges = toGeneratedRanges;
-      exports3.toGeneratedOffset = toGeneratedOffset;
-      exports3.toGeneratedOffsets = toGeneratedOffsets;
-      exports3.getMappingOffset = getMappingOffset;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.transformCallHierarchyItem = transformCallHierarchyItem;
+      exports2.transformDiagnostic = transformDiagnostic;
+      exports2.fillSourceFileText = fillSourceFileText;
+      exports2.transformFileTextChanges = transformFileTextChanges;
+      exports2.transformDocumentSpan = transformDocumentSpan;
+      exports2.transformSpan = transformSpan;
+      exports2.transformTextChange = transformTextChange;
+      exports2.transformTextSpan = transformTextSpan;
+      exports2.toSourceOffset = toSourceOffset;
+      exports2.toSourceRanges = toSourceRanges;
+      exports2.toSourceOffsets = toSourceOffsets;
+      exports2.toGeneratedRanges = toGeneratedRanges;
+      exports2.toGeneratedOffset = toGeneratedOffset;
+      exports2.toGeneratedOffsets = toGeneratedOffsets;
+      exports2.getMappingOffset = getMappingOffset;
       var language_core_1 = require_language_core2();
       var utils_1 = require_utils3();
       var transformedDiagnostics = /* @__PURE__ */ new WeakMap();
@@ -6229,10 +6229,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/typescript/lib/node/proxyLanguageService.js
   var require_proxyLanguageService = __commonJS({
-    "node_modules/@volar/typescript/lib/node/proxyLanguageService.js"(exports3) {
+    "node_modules/@volar/typescript/lib/node/proxyLanguageService.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.createProxyLanguageService = createProxyLanguageService;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.createProxyLanguageService = createProxyLanguageService;
       var language_core_1 = require_language_core2();
       var dedupe_1 = require_dedupe2();
       var transform_1 = require_transform2();
@@ -7088,10 +7088,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/typescript/lib/resolveModuleName.js
   var require_resolveModuleName = __commonJS({
-    "node_modules/@volar/typescript/lib/resolveModuleName.js"(exports3) {
+    "node_modules/@volar/typescript/lib/resolveModuleName.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.createResolveModuleName = createResolveModuleName;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.createResolveModuleName = createResolveModuleName;
       function createResolveModuleName(ts2, getFileSize, host, languagePlugins, getSourceScript) {
         const toSourceFileInfo = /* @__PURE__ */ new Map();
         const moduleResolutionHost = {
@@ -7179,11 +7179,11 @@ ${hover.contents.value}
 
   // node_modules/@volar/typescript/lib/node/decorateLanguageServiceHost.js
   var require_decorateLanguageServiceHost = __commonJS({
-    "node_modules/@volar/typescript/lib/node/decorateLanguageServiceHost.js"(exports3) {
+    "node_modules/@volar/typescript/lib/node/decorateLanguageServiceHost.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.decorateLanguageServiceHost = decorateLanguageServiceHost;
-      exports3.searchExternalFiles = searchExternalFiles;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.decorateLanguageServiceHost = decorateLanguageServiceHost;
+      exports2.searchExternalFiles = searchExternalFiles;
       var resolveModuleName_1 = require_resolveModuleName();
       function decorateLanguageServiceHost(ts2, language, languageServiceHost) {
         const pluginExtensions = language.plugins.map((plugin) => plugin.typescript?.extraFileExtensions.map((ext) => "." + ext.extension) ?? []).flat();
@@ -7251,18 +7251,18 @@ ${hover.contents.value}
           if (crashFileNames.has(fileName)) {
             return;
           }
-          let version2;
+          let version3;
           try {
-            version2 = languageServiceHost.getScriptVersion(fileName);
+            version3 = languageServiceHost.getScriptVersion(fileName);
           } catch {
             crashFileNames.add(fileName);
           }
-          if (version2 === void 0) {
+          if (version3 === void 0) {
             return;
           }
           let script = scripts.get(fileName);
-          if (!script || script[0] !== version2) {
-            script = [version2];
+          if (!script || script[0] !== version3) {
+            script = [version3];
             const sourceScript = language.scripts.get(fileName);
             if (sourceScript?.generated) {
               const serviceScript = sourceScript.generated.languagePlugin.typescript?.getServiceScript(sourceScript.generated.root);
@@ -7297,7 +7297,7 @@ ${hover.contents.value}
           return [];
         }
         const configFile = project.getProjectName();
-        const config = ts2.readJsonConfigFile(configFile, project.readFile.bind(project));
+        const config2 = ts2.readJsonConfigFile(configFile, project.readFile.bind(project));
         const parseHost = {
           useCaseSensitiveFileNames: project.useCaseSensitiveFileNames(),
           fileExists: project.fileExists.bind(project),
@@ -7307,7 +7307,7 @@ ${hover.contents.value}
             return project.readDirectory(...args);
           }
         };
-        const parsed = ts2.parseJsonSourceFileConfigFileContent(config, parseHost, project.getCurrentDirectory());
+        const parsed = ts2.parseJsonSourceFileConfigFileContent(config2, parseHost, project.getCurrentDirectory());
         return parsed.fileNames;
       }
     }
@@ -7315,21 +7315,21 @@ ${hover.contents.value}
 
   // node_modules/@volar/typescript/lib/node/decorateProgram.js
   var require_decorateProgram = __commonJS({
-    "node_modules/@volar/typescript/lib/node/decorateProgram.js"(exports3) {
+    "node_modules/@volar/typescript/lib/node/decorateProgram.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.decorateProgram = decorateProgram;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.decorateProgram = decorateProgram;
       var transform_1 = require_transform2();
       var utils_1 = require_utils3();
       function decorateProgram(language, program) {
-        const emit = program.emit;
+        const emit2 = program.emit;
         const getSyntacticDiagnostics = program.getSyntacticDiagnostics;
         const getSemanticDiagnostics = program.getSemanticDiagnostics;
         const getGlobalDiagnostics = program.getGlobalDiagnostics;
         const getSourceFileByPath = program.getSourceFileByPath;
         const getBindAndCheckDiagnostics = program.getBindAndCheckDiagnostics;
         program.emit = (...args) => {
-          const result = emit(...args);
+          const result = emit2(...args);
           return {
             ...result,
             diagnostics: result.diagnostics.map((d) => (0, transform_1.transformDiagnostic)(language, d, program, true)).filter((d) => !!d)
@@ -7378,10 +7378,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/typescript/lib/node/proxyCreateProgram.js
   var require_proxyCreateProgram = __commonJS({
-    "node_modules/@volar/typescript/lib/node/proxyCreateProgram.js"(exports3) {
+    "node_modules/@volar/typescript/lib/node/proxyCreateProgram.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.proxyCreateProgram = proxyCreateProgram;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.proxyCreateProgram = proxyCreateProgram;
       var language_core_1 = require_language_core2();
       var resolveModuleName_1 = require_resolveModuleName();
       var decorateProgram_1 = require_decorateProgram();
@@ -7420,7 +7420,7 @@ ${hover.contents.value}
         return new Proxy(original, {
           apply: (target, thisArg, args) => {
             const options = args[0];
-            assert(!!options.host, "!!options.host");
+            assert2(!!options.host, "!!options.host");
             if (!lastOptions || !languagePlugins || !language || !arrayEqual(options.rootNames, lastOptions.rootNames) || !objectEqual(options.options, lastOptions.options)) {
               moduleResolutionCache = ts2.createModuleResolutionCache(options.host.getCurrentDirectory(), options.host.getCanonicalFileName, options.options);
               lastOptions = options;
@@ -7490,7 +7490,7 @@ ${hover.contents.value}
               }
               if (!parsedSourceFiles.has(originalSourceFile)) {
                 const sourceScript = language.scripts.get(fileName);
-                assert(!!sourceScript, "!!sourceScript");
+                assert2(!!sourceScript, "!!sourceScript");
                 parsedSourceFiles.set(originalSourceFile, void 0);
                 if (sourceScript.generated?.languagePlugin.typescript) {
                   const { getServiceScript, getExtraServiceScripts } = sourceScript.generated.languagePlugin.typescript;
@@ -7540,7 +7540,7 @@ ${hover.contents.value}
           }
         });
       }
-      function assert(condition, message) {
+      function assert2(condition, message) {
         if (!condition) {
           console.error(message);
           throw new Error(message);
@@ -7551,7 +7551,7 @@ ${hover.contents.value}
 
   // node_modules/path-browserify/index.js
   var require_path_browserify = __commonJS({
-    "node_modules/path-browserify/index.js"(exports3, module) {
+    "node_modules/path-browserify/index.js"(exports2, module) {
       "use strict";
       function assertPath3(path) {
         if (typeof path !== "string") {
@@ -7637,15 +7637,15 @@ ${hover.contents.value}
         resolve: function resolve3() {
           var resolvedPath = "";
           var resolvedAbsolute = false;
-          var cwd3;
+          var cwd4;
           for (var i = arguments.length - 1; i >= -1 && !resolvedAbsolute; i--) {
             var path;
             if (i >= 0)
               path = arguments[i];
             else {
-              if (cwd3 === void 0)
-                cwd3 = process.cwd();
-              path = cwd3;
+              if (cwd4 === void 0)
+                cwd4 = process.cwd();
+              path = cwd4;
             }
             assertPath3(path);
             if (path.length === 0) {
@@ -7979,10 +7979,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/typescript/lib/protocol/createProject.js
   var require_createProject = __commonJS({
-    "node_modules/@volar/typescript/lib/protocol/createProject.js"(exports3) {
+    "node_modules/@volar/typescript/lib/protocol/createProject.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.createLanguageServiceHost = createLanguageServiceHost2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.createLanguageServiceHost = createLanguageServiceHost2;
       var language_core_1 = require_language_core2();
       var path = require_path_browserify();
       var resolveModuleName_1 = require_resolveModuleName();
@@ -8204,32 +8204,32 @@ ${hover.contents.value}
           if (!scriptVersions.has(fileName)) {
             scriptVersions.set(fileName, { lastVersion: 0, map: /* @__PURE__ */ new WeakMap() });
           }
-          const version2 = scriptVersions.get(fileName);
+          const version3 = scriptVersions.get(fileName);
           if (extraScriptRegistry.has(fileName)) {
             const snapshot = extraScriptRegistry.get(fileName).code.snapshot;
-            if (!version2.map.has(snapshot)) {
-              version2.map.set(snapshot, version2.lastVersion++);
+            if (!version3.map.has(snapshot)) {
+              version3.map.set(snapshot, version3.lastVersion++);
             }
-            return version2.map.get(snapshot).toString();
+            return version3.map.get(snapshot).toString();
           }
           const sourceScript = language.scripts.get(asScriptId(fileName));
           if (sourceScript?.generated) {
             const serviceScript = sourceScript.generated.languagePlugin.typescript?.getServiceScript(sourceScript.generated.root);
             if (serviceScript) {
-              if (!version2.map.has(serviceScript.code.snapshot)) {
-                version2.map.set(serviceScript.code.snapshot, version2.lastVersion++);
+              if (!version3.map.has(serviceScript.code.snapshot)) {
+                version3.map.set(serviceScript.code.snapshot, version3.lastVersion++);
               }
-              return version2.map.get(serviceScript.code.snapshot).toString();
+              return version3.map.get(serviceScript.code.snapshot).toString();
             }
           }
           const isOpenedFile = !!projectHost.getScriptSnapshot(fileName);
           if (isOpenedFile) {
             const sourceScript2 = language.scripts.get(asScriptId(fileName));
             if (sourceScript2 && !sourceScript2.generated) {
-              if (!version2.map.has(sourceScript2.snapshot)) {
-                version2.map.set(sourceScript2.snapshot, version2.lastVersion++);
+              if (!version3.map.has(sourceScript2.snapshot)) {
+                version3.map.set(sourceScript2.snapshot, version3.lastVersion++);
               }
-              return version2.map.get(sourceScript2.snapshot).toString();
+              return version3.map.get(sourceScript2.snapshot).toString();
             }
           }
           if (sys.fileExists(fileName)) {
@@ -8254,27 +8254,27 @@ ${hover.contents.value}
 
   // node_modules/@volar/typescript/lib/typescript/core.js
   var require_core = __commonJS({
-    "node_modules/@volar/typescript/lib/typescript/core.js"(exports3) {
+    "node_modules/@volar/typescript/lib/typescript/core.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.every = every;
-      exports3.findIndex = findIndex;
-      exports3.indexOfAnyCharCode = indexOfAnyCharCode;
-      exports3.map = map4;
-      exports3.flatten = flatten;
-      exports3.flatMap = flatMap;
-      exports3.some = some;
-      exports3.sort = sort;
-      exports3.lastOrUndefined = lastOrUndefined;
-      exports3.last = last;
-      exports3.equateStringsCaseInsensitive = equateStringsCaseInsensitive;
-      exports3.equateStringsCaseSensitive = equateStringsCaseSensitive;
-      exports3.compareStringsCaseSensitive = compareStringsCaseSensitive;
-      exports3.getStringComparer = getStringComparer;
-      exports3.endsWith = endsWith;
-      exports3.stringContains = stringContains;
-      exports3.createGetCanonicalFileName = createGetCanonicalFileName;
-      exports3.startsWith = startsWith;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.every = every;
+      exports2.findIndex = findIndex;
+      exports2.indexOfAnyCharCode = indexOfAnyCharCode;
+      exports2.map = map4;
+      exports2.flatten = flatten;
+      exports2.flatMap = flatMap;
+      exports2.some = some;
+      exports2.sort = sort;
+      exports2.lastOrUndefined = lastOrUndefined;
+      exports2.last = last;
+      exports2.equateStringsCaseInsensitive = equateStringsCaseInsensitive;
+      exports2.equateStringsCaseSensitive = equateStringsCaseSensitive;
+      exports2.compareStringsCaseSensitive = compareStringsCaseSensitive;
+      exports2.getStringComparer = getStringComparer;
+      exports2.endsWith = endsWith;
+      exports2.stringContains = stringContains;
+      exports2.createGetCanonicalFileName = createGetCanonicalFileName;
+      exports2.startsWith = startsWith;
       var emptyArray = [];
       function every(array, callback) {
         if (array) {
@@ -8469,21 +8469,21 @@ ${hover.contents.value}
 
   // node_modules/@volar/typescript/lib/typescript/path.js
   var require_path = __commonJS({
-    "node_modules/@volar/typescript/lib/typescript/path.js"(exports3) {
+    "node_modules/@volar/typescript/lib/typescript/path.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.directorySeparator = void 0;
-      exports3.isRootedDiskPath = isRootedDiskPath;
-      exports3.hasExtension = hasExtension;
-      exports3.fileExtensionIsOneOf = fileExtensionIsOneOf;
-      exports3.getDirectoryPath = getDirectoryPath;
-      exports3.combinePaths = combinePaths;
-      exports3.getNormalizedPathComponents = getNormalizedPathComponents;
-      exports3.normalizePath = normalizePath;
-      exports3.removeTrailingDirectorySeparator = removeTrailingDirectorySeparator;
-      exports3.containsPath = containsPath;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.directorySeparator = void 0;
+      exports2.isRootedDiskPath = isRootedDiskPath;
+      exports2.hasExtension = hasExtension;
+      exports2.fileExtensionIsOneOf = fileExtensionIsOneOf;
+      exports2.getDirectoryPath = getDirectoryPath;
+      exports2.combinePaths = combinePaths;
+      exports2.getNormalizedPathComponents = getNormalizedPathComponents;
+      exports2.normalizePath = normalizePath;
+      exports2.removeTrailingDirectorySeparator = removeTrailingDirectorySeparator;
+      exports2.containsPath = containsPath;
       var core_1 = require_core();
-      exports3.directorySeparator = "/";
+      exports2.directorySeparator = "/";
       var altDirectorySeparator = "\\";
       var urlSchemeSeparator = "://";
       var backslashRegExp = /\\/g;
@@ -8535,7 +8535,7 @@ ${hover.contents.value}
           if (path.charCodeAt(1) !== ch0) {
             return 1;
           }
-          const p1 = path.indexOf(ch0 === 47 ? exports3.directorySeparator : altDirectorySeparator, 2);
+          const p1 = path.indexOf(ch0 === 47 ? exports2.directorySeparator : altDirectorySeparator, 2);
           if (p1 < 0) {
             return path.length;
           }
@@ -8553,7 +8553,7 @@ ${hover.contents.value}
         const schemeEnd = path.indexOf(urlSchemeSeparator);
         if (schemeEnd !== -1) {
           const authorityStart = schemeEnd + urlSchemeSeparator.length;
-          const authorityEnd = path.indexOf(exports3.directorySeparator, authorityStart);
+          const authorityEnd = path.indexOf(exports2.directorySeparator, authorityStart);
           if (authorityEnd !== -1) {
             const scheme = path.slice(0, schemeEnd);
             const authority = path.slice(authorityStart, authorityEnd);
@@ -8585,7 +8585,7 @@ ${hover.contents.value}
           return path;
         }
         path = removeTrailingDirectorySeparator(path);
-        return path.slice(0, Math.max(rootLength, path.lastIndexOf(exports3.directorySeparator)));
+        return path.slice(0, Math.max(rootLength, path.lastIndexOf(exports2.directorySeparator)));
       }
       function getBaseFileName(path, extensions, ignoreCase) {
         path = normalizeSlashes(path);
@@ -8594,7 +8594,7 @@ ${hover.contents.value}
           return "";
         }
         path = removeTrailingDirectorySeparator(path);
-        const name2 = path.slice(Math.max(getRootLength(path), path.lastIndexOf(exports3.directorySeparator) + 1));
+        const name2 = path.slice(Math.max(getRootLength(path), path.lastIndexOf(exports2.directorySeparator) + 1));
         const extension2 = extensions !== void 0 && ignoreCase !== void 0 ? getAnyExtensionFromPath(name2, extensions, ignoreCase) : void 0;
         return extension2 ? name2.slice(0, name2.length - extension2.length) : name2;
       }
@@ -8634,7 +8634,7 @@ ${hover.contents.value}
       }
       function pathComponents(path, rootLength) {
         const root2 = path.substring(0, rootLength);
-        const rest = path.substring(rootLength).split(exports3.directorySeparator);
+        const rest = path.substring(rootLength).split(exports2.directorySeparator);
         if (rest.length && !(0, core_1.lastOrUndefined)(rest)) {
           rest.pop();
         }
@@ -8649,10 +8649,10 @@ ${hover.contents.value}
           return "";
         }
         const root2 = pathComponents2[0] && ensureTrailingDirectorySeparator(pathComponents2[0]);
-        return root2 + pathComponents2.slice(1).join(exports3.directorySeparator);
+        return root2 + pathComponents2.slice(1).join(exports2.directorySeparator);
       }
       function normalizeSlashes(path) {
-        return path.indexOf("\\") !== -1 ? path.replace(backslashRegExp, exports3.directorySeparator) : path;
+        return path.indexOf("\\") !== -1 ? path.replace(backslashRegExp, exports2.directorySeparator) : path;
       }
       function reducePathComponents(components) {
         if (!(0, core_1.some)(components)) {
@@ -8724,7 +8724,7 @@ ${hover.contents.value}
       }
       function ensureTrailingDirectorySeparator(path) {
         if (!hasTrailingDirectorySeparator(path)) {
-          return path + exports3.directorySeparator;
+          return path + exports2.directorySeparator;
         }
         return path;
       }
@@ -8761,10 +8761,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/typescript/lib/typescript/utilities.js
   var require_utilities = __commonJS({
-    "node_modules/@volar/typescript/lib/typescript/utilities.js"(exports3) {
+    "node_modules/@volar/typescript/lib/typescript/utilities.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.matchFiles = matchFiles;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.matchFiles = matchFiles;
       var core_1 = require_core();
       var path_1 = require_path();
       var reservedCharacterPattern = /[^\w\s\/]/g;
@@ -8978,16 +8978,16 @@ ${hover.contents.value}
 
   // node_modules/@volar/typescript/lib/protocol/createSys.js
   var require_createSys = __commonJS({
-    "node_modules/@volar/typescript/lib/protocol/createSys.js"(exports3) {
+    "node_modules/@volar/typescript/lib/protocol/createSys.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.createSys = createSys2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.createSys = createSys2;
       var path = require_path_browserify();
       var utilities_1 = require_utilities();
       var vscode_uri_1 = require_umd();
       var currentCwd = "";
-      function createSys2(sys, env2, getCurrentDirectory, uriConverter) {
-        let version2 = 0;
+      function createSys2(sys, env3, getCurrentDirectory, uriConverter) {
+        let version3 = 0;
         const caseSensitive = sys?.useCaseSensitiveFileNames ?? false;
         const root2 = {
           name: "",
@@ -8996,8 +8996,8 @@ ${hover.contents.value}
           requestedRead: false
         };
         const promises = /* @__PURE__ */ new Set();
-        const fileWatcher = env2.onDidChangeWatchedFiles?.(({ changes }) => {
-          version2++;
+        const fileWatcher = env3.onDidChangeWatchedFiles?.(({ changes }) => {
+          version3++;
           for (const change of changes) {
             const changeUri = vscode_uri_1.URI.parse(change.uri);
             const fileName = uriConverter.asFileName(changeUri);
@@ -9050,13 +9050,13 @@ ${hover.contents.value}
           fileExists,
           directoryExists,
           get version() {
-            return version2;
+            return version3;
           },
           async sync() {
             while (promises.size) {
               await Promise.all(promises);
             }
-            return version2;
+            return version3;
           }
         };
         function resolvePath(fsPath) {
@@ -9088,7 +9088,7 @@ ${hover.contents.value}
           const dir = getDir(dirName);
           if (dir.exists === void 0) {
             dir.exists = false;
-            const result = env2.fs?.stat(uriConverter.asUri(dirName));
+            const result = env3.fs?.stat(uriConverter.asUri(dirName));
             if (typeof result === "object" && "then" in result) {
               const promise = result;
               promises.add(promise);
@@ -9096,7 +9096,7 @@ ${hover.contents.value}
                 promises.delete(promise);
                 dir.exists = result2?.type === 2;
                 if (dir.exists) {
-                  version2++;
+                  version3++;
                 }
               });
             } else {
@@ -9128,14 +9128,14 @@ ${hover.contents.value}
           return exists();
         }
         function handleStat(fileName, file) {
-          const result = env2.fs?.stat(uriConverter.asUri(fileName));
+          const result = env3.fs?.stat(uriConverter.asUri(fileName));
           if (typeof result === "object" && "then" in result) {
             const promise = result;
             promises.add(promise);
             result.then((result2) => {
               promises.delete(promise);
               if (file.stat?.type !== result2?.type || file.stat?.mtime !== result2?.mtime) {
-                version2++;
+                version3++;
               }
               file.stat = result2;
             });
@@ -9193,7 +9193,7 @@ ${hover.contents.value}
           }
           file.requestedText = true;
           const uri = uriConverter.asUri(fileName);
-          const result = env2.fs?.readFile(uri, encoding);
+          const result = env3.fs?.readFile(uri, encoding);
           if (typeof result === "object" && "then" in result) {
             const promise = result;
             promises.add(promise);
@@ -9204,7 +9204,7 @@ ${hover.contents.value}
                 if (file.stat) {
                   file.stat.mtime++;
                 }
-                version2++;
+                version3++;
               }
             });
           } else if (result !== void 0) {
@@ -9217,14 +9217,14 @@ ${hover.contents.value}
             return;
           }
           dir.requestedRead = true;
-          const result = env2.fs?.readDirectory(uriConverter.asUri(dirName || "."));
+          const result = env3.fs?.readDirectory(uriConverter.asUri(dirName || "."));
           if (typeof result === "object" && "then" in result) {
             const promise = result;
             promises.add(promise);
             result.then((result2) => {
               promises.delete(promise);
               if (onReadDirectoryResult(dirName, dir, result2)) {
-                version2++;
+                version3++;
               }
             });
           } else {
@@ -9237,7 +9237,7 @@ ${hover.contents.value}
           for (const [name2, _fileType] of result) {
             let fileType = _fileType;
             if (fileType === 64) {
-              const stat = env2.fs?.stat(uriConverter.asUri(dirName + "/" + name2));
+              const stat = env3.fs?.stat(uriConverter.asUri(dirName + "/" + name2));
               if (typeof stat === "object" && "then" in stat) {
                 const promise = stat;
                 promises.add(promise);
@@ -9253,7 +9253,7 @@ ${hover.contents.value}
                       });
                     }
                     if (stat2.type !== file.stat?.type || stat2.mtime !== file.stat?.mtime) {
-                      version2++;
+                      version3++;
                     }
                     file.stat = stat2;
                     file.requestedStat = true;
@@ -9261,7 +9261,7 @@ ${hover.contents.value}
                     const childDir = getDirFromDir(dir, name2);
                     if (!childDir.exists) {
                       childDir.exists = true;
-                      version2++;
+                      version3++;
                     }
                   }
                 });
@@ -9314,7 +9314,7 @@ ${hover.contents.value}
             currentDir = getDirFromDir(currentDir, nextDirName);
             if (markExists && !currentDir.exists) {
               currentDir.exists = true;
-              version2++;
+              version3++;
             }
           }
           return currentDir;
@@ -9339,9 +9339,9 @@ ${hover.contents.value}
 
   // node_modules/@volar/typescript/index.js
   var require_typescript = __commonJS({
-    "node_modules/@volar/typescript/index.js"(exports3) {
+    "node_modules/@volar/typescript/index.js"(exports2) {
       "use strict";
-      var __createBinding = exports3 && exports3.__createBinding || (Object.create ? function(o, m, k, k2) {
+      var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
         if (k2 === void 0)
           k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -9356,27 +9356,27 @@ ${hover.contents.value}
           k2 = k;
         o[k2] = m[k];
       });
-      var __exportStar = exports3 && exports3.__exportStar || function(m, exports4) {
+      var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
         for (var p in m)
-          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports4, p))
-            __createBinding(exports4, m, p);
+          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p))
+            __createBinding(exports3, m, p);
       };
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      __exportStar(require_common2(), exports3);
-      __exportStar(require_proxyLanguageService(), exports3);
-      __exportStar(require_decorateLanguageServiceHost(), exports3);
-      __exportStar(require_decorateProgram(), exports3);
-      __exportStar(require_proxyCreateProgram(), exports3);
-      __exportStar(require_createProject(), exports3);
-      __exportStar(require_createSys(), exports3);
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      __exportStar(require_common2(), exports2);
+      __exportStar(require_proxyLanguageService(), exports2);
+      __exportStar(require_decorateLanguageServiceHost(), exports2);
+      __exportStar(require_decorateProgram(), exports2);
+      __exportStar(require_proxyCreateProgram(), exports2);
+      __exportStar(require_createProject(), exports2);
+      __exportStar(require_createSys(), exports2);
     }
   });
 
   // node_modules/vscode-nls/lib/common/ral.js
   var require_ral = __commonJS({
-    "node_modules/vscode-nls/lib/common/ral.js"(exports3) {
+    "node_modules/vscode-nls/lib/common/ral.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
+      Object.defineProperty(exports2, "__esModule", { value: true });
       var _ral;
       function RAL() {
         if (_ral === void 0) {
@@ -9393,28 +9393,28 @@ ${hover.contents.value}
         }
         RAL2.install = install;
       })(RAL || (RAL = {}));
-      exports3.default = RAL;
+      exports2.default = RAL;
     }
   });
 
   // node_modules/vscode-nls/lib/common/common.js
   var require_common3 = __commonJS({
-    "node_modules/vscode-nls/lib/common/common.js"(exports3) {
+    "node_modules/vscode-nls/lib/common/common.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.config = exports3.loadMessageBundle = exports3.localize = exports3.format = exports3.setPseudo = exports3.isPseudo = exports3.isDefined = exports3.BundleFormat = exports3.MessageFormat = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.config = exports2.loadMessageBundle = exports2.localize = exports2.format = exports2.setPseudo = exports2.isPseudo = exports2.isDefined = exports2.BundleFormat = exports2.MessageFormat = void 0;
       var ral_1 = require_ral();
       var MessageFormat;
       (function(MessageFormat2) {
         MessageFormat2["file"] = "file";
         MessageFormat2["bundle"] = "bundle";
         MessageFormat2["both"] = "both";
-      })(MessageFormat = exports3.MessageFormat || (exports3.MessageFormat = {}));
+      })(MessageFormat = exports2.MessageFormat || (exports2.MessageFormat = {}));
       var BundleFormat;
       (function(BundleFormat2) {
         BundleFormat2["standalone"] = "standalone";
         BundleFormat2["languagePack"] = "languagePack";
-      })(BundleFormat = exports3.BundleFormat || (exports3.BundleFormat = {}));
+      })(BundleFormat = exports2.BundleFormat || (exports2.BundleFormat = {}));
       var LocalizeInfo;
       (function(LocalizeInfo2) {
         function is2(value) {
@@ -9426,15 +9426,15 @@ ${hover.contents.value}
       function isDefined(value) {
         return typeof value !== "undefined";
       }
-      exports3.isDefined = isDefined;
-      exports3.isPseudo = false;
+      exports2.isDefined = isDefined;
+      exports2.isPseudo = false;
       function setPseudo(pseudo) {
-        exports3.isPseudo = pseudo;
+        exports2.isPseudo = pseudo;
       }
-      exports3.setPseudo = setPseudo;
+      exports2.setPseudo = setPseudo;
       function format2(message, args) {
         var result;
-        if (exports3.isPseudo) {
+        if (exports2.isPseudo) {
           message = "\uFF3B" + message.replace(/[aouei]/g, "$&$&") + "\uFF3D";
         }
         if (args.length === 0) {
@@ -9454,7 +9454,7 @@ ${hover.contents.value}
         }
         return result;
       }
-      exports3.format = format2;
+      exports2.format = format2;
       function localize2(_key, message) {
         var args = [];
         for (var _i = 2; _i < arguments.length; _i++) {
@@ -9462,23 +9462,23 @@ ${hover.contents.value}
         }
         return format2(message, args);
       }
-      exports3.localize = localize2;
+      exports2.localize = localize2;
       function loadMessageBundle(file) {
         return (0, ral_1.default)().loadMessageBundle(file);
       }
-      exports3.loadMessageBundle = loadMessageBundle;
-      function config(opts) {
+      exports2.loadMessageBundle = loadMessageBundle;
+      function config2(opts) {
         return (0, ral_1.default)().config(opts);
       }
-      exports3.config = config;
+      exports2.config = config2;
     }
   });
 
   // node_modules/vscode-nls/lib/browser/main.js
   var require_main = __commonJS({
-    "node_modules/vscode-nls/lib/browser/main.js"(exports3) {
+    "node_modules/vscode-nls/lib/browser/main.js"(exports2) {
       "use strict";
-      var __spreadArray = exports3 && exports3.__spreadArray || function(to, from, pack) {
+      var __spreadArray = exports2 && exports2.__spreadArray || function(to, from, pack) {
         if (pack || arguments.length === 2)
           for (var i = 0, l = from.length, ar; i < l; i++) {
             if (ar || !(i in from)) {
@@ -9489,15 +9489,15 @@ ${hover.contents.value}
           }
         return to.concat(ar || Array.prototype.slice.call(from));
       };
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.config = exports3.loadMessageBundle = exports3.BundleFormat = exports3.MessageFormat = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.config = exports2.loadMessageBundle = exports2.BundleFormat = exports2.MessageFormat = void 0;
       var ral_1 = require_ral();
       var common_1 = require_common3();
       var common_2 = require_common3();
-      Object.defineProperty(exports3, "MessageFormat", { enumerable: true, get: function() {
+      Object.defineProperty(exports2, "MessageFormat", { enumerable: true, get: function() {
         return common_2.MessageFormat;
       } });
-      Object.defineProperty(exports3, "BundleFormat", { enumerable: true, get: function() {
+      Object.defineProperty(exports2, "BundleFormat", { enumerable: true, get: function() {
         return common_2.BundleFormat;
       } });
       function loadMessageBundle(_file) {
@@ -9513,29 +9513,29 @@ ${hover.contents.value}
           }
         };
       }
-      exports3.loadMessageBundle = loadMessageBundle;
-      function config(options) {
+      exports2.loadMessageBundle = loadMessageBundle;
+      function config2(options) {
         var _a4;
         (0, common_1.setPseudo)(((_a4 = options === null || options === void 0 ? void 0 : options.locale) === null || _a4 === void 0 ? void 0 : _a4.toLowerCase()) === "pseudo");
         return loadMessageBundle;
       }
-      exports3.config = config;
+      exports2.config = config2;
       ral_1.default.install(Object.freeze({
         loadMessageBundle,
-        config
+        config: config2
       }));
     }
   });
 
   // node_modules/volar-service-typescript/lib/shared.js
   var require_shared = __commonJS({
-    "node_modules/volar-service-typescript/lib/shared.js"(exports3) {
+    "node_modules/volar-service-typescript/lib/shared.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.getConfigTitle = getConfigTitle;
-      exports3.isTsDocument = isTsDocument;
-      exports3.isJsonDocument = isJsonDocument;
-      exports3.safeCall = safeCall;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.getConfigTitle = getConfigTitle;
+      exports2.isTsDocument = isTsDocument;
+      exports2.isJsonDocument = isJsonDocument;
+      exports2.safeCall = safeCall;
       function getConfigTitle(document5) {
         if (document5.languageId === "javascriptreact") {
           return "javascript";
@@ -9562,10 +9562,10 @@ ${hover.contents.value}
 
   // node_modules/volar-service-typescript/lib/plugins/directiveComment.js
   var require_directiveComment = __commonJS({
-    "node_modules/volar-service-typescript/lib/plugins/directiveComment.js"(exports3) {
+    "node_modules/volar-service-typescript/lib/plugins/directiveComment.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.create = create;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.create = create;
       var nls = require_main();
       var shared_1 = require_shared();
       var localize2 = nls.loadMessageBundle();
@@ -9639,7 +9639,7 @@ ${hover.contents.value}
 
   // node_modules/semver/internal/constants.js
   var require_constants = __commonJS({
-    "node_modules/semver/internal/constants.js"(exports3, module) {
+    "node_modules/semver/internal/constants.js"(exports2, module) {
       var SEMVER_SPEC_VERSION = "2.0.0";
       var MAX_LENGTH = 256;
       var MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER || /* istanbul ignore next */
@@ -9670,7 +9670,7 @@ ${hover.contents.value}
 
   // node_modules/semver/internal/debug.js
   var require_debug = __commonJS({
-    "node_modules/semver/internal/debug.js"(exports3, module) {
+    "node_modules/semver/internal/debug.js"(exports2, module) {
       var debug = typeof process === "object" && process.env && process.env.NODE_DEBUG && /\bsemver\b/i.test(process.env.NODE_DEBUG) ? (...args) => console.error("SEMVER", ...args) : () => {
       };
       module.exports = debug;
@@ -9679,18 +9679,19 @@ ${hover.contents.value}
 
   // node_modules/semver/internal/re.js
   var require_re = __commonJS({
-    "node_modules/semver/internal/re.js"(exports3, module) {
+    "node_modules/semver/internal/re.js"(exports2, module) {
       var {
         MAX_SAFE_COMPONENT_LENGTH,
         MAX_SAFE_BUILD_LENGTH,
         MAX_LENGTH
       } = require_constants();
       var debug = require_debug();
-      exports3 = module.exports = {};
-      var re = exports3.re = [];
-      var safeRe = exports3.safeRe = [];
-      var src = exports3.src = [];
-      var t = exports3.t = {};
+      exports2 = module.exports = {};
+      var re = exports2.re = [];
+      var safeRe = exports2.safeRe = [];
+      var src = exports2.src = [];
+      var safeSrc = exports2.safeSrc = [];
+      var t = exports2.t = {};
       var R = 0;
       var LETTERDASHNUMBER = "[a-zA-Z0-9-]";
       var safeRegexReplacements = [
@@ -9710,6 +9711,7 @@ ${hover.contents.value}
         debug(name2, index4, value);
         t[name2] = index4;
         src[index4] = value;
+        safeSrc[index4] = safe2;
         re[index4] = new RegExp(value, isGlobal ? "g" : void 0);
         safeRe[index4] = new RegExp(safe2, isGlobal ? "g" : void 0);
       };
@@ -9742,18 +9744,18 @@ ${hover.contents.value}
       createToken("COERCERTLFULL", src[t.COERCEFULL], true);
       createToken("LONETILDE", "(?:~>?)");
       createToken("TILDETRIM", `(\\s*)${src[t.LONETILDE]}\\s+`, true);
-      exports3.tildeTrimReplace = "$1~";
+      exports2.tildeTrimReplace = "$1~";
       createToken("TILDE", `^${src[t.LONETILDE]}${src[t.XRANGEPLAIN]}$`);
       createToken("TILDELOOSE", `^${src[t.LONETILDE]}${src[t.XRANGEPLAINLOOSE]}$`);
       createToken("LONECARET", "(?:\\^)");
       createToken("CARETTRIM", `(\\s*)${src[t.LONECARET]}\\s+`, true);
-      exports3.caretTrimReplace = "$1^";
+      exports2.caretTrimReplace = "$1^";
       createToken("CARET", `^${src[t.LONECARET]}${src[t.XRANGEPLAIN]}$`);
       createToken("CARETLOOSE", `^${src[t.LONECARET]}${src[t.XRANGEPLAINLOOSE]}$`);
       createToken("COMPARATORLOOSE", `^${src[t.GTLT]}\\s*(${src[t.LOOSEPLAIN]})$|^$`);
       createToken("COMPARATOR", `^${src[t.GTLT]}\\s*(${src[t.FULLPLAIN]})$|^$`);
       createToken("COMPARATORTRIM", `(\\s*)${src[t.GTLT]}\\s*(${src[t.LOOSEPLAIN]}|${src[t.XRANGEPLAIN]})`, true);
-      exports3.comparatorTrimReplace = "$1$2$3";
+      exports2.comparatorTrimReplace = "$1$2$3";
       createToken("HYPHENRANGE", `^\\s*(${src[t.XRANGEPLAIN]})\\s+-\\s+(${src[t.XRANGEPLAIN]})\\s*$`);
       createToken("HYPHENRANGELOOSE", `^\\s*(${src[t.XRANGEPLAINLOOSE]})\\s+-\\s+(${src[t.XRANGEPLAINLOOSE]})\\s*$`);
       createToken("STAR", "(<|>)?=?\\s*\\*");
@@ -9764,7 +9766,7 @@ ${hover.contents.value}
 
   // node_modules/semver/internal/parse-options.js
   var require_parse_options = __commonJS({
-    "node_modules/semver/internal/parse-options.js"(exports3, module) {
+    "node_modules/semver/internal/parse-options.js"(exports2, module) {
       var looseOption = Object.freeze({ loose: true });
       var emptyOpts = Object.freeze({});
       var parseOptions = (options) => {
@@ -9782,7 +9784,7 @@ ${hover.contents.value}
 
   // node_modules/semver/internal/identifiers.js
   var require_identifiers = __commonJS({
-    "node_modules/semver/internal/identifiers.js"(exports3, module) {
+    "node_modules/semver/internal/identifiers.js"(exports2, module) {
       var numeric = /^[0-9]+$/;
       var compareIdentifiers = (a, b) => {
         const anum = numeric.test(a);
@@ -9803,38 +9805,38 @@ ${hover.contents.value}
 
   // node_modules/semver/classes/semver.js
   var require_semver = __commonJS({
-    "node_modules/semver/classes/semver.js"(exports3, module) {
+    "node_modules/semver/classes/semver.js"(exports2, module) {
       var debug = require_debug();
       var { MAX_LENGTH, MAX_SAFE_INTEGER } = require_constants();
-      var { safeRe: re, t } = require_re();
+      var { safeRe: re, safeSrc: src, t } = require_re();
       var parseOptions = require_parse_options();
       var { compareIdentifiers } = require_identifiers();
       var SemVer = class {
-        constructor(version2, options) {
+        constructor(version3, options) {
           options = parseOptions(options);
-          if (version2 instanceof SemVer) {
-            if (version2.loose === !!options.loose && version2.includePrerelease === !!options.includePrerelease) {
-              return version2;
+          if (version3 instanceof SemVer) {
+            if (version3.loose === !!options.loose && version3.includePrerelease === !!options.includePrerelease) {
+              return version3;
             } else {
-              version2 = version2.version;
+              version3 = version3.version;
             }
-          } else if (typeof version2 !== "string") {
-            throw new TypeError(`Invalid version. Must be a string. Got type "${typeof version2}".`);
+          } else if (typeof version3 !== "string") {
+            throw new TypeError(`Invalid version. Must be a string. Got type "${typeof version3}".`);
           }
-          if (version2.length > MAX_LENGTH) {
+          if (version3.length > MAX_LENGTH) {
             throw new TypeError(
               `version is longer than ${MAX_LENGTH} characters`
             );
           }
-          debug("SemVer", version2, options);
+          debug("SemVer", version3, options);
           this.options = options;
           this.loose = !!options.loose;
           this.includePrerelease = !!options.includePrerelease;
-          const m = version2.trim().match(options.loose ? re[t.LOOSE] : re[t.FULL]);
+          const m = version3.trim().match(options.loose ? re[t.LOOSE] : re[t.FULL]);
           if (!m) {
-            throw new TypeError(`Invalid Version: ${version2}`);
+            throw new TypeError(`Invalid Version: ${version3}`);
           }
-          this.raw = version2;
+          this.raw = version3;
           this.major = +m[1];
           this.minor = +m[2];
           this.patch = +m[3];
@@ -9945,8 +9947,20 @@ ${hover.contents.value}
         }
         // preminor will bump the version up to the next minor release, and immediately
         // down to pre-release. premajor and prepatch work the same way.
-        inc(release, identifier, identifierBase) {
-          switch (release) {
+        inc(release2, identifier, identifierBase) {
+          if (release2.startsWith("pre")) {
+            if (!identifier && identifierBase === false) {
+              throw new Error("invalid increment argument: identifier is empty");
+            }
+            if (identifier) {
+              const r = new RegExp(`^${this.options.loose ? src[t.PRERELEASELOOSE] : src[t.PRERELEASE]}$`);
+              const match = `-${identifier}`.match(r);
+              if (!match || match[1] !== identifier) {
+                throw new Error(`invalid identifier: ${identifier}`);
+              }
+            }
+          }
+          switch (release2) {
             case "premajor":
               this.prerelease.length = 0;
               this.patch = 0;
@@ -9971,6 +9985,12 @@ ${hover.contents.value}
               }
               this.inc("pre", identifier, identifierBase);
               break;
+            case "release":
+              if (this.prerelease.length === 0) {
+                throw new Error(`version ${this.raw} is not a prerelease`);
+              }
+              this.prerelease.length = 0;
+              break;
             case "major":
               if (this.minor !== 0 || this.patch !== 0 || this.prerelease.length === 0) {
                 this.major++;
@@ -9994,9 +10014,6 @@ ${hover.contents.value}
               break;
             case "pre": {
               const base = Number(identifierBase) ? 1 : 0;
-              if (!identifier && identifierBase === false) {
-                throw new Error("invalid increment argument: identifier is empty");
-              }
               if (this.prerelease.length === 0) {
                 this.prerelease = [base];
               } else {
@@ -10030,7 +10047,7 @@ ${hover.contents.value}
               break;
             }
             default:
-              throw new Error(`invalid increment argument: ${release}`);
+              throw new Error(`invalid increment argument: ${release2}`);
           }
           this.raw = this.format();
           if (this.build.length) {
@@ -10045,14 +10062,14 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/parse.js
   var require_parse = __commonJS({
-    "node_modules/semver/functions/parse.js"(exports3, module) {
+    "node_modules/semver/functions/parse.js"(exports2, module) {
       var SemVer = require_semver();
-      var parse5 = (version2, options, throwErrors = false) => {
-        if (version2 instanceof SemVer) {
-          return version2;
+      var parse5 = (version3, options, throwErrors = false) => {
+        if (version3 instanceof SemVer) {
+          return version3;
         }
         try {
-          return new SemVer(version2, options);
+          return new SemVer(version3, options);
         } catch (er) {
           if (!throwErrors) {
             return null;
@@ -10066,10 +10083,10 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/valid.js
   var require_valid = __commonJS({
-    "node_modules/semver/functions/valid.js"(exports3, module) {
+    "node_modules/semver/functions/valid.js"(exports2, module) {
       var parse5 = require_parse();
-      var valid = (version2, options) => {
-        const v = parse5(version2, options);
+      var valid = (version3, options) => {
+        const v = parse5(version3, options);
         return v ? v.version : null;
       };
       module.exports = valid;
@@ -10078,10 +10095,10 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/clean.js
   var require_clean = __commonJS({
-    "node_modules/semver/functions/clean.js"(exports3, module) {
+    "node_modules/semver/functions/clean.js"(exports2, module) {
       var parse5 = require_parse();
-      var clean = (version2, options) => {
-        const s = parse5(version2.trim().replace(/^[=v]+/, ""), options);
+      var clean = (version3, options) => {
+        const s = parse5(version3.trim().replace(/^[=v]+/, ""), options);
         return s ? s.version : null;
       };
       module.exports = clean;
@@ -10090,9 +10107,9 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/inc.js
   var require_inc = __commonJS({
-    "node_modules/semver/functions/inc.js"(exports3, module) {
+    "node_modules/semver/functions/inc.js"(exports2, module) {
       var SemVer = require_semver();
-      var inc = (version2, release, options, identifier, identifierBase) => {
+      var inc = (version3, release2, options, identifier, identifierBase) => {
         if (typeof options === "string") {
           identifierBase = identifier;
           identifier = options;
@@ -10100,9 +10117,9 @@ ${hover.contents.value}
         }
         try {
           return new SemVer(
-            version2 instanceof SemVer ? version2.version : version2,
+            version3 instanceof SemVer ? version3.version : version3,
             options
-          ).inc(release, identifier, identifierBase).version;
+          ).inc(release2, identifier, identifierBase).version;
         } catch (er) {
           return null;
         }
@@ -10113,11 +10130,11 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/diff.js
   var require_diff = __commonJS({
-    "node_modules/semver/functions/diff.js"(exports3, module) {
+    "node_modules/semver/functions/diff.js"(exports2, module) {
       var parse5 = require_parse();
-      var diff = (version1, version2) => {
+      var diff = (version1, version22) => {
         const v1 = parse5(version1, null, true);
-        const v2 = parse5(version2, null, true);
+        const v2 = parse5(version22, null, true);
         const comparison = v1.compare(v2);
         if (comparison === 0) {
           return null;
@@ -10131,13 +10148,12 @@ ${hover.contents.value}
           if (!lowVersion.patch && !lowVersion.minor) {
             return "major";
           }
-          if (highVersion.patch) {
+          if (lowVersion.compareMain(highVersion) === 0) {
+            if (lowVersion.minor && !lowVersion.patch) {
+              return "minor";
+            }
             return "patch";
           }
-          if (highVersion.minor) {
-            return "minor";
-          }
-          return "major";
         }
         const prefix = highHasPre ? "pre" : "";
         if (v1.major !== v2.major) {
@@ -10157,7 +10173,7 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/major.js
   var require_major = __commonJS({
-    "node_modules/semver/functions/major.js"(exports3, module) {
+    "node_modules/semver/functions/major.js"(exports2, module) {
       var SemVer = require_semver();
       var major = (a, loose) => new SemVer(a, loose).major;
       module.exports = major;
@@ -10166,7 +10182,7 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/minor.js
   var require_minor = __commonJS({
-    "node_modules/semver/functions/minor.js"(exports3, module) {
+    "node_modules/semver/functions/minor.js"(exports2, module) {
       var SemVer = require_semver();
       var minor = (a, loose) => new SemVer(a, loose).minor;
       module.exports = minor;
@@ -10175,7 +10191,7 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/patch.js
   var require_patch = __commonJS({
-    "node_modules/semver/functions/patch.js"(exports3, module) {
+    "node_modules/semver/functions/patch.js"(exports2, module) {
       var SemVer = require_semver();
       var patch = (a, loose) => new SemVer(a, loose).patch;
       module.exports = patch;
@@ -10184,10 +10200,10 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/prerelease.js
   var require_prerelease = __commonJS({
-    "node_modules/semver/functions/prerelease.js"(exports3, module) {
+    "node_modules/semver/functions/prerelease.js"(exports2, module) {
       var parse5 = require_parse();
-      var prerelease = (version2, options) => {
-        const parsed = parse5(version2, options);
+      var prerelease = (version3, options) => {
+        const parsed = parse5(version3, options);
         return parsed && parsed.prerelease.length ? parsed.prerelease : null;
       };
       module.exports = prerelease;
@@ -10196,7 +10212,7 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/compare.js
   var require_compare = __commonJS({
-    "node_modules/semver/functions/compare.js"(exports3, module) {
+    "node_modules/semver/functions/compare.js"(exports2, module) {
       var SemVer = require_semver();
       var compare = (a, b, loose) => new SemVer(a, loose).compare(new SemVer(b, loose));
       module.exports = compare;
@@ -10205,7 +10221,7 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/rcompare.js
   var require_rcompare = __commonJS({
-    "node_modules/semver/functions/rcompare.js"(exports3, module) {
+    "node_modules/semver/functions/rcompare.js"(exports2, module) {
       var compare = require_compare();
       var rcompare = (a, b, loose) => compare(b, a, loose);
       module.exports = rcompare;
@@ -10214,7 +10230,7 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/compare-loose.js
   var require_compare_loose = __commonJS({
-    "node_modules/semver/functions/compare-loose.js"(exports3, module) {
+    "node_modules/semver/functions/compare-loose.js"(exports2, module) {
       var compare = require_compare();
       var compareLoose = (a, b) => compare(a, b, true);
       module.exports = compareLoose;
@@ -10223,7 +10239,7 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/compare-build.js
   var require_compare_build = __commonJS({
-    "node_modules/semver/functions/compare-build.js"(exports3, module) {
+    "node_modules/semver/functions/compare-build.js"(exports2, module) {
       var SemVer = require_semver();
       var compareBuild = (a, b, loose) => {
         const versionA = new SemVer(a, loose);
@@ -10236,7 +10252,7 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/sort.js
   var require_sort = __commonJS({
-    "node_modules/semver/functions/sort.js"(exports3, module) {
+    "node_modules/semver/functions/sort.js"(exports2, module) {
       var compareBuild = require_compare_build();
       var sort = (list4, loose) => list4.sort((a, b) => compareBuild(a, b, loose));
       module.exports = sort;
@@ -10245,7 +10261,7 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/rsort.js
   var require_rsort = __commonJS({
-    "node_modules/semver/functions/rsort.js"(exports3, module) {
+    "node_modules/semver/functions/rsort.js"(exports2, module) {
       var compareBuild = require_compare_build();
       var rsort = (list4, loose) => list4.sort((a, b) => compareBuild(b, a, loose));
       module.exports = rsort;
@@ -10254,7 +10270,7 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/gt.js
   var require_gt = __commonJS({
-    "node_modules/semver/functions/gt.js"(exports3, module) {
+    "node_modules/semver/functions/gt.js"(exports2, module) {
       var compare = require_compare();
       var gt = (a, b, loose) => compare(a, b, loose) > 0;
       module.exports = gt;
@@ -10263,7 +10279,7 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/lt.js
   var require_lt = __commonJS({
-    "node_modules/semver/functions/lt.js"(exports3, module) {
+    "node_modules/semver/functions/lt.js"(exports2, module) {
       var compare = require_compare();
       var lt = (a, b, loose) => compare(a, b, loose) < 0;
       module.exports = lt;
@@ -10272,7 +10288,7 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/eq.js
   var require_eq = __commonJS({
-    "node_modules/semver/functions/eq.js"(exports3, module) {
+    "node_modules/semver/functions/eq.js"(exports2, module) {
       var compare = require_compare();
       var eq = (a, b, loose) => compare(a, b, loose) === 0;
       module.exports = eq;
@@ -10281,7 +10297,7 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/neq.js
   var require_neq = __commonJS({
-    "node_modules/semver/functions/neq.js"(exports3, module) {
+    "node_modules/semver/functions/neq.js"(exports2, module) {
       var compare = require_compare();
       var neq = (a, b, loose) => compare(a, b, loose) !== 0;
       module.exports = neq;
@@ -10290,7 +10306,7 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/gte.js
   var require_gte = __commonJS({
-    "node_modules/semver/functions/gte.js"(exports3, module) {
+    "node_modules/semver/functions/gte.js"(exports2, module) {
       var compare = require_compare();
       var gte = (a, b, loose) => compare(a, b, loose) >= 0;
       module.exports = gte;
@@ -10299,7 +10315,7 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/lte.js
   var require_lte = __commonJS({
-    "node_modules/semver/functions/lte.js"(exports3, module) {
+    "node_modules/semver/functions/lte.js"(exports2, module) {
       var compare = require_compare();
       var lte = (a, b, loose) => compare(a, b, loose) <= 0;
       module.exports = lte;
@@ -10308,7 +10324,7 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/cmp.js
   var require_cmp = __commonJS({
-    "node_modules/semver/functions/cmp.js"(exports3, module) {
+    "node_modules/semver/functions/cmp.js"(exports2, module) {
       var eq = require_eq();
       var neq = require_neq();
       var gt = require_gt();
@@ -10357,28 +10373,28 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/coerce.js
   var require_coerce = __commonJS({
-    "node_modules/semver/functions/coerce.js"(exports3, module) {
+    "node_modules/semver/functions/coerce.js"(exports2, module) {
       var SemVer = require_semver();
       var parse5 = require_parse();
       var { safeRe: re, t } = require_re();
-      var coerce = (version2, options) => {
-        if (version2 instanceof SemVer) {
-          return version2;
+      var coerce = (version3, options) => {
+        if (version3 instanceof SemVer) {
+          return version3;
         }
-        if (typeof version2 === "number") {
-          version2 = String(version2);
+        if (typeof version3 === "number") {
+          version3 = String(version3);
         }
-        if (typeof version2 !== "string") {
+        if (typeof version3 !== "string") {
           return null;
         }
         options = options || {};
         let match = null;
         if (!options.rtl) {
-          match = version2.match(options.includePrerelease ? re[t.COERCEFULL] : re[t.COERCE]);
+          match = version3.match(options.includePrerelease ? re[t.COERCEFULL] : re[t.COERCE]);
         } else {
           const coerceRtlRegex = options.includePrerelease ? re[t.COERCERTLFULL] : re[t.COERCERTL];
           let next;
-          while ((next = coerceRtlRegex.exec(version2)) && (!match || match.index + match[0].length !== version2.length)) {
+          while ((next = coerceRtlRegex.exec(version3)) && (!match || match.index + match[0].length !== version3.length)) {
             if (!match || next.index + next[0].length !== match.index + match[0].length) {
               match = next;
             }
@@ -10402,7 +10418,7 @@ ${hover.contents.value}
 
   // node_modules/semver/internal/lrucache.js
   var require_lrucache = __commonJS({
-    "node_modules/semver/internal/lrucache.js"(exports3, module) {
+    "node_modules/semver/internal/lrucache.js"(exports2, module) {
       var LRUCache2 = class {
         constructor() {
           this.max = 1e3;
@@ -10439,7 +10455,7 @@ ${hover.contents.value}
 
   // node_modules/semver/classes/range.js
   var require_range = __commonJS({
-    "node_modules/semver/classes/range.js"(exports3, module) {
+    "node_modules/semver/classes/range.js"(exports2, module) {
       var SPACE_CHARACTERS = /\s+/g;
       var Range2 = class {
         constructor(range, options) {
@@ -10560,19 +10576,19 @@ ${hover.contents.value}
           });
         }
         // if ANY of the sets match ALL of its comparators, then pass
-        test(version2) {
-          if (!version2) {
+        test(version3) {
+          if (!version3) {
             return false;
           }
-          if (typeof version2 === "string") {
+          if (typeof version3 === "string") {
             try {
-              version2 = new SemVer(version2, this.options);
+              version3 = new SemVer(version3, this.options);
             } catch (er) {
               return false;
             }
           }
           for (let i = 0; i < this.set.length; i++) {
-            if (testSet(this.set[i], version2, this.options)) {
+            if (testSet(this.set[i], version3, this.options)) {
               return true;
             }
           }
@@ -10786,13 +10802,13 @@ ${hover.contents.value}
         }
         return `${from} ${to}`.trim();
       };
-      var testSet = (set, version2, options) => {
+      var testSet = (set, version3, options) => {
         for (let i = 0; i < set.length; i++) {
-          if (!set[i].test(version2)) {
+          if (!set[i].test(version3)) {
             return false;
           }
         }
-        if (version2.prerelease.length && !options.includePrerelease) {
+        if (version3.prerelease.length && !options.includePrerelease) {
           for (let i = 0; i < set.length; i++) {
             debug(set[i].semver);
             if (set[i].semver === Comparator.ANY) {
@@ -10800,7 +10816,7 @@ ${hover.contents.value}
             }
             if (set[i].semver.prerelease.length > 0) {
               const allowed = set[i].semver;
-              if (allowed.major === version2.major && allowed.minor === version2.minor && allowed.patch === version2.patch) {
+              if (allowed.major === version3.major && allowed.minor === version3.minor && allowed.patch === version3.patch) {
                 return true;
               }
             }
@@ -10814,7 +10830,7 @@ ${hover.contents.value}
 
   // node_modules/semver/classes/comparator.js
   var require_comparator = __commonJS({
-    "node_modules/semver/classes/comparator.js"(exports3, module) {
+    "node_modules/semver/classes/comparator.js"(exports2, module) {
       var ANY = Symbol("SemVer ANY");
       var Comparator = class {
         static get ANY() {
@@ -10860,19 +10876,19 @@ ${hover.contents.value}
         toString() {
           return this.value;
         }
-        test(version2) {
-          debug("Comparator.test", version2, this.options.loose);
-          if (this.semver === ANY || version2 === ANY) {
+        test(version3) {
+          debug("Comparator.test", version3, this.options.loose);
+          if (this.semver === ANY || version3 === ANY) {
             return true;
           }
-          if (typeof version2 === "string") {
+          if (typeof version3 === "string") {
             try {
-              version2 = new SemVer(version2, this.options);
+              version3 = new SemVer(version3, this.options);
             } catch (er) {
               return false;
             }
           }
-          return cmp(version2, this.operator, this.semver, this.options);
+          return cmp(version3, this.operator, this.semver, this.options);
         }
         intersects(comp, options) {
           if (!(comp instanceof Comparator)) {
@@ -10926,15 +10942,15 @@ ${hover.contents.value}
 
   // node_modules/semver/functions/satisfies.js
   var require_satisfies = __commonJS({
-    "node_modules/semver/functions/satisfies.js"(exports3, module) {
+    "node_modules/semver/functions/satisfies.js"(exports2, module) {
       var Range2 = require_range();
-      var satisfies = (version2, range, options) => {
+      var satisfies = (version3, range, options) => {
         try {
           range = new Range2(range, options);
         } catch (er) {
           return false;
         }
-        return range.test(version2);
+        return range.test(version3);
       };
       module.exports = satisfies;
     }
@@ -10942,7 +10958,7 @@ ${hover.contents.value}
 
   // node_modules/semver/ranges/to-comparators.js
   var require_to_comparators = __commonJS({
-    "node_modules/semver/ranges/to-comparators.js"(exports3, module) {
+    "node_modules/semver/ranges/to-comparators.js"(exports2, module) {
       var Range2 = require_range();
       var toComparators = (range, options) => new Range2(range, options).set.map((comp) => comp.map((c) => c.value).join(" ").trim().split(" "));
       module.exports = toComparators;
@@ -10951,10 +10967,10 @@ ${hover.contents.value}
 
   // node_modules/semver/ranges/max-satisfying.js
   var require_max_satisfying = __commonJS({
-    "node_modules/semver/ranges/max-satisfying.js"(exports3, module) {
+    "node_modules/semver/ranges/max-satisfying.js"(exports2, module) {
       var SemVer = require_semver();
       var Range2 = require_range();
-      var maxSatisfying = (versions, range, options) => {
+      var maxSatisfying = (versions2, range, options) => {
         let max = null;
         let maxSV = null;
         let rangeObj = null;
@@ -10963,7 +10979,7 @@ ${hover.contents.value}
         } catch (er) {
           return null;
         }
-        versions.forEach((v) => {
+        versions2.forEach((v) => {
           if (rangeObj.test(v)) {
             if (!max || maxSV.compare(v) === -1) {
               max = v;
@@ -10979,10 +10995,10 @@ ${hover.contents.value}
 
   // node_modules/semver/ranges/min-satisfying.js
   var require_min_satisfying = __commonJS({
-    "node_modules/semver/ranges/min-satisfying.js"(exports3, module) {
+    "node_modules/semver/ranges/min-satisfying.js"(exports2, module) {
       var SemVer = require_semver();
       var Range2 = require_range();
-      var minSatisfying = (versions, range, options) => {
+      var minSatisfying = (versions2, range, options) => {
         let min = null;
         let minSV = null;
         let rangeObj = null;
@@ -10991,7 +11007,7 @@ ${hover.contents.value}
         } catch (er) {
           return null;
         }
-        versions.forEach((v) => {
+        versions2.forEach((v) => {
           if (rangeObj.test(v)) {
             if (!min || minSV.compare(v) === 1) {
               min = v;
@@ -11007,7 +11023,7 @@ ${hover.contents.value}
 
   // node_modules/semver/ranges/min-version.js
   var require_min_version = __commonJS({
-    "node_modules/semver/ranges/min-version.js"(exports3, module) {
+    "node_modules/semver/ranges/min-version.js"(exports2, module) {
       var SemVer = require_semver();
       var Range2 = require_range();
       var gt = require_gt();
@@ -11063,7 +11079,7 @@ ${hover.contents.value}
 
   // node_modules/semver/ranges/valid.js
   var require_valid2 = __commonJS({
-    "node_modules/semver/ranges/valid.js"(exports3, module) {
+    "node_modules/semver/ranges/valid.js"(exports2, module) {
       var Range2 = require_range();
       var validRange = (range, options) => {
         try {
@@ -11078,7 +11094,7 @@ ${hover.contents.value}
 
   // node_modules/semver/ranges/outside.js
   var require_outside = __commonJS({
-    "node_modules/semver/ranges/outside.js"(exports3, module) {
+    "node_modules/semver/ranges/outside.js"(exports2, module) {
       var SemVer = require_semver();
       var Comparator = require_comparator();
       var { ANY } = Comparator;
@@ -11088,8 +11104,8 @@ ${hover.contents.value}
       var lt = require_lt();
       var lte = require_lte();
       var gte = require_gte();
-      var outside = (version2, range, hilo, options) => {
-        version2 = new SemVer(version2, options);
+      var outside = (version3, range, hilo, options) => {
+        version3 = new SemVer(version3, options);
         range = new Range2(range, options);
         let gtfn, ltefn, ltfn, comp, ecomp;
         switch (hilo) {
@@ -11110,7 +11126,7 @@ ${hover.contents.value}
           default:
             throw new TypeError('Must provide a hilo val of "<" or ">"');
         }
-        if (satisfies(version2, range, options)) {
+        if (satisfies(version3, range, options)) {
           return false;
         }
         for (let i = 0; i < range.set.length; ++i) {
@@ -11132,9 +11148,9 @@ ${hover.contents.value}
           if (high.operator === comp || high.operator === ecomp) {
             return false;
           }
-          if ((!low.operator || low.operator === comp) && ltefn(version2, low.semver)) {
+          if ((!low.operator || low.operator === comp) && ltefn(version3, low.semver)) {
             return false;
-          } else if (low.operator === ecomp && ltfn(version2, low.semver)) {
+          } else if (low.operator === ecomp && ltfn(version3, low.semver)) {
             return false;
           }
         }
@@ -11146,25 +11162,25 @@ ${hover.contents.value}
 
   // node_modules/semver/ranges/gtr.js
   var require_gtr = __commonJS({
-    "node_modules/semver/ranges/gtr.js"(exports3, module) {
+    "node_modules/semver/ranges/gtr.js"(exports2, module) {
       var outside = require_outside();
-      var gtr = (version2, range, options) => outside(version2, range, ">", options);
+      var gtr = (version3, range, options) => outside(version3, range, ">", options);
       module.exports = gtr;
     }
   });
 
   // node_modules/semver/ranges/ltr.js
   var require_ltr = __commonJS({
-    "node_modules/semver/ranges/ltr.js"(exports3, module) {
+    "node_modules/semver/ranges/ltr.js"(exports2, module) {
       var outside = require_outside();
-      var ltr = (version2, range, options) => outside(version2, range, "<", options);
+      var ltr = (version3, range, options) => outside(version3, range, "<", options);
       module.exports = ltr;
     }
   });
 
   // node_modules/semver/ranges/intersects.js
   var require_intersects = __commonJS({
-    "node_modules/semver/ranges/intersects.js"(exports3, module) {
+    "node_modules/semver/ranges/intersects.js"(exports2, module) {
       var Range2 = require_range();
       var intersects = (r1, r2, options) => {
         r1 = new Range2(r1, options);
@@ -11177,20 +11193,20 @@ ${hover.contents.value}
 
   // node_modules/semver/ranges/simplify.js
   var require_simplify = __commonJS({
-    "node_modules/semver/ranges/simplify.js"(exports3, module) {
+    "node_modules/semver/ranges/simplify.js"(exports2, module) {
       var satisfies = require_satisfies();
       var compare = require_compare();
-      module.exports = (versions, range, options) => {
+      module.exports = (versions2, range, options) => {
         const set = [];
         let first = null;
         let prev = null;
-        const v = versions.sort((a, b) => compare(a, b, options));
-        for (const version2 of v) {
-          const included = satisfies(version2, range, options);
+        const v = versions2.sort((a, b) => compare(a, b, options));
+        for (const version3 of v) {
+          const included = satisfies(version3, range, options);
           if (included) {
-            prev = version2;
+            prev = version3;
             if (!first) {
-              first = version2;
+              first = version3;
             }
           } else {
             if (prev) {
@@ -11226,7 +11242,7 @@ ${hover.contents.value}
 
   // node_modules/semver/ranges/subset.js
   var require_subset = __commonJS({
-    "node_modules/semver/ranges/subset.js"(exports3, module) {
+    "node_modules/semver/ranges/subset.js"(exports2, module) {
       var Range2 = require_range();
       var Comparator = require_comparator();
       var { ANY } = Comparator;
@@ -11388,7 +11404,7 @@ ${hover.contents.value}
 
   // node_modules/semver/index.js
   var require_semver2 = __commonJS({
-    "node_modules/semver/index.js"(exports3, module) {
+    "node_modules/semver/index.js"(exports2, module) {
       var internalRe = require_re();
       var constants = require_constants();
       var SemVer = require_semver();
@@ -11482,13 +11498,13 @@ ${hover.contents.value}
 
   // node_modules/volar-service-typescript/lib/protocol.const.js
   var require_protocol_const = __commonJS({
-    "node_modules/volar-service-typescript/lib/protocol.const.js"(exports3) {
+    "node_modules/volar-service-typescript/lib/protocol.const.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.EventName = exports3.DisplayPartKind = exports3.KindModifiers = exports3.DiagnosticCategory = exports3.Kind = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.EventName = exports2.DisplayPartKind = exports2.KindModifiers = exports2.DiagnosticCategory = exports2.Kind = void 0;
       var Kind = class {
       };
-      exports3.Kind = Kind;
+      exports2.Kind = Kind;
       Kind.alias = "alias";
       Kind.callSignature = "call";
       Kind.class = "class";
@@ -11521,13 +11537,13 @@ ${hover.contents.value}
       Kind.typeParameter = "type parameter";
       var DiagnosticCategory = class {
       };
-      exports3.DiagnosticCategory = DiagnosticCategory;
+      exports2.DiagnosticCategory = DiagnosticCategory;
       DiagnosticCategory.error = "error";
       DiagnosticCategory.warning = "warning";
       DiagnosticCategory.suggestion = "suggestion";
       var KindModifiers = class {
       };
-      exports3.KindModifiers = KindModifiers;
+      exports2.KindModifiers = KindModifiers;
       KindModifiers.optional = "optional";
       KindModifiers.deprecated = "deprecated";
       KindModifiers.color = "color";
@@ -11547,7 +11563,7 @@ ${hover.contents.value}
       ];
       var DisplayPartKind = class {
       };
-      exports3.DisplayPartKind = DisplayPartKind;
+      exports2.DisplayPartKind = DisplayPartKind;
       DisplayPartKind.functionName = "functionName";
       DisplayPartKind.methodName = "methodName";
       DisplayPartKind.parameterName = "parameterName";
@@ -11569,16 +11585,16 @@ ${hover.contents.value}
         EventName2["surveyReady"] = "surveyReady";
         EventName2["projectLoadingStart"] = "projectLoadingStart";
         EventName2["projectLoadingFinish"] = "projectLoadingFinish";
-      })(EventName || (exports3.EventName = EventName = {}));
+      })(EventName || (exports2.EventName = EventName = {}));
     }
   });
 
   // node_modules/volar-service-typescript/lib/utils/modifiers.js
   var require_modifiers = __commonJS({
-    "node_modules/volar-service-typescript/lib/utils/modifiers.js"(exports3) {
+    "node_modules/volar-service-typescript/lib/utils/modifiers.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.parseKindModifier = parseKindModifier;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.parseKindModifier = parseKindModifier;
       function parseKindModifier(kindModifiers) {
         return new Set(kindModifiers.split(/,|\s+/g));
       }
@@ -11587,13 +11603,13 @@ ${hover.contents.value}
 
   // node_modules/volar-service-typescript/lib/utils/previewer.js
   var require_previewer = __commonJS({
-    "node_modules/volar-service-typescript/lib/utils/previewer.js"(exports3) {
+    "node_modules/volar-service-typescript/lib/utils/previewer.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.plainWithLinks = plainWithLinks;
-      exports3.tagsMarkdownPreview = tagsMarkdownPreview;
-      exports3.markdownDocumentation = markdownDocumentation;
-      exports3.addMarkdownDocumentation = addMarkdownDocumentation;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.plainWithLinks = plainWithLinks;
+      exports2.tagsMarkdownPreview = tagsMarkdownPreview;
+      exports2.markdownDocumentation = markdownDocumentation;
+      exports2.addMarkdownDocumentation = addMarkdownDocumentation;
       function replaceLinks(text4) {
         return text4.replace(/\{@(link|linkplain|linkcode) (https?:\/\/[^ |}]+?)(?:[| ]([^{}\n]+?))?\}/gi, (_, tag, link2, text5) => {
           switch (tag) {
@@ -11765,10 +11781,10 @@ ${hover.contents.value}
 
   // node_modules/volar-service-typescript/lib/utils/typeConverters.js
   var require_typeConverters = __commonJS({
-    "node_modules/volar-service-typescript/lib/utils/typeConverters.js"(exports3) {
+    "node_modules/volar-service-typescript/lib/utils/typeConverters.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.SymbolKind = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.SymbolKind = void 0;
       var PConst = require_protocol_const();
       var SymbolKind2;
       (function(SymbolKind3) {
@@ -11823,37 +11839,37 @@ ${hover.contents.value}
           }
         }
         SymbolKind3.fromProtocolScriptElementKind = fromProtocolScriptElementKind;
-      })(SymbolKind2 || (exports3.SymbolKind = SymbolKind2 = {}));
+      })(SymbolKind2 || (exports2.SymbolKind = SymbolKind2 = {}));
     }
   });
 
   // node_modules/volar-service-typescript/lib/utils/lspConverters.js
   var require_lspConverters = __commonJS({
-    "node_modules/volar-service-typescript/lib/utils/lspConverters.js"(exports3) {
+    "node_modules/volar-service-typescript/lib/utils/lspConverters.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.convertDiagnostic = convertDiagnostic;
-      exports3.applyCompletionEntryDetails = applyCompletionEntryDetails;
-      exports3.convertCompletionInfo = convertCompletionInfo;
-      exports3.getLineText = getLineText;
-      exports3.convertNavigateToItem = convertNavigateToItem;
-      exports3.convertInlayHint = convertInlayHint;
-      exports3.convertHighlightSpan = convertHighlightSpan;
-      exports3.convertSelectionRange = convertSelectionRange;
-      exports3.convertFileTextChanges = convertFileTextChanges;
-      exports3.convertRenameLocations = convertRenameLocations;
-      exports3.convertQuickInfo = convertQuickInfo;
-      exports3.convertNavTree = convertNavTree;
-      exports3.convertOutliningSpan = convertOutliningSpan;
-      exports3.convertOutliningSpanKind = convertOutliningSpanKind;
-      exports3.convertTextChange = convertTextChange;
-      exports3.convertCallHierarchyIncomingCall = convertCallHierarchyIncomingCall;
-      exports3.convertCallHierarchyOutgoingCall = convertCallHierarchyOutgoingCall;
-      exports3.convertCallHierarchyItem = convertCallHierarchyItem;
-      exports3.convertDocumentSpanToLocation = convertDocumentSpanToLocation;
-      exports3.convertDefinitionInfoAndBoundSpan = convertDefinitionInfoAndBoundSpan;
-      exports3.convertDocumentSpantoLocationLink = convertDocumentSpantoLocationLink;
-      exports3.convertTextSpan = convertTextSpan;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.convertDiagnostic = convertDiagnostic;
+      exports2.applyCompletionEntryDetails = applyCompletionEntryDetails;
+      exports2.convertCompletionInfo = convertCompletionInfo;
+      exports2.getLineText = getLineText;
+      exports2.convertNavigateToItem = convertNavigateToItem;
+      exports2.convertInlayHint = convertInlayHint;
+      exports2.convertHighlightSpan = convertHighlightSpan;
+      exports2.convertSelectionRange = convertSelectionRange;
+      exports2.convertFileTextChanges = convertFileTextChanges;
+      exports2.convertRenameLocations = convertRenameLocations;
+      exports2.convertQuickInfo = convertQuickInfo;
+      exports2.convertNavTree = convertNavTree;
+      exports2.convertOutliningSpan = convertOutliningSpan;
+      exports2.convertOutliningSpanKind = convertOutliningSpanKind;
+      exports2.convertTextChange = convertTextChange;
+      exports2.convertCallHierarchyIncomingCall = convertCallHierarchyIncomingCall;
+      exports2.convertCallHierarchyOutgoingCall = convertCallHierarchyOutgoingCall;
+      exports2.convertCallHierarchyItem = convertCallHierarchyItem;
+      exports2.convertDocumentSpanToLocation = convertDocumentSpanToLocation;
+      exports2.convertDefinitionInfoAndBoundSpan = convertDefinitionInfoAndBoundSpan;
+      exports2.convertDocumentSpantoLocationLink = convertDocumentSpantoLocationLink;
+      exports2.convertTextSpan = convertTextSpan;
       var path = require_path_browserify();
       var semver = require_semver2();
       var PConst = require_protocol_const();
@@ -12614,36 +12630,36 @@ ${hover.contents.value}
 
   // node_modules/volar-service-typescript/lib/configs/getFormatCodeSettings.js
   var require_getFormatCodeSettings = __commonJS({
-    "node_modules/volar-service-typescript/lib/configs/getFormatCodeSettings.js"(exports3) {
+    "node_modules/volar-service-typescript/lib/configs/getFormatCodeSettings.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.getFormatCodeSettings = getFormatCodeSettings;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.getFormatCodeSettings = getFormatCodeSettings;
       var shared_1 = require_shared();
       async function getFormatCodeSettings(ctx, document5, options) {
-        const config = await ctx.env.getConfiguration?.((0, shared_1.getConfigTitle)(document5) + ".format") ?? {};
+        const config2 = await ctx.env.getConfiguration?.((0, shared_1.getConfigTitle)(document5) + ".format") ?? {};
         return {
           convertTabsToSpaces: options?.insertSpaces,
           tabSize: options?.tabSize,
           indentSize: options?.tabSize,
           indentStyle: 2,
           newLineCharacter: "\n",
-          insertSpaceAfterCommaDelimiter: config.insertSpaceAfterCommaDelimiter ?? true,
-          insertSpaceAfterConstructor: config.insertSpaceAfterConstructor ?? false,
-          insertSpaceAfterSemicolonInForStatements: config.insertSpaceAfterSemicolonInForStatements ?? true,
-          insertSpaceBeforeAndAfterBinaryOperators: config.insertSpaceBeforeAndAfterBinaryOperators ?? true,
-          insertSpaceAfterKeywordsInControlFlowStatements: config.insertSpaceAfterKeywordsInControlFlowStatements ?? true,
-          insertSpaceAfterFunctionKeywordForAnonymousFunctions: config.insertSpaceAfterFunctionKeywordForAnonymousFunctions ?? true,
-          insertSpaceBeforeFunctionParenthesis: config.insertSpaceBeforeFunctionParenthesis ?? false,
-          insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis: config.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis ?? false,
-          insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets: config.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets ?? false,
-          insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces: config.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces ?? true,
-          insertSpaceAfterOpeningAndBeforeClosingEmptyBraces: config.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces ?? true,
-          insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces: config.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces ?? false,
-          insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces: config.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces ?? false,
-          insertSpaceAfterTypeAssertion: config.insertSpaceAfterTypeAssertion ?? false,
-          placeOpenBraceOnNewLineForFunctions: config.placeOpenBraceOnNewLineForFunctions ?? false,
-          placeOpenBraceOnNewLineForControlBlocks: config.placeOpenBraceOnNewLineForControlBlocks ?? false,
-          semicolons: config.semicolons ?? "ignore"
+          insertSpaceAfterCommaDelimiter: config2.insertSpaceAfterCommaDelimiter ?? true,
+          insertSpaceAfterConstructor: config2.insertSpaceAfterConstructor ?? false,
+          insertSpaceAfterSemicolonInForStatements: config2.insertSpaceAfterSemicolonInForStatements ?? true,
+          insertSpaceBeforeAndAfterBinaryOperators: config2.insertSpaceBeforeAndAfterBinaryOperators ?? true,
+          insertSpaceAfterKeywordsInControlFlowStatements: config2.insertSpaceAfterKeywordsInControlFlowStatements ?? true,
+          insertSpaceAfterFunctionKeywordForAnonymousFunctions: config2.insertSpaceAfterFunctionKeywordForAnonymousFunctions ?? true,
+          insertSpaceBeforeFunctionParenthesis: config2.insertSpaceBeforeFunctionParenthesis ?? false,
+          insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis: config2.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis ?? false,
+          insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets: config2.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets ?? false,
+          insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces: config2.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces ?? true,
+          insertSpaceAfterOpeningAndBeforeClosingEmptyBraces: config2.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces ?? true,
+          insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces: config2.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces ?? false,
+          insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces: config2.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces ?? false,
+          insertSpaceAfterTypeAssertion: config2.insertSpaceAfterTypeAssertion ?? false,
+          placeOpenBraceOnNewLineForFunctions: config2.placeOpenBraceOnNewLineForFunctions ?? false,
+          placeOpenBraceOnNewLineForControlBlocks: config2.placeOpenBraceOnNewLineForControlBlocks ?? false,
+          semicolons: config2.semicolons ?? "ignore"
         };
       }
     }
@@ -12651,10 +12667,10 @@ ${hover.contents.value}
 
   // node_modules/volar-service-typescript/lib/syntaxOnlyService.js
   var require_syntaxOnlyService = __commonJS({
-    "node_modules/volar-service-typescript/lib/syntaxOnlyService.js"(exports3) {
+    "node_modules/volar-service-typescript/lib/syntaxOnlyService.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.createSyntaxOnlyService = createSyntaxOnlyService;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.createSyntaxOnlyService = createSyntaxOnlyService;
       function createSyntaxOnlyService(ts2, syntaxOnly) {
         let currentProjectVersion = -1;
         let fileNames = [];
@@ -12698,11 +12714,11 @@ ${hover.contents.value}
 
   // node_modules/volar-service-typescript/lib/plugins/syntactic.js
   var require_syntactic = __commonJS({
-    "node_modules/volar-service-typescript/lib/plugins/syntactic.js"(exports3) {
+    "node_modules/volar-service-typescript/lib/plugins/syntactic.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.getLanguageServiceByDocument = getLanguageServiceByDocument;
-      exports3.create = create;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.getLanguageServiceByDocument = getLanguageServiceByDocument;
+      exports2.create = create;
       var getFormatCodeSettings_1 = require_getFormatCodeSettings();
       var shared_1 = require_shared();
       var syntaxOnlyService_1 = require_syntaxOnlyService();
@@ -12842,10 +12858,10 @@ ${hover.contents.value}
 
   // node_modules/volar-service-typescript/lib/plugins/docCommentTemplate.js
   var require_docCommentTemplate = __commonJS({
-    "node_modules/volar-service-typescript/lib/plugins/docCommentTemplate.js"(exports3) {
+    "node_modules/volar-service-typescript/lib/plugins/docCommentTemplate.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.create = create;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.create = create;
       var nls = require_main();
       var shared_1 = require_shared();
       var lspConverters_1 = require_lspConverters();
@@ -12940,24 +12956,24 @@ ${hover.contents.value}
 
   // node_modules/typescript-auto-import-cache/out/4_0/index.js
   var require__ = __commonJS({
-    "node_modules/typescript-auto-import-cache/out/4_0/index.js"(exports3) {
+    "node_modules/typescript-auto-import-cache/out/4_0/index.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
+      Object.defineProperty(exports2, "__esModule", { value: true });
       function default_1(ts2, host, _service) {
         var _a4, _b3;
         const importSuggestionsCache = (_b3 = (_a4 = ts2.Completions) === null || _a4 === void 0 ? void 0 : _a4.createImportSuggestionsForFileCache) === null || _b3 === void 0 ? void 0 : _b3.call(_a4);
         host.getImportSuggestionsCache = () => importSuggestionsCache;
       }
-      exports3.default = default_1;
+      exports2.default = default_1;
     }
   });
 
   // node_modules/typescript-auto-import-cache/out/4_4/moduleSpecifierCache.js
   var require_moduleSpecifierCache = __commonJS({
-    "node_modules/typescript-auto-import-cache/out/4_4/moduleSpecifierCache.js"(exports3) {
+    "node_modules/typescript-auto-import-cache/out/4_4/moduleSpecifierCache.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.createModuleSpecifierCache = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.createModuleSpecifierCache = void 0;
       function createModuleSpecifierCache() {
         let cache;
         let currentKey;
@@ -13035,20 +13051,20 @@ ${hover.contents.value}
           return { modulePaths, moduleSpecifiers, isAutoImportable };
         }
       }
-      exports3.createModuleSpecifierCache = createModuleSpecifierCache;
+      exports2.createModuleSpecifierCache = createModuleSpecifierCache;
     }
   });
 
   // node_modules/typescript-auto-import-cache/out/4_4/packageJsonCache.js
   var require_packageJsonCache = __commonJS({
-    "node_modules/typescript-auto-import-cache/out/4_4/packageJsonCache.js"(exports3) {
+    "node_modules/typescript-auto-import-cache/out/4_4/packageJsonCache.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.createPackageJsonCache = exports3.canCreatePackageJsonCache = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.createPackageJsonCache = exports2.canCreatePackageJsonCache = void 0;
       function canCreatePackageJsonCache(ts2) {
         return "createPackageJsonInfo" in ts2 && "getDirectoryPath" in ts2 && "combinePaths" in ts2 && "tryFileExists" in ts2 && "forEachAncestorDirectory" in ts2;
       }
-      exports3.canCreatePackageJsonCache = canCreatePackageJsonCache;
+      exports2.canCreatePackageJsonCache = canCreatePackageJsonCache;
       function createPackageJsonCache(ts2, host) {
         const { createPackageJsonInfo, getDirectoryPath, combinePaths, tryFileExists, forEachAncestorDirectory } = ts2;
         const packageJsons = /* @__PURE__ */ new Map();
@@ -13092,15 +13108,15 @@ ${hover.contents.value}
           return packageJsons.has(combinePaths(directory, "package.json")) ? -1 : directoriesWithoutPackageJson.has(directory) ? 0 : 3;
         }
       }
-      exports3.createPackageJsonCache = createPackageJsonCache;
+      exports2.createPackageJsonCache = createPackageJsonCache;
     }
   });
 
   // node_modules/typescript-auto-import-cache/out/4_4/index.js
   var require__2 = __commonJS({
-    "node_modules/typescript-auto-import-cache/out/4_4/index.js"(exports3) {
+    "node_modules/typescript-auto-import-cache/out/4_4/index.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
+      Object.defineProperty(exports2, "__esModule", { value: true });
       var moduleSpecifierCache_1 = require_moduleSpecifierCache();
       var packageJsonCache_1 = require_packageJsonCache();
       function default_1(ts2, host, service) {
@@ -13154,17 +13170,17 @@ ${hover.contents.value}
           return _toPath(fileName, host.getCurrentDirectory(), _createGetCanonicalFileName((_a4 = host.useCaseSensitiveFileNames) === null || _a4 === void 0 ? void 0 : _a4.call(host)));
         }
       }
-      exports3.default = default_1;
+      exports2.default = default_1;
     }
   });
 
   // node_modules/typescript-auto-import-cache/out/4_7/moduleSpecifierCache.js
   var require_moduleSpecifierCache2 = __commonJS({
-    "node_modules/typescript-auto-import-cache/out/4_7/moduleSpecifierCache.js"(exports3) {
+    "node_modules/typescript-auto-import-cache/out/4_7/moduleSpecifierCache.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.createModuleSpecifierCache = exports3.nodeModulesPathPart = void 0;
-      exports3.nodeModulesPathPart = "/node_modules/";
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.createModuleSpecifierCache = exports2.nodeModulesPathPart = void 0;
+      exports2.nodeModulesPathPart = "/node_modules/";
       function createModuleSpecifierCache() {
         let containedNodeModulesWatchers;
         let cache;
@@ -13245,16 +13261,16 @@ ${hover.contents.value}
           return { modulePaths, moduleSpecifiers, isBlockedByPackageJsonDependencies };
         }
       }
-      exports3.createModuleSpecifierCache = createModuleSpecifierCache;
+      exports2.createModuleSpecifierCache = createModuleSpecifierCache;
     }
   });
 
   // node_modules/typescript-auto-import-cache/out/4_7/packageJsonCache.js
   var require_packageJsonCache2 = __commonJS({
-    "node_modules/typescript-auto-import-cache/out/4_7/packageJsonCache.js"(exports3) {
+    "node_modules/typescript-auto-import-cache/out/4_7/packageJsonCache.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.createPackageJsonCache = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.createPackageJsonCache = void 0;
       function createPackageJsonCache(ts2, host) {
         const { createPackageJsonInfo, getDirectoryPath, combinePaths, tryFileExists, forEachAncestorDirectory } = ts2;
         const packageJsons = /* @__PURE__ */ new Map();
@@ -13297,15 +13313,15 @@ ${hover.contents.value}
           return packageJsons.has(combinePaths(directory, "package.json")) ? -1 : directoriesWithoutPackageJson.has(directory) ? 0 : 3;
         }
       }
-      exports3.createPackageJsonCache = createPackageJsonCache;
+      exports2.createPackageJsonCache = createPackageJsonCache;
     }
   });
 
   // node_modules/typescript-auto-import-cache/out/4_7/index.js
   var require__3 = __commonJS({
-    "node_modules/typescript-auto-import-cache/out/4_7/index.js"(exports3) {
+    "node_modules/typescript-auto-import-cache/out/4_7/index.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
+      Object.defineProperty(exports2, "__esModule", { value: true });
       var moduleSpecifierCache_1 = require_moduleSpecifierCache2();
       var packageJsonCache_1 = require_packageJsonCache2();
       function default_1(ts2, host, service) {
@@ -13362,16 +13378,16 @@ ${hover.contents.value}
           return _toPath(fileName, host.getCurrentDirectory(), _createGetCanonicalFileName((_a4 = host.useCaseSensitiveFileNames) === null || _a4 === void 0 ? void 0 : _a4.call(host)));
         }
       }
-      exports3.default = default_1;
+      exports2.default = default_1;
     }
   });
 
   // node_modules/typescript-auto-import-cache/out/5_0/packageJsonCache.js
   var require_packageJsonCache3 = __commonJS({
-    "node_modules/typescript-auto-import-cache/out/5_0/packageJsonCache.js"(exports3) {
+    "node_modules/typescript-auto-import-cache/out/5_0/packageJsonCache.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.createPackageJsonCache = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.createPackageJsonCache = void 0;
       function createPackageJsonCache(ts2, host) {
         const { createPackageJsonInfo, getDirectoryPath, combinePaths, tryFileExists, forEachAncestorDirectory } = ts2;
         const packageJsons = /* @__PURE__ */ new Map();
@@ -13415,16 +13431,16 @@ ${hover.contents.value}
           return packageJsons.has(combinePaths(directory, "package.json")) ? -1 : directoriesWithoutPackageJson.has(directory) ? 0 : 3;
         }
       }
-      exports3.createPackageJsonCache = createPackageJsonCache;
+      exports2.createPackageJsonCache = createPackageJsonCache;
     }
   });
 
   // node_modules/typescript-auto-import-cache/out/5_0/projectService.js
   var require_projectService = __commonJS({
-    "node_modules/typescript-auto-import-cache/out/5_0/projectService.js"(exports3) {
+    "node_modules/typescript-auto-import-cache/out/5_0/projectService.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.createProjectService = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.createProjectService = void 0;
       var packageJsonCache_1 = require_packageJsonCache3();
       function createProjectService(ts2, sys, currentDirectory, hostConfiguration, serverMode) {
         const { toPath, getNormalizedAbsolutePath, normalizePath: toNormalizedPath, createGetCanonicalFileName, forEachAncestorDirectory, getDirectoryPath } = ts2;
@@ -13482,17 +13498,17 @@ ${hover.contents.value}
         projectService.packageJsonCache = (0, packageJsonCache_1.createPackageJsonCache)(ts2, projectService);
         return projectService;
       }
-      exports3.createProjectService = createProjectService;
+      exports2.createProjectService = createProjectService;
     }
   });
 
   // node_modules/typescript-auto-import-cache/out/5_0/moduleSpecifierCache.js
   var require_moduleSpecifierCache3 = __commonJS({
-    "node_modules/typescript-auto-import-cache/out/5_0/moduleSpecifierCache.js"(exports3) {
+    "node_modules/typescript-auto-import-cache/out/5_0/moduleSpecifierCache.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.createModuleSpecifierCache = exports3.nodeModulesPathPart = void 0;
-      exports3.nodeModulesPathPart = "/node_modules/";
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.createModuleSpecifierCache = exports2.nodeModulesPathPart = void 0;
+      exports2.nodeModulesPathPart = "/node_modules/";
       function createModuleSpecifierCache() {
         let containedNodeModulesWatchers;
         let cache;
@@ -13573,16 +13589,16 @@ ${hover.contents.value}
           return { modulePaths, moduleSpecifiers, isBlockedByPackageJsonDependencies };
         }
       }
-      exports3.createModuleSpecifierCache = createModuleSpecifierCache;
+      exports2.createModuleSpecifierCache = createModuleSpecifierCache;
     }
   });
 
   // node_modules/typescript-auto-import-cache/out/5_0/autoImportProviderProject.js
   var require_autoImportProviderProject = __commonJS({
-    "node_modules/typescript-auto-import-cache/out/5_0/autoImportProviderProject.js"(exports3) {
+    "node_modules/typescript-auto-import-cache/out/5_0/autoImportProviderProject.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.createAutoImportProviderProjectStatic = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.createAutoImportProviderProjectStatic = void 0;
       var project_1 = require_project();
       function createAutoImportProviderProjectStatic(tsBase, host, createLanguageService) {
         const ts2 = tsBase;
@@ -13722,7 +13738,7 @@ ${hover.contents.value}
           }
         };
       }
-      exports3.createAutoImportProviderProjectStatic = createAutoImportProviderProjectStatic;
+      exports2.createAutoImportProviderProjectStatic = createAutoImportProviderProjectStatic;
       function createAutoImportProviderProject(tsBase, host, createLanguageService, options) {
         const { self: self2, rootNames, compilerOptions, hostProject } = options;
         const ts2 = tsBase;
@@ -13816,10 +13832,10 @@ ${hover.contents.value}
 
   // node_modules/typescript-auto-import-cache/out/5_0/project.js
   var require_project = __commonJS({
-    "node_modules/typescript-auto-import-cache/out/5_0/project.js"(exports3) {
+    "node_modules/typescript-auto-import-cache/out/5_0/project.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.initProject = exports3.createProject = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.initProject = exports2.createProject = void 0;
       var moduleSpecifierCache_1 = require_moduleSpecifierCache3();
       var autoImportProviderProject_1 = require_autoImportProviderProject();
       function createProject(ts2, host, createLanguageService, options) {
@@ -13977,22 +13993,22 @@ ${hover.contents.value}
           }
         };
       }
-      exports3.createProject = createProject;
+      exports2.createProject = createProject;
       function initProject(project, host, createLanguageService) {
         const languageService = createLanguageService(host);
         project.languageService = languageService;
         project.program = languageService.getProgram();
         return project;
       }
-      exports3.initProject = initProject;
+      exports2.initProject = initProject;
     }
   });
 
   // node_modules/typescript-auto-import-cache/out/5_0/index.js
   var require__4 = __commonJS({
-    "node_modules/typescript-auto-import-cache/out/5_0/index.js"(exports3) {
+    "node_modules/typescript-auto-import-cache/out/5_0/index.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
+      Object.defineProperty(exports2, "__esModule", { value: true });
       var projectService_1 = require_projectService();
       var project_1 = require_project();
       var projectService;
@@ -14042,16 +14058,16 @@ ${hover.contents.value}
           }
         };
       }
-      exports3.default = default_1;
+      exports2.default = default_1;
     }
   });
 
   // node_modules/typescript-auto-import-cache/out/5_3/project.js
   var require_project2 = __commonJS({
-    "node_modules/typescript-auto-import-cache/out/5_3/project.js"(exports3) {
+    "node_modules/typescript-auto-import-cache/out/5_3/project.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.createProject = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.createProject = void 0;
       var project_1 = require_project();
       function createProject(ts2, host, createLanguageService, options) {
         const { createSymlinkCache, ensureTrailingDirectorySeparator } = ts2;
@@ -14082,30 +14098,30 @@ ${hover.contents.value}
         };
         return project;
       }
-      exports3.createProject = createProject;
+      exports2.createProject = createProject;
     }
   });
 
   // node_modules/typescript-auto-import-cache/out/5_3/index.js
   var require__5 = __commonJS({
-    "node_modules/typescript-auto-import-cache/out/5_3/index.js"(exports3) {
+    "node_modules/typescript-auto-import-cache/out/5_3/index.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
+      Object.defineProperty(exports2, "__esModule", { value: true });
       var _5_0_1 = require__4();
       var project_1 = require_project2();
       function default_1(ts2, sys, host, createLanguageService) {
         return (0, _5_0_1.default)(ts2, sys, host, createLanguageService, project_1.createProject);
       }
-      exports3.default = default_1;
+      exports2.default = default_1;
     }
   });
 
   // node_modules/typescript-auto-import-cache/out/5_5/moduleSpecifierCache.js
   var require_moduleSpecifierCache4 = __commonJS({
-    "node_modules/typescript-auto-import-cache/out/5_5/moduleSpecifierCache.js"(exports3) {
+    "node_modules/typescript-auto-import-cache/out/5_5/moduleSpecifierCache.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.createModuleSpecifierCache = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.createModuleSpecifierCache = void 0;
       function createModuleSpecifierCache() {
         let containedNodeModulesWatchers;
         let cache;
@@ -14191,46 +14207,46 @@ ${hover.contents.value}
           return { kind, modulePaths, moduleSpecifiers, isBlockedByPackageJsonDependencies };
         }
       }
-      exports3.createModuleSpecifierCache = createModuleSpecifierCache;
+      exports2.createModuleSpecifierCache = createModuleSpecifierCache;
     }
   });
 
   // node_modules/typescript-auto-import-cache/out/5_5/project.js
   var require_project3 = __commonJS({
-    "node_modules/typescript-auto-import-cache/out/5_5/project.js"(exports3) {
+    "node_modules/typescript-auto-import-cache/out/5_5/project.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.createProject = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.createProject = void 0;
       var project_1 = require_project2();
       var moduleSpecifierCache_1 = require_moduleSpecifierCache4();
       function createProject(ts2, host, createLanguageService, options) {
         options.createModuleSpecifierCache = moduleSpecifierCache_1.createModuleSpecifierCache;
         return (0, project_1.createProject)(ts2, host, createLanguageService, options);
       }
-      exports3.createProject = createProject;
+      exports2.createProject = createProject;
     }
   });
 
   // node_modules/typescript-auto-import-cache/out/5_5/index.js
   var require__6 = __commonJS({
-    "node_modules/typescript-auto-import-cache/out/5_5/index.js"(exports3) {
+    "node_modules/typescript-auto-import-cache/out/5_5/index.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
+      Object.defineProperty(exports2, "__esModule", { value: true });
       var _5_0_1 = require__4();
       var project_1 = require_project3();
       function default_1(ts2, sys, host, createLanguageService) {
         return (0, _5_0_1.default)(ts2, sys, host, createLanguageService, project_1.createProject);
       }
-      exports3.default = default_1;
+      exports2.default = default_1;
     }
   });
 
   // node_modules/typescript-auto-import-cache/out/5_6/moduleSpecifierCache.js
   var require_moduleSpecifierCache5 = __commonJS({
-    "node_modules/typescript-auto-import-cache/out/5_6/moduleSpecifierCache.js"(exports3) {
+    "node_modules/typescript-auto-import-cache/out/5_6/moduleSpecifierCache.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.createModuleSpecifierCache = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.createModuleSpecifierCache = void 0;
       function createModuleSpecifierCache() {
         let containedNodeModulesWatchers;
         let cache;
@@ -14323,46 +14339,46 @@ ${hover.contents.value}
           return { kind, modulePaths, moduleSpecifiers, packageName, isBlockedByPackageJsonDependencies };
         }
       }
-      exports3.createModuleSpecifierCache = createModuleSpecifierCache;
+      exports2.createModuleSpecifierCache = createModuleSpecifierCache;
     }
   });
 
   // node_modules/typescript-auto-import-cache/out/5_6/project.js
   var require_project4 = __commonJS({
-    "node_modules/typescript-auto-import-cache/out/5_6/project.js"(exports3) {
+    "node_modules/typescript-auto-import-cache/out/5_6/project.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.createProject = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.createProject = void 0;
       var project_1 = require_project2();
       var moduleSpecifierCache_1 = require_moduleSpecifierCache5();
       function createProject(ts2, host, createLanguageService, options) {
         options.createModuleSpecifierCache = moduleSpecifierCache_1.createModuleSpecifierCache;
         return (0, project_1.createProject)(ts2, host, createLanguageService, options);
       }
-      exports3.createProject = createProject;
+      exports2.createProject = createProject;
     }
   });
 
   // node_modules/typescript-auto-import-cache/out/5_6/index.js
   var require__7 = __commonJS({
-    "node_modules/typescript-auto-import-cache/out/5_6/index.js"(exports3) {
+    "node_modules/typescript-auto-import-cache/out/5_6/index.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
+      Object.defineProperty(exports2, "__esModule", { value: true });
       var _5_0_1 = require__4();
       var project_1 = require_project4();
       function default_1(ts2, sys, host, createLanguageService) {
         return (0, _5_0_1.default)(ts2, sys, host, createLanguageService, project_1.createProject);
       }
-      exports3.default = default_1;
+      exports2.default = default_1;
     }
   });
 
   // node_modules/typescript-auto-import-cache/out/index.js
   var require_out = __commonJS({
-    "node_modules/typescript-auto-import-cache/out/index.js"(exports3) {
+    "node_modules/typescript-auto-import-cache/out/index.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.createLanguageService = void 0;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.createLanguageService = void 0;
       var semver = require_semver2();
       var _4_0_1 = require__();
       var _4_4_1 = require__2();
@@ -14396,16 +14412,16 @@ ${hover.contents.value}
         }
         return { languageService: createLanguageService2(host) };
       }
-      exports3.createLanguageService = createLanguageService;
+      exports2.createLanguageService = createLanguageService;
     }
   });
 
   // node_modules/volar-service-typescript/lib/configs/getUserPreferences.js
   var require_getUserPreferences = __commonJS({
-    "node_modules/volar-service-typescript/lib/configs/getUserPreferences.js"(exports3) {
+    "node_modules/volar-service-typescript/lib/configs/getUserPreferences.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.getUserPreferences = getUserPreferences;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.getUserPreferences = getUserPreferences;
       var path = require_path_browserify();
       var shared_1 = require_shared();
       var vscode_uri_1 = require_umd();
@@ -14416,10 +14432,10 @@ ${hover.contents.value}
         }
         const uri = vscode_uri_1.URI.parse(document5.uri);
         const documentUri = ctx.decodeEmbeddedDocumentUri(uri)?.[0] ?? uri;
-        const config = await ctx.env.getConfiguration?.((0, shared_1.getConfigTitle)(document5)) ?? {};
-        const preferencesConfig = config?.preferences ?? {};
+        const config2 = await ctx.env.getConfiguration?.((0, shared_1.getConfigTitle)(document5)) ?? {};
+        const preferencesConfig = config2?.preferences ?? {};
         const preferences = {
-          ...config.unstable ?? {},
+          ...config2.unstable ?? {},
           quotePreference: getQuoteStylePreference(preferencesConfig),
           importModuleSpecifierPreference: getImportModuleSpecifierPreference(preferencesConfig),
           importModuleSpecifierEnding: getImportModuleSpecifierEndingPreference(preferencesConfig),
@@ -14427,35 +14443,35 @@ ${hover.contents.value}
           allowTextChangesInNewFiles: documentUri.scheme === "file",
           providePrefixAndSuffixTextForRename: (preferencesConfig.renameShorthandProperties ?? true) === false ? false : preferencesConfig.useAliasesForRenames ?? true,
           allowRenameOfImportPath: true,
-          includeAutomaticOptionalChainCompletions: config.suggest?.includeAutomaticOptionalChainCompletions ?? true,
+          includeAutomaticOptionalChainCompletions: config2.suggest?.includeAutomaticOptionalChainCompletions ?? true,
           provideRefactorNotApplicableReason: true,
-          generateReturnInDocTemplate: config.suggest?.jsdoc?.generateReturns ?? true,
-          includeCompletionsForImportStatements: config.suggest?.includeCompletionsForImportStatements ?? true,
-          includeCompletionsWithSnippetText: config.suggest?.includeCompletionsWithSnippetText ?? true,
-          includeCompletionsWithClassMemberSnippets: config.suggest?.classMemberSnippets?.enabled ?? true,
-          includeCompletionsWithObjectLiteralMethodSnippets: config.suggest?.objectLiteralMethodSnippets?.enabled ?? true,
+          generateReturnInDocTemplate: config2.suggest?.jsdoc?.generateReturns ?? true,
+          includeCompletionsForImportStatements: config2.suggest?.includeCompletionsForImportStatements ?? true,
+          includeCompletionsWithSnippetText: config2.suggest?.includeCompletionsWithSnippetText ?? true,
+          includeCompletionsWithClassMemberSnippets: config2.suggest?.classMemberSnippets?.enabled ?? true,
+          includeCompletionsWithObjectLiteralMethodSnippets: config2.suggest?.objectLiteralMethodSnippets?.enabled ?? true,
           autoImportFileExcludePatterns: getAutoImportFileExcludePatternsPreference(preferencesConfig, currentDirectory),
           useLabelDetailsInCompletionEntries: true,
           allowIncompleteCompletions: true,
           displayPartsForJSDoc: true,
           // inlay hints
-          includeInlayParameterNameHints: getInlayParameterNameHintsPreference(config),
-          includeInlayParameterNameHintsWhenArgumentMatchesName: !(config.inlayHints?.parameterNames?.suppressWhenArgumentMatchesName ?? true),
-          includeInlayFunctionParameterTypeHints: config.inlayHints?.parameterTypes?.enabled ?? false,
-          includeInlayVariableTypeHints: config.inlayHints?.variableTypes?.enabled ?? false,
-          includeInlayVariableTypeHintsWhenTypeMatchesName: !(config.inlayHints?.variableTypes?.suppressWhenTypeMatchesName ?? true),
-          includeInlayPropertyDeclarationTypeHints: config.inlayHints?.propertyDeclarationTypes?.enabled ?? false,
-          includeInlayFunctionLikeReturnTypeHints: config.inlayHints?.functionLikeReturnTypes?.enabled ?? false,
-          includeInlayEnumMemberValueHints: config.inlayHints?.enumMemberValues?.enabled ?? false,
+          includeInlayParameterNameHints: getInlayParameterNameHintsPreference(config2),
+          includeInlayParameterNameHintsWhenArgumentMatchesName: !(config2.inlayHints?.parameterNames?.suppressWhenArgumentMatchesName ?? true),
+          includeInlayFunctionParameterTypeHints: config2.inlayHints?.parameterTypes?.enabled ?? false,
+          includeInlayVariableTypeHints: config2.inlayHints?.variableTypes?.enabled ?? false,
+          includeInlayVariableTypeHintsWhenTypeMatchesName: !(config2.inlayHints?.variableTypes?.suppressWhenTypeMatchesName ?? true),
+          includeInlayPropertyDeclarationTypeHints: config2.inlayHints?.propertyDeclarationTypes?.enabled ?? false,
+          includeInlayFunctionLikeReturnTypeHints: config2.inlayHints?.functionLikeReturnTypes?.enabled ?? false,
+          includeInlayEnumMemberValueHints: config2.inlayHints?.enumMemberValues?.enabled ?? false,
           // https://github.com/microsoft/vscode/blob/main/extensions/typescript-language-features/src/languageFeatures/completions.ts#L728-L730
-          includeCompletionsForModuleExports: config.suggest?.autoImports ?? true,
+          includeCompletionsForModuleExports: config2.suggest?.autoImports ?? true,
           includeCompletionsWithInsertText: true,
           includePackageJsonAutoImports: preferencesConfig.includePackageJsonAutoImports ?? "auto"
         };
         return preferences;
       }
-      function getQuoteStylePreference(config) {
-        switch (config.quoteStyle) {
+      function getQuoteStylePreference(config2) {
+        switch (config2.quoteStyle) {
           case "single":
             return "single";
           case "double":
@@ -14464,15 +14480,15 @@ ${hover.contents.value}
             return "auto";
         }
       }
-      function getAutoImportFileExcludePatternsPreference(config, workspacePath) {
-        return workspacePath && config.autoImportFileExcludePatterns?.map((p) => {
+      function getAutoImportFileExcludePatternsPreference(config2, workspacePath) {
+        return workspacePath && config2.autoImportFileExcludePatterns?.map((p) => {
           const slashNormalized = p.replace(/\\/g, "/");
           const isRelative = /^\.\.?($|\/)/.test(slashNormalized);
           return path.isAbsolute(p) ? p : p.startsWith("*") ? "/" + slashNormalized : isRelative ? path.join(workspacePath, p) : "/**/" + slashNormalized;
         });
       }
-      function getImportModuleSpecifierPreference(config) {
-        switch (config.importModuleSpecifier) {
+      function getImportModuleSpecifierPreference(config2) {
+        switch (config2.importModuleSpecifier) {
           case "project-relative":
             return "project-relative";
           case "relative":
@@ -14483,8 +14499,8 @@ ${hover.contents.value}
             return void 0;
         }
       }
-      function getImportModuleSpecifierEndingPreference(config) {
-        switch (config.importModuleSpecifierEnding) {
+      function getImportModuleSpecifierEndingPreference(config2) {
+        switch (config2.importModuleSpecifierEnding) {
           case "minimal":
             return "minimal";
           case "index":
@@ -14495,8 +14511,8 @@ ${hover.contents.value}
             return "minimal";
         }
       }
-      function getJsxAttributeCompletionStyle(config) {
-        switch (config.jsxAttributeCompletionStyle) {
+      function getJsxAttributeCompletionStyle(config2) {
+        switch (config2.jsxAttributeCompletionStyle) {
           case "braces":
             return "braces";
           case "none":
@@ -14505,8 +14521,8 @@ ${hover.contents.value}
             return "auto";
         }
       }
-      function getInlayParameterNameHintsPreference(config) {
-        switch (config.inlayHints?.parameterNames?.enabled) {
+      function getInlayParameterNameHintsPreference(config2) {
+        switch (config2.inlayHints?.parameterNames?.enabled) {
           case "none":
             return "none";
           case "literals":
@@ -14522,35 +14538,35 @@ ${hover.contents.value}
 
   // node_modules/volar-service-typescript/lib/utils/fixNames.js
   var require_fixNames = __commonJS({
-    "node_modules/volar-service-typescript/lib/utils/fixNames.js"(exports3) {
+    "node_modules/volar-service-typescript/lib/utils/fixNames.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.addMissingOverride = exports3.addMissingAwait = exports3.fixImport = exports3.spelling = exports3.forgottenThisPropertyAccess = exports3.unusedIdentifier = exports3.unreachableCode = exports3.classDoesntImplementInheritedAbstractMember = exports3.classIncorrectlyImplementsInterface = exports3.awaitInSyncFunction = exports3.extendsInterfaceBecomesImplements = exports3.constructorForDerivedNeedSuperCall = exports3.annotateWithTypeFromJSDoc = void 0;
-      exports3.annotateWithTypeFromJSDoc = "annotateWithTypeFromJSDoc";
-      exports3.constructorForDerivedNeedSuperCall = "constructorForDerivedNeedSuperCall";
-      exports3.extendsInterfaceBecomesImplements = "extendsInterfaceBecomesImplements";
-      exports3.awaitInSyncFunction = "fixAwaitInSyncFunction";
-      exports3.classIncorrectlyImplementsInterface = "fixClassIncorrectlyImplementsInterface";
-      exports3.classDoesntImplementInheritedAbstractMember = "fixClassDoesntImplementInheritedAbstractMember";
-      exports3.unreachableCode = "fixUnreachableCode";
-      exports3.unusedIdentifier = "unusedIdentifier";
-      exports3.forgottenThisPropertyAccess = "forgottenThisPropertyAccess";
-      exports3.spelling = "spelling";
-      exports3.fixImport = "import";
-      exports3.addMissingAwait = "addMissingAwait";
-      exports3.addMissingOverride = "fixOverrideModifier";
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.addMissingOverride = exports2.addMissingAwait = exports2.fixImport = exports2.spelling = exports2.forgottenThisPropertyAccess = exports2.unusedIdentifier = exports2.unreachableCode = exports2.classDoesntImplementInheritedAbstractMember = exports2.classIncorrectlyImplementsInterface = exports2.awaitInSyncFunction = exports2.extendsInterfaceBecomesImplements = exports2.constructorForDerivedNeedSuperCall = exports2.annotateWithTypeFromJSDoc = void 0;
+      exports2.annotateWithTypeFromJSDoc = "annotateWithTypeFromJSDoc";
+      exports2.constructorForDerivedNeedSuperCall = "constructorForDerivedNeedSuperCall";
+      exports2.extendsInterfaceBecomesImplements = "extendsInterfaceBecomesImplements";
+      exports2.awaitInSyncFunction = "fixAwaitInSyncFunction";
+      exports2.classIncorrectlyImplementsInterface = "fixClassIncorrectlyImplementsInterface";
+      exports2.classDoesntImplementInheritedAbstractMember = "fixClassDoesntImplementInheritedAbstractMember";
+      exports2.unreachableCode = "fixUnreachableCode";
+      exports2.unusedIdentifier = "unusedIdentifier";
+      exports2.forgottenThisPropertyAccess = "forgottenThisPropertyAccess";
+      exports2.spelling = "spelling";
+      exports2.fixImport = "import";
+      exports2.addMissingAwait = "addMissingAwait";
+      exports2.addMissingOverride = "fixOverrideModifier";
     }
   });
 
   // node_modules/volar-service-typescript/lib/semanticFeatures/codeActionResolve.js
   var require_codeActionResolve = __commonJS({
-    "node_modules/volar-service-typescript/lib/semanticFeatures/codeActionResolve.js"(exports3) {
+    "node_modules/volar-service-typescript/lib/semanticFeatures/codeActionResolve.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
-      exports3.resolveFixAllCodeAction = resolveFixAllCodeAction;
-      exports3.resolveRefactorCodeAction = resolveRefactorCodeAction;
-      exports3.resolveOrganizeImportsCodeAction = resolveOrganizeImportsCodeAction;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
+      exports2.resolveFixAllCodeAction = resolveFixAllCodeAction;
+      exports2.resolveRefactorCodeAction = resolveRefactorCodeAction;
+      exports2.resolveOrganizeImportsCodeAction = resolveOrganizeImportsCodeAction;
       var getFormatCodeSettings_1 = require_getFormatCodeSettings();
       var getUserPreferences_1 = require_getUserPreferences();
       var shared_1 = require_shared();
@@ -14598,10 +14614,10 @@ ${hover.contents.value}
 
   // node_modules/volar-service-typescript/lib/semanticFeatures/codeAction.js
   var require_codeAction = __commonJS({
-    "node_modules/volar-service-typescript/lib/semanticFeatures/codeAction.js"(exports3) {
+    "node_modules/volar-service-typescript/lib/semanticFeatures/codeAction.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var getFormatCodeSettings_1 = require_getFormatCodeSettings();
       var getUserPreferences_1 = require_getUserPreferences();
       var shared_1 = require_shared();
@@ -14858,10 +14874,10 @@ ${hover.contents.value}
 
   // node_modules/volar-service-typescript/lib/semanticFeatures/semanticTokens.js
   var require_semanticTokens = __commonJS({
-    "node_modules/volar-service-typescript/lib/semanticFeatures/semanticTokens.js"(exports3) {
+    "node_modules/volar-service-typescript/lib/semanticFeatures/semanticTokens.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.register = register2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.register = register2;
       var shared_1 = require_shared();
       function register2(ts2, ctx) {
         return (uri, document5, range, legend) => {
@@ -15070,10 +15086,10 @@ ${hover.contents.value}
 
   // node_modules/volar-service-typescript/lib/utils/snippetForFunctionCall.js
   var require_snippetForFunctionCall = __commonJS({
-    "node_modules/volar-service-typescript/lib/utils/snippetForFunctionCall.js"(exports3) {
+    "node_modules/volar-service-typescript/lib/utils/snippetForFunctionCall.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.snippetForFunctionCall = snippetForFunctionCall;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.snippetForFunctionCall = snippetForFunctionCall;
       var PConst = require_protocol_const();
       function snippetForFunctionCall(item, displayParts) {
         if (item.insertText && typeof item.insertText !== "string") {
@@ -15157,10 +15173,10 @@ ${hover.contents.value}
 
   // node_modules/volar-service-typescript/lib/plugins/semantic.js
   var require_semantic = __commonJS({
-    "node_modules/volar-service-typescript/lib/plugins/semantic.js"(exports3) {
+    "node_modules/volar-service-typescript/lib/plugins/semantic.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.create = create;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.create = create;
       var path = require_path_browserify();
       var semver = require_semver2();
       var tsWithImportCache = require_out();
@@ -15915,8 +15931,8 @@ ${hover.contents.value}
               const promise = fn();
               let newVersion;
               let syncing = true;
-              promise.then((version2) => {
-                newVersion = version2;
+              promise.then((version3) => {
+                newVersion = version3;
                 syncing = false;
               });
               while (syncing) {
@@ -15969,10 +15985,10 @@ ${hover.contents.value}
 
   // node_modules/volar-service-typescript/index.js
   var require_volar_service_typescript = __commonJS({
-    "node_modules/volar-service-typescript/index.js"(exports3) {
+    "node_modules/volar-service-typescript/index.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.create = create;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.create = create;
       var directiveComment_1 = require_directiveComment();
       var docCommentTemplate_1 = require_docCommentTemplate();
       var semantic_1 = require_semantic();
@@ -15990,10 +16006,10 @@ ${hover.contents.value}
 
   // node_modules/@volar/jsdelivr/lib/npm.js
   var require_npm = __commonJS({
-    "node_modules/@volar/jsdelivr/lib/npm.js"(exports3) {
+    "node_modules/@volar/jsdelivr/lib/npm.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      exports3.createNpmFileSystem = createNpmFileSystem2;
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      exports2.createNpmFileSystem = createNpmFileSystem2;
       var textCache = /* @__PURE__ */ new Map();
       var jsonCache = /* @__PURE__ */ new Map();
       function createNpmFileSystem2(getCdnPath = (uri) => {
@@ -16119,16 +16135,16 @@ ${hover.contents.value}
           }
           return await fetchResults.get(path);
         }
-        async function flat(pkgName, version2) {
-          version2 ??= "latest";
-          if (version2 === "latest") {
-            const data2 = await fetchJson(`https://data.jsdelivr.com/v1/package/resolve/npm/${pkgName}@${version2}`);
+        async function flat(pkgName, version3) {
+          version3 ??= "latest";
+          if (version3 === "latest") {
+            const data2 = await fetchJson(`https://data.jsdelivr.com/v1/package/resolve/npm/${pkgName}@${version3}`);
             if (!data2?.version) {
               return [];
             }
-            version2 = data2.version;
+            version3 = data2.version;
           }
-          const flat2 = await fetchJson(`https://data.jsdelivr.com/v1/package/npm/${pkgName}@${version2}/flat`);
+          const flat2 = await fetchJson(`https://data.jsdelivr.com/v1/package/npm/${pkgName}@${version3}/flat`);
           if (!flat2) {
             return [];
           }
@@ -16174,15 +16190,15 @@ ${hover.contents.value}
             path = parts.slice(1).join("/");
           }
           let pkgName = modName;
-          let version2;
+          let version3;
           if (modName.lastIndexOf("@") >= 1) {
             pkgName = modName.substring(0, modName.lastIndexOf("@"));
-            version2 = modName.substring(modName.lastIndexOf("@") + 1);
+            version3 = modName.substring(modName.lastIndexOf("@") + 1);
           }
-          if (!version2 && getPackageVersion) {
+          if (!version3 && getPackageVersion) {
             getPackageVersion?.(pkgName);
           }
-          return [modName, pkgName, version2, path];
+          return [modName, pkgName, version3, path];
         }
       }
       async function fetchText(url) {
@@ -16218,9 +16234,9 @@ ${hover.contents.value}
 
   // node_modules/@volar/jsdelivr/index.js
   var require_jsdelivr = __commonJS({
-    "node_modules/@volar/jsdelivr/index.js"(exports3) {
+    "node_modules/@volar/jsdelivr/index.js"(exports2) {
       "use strict";
-      var __createBinding = exports3 && exports3.__createBinding || (Object.create ? function(o, m, k, k2) {
+      var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
         if (k2 === void 0)
           k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -16235,19 +16251,19 @@ ${hover.contents.value}
           k2 = k;
         o[k2] = m[k];
       });
-      var __exportStar = exports3 && exports3.__exportStar || function(m, exports4) {
+      var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
         for (var p in m)
-          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports4, p))
-            __createBinding(exports4, m, p);
+          if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p))
+            __createBinding(exports3, m, p);
       };
-      Object.defineProperty(exports3, "__esModule", { value: true });
-      __exportStar(require_npm(), exports3);
+      Object.defineProperty(exports2, "__esModule", { value: true });
+      __exportStar(require_npm(), exports2);
     }
   });
 
   // node_modules/acorn-jsx/xhtml.js
   var require_xhtml = __commonJS({
-    "node_modules/acorn-jsx/xhtml.js"(exports3, module) {
+    "node_modules/acorn-jsx/xhtml.js"(exports2, module) {
       module.exports = {
         quot: '"',
         amp: "&",
@@ -16508,10 +16524,10 @@ ${hover.contents.value}
 
   // node_modules/acorn/dist/acorn.js
   var require_acorn = __commonJS({
-    "node_modules/acorn/dist/acorn.js"(exports3, module) {
+    "node_modules/acorn/dist/acorn.js"(exports2, module) {
       (function(global2, factory) {
-        typeof exports3 === "object" && typeof module !== "undefined" ? factory(exports3) : typeof define === "function" && define.amd ? define(["exports"], factory) : (global2 = typeof globalThis !== "undefined" ? globalThis : global2 || self, factory(global2.acorn = {}));
-      })(exports3, function(exports4) {
+        typeof exports2 === "object" && typeof module !== "undefined" ? factory(exports2) : typeof define === "function" && define.amd ? define(["exports"], factory) : (global2 = typeof globalThis !== "undefined" ? globalThis : global2 || self, factory(global2.acorn = {}));
+      })(exports2, function(exports3) {
         "use strict";
         var astralIdentifierCodes2 = [509, 0, 227, 0, 150, 4, 294, 9, 1368, 2, 2, 1, 6, 3, 41, 2, 5, 0, 166, 1, 574, 3, 9, 9, 7, 9, 32, 4, 318, 1, 80, 3, 71, 10, 50, 3, 123, 2, 54, 14, 32, 10, 3, 1, 11, 3, 46, 10, 8, 0, 46, 9, 7, 2, 37, 13, 2, 9, 6, 1, 45, 0, 13, 2, 49, 13, 9, 3, 2, 11, 83, 11, 7, 0, 3, 0, 158, 11, 6, 9, 7, 3, 56, 1, 2, 6, 3, 1, 3, 2, 10, 0, 11, 1, 3, 6, 4, 4, 68, 8, 2, 0, 3, 0, 2, 3, 2, 4, 2, 0, 15, 1, 83, 17, 10, 9, 5, 0, 82, 19, 13, 9, 214, 6, 3, 8, 28, 1, 83, 16, 16, 9, 82, 12, 9, 9, 7, 19, 58, 14, 5, 9, 243, 14, 166, 9, 71, 5, 2, 1, 3, 3, 2, 0, 2, 1, 13, 9, 120, 6, 3, 6, 4, 0, 29, 9, 41, 6, 2, 3, 9, 0, 10, 10, 47, 15, 343, 9, 54, 7, 2, 7, 17, 9, 57, 21, 2, 13, 123, 5, 4, 0, 2, 1, 2, 6, 2, 0, 9, 9, 49, 4, 2, 1, 2, 4, 9, 9, 330, 3, 10, 1, 2, 0, 49, 6, 4, 4, 14, 10, 5350, 0, 7, 14, 11465, 27, 2343, 9, 87, 9, 39, 4, 60, 6, 26, 9, 535, 9, 470, 0, 2, 54, 8, 3, 82, 0, 12, 1, 19628, 1, 4178, 9, 519, 45, 3, 22, 543, 4, 4, 5, 9, 7, 3, 6, 31, 3, 149, 2, 1418, 49, 513, 54, 5, 49, 9, 0, 15, 0, 23, 4, 2, 14, 1361, 6, 2, 16, 3, 6, 2, 1, 2, 4, 101, 0, 161, 6, 10, 9, 357, 0, 62, 13, 499, 13, 245, 1, 2, 9, 726, 6, 110, 6, 6, 9, 4759, 9, 787719, 239];
         var astralIdentifierStartCodes2 = [0, 11, 2, 25, 2, 18, 2, 1, 2, 14, 3, 13, 35, 122, 70, 52, 268, 28, 4, 48, 48, 31, 14, 29, 6, 37, 11, 29, 3, 35, 5, 7, 2, 4, 43, 157, 19, 35, 5, 35, 5, 39, 9, 51, 13, 10, 2, 14, 2, 6, 2, 1, 2, 10, 2, 14, 2, 6, 2, 1, 4, 51, 13, 310, 10, 21, 11, 7, 25, 5, 2, 41, 2, 8, 70, 5, 3, 0, 2, 43, 2, 1, 4, 0, 3, 22, 11, 22, 10, 30, 66, 18, 2, 1, 11, 21, 11, 25, 71, 55, 7, 1, 65, 0, 16, 3, 2, 2, 2, 28, 43, 28, 4, 28, 36, 7, 2, 27, 28, 53, 11, 21, 11, 18, 14, 17, 111, 72, 56, 50, 14, 50, 14, 35, 39, 27, 10, 22, 251, 41, 7, 1, 17, 2, 60, 28, 11, 0, 9, 21, 43, 17, 47, 20, 28, 22, 13, 52, 58, 1, 3, 0, 14, 44, 33, 24, 27, 35, 30, 0, 3, 0, 9, 34, 4, 0, 13, 47, 15, 3, 22, 0, 2, 0, 36, 17, 2, 24, 20, 1, 64, 6, 2, 0, 2, 3, 2, 14, 2, 9, 8, 46, 39, 7, 3, 1, 3, 21, 2, 6, 2, 1, 2, 4, 4, 0, 19, 0, 13, 4, 31, 9, 2, 0, 3, 0, 2, 37, 2, 0, 26, 0, 2, 0, 45, 52, 19, 3, 21, 2, 31, 47, 21, 1, 2, 0, 185, 46, 42, 3, 37, 47, 21, 0, 60, 42, 14, 0, 72, 26, 38, 6, 186, 43, 117, 63, 32, 7, 3, 0, 3, 7, 2, 1, 2, 23, 16, 0, 2, 0, 95, 7, 3, 38, 17, 0, 2, 0, 29, 0, 11, 39, 8, 0, 22, 0, 12, 45, 20, 0, 19, 72, 200, 32, 32, 8, 2, 36, 18, 0, 50, 29, 113, 6, 2, 1, 2, 37, 22, 0, 26, 5, 2, 1, 2, 31, 15, 0, 328, 18, 16, 0, 2, 12, 2, 33, 125, 0, 80, 921, 103, 110, 18, 195, 2637, 96, 16, 1071, 18, 5, 26, 3994, 6, 582, 6842, 29, 1763, 568, 8, 30, 18, 78, 18, 29, 19, 47, 17, 3, 32, 20, 6, 18, 433, 44, 212, 63, 129, 74, 6, 0, 67, 12, 65, 1, 2, 0, 29, 6135, 9, 1237, 42, 9, 8936, 3, 2, 6, 2, 1, 2, 290, 16, 0, 30, 2, 3, 0, 15, 3, 9, 395, 2309, 106, 6, 12, 4, 8, 8, 9, 5991, 84, 2, 70, 2, 1, 3, 0, 3, 1, 3, 3, 2, 11, 2, 0, 2, 6, 2, 64, 2, 3, 3, 7, 2, 6, 2, 27, 2, 3, 2, 4, 2, 0, 4, 6, 2, 339, 3, 24, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 7, 1845, 30, 7, 5, 262, 61, 147, 44, 11, 6, 17, 0, 322, 29, 19, 43, 485, 27, 229, 29, 3, 0, 496, 6, 2, 3, 2, 1, 2, 14, 2, 196, 60, 67, 8, 0, 1205, 3, 2, 26, 2, 1, 2, 0, 3, 0, 2, 9, 2, 3, 2, 0, 2, 0, 7, 0, 5, 0, 2, 0, 2, 0, 2, 2, 2, 1, 2, 0, 3, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 1, 2, 0, 3, 3, 2, 6, 2, 3, 2, 3, 2, 0, 2, 9, 2, 16, 6, 2, 2, 4, 2, 16, 4421, 42719, 33, 4153, 7, 221, 3, 5761, 15, 7472, 16, 621, 2467, 541, 1507, 4938, 6, 4191];
@@ -16925,7 +16941,7 @@ ${hover.contents.value}
             array.push(comment);
           };
         }
-        var SCOPE_TOP2 = 1, SCOPE_FUNCTION2 = 2, SCOPE_ASYNC2 = 4, SCOPE_GENERATOR2 = 8, SCOPE_ARROW2 = 16, SCOPE_SIMPLE_CATCH2 = 32, SCOPE_SUPER2 = 64, SCOPE_DIRECT_SUPER2 = 128, SCOPE_CLASS_STATIC_BLOCK2 = 256, SCOPE_VAR2 = SCOPE_TOP2 | SCOPE_FUNCTION2 | SCOPE_CLASS_STATIC_BLOCK2;
+        var SCOPE_TOP2 = 1, SCOPE_FUNCTION2 = 2, SCOPE_ASYNC2 = 4, SCOPE_GENERATOR2 = 8, SCOPE_ARROW2 = 16, SCOPE_SIMPLE_CATCH2 = 32, SCOPE_SUPER2 = 64, SCOPE_DIRECT_SUPER2 = 128, SCOPE_CLASS_STATIC_BLOCK2 = 256, SCOPE_CLASS_FIELD_INIT2 = 512, SCOPE_VAR2 = SCOPE_TOP2 | SCOPE_FUNCTION2 | SCOPE_CLASS_STATIC_BLOCK2;
         function functionFlags2(async, generator) {
           return SCOPE_FUNCTION2 | (async ? SCOPE_ASYNC2 : 0) | (generator ? SCOPE_GENERATOR2 : 0);
         }
@@ -16988,19 +17004,20 @@ ${hover.contents.value}
           return (this.currentVarScope().flags & SCOPE_FUNCTION2) > 0;
         };
         prototypeAccessors2.inGenerator.get = function() {
-          return (this.currentVarScope().flags & SCOPE_GENERATOR2) > 0 && !this.currentVarScope().inClassFieldInit;
+          return (this.currentVarScope().flags & SCOPE_GENERATOR2) > 0;
         };
         prototypeAccessors2.inAsync.get = function() {
-          return (this.currentVarScope().flags & SCOPE_ASYNC2) > 0 && !this.currentVarScope().inClassFieldInit;
+          return (this.currentVarScope().flags & SCOPE_ASYNC2) > 0;
         };
         prototypeAccessors2.canAwait.get = function() {
           for (var i2 = this.scopeStack.length - 1; i2 >= 0; i2--) {
-            var scope = this.scopeStack[i2];
-            if (scope.inClassFieldInit || scope.flags & SCOPE_CLASS_STATIC_BLOCK2) {
+            var ref3 = this.scopeStack[i2];
+            var flags = ref3.flags;
+            if (flags & (SCOPE_CLASS_STATIC_BLOCK2 | SCOPE_CLASS_FIELD_INIT2)) {
               return false;
             }
-            if (scope.flags & SCOPE_FUNCTION2) {
-              return (scope.flags & SCOPE_ASYNC2) > 0;
+            if (flags & SCOPE_FUNCTION2) {
+              return (flags & SCOPE_ASYNC2) > 0;
             }
           }
           return this.inModule && this.options.ecmaVersion >= 13 || this.options.allowAwaitOutsideFunction;
@@ -17008,8 +17025,7 @@ ${hover.contents.value}
         prototypeAccessors2.allowSuper.get = function() {
           var ref3 = this.currentThisScope();
           var flags = ref3.flags;
-          var inClassFieldInit = ref3.inClassFieldInit;
-          return (flags & SCOPE_SUPER2) > 0 || inClassFieldInit || this.options.allowSuperOutsideMethod;
+          return (flags & SCOPE_SUPER2) > 0 || this.options.allowSuperOutsideMethod;
         };
         prototypeAccessors2.allowDirectSuper.get = function() {
           return (this.currentThisScope().flags & SCOPE_DIRECT_SUPER2) > 0;
@@ -17018,10 +17034,14 @@ ${hover.contents.value}
           return this.treatFunctionsAsVarInScope(this.currentScope());
         };
         prototypeAccessors2.allowNewDotTarget.get = function() {
-          var ref3 = this.currentThisScope();
-          var flags = ref3.flags;
-          var inClassFieldInit = ref3.inClassFieldInit;
-          return (flags & (SCOPE_FUNCTION2 | SCOPE_CLASS_STATIC_BLOCK2)) > 0 || inClassFieldInit;
+          for (var i2 = this.scopeStack.length - 1; i2 >= 0; i2--) {
+            var ref3 = this.scopeStack[i2];
+            var flags = ref3.flags;
+            if (flags & (SCOPE_CLASS_STATIC_BLOCK2 | SCOPE_CLASS_FIELD_INIT2) || flags & SCOPE_FUNCTION2 && !(flags & SCOPE_ARROW2)) {
+              return true;
+            }
+          }
+          return false;
         };
         prototypeAccessors2.inClassStaticBlock.get = function() {
           return (this.currentVarScope().flags & SCOPE_CLASS_STATIC_BLOCK2) > 0;
@@ -17178,12 +17198,12 @@ ${hover.contents.value}
         };
         var pp$82 = Parser3.prototype;
         pp$82.parseTopLevel = function(node3) {
-          var exports5 = /* @__PURE__ */ Object.create(null);
+          var exports4 = /* @__PURE__ */ Object.create(null);
           if (!node3.body) {
             node3.body = [];
           }
           while (this.type !== types$12.eof) {
-            var stmt = this.parseStatement(null, true, exports5);
+            var stmt = this.parseStatement(null, true, exports4);
             node3.body.push(stmt);
           }
           if (this.inModule) {
@@ -17238,7 +17258,7 @@ ${hover.contents.value}
           var next = this.pos + skip[0].length, after;
           return !lineBreak2.test(this.input.slice(this.pos, next)) && this.input.slice(next, next + 8) === "function" && (next + 8 === this.input.length || !(isIdentifierChar2(after = this.input.charCodeAt(next + 8)) || after > 55295 && after < 56320));
         };
-        pp$82.parseStatement = function(context, topLevel, exports5) {
+        pp$82.parseStatement = function(context, topLevel, exports4) {
           var starttype = this.type, node3 = this.startNode(), kind;
           if (this.isLet(context)) {
             starttype = types$12._var;
@@ -17307,7 +17327,7 @@ ${hover.contents.value}
                   this.raise(this.start, "'import' and 'export' may appear only with 'sourceType: module'");
                 }
               }
-              return starttype === types$12._import ? this.parseImport(node3) : this.parseExport(node3, exports5);
+              return starttype === types$12._import ? this.parseImport(node3) : this.parseExport(node3, exports4);
             default:
               if (this.isAsyncFunction()) {
                 if (context) {
@@ -17859,11 +17879,9 @@ ${hover.contents.value}
             this.raise(field.key.start, "Classes can't have a static field named 'prototype'");
           }
           if (this.eat(types$12.eq)) {
-            var scope = this.currentThisScope();
-            var inClassFieldInit = scope.inClassFieldInit;
-            scope.inClassFieldInit = true;
+            this.enterScope(SCOPE_CLASS_FIELD_INIT2 | SCOPE_SUPER2);
             field.value = this.parseMaybeAssign();
-            scope.inClassFieldInit = inClassFieldInit;
+            this.exitScope();
           } else {
             field.value = null;
           }
@@ -17947,11 +17965,11 @@ ${hover.contents.value}
           var key = node3.key;
           return !computed && (key.type === "Identifier" && key.name === name2 || key.type === "Literal" && key.value === name2);
         }
-        pp$82.parseExportAllDeclaration = function(node3, exports5) {
+        pp$82.parseExportAllDeclaration = function(node3, exports4) {
           if (this.options.ecmaVersion >= 11) {
             if (this.eatContextual("as")) {
               node3.exported = this.parseModuleExportName();
-              this.checkExport(exports5, node3.exported, this.lastTokStart);
+              this.checkExport(exports4, node3.exported, this.lastTokStart);
             } else {
               node3.exported = null;
             }
@@ -17967,28 +17985,31 @@ ${hover.contents.value}
           this.semicolon();
           return this.finishNode(node3, "ExportAllDeclaration");
         };
-        pp$82.parseExport = function(node3, exports5) {
+        pp$82.parseExport = function(node3, exports4) {
           this.next();
           if (this.eat(types$12.star)) {
-            return this.parseExportAllDeclaration(node3, exports5);
+            return this.parseExportAllDeclaration(node3, exports4);
           }
           if (this.eat(types$12._default)) {
-            this.checkExport(exports5, "default", this.lastTokStart);
+            this.checkExport(exports4, "default", this.lastTokStart);
             node3.declaration = this.parseExportDefaultDeclaration();
             return this.finishNode(node3, "ExportDefaultDeclaration");
           }
           if (this.shouldParseExportStatement()) {
             node3.declaration = this.parseExportDeclaration(node3);
             if (node3.declaration.type === "VariableDeclaration") {
-              this.checkVariableExport(exports5, node3.declaration.declarations);
+              this.checkVariableExport(exports4, node3.declaration.declarations);
             } else {
-              this.checkExport(exports5, node3.declaration.id, node3.declaration.id.start);
+              this.checkExport(exports4, node3.declaration.id, node3.declaration.id.start);
             }
             node3.specifiers = [];
             node3.source = null;
+            if (this.options.ecmaVersion >= 16) {
+              node3.attributes = [];
+            }
           } else {
             node3.declaration = null;
-            node3.specifiers = this.parseExportSpecifiers(exports5);
+            node3.specifiers = this.parseExportSpecifiers(exports4);
             if (this.eatContextual("from")) {
               if (this.type !== types$12.string) {
                 this.unexpected();
@@ -18007,6 +18028,9 @@ ${hover.contents.value}
                 }
               }
               node3.source = null;
+              if (this.options.ecmaVersion >= 16) {
+                node3.attributes = [];
+              }
             }
             this.semicolon();
           }
@@ -18033,66 +18057,66 @@ ${hover.contents.value}
             return declaration;
           }
         };
-        pp$82.checkExport = function(exports5, name2, pos) {
-          if (!exports5) {
+        pp$82.checkExport = function(exports4, name2, pos) {
+          if (!exports4) {
             return;
           }
           if (typeof name2 !== "string") {
             name2 = name2.type === "Identifier" ? name2.name : name2.value;
           }
-          if (hasOwn2(exports5, name2)) {
+          if (hasOwn2(exports4, name2)) {
             this.raiseRecoverable(pos, "Duplicate export '" + name2 + "'");
           }
-          exports5[name2] = true;
+          exports4[name2] = true;
         };
-        pp$82.checkPatternExport = function(exports5, pat) {
+        pp$82.checkPatternExport = function(exports4, pat) {
           var type = pat.type;
           if (type === "Identifier") {
-            this.checkExport(exports5, pat, pat.start);
+            this.checkExport(exports4, pat, pat.start);
           } else if (type === "ObjectPattern") {
             for (var i2 = 0, list5 = pat.properties; i2 < list5.length; i2 += 1) {
               var prop = list5[i2];
-              this.checkPatternExport(exports5, prop);
+              this.checkPatternExport(exports4, prop);
             }
           } else if (type === "ArrayPattern") {
             for (var i$1 = 0, list$1 = pat.elements; i$1 < list$1.length; i$1 += 1) {
               var elt = list$1[i$1];
               if (elt) {
-                this.checkPatternExport(exports5, elt);
+                this.checkPatternExport(exports4, elt);
               }
             }
           } else if (type === "Property") {
-            this.checkPatternExport(exports5, pat.value);
+            this.checkPatternExport(exports4, pat.value);
           } else if (type === "AssignmentPattern") {
-            this.checkPatternExport(exports5, pat.left);
+            this.checkPatternExport(exports4, pat.left);
           } else if (type === "RestElement") {
-            this.checkPatternExport(exports5, pat.argument);
+            this.checkPatternExport(exports4, pat.argument);
           }
         };
-        pp$82.checkVariableExport = function(exports5, decls) {
-          if (!exports5) {
+        pp$82.checkVariableExport = function(exports4, decls) {
+          if (!exports4) {
             return;
           }
           for (var i2 = 0, list5 = decls; i2 < list5.length; i2 += 1) {
             var decl = list5[i2];
-            this.checkPatternExport(exports5, decl.id);
+            this.checkPatternExport(exports4, decl.id);
           }
         };
         pp$82.shouldParseExportStatement = function() {
           return this.type.keyword === "var" || this.type.keyword === "const" || this.type.keyword === "class" || this.type.keyword === "function" || this.isLet() || this.isAsyncFunction();
         };
-        pp$82.parseExportSpecifier = function(exports5) {
+        pp$82.parseExportSpecifier = function(exports4) {
           var node3 = this.startNode();
           node3.local = this.parseModuleExportName();
           node3.exported = this.eatContextual("as") ? this.parseModuleExportName() : node3.local;
           this.checkExport(
-            exports5,
+            exports4,
             node3.exported,
             node3.exported.start
           );
           return this.finishNode(node3, "ExportSpecifier");
         };
-        pp$82.parseExportSpecifiers = function(exports5) {
+        pp$82.parseExportSpecifiers = function(exports4) {
           var nodes = [], first = true;
           this.expect(types$12.braceL);
           while (!this.eat(types$12.braceR)) {
@@ -18104,7 +18128,7 @@ ${hover.contents.value}
             } else {
               first = false;
             }
-            nodes.push(this.parseExportSpecifier(exports5));
+            nodes.push(this.parseExportSpecifier(exports4));
           }
           return nodes;
         };
@@ -19371,9 +19395,10 @@ ${hover.contents.value}
           return this.finishNode(prop, "Property");
         };
         pp$52.parseGetterSetter = function(prop) {
-          prop.kind = prop.key.name;
+          var kind = prop.key.name;
           this.parsePropertyName(prop);
           prop.value = this.parseMethod(false);
+          prop.kind = kind;
           var paramCount = prop.kind === "get" ? 0 : 1;
           if (prop.value.params.length !== paramCount) {
             var start2 = prop.value.start;
@@ -19399,9 +19424,9 @@ ${hover.contents.value}
             if (isPattern) {
               this.unexpected();
             }
-            prop.kind = "init";
             prop.method = true;
             prop.value = this.parseMethod(isGenerator, isAsync);
+            prop.kind = "init";
           } else if (!isPattern && !containsEsc && this.options.ecmaVersion >= 5 && !prop.computed && prop.key.type === "Identifier" && (prop.key.name === "get" || prop.key.name === "set") && (this.type !== types$12.comma && this.type !== types$12.braceR && this.type !== types$12.eq)) {
             if (isGenerator || isAsync) {
               this.unexpected();
@@ -19415,7 +19440,6 @@ ${hover.contents.value}
             if (prop.key.name === "await" && !this.awaitIdentPos) {
               this.awaitIdentPos = startPos;
             }
-            prop.kind = "init";
             if (isPattern) {
               prop.value = this.parseMaybeDefault(startPos, startLoc, this.copyNode(prop.key));
             } else if (this.type === types$12.eq && refDestructuringErrors) {
@@ -19426,6 +19450,7 @@ ${hover.contents.value}
             } else {
               prop.value = this.copyNode(prop.key);
             }
+            prop.kind = "init";
             prop.shorthand = true;
           } else {
             this.unexpected();
@@ -19575,7 +19600,7 @@ ${hover.contents.value}
           if (this.inAsync && name2 === "await") {
             this.raiseRecoverable(start2, "Cannot use 'await' as identifier inside an async function");
           }
-          if (this.currentThisScope().inClassFieldInit && name2 === "arguments") {
+          if (!(this.currentThisScope().flags & SCOPE_VAR2) && name2 === "arguments") {
             this.raiseRecoverable(start2, "Cannot use 'arguments' in class field initializer");
           }
           if (this.inClassStaticBlock && (name2 === "arguments" || name2 === "await")) {
@@ -19668,6 +19693,9 @@ ${hover.contents.value}
         pp$42.raise = function(pos, message) {
           var loc = getLineInfo2(this.input, pos);
           message += " (" + loc.line + ":" + loc.column + ")";
+          if (this.sourceFile) {
+            message += " in " + this.sourceFile;
+          }
           var err = new SyntaxError(message);
           err.pos = pos;
           err.loc = loc;
@@ -19686,7 +19714,6 @@ ${hover.contents.value}
           this.var = [];
           this.lexical = [];
           this.functions = [];
-          this.inClassFieldInit = false;
         };
         pp$32.enterScope = function(flags) {
           this.scopeStack.push(new Scope4(flags));
@@ -19748,7 +19775,7 @@ ${hover.contents.value}
         pp$32.currentVarScope = function() {
           for (var i2 = this.scopeStack.length - 1; ; i2--) {
             var scope = this.scopeStack[i2];
-            if (scope.flags & SCOPE_VAR2) {
+            if (scope.flags & (SCOPE_VAR2 | SCOPE_CLASS_FIELD_INIT2 | SCOPE_CLASS_STATIC_BLOCK2)) {
               return scope;
             }
           }
@@ -19756,7 +19783,7 @@ ${hover.contents.value}
         pp$32.currentThisScope = function() {
           for (var i2 = this.scopeStack.length - 1; ; i2--) {
             var scope = this.scopeStack[i2];
-            if (scope.flags & SCOPE_VAR2 && !(scope.flags & SCOPE_ARROW2)) {
+            if (scope.flags & (SCOPE_VAR2 | SCOPE_CLASS_FIELD_INIT2 | SCOPE_CLASS_STATIC_BLOCK2) && !(scope.flags & SCOPE_ARROW2)) {
               return scope;
             }
           }
@@ -21991,10 +22018,10 @@ ${hover.contents.value}
           }
           return this.finishToken(type, word);
         };
-        var version2 = "8.14.0";
+        var version3 = "8.14.1";
         Parser3.acorn = {
           Parser: Parser3,
-          version: version2,
+          version: version3,
           defaultOptions: defaultOptions2,
           Position: Position4,
           SourceLocation: SourceLocation3,
@@ -22022,35 +22049,35 @@ ${hover.contents.value}
         function tokenizer2(input, options) {
           return Parser3.tokenizer(input, options);
         }
-        exports4.Node = Node4;
-        exports4.Parser = Parser3;
-        exports4.Position = Position4;
-        exports4.SourceLocation = SourceLocation3;
-        exports4.TokContext = TokContext3;
-        exports4.Token = Token4;
-        exports4.TokenType = TokenType3;
-        exports4.defaultOptions = defaultOptions2;
-        exports4.getLineInfo = getLineInfo2;
-        exports4.isIdentifierChar = isIdentifierChar2;
-        exports4.isIdentifierStart = isIdentifierStart2;
-        exports4.isNewLine = isNewLine2;
-        exports4.keywordTypes = keywords2;
-        exports4.lineBreak = lineBreak2;
-        exports4.lineBreakG = lineBreakG2;
-        exports4.nonASCIIwhitespace = nonASCIIwhitespace2;
-        exports4.parse = parse5;
-        exports4.parseExpressionAt = parseExpressionAt2;
-        exports4.tokContexts = types2;
-        exports4.tokTypes = types$12;
-        exports4.tokenizer = tokenizer2;
-        exports4.version = version2;
+        exports3.Node = Node4;
+        exports3.Parser = Parser3;
+        exports3.Position = Position4;
+        exports3.SourceLocation = SourceLocation3;
+        exports3.TokContext = TokContext3;
+        exports3.Token = Token4;
+        exports3.TokenType = TokenType3;
+        exports3.defaultOptions = defaultOptions2;
+        exports3.getLineInfo = getLineInfo2;
+        exports3.isIdentifierChar = isIdentifierChar2;
+        exports3.isIdentifierStart = isIdentifierStart2;
+        exports3.isNewLine = isNewLine2;
+        exports3.keywordTypes = keywords2;
+        exports3.lineBreak = lineBreak2;
+        exports3.lineBreakG = lineBreakG2;
+        exports3.nonASCIIwhitespace = nonASCIIwhitespace2;
+        exports3.parse = parse5;
+        exports3.parseExpressionAt = parseExpressionAt2;
+        exports3.tokContexts = types2;
+        exports3.tokTypes = types$12;
+        exports3.tokenizer = tokenizer2;
+        exports3.version = version3;
       });
     }
   });
 
   // node_modules/acorn-jsx/index.js
   var require_acorn_jsx = __commonJS({
-    "node_modules/acorn-jsx/index.js"(exports3, module) {
+    "node_modules/acorn-jsx/index.js"(exports2, module) {
       "use strict";
       var XHTMLEntities = require_xhtml();
       var hexNumber = /^[\da-fA-F]+$/;
@@ -22482,7 +22509,7 @@ ${hover.contents.value}
 
   // node_modules/extend/index.js
   var require_extend = __commonJS({
-    "node_modules/extend/index.js"(exports3, module) {
+    "node_modules/extend/index.js"(exports2, module) {
       "use strict";
       var hasOwn2 = Object.prototype.hasOwnProperty;
       var toStr = Object.prototype.toString;
@@ -23234,7 +23261,7 @@ ${hover.contents.value}
       return debounce(event, () => void 0, 0, void 0, true, void 0, disposable);
     }
     Event2.defer = defer;
-    function once(event) {
+    function once2(event) {
       return (listener, thisArgs = null, disposables) => {
         let didFire = false;
         let result = void 0;
@@ -23254,7 +23281,7 @@ ${hover.contents.value}
         return result;
       };
     }
-    Event2.once = once;
+    Event2.once = once2;
     function map4(event, map5, disposable) {
       return snapshot((listener, thisArgs = null, disposables) => event((i) => listener.call(thisArgs, map5(i)), null, disposables), disposable);
     }
@@ -23522,7 +23549,7 @@ ${hover.contents.value}
     }
     Event2.fromDOMEventEmitter = fromDOMEventEmitter;
     function toPromise(event) {
-      return new Promise((resolve3) => once(event)(resolve3));
+      return new Promise((resolve3) => once2(event)(resolve3));
     }
     Event2.toPromise = toPromise;
     function fromPromise(promise) {
@@ -23738,12 +23765,12 @@ ${hover.contents.value}
     }
   };
   var compactionThreshold = 2;
-  var forEachListener = (listeners, fn) => {
-    if (listeners instanceof UniqueContainer) {
-      fn(listeners);
+  var forEachListener = (listeners2, fn) => {
+    if (listeners2 instanceof UniqueContainer) {
+      fn(listeners2);
     } else {
-      for (let i = 0; i < listeners.length; i++) {
-        const l = listeners[i];
+      for (let i = 0; i < listeners2.length; i++) {
+        const l = listeners2[i];
         if (l) {
           fn(l);
         }
@@ -23774,9 +23801,9 @@ ${hover.contents.value}
         }
         if (this._listeners) {
           if (_enableDisposeWithListenerWarning) {
-            const listeners = this._listeners;
+            const listeners2 = this._listeners;
             queueMicrotask(() => {
-              forEachListener(listeners, (l) => {
+              forEachListener(listeners2, (l) => {
                 var _a5;
                 return (_a5 = l.stack) === null || _a5 === void 0 ? void 0 : _a5.print();
               });
@@ -23863,8 +23890,8 @@ ${hover.contents.value}
         this._size = 0;
         return;
       }
-      const listeners = this._listeners;
-      const index4 = listeners.indexOf(listener);
+      const listeners2 = this._listeners;
+      const index4 = listeners2.indexOf(listener);
       if (index4 === -1) {
         console.log("disposed?", this._disposed);
         console.log("size?", this._size);
@@ -23872,13 +23899,13 @@ ${hover.contents.value}
         throw new Error("Attempted to dispose unknown listener");
       }
       this._size--;
-      listeners[index4] = void 0;
+      listeners2[index4] = void 0;
       const adjustDeliveryQueue = this._deliveryQueue.current === this;
-      if (this._size * compactionThreshold <= listeners.length) {
+      if (this._size * compactionThreshold <= listeners2.length) {
         let n = 0;
-        for (let i = 0; i < listeners.length; i++) {
-          if (listeners[i]) {
-            listeners[n++] = listeners[i];
+        for (let i = 0; i < listeners2.length; i++) {
+          if (listeners2[i]) {
+            listeners2[n++] = listeners2[i];
           } else if (adjustDeliveryQueue) {
             this._deliveryQueue.end--;
             if (n < this._deliveryQueue.i) {
@@ -23886,7 +23913,7 @@ ${hover.contents.value}
             }
           }
         }
-        listeners.length = n;
+        listeners2.length = n;
       }
     }
     _deliver(listener, value) {
@@ -23907,9 +23934,9 @@ ${hover.contents.value}
     }
     /** Delivers items in the queue. Assumes the queue is ready to go. */
     _deliverQueue(dq) {
-      const listeners = dq.current._listeners;
+      const listeners2 = dq.current._listeners;
       while (dq.i < dq.end) {
-        this._deliver(listeners[dq.i++], dq.value);
+        this._deliver(listeners2[dq.i++], dq.value);
       }
       dq.reset();
     }
@@ -26425,8 +26452,8 @@ ${hover.contents.value}
     if (platformIsWin32) {
       const regexp = /\\/g;
       return () => {
-        const cwd3 = cwd().replace(regexp, "/");
-        return cwd3.slice(cwd3.indexOf("/"));
+        const cwd4 = cwd().replace(regexp, "/");
+        return cwd4.slice(cwd4.indexOf("/"));
       };
     }
     return () => cwd();
@@ -28199,30 +28226,30 @@ ${hover.contents.value}
     windowSize: 15,
     timeBudget: 150
   });
-  function getWordAtText(column, wordDefinition, text4, textOffset, config) {
+  function getWordAtText(column, wordDefinition, text4, textOffset, config2) {
     wordDefinition = ensureValidWordDefinition(wordDefinition);
-    if (!config) {
-      config = Iterable.first(_defaultConfig);
+    if (!config2) {
+      config2 = Iterable.first(_defaultConfig);
     }
-    if (text4.length > config.maxLen) {
-      let start2 = column - config.maxLen / 2;
+    if (text4.length > config2.maxLen) {
+      let start2 = column - config2.maxLen / 2;
       if (start2 < 0) {
         start2 = 0;
       } else {
         textOffset += start2;
       }
-      text4 = text4.substring(start2, column + config.maxLen / 2);
-      return getWordAtText(column, wordDefinition, text4, textOffset, config);
+      text4 = text4.substring(start2, column + config2.maxLen / 2);
+      return getWordAtText(column, wordDefinition, text4, textOffset, config2);
     }
     const t1 = Date.now();
     const pos = column - 1 - textOffset;
     let prevRegexIndex = -1;
     let match = null;
     for (let i = 1; ; i++) {
-      if (Date.now() - t1 >= config.timeBudget) {
+      if (Date.now() - t1 >= config2.timeBudget) {
         break;
       }
-      const regexIndex = pos - config.windowSize * i;
+      const regexIndex = pos - config2.windowSize * i;
       wordDefinition.lastIndex = Math.max(0, regexIndex);
       const thisMatch = _findRegexMatchEnclosingPosition(wordDefinition, text4, pos, prevRegexIndex);
       if (!thisMatch && match) {
@@ -35490,64 +35517,64 @@ ${hover.contents.value}
   var LIB;
   (() => {
     "use strict";
-    var t = { 470: (t2) => {
+    var t = { 975: (t2) => {
       function e2(t3) {
         if ("string" != typeof t3)
           throw new TypeError("Path must be a string. Received " + JSON.stringify(t3));
       }
       function r2(t3, e3) {
-        for (var r3, n3 = "", i = 0, o = -1, s = 0, h = 0; h <= t3.length; ++h) {
-          if (h < t3.length)
-            r3 = t3.charCodeAt(h);
+        for (var r3, n3 = "", i2 = 0, o2 = -1, s2 = 0, h2 = 0; h2 <= t3.length; ++h2) {
+          if (h2 < t3.length)
+            r3 = t3.charCodeAt(h2);
           else {
             if (47 === r3)
               break;
             r3 = 47;
           }
           if (47 === r3) {
-            if (o === h - 1 || 1 === s)
+            if (o2 === h2 - 1 || 1 === s2)
               ;
-            else if (o !== h - 1 && 2 === s) {
-              if (n3.length < 2 || 2 !== i || 46 !== n3.charCodeAt(n3.length - 1) || 46 !== n3.charCodeAt(n3.length - 2)) {
+            else if (o2 !== h2 - 1 && 2 === s2) {
+              if (n3.length < 2 || 2 !== i2 || 46 !== n3.charCodeAt(n3.length - 1) || 46 !== n3.charCodeAt(n3.length - 2)) {
                 if (n3.length > 2) {
-                  var a = n3.lastIndexOf("/");
-                  if (a !== n3.length - 1) {
-                    -1 === a ? (n3 = "", i = 0) : i = (n3 = n3.slice(0, a)).length - 1 - n3.lastIndexOf("/"), o = h, s = 0;
+                  var a2 = n3.lastIndexOf("/");
+                  if (a2 !== n3.length - 1) {
+                    -1 === a2 ? (n3 = "", i2 = 0) : i2 = (n3 = n3.slice(0, a2)).length - 1 - n3.lastIndexOf("/"), o2 = h2, s2 = 0;
                     continue;
                   }
                 } else if (2 === n3.length || 1 === n3.length) {
-                  n3 = "", i = 0, o = h, s = 0;
+                  n3 = "", i2 = 0, o2 = h2, s2 = 0;
                   continue;
                 }
               }
-              e3 && (n3.length > 0 ? n3 += "/.." : n3 = "..", i = 2);
+              e3 && (n3.length > 0 ? n3 += "/.." : n3 = "..", i2 = 2);
             } else
-              n3.length > 0 ? n3 += "/" + t3.slice(o + 1, h) : n3 = t3.slice(o + 1, h), i = h - o - 1;
-            o = h, s = 0;
+              n3.length > 0 ? n3 += "/" + t3.slice(o2 + 1, h2) : n3 = t3.slice(o2 + 1, h2), i2 = h2 - o2 - 1;
+            o2 = h2, s2 = 0;
           } else
-            46 === r3 && -1 !== s ? ++s : s = -1;
+            46 === r3 && -1 !== s2 ? ++s2 : s2 = -1;
         }
         return n3;
       }
       var n2 = { resolve: function() {
-        for (var t3, n3 = "", i = false, o = arguments.length - 1; o >= -1 && !i; o--) {
-          var s;
-          o >= 0 ? s = arguments[o] : (void 0 === t3 && (t3 = process.cwd()), s = t3), e2(s), 0 !== s.length && (n3 = s + "/" + n3, i = 47 === s.charCodeAt(0));
+        for (var t3, n3 = "", i2 = false, o2 = arguments.length - 1; o2 >= -1 && !i2; o2--) {
+          var s2;
+          o2 >= 0 ? s2 = arguments[o2] : (void 0 === t3 && (t3 = process.cwd()), s2 = t3), e2(s2), 0 !== s2.length && (n3 = s2 + "/" + n3, i2 = 47 === s2.charCodeAt(0));
         }
-        return n3 = r2(n3, !i), i ? n3.length > 0 ? "/" + n3 : "/" : n3.length > 0 ? n3 : ".";
+        return n3 = r2(n3, !i2), i2 ? n3.length > 0 ? "/" + n3 : "/" : n3.length > 0 ? n3 : ".";
       }, normalize: function(t3) {
         if (e2(t3), 0 === t3.length)
           return ".";
-        var n3 = 47 === t3.charCodeAt(0), i = 47 === t3.charCodeAt(t3.length - 1);
-        return 0 !== (t3 = r2(t3, !n3)).length || n3 || (t3 = "."), t3.length > 0 && i && (t3 += "/"), n3 ? "/" + t3 : t3;
+        var n3 = 47 === t3.charCodeAt(0), i2 = 47 === t3.charCodeAt(t3.length - 1);
+        return 0 !== (t3 = r2(t3, !n3)).length || n3 || (t3 = "."), t3.length > 0 && i2 && (t3 += "/"), n3 ? "/" + t3 : t3;
       }, isAbsolute: function(t3) {
         return e2(t3), t3.length > 0 && 47 === t3.charCodeAt(0);
       }, join: function() {
         if (0 === arguments.length)
           return ".";
         for (var t3, r3 = 0; r3 < arguments.length; ++r3) {
-          var i = arguments[r3];
-          e2(i), i.length > 0 && (void 0 === t3 ? t3 = i : t3 += "/" + i);
+          var i2 = arguments[r3];
+          e2(i2), i2.length > 0 && (void 0 === t3 ? t3 = i2 : t3 += "/" + i2);
         }
         return void 0 === t3 ? "." : n2.normalize(t3);
       }, relative: function(t3, r3) {
@@ -35555,86 +35582,86 @@ ${hover.contents.value}
           return "";
         if ((t3 = n2.resolve(t3)) === (r3 = n2.resolve(r3)))
           return "";
-        for (var i = 1; i < t3.length && 47 === t3.charCodeAt(i); ++i)
+        for (var i2 = 1; i2 < t3.length && 47 === t3.charCodeAt(i2); ++i2)
           ;
-        for (var o = t3.length, s = o - i, h = 1; h < r3.length && 47 === r3.charCodeAt(h); ++h)
+        for (var o2 = t3.length, s2 = o2 - i2, h2 = 1; h2 < r3.length && 47 === r3.charCodeAt(h2); ++h2)
           ;
-        for (var a = r3.length - h, c = s < a ? s : a, f = -1, u = 0; u <= c; ++u) {
-          if (u === c) {
-            if (a > c) {
-              if (47 === r3.charCodeAt(h + u))
-                return r3.slice(h + u + 1);
-              if (0 === u)
-                return r3.slice(h + u);
+        for (var a2 = r3.length - h2, c2 = s2 < a2 ? s2 : a2, f2 = -1, u2 = 0; u2 <= c2; ++u2) {
+          if (u2 === c2) {
+            if (a2 > c2) {
+              if (47 === r3.charCodeAt(h2 + u2))
+                return r3.slice(h2 + u2 + 1);
+              if (0 === u2)
+                return r3.slice(h2 + u2);
             } else
-              s > c && (47 === t3.charCodeAt(i + u) ? f = u : 0 === u && (f = 0));
+              s2 > c2 && (47 === t3.charCodeAt(i2 + u2) ? f2 = u2 : 0 === u2 && (f2 = 0));
             break;
           }
-          var l = t3.charCodeAt(i + u);
-          if (l !== r3.charCodeAt(h + u))
+          var l2 = t3.charCodeAt(i2 + u2);
+          if (l2 !== r3.charCodeAt(h2 + u2))
             break;
-          47 === l && (f = u);
+          47 === l2 && (f2 = u2);
         }
-        var g = "";
-        for (u = i + f + 1; u <= o; ++u)
-          u !== o && 47 !== t3.charCodeAt(u) || (0 === g.length ? g += ".." : g += "/..");
-        return g.length > 0 ? g + r3.slice(h + f) : (h += f, 47 === r3.charCodeAt(h) && ++h, r3.slice(h));
+        var g2 = "";
+        for (u2 = i2 + f2 + 1; u2 <= o2; ++u2)
+          u2 !== o2 && 47 !== t3.charCodeAt(u2) || (0 === g2.length ? g2 += ".." : g2 += "/..");
+        return g2.length > 0 ? g2 + r3.slice(h2 + f2) : (h2 += f2, 47 === r3.charCodeAt(h2) && ++h2, r3.slice(h2));
       }, _makeLong: function(t3) {
         return t3;
       }, dirname: function(t3) {
         if (e2(t3), 0 === t3.length)
           return ".";
-        for (var r3 = t3.charCodeAt(0), n3 = 47 === r3, i = -1, o = true, s = t3.length - 1; s >= 1; --s)
-          if (47 === (r3 = t3.charCodeAt(s))) {
-            if (!o) {
-              i = s;
+        for (var r3 = t3.charCodeAt(0), n3 = 47 === r3, i2 = -1, o2 = true, s2 = t3.length - 1; s2 >= 1; --s2)
+          if (47 === (r3 = t3.charCodeAt(s2))) {
+            if (!o2) {
+              i2 = s2;
               break;
             }
           } else
-            o = false;
-        return -1 === i ? n3 ? "/" : "." : n3 && 1 === i ? "//" : t3.slice(0, i);
+            o2 = false;
+        return -1 === i2 ? n3 ? "/" : "." : n3 && 1 === i2 ? "//" : t3.slice(0, i2);
       }, basename: function(t3, r3) {
         if (void 0 !== r3 && "string" != typeof r3)
           throw new TypeError('"ext" argument must be a string');
         e2(t3);
-        var n3, i = 0, o = -1, s = true;
+        var n3, i2 = 0, o2 = -1, s2 = true;
         if (void 0 !== r3 && r3.length > 0 && r3.length <= t3.length) {
           if (r3.length === t3.length && r3 === t3)
             return "";
-          var h = r3.length - 1, a = -1;
+          var h2 = r3.length - 1, a2 = -1;
           for (n3 = t3.length - 1; n3 >= 0; --n3) {
-            var c = t3.charCodeAt(n3);
-            if (47 === c) {
-              if (!s) {
-                i = n3 + 1;
+            var c2 = t3.charCodeAt(n3);
+            if (47 === c2) {
+              if (!s2) {
+                i2 = n3 + 1;
                 break;
               }
             } else
-              -1 === a && (s = false, a = n3 + 1), h >= 0 && (c === r3.charCodeAt(h) ? -1 == --h && (o = n3) : (h = -1, o = a));
+              -1 === a2 && (s2 = false, a2 = n3 + 1), h2 >= 0 && (c2 === r3.charCodeAt(h2) ? -1 == --h2 && (o2 = n3) : (h2 = -1, o2 = a2));
           }
-          return i === o ? o = a : -1 === o && (o = t3.length), t3.slice(i, o);
+          return i2 === o2 ? o2 = a2 : -1 === o2 && (o2 = t3.length), t3.slice(i2, o2);
         }
         for (n3 = t3.length - 1; n3 >= 0; --n3)
           if (47 === t3.charCodeAt(n3)) {
-            if (!s) {
-              i = n3 + 1;
+            if (!s2) {
+              i2 = n3 + 1;
               break;
             }
           } else
-            -1 === o && (s = false, o = n3 + 1);
-        return -1 === o ? "" : t3.slice(i, o);
+            -1 === o2 && (s2 = false, o2 = n3 + 1);
+        return -1 === o2 ? "" : t3.slice(i2, o2);
       }, extname: function(t3) {
         e2(t3);
-        for (var r3 = -1, n3 = 0, i = -1, o = true, s = 0, h = t3.length - 1; h >= 0; --h) {
-          var a = t3.charCodeAt(h);
-          if (47 !== a)
-            -1 === i && (o = false, i = h + 1), 46 === a ? -1 === r3 ? r3 = h : 1 !== s && (s = 1) : -1 !== r3 && (s = -1);
-          else if (!o) {
-            n3 = h + 1;
+        for (var r3 = -1, n3 = 0, i2 = -1, o2 = true, s2 = 0, h2 = t3.length - 1; h2 >= 0; --h2) {
+          var a2 = t3.charCodeAt(h2);
+          if (47 !== a2)
+            -1 === i2 && (o2 = false, i2 = h2 + 1), 46 === a2 ? -1 === r3 ? r3 = h2 : 1 !== s2 && (s2 = 1) : -1 !== r3 && (s2 = -1);
+          else if (!o2) {
+            n3 = h2 + 1;
             break;
           }
         }
-        return -1 === r3 || -1 === i || 0 === s || 1 === s && r3 === i - 1 && r3 === n3 + 1 ? "" : t3.slice(r3, i);
+        return -1 === r3 || -1 === i2 || 0 === s2 || 1 === s2 && r3 === i2 - 1 && r3 === n3 + 1 ? "" : t3.slice(r3, i2);
       }, format: function(t3) {
         if (null === t3 || "object" != typeof t3)
           throw new TypeError('The "pathObject" argument must be of type Object. Received type ' + typeof t3);
@@ -35647,25 +35674,25 @@ ${hover.contents.value}
         var r3 = { root: "", dir: "", base: "", ext: "", name: "" };
         if (0 === t3.length)
           return r3;
-        var n3, i = t3.charCodeAt(0), o = 47 === i;
-        o ? (r3.root = "/", n3 = 1) : n3 = 0;
-        for (var s = -1, h = 0, a = -1, c = true, f = t3.length - 1, u = 0; f >= n3; --f)
-          if (47 !== (i = t3.charCodeAt(f)))
-            -1 === a && (c = false, a = f + 1), 46 === i ? -1 === s ? s = f : 1 !== u && (u = 1) : -1 !== s && (u = -1);
-          else if (!c) {
-            h = f + 1;
+        var n3, i2 = t3.charCodeAt(0), o2 = 47 === i2;
+        o2 ? (r3.root = "/", n3 = 1) : n3 = 0;
+        for (var s2 = -1, h2 = 0, a2 = -1, c2 = true, f2 = t3.length - 1, u2 = 0; f2 >= n3; --f2)
+          if (47 !== (i2 = t3.charCodeAt(f2)))
+            -1 === a2 && (c2 = false, a2 = f2 + 1), 46 === i2 ? -1 === s2 ? s2 = f2 : 1 !== u2 && (u2 = 1) : -1 !== s2 && (u2 = -1);
+          else if (!c2) {
+            h2 = f2 + 1;
             break;
           }
-        return -1 === s || -1 === a || 0 === u || 1 === u && s === a - 1 && s === h + 1 ? -1 !== a && (r3.base = r3.name = 0 === h && o ? t3.slice(1, a) : t3.slice(h, a)) : (0 === h && o ? (r3.name = t3.slice(1, s), r3.base = t3.slice(1, a)) : (r3.name = t3.slice(h, s), r3.base = t3.slice(h, a)), r3.ext = t3.slice(s, a)), h > 0 ? r3.dir = t3.slice(0, h - 1) : o && (r3.dir = "/"), r3;
+        return -1 === s2 || -1 === a2 || 0 === u2 || 1 === u2 && s2 === a2 - 1 && s2 === h2 + 1 ? -1 !== a2 && (r3.base = r3.name = 0 === h2 && o2 ? t3.slice(1, a2) : t3.slice(h2, a2)) : (0 === h2 && o2 ? (r3.name = t3.slice(1, s2), r3.base = t3.slice(1, a2)) : (r3.name = t3.slice(h2, s2), r3.base = t3.slice(h2, a2)), r3.ext = t3.slice(s2, a2)), h2 > 0 ? r3.dir = t3.slice(0, h2 - 1) : o2 && (r3.dir = "/"), r3;
       }, sep: "/", delimiter: ":", win32: null, posix: null };
       n2.posix = n2, t2.exports = n2;
     } }, e = {};
     function r(n2) {
-      var i = e[n2];
-      if (void 0 !== i)
-        return i.exports;
-      var o = e[n2] = { exports: {} };
-      return t[n2](o, o.exports, r), o.exports;
+      var i2 = e[n2];
+      if (void 0 !== i2)
+        return i2.exports;
+      var o2 = e[n2] = { exports: {} };
+      return t[n2](o2, o2.exports, r), o2.exports;
     }
     r.d = (t2, e2) => {
       for (var n2 in e2)
@@ -35674,200 +35701,198 @@ ${hover.contents.value}
       "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(t2, Symbol.toStringTag, { value: "Module" }), Object.defineProperty(t2, "__esModule", { value: true });
     };
     var n = {};
-    (() => {
-      let t2;
-      if (r.r(n), r.d(n, { URI: () => f, Utils: () => P }), "object" == typeof process)
-        t2 = "win32" === process.platform;
-      else if ("object" == typeof navigator) {
-        let e3 = navigator.userAgent;
-        t2 = e3.indexOf("Windows") >= 0;
+    let i;
+    if (r.r(n), r.d(n, { URI: () => l, Utils: () => I }), "object" == typeof process)
+      i = "win32" === process.platform;
+    else if ("object" == typeof navigator) {
+      let t2 = navigator.userAgent;
+      i = t2.indexOf("Windows") >= 0;
+    }
+    const o = /^\w[\w\d+.-]*$/, s = /^\//, h = /^\/\//;
+    function a(t2, e2) {
+      if (!t2.scheme && e2)
+        throw new Error(`[UriError]: Scheme is missing: {scheme: "", authority: "${t2.authority}", path: "${t2.path}", query: "${t2.query}", fragment: "${t2.fragment}"}`);
+      if (t2.scheme && !o.test(t2.scheme))
+        throw new Error("[UriError]: Scheme contains illegal characters.");
+      if (t2.path) {
+        if (t2.authority) {
+          if (!s.test(t2.path))
+            throw new Error('[UriError]: If a URI contains an authority component, then the path component must either be empty or begin with a slash ("/") character');
+        } else if (h.test(t2.path))
+          throw new Error('[UriError]: If a URI does not contain an authority component, then the path cannot begin with two slash characters ("//")');
       }
-      const e2 = /^\w[\w\d+.-]*$/, i = /^\//, o = /^\/\//;
-      function s(t3, r2) {
-        if (!t3.scheme && r2)
-          throw new Error(`[UriError]: Scheme is missing: {scheme: "", authority: "${t3.authority}", path: "${t3.path}", query: "${t3.query}", fragment: "${t3.fragment}"}`);
-        if (t3.scheme && !e2.test(t3.scheme))
-          throw new Error("[UriError]: Scheme contains illegal characters.");
-        if (t3.path) {
-          if (t3.authority) {
-            if (!i.test(t3.path))
-              throw new Error('[UriError]: If a URI contains an authority component, then the path component must either be empty or begin with a slash ("/") character');
-          } else if (o.test(t3.path))
-            throw new Error('[UriError]: If a URI does not contain an authority component, then the path cannot begin with two slash characters ("//")');
-        }
+    }
+    const c = "", f = "/", u = /^(([^:/?#]+?):)?(\/\/([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/;
+    class l {
+      static isUri(t2) {
+        return t2 instanceof l || !!t2 && "string" == typeof t2.authority && "string" == typeof t2.fragment && "string" == typeof t2.path && "string" == typeof t2.query && "string" == typeof t2.scheme && "string" == typeof t2.fsPath && "function" == typeof t2.with && "function" == typeof t2.toString;
       }
-      const h = "", a = "/", c = /^(([^:/?#]+?):)?(\/\/([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/;
-      class f {
-        static isUri(t3) {
-          return t3 instanceof f || !!t3 && "string" == typeof t3.authority && "string" == typeof t3.fragment && "string" == typeof t3.path && "string" == typeof t3.query && "string" == typeof t3.scheme && "string" == typeof t3.fsPath && "function" == typeof t3.with && "function" == typeof t3.toString;
-        }
-        scheme;
-        authority;
-        path;
-        query;
-        fragment;
-        constructor(t3, e3, r2, n2, i2, o2 = false) {
-          "object" == typeof t3 ? (this.scheme = t3.scheme || h, this.authority = t3.authority || h, this.path = t3.path || h, this.query = t3.query || h, this.fragment = t3.fragment || h) : (this.scheme = function(t4, e4) {
-            return t4 || e4 ? t4 : "file";
-          }(t3, o2), this.authority = e3 || h, this.path = function(t4, e4) {
-            switch (t4) {
-              case "https":
-              case "http":
-              case "file":
-                e4 ? e4[0] !== a && (e4 = a + e4) : e4 = a;
-            }
-            return e4;
-          }(this.scheme, r2 || h), this.query = n2 || h, this.fragment = i2 || h, s(this, o2));
-        }
-        get fsPath() {
-          return m(this, false);
-        }
-        with(t3) {
-          if (!t3)
-            return this;
-          let { scheme: e3, authority: r2, path: n2, query: i2, fragment: o2 } = t3;
-          return void 0 === e3 ? e3 = this.scheme : null === e3 && (e3 = h), void 0 === r2 ? r2 = this.authority : null === r2 && (r2 = h), void 0 === n2 ? n2 = this.path : null === n2 && (n2 = h), void 0 === i2 ? i2 = this.query : null === i2 && (i2 = h), void 0 === o2 ? o2 = this.fragment : null === o2 && (o2 = h), e3 === this.scheme && r2 === this.authority && n2 === this.path && i2 === this.query && o2 === this.fragment ? this : new l(e3, r2, n2, i2, o2);
-        }
-        static parse(t3, e3 = false) {
-          const r2 = c.exec(t3);
-          return r2 ? new l(r2[2] || h, C(r2[4] || h), C(r2[5] || h), C(r2[7] || h), C(r2[9] || h), e3) : new l(h, h, h, h, h);
-        }
-        static file(e3) {
-          let r2 = h;
-          if (t2 && (e3 = e3.replace(/\\/g, a)), e3[0] === a && e3[1] === a) {
-            const t3 = e3.indexOf(a, 2);
-            -1 === t3 ? (r2 = e3.substring(2), e3 = a) : (r2 = e3.substring(2, t3), e3 = e3.substring(t3) || a);
+      scheme;
+      authority;
+      path;
+      query;
+      fragment;
+      constructor(t2, e2, r2, n2, i2, o2 = false) {
+        "object" == typeof t2 ? (this.scheme = t2.scheme || c, this.authority = t2.authority || c, this.path = t2.path || c, this.query = t2.query || c, this.fragment = t2.fragment || c) : (this.scheme = function(t3, e3) {
+          return t3 || e3 ? t3 : "file";
+        }(t2, o2), this.authority = e2 || c, this.path = function(t3, e3) {
+          switch (t3) {
+            case "https":
+            case "http":
+            case "file":
+              e3 ? e3[0] !== f && (e3 = f + e3) : e3 = f;
           }
-          return new l("file", r2, e3, h, h);
-        }
-        static from(t3) {
-          const e3 = new l(t3.scheme, t3.authority, t3.path, t3.query, t3.fragment);
-          return s(e3, true), e3;
-        }
-        toString(t3 = false) {
-          return y(this, t3);
-        }
-        toJSON() {
+          return e3;
+        }(this.scheme, r2 || c), this.query = n2 || c, this.fragment = i2 || c, a(this, o2));
+      }
+      get fsPath() {
+        return v(this, false);
+      }
+      with(t2) {
+        if (!t2)
           return this;
+        let { scheme: e2, authority: r2, path: n2, query: i2, fragment: o2 } = t2;
+        return void 0 === e2 ? e2 = this.scheme : null === e2 && (e2 = c), void 0 === r2 ? r2 = this.authority : null === r2 && (r2 = c), void 0 === n2 ? n2 = this.path : null === n2 && (n2 = c), void 0 === i2 ? i2 = this.query : null === i2 && (i2 = c), void 0 === o2 ? o2 = this.fragment : null === o2 && (o2 = c), e2 === this.scheme && r2 === this.authority && n2 === this.path && i2 === this.query && o2 === this.fragment ? this : new d(e2, r2, n2, i2, o2);
+      }
+      static parse(t2, e2 = false) {
+        const r2 = u.exec(t2);
+        return r2 ? new d(r2[2] || c, w(r2[4] || c), w(r2[5] || c), w(r2[7] || c), w(r2[9] || c), e2) : new d(c, c, c, c, c);
+      }
+      static file(t2) {
+        let e2 = c;
+        if (i && (t2 = t2.replace(/\\/g, f)), t2[0] === f && t2[1] === f) {
+          const r2 = t2.indexOf(f, 2);
+          -1 === r2 ? (e2 = t2.substring(2), t2 = f) : (e2 = t2.substring(2, r2), t2 = t2.substring(r2) || f);
         }
-        static revive(t3) {
-          if (t3) {
-            if (t3 instanceof f)
-              return t3;
-            {
-              const e3 = new l(t3);
-              return e3._formatted = t3.external, e3._fsPath = t3._sep === u ? t3.fsPath : null, e3;
-            }
+        return new d("file", e2, t2, c, c);
+      }
+      static from(t2) {
+        const e2 = new d(t2.scheme, t2.authority, t2.path, t2.query, t2.fragment);
+        return a(e2, true), e2;
+      }
+      toString(t2 = false) {
+        return b(this, t2);
+      }
+      toJSON() {
+        return this;
+      }
+      static revive(t2) {
+        if (t2) {
+          if (t2 instanceof l)
+            return t2;
+          {
+            const e2 = new d(t2);
+            return e2._formatted = t2.external, e2._fsPath = t2._sep === g ? t2.fsPath : null, e2;
           }
+        }
+        return t2;
+      }
+    }
+    const g = i ? 1 : void 0;
+    class d extends l {
+      _formatted = null;
+      _fsPath = null;
+      get fsPath() {
+        return this._fsPath || (this._fsPath = v(this, false)), this._fsPath;
+      }
+      toString(t2 = false) {
+        return t2 ? b(this, true) : (this._formatted || (this._formatted = b(this, false)), this._formatted);
+      }
+      toJSON() {
+        const t2 = { $mid: 1 };
+        return this._fsPath && (t2.fsPath = this._fsPath, t2._sep = g), this._formatted && (t2.external = this._formatted), this.path && (t2.path = this.path), this.scheme && (t2.scheme = this.scheme), this.authority && (t2.authority = this.authority), this.query && (t2.query = this.query), this.fragment && (t2.fragment = this.fragment), t2;
+      }
+    }
+    const p = { 58: "%3A", 47: "%2F", 63: "%3F", 35: "%23", 91: "%5B", 93: "%5D", 64: "%40", 33: "%21", 36: "%24", 38: "%26", 39: "%27", 40: "%28", 41: "%29", 42: "%2A", 43: "%2B", 44: "%2C", 59: "%3B", 61: "%3D", 32: "%20" };
+    function m(t2, e2, r2) {
+      let n2, i2 = -1;
+      for (let o2 = 0; o2 < t2.length; o2++) {
+        const s2 = t2.charCodeAt(o2);
+        if (s2 >= 97 && s2 <= 122 || s2 >= 65 && s2 <= 90 || s2 >= 48 && s2 <= 57 || 45 === s2 || 46 === s2 || 95 === s2 || 126 === s2 || e2 && 47 === s2 || r2 && 91 === s2 || r2 && 93 === s2 || r2 && 58 === s2)
+          -1 !== i2 && (n2 += encodeURIComponent(t2.substring(i2, o2)), i2 = -1), void 0 !== n2 && (n2 += t2.charAt(o2));
+        else {
+          void 0 === n2 && (n2 = t2.substr(0, o2));
+          const e3 = p[s2];
+          void 0 !== e3 ? (-1 !== i2 && (n2 += encodeURIComponent(t2.substring(i2, o2)), i2 = -1), n2 += e3) : -1 === i2 && (i2 = o2);
+        }
+      }
+      return -1 !== i2 && (n2 += encodeURIComponent(t2.substring(i2))), void 0 !== n2 ? n2 : t2;
+    }
+    function y(t2) {
+      let e2;
+      for (let r2 = 0; r2 < t2.length; r2++) {
+        const n2 = t2.charCodeAt(r2);
+        35 === n2 || 63 === n2 ? (void 0 === e2 && (e2 = t2.substr(0, r2)), e2 += p[n2]) : void 0 !== e2 && (e2 += t2[r2]);
+      }
+      return void 0 !== e2 ? e2 : t2;
+    }
+    function v(t2, e2) {
+      let r2;
+      return r2 = t2.authority && t2.path.length > 1 && "file" === t2.scheme ? `//${t2.authority}${t2.path}` : 47 === t2.path.charCodeAt(0) && (t2.path.charCodeAt(1) >= 65 && t2.path.charCodeAt(1) <= 90 || t2.path.charCodeAt(1) >= 97 && t2.path.charCodeAt(1) <= 122) && 58 === t2.path.charCodeAt(2) ? e2 ? t2.path.substr(1) : t2.path[1].toLowerCase() + t2.path.substr(2) : t2.path, i && (r2 = r2.replace(/\//g, "\\")), r2;
+    }
+    function b(t2, e2) {
+      const r2 = e2 ? y : m;
+      let n2 = "", { scheme: i2, authority: o2, path: s2, query: h2, fragment: a2 } = t2;
+      if (i2 && (n2 += i2, n2 += ":"), (o2 || "file" === i2) && (n2 += f, n2 += f), o2) {
+        let t3 = o2.indexOf("@");
+        if (-1 !== t3) {
+          const e3 = o2.substr(0, t3);
+          o2 = o2.substr(t3 + 1), t3 = e3.lastIndexOf(":"), -1 === t3 ? n2 += r2(e3, false, false) : (n2 += r2(e3.substr(0, t3), false, false), n2 += ":", n2 += r2(e3.substr(t3 + 1), false, true)), n2 += "@";
+        }
+        o2 = o2.toLowerCase(), t3 = o2.lastIndexOf(":"), -1 === t3 ? n2 += r2(o2, false, true) : (n2 += r2(o2.substr(0, t3), false, true), n2 += o2.substr(t3));
+      }
+      if (s2) {
+        if (s2.length >= 3 && 47 === s2.charCodeAt(0) && 58 === s2.charCodeAt(2)) {
+          const t3 = s2.charCodeAt(1);
+          t3 >= 65 && t3 <= 90 && (s2 = `/${String.fromCharCode(t3 + 32)}:${s2.substr(3)}`);
+        } else if (s2.length >= 2 && 58 === s2.charCodeAt(1)) {
+          const t3 = s2.charCodeAt(0);
+          t3 >= 65 && t3 <= 90 && (s2 = `${String.fromCharCode(t3 + 32)}:${s2.substr(2)}`);
+        }
+        n2 += r2(s2, true, false);
+      }
+      return h2 && (n2 += "?", n2 += r2(h2, false, false)), a2 && (n2 += "#", n2 += e2 ? a2 : m(a2, false, false)), n2;
+    }
+    function C(t2) {
+      try {
+        return decodeURIComponent(t2);
+      } catch {
+        return t2.length > 3 ? t2.substr(0, 3) + C(t2.substr(3)) : t2;
+      }
+    }
+    const A = /(%[0-9A-Za-z][0-9A-Za-z])+/g;
+    function w(t2) {
+      return t2.match(A) ? t2.replace(A, (t3) => C(t3)) : t2;
+    }
+    var x = r(975);
+    const P = x.posix || x, _ = "/";
+    var I;
+    !function(t2) {
+      t2.joinPath = function(t3, ...e2) {
+        return t3.with({ path: P.join(t3.path, ...e2) });
+      }, t2.resolvePath = function(t3, ...e2) {
+        let r2 = t3.path, n2 = false;
+        r2[0] !== _ && (r2 = _ + r2, n2 = true);
+        let i2 = P.resolve(r2, ...e2);
+        return n2 && i2[0] === _ && !t3.authority && (i2 = i2.substring(1)), t3.with({ path: i2 });
+      }, t2.dirname = function(t3) {
+        if (0 === t3.path.length || t3.path === _)
           return t3;
-        }
-      }
-      const u = t2 ? 1 : void 0;
-      class l extends f {
-        _formatted = null;
-        _fsPath = null;
-        get fsPath() {
-          return this._fsPath || (this._fsPath = m(this, false)), this._fsPath;
-        }
-        toString(t3 = false) {
-          return t3 ? y(this, true) : (this._formatted || (this._formatted = y(this, false)), this._formatted);
-        }
-        toJSON() {
-          const t3 = { $mid: 1 };
-          return this._fsPath && (t3.fsPath = this._fsPath, t3._sep = u), this._formatted && (t3.external = this._formatted), this.path && (t3.path = this.path), this.scheme && (t3.scheme = this.scheme), this.authority && (t3.authority = this.authority), this.query && (t3.query = this.query), this.fragment && (t3.fragment = this.fragment), t3;
-        }
-      }
-      const g = { 58: "%3A", 47: "%2F", 63: "%3F", 35: "%23", 91: "%5B", 93: "%5D", 64: "%40", 33: "%21", 36: "%24", 38: "%26", 39: "%27", 40: "%28", 41: "%29", 42: "%2A", 43: "%2B", 44: "%2C", 59: "%3B", 61: "%3D", 32: "%20" };
-      function d(t3, e3, r2) {
-        let n2, i2 = -1;
-        for (let o2 = 0; o2 < t3.length; o2++) {
-          const s2 = t3.charCodeAt(o2);
-          if (s2 >= 97 && s2 <= 122 || s2 >= 65 && s2 <= 90 || s2 >= 48 && s2 <= 57 || 45 === s2 || 46 === s2 || 95 === s2 || 126 === s2 || e3 && 47 === s2 || r2 && 91 === s2 || r2 && 93 === s2 || r2 && 58 === s2)
-            -1 !== i2 && (n2 += encodeURIComponent(t3.substring(i2, o2)), i2 = -1), void 0 !== n2 && (n2 += t3.charAt(o2));
-          else {
-            void 0 === n2 && (n2 = t3.substr(0, o2));
-            const e4 = g[s2];
-            void 0 !== e4 ? (-1 !== i2 && (n2 += encodeURIComponent(t3.substring(i2, o2)), i2 = -1), n2 += e4) : -1 === i2 && (i2 = o2);
-          }
-        }
-        return -1 !== i2 && (n2 += encodeURIComponent(t3.substring(i2))), void 0 !== n2 ? n2 : t3;
-      }
-      function p(t3) {
-        let e3;
-        for (let r2 = 0; r2 < t3.length; r2++) {
-          const n2 = t3.charCodeAt(r2);
-          35 === n2 || 63 === n2 ? (void 0 === e3 && (e3 = t3.substr(0, r2)), e3 += g[n2]) : void 0 !== e3 && (e3 += t3[r2]);
-        }
-        return void 0 !== e3 ? e3 : t3;
-      }
-      function m(e3, r2) {
-        let n2;
-        return n2 = e3.authority && e3.path.length > 1 && "file" === e3.scheme ? `//${e3.authority}${e3.path}` : 47 === e3.path.charCodeAt(0) && (e3.path.charCodeAt(1) >= 65 && e3.path.charCodeAt(1) <= 90 || e3.path.charCodeAt(1) >= 97 && e3.path.charCodeAt(1) <= 122) && 58 === e3.path.charCodeAt(2) ? r2 ? e3.path.substr(1) : e3.path[1].toLowerCase() + e3.path.substr(2) : e3.path, t2 && (n2 = n2.replace(/\//g, "\\")), n2;
-      }
-      function y(t3, e3) {
-        const r2 = e3 ? p : d;
-        let n2 = "", { scheme: i2, authority: o2, path: s2, query: h2, fragment: c2 } = t3;
-        if (i2 && (n2 += i2, n2 += ":"), (o2 || "file" === i2) && (n2 += a, n2 += a), o2) {
-          let t4 = o2.indexOf("@");
-          if (-1 !== t4) {
-            const e4 = o2.substr(0, t4);
-            o2 = o2.substr(t4 + 1), t4 = e4.lastIndexOf(":"), -1 === t4 ? n2 += r2(e4, false, false) : (n2 += r2(e4.substr(0, t4), false, false), n2 += ":", n2 += r2(e4.substr(t4 + 1), false, true)), n2 += "@";
-          }
-          o2 = o2.toLowerCase(), t4 = o2.lastIndexOf(":"), -1 === t4 ? n2 += r2(o2, false, true) : (n2 += r2(o2.substr(0, t4), false, true), n2 += o2.substr(t4));
-        }
-        if (s2) {
-          if (s2.length >= 3 && 47 === s2.charCodeAt(0) && 58 === s2.charCodeAt(2)) {
-            const t4 = s2.charCodeAt(1);
-            t4 >= 65 && t4 <= 90 && (s2 = `/${String.fromCharCode(t4 + 32)}:${s2.substr(3)}`);
-          } else if (s2.length >= 2 && 58 === s2.charCodeAt(1)) {
-            const t4 = s2.charCodeAt(0);
-            t4 >= 65 && t4 <= 90 && (s2 = `${String.fromCharCode(t4 + 32)}:${s2.substr(2)}`);
-          }
-          n2 += r2(s2, true, false);
-        }
-        return h2 && (n2 += "?", n2 += r2(h2, false, false)), c2 && (n2 += "#", n2 += e3 ? c2 : d(c2, false, false)), n2;
-      }
-      function v(t3) {
-        try {
-          return decodeURIComponent(t3);
-        } catch {
-          return t3.length > 3 ? t3.substr(0, 3) + v(t3.substr(3)) : t3;
-        }
-      }
-      const b = /(%[0-9A-Za-z][0-9A-Za-z])+/g;
-      function C(t3) {
-        return t3.match(b) ? t3.replace(b, (t4) => v(t4)) : t3;
-      }
-      var A = r(470);
-      const w = A.posix || A, x = "/";
-      var P;
-      !function(t3) {
-        t3.joinPath = function(t4, ...e3) {
-          return t4.with({ path: w.join(t4.path, ...e3) });
-        }, t3.resolvePath = function(t4, ...e3) {
-          let r2 = t4.path, n2 = false;
-          r2[0] !== x && (r2 = x + r2, n2 = true);
-          let i2 = w.resolve(r2, ...e3);
-          return n2 && i2[0] === x && !t4.authority && (i2 = i2.substring(1)), t4.with({ path: i2 });
-        }, t3.dirname = function(t4) {
-          if (0 === t4.path.length || t4.path === x)
-            return t4;
-          let e3 = w.dirname(t4.path);
-          return 1 === e3.length && 46 === e3.charCodeAt(0) && (e3 = ""), t4.with({ path: e3 });
-        }, t3.basename = function(t4) {
-          return w.basename(t4.path);
-        }, t3.extname = function(t4) {
-          return w.extname(t4.path);
-        };
-      }(P || (P = {}));
-    })(), LIB = n;
+        let e2 = P.dirname(t3.path);
+        return 1 === e2.length && 46 === e2.charCodeAt(0) && (e2 = ""), t3.with({ path: e2 });
+      }, t2.basename = function(t3) {
+        return P.basename(t3.path);
+      }, t2.extname = function(t3) {
+        return P.extname(t3.path);
+      };
+    }(I || (I = {})), LIB = n;
   })();
   var { URI: URI2, Utils } = LIB;
 
   // node_modules/@volar/monaco/worker.js
   __reExport(worker_exports, __toESM(require_language_service(), 1));
   var fsFileSnapshots = (0, import_language_service.createUriMap)();
-  function createSimpleWorkerService({ env: env2, workerContext, languagePlugins, languageServicePlugins, extraApis = {}, setup }) {
+  function createSimpleWorkerService({ env: env3, workerContext, languagePlugins, languageServicePlugins, extraApis = {}, setup }) {
     const snapshots = /* @__PURE__ */ new Map();
     const language = (0, import_language_service.createLanguage)(languagePlugins, (0, import_language_service.createUriMap)(false), (uri) => {
       const model = workerContext.getMirrorModels().find((model2) => model2.uri.toString() === uri.toString());
@@ -35890,15 +35915,15 @@ ${hover.contents.value}
     });
     const project = {};
     setup?.({ language, project });
-    return createWorkerService(language, languageServicePlugins, env2, project, extraApis);
+    return createWorkerService(language, languageServicePlugins, env3, project, extraApis);
   }
-  function createTypeScriptWorkerService({ typescript: ts2, compilerOptions, env: env2, uriConverter, workerContext, languagePlugins, languageServicePlugins, extraApis = {}, setup }) {
+  function createTypeScriptWorkerService({ typescript: ts2, compilerOptions, env: env3, uriConverter, workerContext, languagePlugins, languageServicePlugins, extraApis = {}, setup }) {
     let projectVersion = 0;
     const modelSnapshot = /* @__PURE__ */ new WeakMap();
     const modelVersions = /* @__PURE__ */ new Map();
-    const sys = (0, import_typescript.createSys)(ts2.sys, env2, () => {
-      if (env2.workspaceFolders.length) {
-        return uriConverter.asFileName(env2.workspaceFolders[0]);
+    const sys = (0, import_typescript.createSys)(ts2.sys, env3, () => {
+      if (env3.workspaceFolders.length) {
+        return uriConverter.asFileName(env3.workspaceFolders[0]);
       }
       return "";
     }, uriConverter);
@@ -35965,7 +35990,7 @@ ${hover.contents.value}
       }
     };
     setup?.({ language, project });
-    return createWorkerService(language, languageServicePlugins, env2, project, extraApis);
+    return createWorkerService(language, languageServicePlugins, env3, project, extraApis);
     function getModelSnapshot(uri) {
       const model = workerContext.getMirrorModels().find((model2) => model2.uri.toString() === uri.toString());
       if (model) {
@@ -35983,8 +36008,8 @@ ${hover.contents.value}
       }
     }
   }
-  function createWorkerService(language, servicePlugins, env2, projectContext, extraApis = {}) {
-    const languageService = (0, import_language_service.createLanguageService)(language, servicePlugins, env2, projectContext);
+  function createWorkerService(language, servicePlugins, env3, projectContext, extraApis = {}) {
+    const languageService = (0, import_language_service.createLanguageService)(language, servicePlugins, env3, projectContext);
     class WorkerService {
     }
     ;
@@ -36254,11 +36279,15 @@ ${hover.contents.value}
   function decodeNamedCharacterReference(value) {
     const characterReference2 = "&" + value + ";";
     element.innerHTML = characterReference2;
-    const char = element.textContent;
-    if (char.charCodeAt(char.length - 1) === 59 && value !== "semi") {
+    const character = element.textContent;
+    if (
+      // @ts-expect-error: TypeScript is wrong that `textContent` on elements can
+      // yield `null`.
+      character.charCodeAt(character.length - 1) === 59 && value !== "semi"
+    ) {
       return false;
     }
-    return char === characterReference2 ? false : char;
+    return character === characterReference2 ? false : character;
   }
 
   // node_modules/parse-entities/lib/index.js
@@ -36285,7 +36314,7 @@ ${hover.contents.value}
     const result = [];
     let index4 = 0;
     let lines = -1;
-    let queue = "";
+    let queue2 = "";
     let point5;
     let indent2;
     if (settings.position) {
@@ -36309,7 +36338,7 @@ ${hover.contents.value}
       if (character === 38) {
         const following = value.charCodeAt(index4 + 1);
         if (following === 9 || following === 10 || following === 12 || following === 32 || following === 38 || following === 60 || Number.isNaN(following) || additional && following === additional) {
-          queue += String.fromCharCode(character);
+          queue2 += String.fromCharCode(character);
           column++;
           continue;
         }
@@ -36439,7 +36468,7 @@ ${hover.contents.value}
           previous2 = next;
         } else {
           characters = value.slice(start2 - 1, end);
-          queue += characters;
+          queue2 += characters;
           column += characters.length;
           index4 = end - 1;
         }
@@ -36452,7 +36481,7 @@ ${hover.contents.value}
         if (Number.isNaN(character)) {
           flush();
         } else {
-          queue += String.fromCharCode(character);
+          queue2 += String.fromCharCode(character);
           column++;
         }
       }
@@ -36480,15 +36509,15 @@ ${hover.contents.value}
       }
     }
     function flush() {
-      if (queue) {
-        result.push(queue);
+      if (queue2) {
+        result.push(queue2);
         if (settings.text) {
-          settings.text.call(settings.textContext || void 0, queue, {
+          settings.text.call(settings.textContext || void 0, queue2, {
             start: previous2,
             end: now()
           });
         }
-        queue = "";
+        queue2 = "";
       }
     }
   }
@@ -36895,7 +36924,15 @@ ${hover.contents.value}
       const tag = this.data.mdxJsxTag;
       ok(tag, "expected `mdxJsxTag`");
       enterMdxJsxTagAnyAttribute.call(this, token);
-      tag.attributes.push({ type: "mdxJsxExpressionAttribute", value: "" });
+      tag.attributes.push({
+        type: "mdxJsxExpressionAttribute",
+        value: "",
+        position: {
+          start: point5(token.start),
+          // @ts-expect-error: `end` will be patched later.
+          end: void 0
+        }
+      });
       this.buffer();
     }
     function exitMdxJsxTagExpressionAttribute(token) {
@@ -36905,6 +36942,8 @@ ${hover.contents.value}
       ok(tail.type === "mdxJsxExpressionAttribute");
       const estree = token.estree;
       tail.value = this.resume();
+      ok(tail.position !== void 0);
+      tail.position.end = point5(token.end);
       if (estree) {
         tail.data = { estree };
       }
@@ -37050,7 +37089,7 @@ ${hover.contents.value}
       const trackerMultiLine = state.createTracker(info);
       const serializedAttributes = [];
       const prefix = (flow3 ? currentIndent : "") + "<" + (node3.name || "");
-      const exit2 = state.enter(node3.type);
+      const exit3 = state.enter(node3.type);
       trackerOneLine.move(prefix);
       trackerMultiLine.move(prefix);
       if (node3.attributes && node3.attributes.length > 0) {
@@ -37118,10 +37157,6 @@ ${hover.contents.value}
       if (node3.children && node3.children.length > 0) {
         if (node3.type === "mdxJsxTextElement") {
           value += tracker.move(
-            // @ts-expect-error: `containerPhrasing` is typed correctly, but TS
-            // generates *hardcoded* types, which means that our dynamically added
-            // directives are not present.
-            // At some point, TS should fix that, and `from-markdown` should be fine.
             state.containerPhrasing(node3, {
               ...tracker.current(),
               before: ">",
@@ -37140,7 +37175,7 @@ ${hover.contents.value}
           (flow3 ? currentIndent : "") + "</" + (node3.name || "") + ">"
         );
       }
-      exit2();
+      exit3();
       return value;
     }
   }
@@ -37664,6 +37699,7 @@ ${hover.contents.value}
   var SCOPE_SUPER = 64;
   var SCOPE_DIRECT_SUPER = 128;
   var SCOPE_CLASS_STATIC_BLOCK = 256;
+  var SCOPE_CLASS_FIELD_INIT = 512;
   var SCOPE_VAR = SCOPE_TOP | SCOPE_FUNCTION | SCOPE_CLASS_STATIC_BLOCK;
   function functionFlags(async, generator) {
     return SCOPE_FUNCTION | (async ? SCOPE_ASYNC : 0) | (generator ? SCOPE_GENERATOR : 0);
@@ -37732,19 +37768,20 @@ ${hover.contents.value}
     return (this.currentVarScope().flags & SCOPE_FUNCTION) > 0;
   };
   prototypeAccessors.inGenerator.get = function() {
-    return (this.currentVarScope().flags & SCOPE_GENERATOR) > 0 && !this.currentVarScope().inClassFieldInit;
+    return (this.currentVarScope().flags & SCOPE_GENERATOR) > 0;
   };
   prototypeAccessors.inAsync.get = function() {
-    return (this.currentVarScope().flags & SCOPE_ASYNC) > 0 && !this.currentVarScope().inClassFieldInit;
+    return (this.currentVarScope().flags & SCOPE_ASYNC) > 0;
   };
   prototypeAccessors.canAwait.get = function() {
     for (var i = this.scopeStack.length - 1; i >= 0; i--) {
-      var scope = this.scopeStack[i];
-      if (scope.inClassFieldInit || scope.flags & SCOPE_CLASS_STATIC_BLOCK) {
+      var ref2 = this.scopeStack[i];
+      var flags = ref2.flags;
+      if (flags & (SCOPE_CLASS_STATIC_BLOCK | SCOPE_CLASS_FIELD_INIT)) {
         return false;
       }
-      if (scope.flags & SCOPE_FUNCTION) {
-        return (scope.flags & SCOPE_ASYNC) > 0;
+      if (flags & SCOPE_FUNCTION) {
+        return (flags & SCOPE_ASYNC) > 0;
       }
     }
     return this.inModule && this.options.ecmaVersion >= 13 || this.options.allowAwaitOutsideFunction;
@@ -37752,8 +37789,7 @@ ${hover.contents.value}
   prototypeAccessors.allowSuper.get = function() {
     var ref2 = this.currentThisScope();
     var flags = ref2.flags;
-    var inClassFieldInit = ref2.inClassFieldInit;
-    return (flags & SCOPE_SUPER) > 0 || inClassFieldInit || this.options.allowSuperOutsideMethod;
+    return (flags & SCOPE_SUPER) > 0 || this.options.allowSuperOutsideMethod;
   };
   prototypeAccessors.allowDirectSuper.get = function() {
     return (this.currentThisScope().flags & SCOPE_DIRECT_SUPER) > 0;
@@ -37762,10 +37798,14 @@ ${hover.contents.value}
     return this.treatFunctionsAsVarInScope(this.currentScope());
   };
   prototypeAccessors.allowNewDotTarget.get = function() {
-    var ref2 = this.currentThisScope();
-    var flags = ref2.flags;
-    var inClassFieldInit = ref2.inClassFieldInit;
-    return (flags & (SCOPE_FUNCTION | SCOPE_CLASS_STATIC_BLOCK)) > 0 || inClassFieldInit;
+    for (var i = this.scopeStack.length - 1; i >= 0; i--) {
+      var ref2 = this.scopeStack[i];
+      var flags = ref2.flags;
+      if (flags & (SCOPE_CLASS_STATIC_BLOCK | SCOPE_CLASS_FIELD_INIT) || flags & SCOPE_FUNCTION && !(flags & SCOPE_ARROW)) {
+        return true;
+      }
+    }
+    return false;
   };
   prototypeAccessors.inClassStaticBlock.get = function() {
     return (this.currentVarScope().flags & SCOPE_CLASS_STATIC_BLOCK) > 0;
@@ -37922,12 +37962,12 @@ ${hover.contents.value}
   };
   var pp$8 = Parser.prototype;
   pp$8.parseTopLevel = function(node3) {
-    var exports3 = /* @__PURE__ */ Object.create(null);
+    var exports2 = /* @__PURE__ */ Object.create(null);
     if (!node3.body) {
       node3.body = [];
     }
     while (this.type !== types$1.eof) {
-      var stmt = this.parseStatement(null, true, exports3);
+      var stmt = this.parseStatement(null, true, exports2);
       node3.body.push(stmt);
     }
     if (this.inModule) {
@@ -37983,7 +38023,7 @@ ${hover.contents.value}
     var next = this.pos + skip[0].length, after;
     return !lineBreak.test(this.input.slice(this.pos, next)) && this.input.slice(next, next + 8) === "function" && (next + 8 === this.input.length || !(isIdentifierChar(after = this.input.charCodeAt(next + 8)) || after > 55295 && after < 56320));
   };
-  pp$8.parseStatement = function(context, topLevel, exports3) {
+  pp$8.parseStatement = function(context, topLevel, exports2) {
     var starttype = this.type, node3 = this.startNode(), kind;
     if (this.isLet(context)) {
       starttype = types$1._var;
@@ -38052,7 +38092,7 @@ ${hover.contents.value}
             this.raise(this.start, "'import' and 'export' may appear only with 'sourceType: module'");
           }
         }
-        return starttype === types$1._import ? this.parseImport(node3) : this.parseExport(node3, exports3);
+        return starttype === types$1._import ? this.parseImport(node3) : this.parseExport(node3, exports2);
       default:
         if (this.isAsyncFunction()) {
           if (context) {
@@ -38606,11 +38646,9 @@ ${hover.contents.value}
       this.raise(field.key.start, "Classes can't have a static field named 'prototype'");
     }
     if (this.eat(types$1.eq)) {
-      var scope = this.currentThisScope();
-      var inClassFieldInit = scope.inClassFieldInit;
-      scope.inClassFieldInit = true;
+      this.enterScope(SCOPE_CLASS_FIELD_INIT | SCOPE_SUPER);
       field.value = this.parseMaybeAssign();
-      scope.inClassFieldInit = inClassFieldInit;
+      this.exitScope();
     } else {
       field.value = null;
     }
@@ -38694,11 +38732,11 @@ ${hover.contents.value}
     var key = node3.key;
     return !computed && (key.type === "Identifier" && key.name === name2 || key.type === "Literal" && key.value === name2);
   }
-  pp$8.parseExportAllDeclaration = function(node3, exports3) {
+  pp$8.parseExportAllDeclaration = function(node3, exports2) {
     if (this.options.ecmaVersion >= 11) {
       if (this.eatContextual("as")) {
         node3.exported = this.parseModuleExportName();
-        this.checkExport(exports3, node3.exported, this.lastTokStart);
+        this.checkExport(exports2, node3.exported, this.lastTokStart);
       } else {
         node3.exported = null;
       }
@@ -38714,28 +38752,31 @@ ${hover.contents.value}
     this.semicolon();
     return this.finishNode(node3, "ExportAllDeclaration");
   };
-  pp$8.parseExport = function(node3, exports3) {
+  pp$8.parseExport = function(node3, exports2) {
     this.next();
     if (this.eat(types$1.star)) {
-      return this.parseExportAllDeclaration(node3, exports3);
+      return this.parseExportAllDeclaration(node3, exports2);
     }
     if (this.eat(types$1._default)) {
-      this.checkExport(exports3, "default", this.lastTokStart);
+      this.checkExport(exports2, "default", this.lastTokStart);
       node3.declaration = this.parseExportDefaultDeclaration();
       return this.finishNode(node3, "ExportDefaultDeclaration");
     }
     if (this.shouldParseExportStatement()) {
       node3.declaration = this.parseExportDeclaration(node3);
       if (node3.declaration.type === "VariableDeclaration") {
-        this.checkVariableExport(exports3, node3.declaration.declarations);
+        this.checkVariableExport(exports2, node3.declaration.declarations);
       } else {
-        this.checkExport(exports3, node3.declaration.id, node3.declaration.id.start);
+        this.checkExport(exports2, node3.declaration.id, node3.declaration.id.start);
       }
       node3.specifiers = [];
       node3.source = null;
+      if (this.options.ecmaVersion >= 16) {
+        node3.attributes = [];
+      }
     } else {
       node3.declaration = null;
-      node3.specifiers = this.parseExportSpecifiers(exports3);
+      node3.specifiers = this.parseExportSpecifiers(exports2);
       if (this.eatContextual("from")) {
         if (this.type !== types$1.string) {
           this.unexpected();
@@ -38754,6 +38795,9 @@ ${hover.contents.value}
           }
         }
         node3.source = null;
+        if (this.options.ecmaVersion >= 16) {
+          node3.attributes = [];
+        }
       }
       this.semicolon();
     }
@@ -38780,66 +38824,66 @@ ${hover.contents.value}
       return declaration;
     }
   };
-  pp$8.checkExport = function(exports3, name2, pos) {
-    if (!exports3) {
+  pp$8.checkExport = function(exports2, name2, pos) {
+    if (!exports2) {
       return;
     }
     if (typeof name2 !== "string") {
       name2 = name2.type === "Identifier" ? name2.name : name2.value;
     }
-    if (hasOwn(exports3, name2)) {
+    if (hasOwn(exports2, name2)) {
       this.raiseRecoverable(pos, "Duplicate export '" + name2 + "'");
     }
-    exports3[name2] = true;
+    exports2[name2] = true;
   };
-  pp$8.checkPatternExport = function(exports3, pat) {
+  pp$8.checkPatternExport = function(exports2, pat) {
     var type = pat.type;
     if (type === "Identifier") {
-      this.checkExport(exports3, pat, pat.start);
+      this.checkExport(exports2, pat, pat.start);
     } else if (type === "ObjectPattern") {
       for (var i = 0, list4 = pat.properties; i < list4.length; i += 1) {
         var prop = list4[i];
-        this.checkPatternExport(exports3, prop);
+        this.checkPatternExport(exports2, prop);
       }
     } else if (type === "ArrayPattern") {
       for (var i$1 = 0, list$1 = pat.elements; i$1 < list$1.length; i$1 += 1) {
         var elt = list$1[i$1];
         if (elt) {
-          this.checkPatternExport(exports3, elt);
+          this.checkPatternExport(exports2, elt);
         }
       }
     } else if (type === "Property") {
-      this.checkPatternExport(exports3, pat.value);
+      this.checkPatternExport(exports2, pat.value);
     } else if (type === "AssignmentPattern") {
-      this.checkPatternExport(exports3, pat.left);
+      this.checkPatternExport(exports2, pat.left);
     } else if (type === "RestElement") {
-      this.checkPatternExport(exports3, pat.argument);
+      this.checkPatternExport(exports2, pat.argument);
     }
   };
-  pp$8.checkVariableExport = function(exports3, decls) {
-    if (!exports3) {
+  pp$8.checkVariableExport = function(exports2, decls) {
+    if (!exports2) {
       return;
     }
     for (var i = 0, list4 = decls; i < list4.length; i += 1) {
       var decl = list4[i];
-      this.checkPatternExport(exports3, decl.id);
+      this.checkPatternExport(exports2, decl.id);
     }
   };
   pp$8.shouldParseExportStatement = function() {
     return this.type.keyword === "var" || this.type.keyword === "const" || this.type.keyword === "class" || this.type.keyword === "function" || this.isLet() || this.isAsyncFunction();
   };
-  pp$8.parseExportSpecifier = function(exports3) {
+  pp$8.parseExportSpecifier = function(exports2) {
     var node3 = this.startNode();
     node3.local = this.parseModuleExportName();
     node3.exported = this.eatContextual("as") ? this.parseModuleExportName() : node3.local;
     this.checkExport(
-      exports3,
+      exports2,
       node3.exported,
       node3.exported.start
     );
     return this.finishNode(node3, "ExportSpecifier");
   };
-  pp$8.parseExportSpecifiers = function(exports3) {
+  pp$8.parseExportSpecifiers = function(exports2) {
     var nodes = [], first = true;
     this.expect(types$1.braceL);
     while (!this.eat(types$1.braceR)) {
@@ -38851,7 +38895,7 @@ ${hover.contents.value}
       } else {
         first = false;
       }
-      nodes.push(this.parseExportSpecifier(exports3));
+      nodes.push(this.parseExportSpecifier(exports2));
     }
     return nodes;
   };
@@ -40118,9 +40162,10 @@ ${hover.contents.value}
     return this.finishNode(prop, "Property");
   };
   pp$5.parseGetterSetter = function(prop) {
-    prop.kind = prop.key.name;
+    var kind = prop.key.name;
     this.parsePropertyName(prop);
     prop.value = this.parseMethod(false);
+    prop.kind = kind;
     var paramCount = prop.kind === "get" ? 0 : 1;
     if (prop.value.params.length !== paramCount) {
       var start2 = prop.value.start;
@@ -40146,9 +40191,9 @@ ${hover.contents.value}
       if (isPattern) {
         this.unexpected();
       }
-      prop.kind = "init";
       prop.method = true;
       prop.value = this.parseMethod(isGenerator, isAsync);
+      prop.kind = "init";
     } else if (!isPattern && !containsEsc && this.options.ecmaVersion >= 5 && !prop.computed && prop.key.type === "Identifier" && (prop.key.name === "get" || prop.key.name === "set") && (this.type !== types$1.comma && this.type !== types$1.braceR && this.type !== types$1.eq)) {
       if (isGenerator || isAsync) {
         this.unexpected();
@@ -40162,7 +40207,6 @@ ${hover.contents.value}
       if (prop.key.name === "await" && !this.awaitIdentPos) {
         this.awaitIdentPos = startPos;
       }
-      prop.kind = "init";
       if (isPattern) {
         prop.value = this.parseMaybeDefault(startPos, startLoc, this.copyNode(prop.key));
       } else if (this.type === types$1.eq && refDestructuringErrors) {
@@ -40173,6 +40217,7 @@ ${hover.contents.value}
       } else {
         prop.value = this.copyNode(prop.key);
       }
+      prop.kind = "init";
       prop.shorthand = true;
     } else {
       this.unexpected();
@@ -40322,7 +40367,7 @@ ${hover.contents.value}
     if (this.inAsync && name2 === "await") {
       this.raiseRecoverable(start2, "Cannot use 'await' as identifier inside an async function");
     }
-    if (this.currentThisScope().inClassFieldInit && name2 === "arguments") {
+    if (!(this.currentThisScope().flags & SCOPE_VAR) && name2 === "arguments") {
       this.raiseRecoverable(start2, "Cannot use 'arguments' in class field initializer");
     }
     if (this.inClassStaticBlock && (name2 === "arguments" || name2 === "await")) {
@@ -40415,6 +40460,9 @@ ${hover.contents.value}
   pp$4.raise = function(pos, message) {
     var loc = getLineInfo(this.input, pos);
     message += " (" + loc.line + ":" + loc.column + ")";
+    if (this.sourceFile) {
+      message += " in " + this.sourceFile;
+    }
     var err = new SyntaxError(message);
     err.pos = pos;
     err.loc = loc;
@@ -40433,7 +40481,6 @@ ${hover.contents.value}
     this.var = [];
     this.lexical = [];
     this.functions = [];
-    this.inClassFieldInit = false;
   };
   pp$3.enterScope = function(flags) {
     this.scopeStack.push(new Scope(flags));
@@ -40495,7 +40542,7 @@ ${hover.contents.value}
   pp$3.currentVarScope = function() {
     for (var i = this.scopeStack.length - 1; ; i--) {
       var scope = this.scopeStack[i];
-      if (scope.flags & SCOPE_VAR) {
+      if (scope.flags & (SCOPE_VAR | SCOPE_CLASS_FIELD_INIT | SCOPE_CLASS_STATIC_BLOCK)) {
         return scope;
       }
     }
@@ -40503,7 +40550,7 @@ ${hover.contents.value}
   pp$3.currentThisScope = function() {
     for (var i = this.scopeStack.length - 1; ; i--) {
       var scope = this.scopeStack[i];
-      if (scope.flags & SCOPE_VAR && !(scope.flags & SCOPE_ARROW)) {
+      if (scope.flags & (SCOPE_VAR | SCOPE_CLASS_FIELD_INIT | SCOPE_CLASS_STATIC_BLOCK) && !(scope.flags & SCOPE_ARROW)) {
         return scope;
       }
     }
@@ -42741,7 +42788,7 @@ ${hover.contents.value}
     }
     return this.finishToken(type, word);
   };
-  var version = "8.14.0";
+  var version = "8.14.1";
   Parser.acorn = {
     Parser,
     version,
@@ -42900,7 +42947,7 @@ ${hover.contents.value}
     );
   }
 
-  // node_modules/micromark-util-events-to-acorn/index.js
+  // node_modules/micromark-util-events-to-acorn/lib/index.js
   function eventsToAcorn(events, options) {
     const prefix = options.prefix || "";
     const suffix = options.suffix || "";
@@ -42986,13 +43033,13 @@ ${hover.contents.value}
           /** @type {AcornNode | Array<AcornNode>} */
           parents[parents.length - 1]
         );
-        let prop = field;
-        if (esnode.type === "ParenthesizedExpression" && context && prop) {
+        let property = field;
+        if (esnode.type === "ParenthesizedExpression" && context && property) {
           if (typeof index4 === "number") {
-            context = context[prop];
-            prop = index4;
+            context = context[property];
+            property = index4;
           }
-          context[prop] = esnode.expression;
+          context[property] = esnode.expression;
         }
         fixPosition(esnode);
       });
@@ -43029,11 +43076,13 @@ ${hover.contents.value}
         start: {
           line: pointStart.line,
           column: pointStart.column - 1,
+          // @ts-expect-error: not allowed by acorn types.
           offset: pointStart.offset
         },
         end: {
           line: pointEnd.line,
           column: pointEnd.column - 1,
+          // @ts-expect-error: not allowed by acorn types.
           offset: pointEnd.offset
         }
       };
@@ -43885,9 +43934,9 @@ ${hover.contents.value}
   // node_modules/micromark-extension-mdx-jsx/lib/jsx-flow.js
   function jsxFlow(acorn, options) {
     return {
+      concrete: true,
       name: "mdxJsxFlowTag",
-      tokenize: tokenizeJsxFlow,
-      concrete: true
+      tokenize: tokenizeJsxFlow
     };
     function tokenizeJsxFlow(effects, ok3, nok) {
       const self2 = this;
@@ -43904,7 +43953,13 @@ ${hover.contents.value}
       function end(code2) {
         const leftBraceValue = self2.parser.constructs.flow[123];
         const constructs3 = Array.isArray(leftBraceValue) ? leftBraceValue : leftBraceValue ? [leftBraceValue] : [];
-        const expression = constructs3.find((d) => d.name === "mdxFlowExpression");
+        let expression;
+        for (const construct of constructs3) {
+          if (construct.name === "mdxFlowExpression") {
+            expression = construct;
+            break;
+          }
+        }
         return code2 === 60 ? (
           // We can’t just say: fine. Lines of blocks have to be parsed until an eol/eof.
           start2(code2)
@@ -45762,6 +45817,7 @@ ${hover.contents.value}
               otherEvent[1].type = "lineEnding";
               lineIndex = otherIndex;
             }
+          } else if (otherEvent[1].type === "linePrefix" || otherEvent[1].type === "listItemIndent") {
           } else {
             break;
           }
@@ -45784,7 +45840,13 @@ ${hover.contents.value}
     const context = events.get(eventIndex)[2];
     let startPosition = eventIndex - 1;
     const startPositions = [];
-    const tokenizer2 = token._tokenizer || context.parser[token.contentType](token.start);
+    let tokenizer2 = token._tokenizer;
+    if (!tokenizer2) {
+      tokenizer2 = context.parser[token.contentType](token.start);
+      if (token._contentTypeTextTrailing) {
+        tokenizer2._contentTypeTextTrailing = true;
+      }
+    }
     const childEvents = tokenizer2.events;
     const jumps = [];
     const gaps = {};
@@ -47605,7 +47667,7 @@ ${hover.contents.value}
     const heading2 = {
       type: "setextHeading",
       start: {
-        ...events[text4][1].start
+        ...events[content3][1].start
       },
       end: {
         ...events[events.length - 1][1].end
@@ -47810,6 +47872,9 @@ ${hover.contents.value}
             break;
           }
         }
+        if (context._contentTypeTextTrailing && eventIndex === events.length) {
+          size = 0;
+        }
         if (size) {
           const token = {
             type: eventIndex === events.length || tabs || size < 2 ? "lineSuffix" : "hardBreakTrailing",
@@ -47934,7 +47999,7 @@ ${hover.contents.value}
       check: constructFactory(onsuccessfulcheck),
       consume,
       enter,
-      exit: exit2,
+      exit: exit3,
       interrupt: constructFactory(onsuccessfulcheck, {
         interrupt: true
       })
@@ -48048,7 +48113,7 @@ ${hover.contents.value}
       stack.push(token);
       return token;
     }
-    function exit2(type) {
+    function exit3(type) {
       const token = stack.pop();
       token.end = now();
       context.events.push(["exit", token, context]);
@@ -48409,7 +48474,7 @@ ${hover.contents.value}
     return compiler(options)(postprocess(parse3(options).document().write(preprocess()(value, encoding, true))));
   }
   function compiler(options) {
-    const config = {
+    const config2 = {
       transforms: [],
       canContainEols: ["emphasis", "fragment", "heading", "paragraph", "strong"],
       enter: {
@@ -48507,7 +48572,7 @@ ${hover.contents.value}
         thematicBreak: closer()
       }
     };
-    configure(config, (options || {}).mdastExtensions || []);
+    configure(config2, (options || {}).mdastExtensions || []);
     const data2 = {};
     return compile;
     function compile(events) {
@@ -48518,9 +48583,9 @@ ${hover.contents.value}
       const context = {
         stack: [tree],
         tokenStack: [],
-        config,
+        config: config2,
         enter,
-        exit: exit2,
+        exit: exit3,
         buffer,
         resume,
         data: data2
@@ -48539,7 +48604,7 @@ ${hover.contents.value}
       }
       index4 = -1;
       while (++index4 < events.length) {
-        const handler = config[events[index4][0]];
+        const handler = config2[events[index4][0]];
         if (own2.call(handler, events[index4][1].type)) {
           handler[events[index4][1].type].call(Object.assign({
             sliceSerialize: events[index4][2].sliceSerialize
@@ -48564,8 +48629,8 @@ ${hover.contents.value}
         })
       };
       index4 = -1;
-      while (++index4 < config.transforms.length) {
-        tree = config.transforms[index4](tree) || tree;
+      while (++index4 < config2.transforms.length) {
+        tree = config2.transforms[index4](tree) || tree;
       }
       return tree;
     }
@@ -48690,10 +48755,10 @@ ${hover.contents.value}
       function close(token) {
         if (and)
           and.call(this, token);
-        exit2.call(this, token);
+        exit3.call(this, token);
       }
     }
-    function exit2(token, onExitError) {
+    function exit3(token, onExitError) {
       const node3 = this.stack.pop();
       const open = this.tokenStack.pop();
       if (!open) {
@@ -48812,7 +48877,7 @@ ${hover.contents.value}
         this.data.atHardBreak = void 0;
         return;
       }
-      if (!this.data.setextHeadingSlurpLineEnding && config.canContainEols.includes(context.type)) {
+      if (!this.data.setextHeadingSlurpLineEnding && config2.canContainEols.includes(context.type)) {
         onenterdata.call(this, token);
         onexitdata.call(this, token);
       }
@@ -51673,203 +51738,295 @@ export default function MDXContent(props) {
     };
   }
 
-  // node_modules/@jspm/core/nodelibs/browser/chunk-2eac56ff.js
-  var exports = {};
+  // node-modules-polyfills:path
+  function unimplemented(name2) {
+    throw new Error("Node.js process " + name2 + " is not supported by JSPM core outside of Node.js");
+  }
+  var queue = [];
+  var draining = false;
+  var currentQueue;
+  var queueIndex = -1;
+  function cleanUpNextTick() {
+    if (!draining || !currentQueue)
+      return;
+    draining = false;
+    if (currentQueue.length) {
+      queue = currentQueue.concat(queue);
+    } else {
+      queueIndex = -1;
+    }
+    if (queue.length)
+      drainQueue();
+  }
+  function drainQueue() {
+    if (draining)
+      return;
+    var timeout = setTimeout(cleanUpNextTick, 0);
+    draining = true;
+    var len = queue.length;
+    while (len) {
+      currentQueue = queue;
+      queue = [];
+      while (++queueIndex < len) {
+        if (currentQueue)
+          currentQueue[queueIndex].run();
+      }
+      queueIndex = -1;
+      len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    clearTimeout(timeout);
+  }
+  function nextTick(fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+      for (var i = 1; i < arguments.length; i++)
+        args[i - 1] = arguments[i];
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining)
+      setTimeout(drainQueue, 0);
+  }
+  function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+  }
+  Item.prototype.run = function() {
+    this.fun.apply(null, this.array);
+  };
+  var title = "browser";
+  var arch = "x64";
+  var platform2 = "browser";
+  var env2 = {
+    PATH: "/usr/bin",
+    LANG: navigator.language + ".UTF-8",
+    PWD: "/",
+    HOME: "/home",
+    TMP: "/tmp"
+  };
+  var argv = ["/usr/bin/node"];
+  var execArgv = [];
+  var version2 = "v16.8.0";
+  var versions = {};
+  var emitWarning = function(message, type) {
+    console.warn((type ? type + ": " : "") + message);
+  };
+  var binding = function(name2) {
+    unimplemented("binding");
+  };
+  var umask = function(mask) {
+    return 0;
+  };
+  var cwd3 = function() {
+    return "/";
+  };
+  var chdir = function(dir) {
+  };
+  var release = {
+    name: "node",
+    sourceUrl: "",
+    headersUrl: "",
+    libUrl: ""
+  };
+  function noop() {
+  }
+  var _rawDebug = noop;
+  var moduleLoadList = [];
+  function _linkedBinding(name2) {
+    unimplemented("_linkedBinding");
+  }
+  var domain = {};
+  var _exiting = false;
+  var config = {};
+  function dlopen(name2) {
+    unimplemented("dlopen");
+  }
+  function _getActiveRequests() {
+    return [];
+  }
+  function _getActiveHandles() {
+    return [];
+  }
+  var reallyExit = noop;
+  var _kill = noop;
+  var cpuUsage = function() {
+    return {};
+  };
+  var resourceUsage = cpuUsage;
+  var memoryUsage = cpuUsage;
+  var kill = noop;
+  var exit2 = noop;
+  var openStdin = noop;
+  var allowedNodeEnvironmentFlags = {};
+  function assert(condition, message) {
+    if (!condition)
+      throw new Error(message || "assertion error");
+  }
+  var features = {
+    inspector: false,
+    debug: false,
+    uv: false,
+    ipv6: false,
+    tls_alpn: false,
+    tls_sni: false,
+    tls_ocsp: false,
+    tls: false,
+    cached_builtins: true
+  };
+  var _fatalExceptions = noop;
+  var setUncaughtExceptionCaptureCallback = noop;
+  function hasUncaughtExceptionCaptureCallback() {
+    return false;
+  }
+  var _tickCallback = noop;
+  var _debugProcess = noop;
+  var _debugEnd = noop;
+  var _startProfilerIdleNotifier = noop;
+  var _stopProfilerIdleNotifier = noop;
+  var stdout = void 0;
+  var stderr = void 0;
+  var stdin = void 0;
+  var abort = noop;
+  var pid = 2;
+  var ppid = 1;
+  var execPath = "/bin/usr/node";
+  var debugPort = 9229;
+  var argv0 = "node";
+  var _preload_modules = [];
+  var setSourceMapsEnabled = noop;
+  var _performance = {
+    now: typeof performance !== "undefined" ? performance.now.bind(performance) : void 0,
+    timing: typeof performance !== "undefined" ? performance.timing : void 0
+  };
+  if (_performance.now === void 0) {
+    nowOffset = Date.now();
+    if (_performance.timing && _performance.timing.navigationStart) {
+      nowOffset = _performance.timing.navigationStart;
+    }
+    _performance.now = () => Date.now() - nowOffset;
+  }
+  var nowOffset;
+  function uptime() {
+    return _performance.now() / 1e3;
+  }
+  var nanoPerSec = 1e9;
+  function hrtime(previousTimestamp) {
+    var baseNow = Math.floor((Date.now() - _performance.now()) * 1e-3);
+    var clocktime = _performance.now() * 1e-3;
+    var seconds = Math.floor(clocktime) + baseNow;
+    var nanoseconds = Math.floor(clocktime % 1 * 1e9);
+    if (previousTimestamp) {
+      seconds = seconds - previousTimestamp[0];
+      nanoseconds = nanoseconds - previousTimestamp[1];
+      if (nanoseconds < 0) {
+        seconds--;
+        nanoseconds += nanoPerSec;
+      }
+    }
+    return [seconds, nanoseconds];
+  }
+  hrtime.bigint = function(time) {
+    var diff = hrtime(time);
+    if (typeof BigInt === "undefined") {
+      return diff[0] * nanoPerSec + diff[1];
+    }
+    return BigInt(diff[0] * nanoPerSec) + BigInt(diff[1]);
+  };
+  var _maxListeners = 10;
+  var _events = {};
+  var _eventsCount = 0;
+  function on() {
+    return process2;
+  }
+  var addListener = on;
+  var once = on;
+  var off = on;
+  var removeListener = on;
+  var removeAllListeners = on;
+  var emit = noop;
+  var prependListener = on;
+  var prependOnceListener = on;
+  function listeners(name2) {
+    return [];
+  }
+  var process2 = {
+    version: version2,
+    versions,
+    arch,
+    platform: platform2,
+    release,
+    _rawDebug,
+    moduleLoadList,
+    binding,
+    _linkedBinding,
+    _events,
+    _eventsCount,
+    _maxListeners,
+    on,
+    addListener,
+    once,
+    off,
+    removeListener,
+    removeAllListeners,
+    emit,
+    prependListener,
+    prependOnceListener,
+    listeners,
+    domain,
+    _exiting,
+    config,
+    dlopen,
+    uptime,
+    _getActiveRequests,
+    _getActiveHandles,
+    reallyExit,
+    _kill,
+    cpuUsage,
+    resourceUsage,
+    memoryUsage,
+    kill,
+    exit: exit2,
+    openStdin,
+    allowedNodeEnvironmentFlags,
+    assert,
+    features,
+    _fatalExceptions,
+    setUncaughtExceptionCaptureCallback,
+    hasUncaughtExceptionCaptureCallback,
+    emitWarning,
+    nextTick,
+    _tickCallback,
+    _debugProcess,
+    _debugEnd,
+    _startProfilerIdleNotifier,
+    _stopProfilerIdleNotifier,
+    stdout,
+    stdin,
+    stderr,
+    abort,
+    umask,
+    chdir,
+    cwd: cwd3,
+    env: env2,
+    title,
+    argv,
+    execArgv,
+    pid,
+    ppid,
+    execPath,
+    debugPort,
+    hrtime,
+    argv0,
+    _preload_modules,
+    setSourceMapsEnabled
+  };
+  var exports$1 = {};
   var _dewExec = false;
-  var _global = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : globalThis;
   function dew() {
     if (_dewExec)
-      return exports;
-    _dewExec = true;
-    var process3 = exports = {};
-    var cachedSetTimeout;
-    var cachedClearTimeout;
-    function defaultSetTimout() {
-      throw new Error("setTimeout has not been defined");
-    }
-    function defaultClearTimeout() {
-      throw new Error("clearTimeout has not been defined");
-    }
-    (function() {
-      try {
-        if (typeof setTimeout === "function") {
-          cachedSetTimeout = setTimeout;
-        } else {
-          cachedSetTimeout = defaultSetTimout;
-        }
-      } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-      }
-      try {
-        if (typeof clearTimeout === "function") {
-          cachedClearTimeout = clearTimeout;
-        } else {
-          cachedClearTimeout = defaultClearTimeout;
-        }
-      } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-      }
-    })();
-    function runTimeout(fun) {
-      if (cachedSetTimeout === setTimeout) {
-        return setTimeout(fun, 0);
-      }
-      if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-      }
-      try {
-        return cachedSetTimeout(fun, 0);
-      } catch (e) {
-        try {
-          return cachedSetTimeout.call(null, fun, 0);
-        } catch (e2) {
-          return cachedSetTimeout.call(this || _global, fun, 0);
-        }
-      }
-    }
-    function runClearTimeout(marker) {
-      if (cachedClearTimeout === clearTimeout) {
-        return clearTimeout(marker);
-      }
-      if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-      }
-      try {
-        return cachedClearTimeout(marker);
-      } catch (e) {
-        try {
-          return cachedClearTimeout.call(null, marker);
-        } catch (e2) {
-          return cachedClearTimeout.call(this || _global, marker);
-        }
-      }
-    }
-    var queue = [];
-    var draining = false;
-    var currentQueue;
-    var queueIndex = -1;
-    function cleanUpNextTick() {
-      if (!draining || !currentQueue) {
-        return;
-      }
-      draining = false;
-      if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-      } else {
-        queueIndex = -1;
-      }
-      if (queue.length) {
-        drainQueue();
-      }
-    }
-    function drainQueue() {
-      if (draining) {
-        return;
-      }
-      var timeout = runTimeout(cleanUpNextTick);
-      draining = true;
-      var len = queue.length;
-      while (len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-          if (currentQueue) {
-            currentQueue[queueIndex].run();
-          }
-        }
-        queueIndex = -1;
-        len = queue.length;
-      }
-      currentQueue = null;
-      draining = false;
-      runClearTimeout(timeout);
-    }
-    process3.nextTick = function(fun) {
-      var args = new Array(arguments.length - 1);
-      if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-          args[i - 1] = arguments[i];
-        }
-      }
-      queue.push(new Item(fun, args));
-      if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-      }
-    };
-    function Item(fun, array) {
-      (this || _global).fun = fun;
-      (this || _global).array = array;
-    }
-    Item.prototype.run = function() {
-      (this || _global).fun.apply(null, (this || _global).array);
-    };
-    process3.title = "browser";
-    process3.browser = true;
-    process3.env = {};
-    process3.argv = [];
-    process3.version = "";
-    process3.versions = {};
-    function noop() {
-    }
-    process3.on = noop;
-    process3.addListener = noop;
-    process3.once = noop;
-    process3.off = noop;
-    process3.removeListener = noop;
-    process3.removeAllListeners = noop;
-    process3.emit = noop;
-    process3.prependListener = noop;
-    process3.prependOnceListener = noop;
-    process3.listeners = function(name2) {
-      return [];
-    };
-    process3.binding = function(name2) {
-      throw new Error("process.binding is not supported");
-    };
-    process3.cwd = function() {
-      return "/";
-    };
-    process3.chdir = function(dir) {
-      throw new Error("process.chdir is not supported");
-    };
-    process3.umask = function() {
-      return 0;
-    };
-    return exports;
-  }
-  var process2 = dew();
-  process2.platform = "browser";
-  process2.addListener;
-  process2.argv;
-  process2.binding;
-  process2.browser;
-  process2.chdir;
-  process2.cwd;
-  process2.emit;
-  process2.env;
-  process2.listeners;
-  process2.nextTick;
-  process2.off;
-  process2.on;
-  process2.once;
-  process2.prependListener;
-  process2.prependOnceListener;
-  process2.removeAllListeners;
-  process2.removeListener;
-  process2.title;
-  process2.umask;
-  process2.version;
-  process2.versions;
-
-  // node_modules/@jspm/core/nodelibs/browser/chunk-23dbec7b.js
-  var exports$1 = {};
-  var _dewExec2 = false;
-  function dew2() {
-    if (_dewExec2)
       return exports$1;
-    _dewExec2 = true;
+    _dewExec = true;
     var process$1 = process2;
     function assertPath3(path) {
       if (typeof path !== "string") {
@@ -51940,7 +52097,7 @@ export default function MDXContent(props) {
       }
       return res;
     }
-    function _format3(sep3, pathObject) {
+    function _format3(sep22, pathObject) {
       var dir = pathObject.dir || pathObject.root;
       var base = pathObject.base || (pathObject.name || "") + (pathObject.ext || "");
       if (!dir) {
@@ -51949,22 +52106,22 @@ export default function MDXContent(props) {
       if (dir === pathObject.root) {
         return dir + base;
       }
-      return dir + sep3 + base;
+      return dir + sep22 + base;
     }
-    var posix3 = {
+    var posix22 = {
       // path.resolve([from ...], to)
-      resolve: function resolve3() {
+      resolve: function resolve22() {
         var resolvedPath = "";
         var resolvedAbsolute = false;
-        var cwd3;
+        var cwd22;
         for (var i = arguments.length - 1; i >= -1 && !resolvedAbsolute; i--) {
           var path;
           if (i >= 0)
             path = arguments[i];
           else {
-            if (cwd3 === void 0)
-              cwd3 = process$1.cwd();
-            path = cwd3;
+            if (cwd22 === void 0)
+              cwd22 = process$1.cwd();
+            path = cwd22;
           }
           assertPath3(path);
           if (path.length === 0) {
@@ -51985,7 +52142,7 @@ export default function MDXContent(props) {
           return ".";
         }
       },
-      normalize: function normalize4(path) {
+      normalize: function normalize22(path) {
         assertPath3(path);
         if (path.length === 0)
           return ".";
@@ -52004,7 +52161,7 @@ export default function MDXContent(props) {
         assertPath3(path);
         return path.length > 0 && path.charCodeAt(0) === 47;
       },
-      join: function join4() {
+      join: function join22() {
         if (arguments.length === 0)
           return ".";
         var joined;
@@ -52020,15 +52177,15 @@ export default function MDXContent(props) {
         }
         if (joined === void 0)
           return ".";
-        return posix3.normalize(joined);
+        return posix22.normalize(joined);
       },
-      relative: function relative3(from, to) {
+      relative: function relative22(from, to) {
         assertPath3(from);
         assertPath3(to);
         if (from === to)
           return "";
-        from = posix3.resolve(from);
-        to = posix3.resolve(to);
+        from = posix22.resolve(from);
+        to = posix22.resolve(to);
         if (from === to)
           return "";
         var fromStart = 1;
@@ -52093,7 +52250,7 @@ export default function MDXContent(props) {
       _makeLong: function _makeLong2(path) {
         return path;
       },
-      dirname: function dirname4(path) {
+      dirname: function dirname22(path) {
         assertPath3(path);
         if (path.length === 0)
           return ".";
@@ -52118,7 +52275,7 @@ export default function MDXContent(props) {
           return "//";
         return path.slice(0, end);
       },
-      basename: function basename4(path, ext) {
+      basename: function basename22(path, ext) {
         if (ext !== void 0 && typeof ext !== "string")
           throw new TypeError('"ext" argument must be a string');
         assertPath3(path);
@@ -52177,7 +52334,7 @@ export default function MDXContent(props) {
           return path.slice(start2, end);
         }
       },
-      extname: function extname4(path) {
+      extname: function extname22(path) {
         assertPath3(path);
         var startDot = -1;
         var startPart = 0;
@@ -52219,7 +52376,7 @@ export default function MDXContent(props) {
         }
         return _format3("/", pathObject);
       },
-      parse: function parse5(path) {
+      parse: function parse22(path) {
         assertPath3(path);
         var ret = {
           root: "",
@@ -52297,28 +52454,26 @@ export default function MDXContent(props) {
       win32: null,
       posix: null
     };
-    posix3.posix = posix3;
-    exports$1 = posix3;
+    posix22.posix = posix22;
+    exports$1 = posix22;
     return exports$1;
   }
-  var exports2 = dew2();
-
-  // node-modules-polyfills:path
-  var _makeLong = exports2._makeLong;
-  var basename3 = exports2.basename;
-  var delimiter = exports2.delimiter;
-  var dirname3 = exports2.dirname;
-  var extname3 = exports2.extname;
-  var format = exports2.format;
-  var isAbsolute = exports2.isAbsolute;
-  var join2 = exports2.join;
-  var normalize3 = exports2.normalize;
-  var parse4 = exports2.parse;
-  var posix2 = exports2.posix;
-  var relative2 = exports2.relative;
-  var resolve2 = exports2.resolve;
-  var sep2 = exports2.sep;
-  var win322 = exports2.win32;
+  var exports = dew();
+  var _makeLong = exports._makeLong;
+  var basename3 = exports.basename;
+  var delimiter = exports.delimiter;
+  var dirname3 = exports.dirname;
+  var extname3 = exports.extname;
+  var format = exports.format;
+  var isAbsolute = exports.isAbsolute;
+  var join2 = exports.join;
+  var normalize3 = exports.normalize;
+  var parse4 = exports.parse;
+  var posix2 = exports.posix;
+  var relative2 = exports.relative;
+  var resolve2 = exports.resolve;
+  var sep2 = exports.sep;
+  var win322 = exports.win32;
 
   // IMPORT_PATH_MODIFIER:node:path/posix
   var posix_default = posix2;
@@ -52393,7 +52548,7 @@ export default function MDXContent(props) {
 
   // node_modules/mdast-util-to-markdown/lib/handle/blockquote.js
   function blockquote(node3, _, state, info) {
-    const exit2 = state.enter("blockquote");
+    const exit3 = state.enter("blockquote");
     const tracker = state.createTracker(info);
     tracker.move("> ");
     tracker.shift(2);
@@ -52401,7 +52556,7 @@ export default function MDXContent(props) {
       state.containerFlow(node3, tracker.current()),
       map2
     );
-    exit2();
+    exit3();
     return value;
   }
   function map2(line, _, blank) {
@@ -52490,14 +52645,14 @@ export default function MDXContent(props) {
     const raw = node3.value || "";
     const suffix = marker === "`" ? "GraveAccent" : "Tilde";
     if (formatCodeAsIndented(node3, state)) {
-      const exit3 = state.enter("codeIndented");
+      const exit4 = state.enter("codeIndented");
       const value2 = state.indentLines(raw, map3);
-      exit3();
+      exit4();
       return value2;
     }
     const tracker = state.createTracker(info);
     const sequence = marker.repeat(Math.max(longestStreak(raw, marker) + 1, 3));
-    const exit2 = state.enter("codeFenced");
+    const exit3 = state.enter("codeFenced");
     let value = tracker.move(sequence);
     if (node3.lang) {
       const subexit = state.enter(`codeFencedLang${suffix}`);
@@ -52529,7 +52684,7 @@ export default function MDXContent(props) {
       value += tracker.move(raw + "\n");
     }
     value += tracker.move(sequence);
-    exit2();
+    exit3();
     return value;
   }
   function map3(line, _, blank) {
@@ -52551,7 +52706,7 @@ export default function MDXContent(props) {
   function definition2(node3, _, state, info) {
     const quote = checkQuote(state);
     const suffix = quote === '"' ? "Quote" : "Apostrophe";
-    const exit2 = state.enter("definition");
+    const exit3 = state.enter("definition");
     let subexit = state.enter("label");
     const tracker = state.createTracker(info);
     let value = tracker.move("[");
@@ -52599,7 +52754,7 @@ export default function MDXContent(props) {
       value += tracker.move(quote);
       subexit();
     }
-    exit2();
+    exit3();
     return value;
   }
 
@@ -52665,7 +52820,7 @@ export default function MDXContent(props) {
   emphasis.peek = emphasisPeek;
   function emphasis(node3, _, state, info) {
     const marker = checkEmphasis(state);
-    const exit2 = state.enter("emphasis");
+    const exit3 = state.enter("emphasis");
     const tracker = state.createTracker(info);
     const before = tracker.move(marker);
     let between2 = tracker.move(
@@ -52690,7 +52845,7 @@ export default function MDXContent(props) {
       between2 = between2.slice(0, -1) + encodeCharacterReference(betweenTail);
     }
     const after = tracker.move(marker);
-    exit2();
+    exit3();
     state.attentionEncodeSurroundingInfo = {
       after: close.outside,
       before: open.outside
@@ -52955,7 +53110,7 @@ export default function MDXContent(props) {
     const rank = Math.max(Math.min(6, node3.depth || 1), 1);
     const tracker = state.createTracker(info);
     if (formatHeadingAsSetext(node3, state)) {
-      const exit3 = state.enter("headingSetext");
+      const exit4 = state.enter("headingSetext");
       const subexit2 = state.enter("phrasing");
       const value2 = state.containerPhrasing(node3, {
         ...tracker.current(),
@@ -52963,7 +53118,7 @@ export default function MDXContent(props) {
         after: "\n"
       });
       subexit2();
-      exit3();
+      exit4();
       return value2 + "\n" + (rank === 1 ? "=" : "-").repeat(
         // The whole size…
         value2.length - // Minus the position of the character after the last EOL (or
@@ -52972,7 +53127,7 @@ export default function MDXContent(props) {
       );
     }
     const sequence = "#".repeat(rank);
-    const exit2 = state.enter("headingAtx");
+    const exit3 = state.enter("headingAtx");
     const subexit = state.enter("phrasing");
     tracker.move(sequence + " ");
     let value = state.containerPhrasing(node3, {
@@ -52988,7 +53143,7 @@ export default function MDXContent(props) {
       value += " " + sequence;
     }
     subexit();
-    exit2();
+    exit3();
     return value;
   }
 
@@ -53006,7 +53161,7 @@ export default function MDXContent(props) {
   function image(node3, _, state, info) {
     const quote = checkQuote(state);
     const suffix = quote === '"' ? "Quote" : "Apostrophe";
-    const exit2 = state.enter("image");
+    const exit3 = state.enter("image");
     let subexit = state.enter("label");
     const tracker = state.createTracker(info);
     let value = tracker.move("![");
@@ -53051,7 +53206,7 @@ export default function MDXContent(props) {
       subexit();
     }
     value += tracker.move(")");
-    exit2();
+    exit3();
     return value;
   }
   function imagePeek() {
@@ -53062,7 +53217,7 @@ export default function MDXContent(props) {
   imageReference.peek = imageReferencePeek;
   function imageReference(node3, _, state, info) {
     const type = node3.referenceType;
-    const exit2 = state.enter("imageReference");
+    const exit3 = state.enter("imageReference");
     let subexit = state.enter("label");
     const tracker = state.createTracker(info);
     let value = tracker.move("![");
@@ -53083,7 +53238,7 @@ export default function MDXContent(props) {
     });
     subexit();
     state.stack = stack;
-    exit2();
+    exit3();
     if (type === "full" || !alt || alt !== reference) {
       value += tracker.move(reference + "]");
     } else if (type === "shortcut") {
@@ -53150,12 +53305,12 @@ export default function MDXContent(props) {
     const quote = checkQuote(state);
     const suffix = quote === '"' ? "Quote" : "Apostrophe";
     const tracker = state.createTracker(info);
-    let exit2;
+    let exit3;
     let subexit;
     if (formatLinkAsAutolink(node3, state)) {
       const stack = state.stack;
       state.stack = [];
-      exit2 = state.enter("autolink");
+      exit3 = state.enter("autolink");
       let value2 = tracker.move("<");
       value2 += tracker.move(
         state.containerPhrasing(node3, {
@@ -53165,11 +53320,11 @@ export default function MDXContent(props) {
         })
       );
       value2 += tracker.move(">");
-      exit2();
+      exit3();
       state.stack = stack;
       return value2;
     }
-    exit2 = state.enter("link");
+    exit3 = state.enter("link");
     subexit = state.enter("label");
     let value = tracker.move("[");
     value += tracker.move(
@@ -53217,7 +53372,7 @@ export default function MDXContent(props) {
       subexit();
     }
     value += tracker.move(")");
-    exit2();
+    exit3();
     return value;
   }
   function linkPeek(node3, _, state) {
@@ -53228,7 +53383,7 @@ export default function MDXContent(props) {
   linkReference.peek = linkReferencePeek;
   function linkReference(node3, _, state, info) {
     const type = node3.referenceType;
-    const exit2 = state.enter("linkReference");
+    const exit3 = state.enter("linkReference");
     let subexit = state.enter("label");
     const tracker = state.createTracker(info);
     let value = tracker.move("[");
@@ -53249,7 +53404,7 @@ export default function MDXContent(props) {
     });
     subexit();
     state.stack = stack;
-    exit2();
+    exit3();
     if (type === "full" || !text4 || text4 !== reference) {
       value += tracker.move(reference + "]");
     } else if (type === "shortcut") {
@@ -53318,7 +53473,7 @@ export default function MDXContent(props) {
 
   // node_modules/mdast-util-to-markdown/lib/handle/list.js
   function list3(node3, parent, state, info) {
-    const exit2 = state.enter("list");
+    const exit3 = state.enter("list");
     const bulletCurrent = state.bulletCurrent;
     let bullet = node3.ordered ? checkBulletOrdered(state) : checkBullet(state);
     const bulletOther = node3.ordered ? bullet === "." ? ")" : "." : checkBulletOther(state);
@@ -53352,7 +53507,7 @@ export default function MDXContent(props) {
     const value = state.containerFlow(node3, info);
     state.bulletLastUsed = bullet;
     state.bulletCurrent = bulletCurrent;
-    exit2();
+    exit3();
     return value;
   }
 
@@ -53381,12 +53536,12 @@ export default function MDXContent(props) {
     const tracker = state.createTracker(info);
     tracker.move(bullet + " ".repeat(size - bullet.length));
     tracker.shift(size);
-    const exit2 = state.enter("listItem");
+    const exit3 = state.enter("listItem");
     const value = state.indentLines(
       state.containerFlow(node3, tracker.current()),
       map4
     );
-    exit2();
+    exit3();
     return value;
     function map4(line, index4, blank) {
       if (index4) {
@@ -53398,11 +53553,11 @@ export default function MDXContent(props) {
 
   // node_modules/mdast-util-to-markdown/lib/handle/paragraph.js
   function paragraph(node3, _, state, info) {
-    const exit2 = state.enter("paragraph");
+    const exit3 = state.enter("paragraph");
     const subexit = state.enter("phrasing");
     const value = state.containerPhrasing(node3, info);
     subexit();
-    exit2();
+    exit3();
     return value;
   }
 
@@ -53458,7 +53613,7 @@ export default function MDXContent(props) {
   strong.peek = strongPeek;
   function strong(node3, _, state, info) {
     const marker = checkStrong(state);
-    const exit2 = state.enter("strong");
+    const exit3 = state.enter("strong");
     const tracker = state.createTracker(info);
     const before = tracker.move(marker + marker);
     let between2 = tracker.move(
@@ -53483,7 +53638,7 @@ export default function MDXContent(props) {
       between2 = between2.slice(0, -1) + encodeCharacterReference(betweenTail);
     }
     const after = tracker.move(marker + marker);
-    exit2();
+    exit3();
     state.attentionEncodeSurroundingInfo = {
       after: close.outside,
       before: open.outside
@@ -53877,8 +54032,8 @@ export default function MDXContent(props) {
   }
 
   // node_modules/mdast-util-to-markdown/lib/util/safe.js
-  function safe(state, input, config) {
-    const value = (config.before || "") + (input || "") + (config.after || "");
+  function safe(state, input, config2) {
+    const value = (config2.before || "") + (input || "") + (config2.after || "");
     const positions = [];
     const result = [];
     const infos = {};
@@ -53908,8 +54063,8 @@ export default function MDXContent(props) {
       }
     }
     positions.sort(numerical);
-    let start2 = config.before ? config.before.length : 0;
-    const end = value.length - (config.after ? config.after.length : 0);
+    let start2 = config2.before ? config2.before.length : 0;
+    const end = value.length - (config2.after ? config2.after.length : 0);
     index4 = -1;
     while (++index4 < positions.length) {
       const position4 = positions[index4];
@@ -53923,14 +54078,14 @@ export default function MDXContent(props) {
         result.push(escapeBackslashes(value.slice(start2, position4), "\\"));
       }
       start2 = position4;
-      if (/[!-/:-@[-`{-~]/.test(value.charAt(position4)) && (!config.encode || !config.encode.includes(value.charAt(position4)))) {
+      if (/[!-/:-@[-`{-~]/.test(value.charAt(position4)) && (!config2.encode || !config2.encode.includes(value.charAt(position4)))) {
         result.push("\\");
       } else {
         result.push(encodeCharacterReference(value.charCodeAt(position4)));
         start2++;
       }
     }
-    result.push(escapeBackslashes(value.slice(start2, end), config.after));
+    result.push(escapeBackslashes(value.slice(start2, end), config2.after));
     return result.join("");
   }
   function numerical(a, b) {
@@ -53959,8 +54114,8 @@ export default function MDXContent(props) {
   }
 
   // node_modules/mdast-util-to-markdown/lib/util/track.js
-  function track(config) {
-    const options = config || {};
+  function track(config2) {
+    const options = config2 || {};
     const now = options.now || {};
     let lineShift = options.lineShift || 0;
     let line = now.line || 1;
@@ -54026,8 +54181,8 @@ export default function MDXContent(props) {
     return result;
     function enter(name2) {
       state.stack.push(name2);
-      return exit2;
-      function exit2() {
+      return exit3;
+      function exit3() {
         state.stack.pop();
       }
     }
@@ -54053,8 +54208,8 @@ export default function MDXContent(props) {
   function containerFlowBound(parent, info) {
     return containerFlow2(parent, this, info);
   }
-  function safeBound(value, config) {
-    return safe(this, value, config);
+  function safeBound(value, config2) {
+    return safe(this, value, config2);
   }
 
   // node_modules/unist-util-lsp/lib/index.js
