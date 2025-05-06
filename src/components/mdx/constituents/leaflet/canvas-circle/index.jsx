@@ -12,7 +12,7 @@ import 'leaflet/dist/leaflet.css'
 import styles from './index.module.css'
 
 export default defineComponent({
-  name: 'CanvasRadar',
+  name: 'CanvasCircle',
   setup() {
     const mapVesselRef = ref()
     const origin = [39.910088, 116.401601]
@@ -47,11 +47,10 @@ export default defineComponent({
 
         const canvas = this.getContainer()
         const ctx = canvas.getContext("2d")
-        const m = L.Browser.retina ? 2 : 1
         const size = this._bounds.getSize()
         const dpr = L.Browser.retina ? 2 : 1
-        canvas.width = m * size.x
-        canvas.height = m * size.y
+        canvas.width = dpr * size.x
+        canvas.height = dpr * size.y
         canvas.style.width = size.x + "px"
         canvas.style.height = size.y + "px"
         if (L.Browser.retina) {
@@ -62,34 +61,44 @@ export default defineComponent({
         const desCoord = getDestination(originCoord, 5000, 0, { units: 'meters' }).geometry.coordinates
         const originPixel = lmap.latLngToContainerPoint({ lat: originCoord[1], lng: originCoord[0] })
         const desPixel = lmap.latLngToContainerPoint({ lat: desCoord[1], lng: desCoord[0] })
-        const radius = desPixel.distanceTo(originPixel)
+        const pixelRadius = desPixel.distanceTo(originPixel)
+        const zoom = lmap.getZoom()
+        const radius = pixelRadius / Math.pow(2, zoom - 10)
+        const steps = 250
+        ctx.lineWidth = pixelRadius / steps
 
-        const draw = (angleOffset=0) => {
-          ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-          const sang = 0 + Math.PI / 180 * angleOffset
-          const eang = Math.PI / 180 * (120 + angleOffset)
-          const step = 100
+        const sigmoid = (x, k = 30) => {
+          x = Math.max(0, Math.min(1, x))
+          return 1 / (1 + Math.exp(-k * (x - 0.975)))
+        }
+        const drawCircleArea = (i, offset) => {
+          const thredhold = offset % radius
+          const radiusOfCurrentStep = i * radius / steps
+          const opacity = radiusOfCurrentStep > thredhold ? 0 : radiusOfCurrentStep / thredhold
           
-          for(let i = 0; i < step; i++) {
-            ctx.beginPath()
-            ctx.fillStyle = `rgba(80, 122, 252, ${1 - (i + 1) / step})`
-            ctx.moveTo(originPixel.x, originPixel.y)
-            ctx.arc(
-              originPixel.x,
-              originPixel.y,
-              radius,
-              eang - (eang - sang) / step * (i + 1),
-              eang - (eang - sang) / step * i,
-              false
-            )
-            ctx.fill()
-            ctx.closePath()
+          ctx.beginPath()
+          ctx.strokeStyle = `rgba(251, 30, 10, ${sigmoid(opacity)})`
+          ctx.arc(originPixel.x, originPixel.y, i * pixelRadius / steps, 0, Math.PI * 2)
+          ctx.stroke()
+          ctx.closePath()
+        }
+
+        const draw = (phaseOffset=0) => {
+          for(let i = 0; i < steps; i++) {
+            drawCircleArea(i, phaseOffset)
+            drawCircleArea(i, phaseOffset - radius / 2)
           }
         }
         const animation = (time) => {
+          const prev = ctx.globalCompositeOperation
+
+          ctx.globalCompositeOperation = 'destination-in'
+          ctx.globalAlpha = 0.975
+          ctx.fillRect(0, 0, canvas.width, canvas.height)
+          ctx.globalCompositeOperation = prev
+
           startTime = startTime ? startTime : time
-          draw((time - startTime) / 5)
+          draw((time - startTime) / 200)
           animationFrame = L.Util.requestAnimFrame(animation)
         }
 
