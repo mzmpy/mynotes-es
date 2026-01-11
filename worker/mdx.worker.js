@@ -9640,6 +9640,7 @@ ${hover.contents.value}
   // node_modules/semver/internal/constants.js
   var require_constants = __commonJS({
     "node_modules/semver/internal/constants.js"(exports2, module) {
+      "use strict";
       var SEMVER_SPEC_VERSION = "2.0.0";
       var MAX_LENGTH = 256;
       var MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER || /* istanbul ignore next */
@@ -9671,6 +9672,7 @@ ${hover.contents.value}
   // node_modules/semver/internal/debug.js
   var require_debug = __commonJS({
     "node_modules/semver/internal/debug.js"(exports2, module) {
+      "use strict";
       var debug = typeof process === "object" && process.env && process.env.NODE_DEBUG && /\bsemver\b/i.test(process.env.NODE_DEBUG) ? (...args) => console.error("SEMVER", ...args) : () => {
       };
       module.exports = debug;
@@ -9680,6 +9682,7 @@ ${hover.contents.value}
   // node_modules/semver/internal/re.js
   var require_re = __commonJS({
     "node_modules/semver/internal/re.js"(exports2, module) {
+      "use strict";
       var {
         MAX_SAFE_COMPONENT_LENGTH,
         MAX_SAFE_BUILD_LENGTH,
@@ -9720,8 +9723,8 @@ ${hover.contents.value}
       createToken("NONNUMERICIDENTIFIER", `\\d*[a-zA-Z-]${LETTERDASHNUMBER}*`);
       createToken("MAINVERSION", `(${src[t.NUMERICIDENTIFIER]})\\.(${src[t.NUMERICIDENTIFIER]})\\.(${src[t.NUMERICIDENTIFIER]})`);
       createToken("MAINVERSIONLOOSE", `(${src[t.NUMERICIDENTIFIERLOOSE]})\\.(${src[t.NUMERICIDENTIFIERLOOSE]})\\.(${src[t.NUMERICIDENTIFIERLOOSE]})`);
-      createToken("PRERELEASEIDENTIFIER", `(?:${src[t.NUMERICIDENTIFIER]}|${src[t.NONNUMERICIDENTIFIER]})`);
-      createToken("PRERELEASEIDENTIFIERLOOSE", `(?:${src[t.NUMERICIDENTIFIERLOOSE]}|${src[t.NONNUMERICIDENTIFIER]})`);
+      createToken("PRERELEASEIDENTIFIER", `(?:${src[t.NONNUMERICIDENTIFIER]}|${src[t.NUMERICIDENTIFIER]})`);
+      createToken("PRERELEASEIDENTIFIERLOOSE", `(?:${src[t.NONNUMERICIDENTIFIER]}|${src[t.NUMERICIDENTIFIERLOOSE]})`);
       createToken("PRERELEASE", `(?:-(${src[t.PRERELEASEIDENTIFIER]}(?:\\.${src[t.PRERELEASEIDENTIFIER]})*))`);
       createToken("PRERELEASELOOSE", `(?:-?(${src[t.PRERELEASEIDENTIFIERLOOSE]}(?:\\.${src[t.PRERELEASEIDENTIFIERLOOSE]})*))`);
       createToken("BUILDIDENTIFIER", `${LETTERDASHNUMBER}+`);
@@ -9767,6 +9770,7 @@ ${hover.contents.value}
   // node_modules/semver/internal/parse-options.js
   var require_parse_options = __commonJS({
     "node_modules/semver/internal/parse-options.js"(exports2, module) {
+      "use strict";
       var looseOption = Object.freeze({ loose: true });
       var emptyOpts = Object.freeze({});
       var parseOptions = (options) => {
@@ -9785,8 +9789,12 @@ ${hover.contents.value}
   // node_modules/semver/internal/identifiers.js
   var require_identifiers = __commonJS({
     "node_modules/semver/internal/identifiers.js"(exports2, module) {
+      "use strict";
       var numeric = /^[0-9]+$/;
       var compareIdentifiers = (a, b) => {
+        if (typeof a === "number" && typeof b === "number") {
+          return a === b ? 0 : a < b ? -1 : 1;
+        }
         const anum = numeric.test(a);
         const bnum = numeric.test(b);
         if (anum && bnum) {
@@ -9806,9 +9814,10 @@ ${hover.contents.value}
   // node_modules/semver/classes/semver.js
   var require_semver = __commonJS({
     "node_modules/semver/classes/semver.js"(exports2, module) {
+      "use strict";
       var debug = require_debug();
       var { MAX_LENGTH, MAX_SAFE_INTEGER } = require_constants();
-      var { safeRe: re, safeSrc: src, t } = require_re();
+      var { safeRe: re, t } = require_re();
       var parseOptions = require_parse_options();
       var { compareIdentifiers } = require_identifiers();
       var SemVer = class {
@@ -9892,7 +9901,25 @@ ${hover.contents.value}
           if (!(other instanceof SemVer)) {
             other = new SemVer(other, this.options);
           }
-          return compareIdentifiers(this.major, other.major) || compareIdentifiers(this.minor, other.minor) || compareIdentifiers(this.patch, other.patch);
+          if (this.major < other.major) {
+            return -1;
+          }
+          if (this.major > other.major) {
+            return 1;
+          }
+          if (this.minor < other.minor) {
+            return -1;
+          }
+          if (this.minor > other.minor) {
+            return 1;
+          }
+          if (this.patch < other.patch) {
+            return -1;
+          }
+          if (this.patch > other.patch) {
+            return 1;
+          }
+          return 0;
         }
         comparePre(other) {
           if (!(other instanceof SemVer)) {
@@ -9953,8 +9980,7 @@ ${hover.contents.value}
               throw new Error("invalid increment argument: identifier is empty");
             }
             if (identifier) {
-              const r = new RegExp(`^${this.options.loose ? src[t.PRERELEASELOOSE] : src[t.PRERELEASE]}$`);
-              const match = `-${identifier}`.match(r);
+              const match = `-${identifier}`.match(this.options.loose ? re[t.PRERELEASELOOSE] : re[t.PRERELEASE]);
               if (!match || match[1] !== identifier) {
                 throw new Error(`invalid identifier: ${identifier}`);
               }
@@ -10063,6 +10089,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/parse.js
   var require_parse = __commonJS({
     "node_modules/semver/functions/parse.js"(exports2, module) {
+      "use strict";
       var SemVer = require_semver();
       var parse5 = (version3, options, throwErrors = false) => {
         if (version3 instanceof SemVer) {
@@ -10084,6 +10111,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/valid.js
   var require_valid = __commonJS({
     "node_modules/semver/functions/valid.js"(exports2, module) {
+      "use strict";
       var parse5 = require_parse();
       var valid = (version3, options) => {
         const v = parse5(version3, options);
@@ -10096,6 +10124,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/clean.js
   var require_clean = __commonJS({
     "node_modules/semver/functions/clean.js"(exports2, module) {
+      "use strict";
       var parse5 = require_parse();
       var clean = (version3, options) => {
         const s = parse5(version3.trim().replace(/^[=v]+/, ""), options);
@@ -10108,6 +10137,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/inc.js
   var require_inc = __commonJS({
     "node_modules/semver/functions/inc.js"(exports2, module) {
+      "use strict";
       var SemVer = require_semver();
       var inc = (version3, release2, options, identifier, identifierBase) => {
         if (typeof options === "string") {
@@ -10131,6 +10161,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/diff.js
   var require_diff = __commonJS({
     "node_modules/semver/functions/diff.js"(exports2, module) {
+      "use strict";
       var parse5 = require_parse();
       var diff = (version1, version22) => {
         const v1 = parse5(version1, null, true);
@@ -10174,6 +10205,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/major.js
   var require_major = __commonJS({
     "node_modules/semver/functions/major.js"(exports2, module) {
+      "use strict";
       var SemVer = require_semver();
       var major = (a, loose) => new SemVer(a, loose).major;
       module.exports = major;
@@ -10183,6 +10215,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/minor.js
   var require_minor = __commonJS({
     "node_modules/semver/functions/minor.js"(exports2, module) {
+      "use strict";
       var SemVer = require_semver();
       var minor = (a, loose) => new SemVer(a, loose).minor;
       module.exports = minor;
@@ -10192,6 +10225,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/patch.js
   var require_patch = __commonJS({
     "node_modules/semver/functions/patch.js"(exports2, module) {
+      "use strict";
       var SemVer = require_semver();
       var patch = (a, loose) => new SemVer(a, loose).patch;
       module.exports = patch;
@@ -10201,6 +10235,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/prerelease.js
   var require_prerelease = __commonJS({
     "node_modules/semver/functions/prerelease.js"(exports2, module) {
+      "use strict";
       var parse5 = require_parse();
       var prerelease = (version3, options) => {
         const parsed = parse5(version3, options);
@@ -10213,6 +10248,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/compare.js
   var require_compare = __commonJS({
     "node_modules/semver/functions/compare.js"(exports2, module) {
+      "use strict";
       var SemVer = require_semver();
       var compare = (a, b, loose) => new SemVer(a, loose).compare(new SemVer(b, loose));
       module.exports = compare;
@@ -10222,6 +10258,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/rcompare.js
   var require_rcompare = __commonJS({
     "node_modules/semver/functions/rcompare.js"(exports2, module) {
+      "use strict";
       var compare = require_compare();
       var rcompare = (a, b, loose) => compare(b, a, loose);
       module.exports = rcompare;
@@ -10231,6 +10268,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/compare-loose.js
   var require_compare_loose = __commonJS({
     "node_modules/semver/functions/compare-loose.js"(exports2, module) {
+      "use strict";
       var compare = require_compare();
       var compareLoose = (a, b) => compare(a, b, true);
       module.exports = compareLoose;
@@ -10240,6 +10278,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/compare-build.js
   var require_compare_build = __commonJS({
     "node_modules/semver/functions/compare-build.js"(exports2, module) {
+      "use strict";
       var SemVer = require_semver();
       var compareBuild = (a, b, loose) => {
         const versionA = new SemVer(a, loose);
@@ -10253,6 +10292,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/sort.js
   var require_sort = __commonJS({
     "node_modules/semver/functions/sort.js"(exports2, module) {
+      "use strict";
       var compareBuild = require_compare_build();
       var sort = (list4, loose) => list4.sort((a, b) => compareBuild(a, b, loose));
       module.exports = sort;
@@ -10262,6 +10302,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/rsort.js
   var require_rsort = __commonJS({
     "node_modules/semver/functions/rsort.js"(exports2, module) {
+      "use strict";
       var compareBuild = require_compare_build();
       var rsort = (list4, loose) => list4.sort((a, b) => compareBuild(b, a, loose));
       module.exports = rsort;
@@ -10271,6 +10312,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/gt.js
   var require_gt = __commonJS({
     "node_modules/semver/functions/gt.js"(exports2, module) {
+      "use strict";
       var compare = require_compare();
       var gt = (a, b, loose) => compare(a, b, loose) > 0;
       module.exports = gt;
@@ -10280,6 +10322,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/lt.js
   var require_lt = __commonJS({
     "node_modules/semver/functions/lt.js"(exports2, module) {
+      "use strict";
       var compare = require_compare();
       var lt = (a, b, loose) => compare(a, b, loose) < 0;
       module.exports = lt;
@@ -10289,6 +10332,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/eq.js
   var require_eq = __commonJS({
     "node_modules/semver/functions/eq.js"(exports2, module) {
+      "use strict";
       var compare = require_compare();
       var eq = (a, b, loose) => compare(a, b, loose) === 0;
       module.exports = eq;
@@ -10298,6 +10342,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/neq.js
   var require_neq = __commonJS({
     "node_modules/semver/functions/neq.js"(exports2, module) {
+      "use strict";
       var compare = require_compare();
       var neq = (a, b, loose) => compare(a, b, loose) !== 0;
       module.exports = neq;
@@ -10307,6 +10352,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/gte.js
   var require_gte = __commonJS({
     "node_modules/semver/functions/gte.js"(exports2, module) {
+      "use strict";
       var compare = require_compare();
       var gte = (a, b, loose) => compare(a, b, loose) >= 0;
       module.exports = gte;
@@ -10316,6 +10362,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/lte.js
   var require_lte = __commonJS({
     "node_modules/semver/functions/lte.js"(exports2, module) {
+      "use strict";
       var compare = require_compare();
       var lte = (a, b, loose) => compare(a, b, loose) <= 0;
       module.exports = lte;
@@ -10325,6 +10372,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/cmp.js
   var require_cmp = __commonJS({
     "node_modules/semver/functions/cmp.js"(exports2, module) {
+      "use strict";
       var eq = require_eq();
       var neq = require_neq();
       var gt = require_gt();
@@ -10374,6 +10422,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/coerce.js
   var require_coerce = __commonJS({
     "node_modules/semver/functions/coerce.js"(exports2, module) {
+      "use strict";
       var SemVer = require_semver();
       var parse5 = require_parse();
       var { safeRe: re, t } = require_re();
@@ -10419,6 +10468,7 @@ ${hover.contents.value}
   // node_modules/semver/internal/lrucache.js
   var require_lrucache = __commonJS({
     "node_modules/semver/internal/lrucache.js"(exports2, module) {
+      "use strict";
       var LRUCache2 = class {
         constructor() {
           this.max = 1e3;
@@ -10456,6 +10506,7 @@ ${hover.contents.value}
   // node_modules/semver/classes/range.js
   var require_range = __commonJS({
     "node_modules/semver/classes/range.js"(exports2, module) {
+      "use strict";
       var SPACE_CHARACTERS = /\s+/g;
       var Range2 = class {
         constructor(range, options) {
@@ -10625,6 +10676,7 @@ ${hover.contents.value}
         return result;
       };
       var parseComparator = (comp, options) => {
+        comp = comp.replace(re[t.BUILD], "");
         debug("comp", comp, options);
         comp = replaceCarets(comp, options);
         debug("caret", comp);
@@ -10831,6 +10883,7 @@ ${hover.contents.value}
   // node_modules/semver/classes/comparator.js
   var require_comparator = __commonJS({
     "node_modules/semver/classes/comparator.js"(exports2, module) {
+      "use strict";
       var ANY = Symbol("SemVer ANY");
       var Comparator = class {
         static get ANY() {
@@ -10943,6 +10996,7 @@ ${hover.contents.value}
   // node_modules/semver/functions/satisfies.js
   var require_satisfies = __commonJS({
     "node_modules/semver/functions/satisfies.js"(exports2, module) {
+      "use strict";
       var Range2 = require_range();
       var satisfies = (version3, range, options) => {
         try {
@@ -10959,6 +11013,7 @@ ${hover.contents.value}
   // node_modules/semver/ranges/to-comparators.js
   var require_to_comparators = __commonJS({
     "node_modules/semver/ranges/to-comparators.js"(exports2, module) {
+      "use strict";
       var Range2 = require_range();
       var toComparators = (range, options) => new Range2(range, options).set.map((comp) => comp.map((c) => c.value).join(" ").trim().split(" "));
       module.exports = toComparators;
@@ -10968,6 +11023,7 @@ ${hover.contents.value}
   // node_modules/semver/ranges/max-satisfying.js
   var require_max_satisfying = __commonJS({
     "node_modules/semver/ranges/max-satisfying.js"(exports2, module) {
+      "use strict";
       var SemVer = require_semver();
       var Range2 = require_range();
       var maxSatisfying = (versions2, range, options) => {
@@ -10996,6 +11052,7 @@ ${hover.contents.value}
   // node_modules/semver/ranges/min-satisfying.js
   var require_min_satisfying = __commonJS({
     "node_modules/semver/ranges/min-satisfying.js"(exports2, module) {
+      "use strict";
       var SemVer = require_semver();
       var Range2 = require_range();
       var minSatisfying = (versions2, range, options) => {
@@ -11024,6 +11081,7 @@ ${hover.contents.value}
   // node_modules/semver/ranges/min-version.js
   var require_min_version = __commonJS({
     "node_modules/semver/ranges/min-version.js"(exports2, module) {
+      "use strict";
       var SemVer = require_semver();
       var Range2 = require_range();
       var gt = require_gt();
@@ -11080,6 +11138,7 @@ ${hover.contents.value}
   // node_modules/semver/ranges/valid.js
   var require_valid2 = __commonJS({
     "node_modules/semver/ranges/valid.js"(exports2, module) {
+      "use strict";
       var Range2 = require_range();
       var validRange = (range, options) => {
         try {
@@ -11095,6 +11154,7 @@ ${hover.contents.value}
   // node_modules/semver/ranges/outside.js
   var require_outside = __commonJS({
     "node_modules/semver/ranges/outside.js"(exports2, module) {
+      "use strict";
       var SemVer = require_semver();
       var Comparator = require_comparator();
       var { ANY } = Comparator;
@@ -11163,6 +11223,7 @@ ${hover.contents.value}
   // node_modules/semver/ranges/gtr.js
   var require_gtr = __commonJS({
     "node_modules/semver/ranges/gtr.js"(exports2, module) {
+      "use strict";
       var outside = require_outside();
       var gtr = (version3, range, options) => outside(version3, range, ">", options);
       module.exports = gtr;
@@ -11172,6 +11233,7 @@ ${hover.contents.value}
   // node_modules/semver/ranges/ltr.js
   var require_ltr = __commonJS({
     "node_modules/semver/ranges/ltr.js"(exports2, module) {
+      "use strict";
       var outside = require_outside();
       var ltr = (version3, range, options) => outside(version3, range, "<", options);
       module.exports = ltr;
@@ -11181,6 +11243,7 @@ ${hover.contents.value}
   // node_modules/semver/ranges/intersects.js
   var require_intersects = __commonJS({
     "node_modules/semver/ranges/intersects.js"(exports2, module) {
+      "use strict";
       var Range2 = require_range();
       var intersects = (r1, r2, options) => {
         r1 = new Range2(r1, options);
@@ -11194,6 +11257,7 @@ ${hover.contents.value}
   // node_modules/semver/ranges/simplify.js
   var require_simplify = __commonJS({
     "node_modules/semver/ranges/simplify.js"(exports2, module) {
+      "use strict";
       var satisfies = require_satisfies();
       var compare = require_compare();
       module.exports = (versions2, range, options) => {
@@ -11243,6 +11307,7 @@ ${hover.contents.value}
   // node_modules/semver/ranges/subset.js
   var require_subset = __commonJS({
     "node_modules/semver/ranges/subset.js"(exports2, module) {
+      "use strict";
       var Range2 = require_range();
       var Comparator = require_comparator();
       var { ANY } = Comparator;
@@ -11405,6 +11470,7 @@ ${hover.contents.value}
   // node_modules/semver/index.js
   var require_semver2 = __commonJS({
     "node_modules/semver/index.js"(exports2, module) {
+      "use strict";
       var internalRe = require_re();
       var constants = require_constants();
       var SemVer = require_semver();
@@ -13708,6 +13774,8 @@ ${hover.contents.value}
                 resolveJs
               );
               if (entrypoints) {
+                if (entrypoints.length > 100)
+                  return;
                 const real = (_a5 = moduleResolutionHost.realpath) === null || _a5 === void 0 ? void 0 : _a5.call(moduleResolutionHost, packageJson.packageDirectory);
                 const isSymlink = real && real !== packageJson.packageDirectory;
                 if (isSymlink) {
@@ -17258,6 +17326,44 @@ ${hover.contents.value}
           var next = this.pos + skip[0].length, after;
           return !lineBreak2.test(this.input.slice(this.pos, next)) && this.input.slice(next, next + 8) === "function" && (next + 8 === this.input.length || !(isIdentifierChar2(after = this.input.charCodeAt(next + 8)) || after > 55295 && after < 56320));
         };
+        pp$82.isUsingKeyword = function(isAwaitUsing, isFor) {
+          if (this.options.ecmaVersion < 17 || !this.isContextual(isAwaitUsing ? "await" : "using")) {
+            return false;
+          }
+          skipWhiteSpace2.lastIndex = this.pos;
+          var skip = skipWhiteSpace2.exec(this.input);
+          var next = this.pos + skip[0].length;
+          if (lineBreak2.test(this.input.slice(this.pos, next))) {
+            return false;
+          }
+          if (isAwaitUsing) {
+            var awaitEndPos = next + 5, after;
+            if (this.input.slice(next, awaitEndPos) !== "using" || awaitEndPos === this.input.length || isIdentifierChar2(after = this.input.charCodeAt(awaitEndPos)) || after > 55295 && after < 56320) {
+              return false;
+            }
+            skipWhiteSpace2.lastIndex = awaitEndPos;
+            var skipAfterUsing = skipWhiteSpace2.exec(this.input);
+            if (skipAfterUsing && lineBreak2.test(this.input.slice(awaitEndPos, awaitEndPos + skipAfterUsing[0].length))) {
+              return false;
+            }
+          }
+          if (isFor) {
+            var ofEndPos = next + 2, after$1;
+            if (this.input.slice(next, ofEndPos) === "of") {
+              if (ofEndPos === this.input.length || !isIdentifierChar2(after$1 = this.input.charCodeAt(ofEndPos)) && !(after$1 > 55295 && after$1 < 56320)) {
+                return false;
+              }
+            }
+          }
+          var ch = this.input.charCodeAt(next);
+          return isIdentifierStart2(ch, true) || ch === 92;
+        };
+        pp$82.isAwaitUsing = function(isFor) {
+          return this.isUsingKeyword(true, isFor);
+        };
+        pp$82.isUsing = function(isFor) {
+          return this.isUsingKeyword(false, isFor);
+        };
         pp$82.parseStatement = function(context, topLevel, exports4) {
           var starttype = this.type, node3 = this.startNode(), kind;
           if (this.isLet(context)) {
@@ -17336,6 +17442,22 @@ ${hover.contents.value}
                 this.next();
                 return this.parseFunctionStatement(node3, true, !context);
               }
+              var usingKind = this.isAwaitUsing(false) ? "await using" : this.isUsing(false) ? "using" : null;
+              if (usingKind) {
+                if (topLevel && this.options.sourceType === "script") {
+                  this.raise(this.start, "Using declaration cannot appear in the top level when source type is `script`");
+                }
+                if (usingKind === "await using") {
+                  if (!this.canAwait) {
+                    this.raise(this.start, "Await using cannot appear outside of async function");
+                  }
+                  this.next();
+                }
+                this.next();
+                this.parseVar(node3, false, usingKind);
+                this.semicolon();
+                return this.finishNode(node3, "VariableDeclaration");
+              }
               var maybeName = this.value, expr = this.parseExpression();
               if (starttype === types$12.name && expr.type === "Identifier" && this.eat(types$12.colon)) {
                 return this.parseLabeledStatement(node3, maybeName, expr, context);
@@ -17409,24 +17531,20 @@ ${hover.contents.value}
             this.next();
             this.parseVar(init$1, true, kind);
             this.finishNode(init$1, "VariableDeclaration");
-            if ((this.type === types$12._in || this.options.ecmaVersion >= 6 && this.isContextual("of")) && init$1.declarations.length === 1) {
-              if (this.options.ecmaVersion >= 9) {
-                if (this.type === types$12._in) {
-                  if (awaitAt > -1) {
-                    this.unexpected(awaitAt);
-                  }
-                } else {
-                  node3.await = awaitAt > -1;
-                }
-              }
-              return this.parseForIn(node3, init$1);
-            }
-            if (awaitAt > -1) {
-              this.unexpected(awaitAt);
-            }
-            return this.parseFor(node3, init$1);
+            return this.parseForAfterInit(node3, init$1, awaitAt);
           }
           var startsWithLet = this.isContextual("let"), isForOf = false;
+          var usingKind = this.isUsing(true) ? "using" : this.isAwaitUsing(true) ? "await using" : null;
+          if (usingKind) {
+            var init$2 = this.startNode();
+            this.next();
+            if (usingKind === "await using") {
+              this.next();
+            }
+            this.parseVar(init$2, true, usingKind);
+            this.finishNode(init$2, "VariableDeclaration");
+            return this.parseForAfterInit(node3, init$2, awaitAt);
+          }
           var containsEsc = this.containsEsc;
           var refDestructuringErrors = new DestructuringErrors3();
           var initPos = this.start;
@@ -17452,6 +17570,24 @@ ${hover.contents.value}
             return this.parseForIn(node3, init);
           } else {
             this.checkExpressionErrors(refDestructuringErrors, true);
+          }
+          if (awaitAt > -1) {
+            this.unexpected(awaitAt);
+          }
+          return this.parseFor(node3, init);
+        };
+        pp$82.parseForAfterInit = function(node3, init, awaitAt) {
+          if ((this.type === types$12._in || this.options.ecmaVersion >= 6 && this.isContextual("of")) && init.declarations.length === 1) {
+            if (this.options.ecmaVersion >= 9) {
+              if (this.type === types$12._in) {
+                if (awaitAt > -1) {
+                  this.unexpected(awaitAt);
+                }
+              } else {
+                node3.await = awaitAt > -1;
+              }
+            }
+            return this.parseForIn(node3, init);
           }
           if (awaitAt > -1) {
             this.unexpected(awaitAt);
@@ -17685,6 +17821,8 @@ ${hover.contents.value}
               decl.init = this.parseMaybeAssign(isFor);
             } else if (!allowMissingInitializer && kind === "const" && !(this.type === types$12._in || this.options.ecmaVersion >= 6 && this.isContextual("of"))) {
               this.unexpected();
+            } else if (!allowMissingInitializer && (kind === "using" || kind === "await using") && this.options.ecmaVersion >= 17 && this.type !== types$12._in && !this.isContextual("of")) {
+              this.raise(this.lastTokEnd, "Missing initializer in " + kind + " declaration");
             } else if (!allowMissingInitializer && decl.id.type !== "Identifier" && !(isFor && (this.type === types$12._in || this.isContextual("of")))) {
               this.raise(this.lastTokEnd, "Complex binding patterns require an initialization value");
             } else {
@@ -17698,7 +17836,7 @@ ${hover.contents.value}
           return node3;
         };
         pp$82.parseVarId = function(decl, kind) {
-          decl.id = this.parseBindingAtom();
+          decl.id = kind === "using" || kind === "await using" ? this.parseIdent() : this.parseBindingAtom();
           this.checkLValPattern(decl.id, kind === "var" ? BIND_VAR2 : BIND_LEXICAL2, false);
         };
         var FUNC_STATEMENT2 = 1, FUNC_HANGING_STATEMENT2 = 2, FUNC_NULLABLE_ID2 = 4;
@@ -19169,7 +19307,7 @@ ${hover.contents.value}
           node3.value = value;
           node3.raw = this.input.slice(this.start, this.end);
           if (node3.raw.charCodeAt(node3.raw.length - 1) === 110) {
-            node3.bigint = node3.raw.slice(0, -1).replace(/_/g, "");
+            node3.bigint = node3.value != null ? node3.value.toString() : node3.raw.slice(0, -1).replace(/_/g, "");
           }
           this.next();
           return this.finishNode(node3, "Literal");
@@ -22018,7 +22156,7 @@ ${hover.contents.value}
           }
           return this.finishToken(type, word);
         };
-        var version3 = "8.14.1";
+        var version3 = "8.15.0";
         Parser3.acorn = {
           Parser: Parser3,
           version: version3,
@@ -36747,7 +36885,7 @@ ${hover.contents.value}
       this.cause = options.cause || void 0;
       this.column = start2 ? start2.column : void 0;
       this.fatal = void 0;
-      this.file;
+      this.file = "";
       this.message = reason;
       this.line = start2 ? start2.line : void 0;
       this.name = stringifyPosition2(options.place) || "1:1";
@@ -36756,10 +36894,10 @@ ${hover.contents.value}
       this.ruleId = options.ruleId || void 0;
       this.source = options.source || void 0;
       this.stack = legacyCause && options.cause && typeof options.cause.stack === "string" ? options.cause.stack : "";
-      this.actual;
-      this.expected;
-      this.note;
-      this.url;
+      this.actual = void 0;
+      this.expected = void 0;
+      this.note = void 0;
+      this.url = void 0;
     }
   };
   VFileMessage.prototype.file = "";
@@ -38023,6 +38161,44 @@ ${hover.contents.value}
     var next = this.pos + skip[0].length, after;
     return !lineBreak.test(this.input.slice(this.pos, next)) && this.input.slice(next, next + 8) === "function" && (next + 8 === this.input.length || !(isIdentifierChar(after = this.input.charCodeAt(next + 8)) || after > 55295 && after < 56320));
   };
+  pp$8.isUsingKeyword = function(isAwaitUsing, isFor) {
+    if (this.options.ecmaVersion < 17 || !this.isContextual(isAwaitUsing ? "await" : "using")) {
+      return false;
+    }
+    skipWhiteSpace.lastIndex = this.pos;
+    var skip = skipWhiteSpace.exec(this.input);
+    var next = this.pos + skip[0].length;
+    if (lineBreak.test(this.input.slice(this.pos, next))) {
+      return false;
+    }
+    if (isAwaitUsing) {
+      var awaitEndPos = next + 5, after;
+      if (this.input.slice(next, awaitEndPos) !== "using" || awaitEndPos === this.input.length || isIdentifierChar(after = this.input.charCodeAt(awaitEndPos)) || after > 55295 && after < 56320) {
+        return false;
+      }
+      skipWhiteSpace.lastIndex = awaitEndPos;
+      var skipAfterUsing = skipWhiteSpace.exec(this.input);
+      if (skipAfterUsing && lineBreak.test(this.input.slice(awaitEndPos, awaitEndPos + skipAfterUsing[0].length))) {
+        return false;
+      }
+    }
+    if (isFor) {
+      var ofEndPos = next + 2, after$1;
+      if (this.input.slice(next, ofEndPos) === "of") {
+        if (ofEndPos === this.input.length || !isIdentifierChar(after$1 = this.input.charCodeAt(ofEndPos)) && !(after$1 > 55295 && after$1 < 56320)) {
+          return false;
+        }
+      }
+    }
+    var ch = this.input.charCodeAt(next);
+    return isIdentifierStart(ch, true) || ch === 92;
+  };
+  pp$8.isAwaitUsing = function(isFor) {
+    return this.isUsingKeyword(true, isFor);
+  };
+  pp$8.isUsing = function(isFor) {
+    return this.isUsingKeyword(false, isFor);
+  };
   pp$8.parseStatement = function(context, topLevel, exports2) {
     var starttype = this.type, node3 = this.startNode(), kind;
     if (this.isLet(context)) {
@@ -38101,6 +38277,22 @@ ${hover.contents.value}
           this.next();
           return this.parseFunctionStatement(node3, true, !context);
         }
+        var usingKind = this.isAwaitUsing(false) ? "await using" : this.isUsing(false) ? "using" : null;
+        if (usingKind) {
+          if (topLevel && this.options.sourceType === "script") {
+            this.raise(this.start, "Using declaration cannot appear in the top level when source type is `script`");
+          }
+          if (usingKind === "await using") {
+            if (!this.canAwait) {
+              this.raise(this.start, "Await using cannot appear outside of async function");
+            }
+            this.next();
+          }
+          this.next();
+          this.parseVar(node3, false, usingKind);
+          this.semicolon();
+          return this.finishNode(node3, "VariableDeclaration");
+        }
         var maybeName = this.value, expr = this.parseExpression();
         if (starttype === types$1.name && expr.type === "Identifier" && this.eat(types$1.colon)) {
           return this.parseLabeledStatement(node3, maybeName, expr, context);
@@ -38174,24 +38366,20 @@ ${hover.contents.value}
       this.next();
       this.parseVar(init$1, true, kind);
       this.finishNode(init$1, "VariableDeclaration");
-      if ((this.type === types$1._in || this.options.ecmaVersion >= 6 && this.isContextual("of")) && init$1.declarations.length === 1) {
-        if (this.options.ecmaVersion >= 9) {
-          if (this.type === types$1._in) {
-            if (awaitAt > -1) {
-              this.unexpected(awaitAt);
-            }
-          } else {
-            node3.await = awaitAt > -1;
-          }
-        }
-        return this.parseForIn(node3, init$1);
-      }
-      if (awaitAt > -1) {
-        this.unexpected(awaitAt);
-      }
-      return this.parseFor(node3, init$1);
+      return this.parseForAfterInit(node3, init$1, awaitAt);
     }
     var startsWithLet = this.isContextual("let"), isForOf = false;
+    var usingKind = this.isUsing(true) ? "using" : this.isAwaitUsing(true) ? "await using" : null;
+    if (usingKind) {
+      var init$2 = this.startNode();
+      this.next();
+      if (usingKind === "await using") {
+        this.next();
+      }
+      this.parseVar(init$2, true, usingKind);
+      this.finishNode(init$2, "VariableDeclaration");
+      return this.parseForAfterInit(node3, init$2, awaitAt);
+    }
     var containsEsc = this.containsEsc;
     var refDestructuringErrors = new DestructuringErrors();
     var initPos = this.start;
@@ -38217,6 +38405,24 @@ ${hover.contents.value}
       return this.parseForIn(node3, init);
     } else {
       this.checkExpressionErrors(refDestructuringErrors, true);
+    }
+    if (awaitAt > -1) {
+      this.unexpected(awaitAt);
+    }
+    return this.parseFor(node3, init);
+  };
+  pp$8.parseForAfterInit = function(node3, init, awaitAt) {
+    if ((this.type === types$1._in || this.options.ecmaVersion >= 6 && this.isContextual("of")) && init.declarations.length === 1) {
+      if (this.options.ecmaVersion >= 9) {
+        if (this.type === types$1._in) {
+          if (awaitAt > -1) {
+            this.unexpected(awaitAt);
+          }
+        } else {
+          node3.await = awaitAt > -1;
+        }
+      }
+      return this.parseForIn(node3, init);
     }
     if (awaitAt > -1) {
       this.unexpected(awaitAt);
@@ -38450,6 +38656,8 @@ ${hover.contents.value}
         decl.init = this.parseMaybeAssign(isFor);
       } else if (!allowMissingInitializer && kind === "const" && !(this.type === types$1._in || this.options.ecmaVersion >= 6 && this.isContextual("of"))) {
         this.unexpected();
+      } else if (!allowMissingInitializer && (kind === "using" || kind === "await using") && this.options.ecmaVersion >= 17 && this.type !== types$1._in && !this.isContextual("of")) {
+        this.raise(this.lastTokEnd, "Missing initializer in " + kind + " declaration");
       } else if (!allowMissingInitializer && decl.id.type !== "Identifier" && !(isFor && (this.type === types$1._in || this.isContextual("of")))) {
         this.raise(this.lastTokEnd, "Complex binding patterns require an initialization value");
       } else {
@@ -38463,7 +38671,7 @@ ${hover.contents.value}
     return node3;
   };
   pp$8.parseVarId = function(decl, kind) {
-    decl.id = this.parseBindingAtom();
+    decl.id = kind === "using" || kind === "await using" ? this.parseIdent() : this.parseBindingAtom();
     this.checkLValPattern(decl.id, kind === "var" ? BIND_VAR : BIND_LEXICAL, false);
   };
   var FUNC_STATEMENT = 1;
@@ -39936,7 +40144,7 @@ ${hover.contents.value}
     node3.value = value;
     node3.raw = this.input.slice(this.start, this.end);
     if (node3.raw.charCodeAt(node3.raw.length - 1) === 110) {
-      node3.bigint = node3.raw.slice(0, -1).replace(/_/g, "");
+      node3.bigint = node3.value != null ? node3.value.toString() : node3.raw.slice(0, -1).replace(/_/g, "");
     }
     this.next();
     return this.finishNode(node3, "Literal");
@@ -42788,7 +42996,7 @@ ${hover.contents.value}
     }
     return this.finishToken(type, word);
   };
-  var version = "8.14.1";
+  var version = "8.15.0";
   Parser.acorn = {
     Parser,
     version,
@@ -52880,7 +53088,14 @@ export default function MDXContent(props) {
         return castFactory(test);
       }
       if (typeof test === "object") {
-        return Array.isArray(test) ? anyFactory(test) : propsFactory(test);
+        return Array.isArray(test) ? anyFactory(test) : (
+          // Cast because `ReadonlyArray` goes into the above but `isArray`
+          // narrows to `Array`.
+          propertiesFactory(
+            /** @type {Props} */
+            test
+          )
+        );
       }
       if (typeof test === "string") {
         return typeFactory(test);
@@ -52904,7 +53119,7 @@ export default function MDXContent(props) {
       return false;
     }
   }
-  function propsFactory(check) {
+  function propertiesFactory(check) {
     const checkAsRecord = (
       /** @type {Record<string, unknown>} */
       check
