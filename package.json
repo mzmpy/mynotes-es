@@ -17,6 +17,11 @@
   "author": "@npmzm",
   "license": "ISC",
   "dependencies": {
+    "@luma.gl/core": "^9.2.4",
+    "@luma.gl/engine": "^9.2.4",
+    "@luma.gl/shadertools": "^9.2.4",
+    "@luma.gl/webgl": "^9.2.4",
+    "@luma.gl/webgpu": "^9.2.4",
     "@mdx-js/language-service": "0.5.7",
     "@mdx-js/vue": "^2.3.0",
     "@npmzm/marked": "^1.0.8",
