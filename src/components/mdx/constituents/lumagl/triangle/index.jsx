@@ -4,7 +4,7 @@ import { webgpuAdapter } from '@luma.gl/webgpu'
 import { defineComponent, ref, onMounted } from 'vue'
 import styles from './index.module.css'
 
-const source = /* wgsl */ `\
+const source = /* wgsl */ `
 struct VertexOutput {
   @builtin(position) Position : vec4<f32>,
   @location(0) fragColor : vec3<f32>
@@ -77,7 +77,7 @@ export default defineComponent({
           buffer.destroy()
         },
         onRender({ device }) {
-          const renderPass = device.beginRenderPass({clearColor: [0, 0, 0, 1]})
+          const renderPass = device.beginRenderPass({ clearColor: [0, 0, 0, 1] })
           model.draw(renderPass)
           renderPass.end()
         }
