@@ -1,0 +1,1 @@
+import{a}from"https://mzmpy.github.io/mynotes-es/chunks/js/chunk-KCTMIYSB.js";import"https://mzmpy.github.io/mynotes-es/chunks/js/chunk-BW4UGRBQ.js";import"https://mzmpy.github.io/mynotes-es/chunks/js/chunk-D46NFICI.js";export{a as default};
